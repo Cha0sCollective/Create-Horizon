@@ -22,8 +22,10 @@ of the same toolchain also works. Run from this repository in Bash:
 ./tools/dev.sh cargo clippy --workspace --all-targets --locked -- -D warnings
 ```
 
-The current library has no gameplay implementation or conformance tests. Compile
-and lint success is limited to the repository scaffold.
+The current library implements only settled single-source kinetics over explicit
+topology. Run `cargo test` through the helper for its meaningful pure checks.
+`docs/reference/P02_RESULTS.md` describes the selected live-reference comparison;
+no world adapter or full propagation-timing conformance is claimed.
 
 ## Engine and reference prerequisites
 

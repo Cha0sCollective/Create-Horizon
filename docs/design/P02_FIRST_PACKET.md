@@ -1,7 +1,8 @@
 # P02 first packet: settled single-source kinetics
 
-Candidate after G0; not an implementation or a G2 pass. The first private core
-packet should use the measured P01 rules and have no Horizon or world dependency.
+Active after G0; implementation evidence and remaining limits are recorded in
+`../reference/P02_RESULTS.md`. This is not a G2 pass. The first private core
+packet uses the measured P01 rules and has no Horizon or world dependency.
 Do not implement a general ECS, machine framework or loader here.
 
 The boundary is an already-declared topology: stable node IDs, explicit oriented
