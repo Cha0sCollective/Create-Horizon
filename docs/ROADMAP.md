@@ -7,7 +7,7 @@ remain proposed until their corresponding gate accepts them.
 | Stage | Outcome | Current state |
 | --- | --- | --- |
 | S0 | Runnable pinned reference, repeatable traces and bounded host contract | G0 accepted for bounded experiments; performance qualification open |
-| S1 | Persistent synchronized generic machine with retained animation | Planned; depends on G0 |
+| S1 | Persistent synchronized generic machine with retained animation | H02a declarations and H02b typed-code preflight reviewed and committed locally; immutable package identity and activation next; full H02/G1 open |
 | S2 | Verified motor, shafts and two cog sizes | P02a core and P02b selected native/Wasm checks reviewed; full P02/integration remain open, integration requires G1 |
 | S3 | Five-component playable milling MVP and two-client evidence | Planned; G3 open |
 | S4 | Obtainable survival power and a small factory | Future scope |

@@ -28,3 +28,7 @@ adapters still require the S1 foundations; pure calculations do not establish
 live-game conformance. The [Wasm evidence](docs/reference/P02_WASM_RESULTS.md)
 records the exact sandbox scope. The [D0 baseline](docs/reference/BASELINE_D0.md)
 is software-rendered B0 context, with performance qualification still open.
+The local engine now checks experimental paired-package declarations and required
+client/server callback types without executing guest code; see
+[H02b results](docs/reference/H02_TYPED_RESULTS.md). Paired packages are not yet
+discovered or activated by the game loader.

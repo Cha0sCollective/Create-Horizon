@@ -41,8 +41,9 @@ JDK 21 explicitly; Horizon exporters use JDK 25. Windows Java settings are separ
 
 Horizon 26.3 resources were prepared from the owner's verified Prism client. The
 source build and isolated integrated-server smoke passed. Create reference captures
-are tracked separately under `docs/reference`; these baseline checks do not close
-G0. Keep all JARs, prepared data, disposable worlds and raw runs outside Git. Follow
+are tracked separately under `docs/reference`; these baseline checks alone do not
+establish G0's separate recorded decision or later gates. Keep all JARs, prepared
+data, disposable worlds and raw runs outside Git. Follow
 the engine's own CONTRIBUTING.md and AGENTS.md and isolate every runtime data path.
 
 The engine checkout contains a local ignored instruction overlay copied from
