@@ -7,10 +7,11 @@ of the specification and roadmap for the current packet, not the whole project.
 
 ## Scope and authority
 
-The current authorization covers workspace setup. S0 is the next feasibility
-stage; implementation packets must have a bounded objective, validation and stop
-condition. Later stages and public releases are not activated by importing the
-specification. Preserve its proposed decisions and gate status accurately.
+The current authorization covers Linux build dependencies, Java 21 and 25, and S0
+P01/H01: the pinned reference environment and bounded host contract. Each packet
+needs a bounded objective, validation and stop condition. Later stages and public
+releases are not activated by importing the specification. Preserve its proposed
+decisions and gate status accurately.
 
 The eventual S3 subset contains exactly a creative motor, shaft, small cogwheel,
 large cogwheel and millstone, with cobblestone-to-gravel milling. The namespace is
@@ -77,5 +78,6 @@ The original specification and internal orchestration are private development
 material. The public Horizon fork is a separate publication boundary. Never copy
 this repository, its source documents or local agent configuration into it by
 default. No secrets, account data, game JARs, prepared Minecraft resources, runtime
-worlds or generated evidence enter Git. Preserve explicit owner gates and existing
+worlds or raw generated run evidence enter Git. Reviewed dependency locks and small
+authored result summaries are durable project state. Preserve explicit owner gates and existing
 authorization without asking for the same permission repeatedly.

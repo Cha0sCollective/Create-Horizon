@@ -27,16 +27,16 @@ and lint success is limited to the repository scaffold.
 
 ## Engine and reference prerequisites
 
-At initial inspection, Ubuntu WSL has no C/C++ compiler, pkg-config or Java on PATH.
-An administrator must provision the Linux build dependencies before full Horizon
-builds: its documented prerequisites include build tools, ALSA and udev headers.
-Prepare Java 25 for Horizon tools and Java 21 for the pinned Create reference.
-The Windows Java installation is not a verified Linux reference environment.
+Linux build tools, ALSA/udev headers, Vulkan software drivers and OpenJDK 21/25 are
+installed in Ubuntu WSL. [The S0 environment record](reference/ENVIRONMENT.md)
+lists exact versions, source/resource pins and commands. The Create runner selects
+JDK 21 explicitly; Horizon exporters use JDK 25. Windows Java settings are separate.
 
-Licensed Minecraft 26.3 files and the Minecraft 1.21.1 reference environment remain
-to be prepared in S0. Keep all JARs, prepared data, disposable worlds and run outputs
-outside Git. Follow the engine's own CONTRIBUTING.md and AGENTS.md for the exact
-preparation and applicable checks. Use isolated data paths for every test.
+Horizon 26.3 resources were prepared from the owner's verified Prism client. The
+source build and isolated integrated-server smoke passed. Create reference captures
+are tracked separately under `docs/reference`; these baseline checks do not close
+G0. Keep all JARs, prepared data, disposable worlds and raw runs outside Git. Follow
+the engine's own CONTRIBUTING.md and AGENTS.md and isolate every runtime data path.
 
 The engine checkout contains a local ignored instruction overlay copied from
 `orchestration/horizon/AGENTS.override.md`. Its upstream AGENTS.md remains intact.
@@ -54,7 +54,8 @@ push configuration. Reference-source pushes are also disabled locally.
 
 No new release, upstream pull request, public engine change or wider permission is
 implied by this setup. The public fork initially contains upstream material only.
-The private repository has no release automation or game-resource downloads.
+There is no release automation. Development preparation uses official downloads
+and the owner's installed game files; all acquired resources remain outside Git.
 
 ## Reference provenance
 

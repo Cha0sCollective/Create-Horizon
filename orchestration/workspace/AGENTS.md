@@ -5,8 +5,9 @@ Enter `create-horizon/` for the private mod project and its effective instructio
 Enter `horizon/` only for a bounded engine assignment; read its upstream `AGENTS.md`
 and local `AGENTS.override.md`. `references/` and `sources/` are reference snapshots.
 
-The owner authorized workspace setup, a private Create port repository and a public
-Horizon fork. That does not start the complete implementation roadmap or authorize
+The owner authorized workspace setup, Linux build dependencies, Java 21/25 and S0
+P01/H01 (pinned reference environment and host contract), with a private port repo
+and public Horizon fork. That does not start the complete roadmap or authorize
 public releases. The current assignment and next packet live in the private repo's
 `docs/CURRENT_WORK.md`. Verify actual branches, revisions and dirty files first.
 

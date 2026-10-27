@@ -5,8 +5,9 @@ id = "create_horizon"
 namespace = "create_horizon"
 repository = "https://github.com/Cha0sCollective/Create-Horizon"
 visibility = "private"
-stage = "workspace-setup"
-next_stage = "S0"
+stage = "S0"
+active_packet = "P01/H01 reference environment and host contract"
+next_stage = "S1; requires G0 acceptance"
 
 [specification]
 version = "0.1"
@@ -35,3 +36,10 @@ rust = "1.99.1"
 wasm_target = "wasm32-unknown-unknown"
 initial_validation_target = "linux-x86_64"
 horizon_preparation_java = 25
+
+[reference_environment]
+java_runtime = "21.0.12.1+1-1-24.04.4-Ubuntu"
+gradle = "8.14.3"
+wrapper_jar_sha256 = "7d3a4ac4de1c32b59bc6a4eb8ecb8e612ccd0cf1ae1e99f66902da64df296172"
+artifact_lock = "docs/reference/artifacts.lock.json"
+configuration = "fresh generated defaults; archive and hash each run before accepting traces"

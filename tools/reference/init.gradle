@@ -1,0 +1,52 @@
+// Development-only adapter. The pinned reference's source files stay unchanged.
+import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
+import java.security.MessageDigest
+
+gradle.projectsEvaluated {
+    def project = gradle.rootProject
+    def adapter = new File(System.getenv('CREATE_REFERENCE_ADAPTER'))
+    def runRoot = new File(System.getenv('CREATE_REFERENCE_RUN'))
+    project.sourceSets.main.java.srcDir(new File(adapter, 'java'))
+    // Replace only upstream test discovery, not production machinery or recipes.
+    project.sourceSets.main.java.exclude('com/simibubi/create/infrastructure/gametest/CreateGameTests.java')
+    project.sourceSets.main.resources.srcDir(new File(runRoot, 'resources'))
+    project.neoForge.runs.configureEach {
+        gameDirectory = new File(runRoot, name)
+        systemProperty('neoforge.enabledGameTestNamespaces', 'create_horizon_reference')
+    }
+    project.tasks.register('createHorizonReferenceLock') {
+        doLast {
+            def rows = ['compileClasspath', 'runtimeClasspath'].collectMany { configuration ->
+              def classpath = project.configurations[configuration]
+              def identities = classpath.resolvedConfiguration.resolvedArtifacts.collectEntries { artifact ->
+                  [(artifact.file.canonicalPath): [coordinate: artifact.moduleVersion.id.toString(),
+                                                  classifier: artifact.classifier]]
+              }
+              classpath.files.collect { file ->
+                if (!file.isFile())
+                    throw new GradleException("Unrecorded classpath directory or missing file: ${file}")
+                def digest = MessageDigest.getInstance('SHA-256')
+                file.withInputStream { stream ->
+                    byte[] buffer = new byte[65536]
+                    int count
+                    while ((count = stream.read(buffer)) != -1) digest.update(buffer, 0, count)
+                }
+                def identity = identities[file.canonicalPath] ?: [coordinate: "local:classpath:${file.name}".toString(), classifier: null]
+                [configuration: configuration, coordinate: identity.coordinate,
+                 file: file.name, classifier: identity.classifier,
+                 sha256: digest.digest().encodeHex().toString()]
+              }
+            }.sort { a, b -> (a.configuration + a.coordinate + a.file) <=> (b.configuration + b.coordinate + b.file) }
+            new File(runRoot, 'resolved-artifacts.json').text = JsonOutput.prettyPrint(JsonOutput.toJson(rows)) + '\n'
+            if (System.getenv('CREATE_REFERENCE_REQUIRE_LOCK') == '1') {
+                def accepted = new File(System.getenv('CREATE_REFERENCE_ARTIFACT_LOCK'))
+                if (new JsonSlurper().parse(accepted) != rows)
+                    throw new GradleException('Reference artifacts differ from the accepted lock; inspect resolved-artifacts.json before running fixtures')
+            }
+        }
+    }
+    project.tasks.named('runGameTestServer').configure {
+        dependsOn('createHorizonReferenceLock')
+    }
+}

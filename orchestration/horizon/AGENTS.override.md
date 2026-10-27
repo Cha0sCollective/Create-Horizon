@@ -6,9 +6,10 @@ upstream-directed work. Preserve the upstream files and normal vanilla behavior.
 
 This local integration checkout is based on Horizon
 `cf62fe270b243780f9aa86c49b456d9dd9078b42` on `codex/s0-feasibility`. Verify the actual
-branch, revision and dirty files each session. The owner authorized workspace setup;
-no engine behavior implementation is active yet. The next engine packet is the S0
-bounded host contract and feasibility experiment, coordinated with the private port.
+branch, revision and dirty files each session. The owner authorized Linux build
+dependencies, Java 21/25 and S0 P01/H01: pinned reference environment and bounded
+host contract, coordinated with the private port. S1 engine behavior work is not
+active yet; preserve gate status and distinguish baseline checks from new machinery.
 
 Keep generic registries, lifecycle, transactions, saves, replication and rendering
 services in the engine. Keep Create-specific graph, recipes and machine rules in
