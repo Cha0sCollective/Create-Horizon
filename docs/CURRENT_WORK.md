@@ -1,15 +1,16 @@
 # Current work
 
-Active packet: P02a settled single-source kernel in the private repo, based on
-reviewed G0 commit 805c383. Finish comparison controls, review and commit. Fifteen real reference
+Active packet: H02a paired-package preflight in the local engine. Scope and stop
+conditions: docs/design/H02_PREFLIGHT_PACKET.md. Reviewed private P02a is committed
+at 9bc54c0; the complete P02 and all live-host gates remain open. Fifteen real reference
 fixtures passed twice with 1,730 samples comparing equal, including the strengthened
 overload assertion. G0's bounded experimental direction is in docs/design/G0_DECISION.md.
 The owner authorizes further stages in this run until
 7 p.m. Central on October 27, 2026 if their preceding gate is actually met;
 public publication remains separate. Stop this run at that cutoff.
 
-- Mod: `codex/p02-settled-kinetics`, based on reviewed S0/G0 packet `805c383`.
-- Engine: local `codex/s0-feasibility` at the Horizon revision in `workspace.toml`.
+- Mod notes: `codex/h02-paired-preflight-notes`, based on reviewed P02a `9bc54c0`.
+- Engine: local `codex/h02-paired-preflight`, based on the Horizon pin in `workspace.toml`.
 - Reference: detached at the specification's Create revision.
 - Effective orchestration: see `orchestration/ADOPTION.md` and AGENTS.md.
 - Linux build tools, ALSA/udev headers, Vulkan software drivers and JDKs 21/25 are
@@ -27,7 +28,7 @@ public publication remains separate. Stop this run at that cutoff.
   62 machine observations from each accepted E/F reference. See P02_RESULTS.md for
   the precise limits. Native world machinery and full trace timing remain absent.
 
-Next bounded work: finish this packet, then assess the first H02 paired-package
-experiment within H01. Five five-minute B0
+Next bounded work: implement/review H02a without claiming runtime execution;
+actual side instantiation/admission is a subsequent packet. Five five-minute B0
 software-rendered unmodified-engine windows are collecting locally; these do not
 ratify B2 or hardware-GPU targets. Public engine publication remains separate.

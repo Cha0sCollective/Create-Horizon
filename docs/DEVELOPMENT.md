@@ -54,6 +54,11 @@ The private repository's initial setup is on main. Subsequent work uses focused
 its origin is the public Cha0sCollective fork and upstream is fetch-only by local
 push configuration. Reference-source pushes are also disabled locally.
 
+Horizon now resolves to `horizon-rust/horizon`; the original `ludovic111/horizon`
+URL redirects. Use the canonical name for pull-request searches: old-name searches
+can return an empty result even though direct PR reads redirect successfully.
+The engine/reference revision pins are unchanged by this repository-name update.
+
 No new release, upstream pull request, public engine change or wider permission is
 implied by this setup. The public fork initially contains upstream material only.
 There is no release automation. Development preparation uses official downloads

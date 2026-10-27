@@ -6,7 +6,7 @@ namespace = "create_horizon"
 repository = "https://github.com/Cha0sCollective/Create-Horizon"
 visibility = "private"
 stage = "post-G0 foundations"
-active_packet = "P02a settled single-source kernel; S1 host experiment remains bounded"
+active_packet = "H02a paired-package preflight; P02a reviewed, full H02/P02 open"
 next_stage = "S1 host foundations and remaining P02; G1/G2/G3 open"
 
 [specification]
@@ -16,7 +16,7 @@ source = "docs/source/Create_Horizon_Product_Specification_and_Development_Plan.
 sha256 = "4d32767eae66bbd209c83e40618d31a02052181adcc1b0c3b9466154438ee781"
 
 [horizon]
-upstream = "https://github.com/ludovic111/horizon.git"
+upstream = "https://github.com/horizon-rust/horizon.git"
 fork = "https://github.com/Cha0sCollective/Horizon.git"
 revision = "cf62fe270b243780f9aa86c49b456d9dd9078b42"
 minecraft = "26.3"
