@@ -1,0 +1,14 @@
+[workspace]
+members = ["guest", "host"]
+resolver = "2"
+
+[workspace.package]
+edition = "2024"
+publish = false
+
+[profile.dev]
+debug = "line-tables-only"
+
+[profile.release]
+opt-level = "s"
+lto = true

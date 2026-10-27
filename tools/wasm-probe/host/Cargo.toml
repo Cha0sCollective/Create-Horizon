@@ -1,0 +1,9 @@
+[package]
+name = "kinetic-wasm-probe-host"
+version = "0.0.0"
+edition.workspace = true
+publish.workspace = true
+
+[dependencies]
+horizon-mods = { path = "../../../../horizon/crates/horizon-mods", features = ["runtime", "pack"] }
+serde_json = "=1.0.151"

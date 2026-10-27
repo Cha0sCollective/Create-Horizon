@@ -26,7 +26,8 @@ custom workers and permission expansion require explicit owner authorization.
 
 Use isolated runtime data and the upstream checks appropriate to each change.
 Compilation, synthetic fixtures and static inspection do not establish connected
-client behavior, processing conformance or performance. G0 and later gates are open.
+client behavior, processing conformance or performance. G0 accepted bounded
+experimental work; G1/G2/G3 and performance qualification remain open.
 Do not build broad measurement or orchestration infrastructure as a setup shortcut.
 
 The public origin is Cha0sCollective/Horizon. Keep private product documents, agent

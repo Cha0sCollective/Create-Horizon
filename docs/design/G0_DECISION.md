@@ -46,8 +46,10 @@ pass is inferred from an aborted window or from software rendering.
 The strengthened E/F pair is `b531ce69-28ce-4a5a-a8a2-e5ea3b10ebe2` /
 `d0528c63-86c7-416b-9dbf-5ee33c1e6a50`; all 15 tests pass in each. The 1,730
 samples and source/JDK/adapter/dependency/configuration records compare equal.
-The fresh B0 collection is `a5c799f5-f1d2-42b5-a937-10643766fd71`; results remain
-pending and cannot be counted toward performance qualification.
+The fresh B0 collection is `a5c799f5-f1d2-42b5-a937-10643766fd71`; five windows
+completed with a clean exit. See `../reference/BASELINE_D0.md` for individual
+results and the first window's background-compilation caveat. These data do not
+count as B1/B2 or hardware-GPU performance qualification.
 
 Performance budgets remain provisional rather than pretending that this software
 renderer validates hardware-GPU targets. This explicitly defers that portion of

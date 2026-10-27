@@ -27,6 +27,11 @@ topology. Run `cargo test` through the helper for its meaningful pure checks.
 `docs/reference/P02_RESULTS.md` describes the selected live-reference comparison;
 no world adapter or full propagation-timing conformance is claimed.
 
+The separate development workspace under `tools/wasm-probe` runs the same selected
+checkpoints in Horizon's existing server-component sandbox. Its own lock and build
+instructions are recorded in `docs/reference/P02_WASM_RESULTS.md`; it adds no
+Wasmtime/SDK dependency to the player kernel.
+
 ## Engine and reference prerequisites
 
 Linux build tools, ALSA/udev headers, Vulkan software drivers and OpenJDK 21/25 are

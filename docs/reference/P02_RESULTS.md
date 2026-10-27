@@ -29,6 +29,9 @@ consistent/conflicting cycles, invalid topology/facts, arithmetic overflow and
 underflow in ratio propagation, capacity products and load products.
 Rustfmt and Clippy with warnings denied pass. The library also checks for
 `wasm32-unknown-unknown`; this is compilation only, not execution in a Wasm host.
+The subsequent P02b packet now records actual selected sandbox execution separately
+in [P02_WASM_RESULTS.md](P02_WASM_RESULTS.md); this packet's original compilation
+result alone did not establish that claim.
 
 The development JSON example `kinetic_probe` and `tools/compare_core.py` compare
 the following settled checkpoints from **both** accepted strengthened E/F runs:

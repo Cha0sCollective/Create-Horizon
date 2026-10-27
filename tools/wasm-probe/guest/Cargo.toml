@@ -1,0 +1,13 @@
+[package]
+name = "kinetic-wasm-probe-guest"
+version = "0.0.0"
+edition.workspace = true
+publish.workspace = true
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+create-horizon-core = { path = "../../../crates/create-core" }
+horizon-mod-sdk = { path = "../../../../horizon/crates/horizon-mod-sdk" }
+serde_json = "=1.0.151"
