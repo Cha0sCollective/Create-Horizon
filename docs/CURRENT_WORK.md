@@ -1,40 +1,39 @@
 # Current work
 
-Active work: close H02b evidence and repeat the isolated unmodified-engine B0
-baseline without overlapping builds. H02b is locally committed at 2f10419;
-see docs/reference/H02_TYPED_RESULTS.md. H02a is locally committed at 0654559.
-P02b sandbox comparisons, lints and review
-passed; see docs/reference/P02_WASM_RESULTS.md. Reviewed P02a is committed
-at 9bc54c0; the complete P02 and all live-host gates remain open. Fifteen real reference
-fixtures passed twice with 1,730 samples comparing equal, including the strengthened
-overload assertion. G0's bounded experimental direction is in docs/design/G0_DECISION.md.
-The owner authorizes further stages in this run until
-7 p.m. Central on October 27, 2026 if their preceding gate is actually met;
-public publication remains separate. Stop this run at that cutoff.
+The October 27 run is closing at the owner's 7 p.m. Central cutoff. Code, review
+and baseline work is complete; further implementation after that cutoff requires
+a new owner instruction. No owned Linux game or build process remains running.
 
-- Mod notes: `codex/h02-typed-preflight-notes`, based on reviewed P02b `cf4a830`.
-- Engine: local `codex/h02-paired-types` at reviewed H02b `2f10419`; unpublished.
-- Reference: detached at the specification's Create revision.
-- Effective orchestration: see `orchestration/ADOPTION.md` and AGENTS.md.
-- Linux build tools, ALSA/udev headers, Vulkan software drivers and JDKs 21/25 are
-  installed in Ubuntu 24.04; exact versions are in `docs/reference/ENVIRONMENT.md`.
-- The owner installed and ran 26.3 in Prism. Its client matches Horizon's pin;
-  resources are prepared and an isolated integrated-server client smoke passed.
-- Two fresh expanded Create captures agree: 15 fixtures, 1,730 samples each, 211
-  classpath records and 15 config files. Original six-case captures still compare.
-  See `docs/reference/S0_RESULTS.md` for scope, controls and human-assisted motor UI.
-- The owner selected reference-compatible full-output result loss; see R01 in
-  `docs/reference/COMPATIBILITY_DECISIONS.md`. Do not invent backpressure in P04.
-- Retained Linux executables are in `../.local/bin`; build cache is persistent in
-  WSL. Raw resources, worlds and evidence remain outside Git.
-- The private kernel passes ten test groups and matches 16 settled checkpoints /
-  62 machine observations from each accepted E/F reference. See P02_RESULTS.md for
-  the precise limits. P02b now matches those states through the actual server-Wasm
-  sandbox too. Native world machinery and full trace timing remain absent.
+- Private branch: `codex/h02-typed-preflight-notes`; development notes are backed
+  up to the verified private `Cha0sCollective/Create-Horizon` repository.
+- Engine branch: local `codex/h02-paired-types` at `2f1041966d0be580bcecb96ee040d8941503f1fa`,
+  following H02a `0654559`. Both changes remain unpublished.
+- Create reference: unchanged detached `7ff2760e4924d35d4bc2e22c4b19923f0178cd16`.
+  Base/toolchain/resource pins remain in `workspace.toml` and reference records.
+- Effective orchestration: AGENTS.md and `orchestration/ADOPTION.md`.
 
-Next implementation proposal: freeze paired package content and identity before
-activation, scoped in docs/design/H02_NEXT_PACKET.md. Discovery, side activation
-and writable-world admission remain subsequent work. The initial five five-minute
-B0 software-rendered windows include one compilation overlap; a fresh repeat is
-running. Neither run ratifies B2 or hardware-GPU targets. Do not compile during the
-repeat's measurement windows. Public engine publication remains separate.
+Completed bounded evidence:
+
+- Linux dependencies and JDKs 21/25 installed; owned Prism 26.3 resources prepared;
+  retained unmodified Linux client and isolated integrated-server smoke passed.
+- Fifteen real Create fixtures pass twice, 1,730 samples each comparing equal.
+  G0 accepts bounded experimental work; performance qualification remains open.
+  Owner-assisted motor UI evidence is in `docs/reference/S0_RESULTS.md`.
+- R01 explicitly matches the pinned full-output milling result loss. Preserve
+  this decision and its transfer/recovery limits in later P04 work.
+- Reviewed P02a kernel passes ten test groups. P02b matches 16 settled checkpoints /
+  62 machine observations from both accepted references natively and through the
+  actual server-Wasm sandbox. Full propagation timing and world machinery remain absent.
+- H02a paired declarations and H02b required callback/import type checks pass
+  focused tests, real sandbox regressions, lints and independent reviews. Broad
+  quick checks pass with post-fix scope explained in H02_TYPED_RESULTS.md.
+- Fresh five-window B0 repeat completed without overlapping agent builds, with
+  strict receipts and clean exit; see `docs/reference/BASELINE_D0.md`. These are
+  software-rendered unmodified-engine measurements, not B2/GPU qualification.
+
+Next bounded implementation proposal: immutable paired content/identity snapshots
+in `docs/design/H02_NEXT_PACKET.md`, before discovery or activation. Independent
+reference work is scoped in the reviewed `docs/design/P02_ARBITRATION_PACKET.md`;
+those new fixtures have not run. Full H02/P02 and G1/G2/G3 remain open. Live Create
+blocks, authoritative machine persistence and retained animation are not implemented.
+Public engine publication, upstream submission and release remain separate decisions.

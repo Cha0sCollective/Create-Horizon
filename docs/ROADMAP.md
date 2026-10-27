@@ -34,5 +34,8 @@ The expanded 15-case corpus repeats with 1,730 samples; the owner-assisted motor
 check and retrieval/overflow cases are recorded. G0 accepts the experimental H01
 direction, local required engine build, original diagnostic assets and named D0
 hardware in `docs/design/G0_DECISION.md`. B2/GPU budget ratification remains explicitly
-deferred; it is not a performance qualification or release waiver. The next packet
-is `docs/design/P02_FIRST_PACKET.md`. G1/G2/G3 remain open.
+deferred; it is not a performance qualification or release waiver. The first P02
+kernel and selected native/Wasm checkpoints are complete, alongside H02a/b local
+preflight work. The next host packet is `docs/design/H02_NEXT_PACKET.md`; the next
+reference observation proposal is `docs/design/P02_ARBITRATION_PACKET.md`.
+G1/G2/G3 remain open.
