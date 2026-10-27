@@ -94,16 +94,60 @@ generated date is accepted; a changed real server setting is detected. Records
 are in `.local/s0/comparator-controls/`. These controls verify the comparator;
 there is no native port to run a differential conformance suite against yet.
 
+## Expanded edge and interaction results
+
+Two fresh expanded captures pass all 15 fixtures and compare equal across 1,730
+samples, 211 classpath records and 15 config files, with the same narrow generated
+date-comment exclusion. Accepted raw runs are
+`b531ce69-28ce-4a5a-a8a2-e5ea3b10ebe2` and
+`d0528c63-86c7-416b-9dbf-5ee33c1e6a50` under `.local/s0/reference-runs/`.
+The extended comparator also preserves equality of the original six-case C/D pair.
+[EDGE_CASES.md](EDGE_CASES.md) defines the added schedules and observation limits.
+
+| Case | Observed terminal result |
+| --- | --- |
+| Finite stress | 128/256 runs, 256/256 equality runs, 384/256 stops effective rotation while retaining theoretical RPM; removing the third load recovers; expired crank stops |
+| Interrupted/reversed milling | Timer/input retained while disconnected; resumes at −16 and yields exactly one gravel |
+| One full output slot | Slot 0 holds 64 gravel; completion puts one more in another slot, total 65 |
+| All nine output slots full | Handler limit 99, ordinary gravel stacks 64; one cobblestone consumed, output remains 576 gravel: the uninsertable result is lost |
+| Changed/removed input | Extracted cobblestone retained, no output; replacement barrier is preserved |
+| Empty-hand retrieval | First use returns 5 gravel and leaves 3 input cobblestone; second use returns input |
+| Full-player retrieval | 2,304 iron unchanged; 5 gravel and 3 cobblestone dropped, machine empty, totals conserved |
+| Motor value-settings handler | Default +16; UI magnitude zero becomes +1/−1 according to sign row; both ±256 endpoints reach the shaft |
+
+The owner performed the physical motor edit in the isolated client and reported
+the rotation changing. Its saved motor has setting and speed −256. This is a
+human-assisted client observation, separate from the FakePlayer server-handler
+fixtures. Those fixtures establish neither packet validation nor reach checks.
+
+The full-output loss is an explicit owner-selected compatibility choice, recorded
+as [R01](COMPATIBILITY_DECISIONS.md). It is not a conservation success. Preserve the
+pinned behavior; do not silently substitute a backpressure rule in P04.
+
+Nine derived controls are local at `.local/s0/edge-comparator-controls/results.json`.
+Changed ratio (−32 to −16), finite stress (384 to 383) and remaining work produce
+first-difference failures with the numeric types preserved. Missing rows, boolean
+stack counts, a string slot limit, lost overflow items, an impossible motor setting
+and duplicate machine identity are rejected as invalid evidence. These are
+comparator controls derived from a live run, not additional game executions.
+
+The earlier 15-case pair (`9a6c2753-85fa-467d-88ed-09ce21d2ea6b` /
+`05f4544d-8d46-4b64-98ed-daeef0c9ccb9`) already showed exact zero at overload,
+but review found its assertion accepted any effective magnitude other than 32.
+The current pair was rebuilt and rerun with an exact-zero stopped assertion.
+Adapter receipts match the current source. The numerical comparator controls were
+derived from the earlier live capture and remain labeled as such.
+
 ## Contract and gate status
 
-[H01](../design/HOST_CONTRACT.md) is a proposal covering paired executable/content
+[H01](../design/HOST_CONTRACT.md) is the experimental direction covering paired executable/content
 ownership, authoritative object identity, lifecycle/tick order, transactional
 effects, coherent recovery, exact-match networking and retained presentation.
 The pinned runtime's trap/output ordering and player-save error handling require
 explicit machinery integration; current deferred writes and a sidecar save are
 insufficient to establish the proposed guarantees.
 
-G0 remains open. H01 is not an accepted API, and no H02-H14 capability or P02-P06
-gameplay implementation is claimed. The current Rust domain library remains empty.
-The accepted personal/reference provenance decision is retained; namespace,
-integration/distribution route, assets and benchmark targets remain gate decisions.
+The G0 engineering decision is recorded in [G0_DECISION.md](../design/G0_DECISION.md).
+H01 is not an implemented/stable API, and no H02-H14 capability or P02-P06 gameplay
+implementation is claimed by this packet. The Rust domain library is still empty
+at this packet's boundary. G1/G2/G3 and performance qualification remain open.

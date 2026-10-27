@@ -5,10 +5,10 @@ Enter `create-horizon/` for the private mod project and its effective instructio
 Enter `horizon/` only for a bounded engine assignment; read its upstream `AGENTS.md`
 and local `AGENTS.override.md`. `references/` and `sources/` are reference snapshots.
 
-The owner authorized workspace setup, Linux build dependencies, Java 21/25 and S0
-P01/H01 (pinned reference environment and host contract), with a private port repo
-and public Horizon fork. That does not start the complete roadmap or authorize
-public releases. The current assignment and next packet live in the private repo's
+The owner authorized the private port/public engine workspace, dependencies and
+Java 21/25, then continued development through the plan until 7 p.m. Central on
+October 27, 2026, including beyond S0 when its gate is supported by evidence.
+This does not authorize public releases. The current bounded packet lives in the private repo's
 `docs/CURRENT_WORK.md`. Verify actual branches, revisions and dirty files first.
 
 The owner explicitly authorized using Create as a reference for a personal port,

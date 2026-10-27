@@ -1,6 +1,8 @@
 # P01 first observation cases
 
-Status: adapter prepared; live outcomes are recorded separately after execution.
+Status: the initial and expanded corpora have run twice; outcomes are recorded in
+`S0_RESULTS.md` and the added schema-2 cases in `EDGE_CASES.md`. This document
+preserves the original six-case schema and schedules below.
 This narrow adapter uses NeoForge GameTest and real server block entities. It is
 not a replacement simulation, a generic experiment framework or a native parity
 runner. See [environment](ENVIRONMENT.md) and the original Java adapter under
@@ -59,9 +61,13 @@ Keep raw console logs, configurations and worlds local; commit only a concise
 result report and non-game fixture source. Missing rows, duplicate ticks, partial
 logs, failed assertions or mismatched environments invalidate a comparison.
 
-## Remaining S0 observations
+## Expansion and later observations
 
-Extend only after the first fixtures actually run. Required gaps include:
+The edge corpus now covers finite stress/recovery, interruption/reversal,
+changed/removed input, one/all full output slots, retrieval/overflow and motor
+value settings. The owner also exercised the physical motor gesture. The following
+list preserves the originally identified coverage needs; remaining lifecycle and
+contention cases belong to subsequent packets, not an implied pass:
 
 - Finite-capacity source at stress equality and overload, followed by recovery;
   the creative motor does not establish survival capacity behavior.
@@ -92,7 +98,7 @@ turning. The source-derived candidate boundaries are 128/256/384 stress units
 against capacity 256, but actual signed speeds and transition ticks must be read
 from the reference. Empty millstone inventories do not remove their declared
 kinetic stress. Record the real configured values rather than inferring them only
-from source defaults. This fixture is planned and has not run yet.
+from source defaults. This layout has now passed and repeated in the expanded corpus.
 
 For two completed captures, run `python3 tools/compare_reference.py <run-a> <run-b>`.
 The comparator requires all six successful fixtures, all 730 unique samples,

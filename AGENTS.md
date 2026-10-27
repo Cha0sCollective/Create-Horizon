@@ -7,11 +7,13 @@ of the specification and roadmap for the current packet, not the whole project.
 
 ## Scope and authority
 
-The current authorization covers Linux build dependencies, Java 21 and 25, and S0
-P01/H01: the pinned reference environment and bounded host contract. Each packet
-needs a bounded objective, validation and stop condition. Later stages and public
-releases are not activated by importing the specification. Preserve its proposed
-decisions and gate status accurately.
+The owner authorizes this run to progress through the development plan until
+7 p.m. Central on October 27, 2026, including beyond S0 when its gate is supported
+by evidence and a recorded decision. Further work after that cutoff needs a new
+owner instruction. Each packet
+needs a bounded objective, validation and stop condition. Importing the specification
+alone does not accept its proposals or authorize public releases. Preserve proposed
+decisions and gate status accurately; publication and promotion gates still apply.
 
 The eventual S3 subset contains exactly a creative motor, shaft, small cogwheel,
 large cogwheel and millstone, with cobblestone-to-gravel milling. The namespace is

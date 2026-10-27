@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Compare two complete runs of the six initial P01 GameTest fixtures."""
+"""Compare complete P01 captures for a declared, versioned fixture set."""
 import argparse
 import hashlib
 import json
@@ -9,6 +9,13 @@ import re
 
 FIXTURES = {'direct_stop_reverse': 70, 'small_to_small': 20, 'large_to_small': 20,
             'small_to_large': 20, 'milling_16': 300, 'milling_256': 300}
+FIXTURE_SETS = {'s0-initial-1': (1, FIXTURES),
+                's0-edges-1': (2, {**FIXTURES, 'finite_stress': 120,
+                                 'milling_interrupt_reverse': 340, 'milling_full_output': 100,
+                                 'milling_one_full_slot': 100,
+                                 'milling_input_changed': 100, 'milling_input_removed': 100,
+                                 'retrieval_empty_hand': 40, 'retrieval_overflow': 40,
+                                 'motor_value_settings': 60})}
 MARKER = 'CREATE_HORIZON_TRACE '
 HEX256 = re.compile(r'[0-9a-f]{64}')
 ADAPTER_FILES = {'tools/reference.py', 'tools/reference/init.gradle',
@@ -29,14 +36,61 @@ def comparison_config_hash(path):
 
 def expected_machines(fixture, tick):
     motor = ('create:creative_motor', [2, 2, 2])
+    if fixture.startswith('retrieval_'):
+        return [('create:millstone', [2, 4, 2])]
+    if fixture == 'motor_value_settings':
+        return [motor, ('create:shaft', [2, 3, 2])]
+    if fixture == 'finite_stress':
+        return [('create:hand_crank', [2, 2, 2]), ('create:shaft', [2, 3, 2]),
+                ('create:cogwheel', [2, 4, 2]), ('create:cogwheel', [3, 4, 2]), ('create:cogwheel', [2, 4, 3]),
+                ('create:millstone', [2, 5, 2]),
+                ('create:millstone' if tick > 30 else 'minecraft:air', [3, 5, 2]),
+                ('create:millstone' if 50 < tick <= 70 else 'minecraft:air', [2, 5, 3])]
     if fixture == 'direct_stop_reverse':
         return [motor, ('minecraft:air' if tick > 30 else 'create:shaft', [2, 3, 2]),
                 ('create:shaft', [2, 4, 2])]
+    if fixture == 'milling_interrupt_reverse':
+        return [motor, ('minecraft:air' if 40 < tick <= 80 else 'create:shaft', [2, 3, 2]),
+                ('create:millstone', [2, 4, 2])]
     if fixture.startswith('milling_'):
         return [motor, ('create:shaft', [2, 3, 2]), ('create:millstone', [2, 4, 2])]
     driver = 'create:large_cogwheel' if fixture == 'large_to_small' else 'create:cogwheel'
     load = 'create:large_cogwheel' if fixture == 'small_to_large' else 'create:cogwheel'
     return [motor, (driver, [2, 3, 2]), (load, [3, 3, 2 if fixture == 'small_to_small' else 3])]
+
+
+def validate_context(fixture, tick, context):
+    require(type(context) is dict, 'Missing fixture context')
+    if fixture.startswith('retrieval_'):
+        overflow = fixture == 'retrieval_overflow'
+        expected = {'player_gravel': 5 if tick > 10 and not overflow else 0,
+                    'player_cobblestone': 3 if tick > 20 and not overflow else 0,
+                    'player_iron': 2304 if overflow else 0,
+                    'ground_gravel': 5 if tick > 10 and overflow else 0,
+                    'ground_cobblestone': 3 if tick > 20 and overflow else 0}
+        require(context == expected and all(type(value) is int for value in context.values()),
+                'Invalid retrieval inventory accounting')
+    elif fixture == 'motor_value_settings':
+        expected = 16 if tick <= 10 else 1 if tick <= 20 else -1 if tick <= 30 else -256 if tick <= 40 else 256
+        require(set(context) == {'setting'} and type(context['setting']) is int and context['setting'] == expected,
+                'Invalid motor setting context')
+    elif fixture == 'finite_stress':
+        require(set(context) == {'capacity_per_rpm', 'millstone_impact_per_rpm'}
+                and all(finite_number(value) for value in context.values())
+                and context['capacity_per_rpm'] == 8 and context['millstone_impact_per_rpm'] == 4,
+                'Wrong finite-source configuration')
+    elif fixture == 'milling_interrupt_reverse':
+        require(set(context) == {'paused_work'} and type(context['paused_work']) is int
+                and (context['paused_work'] == -1 if tick <= 40 else 0 < context['paused_work'] <= 250),
+                'Invalid interruption context')
+    elif fixture in ('milling_full_output', 'milling_one_full_slot', 'milling_input_changed', 'milling_input_removed'):
+        expected = {'external_cobblestone': int(tick > 20 and fixture in ('milling_input_changed', 'milling_input_removed')),
+                    'external_barrier': int(tick <= 20 and fixture == 'milling_input_changed'),
+                    'extracted_gravel': 0}
+        require(context == expected and all(type(value) is int for value in context.values()),
+                'Invalid external inventory accounting')
+    else:
+        require(context == {}, 'Unexpected fixture context')
 
 
 def unique_object(pairs):
@@ -66,6 +120,9 @@ def load_run(directory):
     require((directory / 'exit-code.txt').read_text().strip() == '0', f'{directory}: run did not succeed')
     environment = decode((directory / 'environment.json').read_text())
     require(environment['mode'] == 'capture', 'Expected a capture run')
+    fixture_set = environment.get('fixture_set', 's0-initial-1')
+    require(fixture_set in FIXTURE_SETS, 'Unknown reference fixture set')
+    schema, fixtures = FIXTURE_SETS[fixture_set]
     require(isinstance(environment['reference_revision'], str)
             and re.fullmatch(r'[0-9a-f]{40}', environment['reference_revision']), 'Invalid source revision')
     require(environment['minecraft'] == '1.21.1' and environment['neoforge'] == '21.1.219', 'Unexpected platform')
@@ -81,12 +138,14 @@ def load_run(directory):
             continue
         row = decode(line.split(MARKER, 1)[1])
         fixture, tick = row['fixture'], row['tick']
-        require(fixture in FIXTURES and type(tick) is int and 1 <= tick <= FIXTURES[fixture], 'Unknown fixture/tick')
+        require(fixture in fixtures and type(tick) is int and 1 <= tick <= fixtures[fixture], 'Unknown fixture/tick')
         require((fixture, tick) not in rows, f'Duplicate sample {fixture} tick {tick}')
-        require(type(row['schema']) is int and row['schema'] == 1
+        require(type(row['schema']) is int and row['schema'] == schema
                 and row['phase'] == 'gametest_scheduled_callback', 'Unexpected trace schema/phase')
         require(row['dimension'] == 'minecraft:overworld' and type(row['world_seed']) is int, 'Missing world context')
-        require(len(row['machines']) == 3, 'Expected three machine positions')
+        if schema == 2:
+            validate_context(fixture, tick, row['context'])
+        require(len(row['machines']) == len(expected_machines(fixture, tick)), 'Wrong machine observation count')
         require([(m['block'], m['position']) for m in row['machines']] == expected_machines(fixture, tick),
                 f'Wrong or duplicate machine identity: {fixture} tick {tick}')
         for machine in row['machines']:
@@ -95,11 +154,12 @@ def load_run(directory):
             require(type(properties) is dict and all(isinstance(k, str) and isinstance(v, str)
                     for k, v in properties.items()), 'Missing/invalid block properties')
             if machine['block'] == 'minecraft:air':
-                require(fixture == 'direct_stop_reverse' and tick > 30 and machine['position'] == [2, 3, 2], 'Unexpected air')
                 continue
             require(machine['block'].startswith('create:'), 'Unexpected block namespace')
             if machine['block'] == 'create:creative_motor':
                 require(properties.get('facing') == 'up', 'Wrong motor facing')
+            elif machine['block'] == 'create:hand_crank':
+                require(properties.get('facing') == 'down', 'Wrong crank facing')
             elif machine['block'] != 'create:millstone':
                 require(properties.get('axis') == 'y', 'Wrong shaft/cog axis')
             for key in ('theoretical_rpm', 'effective_rpm'):
@@ -109,6 +169,9 @@ def load_run(directory):
             require(all(finite_number(network[k]) for k in ('stress_su', 'capacity_su')), 'Invalid stress/capacity')
             if machine['block'] == 'create:millstone':
                 require(type(machine['remaining_work']) is int, 'Invalid recipe work')
+                if schema == 2:
+                    require(type(machine['output_slot_limit']) is int and 1 <= machine['output_slot_limit'] <= 99,
+                            'Missing output slot limit')
                 slots = machine['slots']
                 expected = {('input', 0), *(('output', i) for i in range(9))}
                 require(len(slots) == 10 and {(s['owner'], s['slot']) for s in slots} == expected, 'Missing/duplicate inventory slot')
@@ -117,11 +180,11 @@ def load_run(directory):
                             and slot['item'].startswith('minecraft:') and type(slot['count']) is int
                             and 0 <= slot['count'] <= 64, 'Invalid fixture stack')
         rows[(fixture, tick)] = row
-    expected = {(name, tick) for name, count in FIXTURES.items() for tick in range(1, count + 1)}
+    expected = {(name, tick) for name, count in fixtures.items() for tick in range(1, count + 1)}
     missing = sorted(expected - rows.keys())
     require(not missing, f'Missing samples: {missing[:5]} ({len(missing)} total)')
     # A full trace without successful terminal assertions is not a passed run.
-    require(re.search(r'All 6 required tests passed', log) is not None, 'Missing six-test success summary')
+    require(re.search(rf'All {len(fixtures)} required tests passed', log) is not None, 'Missing complete test success summary')
     artifacts = decode((directory / 'resolved-artifacts.json').read_text())
     configs = decode((directory / 'config-sha256.json').read_text())
     require(type(artifacts) is list and bool(artifacts), 'Missing dependency records')
@@ -152,8 +215,8 @@ def load_run(directory):
                       for p in config_files}
     require(configs == actual_configs and any(Path(key).name == 'create-server.toml' for key in configs),
             'Incomplete configuration manifest or changed configuration files')
-    return {'environment': {key: environment[key] for key in
-                            ('reference_revision', 'minecraft', 'neoforge', 'java', 'adapter_sha256')},
+    return {'environment': {'fixture_set': fixture_set, **{key: environment[key] for key in
+                            ('reference_revision', 'minecraft', 'neoforge', 'java', 'adapter_sha256')}},
             'artifacts': artifacts,
             'configs': {p.relative_to(directory).as_posix(): comparison_config_hash(p) for p in config_files},
             'traces': {f'{name}/{tick:03}': rows[(name, tick)] for name, tick in sorted(rows)}}
@@ -188,11 +251,13 @@ def main():
     args = parser.parse_args()
     try:
         require(args.left.resolve() != args.right.resolve(), 'Reproducibility requires two distinct runs')
-        difference = first_difference(load_run(args.left), load_run(args.right))
+        left, right = load_run(args.left), load_run(args.right)
+        difference = first_difference(left, right)
         if difference:
             print(difference)
             return 1
-        print('Equal: 6 fixtures, 730 samples, source/JDK/adapter, dependencies and configurations (generated Properties date excluded).')
+        count = len(FIXTURE_SETS[left['environment']['fixture_set']][1])
+        print(f'Equal: {count} fixtures, {len(left["traces"])} samples, source/JDK/adapter, dependencies and configurations (generated Properties date excluded).')
         return 0
     except (OSError, ValueError, KeyError, TypeError) as error:
         print(f'Invalid reference evidence: {error}')

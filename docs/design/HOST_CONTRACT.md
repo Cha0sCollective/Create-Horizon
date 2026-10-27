@@ -1,7 +1,7 @@
 # H01: stationary machinery host contract
 
-Status: S0 proposal, version 0.1. This records the first integration boundary; it
-does not introduce a supported Horizon API or close G0. The active scope is the
+Status: version 0.1 accepted as the G0 experimental design direction. This records
+the first integration boundary; it does not introduce an implemented/supported API. The active scope is the
 five-component creative-mode subset in the product specification. No moving
 assemblies, general loader, Java compatibility or arbitrary addon API is implied.
 
@@ -234,6 +234,13 @@ it does not consume or reserve input at start. The initial inventory is one inpu
 and nine output slots. Dropped-item intake and empty-hand retrieval use the same
 transaction and overflow path as other item moves.
 
+The pinned all-nine-full reference case consumes input and discards the uninsertable
+recipe result rather than blocking completion. The owner explicitly selected this
+compatibility behavior in `docs/reference/COMPATIBILITY_DECISIONS.md` R01. Output
+constraint validation must follow that observed rule, not invent backpressure.
+This explained recipe-result loss does not relax transfer, abort or recovery
+accounting. Native P04 needs a named test for it and for the one-full-slot case.
+
 ## First experiment and backlog
 
 The next implementation packet, after G0 acceptance, is one original generic
@@ -256,7 +263,7 @@ counts for this machine. Limits and performance targets remain provisional until
 measured on declared hardware. Reuse existing engine test facilities for each
 proof; do not build a general experiment platform.
 
-G0 still needs repeated live reference traces, the observed controls/overflow,
-an accepted integration/distribution route and contract, asset choice and a named
-hardware baseline. This document is ready for review, not evidence those decisions
-or later gates have passed.
+The repeated reference, observed controls/overflow, experimental integration route,
+asset choice and named development hardware are recorded in `G0_DECISION.md`.
+Performance budgets remain provisional; G1 and the host capabilities above still
+require implementation and their own evidence.

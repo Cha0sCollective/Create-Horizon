@@ -72,6 +72,7 @@ def main():
     metadata = {'reference_revision': revision, 'minecraft': pins['create_reference']['minecraft'],
                 'neoforge': pins['create_reference']['neoforge'], 'java': version.strip(),
                 'mode': args.mode, 'adapter': str(repo / 'tools/reference'),
+                'fixture_set': 's0-edges-1',
                 'adapter_sha256': adapter_hashes,
                 'observation_phase': 'GameTest scheduled callback; not a native-core comparison'}
     (run / 'environment.json').write_text(json.dumps(metadata, indent=2) + '\n')

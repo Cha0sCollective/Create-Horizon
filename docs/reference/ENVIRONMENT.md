@@ -1,8 +1,8 @@
 # P01 reference environment
 
 This is the S0 development environment, not a supported player installation.
-Versions and source revisions are recorded in `workspace.toml`. G0 remains open
-until the required observations are repeatable and its decisions are accepted.
+Versions and source revisions are recorded in `workspace.toml`. G0's experimental
+acceptance and its remaining limits are in `../design/G0_DECISION.md`.
 
 ## Installed Linux tools
 

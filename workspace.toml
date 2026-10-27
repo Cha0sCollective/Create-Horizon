@@ -5,9 +5,9 @@ id = "create_horizon"
 namespace = "create_horizon"
 repository = "https://github.com/Cha0sCollective/Create-Horizon"
 visibility = "private"
-stage = "S0"
-active_packet = "P01/H01 reference environment and host contract"
-next_stage = "S1; requires G0 acceptance"
+stage = "post-G0 foundations"
+active_packet = "P02a settled single-source kernel; S1 host experiment remains bounded"
+next_stage = "S1 host foundations and remaining P02; G1/G2/G3 open"
 
 [specification]
 version = "0.1"
