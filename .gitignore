@@ -1,0 +1,13 @@
+/target/
+/.local/
+/.horizon-cache/
+/.env
+/.env.*
+*.log
+*.hmod
+*.wasm
+*.jar
+*.zip
+/worlds/
+/runs/
+/evidence/runs/

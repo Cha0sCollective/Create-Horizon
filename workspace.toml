@@ -1,0 +1,37 @@
+schema_version = 1
+
+[product]
+id = "create_horizon"
+namespace = "create_horizon"
+repository = "https://github.com/Cha0sCollective/Create-Horizon"
+visibility = "private"
+stage = "workspace-setup"
+next_stage = "S0"
+
+[specification]
+version = "0.1"
+status = "planning baseline; proposed decisions remain open"
+source = "docs/source/Create_Horizon_Product_Specification_and_Development_Plan.docx"
+sha256 = "4d32767eae66bbd209c83e40618d31a02052181adcc1b0c3b9466154438ee781"
+
+[horizon]
+upstream = "https://github.com/ludovic111/horizon.git"
+fork = "https://github.com/Cha0sCollective/Horizon.git"
+revision = "cf62fe270b243780f9aa86c49b456d9dd9078b42"
+minecraft = "26.3"
+protocol = 777
+
+[create_reference]
+repository = "https://github.com/Creators-of-Create/Create.git"
+revision = "7ff2760e4924d35d4bc2e22c4b19923f0178cd16"
+version = "6.0.11"
+minecraft = "1.21.1"
+neoforge = "21.1.219"
+java = 21
+purpose = "personal reference; no upstream Create contributions"
+
+[toolchain]
+rust = "1.99.1"
+wasm_target = "wasm32-unknown-unknown"
+initial_validation_target = "linux-x86_64"
+horizon_preparation_java = 25
