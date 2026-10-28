@@ -3,7 +3,8 @@
 Design draft after H08a11 engine ecb93cc57f749037dfdb8e26ccad0123e1ba5240
 (tree a872296669da48fe499f8abb6534d094cb14f663). Fresh independent read-only
 Sol High design review accepted the design without blocking findings before
-implementation. Implementation review and qualification remain required. This packet exposes
+implementation. Source/native/both-mode/broad and final independent receipt review
+now pass at f7f8990; see ../reference/H08_PLAYERDATA_WRITER_RESULTS.md. This packet exposes
 existing synchronous playerdata write failures; it does not retain retired players
 or establish a checkpoint, recovery, item-conservation or G1 claim.
 

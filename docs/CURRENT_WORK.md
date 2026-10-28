@@ -6,31 +6,33 @@ standing team is authorized. Keep source-informed personal-use provenance and R0
 Require fresh independent read-only Sol High review for substantive candidates.
 
 - Private branch: codex/h02-smoke-h03-notes; checkpoints backed up privately.
-- Engine branch: codex/h08-playerdata-writer, based on reviewed/tested local candidate
-  ecb93cc57f749037dfdb8e26ccad0123e1ba5240, tree
-  a872296669da48fe499f8abb6534d094cb14f663. Bounded H08a12 author owns only
-  library lan/playerdata.rs plus game/lan.rs and game/dedicated.rs until released.
-  Coordinator owns serialized Cargo and integration. A11 receipt review passes.
+- Engine branch: codex/h05-guest-counter-evaluator, based on qualified local candidate
+  f7f8990dbeaad2b4d036f2062d5a6dc0194c2cf4, tree
+  8db0afb2ddf457b3ec529ab96f9e49fdc1b12ae1. H05b1 author owns only horizon-mods
+  runtime.rs, new runtime/counter_trial.rs, Cargo.toml dev dependency and optional
+  new tests/counter_trial.rs. Coordinator owns serialized Cargo and integration.
+  A11/A12 qualify, including final independent source/receipt reviews.
 - Coordinator owns serialized Cargo, validation and commits. Engine commits stay
   local; normal hooks enabled, upstream push disabled. No public engine push.
 - Create reference stays clean detached 7ff2760e4924d35d4bc2e22c4b19923f0178cd16.
   Pins are in workspace.toml. Never alter Prism/playable saves/reference snapshots.
 
-Completed bounded foundations: H05a transient counter and H08a1-a11 save
+Completed bounded foundations: H05a transient counter and H08a1-a12 save
 prerequisites have independent source/receipt review, focused tests, actual games
 and broad quick checks. Latest frozen game SHA256
-2f2e062a433bcf12a703a5ace904f5294c460548ad16850fbac06eb7a945192d passes:
+053e8f11d8e2f080cddda3da885c7e600d9a1bf9f48ba8d58b5232eab8e8d5c9 passes:
 
-- Integrated fee6a990-f32f-483c-b40b-ade0d8a54f51: 362 counter checks.
-- In-frame f0f26d53-1a0a-4586-b20e-f4be8c82bd2d: 347 counter checks.
+- Integrated 78fea2ac-8fca-4674-b33a-6306502e9cf4: 362 counter checks.
+- In-frame 4a765e9c-99e6-4c78-90e1-d267b2a23a48: 347 counter checks.
 
 Qualified tools/run_counter_game_smoke.py SHA256
 d19c480572c3fbcb0ce01afeb868efb5dc276ad64606ab01f40edd9bf2d970e0 stays immutable.
 Normal initial/restart exits are clean; precise expected-refusal cleanup races
-remain in the result notes. Latest A11 refusals all have null cleanup errors.
+remain in the result notes. Latest A12 changed-package refusal cleanups race the
+already-exited game/socket; missing-package cleanups are null.
 Counter payload stays transient. Latest broad quick
-passes 369 Python/1,355 client tests plus fmt/lint/doc/public-tree; parity skipped.
-Scope has a disclosed soft warning for clock tests/mechanical moves; no PR proposed.
+passes 369 Python/1,357 client tests plus fmt/lint/doc/public-tree; parity skipped.
+Latest scope is three files +351/-6, no soft warning; no PR proposed.
 
 H08a9 focused actual clock-error runs pass with no cleanup errors:
 
@@ -68,11 +70,24 @@ aggregate player_json1; corrected rerun status is0. See H08_PLAYER_JSON_METADATA
 Both guest write attempts require native content assertions; runtime independent
 record shape alone does not establish them. Retired-player ownership stays open.
 
-Active packet: docs/design/H08_PLAYERDATA_WRITER_PACKET.md (H08a12). Fresh independent
-read-only Sol High design review accepts checked borrowed external-player NBT writes
-and log-and-continue at the existing two callers. Implement only the three named
-files, native real obstruction/repair tests, inherited both-mode regressions and
-broad checks. No lifecycle retention, menu normalization or checkpoint claim.
+Completed docs/design/H08_PLAYERDATA_WRITER_PACKET.md (H08a12). Fresh independent
+read-only Sol High design and implementation review accepts checked borrowed
+external-player NBT writes and log-and-continue at the existing two callers.
+Three actual playerdata tests (two new), all172 binary tests, on/off lint/fmt and
+public-tree pass. Archived .local/h08a12-validate.sh sanitizes the environment;
+.local/h08a12-qualify.sh freezes SHA053e8f11... at f7f8990. Integrated78fea2ac...
+362/final63 and in-frame4a765e9c...347/final27 pass; normal initial/restart0/null.
+Both changed-package refusal cleanups race the already-exited game/socket;
+missing-package cleanup is null. Broad quick and final receipt review pass. No lifecycle
+retention or checkpoint claim. See H08_PLAYERDATA_WRITER_RESULTS.
+Active design: docs/design/H05_GUEST_COUNTER_PACKET.md. Fresh read-only Sol High
+review accepts the import-free isolation/token model. Initial implementation is
+evaluator-only; then separately reviewed host-token and Game units. Use local
+experimental binding, preserve shared SDK WIT/native counter, require synchronous
+typechecking before start, fuel-limited realloc/post-return and zero imports.
+Fresh design delta review accepts evaluator-only implementation. No shared SDK,
+existing guests, World or Game edits. A test-only wat1.254.2 is already locked;
+coordinator handles lock/fmt/tests after source release. No new source is qualified yet.
 H08_CHECKPOINT_FEASIBILITY records separate fight-world lifetime, raid, portal,
 unload and player/entity ownership gaps. Tick-freeze/server-hold alone cannot
 protect a checkpoint capture. No coherent checkpoint or G1 is qualified.
