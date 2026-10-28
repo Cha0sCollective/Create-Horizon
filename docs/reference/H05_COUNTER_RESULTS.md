@@ -107,7 +107,9 @@ Vanilla parity harnesses are explicitly not run by `--quick`.
 
 The clone initially has no prepared resources; its five content-root tests
 therefore return without resource coverage. A separate explicit eight-test
-paired-on run with the owned prepared data is in progress. Raw records are
+paired-on run with the owned prepared data passes, including machine metadata,
+static-state materialization, captured source removal and full table reloads.
+Raw records are
 `.local/h05-pr-ready.log`, `.local/h05-ci-checkout.txt` and
 `.local/h05-owned-resource-tests.log`.
 

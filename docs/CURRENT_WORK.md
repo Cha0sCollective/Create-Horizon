@@ -5,11 +5,12 @@ input, superseding the earlier cutoff/break. No public publication, promotion or
 standing team is authorized. Require fresh independent Sol High review for each
 substantive candidate. Preserve source-informed personal-use provenance and R01.
 
-- Private branch `codex/h02-smoke-h03-notes`; previous backup `0c08139`.
-- Engine `codex/h08-save-completion` based at
-  `28ded16ed9c3d71328d829d149bb624c322f075a`, tree
-  `c381f9fdbecead76e896b97c28e283b4ab325f77`; one bounded save worker now edits
-  Streaming, its three Game/API callers and generation-save test call sites.
+- Private branch `codex/h02-smoke-h03-notes`; backup `c6b5cf2`.
+- Engine `codex/h08-proto-save-errors` based at
+  `1e87673f3ee88b9799b41d240486af9bd7d4fcfa`, tree
+  `2ede08b80d184d450751768f998aa6e2a12356bd`; a bounded worker now owns three
+  proto-error files. The H08a1 completion fix is independently reviewed and passes
+  targeted checks, actual-game regression and broader quick checks.
   The qualified counter branch remains `codex/h05-counter-integration`.
   Commits remain local only;
   normal hooks enabled, upstream push disabled.
@@ -38,18 +39,29 @@ library/test Clippy. Game `28ded16` passes 137 binary tests (three ignored),
 feature-on/off binary Clippy and fmt. Broader `pr_ready.py --quick --base 0264c18...`
 passes from a fresh native Linux clone: 369 Python, 1,381 Rust and 197 launcher
 tests plus formatting/lints/public tree. Parity is explicitly skipped. Its resource
-tests lacked prepared data; eight explicit paired-on owned-resource tests are now
-running. `.local/h05-pr-ready.log` and `.local/h05-owned-resource-tests.log` are raw
+tests lacked prepared data; eight explicit paired-on owned-resource tests now
+pass. `.local/h05-pr-ready.log` and `.local/h05-owned-resource-tests.log` are raw
 records. No Cargo by workers while the coordinator owns the native target. Serialize all
 Cargo including test execution; never export GIT_DIR/GIT_WORK_TREE into tests.
 
-Active next packet is `docs/design/H08_SAVE_COMPLETION_PACKET.md`: honest
+Completed H08a1 packet is `docs/design/H08_SAVE_COMPLETION_PACKET.md`: honest
 synchronous generation-save completion, a prerequisite from
 `docs/design/H08_CHECKPOINT_FEASIBILITY.md`.
 Timeout/disconnected workers must not silently report success or consume the
 remaining dirty snapshots. This is preparation, not coherent persistence. No
-worker may run Cargo until the coordinator releases the target. This worker's
-code draft is unreviewed/unqualified; do not treat it as a checkpoint barrier.
+worker may run Cargo until the coordinator releases the target. Three controlled
+failure tests, three generation-save tests, 33 disk-save tests, 137 binary tests
+and feature-on/off Clippy pass. New frozen game `5b830110...3f42e9` passes integrated
+362/in-frame 347 full assertions; broad quick checks pass 369 Python/1,307 client
+tests plus format/Clippy/doc/public-tree checks (parity skipped). Independent receipt review clears both, noting
+one expected refusal cleanup race accurately. See
+`docs/reference/H08_SAVE_COMPLETION_RESULTS.md`; this is not a checkpoint barrier.
+
+Active next packet `docs/design/H08_PROTO_SAVE_ERRORS_PACKET.md` changes only native
+proto callback errors/ownership with a sticky fault that stops new terrain producer
+jobs while draining old results. Worker owns streaming.rs, Persistent in save.rs,
+and generation_saves.rs; no worker Cargo/formatting/commits. Its draft remains
+unreviewed/unqualified. No finished-chunk/entity/player/checkpoint expansion.
 
 Earlier qualified residency proof: a4470cd, integrated 228/in-frame 212; see
 `docs/reference/H04_RESIDENCY_GAME_RESULTS.md`. The in-frame lighting failure and

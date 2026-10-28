@@ -14,12 +14,15 @@ cancelled or silently discarded on failure.
 
 Make synchronous completion return an explicit error at its bounded deadline or
 worker disconnection, and propagate it through the two Game callers before they
-consume `World.modified`. Process relevant deferred completion messages exactly
-once, preserving unrelated lighting/mesh/proto messages for ordinary update and
+consume `World.modified`. Incremental polling also returns a result so required
+work with a disconnected worker cannot masquerade as an incomplete healthy save;
+an idle streamer with no required work may finish. Process relevant deferred
+completion messages exactly once, preserving unrelated lighting/mesh/proto messages for ordinary update and
 their order. Share reconciliation with incremental polling where practical.
 Preserve normal asynchronous behavior and existing writer-error reporting.
 Do not claim that plain generation jobs or fallible proto/entity/player/metadata
 callbacks are all drained by this change.
+The receive deadline does not bound the direct generator storage callback itself.
 
 Tests must prove: queued/deferred completion succeeds without false timeout;
 deadline and disconnection fail explicitly before final snapshot consumption;
