@@ -2,6 +2,7 @@
 
 Runs the original activation/static-state/admission checks unchanged, with actual
 command, item placement, piston and SDK deferred-write observations layered in.
+Optional residency probes observe bounded coordinate membership and map lending.
 No observation here establishes machine lifecycle, causes, generations or saves.
 """
 import argparse
@@ -9,6 +10,7 @@ import hashlib
 import io
 import json
 from pathlib import Path
+import time
 import zipfile
 
 import run_paired_game_smoke as base
@@ -34,18 +36,21 @@ def descriptor(text):
 
 
 class MutationSession(base.Session):
-    def __init__(self, mode, game, resources, extended=False):
+    def __init__(self, mode, game, resources, extended=False, dimensions=False, residency=False):
         # Validate the optional local artifact before creating/printing any run.
         # Reuse these exact bytes so archive identity cannot change mid-setup.
         raw = module = None
-        if extended:
+        if extended or residency:
             fixture = base.ENGINE / 'target/mods-test/mods/beacons.hmod'
             raw = fixture.read_bytes()
             with zipfile.ZipFile(io.BytesIO(raw)) as archive:
                 module = archive.read('mod.wasm')
         super().__init__(mode, game, resources, static_states=True)
         self.extended = extended
+        self.dimensions = dimensions
+        self.residency = residency
         self.observer_instances = []
+        self.residency_instances = []
         own_path = Path(__file__).resolve()
         base_path = Path(base.__file__).resolve()
         # The base class archives its own source by module __file__. Replace that
@@ -56,7 +61,7 @@ class MutationSession(base.Session):
             name: base.sha(self.package / name)
             for name in ['client.wasm', 'server.wasm']
         }
-        if extended:
+        if extended or residency:
             installed = self.home / 'horizon-mods/beacons.hmod'
             installed.write_bytes(raw)
             (self.out / 'beacons.hmod').write_bytes(raw)
@@ -70,7 +75,12 @@ class MutationSession(base.Session):
             selected_guest_sha256=guests,
             observer_scope='explicit transient authoritative storage-World observer; no persistent identity',
             extra_code_fixture='existing SDK beacons sandbox artifact, identity recorded; build provenance not inferred'
-                if extended else None,
+                if extended or residency else None,
+            dimension_probes=dimensions,
+            residency_probes=residency,
+            residency_scope='bounded coordinate residency; no activation, records or teardown delivery'
+                if residency else None,
+            residency_watch_chunks=[[8, 0], [40, 0]] if residency else None,
             scope='local passive mutation observations plus original paired/static-state checks; no machine lifecycle, transactions or performance',
         )
         base.dump(self.out / 'environment.json', self.meta)
@@ -86,15 +96,20 @@ class MutationSession(base.Session):
         if self.mode == 'integrated':
             self.check(phase + ': replica is the remote client',
                        local.get('execution_role') == 'Client' and local.get('remote') is True)
+        if self.residency:
+            self.check(phase + ': authoritative residency observation starts disabled',
+                       self.control('residency', 'status').get('enabled') is False)
+            self.check(phase + ': local residency observation starts disabled',
+                       self.control('residency', 'local-status').get('enabled') is False)
 
-    def observer_on(self, name=MARKER, capacity=64):
+    def observer_on(self, name=MARKER, capacity=64, dimension='minecraft:overworld'):
         self.control('mutations', 'on', name, capacity)
         status = self.control('mutations', 'status')
         scope = status.get('scope')
         self.check('observer enabled on authoritative current level',
                    status.get('enabled') is True and status.get('remote') is False
                    and status.get('execution_role') == ('IntegratedServer' if self.mode == 'integrated' else 'Client')
-                   and isinstance(scope, dict) and scope.get('dimension') == 'minecraft:overworld'
+                   and isinstance(scope, dict) and scope.get('dimension') == dimension
                    and type(scope.get('world_instance')) is int and scope['world_instance'] > 0
                    and status.get('pending') == 0 and status.get('fault') is None)
         self.check('explicit enable never reuses a transient instance',
@@ -163,6 +178,10 @@ class MutationSession(base.Session):
         if self.extended:
             self.piston(default_pos)
             self.deferred_writes()
+        if self.dimensions:
+            self.dimension_round_trip()
+        if self.residency:
+            self.residency_round_trip()
         # All original marker cases and placement remain intact for the base
         # save/restart assertions. Deliberately leave this observer active so
         # restart-disabled is a meaningful nonpersistence check.
@@ -269,6 +288,205 @@ class MutationSession(base.Session):
             self.set_block(position, previous)
             self.await_block(position, previous)
 
+    def travel(self, dimension, position):
+        command = '/execute in ' + dimension + ' run tp @s ' + ' '.join(map(str, position))
+        self.control('key', 't', 'tap')
+        self.control('type', command)
+        self.check('dimension travel uses actual owner chat',
+                   self.control('screen').get('chat_input') == command)
+        self.control('key', 'enter', 'tap')
+        # Travel may legitimately show loading screens before the destination
+        # owner is placed; do not require immediate playing after Enter.
+        deadline = time.monotonic() + 90
+        while time.monotonic() < deadline:
+            state = self.control('state')
+            if state.get('dimension') == dimension:
+                status = self.control('mutations', 'status', allow_error=True)
+                if status.get('level') == dimension and not status.get('error'):
+                    self.control('wait-ready', 90, timeout=95)
+                    self.check('actual owner reached ' + dimension, True)
+                    return
+            time.sleep(0.1)
+        raise AssertionError('owner did not reach ' + dimension)
+
+    def dimension_round_trip(self):
+        original = self.control('state')['player']['position']
+        position = [2, 110, 2]
+        self.set_block(position, 'minecraft:air')
+        self.await_block(position, 'minecraft:air')
+        overworld = self.observer_on()
+        self.set_block(position, FIRST)
+        self.await_block(position, FIRST)
+        self.travel('minecraft:the_nether', [0, 100, 0])
+        self.check('destination World starts without an observer',
+                   self.control('mutations', 'status').get('enabled') is False)
+        self.set_block(position, 'minecraft:air')
+        self.await_block(position, 'minecraft:air')
+        nether = self.observer_on(dimension='minecraft:the_nether')
+        self.set_block(position, OTHER)
+        self.await_block(position, OTHER)
+        self.batch('same-coordinate Nether transition', nether,
+                   [(position, 'minecraft:air', OTHER)])
+        self.observer_off()
+        self.set_block(position, 'minecraft:air')
+        self.await_block(position, 'minecraft:air')
+        self.travel('minecraft:overworld', original)
+        status = self.control('mutations', 'status')
+        if self.mode == 'integrated':
+            self.check('parked Overworld retains original scope and pending history',
+                       status.get('enabled') is True and status.get('scope') == overworld
+                       and status.get('pending') == 1)
+            self.batch('returned Overworld transition', overworld,
+                       [(position, 'minecraft:air', FIRST)])
+            self.observer_off()
+        else:
+            self.check('in-frame World replacement discards transient observer',
+                       status.get('enabled') is False and status.get('scope') is None)
+        self.await_block(position, FIRST)
+        self.set_block(position, 'minecraft:air')
+        self.await_block(position, 'minecraft:air')
+        self.control('tp', *original)
+
+    def residency_snapshot(self, snapshot, scope):
+        self.check('residency snapshot has captured scope and integer time',
+                   snapshot.get('scope') == scope and type(snapshot.get('game_time')) is int
+                   and snapshot['game_time'] >= 0)
+        entries = snapshot.get('entries')
+        self.check('residency snapshot contains sorted unique watched coordinates',
+                   isinstance(entries, list)
+                   and [entry.get('chunk') for entry in entries] == [[8, 0], [40, 0]]
+                   and all(type(entry.get('resident')) is bool for entry in entries))
+        return {tuple(entry['chunk']): entry['resident'] for entry in entries}
+
+    def residency_on(self, expected, capacity=64):
+        # Deliberately duplicated/reversed input must normalize to two entries.
+        result = self.control('residency', 'on', capacity, 40, 0, 8, 0, 8, 0)
+        status = result.get('status', {})
+        scope = status.get('scope')
+        self.check('residency observer belongs to authoritative Overworld storage',
+                   status.get('enabled') is True and status.get('remote') is False
+                   and status.get('execution_role') == ('IntegratedServer' if self.mode == 'integrated' else 'Client')
+                   and status.get('level') == 'minecraft:overworld'
+                   and isinstance(scope, dict) and scope.get('dimension') == 'minecraft:overworld'
+                   and type(scope.get('world_instance')) is int and scope['world_instance'] > 0
+                   and status.get('pending') == 0 and status.get('fault') is None)
+        self.check('residency enable allocates a fresh transient scope',
+                   scope['world_instance'] not in self.residency_instances)
+        self.residency_instances.append(scope['world_instance'])
+        self.check('residency enable snapshot reflects current committed membership',
+                   self.residency_snapshot(result.get('snapshot', {}), scope) == expected)
+        self.check('residency status exposes the same current membership',
+                   self.residency_snapshot(status.get('current', {}), scope) == expected)
+        if self.mode == 'integrated':
+            local = self.control('residency', 'local-status')
+            self.check('authoritative residency enable leaves replica disabled',
+                       local.get('enabled') is False and local.get('current') is None
+                       and local.get('remote') is True and local.get('execution_role') == 'Client')
+        self.residency_sequence = 1
+        self.residency_time = result['snapshot']['game_time']
+        return scope
+
+    def residency_off(self):
+        self.control('residency', 'off')
+        status = self.control('residency', 'status')
+        self.check('residency teardown is explicit and removes current snapshot',
+                   status.get('enabled') is False and status.get('current') is None)
+
+    def move_owner(self, position, membership=None, scope=None):
+        # Same-dimension /tp is an actual owner command. Wait for movement,
+        # rather than accepting an unchanged dimension/old ready player.
+        self.typed('/tp @s ' + ' '.join(map(str, position)))
+        chunk = (int(position[0] // 16), int(position[2] // 16))
+        deadline = time.monotonic() + 90
+        while time.monotonic() < deadline:
+            state = self.control('state')
+            player = state.get('player')
+            block = player.get('block_pos') if isinstance(player, dict) else None
+            arrived = (state.get('dimension') == 'minecraft:overworld' and isinstance(block, list)
+                       and (block[0] // 16, block[2] // 16) == chunk)
+            if arrived and membership is not None:
+                status = self.control('residency', 'status')
+                current = status.get('current')
+                arrived = (status.get('enabled') is True and status.get('scope') == scope
+                           and isinstance(current, dict)
+                           and {tuple(e['chunk']): e['resident'] for e in current.get('entries', [])} == membership)
+            if arrived:
+                self.control('wait-ready', 90, timeout=95)
+                self.check('actual owner reached requested chunk with required membership', True)
+                return
+            time.sleep(0.1)
+        raise AssertionError('owner or authoritative residency did not reach ' + str(chunk))
+
+    def residency_batch(self, label, scope, expected):
+        result = self.control('residency', 'drain')
+        events = result.get('events')
+        self.check(label + ': complete residency event count',
+                   isinstance(events, list) and len(events) == sum(map(len, expected.values())))
+        observed = {chunk: [] for chunk in expected}
+        for event in events:
+            chunk = tuple(event.get('chunk', []))
+            self.check(label + ': exact scope sequence time and watched coordinate',
+                       event.get('scope') == scope and event.get('sequence') == self.residency_sequence
+                       and type(event.get('game_time')) is int and event['game_time'] >= self.residency_time
+                       and chunk in observed and event.get('kind') in ['loaded', 'unloaded', 'replaced'])
+            observed[chunk].append(event['kind'])
+            self.residency_sequence += 1
+            self.residency_time = event['game_time']
+        # Cross-chunk I/O completion order may differ; each chunk's history may not.
+        self.check(label + ': exact per-chunk transitions', observed == expected)
+        status = result.get('status', {})
+        self.check(label + ': complete drain leaves healthy empty observer',
+                   status.get('enabled') is True and status.get('scope') == scope
+                   and status.get('pending') == 0 and status.get('fault') is None)
+
+    def residency_round_trip(self):
+        original = self.control('state')['player']['position']
+        a, b = (8, 0), (40, 0)
+        at_a, at_b = [129, 100, 1], [641, 100, 1]
+        marker = [131, 110, 1]
+        self.move_owner(at_a)
+        self.set_block(marker, 'minecraft:air')
+        self.await_block(marker, 'minecraft:air')
+        scope = self.residency_on({a: True, b: False})
+        self.set_block(marker, OTHER)
+        self.await_block(marker, OTHER)
+        self.control('save')
+        self.residency_batch('ordinary save does not change residency', scope, {})
+        # A real SDK world read lends/restores ChunkMaps; it is not an unload.
+        message = '131 110 1 is '
+        old = self.messages().count(message)
+        self.typed('/ground 131 110 1')
+        self.await_message(message, old)
+        self.residency_batch('SDK map lending is not residency change', scope, {})
+        self.move_owner(at_b, {a: False, b: True}, scope)
+        self.residency_batch('outward chunk stream', scope, {a: ['unloaded'], b: ['loaded']})
+        self.move_owner(at_a, {a: True, b: False}, scope)
+        self.residency_batch('return chunk stream', scope, {a: ['loaded'], b: ['unloaded']})
+        self.await_block(marker, OTHER)
+        self.check('ordinary saved marker survives chunk unload and reload', True)
+        self.residency_off()
+        self.set_block(marker, 'minecraft:air')
+        self.await_block(marker, 'minecraft:air')
+        scope = self.residency_on({a: True, b: False}, capacity=1)
+        self.move_owner(at_b, {a: False, b: True}, scope)
+        status = self.control('residency', 'status')
+        self.check('residency overflow preserves committed authoritative membership',
+                   status.get('pending') == 1 and status.get('fault') is not None
+                   and self.residency_snapshot(status.get('current', {}), scope) == {a: False, b: True})
+        for _ in range(2):
+            result = self.control('residency', 'drain', allow_error=True)
+            self.check('faulted residency drain cannot claim a complete batch',
+                       isinstance(result.get('error'), str) and 'events' not in result)
+            again = self.control('residency', 'status')
+            self.check('residency overflow remains sticky',
+                       again.get('pending') == 1 and again.get('fault') == status['fault']
+                       and again.get('scope') == scope)
+        self.move_owner(original, {a: False, b: False}, scope)
+        self.residency_off()
+        self.residency_on({a: False, b: False})
+        self.check('residency observer remains enabled before save and restart',
+                   self.control('residency', 'status').get('enabled') is True)
+
     def run(self, extended):
         try:
             return super().run(extended)
@@ -281,11 +499,16 @@ class MutationSession(base.Session):
                               selected_guest_sha256=self.meta['selected_guest_sha256'],
                               transient_observer_instances=self.observer_instances,
                               mutation_extended=extended,
+                              dimension_probes=self.dimensions,
+                              residency_probes=self.residency,
+                              transient_residency_instances=self.residency_instances,
                               limitations=['passive committed-write observations only',
                                            'causes explicitly unclassified',
                                            'no persistent world identity or object generation',
-                                           'no chunk lifecycle or transactional inventory proof',
-                                           'dimension-change game probes not included'])
+                                           'bounded coordinate residency only; no activation, records or teardown delivery'
+                                               if self.residency else 'no chunk residency proof',
+                                           'no transactional inventory or coherent checkpoint proof',
+                                           *([] if self.dimensions else ['dimension-change game probes not included'])])
                 base.dump(path, result)
 
 
@@ -296,10 +519,15 @@ def main():
     parser.add_argument('--resources', type=Path, default=base.ENGINE / '.local/horizon-client/26.3')
     parser.add_argument('--extended', action='store_true',
                         help='also test piston/SDK writes and inherited captured-reload/admission controls')
+    parser.add_argument('--dimensions', action='store_true',
+                        help='also travel the actual owner to the Nether and back')
+    parser.add_argument('--residency', action='store_true',
+                        help='also observe bounded chunk streaming and SDK map lending')
     args = parser.parse_args()
     modes = ['integrated', 'in-frame'] if args.mode == 'both' else [args.mode]
     for mode in modes:
-        MutationSession(mode, args.game, args.resources, args.extended).run(args.extended)
+        MutationSession(mode, args.game, args.resources, args.extended, args.dimensions,
+                        args.residency).run(args.extended)
 
 
 if __name__ == '__main__':

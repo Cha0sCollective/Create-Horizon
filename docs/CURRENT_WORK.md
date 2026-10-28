@@ -1,69 +1,73 @@
 # Current work
 
-The owner's latest resume authorizes development until a genuine blocker or
-required input, superseding the earlier cutoff and break. No public publication,
-promotion or standing agent team is authorized. Keep bounded packets and fresh
-independent Sol High review for substantive changes.
+The latest owner resume authorizes development to a genuine blocker or required
+input, superseding the earlier cutoff and break. No public publication, promotion
+or standing agent team is authorized. Use bounded packets and fresh independent
+Sol High review for substantive changes.
 
-- Private branch: `codex/h02-smoke-h03-notes`, H03b checkpoint `fa40d24` backed up.
-- Engine: clean local `codex/h04-resident-observer` at
-  `4a3e3a110a397e9ca478cf207ed12c68c1528013`, tree
-  `ec9a644ee63ab54b62f1dffe9427b6970f1c8ef1`. Public engine pushes remain outside
-  authorization. Normal public-tree commit hook stays enabled.
+- Private branch: `codex/h02-smoke-h03-notes`; last backed-up checkpoint `ede5998`.
+  New qualified result notes and residency probe changes are being recorded.
+- Engine: `codex/h04-residency-integration` at
+  `ddbeb8d4bdda9af13093b0f9f3ce6ff098cf6f55`, tree
+  `50606a7ff488dba756823740294a2873a132e0e0`. Residency Game controls are dirty,
+  separately reviewed and undergoing checks; keep them separate from the library
+  commit. Public engine pushes remain unauthorized; normal hook stays enabled.
 - Create reference: clean detached
-  `7ff2760e4924d35d4bc2e22c4b19923f0178cd16`. Source/toolchain pins remain in
-  workspace.toml. Preserve original prepared resources and baseline executables.
+  `7ff2760e4924d35d4bc2e22c4b19923f0178cd16`. Preserve reference snapshots,
+  original prepared resources and baseline binaries. Pins remain in workspace.toml.
 
-H02d activation and H03b static materialization pass both real-game startup modes.
-See `docs/reference/H02_GAME_SMOKE_RESULTS.md` and
-`docs/reference/H03_STATIC_MATERIALIZER_RESULTS.md` for identities and limits.
-Final H03b integrated run `8155e33c-5ea5-455d-9246-c8eb2c017baa` passes 50 assertions;
-in-frame `10e1e6cc-a2c2-482c-a7c4-c7c969a4657f` passes 52. All six tuples, a nonfirst
-default, actual item placement and save/restart pass, alongside activation,
-captured reload and package-refusal controls. Screenshots show the diagnostic
-cube; no orientation, custom-shape, machine or performance conformance is claimed.
-The frozen game/build receipt remains separate from changing source HEAD.
+H02d activation, H03a/b static states, H04a resident writes and H04b explicit
+server-authority observations are qualified within their bounded result records.
+H03c captured machine type/schema metadata is reviewed/tested at `22ef8c5`; it
+creates no instances, ticking, inventories or persistent generations.
 
-Final native Linux `pr_ready.py --quick` at 0264c18 passes: 369 Python, 1,378 Rust,
-five resource-root and 197 launcher tests, formatting/Clippy/public-tree checks.
-Vanilla parity oracles were skipped explicitly. Separate paired-feature tests
-and actual games cover the optional path. Earlier setup failures and the Cargo
-executable replacement race are retained and excluded in the H03b result record.
+Final frozen tested engine is `dfcd7e65a7c7e94692ada9941669f8791a533f9b`, tree
+`cf522eb66ae8adc1dd687d2901218aaca19e0df1`, game SHA256
+`74f0dc6265c21f91a3d9d8b17b811c4de27eccd617e20d8f344f5ca61637d031`.
+Its actual extended/dimension runs pass:
 
-H04a's passive observer is reviewed/tested and locally committed at `2f13f03`.
-Eight new tests, one World regression and feature-on/off library checks pass.
-See `docs/reference/H04_RESIDENT_OBSERVER_RESULTS.md`. Worker files remain in
-their isolated worktree for provenance; coordinator integrated the exact hashes.
+- Integrated `31210bf1-b926-47b6-ab72-f0cd0219db6a`: 153 assertions.
+- In-frame `3b12ec1e-7321-4e8a-9d16-374711479674`: 140 assertions.
 
-Active bounded packet: `docs/design/H04_GAME_OBSERVER_PACKET.md`. The explicit
-authoritative Game fixture is reviewed and committed at 4a3e3a1. Feature-on binary
-tests pass (137, three ignored), with feature-on/off Clippy. The checked ID allocator
-preserves the crate's declared Rust minimum API compatibility; older compiler
-execution is not claimed. Driver review's setup-evidence finding was fixed and
-three missing/malformed fixture preflight checks pass without creating runs.
-The frozen game build and actual two-mode probes are next; no runtime qualification
-of H04b is claimed yet. Default worlds remain observer-disabled; no machine
-callbacks, records or persistence yet.
+Both include exact state/player placement, ordered/no-op/filter/overflow, actual
+piston and SDK deferred writes, captured reload, restart and admission refusals.
+Actual Nether round trips preserve the parked integrated World scope/history;
+in-frame replacement resets observation and restores the player/saved block.
+See `docs/reference/H04_DIMENSION_LIGHTING_RESULTS.md`. Earlier in-frame timeout
+`32759998-39ab-4249-8ac6-37206d00a7be` remains failed: TestTerrain omitted proto
+lighting views required by arrival corners. The reviewed small fix preserves the
+strict readiness gate and passes focused generator/resource tests. Superflat
+runtime, full lifecycle and performance are not established by these checks.
 
-Serialize every Cargo operation sharing the native target, including test
-execution. The coordinator currently owns that target for the H04b game build.
-Use native Linux clones for
-CI: never export GIT_DIR/GIT_WORK_TREE into tests that make temporary repositories.
-Each game uses fresh isolated game/launcher/XDG homes; never Prism/playable saves.
+Active packet: `docs/design/H04_RESIDENCY_GAME_PACKET.md`, following
+`H04_RESIDENCY_PACKET.md`. The passive residency library at ddbeb8d watches at most
+64 supplied chunk coordinates and a bounded queue, captures committed load/unload/
+replacement, separates initial/current snapshots from history, and retains no
+Chunk payload. Five new tests, explicit resource seam test, eight prior mutation
+regressions, World regression and feature-on/off library/test Clippy pass. The
+worker's exact reviewed files are integrated; its isolated worktree remains at
+`.local/worktrees/h04-residency` for provenance.
 
-Next: freeze the H04b game and run `tools/run_mutation_game_smoke.py --extended`
-in both startup modes, then review actual command/player/piston/SDK-write receipts.
-Scope and
-pending queues must stay with the storage World across dimension swaps. Piston,
-deferred writes and chunk lifecycle require their own concrete coverage before
-broader H04 claims. Existing LAN/sculk queues remain independent. The initial
-save feasibility audit is `docs/design/H08_CHECKPOINT_FEASIBILITY.md`: ordinary
-saves lack one durable epoch. It proposes a bounded frozen whole-world checkpoint
-experiment, with explicit error routing/quiescence first; this does not block
-inventory-free lifecycle/type-binding progress or establish G1 persistence.
+Game controls reuse the strict authority routing and remain opt-in. Driver
+`tools/run_mutation_game_smoke.py --extended --dimensions --residency` is reviewed
+but not executed yet. Coordinator owns its binary compile/test/lint checks and
+next frozen build, then both actual game modes and independent receipt review.
+No automatic observer or guest machinery API exists.
 
-Earlier accepted S0/P02/reference/B0 evidence remains in its records. R01 preserves
-the owner's explicit full-output millstone item-loss choice. G0 allows bounded
-experimental work; full H02/H03/H04/P02, G1/G2/G3, H06 transactions, H08 coherent
-machine persistence, H09 external paired networking and retained animation remain
-open. Settings storage remains nontransactional; paired external peers refuse.
+Serialize all Cargo operations sharing the native target, including test execution.
+Coordinator currently owns it for Game-controller checks. Use native Linux clones
+for CI; never export GIT_DIR/GIT_WORK_TREE into tests creating temporary repos.
+Every game uses fresh isolated game/launcher/XDG homes, never Prism/playable saves.
+
+Next after residency proof: bounded block-tick eligibility and explicit lifetime
+retirement, before an inventory-free host-record experiment. Coordinate events
+cannot reconstruct a machine which loads/unloads before consumption. Do not call
+eligibility full active/inactive lifecycle without pause/parked/running coverage.
+
+The save audit `docs/design/H08_CHECKPOINT_FEASIBILITY.md` proposes a frozen bounded
+whole-world checkpoint experiment, beginning with quiescence and propagated errors.
+Ordinary saves and settings storage are not coherent machine persistence. Pinned
+PR1189 generic API comparison is being recorded; no draft API is merged wholesale.
+Earlier S0/P02/B0 evidence and R01 reference-compatible full-output loss remain.
+Full H02/H03/H04/P02, G1/G2/G3, transactions/inventories, coherent recovery, external
+paired networking and retained animation stay open. No gate promotion is implied.
