@@ -10,10 +10,16 @@ gradle.projectsEvaluated {
     project.sourceSets.main.java.srcDir(new File(adapter, 'java'))
     // Replace only upstream test discovery, not production machinery or recipes.
     project.sourceSets.main.java.exclude('com/simibubi/create/infrastructure/gametest/CreateGameTests.java')
-    project.sourceSets.main.resources.srcDir(new File(runRoot, 'resources'))
+    if (System.getenv('CREATE_REFERENCE_NAMESPACE') != 'create_horizon_arbitration')
+        project.sourceSets.main.java.exclude('dev/ch4os/reference/ArbitrationReferenceTests.java')
+    def templateNamespace = System.getenv('CREATE_REFERENCE_NAMESPACE') ?: 'create_horizon_reference'
+    def templateSource = new File(System.getenv('CREATE_REFERENCE_TEMPLATE_SOURCE') ?: new File(runRoot, 'resources').path)
+    project.tasks.named('processResources').configure {
+        from(templateSource) { include("data/${templateNamespace}/structure/empty.nbt") }
+    }
     project.neoForge.runs.configureEach {
         gameDirectory = new File(runRoot, name)
-        systemProperty('neoforge.enabledGameTestNamespaces', 'create_horizon_reference')
+        systemProperty('neoforge.enabledGameTestNamespaces', System.getenv('CREATE_REFERENCE_NAMESPACE') ?: 'create_horizon_reference')
     }
     project.tasks.register('createHorizonReferenceLock') {
         doLast {

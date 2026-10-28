@@ -15,11 +15,18 @@ FIXTURE_SETS = {'s0-initial-1': (1, FIXTURES),
                                  'milling_one_full_slot': 100,
                                  'milling_input_changed': 100, 'milling_input_removed': 100,
                                  'retrieval_empty_hand': 40, 'retrieval_overflow': 40,
-                                 'motor_value_settings': 60})}
+                                 'motor_value_settings': 60}),
+                'p02-arbitration-1': (3, {'arbitration_equal_merge': 120,
+                                         'arbitration_unequal_merge': 120,
+                                         'arbitration_opposite_merge': 120,
+                                         'arbitration_dominant_removal': 160,
+                                         'arbitration_subordinate_reversal': 160,
+                                         'arbitration_large_small_overspeed': 120})}
 MARKER = 'CREATE_HORIZON_TRACE '
 HEX256 = re.compile(r'[0-9a-f]{64}')
 ADAPTER_FILES = {'tools/reference.py', 'tools/reference/init.gradle',
                  'tools/reference/java/dev/ch4os/reference/PortReferenceTests.java'}
+ARBITRATION_ADAPTER_FILES = ADAPTER_FILES | {'tools/reference/java/dev/ch4os/reference/ArbitrationReferenceTests.java'}
 GENERATED_PROPERTIES_DATE = re.compile(
     rb'^#(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun) (?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) '
     rb'\d{2} \d{2}:\d{2}:\d{2} \S+ \d{4}\r?\n?$')
@@ -36,6 +43,14 @@ def comparison_config_hash(path):
 
 def expected_machines(fixture, tick):
     motor = ('create:creative_motor', [2, 2, 2])
+    if fixture == 'arbitration_large_small_overspeed':
+        return [motor, ('create:large_cogwheel' if tick <= 30 else 'minecraft:air', [2, 3, 2]),
+                ('create:cogwheel', [3, 3, 3])]
+    if fixture.startswith('arbitration_'):
+        a = 'minecraft:air' if fixture == 'arbitration_subordinate_reversal' and tick > 70 else motor[0]
+        b = 'minecraft:air' if fixture == 'arbitration_dominant_removal' and tick > 70 else motor[0]
+        join = 'create:shaft' if tick > 30 and fixture != 'arbitration_opposite_merge' else 'minecraft:air'
+        return [(a, [2, 2, 2]), (join, [2, 3, 2]), (b, [2, 4, 2])]
     if fixture.startswith('retrieval_'):
         return [('create:millstone', [2, 4, 2])]
     if fixture == 'motor_value_settings':
@@ -61,7 +76,14 @@ def expected_machines(fixture, tick):
 
 def validate_context(fixture, tick, context):
     require(type(context) is dict, 'Missing fixture context')
-    if fixture.startswith('retrieval_'):
+    if fixture.startswith('arbitration_'):
+        require(set(context) == {'drops', 'max_rpm'} and type(context['max_rpm']) is int
+                and context['max_rpm'] == 256, 'Invalid arbitration configuration')
+        require(type(context['drops']) is dict and all(isinstance(key, str) and key in
+                {'create:creative_motor', 'create:shaft', 'create:cogwheel', 'create:large_cogwheel'}
+                and type(value) is int and 1 <= value <= 3 for key, value in context['drops'].items()),
+                'Invalid arbitration item accounting')
+    elif fixture.startswith('retrieval_'):
         overflow = fixture == 'retrieval_overflow'
         expected = {'player_gravel': 5 if tick > 10 and not overflow else 0,
                     'player_cobblestone': 3 if tick > 20 and not overflow else 0,
@@ -129,7 +151,8 @@ def load_run(directory):
     require(isinstance(environment['java'], str) and environment['java'].startswith('openjdk version "21.')
             and 'OpenJDK 64-Bit Server VM' in environment['java'], 'Missing Java runtime identity')
     adapter = environment['adapter_sha256']
-    require(type(adapter) is dict and set(adapter) == ADAPTER_FILES, 'Incomplete adapter identity')
+    require(type(adapter) is dict and set(adapter) == (ARBITRATION_ADAPTER_FILES if schema == 3 else ADAPTER_FILES),
+            'Incomplete adapter identity')
     require(all(isinstance(value, str) and HEX256.fullmatch(value) for value in adapter.values()), 'Invalid adapter hash')
     log = (directory / 'console.log').read_text()
     rows = {}
@@ -143,7 +166,10 @@ def load_run(directory):
         require(type(row['schema']) is int and row['schema'] == schema
                 and row['phase'] == 'gametest_scheduled_callback', 'Unexpected trace schema/phase')
         require(row['dimension'] == 'minecraft:overworld' and type(row['world_seed']) is int, 'Missing world context')
-        if schema == 2:
+        if schema == 3:
+            require(set(row) == {'schema', 'fixture', 'tick', 'phase', 'dimension', 'world_seed', 'context', 'machines'},
+                    'Invalid arbitration row fields')
+        if schema >= 2:
             validate_context(fixture, tick, row['context'])
         require(len(row['machines']) == len(expected_machines(fixture, tick)), 'Wrong machine observation count')
         require([(m['block'], m['position']) for m in row['machines']] == expected_machines(fixture, tick),
@@ -154,10 +180,14 @@ def load_run(directory):
             require(type(properties) is dict and all(isinstance(k, str) and isinstance(v, str)
                     for k, v in properties.items()), 'Missing/invalid block properties')
             if machine['block'] == 'minecraft:air':
+                if schema == 3:
+                    require(set(machine) == {'block', 'position', 'properties'} and properties == {},
+                            'Air node must explicitly omit kinetic state')
                 continue
             require(machine['block'].startswith('create:'), 'Unexpected block namespace')
             if machine['block'] == 'create:creative_motor':
-                require(properties.get('facing') == 'up', 'Wrong motor facing')
+                facing = 'down' if schema == 3 and machine['position'] == [2, 4, 2] else 'up'
+                require(properties.get('facing') == facing, 'Wrong motor facing')
             elif machine['block'] == 'create:hand_crank':
                 require(properties.get('facing') == 'down', 'Wrong crank facing')
             elif machine['block'] != 'create:millstone':
@@ -167,6 +197,32 @@ def load_run(directory):
             network = machine['network']
             require(type(network['present']) is bool, 'Invalid network presence')
             require(all(finite_number(network[k]) for k in ('stress_su', 'capacity_su')), 'Invalid stress/capacity')
+            if schema == 3:
+                require(set(network) == {'present', 'stress_su', 'capacity_su'}, 'Invalid network fields')
+                keys = {'block', 'position', 'properties', 'theoretical_rpm', 'effective_rpm', 'network',
+                        'generated_rpm', 'flicker', 'source_parent', 'network_members'}
+                if machine['block'] == 'create:creative_motor':
+                    keys.add('setting')
+                    require(type(machine['setting']) is int and 1 <= abs(machine['setting']) <= 256, 'Invalid motor setting')
+                    require(machine['generated_rpm'] == machine['setting'] * (-1 if facing == 'down' else 1),
+                            'Motor generated RPM disagrees with oriented setting')
+                else:
+                    require(machine['generated_rpm'] == 0, 'Passive node cannot generate rotation')
+                require(set(machine) == keys and finite_number(machine['generated_rpm'])
+                        and type(machine['flicker']) is int and machine['flicker'] >= 0, 'Invalid source observation')
+                positions = [m['position'] for m in row['machines']]
+                parent = machine['source_parent']
+                require(type(parent) is list and all(type(n) is int for n in parent)
+                        and (parent == [] or parent in positions), 'Unknown source parent')
+                members = machine['network_members']
+                require(type(members) is list and all(type(pos) is list and all(type(n) is int for n in pos) for pos in members)
+                        and members == [pos for pos in positions if pos in members]
+                        and (machine['position'] in members if network['present'] else members == []),
+                        'Invalid normalized network membership')
+                for peer in row['machines']:
+                    if peer['position'] in members:
+                        require(peer.get('network_members') == members and peer['network']['present'],
+                                'Inconsistent network equivalence group')
             if machine['block'] == 'create:millstone':
                 require(type(machine['remaining_work']) is int, 'Invalid recipe work')
                 if schema == 2:
@@ -215,7 +271,15 @@ def load_run(directory):
                       for p in config_files}
     require(configs == actual_configs and any(Path(key).name == 'create-server.toml' for key in configs),
             'Incomplete configuration manifest or changed configuration files')
-    return {'environment': {'fixture_set': fixture_set, **{key: environment[key] for key in
+    if schema == 3:
+        template = directory / 'resources/data/create_horizon_arbitration/structure/empty.nbt'
+        require(isinstance(environment.get('template_sha256'), str)
+                and HEX256.fullmatch(environment['template_sha256'])
+                and hashlib.sha256(template.read_bytes()).hexdigest() == environment['template_sha256'],
+                'Missing or changed authored template')
+    return {'environment': {'fixture_set': fixture_set,
+                            **({'template_sha256': environment['template_sha256']} if schema == 3 else {}),
+                            **{key: environment[key] for key in
                             ('reference_revision', 'minecraft', 'neoforge', 'java', 'adapter_sha256')}},
             'artifacts': artifacts,
             'configs': {p.relative_to(directory).as_posix(): comparison_config_hash(p) for p in config_files},

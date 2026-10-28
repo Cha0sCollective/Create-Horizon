@@ -29,18 +29,22 @@ def empty_template(path):
     for key in ('blocks', 'entities'):
         body += b'\x09' + name(key) + b'\x0a' + struct.pack('>i', 0)
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_bytes(gzip.compress(body + b'\x00', mtime=0))
+    data = gzip.compress(body + b'\x00', mtime=0)
+    if not path.exists() or path.read_bytes() != data:
+        path.write_bytes(data)
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('mode', choices=('tasks', 'compile', 'capture', 'lock'))
     parser.add_argument('--offline', action='store_true')
+    parser.add_argument('--workspace', type=Path, help='Workspace containing references/ and shared .local/ (default: repository parent)')
+    parser.add_argument('--fixture-set', choices=('s0-edges-1', 'p02-arbitration-1'), default='s0-edges-1')
     args = parser.parse_args()
     if sys.platform != 'linux':
         parser.error('Run this tool inside the Ubuntu WSL development environment.')
     repo = Path(__file__).resolve().parents[1]
-    workspace = repo.parent
+    workspace = args.workspace.resolve() if args.workspace else repo.parent
     reference = workspace / 'references/create'
     pins = tomllib.loads((repo / 'workspace.toml').read_text())
     accepted_artifacts = repo / pins['reference_environment']['artifact_lock']
@@ -65,21 +69,34 @@ def main():
         parser.error('Java runtime differs from the pinned reference environment')
     run = workspace / '.local/s0/reference-runs' / str(uuid.uuid4())
     run.mkdir(parents=True)
-    empty_template(run / 'resources/data/create_horizon_reference/structure/empty.nbt')
+    namespace = 'create_horizon_arbitration' if args.fixture_set == 'p02-arbitration-1' else 'create_horizon_reference'
+    template_name = f'data/{namespace}/structure/empty.nbt'
+    template_archive = run / 'resources' / template_name
+    empty_template(template_archive)
+    # A stable, verified original template input lets Gradle reuse its resource
+    # output across fresh worlds instead of copying all Create resources again.
+    template_root = workspace / '.local/s0/reference-templates' / namespace
+    empty_template(template_root / template_name)
+    if (template_root / template_name).read_bytes() != template_archive.read_bytes():
+        parser.error('Generated template source differs from its per-run archive')
     adapter_files = [Path(__file__).resolve(), *sorted((repo / 'tools/reference').rglob('*'))]
     adapter_hashes = {str(p.relative_to(repo)): hashlib.sha256(p.read_bytes()).hexdigest()
-                      for p in adapter_files if p.is_file()}
+                      for p in adapter_files if p.is_file() and
+                      (args.fixture_set == 'p02-arbitration-1' or p.name != 'ArbitrationReferenceTests.java')}
     metadata = {'reference_revision': revision, 'minecraft': pins['create_reference']['minecraft'],
                 'neoforge': pins['create_reference']['neoforge'], 'java': version.strip(),
                 'mode': args.mode, 'adapter': str(repo / 'tools/reference'),
-                'fixture_set': 's0-edges-1',
+                'fixture_set': args.fixture_set,
                 'adapter_sha256': adapter_hashes,
+                'template_sha256': hashlib.sha256(template_archive.read_bytes()).hexdigest(),
                 'observation_phase': 'GameTest scheduled callback; not a native-core comparison'}
     (run / 'environment.json').write_text(json.dumps(metadata, indent=2) + '\n')
     env = os.environ.copy()
     env.update(JAVA_HOME=str(java_home), GRADLE_USER_HOME=str(workspace / '.local/gradle'),
                CREATE_REFERENCE_ADAPTER=str(repo / 'tools/reference'), CREATE_REFERENCE_RUN=str(run),
                CREATE_REFERENCE_ARTIFACT_LOCK=str(accepted_artifacts),
+               CREATE_REFERENCE_NAMESPACE=namespace,
+               CREATE_REFERENCE_TEMPLATE_SOURCE=str(template_root),
                CREATE_REFERENCE_REQUIRE_LOCK='1' if args.mode == 'capture' else '0')
     env['PATH'] = str(java_home / 'bin') + os.pathsep + env['PATH']
     tasks = {'tasks': ['tasks', '--all'], 'compile': ['classes', 'createHorizonReferenceLock'],
@@ -87,7 +104,7 @@ def main():
              'lock': ['createHorizonReferenceLock']}
     command = [str(java), '-Dorg.gradle.appname=gradlew', '-classpath',
                'gradle/wrapper/gradle-wrapper.jar', 'org.gradle.wrapper.GradleWrapperMain',
-               '--no-daemon', '--max-workers=3', '--console=plain',
+               '--no-daemon', '--max-workers=2', '-Dorg.gradle.jvmargs=-Xmx2G', '--console=plain',
                '--init-script', str(repo / 'tools/reference/init.gradle')]
     if args.offline:
         command.append('--offline')

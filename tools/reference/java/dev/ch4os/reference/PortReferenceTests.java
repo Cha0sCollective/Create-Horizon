@@ -46,7 +46,7 @@ public class PortReferenceTests {
     private static final BlockPos DRIVE = MOTOR.above();
     private static final BlockPos LOAD = DRIVE.above();
 
-    private static BlockState axial(BlockState state) {
+    static BlockState axial(BlockState state) {
         return state.setValue(BlockStateProperties.AXIS, Direction.Axis.Y);
     }
 
@@ -55,7 +55,7 @@ public class PortReferenceTests {
                 .setValue(CreativeMotorBlock.FACING, Direction.UP));
     }
 
-    private static KineticBlockEntity kinetic(GameTestHelper helper, BlockPos pos) {
+    static KineticBlockEntity kinetic(GameTestHelper helper, BlockPos pos) {
         return (KineticBlockEntity) helper.getBlockEntity(pos);
     }
 
@@ -67,9 +67,10 @@ public class PortReferenceTests {
         sample(helper, fixture, Map.of(), positions);
     }
 
-    private static void sample(GameTestHelper helper, String fixture, Map<String, Object> context, BlockPos... positions) {
+    static void sample(GameTestHelper helper, String fixture, Map<String, Object> context, BlockPos... positions) {
+        boolean arbitration = fixture.startsWith("arbitration_");
         Map<String, Object> row = new LinkedHashMap<>();
-        row.put("schema", 2);
+        row.put("schema", arbitration ? 3 : 2);
         row.put("fixture", fixture);
         row.put("tick", helper.getTick());
         row.put("phase", "gametest_scheduled_callback");
@@ -89,6 +90,20 @@ public class PortReferenceTests {
             if (entity instanceof KineticBlockEntity be) {
                 value.put("theoretical_rpm", be.getTheoreticalSpeed());
                 value.put("effective_rpm", be.getSpeed());
+                if (arbitration) {
+                    value.put("generated_rpm", be.getGeneratedSpeed());
+                    value.put("flicker", be.getFlickerScore());
+                    value.put("source_parent", be.source == null ? new int[] {} : relative(helper, be.source, positions));
+                    var group = new ArrayList<int[]>();
+                    for (BlockPos member : positions) {
+                        var other = helper.getLevel().getBlockEntity(helper.absolutePos(member));
+                        if (be.hasNetwork() && other instanceof KineticBlockEntity peer && be.network.equals(peer.network))
+                            group.add(new int[] {member.getX(), member.getY(), member.getZ()});
+                    }
+                    value.put("network_members", group);
+                    if (be instanceof CreativeMotorBlockEntity motor)
+                        value.put("setting", motor.generatedSpeed.getValue());
+                }
                 CompoundTag tag = be.saveWithoutMetadata(helper.getLevel().registryAccess());
                 value.put("network", Map.of("present", be.hasNetwork(),
                         "stress_su", tag.getCompound("Network").getFloat("Stress"),
@@ -107,6 +122,13 @@ public class PortReferenceTests {
         }
         row.put("machines", machines);
         System.out.println("CREATE_HORIZON_TRACE " + JSON.toJson(row));
+    }
+
+    private static int[] relative(GameTestHelper helper, BlockPos world, BlockPos[] observed) {
+        for (BlockPos pos : observed)
+            if (helper.absolutePos(pos).equals(world))
+                return new int[] {pos.getX(), pos.getY(), pos.getZ()};
+        throw new IllegalStateException("Source parent is outside the observed fixture: " + world);
     }
 
     private static Map<String, Object> stack(String owner, int slot, ItemStack stack) {
