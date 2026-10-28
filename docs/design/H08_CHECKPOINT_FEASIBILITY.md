@@ -119,3 +119,13 @@ corresponding Fight reset; its loaded guard can carry prior-world fight state.
 Portal entity removal before arrival creation, and arrival removal before exit
 resolution/publication, are additional transfer-ownership boundaries. None is
 repaired merely by returning metadata save errors.
+
+The 0028c89 stats/advancement audit finds discarded JSON mkdir/serialize/write
+errors in local helpers and duplicate LAN advancement writing. Common integrated
+owners pass through store_owner/save_guest_records while local player helpers can
+skip no-player server instances. H08_PLAYER_JSON_METADATA_PACKET scopes a checked
+borrowed common/owner path. Guest retirement and dedicated teardown must keep
+attempting later work with explicit logging; naive early propagation can skip
+world saving/cleanup. playerdata's void writes and lost disconnected ownership
+remain separate. Stats dirty/events are network/scoreboard notifications, not
+disk dirty flags. Existing guest.placed/nonempty-tree/UUID gates must stay intact.

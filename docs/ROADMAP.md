@@ -7,7 +7,7 @@ remain proposed until their corresponding gate accepts them.
 | Stage | Outcome | Current state |
 | --- | --- | --- |
 | S0 | Runnable pinned reference, repeatable traces and bounded host contract | G0 accepted for bounded experiments; performance qualification open |
-| S1 | Persistent synchronized generic machine with retained animation | H02/H03b/H04b/H04c, H05a counter and H08a1-a9 save prerequisites pass both modes; focused vanilla/clock-error readers pass; H08a10 borrowed dirty metadata active; full H02/H03/H04/H05/G1 open |
+| S1 | Persistent synchronized generic machine with retained animation | H02/H03b/H04b/H04c, H05a counter and H08a1-a10 save prerequisites pass both modes; focused vanilla readback and clock-error tests pass; H08a11 checked player JSON metadata active; full H02/H03/H04/H05/G1 open |
 | S2 | Verified motor, shafts and two cog sizes | P02a/b and six-case repeated source-arbitration observations reviewed; native multi-source rules and full P02/integration open, live integration requires G1 |
 | S3 | Five-component playable milling MVP and two-client evidence | Planned; G3 open |
 | S4 | Obtainable survival power and a small factory | Future scope |
@@ -47,7 +47,8 @@ writer results now pass, with a separate focused vanilla chest/entity reader.
 Map/random, scoreboard and bossbar/schedule metadata now pass both modes and broad
 regressions. Direct dirty-marker handoff also passes, with explicit real queue
 faults. Shared world clocks pass, including actual blocked-write/repair in both
-modes. Next is `docs/design/H08_BORROWED_DIRTY_METADATA_PACKET.md`,
+modes. Borrowed fight/trader/arrival errors also pass. Next is
+`docs/design/H08_PLAYER_JSON_METADATA_PACKET.md`,
 following `docs/design/H08_CHECKPOINT_FEASIBILITY.md`;
 completed arbitration observations are in `docs/reference/P02_ARBITRATION_RESULTS.md`.
 G1/G2/G3 remain open.

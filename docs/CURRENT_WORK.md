@@ -6,28 +6,29 @@ standing team is authorized. Keep source-informed personal-use provenance and R0
 Require fresh independent read-only Sol High review for substantive candidates.
 
 - Private branch: codex/h02-smoke-h03-notes; checkpoints backed up privately.
-- Engine branch: codex/h08-borrowed-dirty-metadata, based on qualified local commit
-  0028c89d31438d159ee088eafe14827ba6c76488, tree
-  b24c06a7221e56818f04b1c9765bb70dcf7bb2ad. H08a10 source worker owns only game.rs,
-  game/dragon.rs, game/wandering_trader.rs and game/nether_portal.rs. No worker Cargo.
+- Engine branch: codex/h08-player-json-metadata, based on qualified local commit
+  19c86308d069d4d6a316cba72406336a8ccdb86b, tree
+  4764b36738453ebf3da4131eae9d6f856c5703ca. H08a11 source worker owns game.rs and
+  game/stats.rs, advancements.rs, lan.rs, integrated.rs, dedicated.rs. Harness
+  worker owns only new tools/run_player_json_error_smoke.py. No worker Cargo.
 - Coordinator owns serialized Cargo, validation and commits. Engine commits stay
   local; normal hooks enabled, upstream push disabled. No public engine push.
 - Create reference stays clean detached 7ff2760e4924d35d4bc2e22c4b19923f0178cd16.
   Pins are in workspace.toml. Never alter Prism/playable saves/reference snapshots.
 
-Completed bounded foundations: H05a transient counter and H08a1-a9 save
+Completed bounded foundations: H05a transient counter and H08a1-a10 save
 prerequisites have independent source/receipt review, focused tests, actual games
 and broad quick checks. Latest frozen game SHA256
-00d38a8a24efc2ab7e78568e6c9348b59f01067c14d6d4e5c6c4c08551e0852e passes:
+2ce695b1acb5f4e13d3a58fca82eba8dc2a7ab11c012ee6f5ebf629cab8b0832 passes:
 
-- Integrated 64ec267b-cbc6-418a-833a-6967ea1dddef: 362 counter checks.
-- In-frame 19c8af4d-c1c4-4b07-8d24-ead875940edf: 347 counter checks.
+- Integrated 04b52b69-98ff-4775-8c42-ffe2599d7f0b: 362 counter checks.
+- In-frame 051ac4b9-1aa0-425f-9bf8-612362820c7a: 347 counter checks.
 
 Qualified tools/run_counter_game_smoke.py SHA256
 d19c480572c3fbcb0ce01afeb868efb5dc276ad64606ab01f40edd9bf2d970e0 stays immutable.
 Normal initial/restart exits are clean; precise expected-refusal cleanup races
 remain in the result notes. Counter payload stays transient. Latest broad quick
-passes 369 Python/1,339 client tests plus fmt/lint/doc/public-tree; parity skipped.
+passes 369 Python/1,347 client tests plus fmt/lint/doc/public-tree; parity skipped.
 Scope has a disclosed soft warning for clock tests/mechanical moves; no PR proposed.
 
 H08a9 focused actual clock-error runs pass with no cleanup errors:
@@ -47,10 +48,18 @@ POI reads, RNG loan-conflict refusal and nonatomic metadata limits. See H05_COUN
 and H08_*_RESULTS in docs/reference. Focused actual Java26.3 chest/pig readback on
 older a75184e/325e1f53... passes in H08_VANILLA_SAVE_READBACK_RESULTS; not full parity.
 
-Active packet: docs/design/H08_BORROWED_DIRTY_METADATA_PACKET.md (H08a10).
-Propagate borrowed fight/trader/portal-arrival write errors; retain dirty state and
-schemas/guards. Eager dragon-death failure logs and retries through later saves,
-without aborting already committed gameplay. Source not yet reviewed/validated.
+H08a10 borrowed fight/trader/portal-arrival errors pass independent source/receipt
+review, final164 binary tests, on/off lint, both-mode games and broad quick checks.
+Preserve initial163/1 fixture failure: -65.9 floors to -66 in baseline/candidate;
+only the wrong -65 expectation changed. Eager death-save errors log for retry.
+See H08_BORROWED_DIRTY_METADATA_RESULTS; no transfer/lifetime repair claimed.
+
+Active packet: docs/design/H08_PLAYER_JSON_METADATA_PACKET.md (H08a11). Checked
+borrowed local/owner stats/advancement writes, with deferred JSON errors until
+world metadata attempts and minimal integrated cleanup before returning failure.
+Fresh design review found/closed the initial shutdown-order gap; no owner decision
+needed. Source and new focused owner-JSON/shutdown probe are not yet reviewed or
+validated. Legacy guest retirement/playerdata ownership stays open.
 H08_CHECKPOINT_FEASIBILITY records separate fight-world lifetime, raid, portal,
 unload and player/entity ownership gaps. Tick-freeze/server-hold alone cannot
 protect a checkpoint capture. No coherent checkpoint or G1 is qualified.
