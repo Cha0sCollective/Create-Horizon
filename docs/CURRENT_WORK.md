@@ -5,10 +5,11 @@ superseding the old cutoff/break. No public publication/promotion/standing team.
 Keep personal source-informed provenance, R01 and fresh independent Sol High reviews.
 
 - Private branch: codex/h02-smoke-h03-notes; checkpoints backed up privately.
-- Engine branch: codex/h06-native-slot-transfer, based on qualified local
-  d2816f6d7f03cec0ab326ec9ad6f1b5cd4a0ed40, tree
-  2fbffbd7e6bea5d85a00f6b378809f342f43d250.
-- H06 author owns only client src/slot_transfer.rs and its gated lib.rs export.
+- Engine branch: codex/h06-world-slot-ownership, based on local
+  0fd5e1ee2ef43cb8fd52835f0f282f24920bb77a, tree
+  523a3c6805c9e3fa74d480af9e5994e44c2e29f3.
+- World-slot author owns only client src/world_slot_trial.rs, its tests.rs child,
+  gated lib.rs export and world.rs ownership hooks/methods.
   Coordinator owns private docs, serialized Cargo/tests, validation and commits.
   Fresh independent slot reviewer remains read-only; no standing team.
 - Engine commits LOCAL ONLY, normal hooks on, upstream push disabled. No public push.
@@ -45,11 +46,17 @@ run_guest_counter_game_smoke.py
 c1b2a0b1875029c69264a12cbfa871f02a48fad87bd4e875297f8b3c69a48926.
 Do not edit qualified helpers. Counter records and guest backends remain transient.
 
-Active: docs/design/H06_NATIVE_SLOT_TRANSFER_PACKET.md. Fresh design review finds
-no blocking issue; coordinator accepts only detached owned native projections,
-checked revisions/identities, canonical stacks and atomic two-slot transfer.
-Native-equal replace retains original raw selection data. No live inventory,
-Game/Wasm adapter, persistent machine or public SDK is enabled by this core.
+H06a detached two-slot core passes fresh design/source review, six focused matrices
+with runtime on/off, three feature lints and broad369 Python/1357 client/zero doc.
+Content-root/launcher untouched, parity skipped; final receipt review passes.
+See H06_NATIVE_SLOT_TRANSFER_RESULTS. No source changes after review were needed.
+
+Active: docs/design/H06_WORLD_SLOT_OWNERSHIP_PACKET.md. Fresh design review finds
+no blocking issue; coordinator accepts concrete World-owned slot allocation,
+scoped keys, unload retention and move-owned pending retirement through real hooks.
+Pending retirement inhibits admissions/transfers, never ordinary block writes.
+No Game callsite enables it before a real retirement receiver/player adapter.
+No live inventory, persistent machine, guest slot ABI or public SDK is enabled.
 
 Serialize ALL Cargo including test execution. Native broad clone pointer:
 .local/h05-ci-checkout.txt. Never export GIT_DIR/GIT_WORK_TREE into tests.
