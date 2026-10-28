@@ -1,7 +1,8 @@
 # H02d activation checkpoint
 
-Status: reviewed local prototype; paused at the owner's request before real-game
-smoke qualification. The owner asked to take a break at the next good pause point.
+Status: reviewed local prototype, subsequently qualified by both real-game startup
+smokes after the owner resumed. See H02_GAME_SMOKE_RESULTS.md for exact accepted
+runs, controls and limitations. The original pre-smoke checkpoint follows below.
 No public engine push, upstream contact, PR, merge or release occurred.
 
 Engine base: `58e49d4d0717b7d2382a6e6e02b58ee3bd531cfd`. Local branch
@@ -81,7 +82,8 @@ stage, commit or publish. Their implementation checkouts are retained at
 
 ## Resume here
 
-Run isolated real-game smoke tests with a small authored paired package, first
+The following proposed work was completed by H02_GAME_SMOKE_RESULTS.md. Run isolated
+real-game smoke tests with a small authored paired package, first
 on the default integrated server and then with `--in-frame`. Test one installed
 row, custom content registration once, both side callbacks, separate settings,
 source replacement/resource reload, same-build restart and saved-world mismatch
@@ -91,11 +93,13 @@ The fixture descriptor is in engine `crates/horizon-mods/tests/paired_activation
 Use fresh per-run game/launcher/XDG homes and fresh worlds; never Prism/playable saves.
 
 Control-probe detail: `horizon-ctl command` executes the integrated server console;
-use `chat /hello ...` to exercise the client fixture's command hook and `command
-online` for its server hook. `options mods` followed by `ui` exposes installed rows.
+use the actual chat UI (T, type, Enter) for the client fixture's command hook.
+The former `chat /hello ...` suggestion bypassed client commands on the remote
+path. `options mods` followed by `ui` exposes installed rows; exit each subpage.
 Do not report these proposed smoke probes as executed evidence.
 
-Real-game startup, broad post-integration regression/parity checks, network H09,
+Real-game startup is now checked within that later record. Broad post-integration
+regression/parity checks, network H09,
 machine lifecycle/transactions/persistence and retained rendering remain open.
 No live Create machinery, full H02/P02 completion, G1/G2/G3 or performance claim
 follows from this checkpoint.

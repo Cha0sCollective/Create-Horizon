@@ -1,63 +1,57 @@
 # Current work
 
-Paused at the owner's request after the reviewed local H02d discovery/activation
-checkpoint. The owner asked for a break at the next good pause point. Do not resume
-work, tests or background agents until the owner asks to continue. No standing team
-or game process is intended to remain active.
+The owner resumed development through a genuine blocker or required input. H02d
+real-game activation qualification now passes in both modes. The active bounded
+packet is `docs/design/H03_STATIC_MATERIALIZER_PACKET.md`; its isolated worker owns
+parser/materializer/tests, and the coordinator owns integration, actual game
+checks and independent review. No standing team or public publication is authorized.
 
-- Private branch: `codex/h02-activation-notes`, based on accepted arbitration
-  checkpoint `84e476186f8d9c442545347dc5af849fd3c26390`.
-- Engine branch: local `codex/h02-activation-integration` at
-  `60050caa3b70b3496f40cf2080b1c3c8354a67a6`, after catalog `04a6d74` and runtime
-  `26aa212`. Final tree `e13629cc51c0e95d026a9e2db1b71a1ca7c4ce49` matches
-  fresh independent review. No public engine push/PR/release is authorized.
+- Private branch: `codex/h02-smoke-h03-notes`, following checkpoint `f19e0f9`.
+- Engine branch: local `codex/h03-state-plan-integration` at
+  `b1ced4fcd26fe9ecae5403b6968500342162ca1c`, tree
+  `ada6ce48c66937f9b48ea58cf8a32b63a99f0256`. Reviewed immutable state-plan module;
+  custom state admission remains unsupported until the materializer is integrated.
+- H03b worker: `.local/worktrees/h03-static-materializer` on
+  `codex/h03-static-materializer`, based on b1ced4f. No worker commits/staging/pushes.
+- Frozen tested game remains engine `60050caa3b70b3496f40cf2080b1c3c8354a67a6`,
+  tree `e13629cc51c0e95d026a9e2db1b71a1ca7c4ce49`; its executable/build receipt
+  stays separate from the developing checkout. See H02_GAME_SMOKE_RESULTS.md.
 - Create reference remains clean, detached at
-  `7ff2760e4924d35d4bc2e22c4b19923f0178cd16`. Source/toolchain pins remain in
-  workspace.toml. Personal source-informed reference is authorized; no Create
-  contribution or clean-room claim is planned.
-- Effective operating instructions remain AGENTS.md and orchestration/ADOPTION.md.
-  No operating-rule or permission expansion was made for this packet.
+  `7ff2760e4924d35d4bc2e22c4b19923f0178cd16`. Source/toolchain pins are in
+  workspace.toml. Effective operating instructions remain AGENTS.md and
+  orchestration/ADOPTION.md; no operating-rule or permission expansion occurred.
 
-Latest scope and evidence: docs/design/H02_ACTIVATION_PACKET.md and
-`docs/reference/H02_ACTIVATION_RESULTS.md`. The opt-in loader now captures selected
-pairs once, registers one owner, uses separate side Stores/settings, shows both
-sides' permissions, and checks both components before guest execution. Failed
-paired callbacks discard buffered output and stop both Stores. New local worlds
-pin exact package/build identities before editable loading. External paired
-networking refuses pending H09. Settings storage remains nontransactional and is
-not machine inventory persistence. Mutable legacy content cannot mix with active
-pairs. Experimental selection changes require restart.
+H02d accepted runs under `.local/h02d/game-runs/`:
 
-Catalog/runtime tests and integrated feature-on lint/admission tests pass. Fresh
-read-only Sol High review found no actionable issue. Real-game smoke qualification
-and broad post-integration regression/parity checks remain pending; compilation
-and sandbox tests are not connected gameplay evidence.
+- Integrated: `0cafe3ba-1d3c-4566-ba89-f21af219733f`.
+- In-frame: `f20bd80e-5b61-4fec-b745-1675ed735b43`.
+- Both pass all 34 assertions, including client/server commands, one installed
+  row, side settings, forced captured-asset rebuild after source corruption,
+  same-build restart/custom-block save, changed/missing-package refusal with all
+  saved-world bytes unchanged. Fresh independent Sol High review checked driver
+  and actual receipts. Earlier calibration failures are retained and excluded.
+- These prove local package activation/admission, not server-settings restart
+  semantics, rendered appearance, machine inventories, H06/H08 or performance.
+- External paired clients/LAN/dedicated networking still refuse pending H09.
+  Settings storage remains nontransactional. Never use Prism/playable saves.
 
-Resume with fresh isolated default-integrated and in-frame real-game smoke tests,
-using the authored fixture and proposed control probes recorded in the results.
-Exercise custom content once, client/server callbacks, one installed row, side
-storage, snapshot reuse, restart and saved-world mismatch refusal. Never use Prism
-or playable saves. Retained worker worktrees remain under `.local/worktrees/`;
-workers made no commits and their owned changes are already integrated.
+H03a StatePlan validation is reviewed and locally committed; its 35 paired-feature
+and 18 feature-off library tests plus lint checks passed. See
+`docs/reference/H03_STATE_PLAN_RESULTS.md`. The next materializer must handle every
+JSON/NBT state table, explicit nonfirst defaults, static identity transforms,
+paired-captured-only admission, an iron-block template restriction and waterlogged
+rejection. Bound eager state expansion per package before retaining plans; apply
+existing global state limits again with vanilla/legacy states included. Custom
+shape/orientation/placement and machine behavior remain later packets.
 
-Earlier accepted evidence and limits:
+After the candidate is ready: independent review, focused real-resource regressions,
+fresh feature build, and actual six-state default/explicit-state/save checks in
+both game modes. Then run appropriate broader regression/parity checks on the final
+integrated candidate. Do not present skipped missing-resource tests as evidence.
 
-- S0: JDK21/25 and Linux dependencies installed; owned 26.3 resources prepared;
-  fifteen Create cases passed twice (1,730 samples each). See S0_RESULTS.md.
-- P02a/b: ten kernel test groups and native/actual-Wasm agreement at 16 settled
-  checkpoints / 62 machine observations. See P02 kernel/Wasm results.
-- H02a/b/c: declarations, typed preflight and immutable captured content/identity
-  reviewed locally. H02c broad quick suite passed; see H02_SNAPSHOT_RESULTS.md.
-- Six arbitration/overspeed cases passed twice (800 samples each); eight derived
-  validator controls passed. See P02_ARBITRATION_RESULTS.md. Native multi-source
-  arbitration and contradictory cycles remain unsupported.
-- Fresh software-rendered five-window B0 repeat completed without overlapping
-  builds. See BASELINE_D0.md. This is not B2/hardware performance qualification.
-- R01 matches the pinned millstone full-output item-loss behavior. Preserve the
-  exact decision and accounting limits for later P04 work.
-
-G0 permits bounded experimental work. Full H02/P02, G1/G2/G3, live Create blocks,
-authoritative lifecycle/transactions/persistence and retained animation remain
-open. Publication, upstream submission, promotion and release are separate owner
-decisions. The resumed discovery/activation instruction superseded the earlier
-October 27 time cutoff; the latest break request now controls continuation.
+Earlier accepted S0/P02/reference/B0 results remain in their reference records.
+R01 preserves the owner's explicit full-output millstone item-loss decision.
+G0 allows bounded experimental work; full H02/H03/P02 and G1/G2/G3, authoritative
+machine lifecycle/transactions/persistence and retained animation remain open.
+Publication, upstream submission, promotion and release are separate decisions.
+The latest resume instruction supersedes the earlier time cutoff and break.

@@ -7,7 +7,7 @@ remain proposed until their corresponding gate accepts them.
 | Stage | Outcome | Current state |
 | --- | --- | --- |
 | S0 | Runnable pinned reference, repeatable traces and bounded host contract | G0 accepted for bounded experiments; performance qualification open |
-| S1 | Persistent synchronized generic machine with retained animation | H02a/b/c reviewed and committed locally; immutable capture/cache identity checked; discovery/activation remain later; full H02/G1 open |
+| S1 | Persistent synchronized generic machine with retained animation | H02 local paired activation passes both real-game startup smokes; H03a finite-state plan reviewed; static materialization in progress; full H02/H03/G1 open |
 | S2 | Verified motor, shafts and two cog sizes | P02a/b and six-case repeated source-arbitration observations reviewed; native multi-source rules and full P02/integration open, live integration requires G1 |
 | S3 | Five-component playable milling MVP and two-client evidence | Planned; G3 open |
 | S4 | Obtainable survival power and a small factory | Future scope |
@@ -35,7 +35,8 @@ check and retrieval/overflow cases are recorded. G0 accepts the experimental H01
 direction, local required engine build, original diagnostic assets and named D0
 hardware in `docs/design/G0_DECISION.md`. B2/GPU budget ratification remains explicitly
 deferred; it is not a performance qualification or release waiver. The first P02
-kernel and selected native/Wasm checkpoints are complete, alongside H02a/b local
-preflight work. The next host packet is `docs/design/H02_NEXT_PACKET.md`; the next
-reference observation proposal is `docs/design/P02_ARBITRATION_PACKET.md`.
+kernel and selected native/Wasm checkpoints are complete. H02 local discovery and
+activation now pass integrated/in-frame real-game smoke, and H03a immutable state
+planning is reviewed. The next host packet is `docs/design/H03_STATIC_MATERIALIZER_PACKET.md`;
+completed arbitration observations are in `docs/reference/P02_ARBITRATION_RESULTS.md`.
 G1/G2/G3 remain open.
