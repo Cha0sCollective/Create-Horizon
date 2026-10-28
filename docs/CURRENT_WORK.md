@@ -6,11 +6,10 @@ standing team is authorized. Keep source-informed personal-use provenance and R0
 Require fresh independent read-only Sol High review for substantive candidates.
 
 - Private branch: `codex/h02-smoke-h03-notes`; checkpoints backed up privately.
-- Engine branch: `codex/h08-score-metadata`, based on reviewed/tested local commit
-  `c161eaa1f361cd4e423c4cb07120c2f9c1d529ab`, tree
-  `5c1cc7723d4ee5ea7f53906f4ea3d65f53b3c6b0`. Bounded source worker owns only
-  game.rs, game/scoreboard.rs, command_storage.rs and stopwatches.rs for H08a6.
-  Coordinator owns native Cargo and validation; no worker Cargo or commits.
+- Engine branch: `codex/h08-score-metadata`, reviewed/tested local commit
+  `1d144d017b7d238293353e5c25c7f21080da4944`, tree
+  `aa4b44f95ccef1f73d023ee86b22c1255ba3e0f1`, clean. Source worker released files.
+  Coordinator owns source/Cargo, frozen optimized build and validation.
 - Engine commits stay local; normal hooks enabled, upstream push disabled.
 - Create reference stays clean detached `7ff2760e4924d35d4bc2e22c4b19923f0178cd16`.
   Pins are in workspace.toml. Never alter Prism/playable saves/reference snapshots.
@@ -29,9 +28,8 @@ Counter remains transient; loading its saved block does not restore payload.
 See H05_COUNTER_RESULTS and H08_SAVE_COMPLETION/PROTO_SAVE_ERRORS/
 FINISHED_CHUNK_HANDOFF/STRICT_POI_WRITER_RESULTS in docs/reference. They preserve
 failed preflight/calibration, red raw-NBT test, precise refusal cleanup races and
-all unqualified limits. Latest quick check passes 369 Python/1,311 client tests
-plus format/lint/doc/public-tree; H08a5 adds seven for 1,318 client tests. Vanilla
-parity is explicitly skipped.
+all unqualified limits. Latest quick check passes 369 Python/1,318 client tests
+plus format/lint/doc/public-tree. Vanilla parity is explicitly skipped.
 
 Separate focused vanilla 26.3 reader run `ad33ad7f-f997-4f2c-832c-f220e6d7733b`
 passes on frozen a75184e/325e1f53..., proving this chest23/pig fixture's shared
@@ -54,7 +52,12 @@ the immutable native clone; parity explicitly skipped. See
 
 Active packet: `docs/design/H08_SCORE_METADATA_PACKET.md` (H08a6), bounded to
 scoreboard/storage/stopwatch/border errors, retryable flags and default-border
-overwrite. Candidate edits are not yet reviewed or validated. Other metadata and player/native-entity retirement remain
+overwrite. Fresh independent source review and all targeted checks pass (147 bin,
+three storage/two stopwatch tests, feature-on/off lint/fmt/public-tree). Frozen
+game d86ad4e2... passes 362/347 checks in integrated/in-frame; normal initial and
+restart exits are clean, expected refusal cleanup races remain in the results.
+Independent receipt follow-up agrees; broad quick checks pending. See
+H08_SCORE_METADATA_RESULTS. Other metadata and player/native-entity retirement remain
 open. Next scope must stay bounded; see H08_CHECKPOINT_FEASIBILITY for the frozen
 owner/writer audit, including why tick-freeze/server-hold alone is insufficient.
 

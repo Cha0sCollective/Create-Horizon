@@ -88,5 +88,14 @@ H08_SCORE_METADATA_PACKET. The remaining helpers need distinct handling:
   that gameplay call requires explicit handling rather than incidental propagation.
 - Owner/guest records and native entity retirement require retained failed
   snapshots; converting their calls to question marks alone cannot prove ownership.
+- Raid metadata also participates in both direct and incremental level saves.
+  load_raids saves an old dimension and then replaces its in-memory state without
+  checking the write result. Treat this as a transition/retention packet, not just
+  another borrowed metadata helper; preserve the old raid state on failed handoff.
+- Direct Game::save_level drains World.modified before save_later accepts the
+  snapshots. A pre-enqueue writer failure can therefore remove retry markers
+  although the live chunks remain. The incremental closing-save path already
+  removes each marker after acceptance. Bound a later direct-path fix to retaining
+  markers until successful enqueue; that alone is not entity-retirement recovery.
 
 This is a source audit, not completed failure coverage or checkpoint acceptance.
