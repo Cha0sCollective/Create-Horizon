@@ -6,7 +6,7 @@ namespace = "create_horizon"
 repository = "https://github.com/Cha0sCollective/Create-Horizon"
 visibility = "private"
 stage = "post-G0 foundations"
-active_packet = "H05a counter and H08a1-a12 save prerequisites qualified; H05b import-free guest evaluator first unit next; persistence and G1 open"
+active_packet = "H05a/H05b1/H05c and H08a1-a12 qualified; Rust SDK fixture passes; H05d actual guest Game wiring active; persistence and G1 open"
 next_stage = "S1 host foundations and remaining P02; G1/G2/G3 open"
 
 [specification]

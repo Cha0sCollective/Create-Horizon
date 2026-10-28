@@ -1,0 +1,6 @@
+id = "guest_counter_fixture"
+name = "Guest counter quiet client fixture"
+version = "0.0.0"
+api = "0.1"
+side = "client"
+capabilities = []

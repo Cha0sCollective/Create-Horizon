@@ -1,0 +1,7 @@
+/target/
+/client/target/
+/wit/deps/horizon/
+/mod.wasm
+/server.wasm
+/client/mod.wasm
+/client/client.wasm

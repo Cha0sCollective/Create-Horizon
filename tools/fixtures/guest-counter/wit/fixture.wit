@@ -1,0 +1,36 @@
+package create-horizon:guest-counter-fixture@0.0.0;
+
+world guest-counter-fixture {
+    // server-events uses players.player. Export the canonical dependency rather
+    // than asking the componentizer to retain a type-bearing host import.
+    export horizon:mods/players@0.1.0;
+    export horizon:mods/server-events@0.1.0;
+
+    // Inline naming deliberately produces the unqualified "counter-trial"
+    // instance, matching the experimental evaluator's exact export lookup.
+    export counter-trial: interface {
+        record request {
+            world-instance: u64,
+            dimension: string,
+            type-id: string,
+            schema: u32,
+            x: s32,
+            y: s32,
+            z: s32,
+            instance: u64,
+            counter: u64,
+            game-time: s64,
+        }
+        record proposal {
+            world-instance: u64,
+            instance: u64,
+            game-time: s64,
+            expected-counter: u64,
+            next-counter: u64,
+        }
+        enum rejection {
+            rejected,
+        }
+        step: func(input: request) -> result<proposal, rejection>;
+    }
+}

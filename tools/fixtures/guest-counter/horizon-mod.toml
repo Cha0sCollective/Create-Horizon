@@ -1,0 +1,6 @@
+id = "guest_counter_fixture"
+name = "Guest counter server fixture"
+version = "0.0.0"
+api = "0.3"
+side = "server"
+capabilities = []

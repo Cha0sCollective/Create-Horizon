@@ -129,3 +129,54 @@ attempting later work with explicit logging; naive early propagation can skip
 world saving/cleanup. playerdata's void writes and lost disconnected ownership
 remain separate. Stats dirty/events are network/scoreboard notifications, not
 disk dirty flags. Existing guest.placed/nonempty-tree/UUID gates must stay intact.
+
+## Player ownership audit after H08a11/a12
+
+Checked borrowed JSON and player NBT writers now report their specified failures;
+they do not retain retired players. The f7f8990 source audit identifies these
+separate lifetime/capture boundaries:
+
+- Hub::poll removes a guest while collecting events, before Game handles Left.
+  The handler normalizes crafting/workstation inputs, saves, removes play state and
+  discards the guest. A same-batch Joined may load stale disk immediately after a
+  failed retirement save. Retention needs an explicit UUID/incarnation ordering
+  rule to prevent stale reconnect or an older retry overwriting a newer session.
+- An integrated owner's retirement copies its state into Level, but later
+  sync_level rebuilds inventory and other fields from the server-local Game.
+  store_owner cannot restore the removed owner because it is absent from the hub.
+  Owner.saved is consumed on initial admission, not a retirement cache. Owner and
+  level UUID mappings must remain explicit.
+- Guest.carried and merchant payment slots are outside playerdata::store.
+  Crafting normalization alone does not return all menu ownership. Merchant close
+  expects a live hub guest, already removed in this path. Overflow normalization
+  can create world item entities, so a player-only snapshot cannot conserve items
+  across those owners.
+- lan_close can discard the entire host; server Game drop ends borrowed retries.
+  Common saves do not capture active external guests. A queue/writer latch cannot
+  certify omitted players. Existing entity/unload/transition failures still need
+  caller-held ownership when failure precedes SaveDir's pending insertion.
+
+A retained participating-player packet would need normalized immutable NBT/optional
+JSON projections, explicit world/player identity, pending/error ownership surviving
+host teardown, checked release and reconnect/publication ordering. It must cover
+removed owners, both-record partial failures, same-batch reconnect, active guests,
+host closure and cursor/merchant/overflow owners. Adding logging is insufficient.
+This is not permission to introduce a general retirement/recovery service.
+
+An opted-in owner-only fresh-world mechanism probe remains investigable as partial
+research: refuse published/multiple/unplaced owners, pending retirement/reconnect,
+unsupported menus/cursor state, oversized worlds and unhandled transition/unload
+failure. Owner disappearance invalidates capture; preserve the previous checkpoint.
+It still needs an owner-thread admission barrier, physical immutable copies and
+interrupted publication/recovery tests. It does not replace the accepted dedicated
+two-client experiment or establish G1. Making that restricted scope the S1
+deliverable, relaxing conservation, or introducing a broad journal returns to the
+owner with concrete options/cost. Difficulty alone is not a blocker to further
+bounded research.
+
+The next bounded implementation direction is H05's inventory-free guest counter,
+with import-free isolated evaluation and checked host commit. Persistence remains
+open. General participating-player retention would span menu normalization,
+retirement/reconnect, active capture, owner removal, entity/unload/transition
+ownership, immutable publication/recovery and cross-owner fault proof; it is
+substantially larger than the checked-writer precursors.

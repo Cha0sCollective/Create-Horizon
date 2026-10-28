@@ -50,6 +50,12 @@ queue, WorldSlot, players, storage, clock, randomness, log, WASI or other import
 Reject any actual component import, including log, before instantiation. An empty
 linker is the enforcement boundary, not a manifest claim of purity.
 
+The evaluator prototype limits each request identifier string to 256 UTF-8 bytes
+before Store creation and clips engine diagnostics through the existing 512-character
+helper. This is a local diagnostic bound, not a general identifier policy. Its
+fresh Store allows one memory, two tables, 16,384 table elements and 16 instances,
+with the existing 64 MiB per-memory limit and trapping growth refusal.
+
 The ordinary paired package must still pass both mandatory side preflights and
 normal activation. Optional diagnostic selection additionally requires the exact
 captured server half to have zero imports and the exact synchronous diagnostic
@@ -91,6 +97,10 @@ WIT/bindgen or derived component records, without editing shared SDK WIT or its
 generated reference. Do not add it as a required export of existing
 horizon-server-mod or change ServerMod defaults. The test guest can bind a fixture
 world containing both exports without a general SDK framework. Reviewed shape:
+
+The local exported instance name is literally `counter-trial`, without a package
+qualifier. The WIT below describes its structural types; the later real guest
+fixture must prove the exact literal export through an inline export/binding.
 
 ```wit
 interface counter-trial {

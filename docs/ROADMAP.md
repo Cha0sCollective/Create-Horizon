@@ -7,7 +7,7 @@ remain proposed until their corresponding gate accepts them.
 | Stage | Outcome | Current state |
 | --- | --- | --- |
 | S0 | Runnable pinned reference, repeatable traces and bounded host contract | G0 accepted for bounded experiments; performance qualification open |
-| S1 | Persistent synchronized generic machine with retained animation | H05a counter and H08a1-a12 save prerequisites qualified; H05b import-free guest evaluator design accepted, bounded first unit next; full H02/H03/H04/H05/G1 open |
+| S1 | Persistent synchronized generic machine with retained animation | H05a native counter, H05b1 evaluator, H05c host phases and H08a1-a12 save prerequisites qualified; SDK Rust fixture passes; H05d Game wiring active; full H02/H03/H04/H05/G1 open |
 | S2 | Verified motor, shafts and two cog sizes | P02a/b and six-case repeated source-arbitration observations reviewed; native multi-source rules and full P02/integration open, live integration requires G1 |
 | S3 | Five-component playable milling MVP and two-client evidence | Planned; G3 open |
 | S4 | Obtainable survival power and a small factory | Future scope |
@@ -51,8 +51,11 @@ modes. Borrowed fight/trader/arrival errors also pass. Player JSON native, both-
 counter, focused integrated-owner fault, broad checks and final independent receipt
 review pass in `docs/reference/H08_PLAYER_JSON_METADATA_RESULTS.md`. Checked external
 player NBT writer native faults, both-mode regressions and broad checks pass in
-`docs/reference/H08_PLAYERDATA_WRITER_RESULTS.md`. Next is the evaluator-only first
-unit of `docs/design/H05_GUEST_COUNTER_PACKET.md`,
+`docs/reference/H08_PLAYERDATA_WRITER_RESULTS.md`. Evaluator and host phases pass
+their focused checks, native both-mode games and expanded broad pipeline in
+H05_GUEST_EVALUATOR_RESULTS/H05_HOST_PHASE_RESULTS. Real Rust SDK componentizer,
+paired activation and public evaluator prerequisites also pass. Next is the actual
+Game dispatch and focused guest proof in `docs/design/H05_GUEST_COUNTER_GAME_PACKET.md`,
 following `docs/design/H08_CHECKPOINT_FEASIBILITY.md`;
 completed arbitration observations are in `docs/reference/P02_ARBITRATION_RESULTS.md`.
 G1/G2/G3 remain open.

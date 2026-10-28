@@ -1,0 +1,18 @@
+[package]
+name = "create-horizon-guest-counter-server-fixture"
+version = "0.0.0"
+edition = "2024"
+rust-version = "1.99"
+publish = false
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+wit-bindgen = { version = "=0.60.0", default-features = false, features = ["macros", "realloc"] }
+
+[dev-dependencies]
+horizon-mods = { path = "../../../../horizon/crates/horizon-mods", features = ["runtime", "pack", "paired-packages"] }
+
+# Independent fixture: never a member of the private mod or engine workspace.
+[workspace]
