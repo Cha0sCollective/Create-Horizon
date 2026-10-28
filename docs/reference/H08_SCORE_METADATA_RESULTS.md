@@ -49,7 +49,11 @@ Independent read-only receipt follow-up agrees with source/build attribution,
 archived driver hashes, counts, exits and explicit counter retirement. It does not
 independently recompute the Linux executable hash. Counter payload stays transient.
 
-Broader quick verification is pending. This is not
+Broader quick verification passes at 1d144d0 in the immutable native clone:
+369 Python and 1,325 client tests, formatting, workspace/feature-off Clippy, zero
+doc tests and public-tree checks. Cargo.lock is unchanged. Content/launcher/theme
+are unchanged-scope skips and vanilla parity is explicitly skipped by --quick.
+This is not
 transactional metadata, a durability barrier for the autosave HUD, general save
 error coverage, player/entity ownership recovery or a coherent checkpoint. Other
 metadata, raid transition and direct dirty-marker handoff gaps are recorded in

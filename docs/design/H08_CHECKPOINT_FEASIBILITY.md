@@ -99,3 +99,14 @@ H08_SCORE_METADATA_PACKET. The remaining helpers need distinct handling:
   markers until successful enqueue; that alone is not entity-retirement recovery.
 
 This is a source audit, not completed failure coverage or checkpoint acceptance.
+
+The later retention audit proposes H08_DIRTY_HANDOFF_PACKET for the direct
+save_level enqueue boundary. switch_level's synchronous dirty drain and normal
+unload remain separate ownership paths. Parked levels swap raid state with World,
+but in-frame switch_level does not. Merely returning false from the four lazy raid
+load callers is insufficient: other raid readers/mutators can still access the
+old dimension's state. Preflight transition persistence and preserve/reset owned
+level state explicitly. New transition errors must also preserve portal player
+ownership: enter_dimension currently takes the player before fallible switch_level
+and does not restore it on Err, unlike the command teleport path. These are source
+findings for later bounded transition work, not repaired behavior.
