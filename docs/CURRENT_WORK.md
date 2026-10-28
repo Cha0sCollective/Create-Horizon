@@ -35,9 +35,10 @@ Completed bounded evidence:
   strict receipts and clean exit; see `docs/reference/BASELINE_D0.md`. These are
   software-rendered unmodified-engine measurements, not B2/GPU qualification.
 
-Next bounded implementation proposal: immutable paired content/identity snapshots
-in `docs/design/H02_NEXT_PACKET.md`, before discovery or activation. Independent
-reference work is scoped in the reviewed `docs/design/P02_ARBITRATION_PACKET.md`;
-those new fixtures have not run. Full H02/P02 and G1/G2/G3 remain open. Live Create
+Immutable paired content/identity snapshots are complete locally, as recorded in
+`docs/reference/H02_SNAPSHOT_RESULTS.md`. Discovery/activation need their next
+bounded engine assignment. Active independent reference work is scoped in
+`docs/design/P02_ARBITRATION_PACKET.md`; calibration has no accepted outcomes yet.
+Full H02/P02 and G1/G2/G3 remain open. Live Create
 blocks, authoritative machine persistence and retained animation are not implemented.
 Public engine publication, upstream submission and release remain separate decisions.

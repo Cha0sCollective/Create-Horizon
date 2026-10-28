@@ -1,9 +1,10 @@
-# Next H02 packet: immutable package identity before activation
+# H02c: immutable package identity before activation
 
-This is the next proposed bounded implementation packet after H02b, not a claim
-that the complete loader or S1 is ready. The October 27 run completed this design
-and the baseline repeat recorded in reference/BASELINE_D0.md. Implementation after
-the 7 p.m. Central cutoff requires a new owner instruction.
+Implemented and reviewed locally after the owner explicitly resumed work beyond
+the earlier cutoff; see ../reference/H02_SNAPSHOT_RESULTS.md for exact checks and
+limits. This document retains the bounded implementation scope after H02b. The
+complete loader and S1 remain open. The earlier run's baseline evidence remains
+in ../reference/BASELINE_D0.md.
 
 ## Concrete seam
 
