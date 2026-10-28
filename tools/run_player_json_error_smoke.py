@@ -175,6 +175,10 @@ class PlayerJsonSession(clock_helper.ClockSession):
         ) & ((1 << bits) - 1)
         state = palette[entry]
         base.dump(self.out / (label + '-saved-block.json'), {'position': self.position, 'state': state})
+        # The raw NBT helper retains 26.3 mixed-list wrappers: a default
+        # string state is encoded as the sole empty-key compound entry.
+        if isinstance(state, dict) and set(state) == {''}:
+            state = state['']
         return state if isinstance(state, str) else state.get('Name', state.get('id'))
 
     def verify_saved(self, label, count, block, rate, spawn_x):

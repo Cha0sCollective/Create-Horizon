@@ -82,4 +82,6 @@ Fresh independent read-only design review found an initial P1 gap: store_owner
 errors could reappear during stop_integrated after its earlier log-only save_guest,
 skipping world metadata and cleanup. The revised deferred-JSON/common ordering and
 minimal integrated cleanup above close that design gap; no owner decision is needed.
-Implementation and runtime qualification remain pending.
+Implementation, native checks, both-mode counter regressions, focused actual JSON
+faults, broad quick checks and final independent receipt review now pass at ecb93cc.
+See ../reference/H08_PLAYER_JSON_METADATA_RESULTS.md for exact scope and limits.
