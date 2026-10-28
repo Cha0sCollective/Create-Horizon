@@ -34,3 +34,6 @@ client/server callback types without executing guest code; see
 discovered or activated by the game loader.
 The [H02c snapshot evidence](docs/reference/H02_SNAPSHOT_RESULTS.md) records
 immutable package bytes, deterministic identity and resource-cache checks.
+The [arbitration observations](docs/reference/P02_ARBITRATION_RESULTS.md) add six
+repeated Java cases for competing sources, recovery and overspeed destruction;
+the native solver's multi-source behavior remains unimplemented.

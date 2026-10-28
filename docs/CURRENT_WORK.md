@@ -1,14 +1,15 @@
 # Current work
 
 The owner explicitly resumed development after the October 27 cutoff and asked
-the coordinator to arrange useful parallel work. H02c immutable snapshots completed
-locally; see docs/reference/H02_SNAPSHOT_RESULTS.md. Discovery, activation and
-public publication stay separate. Active bounded reference packet:
-`docs/design/P02_ARBITRATION_PACKET.md`, in an
-isolated private worktree on `codex/p02-arbitration-reference`. The coordinator
-owns integration and independent review; no standing team or public action is implied.
+the coordinator to arrange useful parallel work. Both bounded packets completed:
+H02c immutable snapshots and the six-case source-arbitration reference observations.
+See docs/reference/H02_SNAPSHOT_RESULTS.md and P02_ARBITRATION_RESULTS.md.
+Discovery, activation and public publication stay separate. The reference worker's
+isolated checkout is retained on `codex/p02-arbitration-reference`; its reviewed
+commit was integrated into the private development branch. No standing team is active.
 
-- Private branch: `codex/h02-immutable-notes`, based on `6897ea7`; prior notes are backed
+- Private branch: `codex/p02-arbitration-accepted`, following `93381b4` and integrated
+  reference commit `c1d6bf5`; prior notes are backed
   up to the verified private `Cha0sCollective/Create-Horizon` repository.
 - Engine branch: local `codex/h02-immutable-snapshot` at `58e49d4d0717b7d2382a6e6e02b58ee3bd531cfd`,
   following H02a/b. The engine changes remain unpublished.
@@ -31,14 +32,20 @@ Completed bounded evidence:
 - H02a paired declarations and H02b required callback/import type checks pass
   focused tests, real sandbox regressions, lints and independent reviews. Broad
   quick checks pass with post-fix scope explained in H02_TYPED_RESULTS.md.
+- H02c immutable content/identity and cache checks are reviewed and locally committed.
+  Post-fix feature tests, real resource-cache regression and the broad quick suite pass.
+- Six arbitration/overspeed GameTests pass twice, all 800 samples per fresh world
+  compare equal, with 211 dependency records and 15 configurations. Eight derived
+  validator controls pass; old six- and fifteen-case corpora still load/compare.
 - Fresh five-window B0 repeat completed without overlapping agent builds, with
   strict receipts and clean exit; see `docs/reference/BASELINE_D0.md`. These are
   software-rendered unmodified-engine measurements, not B2/GPU qualification.
 
 Immutable paired content/identity snapshots are complete locally, as recorded in
 `docs/reference/H02_SNAPSHOT_RESULTS.md`. Discovery/activation need their next
-bounded engine assignment. Active independent reference work is scoped in
-`docs/design/P02_ARBITRATION_PACKET.md`; calibration has no accepted outcomes yet.
+bounded engine assignment using the concrete traps in docs/design/H02_NEXT_PACKET.md.
+The completed observations follow `docs/design/P02_ARBITRATION_PACKET.md`; the native
+solver still rejects multiple sources/contradictory cycles rather than guessing.
 Full H02/P02 and G1/G2/G3 remain open. Live Create
 blocks, authoritative machine persistence and retained animation are not implemented.
 Public engine publication, upstream submission and release remain separate decisions.
