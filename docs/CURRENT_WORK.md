@@ -1,13 +1,17 @@
 # Current work
 
-The October 27 run is closing at the owner's 7 p.m. Central cutoff. Code, review
-and baseline work is complete; further implementation after that cutoff requires
-a new owner instruction. No owned Linux game or build process remains running.
+The owner explicitly resumed development after the October 27 cutoff and asked
+the coordinator to arrange useful parallel work. H02c immutable snapshots completed
+locally; see docs/reference/H02_SNAPSHOT_RESULTS.md. Discovery, activation and
+public publication stay separate. Active bounded reference packet:
+`docs/design/P02_ARBITRATION_PACKET.md`, in an
+isolated private worktree on `codex/p02-arbitration-reference`. The coordinator
+owns integration and independent review; no standing team or public action is implied.
 
-- Private branch: `codex/h02-typed-preflight-notes`; development notes are backed
+- Private branch: `codex/h02-immutable-notes`, based on `6897ea7`; prior notes are backed
   up to the verified private `Cha0sCollective/Create-Horizon` repository.
-- Engine branch: local `codex/h02-paired-types` at `2f1041966d0be580bcecb96ee040d8941503f1fa`,
-  following H02a `0654559`. Both changes remain unpublished.
+- Engine branch: local `codex/h02-immutable-snapshot` at `58e49d4d0717b7d2382a6e6e02b58ee3bd531cfd`,
+  following H02a/b. The engine changes remain unpublished.
 - Create reference: unchanged detached `7ff2760e4924d35d4bc2e22c4b19923f0178cd16`.
   Base/toolchain/resource pins remain in `workspace.toml` and reference records.
 - Effective orchestration: AGENTS.md and `orchestration/ADOPTION.md`.

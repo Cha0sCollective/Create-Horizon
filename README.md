@@ -32,3 +32,5 @@ The local engine now checks experimental paired-package declarations and require
 client/server callback types without executing guest code; see
 [H02b results](docs/reference/H02_TYPED_RESULTS.md). Paired packages are not yet
 discovered or activated by the game loader.
+The [H02c snapshot evidence](docs/reference/H02_SNAPSHOT_RESULTS.md) records
+immutable package bytes, deterministic identity and resource-cache checks.
