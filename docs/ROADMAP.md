@@ -7,7 +7,7 @@ remain proposed until their corresponding gate accepts them.
 | Stage | Outcome | Current state |
 | --- | --- | --- |
 | S0 | Runnable pinned reference, repeatable traces and bounded host contract | G0 accepted for bounded experiments; performance qualification open |
-| S1 | Persistent synchronized generic machine with retained animation | H02/H03b/H04b/H04c, H05a transient counter and H08a1/a2 save prerequisites pass both modes; H03c metadata reviewed/tested; H08a3 finished handoff active; full H02/H03/H04/H05/G1 open |
+| S1 | Persistent synchronized generic machine with retained animation | H02/H03b/H04b/H04c, H05a counter and H08a1-a4 save prerequisites pass both modes; focused vanilla reader passes; H08a5 map/random metadata active; full H02/H03/H04/H05/G1 open |
 | S2 | Verified motor, shafts and two cog sizes | P02a/b and six-case repeated source-arbitration observations reviewed; native multi-source rules and full P02/integration open, live integration requires G1 |
 | S3 | Five-component playable milling MVP and two-client evidence | Planned; G3 open |
 | S4 | Obtainable survival power and a small factory | Future scope |
@@ -42,8 +42,9 @@ smoke. See `docs/reference/H03_STATIC_MATERIALIZER_RESULTS.md`. The completed
 assertions in integrated/in-frame modes. See `docs/reference/H05_COUNTER_RESULTS.md`.
 The save-completion prerequisite now passes both modes in
 `docs/reference/H08_SAVE_COMPLETION_RESULTS.md`; proto callback errors pass in
-`docs/reference/H08_PROTO_SAVE_ERRORS_RESULTS.md`. Next is the bounded finished
-chunk handoff in `docs/design/H08_FINISHED_CHUNK_HANDOFF_PACKET.md`,
+`docs/reference/H08_PROTO_SAVE_ERRORS_RESULTS.md`. Finished handoff and strict POI
+writer results now pass, with a separate focused vanilla chest/entity reader.
+Next is `docs/design/H08_MAP_RANDOM_METADATA_PACKET.md`,
 following `docs/design/H08_CHECKPOINT_FEASIBILITY.md`;
 completed arbitration observations are in `docs/reference/P02_ARBITRATION_RESULTS.md`.
 G1/G2/G3 remain open.

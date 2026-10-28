@@ -51,3 +51,21 @@ durability or coherent recovery evidence. Selective journals and versioned-regio
 redesigns would expand scope materially and need an owner decision before work.
 The bounded experiment above can be investigated before that decision is needed;
 it must still prove the specified completed-checkpoint conservation contract.
+
+## Later bounded producer audit
+
+The inspected compiled Persistent/Vanilla/Test/Flat providers keep Generate,
+Decorate and Finish jobs in memory or perform saved-data reads. Job::Save queues
+proto records; owner-side finished-result reconciliation can queue finished chunk
+records. LOD/structure search uses reads or in-memory caches; pregeneration pumps
+the ordinary owner path. With the owner genuinely frozen, tracked write-capable
+work reconciled and every participating SaveDir flushed, additional plain
+generation drain is not required merely to prevent world-file writes. This is a
+source conclusion for these built-ins, not arbitrary ChunkGenerator code.
+
+Capture must prevent subsequent streaming update/reconciliation, pregeneration and
+mutating control tasks. Tick freeze is insufficient, and server-hold still serves
+control tasks; use a blocking owner operation or an equivalent admission barrier.
+H08a1/a2/a3 improve generation completion/errors but do not establish that barrier.
+Strict writer-side POI reads, suppressed metadata writes and player/native-entity
+retirement ownership remain separate prerequisites. No checkpoint is qualified.

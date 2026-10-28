@@ -18,9 +18,10 @@ through handoff. Reuse region/POI save_later with the same Arc, then add a narro
 entity enqueue accepting that Arc. A private Record variant can hold it and make
 the existing entity-file NBT only on encode/pending-read paths. Avoid cloning every
 Chunk or moving away the only entity vector. Preserve read-your-pending-save and
-empty-entity deletion semantics and existing on-disk formats. Region encoding
-already regenerates/removes the legacy entities key; it must not duplicate the
-separate entity-file payload.
+empty-entity deletion semantics and existing on-disk formats. Full region encoding
+must omit the legacy entities key while keeping unrelated extras; verify the raw
+saved NBT, because decoding filters that key and cannot prove absence on disk.
+Do not duplicate the separate entity-file payload or change proto entity encoding.
 
 Success means accepted by every required enqueue, not cross-folder atomicity or
 durable disk completion. Before pending insertion, SaveDir may own nothing; after

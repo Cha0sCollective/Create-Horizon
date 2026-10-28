@@ -1,81 +1,66 @@
 # Current work
 
 The latest owner resume authorizes development to a genuine blocker or required
-input, superseding the earlier cutoff/break. No public publication, promotion or
-standing team is authorized. Require fresh independent Sol High review for each
-substantive candidate. Preserve source-informed personal-use provenance and R01.
+input, superseding the old cutoff/break. No public publication, promotion or
+standing team is authorized. Keep source-informed personal-use provenance and R01.
+Require fresh independent read-only Sol High review for substantive candidates.
 
-- Private branch `codex/h02-smoke-h03-notes`; checkpoints backed up privately.
-- Engine `codex/h08-finished-chunk-handoff` based at
-  `928f43c2db203049c6266baf3682b16a806f028a`, tree
-  `a0d9537b4e044716318ce4c00f4b319a45175ca3`; one bounded worker now owns three
-  finished-chunk handoff files. H08a2 is independently reviewed and passes targeted
-  checks, both actual modes and broad quick verification. H08a1
-  completed all checks at `1e87673`.
-  The qualified counter branch remains `codex/h05-counter-integration`.
-  Commits remain local only;
-  normal hooks enabled, upstream push disabled.
-- Create reference clean detached `7ff2760e4924d35d4bc2e22c4b19923f0178cd16`.
-  Pins remain in workspace.toml. Never change Prism/playable saves or references.
+- Private branch: `codex/h02-smoke-h03-notes`; checkpoints backed up privately.
+- Engine branch: `codex/h08-map-random-metadata`, reviewed/tested local commit
+  `c161eaa1f361cd4e423c4cb07120c2f9c1d529ab`, tree
+  `5c1cc7723d4ee5ea7f53906f4ea3d65f53b3c6b0`, clean. Source worker released files;
+  coordinator owns the optimized frozen build and validation. No worker Cargo.
+- Engine commits stay local; normal hooks enabled, upstream push disabled.
+- Create reference stays clean detached `7ff2760e4924d35d4bc2e22c4b19923f0178cd16`.
+  Pins are in workspace.toml. Never alter Prism/playable saves/reference snapshots.
 
-H05a transient native counter is independently source/receipt reviewed and
-qualified in both actual game modes. Frozen game SHA256
-`92a1e554b9dee74150c39ddeb40918c8c65b0f0aac9ef1ab5dad44268f0c19a7`:
+Completed bounded foundations: H05a transient counter and H08a1/a2/a3/a4 save
+prerequisites have source review, focused tests, real games in both modes and
+broad quick verification. Latest frozen game SHA256
+`f83f449607ba6df59f1fe73379f66f576cbd1b94c765a2f8ad084725148e80c7` passes:
 
-- Integrated `ad45af86-dd8c-422b-842c-800cf527eed2`: 362 assertions.
-- In-frame `a09f3b77-0945-41ff-a16e-5b380d8f3662`: 347 assertions.
+- Integrated `dc4d7411-897d-4aab-b914-820eee24a36c`: 362 assertions.
+- In-frame `d94885cd-f3be-41d7-8853-9b4ee60fc0ef`: 347 assertions.
 
-Reviewed driver `tools/run_counter_game_smoke.py` SHA256
+Same qualified driver `tools/run_counter_game_smoke.py`, SHA256
 `d19c480572c3fbcb0ce01afeb868efb5dc276ad64606ab01f40edd9bf2d970e0`.
-Actual placement, exact steps, stale keys, pause/freeze, ticket-only suspension,
-dormancy/reload, parked retention versus replacement, final retirement and loaded
-cube restart-disabled pass. All inherited paired/state/mutation/piston/SDK/
-dimension/residency/admission controls pass. Initial/restart exit 0; intentional
-admission refusals exit 1; all cleanup errors null. See
-`docs/reference/H05_COUNTER_RESULTS.md` for identities, limits and excluded failed
-preflight/calibration. Normal block saving is not counter persistence.
+Counter remains transient; loading its saved block does not restore payload.
+See H05_COUNTER_RESULTS and H08_SAVE_COMPLETION/PROTO_SAVE_ERRORS/
+FINISHED_CHUNK_HANDOFF/STRICT_POI_WRITER_RESULTS in docs/reference. They preserve
+failed preflight/calibration, red raw-NBT test, precise refusal cleanup races and
+all unqualified limits. Latest quick check passes 369 Python/1,311 client tests
+plus format/lint/doc/public-tree; vanilla parity is explicitly skipped.
 
-Core `8cff24d` passes focused native/regression/resource tests and feature-on/off
-library/test Clippy. Game `28ded16` passes 137 binary tests (three ignored),
-feature-on/off binary Clippy and fmt. Broader `pr_ready.py --quick --base 0264c18...`
-passes from a fresh native Linux clone: 369 Python, 1,381 Rust and 197 launcher
-tests plus formatting/lints/public tree. Parity is explicitly skipped. Its resource
-tests lacked prepared data; eight explicit paired-on owned-resource tests now
-pass. `.local/h05-pr-ready.log` and `.local/h05-owned-resource-tests.log` are raw
-records. No Cargo by workers while the coordinator owns the native target. Serialize all
-Cargo including test execution; never export GIT_DIR/GIT_WORK_TREE into tests.
+Separate focused vanilla 26.3 reader run `ad33ad7f-f997-4f2c-832c-f220e6d7733b`
+passes on frozen a75184e/325e1f53..., proving this chest23/pig fixture's shared
+save format reads correctly in actual Java25/Minecraft. Both processes exit0,
+no helper-filtered problems or cleanup errors. See H08_VANILLA_SAVE_READBACK_RESULTS.
+It is not full parity, out-of-range callback execution or coherent recovery.
 
-Completed H08a1 packet is `docs/design/H08_SAVE_COMPLETION_PACKET.md`: honest
-synchronous generation-save completion, a prerequisite from
-`docs/design/H08_CHECKPOINT_FEASIBILITY.md`.
-Timeout/disconnected workers must not silently report success or consume the
-remaining dirty snapshots. This is preparation, not coherent persistence. No
-worker may run Cargo until the coordinator releases the target. Three controlled
-failure tests, three generation-save tests, 33 disk-save tests, 137 binary tests
-and feature-on/off Clippy pass. New frozen game `5b830110...3f42e9` passes integrated
-362/in-frame 347 full assertions; broad quick checks pass 369 Python/1,307 client
-tests plus format/Clippy/doc/public-tree checks (parity skipped). Independent receipt review clears both, noting
-one expected refusal cleanup race accurately. See
-`docs/reference/H08_SAVE_COMPLETION_RESULTS.md`; this is not a checkpoint barrier.
+Active packet: `docs/design/H08_MAP_RANDOM_METADATA_PACKET.md` (H08a5). Source-only
+implementation covers map/index/random metadata error propagation and immutable RNG
+snapshot including local/LAN merchant loans. Identical duplicate streams may
+merge; conflicting states must refuse before the random-file write. No runtime
+loan ownership/reset-policy repair, menu closing or new schema. Fresh source review,
+144 binary tests (including seven new cases), RNG regression and on/off Clippy pass.
+Frozen game a8570b08... passes 362/347 counter checks in runs
+1e1b15fb-540d-4f05-907b-0602b5cf3d45 and 91f3d9c2-14bb-4e33-b92d-e47404819683;
+normal initial/restart exits are clean. Broad quick checks remain pending. See
+`docs/reference/H08_MAP_RANDOM_METADATA_RESULTS.md`. Other metadata and player/native-entity retirement remain
+open. Next scope must stay bounded; see H08_CHECKPOINT_FEASIBILITY for the frozen
+owner/writer audit, including why tick-freeze/server-hold alone is insufficient.
 
-Completed H08a2 packet `docs/design/H08_PROTO_SAVE_ERRORS_PACKET.md` changes only native
-proto callback errors/ownership with a sticky fault that stops new terrain producer
-jobs while draining old results. Reviewed three-file change passes six controlled
-resource groups, three generation-save tests, 33 disk-save tests, 137 binary tests
-and on/off Clippy; frozen game `66a51ee6...21fc81d` passes integrated 362/in-frame
-347 assertions with independent receipt review; broad checks pass 369 Python/
-1,307 client tests and format/lint/doc/public-tree checks (parity skipped). See
-`docs/reference/H08_PROTO_SAVE_ERRORS_RESULTS.md`. Active next packet is
-`docs/design/H08_FINISHED_CHUNK_HANDOFF_PACKET.md`: worker owns streaming.rs,
-save.rs and generation_saves.rs, source only, no Cargo/formatting/commits. Its
-draft is unreviewed/unqualified.
-No player/native-entity-unload/checkpoint expansion.
+Coordinator owns the native Cargo target. Serialize every Cargo operation and
+its test execution. Use native Linux clones for broad CI; never export
+GIT_DIR/GIT_WORK_TREE into tests. Current clone path is in .local/h05-ci-checkout.txt.
+Clear HORIZON_SESSION_FILE in every test child environment; invoke immutable older
+smoke drivers through an environment-sanitizing wrapper. Do not modify their
+qualified bytes. Fresh independent Sol High review cleared this restriction and
+the readback-driver guard; current Windows/WSL presence checks are both false.
+All runtime worlds/homes/launcher/XDG folders stay fresh and isolated; generated
+JARs/assets/worlds/raw evidence never enter Git.
 
-Earlier qualified residency proof: a4470cd, integrated 228/in-frame 212; see
-`docs/reference/H04_RESIDENCY_GAME_RESULTS.md`. The in-frame lighting failure and
-reviewed fix remain accurately recorded. Other S0/P02/B0, H02/H03/H04 and PR1189
-reconciliation evidence remain in their result/design records.
-
-Full H02/H03/H04/H05, saved generations, guest callbacks, transactions/inventories,
-coherent recovery, external paired networking, retained animation, performance and
-G1/G2/G3 stay open. Dedicated/idle/save-error retirement is source-reviewed only.
+Full H02/H03/H04/H05, saved generations, guest callbacks, staged transactions,
+inventories, coherent checkpoints, external paired networking, retained animation,
+performance and G1/G2/G3 remain open. Earlier S0/P02/B0 and R01 evidence stays in
+its result records; this work does not promote those gates.
