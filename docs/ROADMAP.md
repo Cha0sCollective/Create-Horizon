@@ -7,7 +7,7 @@ remain proposed until their corresponding gate accepts them.
 | Stage | Outcome | Current state |
 | --- | --- | --- |
 | S0 | Runnable pinned reference, repeatable traces and bounded host contract | G0 accepted for bounded experiments; performance qualification open |
-| S1 | Persistent synchronized generic machine with retained animation | H02 activation and H03b six-state materialization pass both real-game startup modes; H04a resident mutation observer next; full H02/H03/H04/G1 open |
+| S1 | Persistent synchronized generic machine with retained animation | H02/H03b pass both real-game startup modes; H04a observer reviewed/tested, H04b game qualification underway; full H02/H03/H04/G1 open |
 | S2 | Verified motor, shafts and two cog sizes | P02a/b and six-case repeated source-arbitration observations reviewed; native multi-source rules and full P02/integration open, live integration requires G1 |
 | S3 | Five-component playable milling MVP and two-client evidence | Planned; G3 open |
 | S4 | Obtainable survival power and a small factory | Future scope |
@@ -38,6 +38,6 @@ deferred; it is not a performance qualification or release waiver. The first P02
 kernel and selected native/Wasm checkpoints are complete. H02 local discovery and
 activation and H03b six-state materialization now pass integrated/in-frame real-game
 smoke. See `docs/reference/H03_STATIC_MATERIALIZER_RESULTS.md`. The next host packet
-is `docs/design/H04_MUTATION_OBSERVER_PACKET.md`;
+is `docs/design/H04_GAME_OBSERVER_PACKET.md`, following the reviewed H04a observer;
 completed arbitration observations are in `docs/reference/P02_ARBITRATION_RESULTS.md`.
 G1/G2/G3 remain open.
