@@ -49,7 +49,7 @@ public-tree hook:
 | lib.rs | `21c7b8e37edab993cae5ac573f23f403770425fa2c8f3b245f589c35d474f725` |
 
 Next: `docs/design/H04_RESIDENCY_GAME_PACKET.md` adds explicit strict-authority
-controls and real unload/reload/SDK-read probes in both game modes. It remains
-unqualified until actual frozen-build receipts are reviewed. Eligibility,
+controls and real unload/reload/SDK-read probes in both game modes. Those now pass
+in `docs/reference/H04_RESIDENCY_GAME_RESULTS.md`. Eligibility,
 pause/parked activity, lifetime retirement, records, generations, inventories and
 coherent recovery remain open. No engine push or G1 promotion occurred.

@@ -1,73 +1,61 @@
 # Current work
 
 The latest owner resume authorizes development to a genuine blocker or required
-input, superseding the earlier cutoff and break. No public publication, promotion
-or standing agent team is authorized. Use bounded packets and fresh independent
-Sol High review for substantive changes.
+input, superseding the earlier cutoff/break. No public publication, promotion or
+standing team is authorized. Require fresh independent Sol High review for each
+substantive candidate. Preserve source-informed personal-use provenance and R01.
 
-- Private branch: `codex/h02-smoke-h03-notes`; last backed-up checkpoint `ede5998`.
-  New qualified result notes and residency probe changes are being recorded.
-- Engine: `codex/h04-residency-integration` at
-  `ddbeb8d4bdda9af13093b0f9f3ce6ff098cf6f55`, tree
-  `50606a7ff488dba756823740294a2873a132e0e0`. Residency Game controls are dirty,
-  separately reviewed and undergoing checks; keep them separate from the library
-  commit. Public engine pushes remain unauthorized; normal hook stays enabled.
-- Create reference: clean detached
-  `7ff2760e4924d35d4bc2e22c4b19923f0178cd16`. Preserve reference snapshots,
-  original prepared resources and baseline binaries. Pins remain in workspace.toml.
+- Private branch `codex/h02-smoke-h03-notes`; previous backup `0c08139`.
+- Engine `codex/h08-save-completion` based at
+  `28ded16ed9c3d71328d829d149bb624c322f075a`, tree
+  `c381f9fdbecead76e896b97c28e283b4ab325f77`; one bounded save worker now edits
+  Streaming, its three Game/API callers and generation-save test call sites.
+  The qualified counter branch remains `codex/h05-counter-integration`.
+  Commits remain local only;
+  normal hooks enabled, upstream push disabled.
+- Create reference clean detached `7ff2760e4924d35d4bc2e22c4b19923f0178cd16`.
+  Pins remain in workspace.toml. Never change Prism/playable saves or references.
 
-H02d activation, H03a/b static states, H04a resident writes and H04b explicit
-server-authority observations are qualified within their bounded result records.
-H03c captured machine type/schema metadata is reviewed/tested at `22ef8c5`; it
-creates no instances, ticking, inventories or persistent generations.
+H05a transient native counter is independently source/receipt reviewed and
+qualified in both actual game modes. Frozen game SHA256
+`92a1e554b9dee74150c39ddeb40918c8c65b0f0aac9ef1ab5dad44268f0c19a7`:
 
-Final frozen tested engine is `dfcd7e65a7c7e94692ada9941669f8791a533f9b`, tree
-`cf522eb66ae8adc1dd687d2901218aaca19e0df1`, game SHA256
-`74f0dc6265c21f91a3d9d8b17b811c4de27eccd617e20d8f344f5ca61637d031`.
-Its actual extended/dimension runs pass:
+- Integrated `ad45af86-dd8c-422b-842c-800cf527eed2`: 362 assertions.
+- In-frame `a09f3b77-0945-41ff-a16e-5b380d8f3662`: 347 assertions.
 
-- Integrated `31210bf1-b926-47b6-ab72-f0cd0219db6a`: 153 assertions.
-- In-frame `3b12ec1e-7321-4e8a-9d16-374711479674`: 140 assertions.
+Reviewed driver `tools/run_counter_game_smoke.py` SHA256
+`d19c480572c3fbcb0ce01afeb868efb5dc276ad64606ab01f40edd9bf2d970e0`.
+Actual placement, exact steps, stale keys, pause/freeze, ticket-only suspension,
+dormancy/reload, parked retention versus replacement, final retirement and loaded
+cube restart-disabled pass. All inherited paired/state/mutation/piston/SDK/
+dimension/residency/admission controls pass. Initial/restart exit 0; intentional
+admission refusals exit 1; all cleanup errors null. See
+`docs/reference/H05_COUNTER_RESULTS.md` for identities, limits and excluded failed
+preflight/calibration. Normal block saving is not counter persistence.
 
-Both include exact state/player placement, ordered/no-op/filter/overflow, actual
-piston and SDK deferred writes, captured reload, restart and admission refusals.
-Actual Nether round trips preserve the parked integrated World scope/history;
-in-frame replacement resets observation and restores the player/saved block.
-See `docs/reference/H04_DIMENSION_LIGHTING_RESULTS.md`. Earlier in-frame timeout
-`32759998-39ab-4249-8ac6-37206d00a7be` remains failed: TestTerrain omitted proto
-lighting views required by arrival corners. The reviewed small fix preserves the
-strict readiness gate and passes focused generator/resource tests. Superflat
-runtime, full lifecycle and performance are not established by these checks.
+Core `8cff24d` passes focused native/regression/resource tests and feature-on/off
+library/test Clippy. Game `28ded16` passes 137 binary tests (three ignored),
+feature-on/off binary Clippy and fmt. Broader `pr_ready.py --quick --base 0264c18...`
+passes from a fresh native Linux clone: 369 Python, 1,381 Rust and 197 launcher
+tests plus formatting/lints/public tree. Parity is explicitly skipped. Its resource
+tests lacked prepared data; eight explicit paired-on owned-resource tests are now
+running. `.local/h05-pr-ready.log` and `.local/h05-owned-resource-tests.log` are raw
+records. No Cargo by workers while the coordinator owns the native target. Serialize all
+Cargo including test execution; never export GIT_DIR/GIT_WORK_TREE into tests.
 
-Active packet: `docs/design/H04_RESIDENCY_GAME_PACKET.md`, following
-`H04_RESIDENCY_PACKET.md`. The passive residency library at ddbeb8d watches at most
-64 supplied chunk coordinates and a bounded queue, captures committed load/unload/
-replacement, separates initial/current snapshots from history, and retains no
-Chunk payload. Five new tests, explicit resource seam test, eight prior mutation
-regressions, World regression and feature-on/off library/test Clippy pass. The
-worker's exact reviewed files are integrated; its isolated worktree remains at
-`.local/worktrees/h04-residency` for provenance.
+Active next packet is `docs/design/H08_SAVE_COMPLETION_PACKET.md`: honest
+synchronous generation-save completion, a prerequisite from
+`docs/design/H08_CHECKPOINT_FEASIBILITY.md`.
+Timeout/disconnected workers must not silently report success or consume the
+remaining dirty snapshots. This is preparation, not coherent persistence. No
+worker may run Cargo until the coordinator releases the target. This worker's
+code draft is unreviewed/unqualified; do not treat it as a checkpoint barrier.
 
-Game controls reuse the strict authority routing and remain opt-in. Driver
-`tools/run_mutation_game_smoke.py --extended --dimensions --residency` is reviewed
-but not executed yet. Coordinator owns its binary compile/test/lint checks and
-next frozen build, then both actual game modes and independent receipt review.
-No automatic observer or guest machinery API exists.
+Earlier qualified residency proof: a4470cd, integrated 228/in-frame 212; see
+`docs/reference/H04_RESIDENCY_GAME_RESULTS.md`. The in-frame lighting failure and
+reviewed fix remain accurately recorded. Other S0/P02/B0, H02/H03/H04 and PR1189
+reconciliation evidence remain in their result/design records.
 
-Serialize all Cargo operations sharing the native target, including test execution.
-Coordinator currently owns it for Game-controller checks. Use native Linux clones
-for CI; never export GIT_DIR/GIT_WORK_TREE into tests creating temporary repos.
-Every game uses fresh isolated game/launcher/XDG homes, never Prism/playable saves.
-
-Next after residency proof: bounded block-tick eligibility and explicit lifetime
-retirement, before an inventory-free host-record experiment. Coordinate events
-cannot reconstruct a machine which loads/unloads before consumption. Do not call
-eligibility full active/inactive lifecycle without pause/parked/running coverage.
-
-The save audit `docs/design/H08_CHECKPOINT_FEASIBILITY.md` proposes a frozen bounded
-whole-world checkpoint experiment, beginning with quiescence and propagated errors.
-Ordinary saves and settings storage are not coherent machine persistence. Pinned
-PR1189 generic API comparison is being recorded; no draft API is merged wholesale.
-Earlier S0/P02/B0 evidence and R01 reference-compatible full-output loss remain.
-Full H02/H03/H04/P02, G1/G2/G3, transactions/inventories, coherent recovery, external
-paired networking and retained animation stay open. No gate promotion is implied.
+Full H02/H03/H04/H05, saved generations, guest callbacks, transactions/inventories,
+coherent recovery, external paired networking, retained animation, performance and
+G1/G2/G3 stay open. Dedicated/idle/save-error retirement is source-reviewed only.

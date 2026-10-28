@@ -6,7 +6,7 @@ namespace = "create_horizon"
 repository = "https://github.com/Cha0sCollective/Create-Horizon"
 visibility = "private"
 stage = "post-G0 foundations"
-active_packet = "H02/H03b/H04b both-mode and dimension smokes pass; H03c metadata/H04c residency seam reviewed/tested; residency game proof next; G1 open"
+active_packet = "H05a native counter qualified in both modes (362/347); save-completion prerequisite next; persistence and G1 open"
 next_stage = "S1 host foundations and remaining P02; G1/G2/G3 open"
 
 [specification]

@@ -7,7 +7,7 @@ remain proposed until their corresponding gate accepts them.
 | Stage | Outcome | Current state |
 | --- | --- | --- |
 | S0 | Runnable pinned reference, repeatable traces and bounded host contract | G0 accepted for bounded experiments; performance qualification open |
-| S1 | Persistent synchronized generic machine with retained animation | H02/H03b/H04b pass both startup modes and actual dimension round trips; H03c metadata and H04c residency seam reviewed/tested, residency game probe next; full H02/H03/H04/G1 open |
+| S1 | Persistent synchronized generic machine with retained animation | H02/H03b/H04b/H04c and H05a transient native counter pass both startup modes; H03c metadata reviewed/tested; persistence/save foundations next; full H02/H03/H04/H05/G1 open |
 | S2 | Verified motor, shafts and two cog sizes | P02a/b and six-case repeated source-arbitration observations reviewed; native multi-source rules and full P02/integration open, live integration requires G1 |
 | S3 | Five-component playable milling MVP and two-client evidence | Planned; G3 open |
 | S4 | Obtainable survival power and a small factory | Future scope |
@@ -37,7 +37,10 @@ hardware in `docs/design/G0_DECISION.md`. B2/GPU budget ratification remains exp
 deferred; it is not a performance qualification or release waiver. The first P02
 kernel and selected native/Wasm checkpoints are complete. H02 local discovery and
 activation and H03b six-state materialization now pass integrated/in-frame real-game
-smoke. See `docs/reference/H03_STATIC_MATERIALIZER_RESULTS.md`. The next host packet
-is `docs/design/H04_RESIDENCY_GAME_PACKET.md`, following reviewed/tested residency capture;
+smoke. See `docs/reference/H03_STATIC_MATERIALIZER_RESULTS.md`. The completed
+`docs/design/H05_NATIVE_COUNTER_PACKET.md` and its Game proof pass 362/347
+assertions in integrated/in-frame modes. See `docs/reference/H05_COUNTER_RESULTS.md`.
+Next packet selection is the save-completion prerequisite to coherent persistence,
+following `docs/design/H08_CHECKPOINT_FEASIBILITY.md`;
 completed arbitration observations are in `docs/reference/P02_ARBITRATION_RESULTS.md`.
 G1/G2/G3 remain open.
