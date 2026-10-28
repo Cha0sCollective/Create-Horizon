@@ -1,4 +1,9 @@
-# H05d proposed authoritative guest-counter Game wiring
+# H05d authoritative guest-counter Game wiring
+
+Implemented and qualified locally at d2816f6d7f03cec0ab326ec9ad6f1b5cd4a0ed40.
+Both-mode normal/fault/native results and final independent receipt reviews pass;
+see docs/reference/H05_GUEST_GAME_RESULTS.md. The bounded scope below remains the
+acceptance boundary, with no persistence, inventory, performance or G1 claim.
 
 Fresh independent read-only Sol High design review finds no blocking issue.
 Actual SDK prerequisites below now pass; coordinator accepts bounded implementation.

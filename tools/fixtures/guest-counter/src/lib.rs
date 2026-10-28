@@ -1,4 +1,11 @@
 //! Import-free counter fixture; the host owns the committed counter.
+#[cfg(any(
+    all(feature = "trap", feature = "reject"),
+    all(feature = "trap", feature = "invalid"),
+    all(feature = "reject", feature = "invalid")
+))]
+compile_error!("select at most one counter fixture fault feature");
+
 wit_bindgen::generate!({
     path: "wit",
     world: "guest-counter-fixture",
@@ -59,7 +66,21 @@ impl server_events::Guest for Fixture {
 
 impl exports::counter_trial::Guest for Fixture {
     fn step(input: Request) -> Result<Proposal, Rejection> {
+        #[cfg(feature = "trap")]
+        if input.counter >= 3 {
+            panic!("counter fixture trap after three committed steps");
+        }
+        #[cfg(feature = "reject")]
+        if input.counter >= 3 {
+            return Err(Rejection::Rejected);
+        }
         let next_counter = input.counter.checked_add(1).ok_or(Rejection::Rejected)?;
+        #[cfg(feature = "invalid")]
+        let next_counter = if input.counter >= 3 {
+            input.counter.checked_add(2).ok_or(Rejection::Rejected)?
+        } else {
+            next_counter
+        };
         Ok(Proposal {
             world_instance: input.world_instance,
             instance: input.instance,
