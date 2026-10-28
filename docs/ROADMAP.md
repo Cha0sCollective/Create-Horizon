@@ -7,7 +7,7 @@ remain proposed until their corresponding gate accepts them.
 | Stage | Outcome | Current state |
 | --- | --- | --- |
 | S0 | Runnable pinned reference, repeatable traces and bounded host contract | G0 accepted for bounded experiments; performance qualification open |
-| S1 | Persistent synchronized generic machine with retained animation | H02/H03b/H04b/H04c, H05a counter and H08a1-a7 save prerequisites pass both modes; focused vanilla reader passes; H08a8 dirty-marker handoff active; full H02/H03/H04/H05/G1 open |
+| S1 | Persistent synchronized generic machine with retained animation | H02/H03b/H04b/H04c, H05a counter and H08a1-a8 save prerequisites pass both modes; focused vanilla reader passes; H08a9 world-clock metadata active; full H02/H03/H04/H05/G1 open |
 | S2 | Verified motor, shafts and two cog sizes | P02a/b and six-case repeated source-arbitration observations reviewed; native multi-source rules and full P02/integration open, live integration requires G1 |
 | S3 | Five-component playable milling MVP and two-client evidence | Planned; G3 open |
 | S4 | Obtainable survival power and a small factory | Future scope |
@@ -45,7 +45,8 @@ The save-completion prerequisite now passes both modes in
 `docs/reference/H08_PROTO_SAVE_ERRORS_RESULTS.md`. Finished handoff and strict POI
 writer results now pass, with a separate focused vanilla chest/entity reader.
 Map/random, scoreboard and bossbar/schedule metadata now pass both modes and broad
-regressions. Next is `docs/design/H08_DIRTY_HANDOFF_PACKET.md`,
+regressions. Direct dirty-marker handoff also passes, with explicit real queue
+faults. Next is `docs/design/H08_WORLD_CLOCK_METADATA_PACKET.md`,
 following `docs/design/H08_CHECKPOINT_FEASIBILITY.md`;
 completed arbitration observations are in `docs/reference/P02_ARBITRATION_RESULTS.md`.
 G1/G2/G3 remain open.
