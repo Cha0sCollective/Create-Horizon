@@ -1,51 +1,63 @@
 # Current work
 
-The owner explicitly resumed development after the October 27 cutoff and asked
-the coordinator to arrange useful parallel work. Both bounded packets completed:
-H02c immutable snapshots and the six-case source-arbitration reference observations.
-See docs/reference/H02_SNAPSHOT_RESULTS.md and P02_ARBITRATION_RESULTS.md.
-Discovery, activation and public publication stay separate. The reference worker's
-isolated checkout is retained on `codex/p02-arbitration-reference`; its reviewed
-commit was integrated into the private development branch. No standing team is active.
+Paused at the owner's request after the reviewed local H02d discovery/activation
+checkpoint. The owner asked for a break at the next good pause point. Do not resume
+work, tests or background agents until the owner asks to continue. No standing team
+or game process is intended to remain active.
 
-- Private branch: `codex/p02-arbitration-accepted`, following `93381b4` and integrated
-  reference commit `c1d6bf5`; prior notes are backed
-  up to the verified private `Cha0sCollective/Create-Horizon` repository.
-- Engine branch: local `codex/h02-immutable-snapshot` at `58e49d4d0717b7d2382a6e6e02b58ee3bd531cfd`,
-  following H02a/b. The engine changes remain unpublished.
-- Create reference: unchanged detached `7ff2760e4924d35d4bc2e22c4b19923f0178cd16`.
-  Base/toolchain/resource pins remain in `workspace.toml` and reference records.
-- Effective orchestration: AGENTS.md and `orchestration/ADOPTION.md`.
+- Private branch: `codex/h02-activation-notes`, based on accepted arbitration
+  checkpoint `84e476186f8d9c442545347dc5af849fd3c26390`.
+- Engine branch: local `codex/h02-activation-integration` at
+  `60050caa3b70b3496f40cf2080b1c3c8354a67a6`, after catalog `04a6d74` and runtime
+  `26aa212`. Final tree `e13629cc51c0e95d026a9e2db1b71a1ca7c4ce49` matches
+  fresh independent review. No public engine push/PR/release is authorized.
+- Create reference remains clean, detached at
+  `7ff2760e4924d35d4bc2e22c4b19923f0178cd16`. Source/toolchain pins remain in
+  workspace.toml. Personal source-informed reference is authorized; no Create
+  contribution or clean-room claim is planned.
+- Effective operating instructions remain AGENTS.md and orchestration/ADOPTION.md.
+  No operating-rule or permission expansion was made for this packet.
 
-Completed bounded evidence:
+Latest scope and evidence: docs/design/H02_ACTIVATION_PACKET.md and
+`docs/reference/H02_ACTIVATION_RESULTS.md`. The opt-in loader now captures selected
+pairs once, registers one owner, uses separate side Stores/settings, shows both
+sides' permissions, and checks both components before guest execution. Failed
+paired callbacks discard buffered output and stop both Stores. New local worlds
+pin exact package/build identities before editable loading. External paired
+networking refuses pending H09. Settings storage remains nontransactional and is
+not machine inventory persistence. Mutable legacy content cannot mix with active
+pairs. Experimental selection changes require restart.
 
-- Linux dependencies and JDKs 21/25 installed; owned Prism 26.3 resources prepared;
-  retained unmodified Linux client and isolated integrated-server smoke passed.
-- Fifteen real Create fixtures pass twice, 1,730 samples each comparing equal.
-  G0 accepts bounded experimental work; performance qualification remains open.
-  Owner-assisted motor UI evidence is in `docs/reference/S0_RESULTS.md`.
-- R01 explicitly matches the pinned full-output milling result loss. Preserve
-  this decision and its transfer/recovery limits in later P04 work.
-- Reviewed P02a kernel passes ten test groups. P02b matches 16 settled checkpoints /
-  62 machine observations from both accepted references natively and through the
-  actual server-Wasm sandbox. Full propagation timing and world machinery remain absent.
-- H02a paired declarations and H02b required callback/import type checks pass
-  focused tests, real sandbox regressions, lints and independent reviews. Broad
-  quick checks pass with post-fix scope explained in H02_TYPED_RESULTS.md.
-- H02c immutable content/identity and cache checks are reviewed and locally committed.
-  Post-fix feature tests, real resource-cache regression and the broad quick suite pass.
-- Six arbitration/overspeed GameTests pass twice, all 800 samples per fresh world
-  compare equal, with 211 dependency records and 15 configurations. Eight derived
-  validator controls pass; old six- and fifteen-case corpora still load/compare.
-- Fresh five-window B0 repeat completed without overlapping agent builds, with
-  strict receipts and clean exit; see `docs/reference/BASELINE_D0.md`. These are
-  software-rendered unmodified-engine measurements, not B2/GPU qualification.
+Catalog/runtime tests and integrated feature-on lint/admission tests pass. Fresh
+read-only Sol High review found no actionable issue. Real-game smoke qualification
+and broad post-integration regression/parity checks remain pending; compilation
+and sandbox tests are not connected gameplay evidence.
 
-Immutable paired content/identity snapshots are complete locally, as recorded in
-`docs/reference/H02_SNAPSHOT_RESULTS.md`. Discovery/activation need their next
-bounded engine assignment using the concrete traps in docs/design/H02_NEXT_PACKET.md.
-The completed observations follow `docs/design/P02_ARBITRATION_PACKET.md`; the native
-solver still rejects multiple sources/contradictory cycles rather than guessing.
-Full H02/P02 and G1/G2/G3 remain open. Live Create
-blocks, authoritative machine persistence and retained animation are not implemented.
-Public engine publication, upstream submission and release remain separate decisions.
+Resume with fresh isolated default-integrated and in-frame real-game smoke tests,
+using the authored fixture and proposed control probes recorded in the results.
+Exercise custom content once, client/server callbacks, one installed row, side
+storage, snapshot reuse, restart and saved-world mismatch refusal. Never use Prism
+or playable saves. Retained worker worktrees remain under `.local/worktrees/`;
+workers made no commits and their owned changes are already integrated.
+
+Earlier accepted evidence and limits:
+
+- S0: JDK21/25 and Linux dependencies installed; owned 26.3 resources prepared;
+  fifteen Create cases passed twice (1,730 samples each). See S0_RESULTS.md.
+- P02a/b: ten kernel test groups and native/actual-Wasm agreement at 16 settled
+  checkpoints / 62 machine observations. See P02 kernel/Wasm results.
+- H02a/b/c: declarations, typed preflight and immutable captured content/identity
+  reviewed locally. H02c broad quick suite passed; see H02_SNAPSHOT_RESULTS.md.
+- Six arbitration/overspeed cases passed twice (800 samples each); eight derived
+  validator controls passed. See P02_ARBITRATION_RESULTS.md. Native multi-source
+  arbitration and contradictory cycles remain unsupported.
+- Fresh software-rendered five-window B0 repeat completed without overlapping
+  builds. See BASELINE_D0.md. This is not B2/hardware performance qualification.
+- R01 matches the pinned millstone full-output item-loss behavior. Preserve the
+  exact decision and accounting limits for later P04 work.
+
+G0 permits bounded experimental work. Full H02/P02, G1/G2/G3, live Create blocks,
+authoritative lifecycle/transactions/persistence and retained animation remain
+open. Publication, upstream submission, promotion and release are separate owner
+decisions. The resumed discovery/activation instruction superseded the earlier
+October 27 time cutoff; the latest break request now controls continuation.

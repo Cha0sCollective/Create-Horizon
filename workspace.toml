@@ -6,7 +6,7 @@ namespace = "create_horizon"
 repository = "https://github.com/Cha0sCollective/Create-Horizon"
 visibility = "private"
 stage = "post-G0 foundations"
-active_packet = "H02c and source-arbitration observations complete; next loader discovery/activation packet; full H02/P02 open"
+active_packet = "H02d discovery/local activation reviewed checkpoint; paused by owner before real-game smoke; full H02/P02 open"
 next_stage = "S1 host foundations and remaining P02; G1/G2/G3 open"
 
 [specification]
