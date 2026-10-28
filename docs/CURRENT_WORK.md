@@ -1,57 +1,58 @@
 # Current work
 
-The owner resumed development through a genuine blocker or required input. H02d
-real-game activation qualification now passes in both modes. The active bounded
-packet is `docs/design/H03_STATIC_MATERIALIZER_PACKET.md`; its isolated worker owns
-parser/materializer/tests, and the coordinator owns integration, actual game
-checks and independent review. No standing team or public publication is authorized.
+The owner's latest resume authorizes development until a genuine blocker or
+required input, superseding the earlier cutoff and break. No public publication,
+promotion or standing agent team is authorized. Keep bounded packets and fresh
+independent Sol High review for substantive changes.
 
-- Private branch: `codex/h02-smoke-h03-notes`, following checkpoint `f19e0f9`.
-- Engine branch: local `codex/h03-state-plan-integration` at
-  `b1ced4fcd26fe9ecae5403b6968500342162ca1c`, tree
-  `ada6ce48c66937f9b48ea58cf8a32b63a99f0256`. Reviewed immutable state-plan module;
-  custom state admission remains unsupported until the materializer is integrated.
-- H03b worker: `.local/worktrees/h03-static-materializer` on
-  `codex/h03-static-materializer`, based on b1ced4f. No worker commits/staging/pushes.
-- Frozen tested game remains engine `60050caa3b70b3496f40cf2080b1c3c8354a67a6`,
-  tree `e13629cc51c0e95d026a9e2db1b71a1ca7c4ce49`; its executable/build receipt
-  stays separate from the developing checkout. See H02_GAME_SMOKE_RESULTS.md.
-- Create reference remains clean, detached at
-  `7ff2760e4924d35d4bc2e22c4b19923f0178cd16`. Source/toolchain pins are in
-  workspace.toml. Effective operating instructions remain AGENTS.md and
-  orchestration/ADOPTION.md; no operating-rule or permission expansion occurred.
+- Private branch: `codex/h02-smoke-h03-notes`, checkpoint `748601d` plus the H03b
+  qualification notes/driver delta being recorded now.
+- Engine: clean local `codex/h03-static-states` at
+  `0264c18fd268ff369af64dcaa3dd8d94ddfdecd6`, tree
+  `4c563e1baa9e800740d276fadaf5da38a508bd84`. Public engine pushes remain outside
+  authorization. Normal public-tree commit hook stays enabled.
+- Create reference: clean detached
+  `7ff2760e4924d35d4bc2e22c4b19923f0178cd16`. Source/toolchain pins remain in
+  workspace.toml. Preserve original prepared resources and baseline executables.
 
-H02d accepted runs under `.local/h02d/game-runs/`:
+H02d activation and H03b static materialization pass both real-game startup modes.
+See `docs/reference/H02_GAME_SMOKE_RESULTS.md` and
+`docs/reference/H03_STATIC_MATERIALIZER_RESULTS.md` for identities and limits.
+Final H03b integrated run `8155e33c-5ea5-455d-9246-c8eb2c017baa` passes 50 assertions;
+in-frame `10e1e6cc-a2c2-482c-a7c4-c7c969a4657f` passes 52. All six tuples, a nonfirst
+default, actual item placement and save/restart pass, alongside activation,
+captured reload and package-refusal controls. Screenshots show the diagnostic
+cube; no orientation, custom-shape, machine or performance conformance is claimed.
+The frozen game/build receipt remains separate from changing source HEAD.
 
-- Integrated: `0cafe3ba-1d3c-4566-ba89-f21af219733f`.
-- In-frame: `f20bd80e-5b61-4fec-b745-1675ed735b43`.
-- Both pass all 34 assertions, including client/server commands, one installed
-  row, side settings, forced captured-asset rebuild after source corruption,
-  same-build restart/custom-block save, changed/missing-package refusal with all
-  saved-world bytes unchanged. Fresh independent Sol High review checked driver
-  and actual receipts. Earlier calibration failures are retained and excluded.
-- These prove local package activation/admission, not server-settings restart
-  semantics, rendered appearance, machine inventories, H06/H08 or performance.
-- External paired clients/LAN/dedicated networking still refuse pending H09.
-  Settings storage remains nontransactional. Never use Prism/playable saves.
+Final native Linux `pr_ready.py --quick` at 0264c18 passes: 369 Python, 1,378 Rust,
+five resource-root and 197 launcher tests, formatting/Clippy/public-tree checks.
+Vanilla parity oracles were skipped explicitly. Separate paired-feature tests
+and actual games cover the optional path. Earlier setup failures and the Cargo
+executable replacement race are retained and excluded in the H03b result record.
 
-H03a StatePlan validation is reviewed and locally committed; its 35 paired-feature
-and 18 feature-off library tests plus lint checks passed. See
-`docs/reference/H03_STATE_PLAN_RESULTS.md`. The next materializer must handle every
-JSON/NBT state table, explicit nonfirst defaults, static identity transforms,
-paired-captured-only admission, an iron-block template restriction and waterlogged
-rejection. Bound eager state expansion per package before retaining plans; apply
-existing global state limits again with vanilla/legacy states included. Custom
-shape/orientation/placement and machine behavior remain later packets.
+Active bounded packet: `docs/design/H04_MUTATION_OBSERVER_PACKET.md`. An isolated
+worker at `.local/worktrees/h04-mutation-observer`, branch
+`codex/h04-mutation-observer`, base 0264c18 owns the passive World observer and
+focused tests. Initial independent static review found no correctness issue.
+Its compile/test/lint checks are running; do not integrate or claim qualification
+before their actual results and any necessary delta review. Coordinator owns
+integration, commits and later authoritative Game fixture setup. Default worlds
+remain observer-disabled; no machine callbacks, records or persistence yet.
 
-After the candidate is ready: independent review, focused real-resource regressions,
-fresh feature build, and actual six-state default/explicit-state/save checks in
-both game modes. Then run appropriate broader regression/parity checks on the final
-integrated candidate. Do not present skipped missing-resource tests as evidence.
+Serialize every Cargo operation sharing the native target, including test
+execution. The H04a worker currently owns that target. Use native Linux clones for
+CI: never export GIT_DIR/GIT_WORK_TREE into tests that make temporary repositories.
+Each game uses fresh isolated game/launcher/XDG homes; never Prism/playable saves.
 
-Earlier accepted S0/P02/reference/B0 results remain in their reference records.
-R01 preserves the owner's explicit full-output millstone item-loss decision.
-G0 allows bounded experimental work; full H02/H03/P02 and G1/G2/G3, authoritative
-machine lifecycle/transactions/persistence and retained animation remain open.
-Publication, upstream submission, promotion and release are separate decisions.
-The latest resume instruction supersedes the earlier time cutoff and break.
+Next: finish/review/integrate H04a, then a bounded explicit authoritative Game
+fixture and real command/player observations in both startup modes. Scope and
+pending queues must stay with the storage World across dimension swaps. Piston,
+deferred writes and chunk lifecycle require their own concrete coverage before
+broader H04 claims. Existing LAN/sculk queues remain independent.
+
+Earlier accepted S0/P02/reference/B0 evidence remains in its records. R01 preserves
+the owner's explicit full-output millstone item-loss choice. G0 allows bounded
+experimental work; full H02/H03/H04/P02, G1/G2/G3, H06 transactions, H08 coherent
+machine persistence, H09 external paired networking and retained animation remain
+open. Settings storage remains nontransactional; paired external peers refuse.

@@ -34,8 +34,9 @@ def dump(path, value):
 
 
 class Session:
-    def __init__(self, mode, game, resources):
+    def __init__(self, mode, game, resources, static_states=False):
         self.mode, self.game, self.resources = mode, game.resolve(), resources.resolve()
+        self.static_states = static_states
         self.player_label = 'SmokeTester' if mode == 'integrated' else 'Player'
         self.run_id = str(uuid.uuid4())
         self.out = WORKSPACE / '.local/h02d/game-runs' / self.run_id
@@ -78,6 +79,17 @@ class Session:
                 {'model': {'type': 'minecraft:model', 'model': 'paired_activation:block/marker'}},
             'assets/paired_activation/lang/en_us.json': {'block.paired_activation.marker': 'Paired smoke marker'},
         }
+        if static_states:
+            authored['data/paired_activation/horizon/block/marker.json']['state-definition'] = {
+                'format': 1, 'behavior': 'static', 'properties': [
+                    {'name': 'enabled', 'values': ['true', 'false'], 'default': 'true'},
+                    {'name': 'axis', 'values': ['z', 'x', 'y'], 'default': 'y'},
+                ],
+            }
+            authored['assets/paired_activation/blockstates/marker.json']['variants'] = {
+                f'axis={axis},enabled={enabled}': {'model': 'paired_activation:block/marker'}
+                for axis in ['x', 'y', 'z'] for enabled in ['false', 'true']
+            }
         for name, value in authored.items():
             path = self.package / name
             path.parent.mkdir(parents=True, exist_ok=True)
@@ -98,7 +110,8 @@ class Session:
                      'resources': str(self.resources),
                      'resources_manifest_sha256': sha(self.resources / 'horizon-resources.json'),
                      'package_files': tree(self.package), 'started_utc': datetime.datetime.now(datetime.UTC).isoformat(),
-                     'scope': 'local paired activation/admission, no Create machinery or performance qualification'}
+                     'static_states': static_states,
+                     'scope': 'local paired activation/admission and optional static states, no Create machinery or performance qualification'}
         dump(self.out / 'environment.json', self.meta)
         (self.out / 'driver.py').write_bytes(Path(__file__).read_bytes())
         print(f'{mode}: {self.out}', flush=True)
@@ -258,6 +271,8 @@ class Session:
             time.sleep(1)
             block = self.control('block', *pos)
             self.check('registered custom block visible', 'paired_activation:marker' in json.dumps(block))
+            if self.static_states:
+                self.check_static_states(pos)
             self.control('save')
             pin_path = self.world / 'horizon-paired-packages.json'
             pins = json.loads(pin_path.read_text())
@@ -274,6 +289,8 @@ class Session:
             self.check('same-build restart reads side settings', True)
             self.check('restart keeps exact pins', json.loads(pin_path.read_text()) == pins)
             self.check('restart preserves custom block', 'paired_activation:marker' in json.dumps(self.control('block', *pos)))
+            if self.static_states:
+                self.check_static_states(pos, restart=True)
             self.stop()
             if extended:
                 self.mismatch_controls()
@@ -311,6 +328,70 @@ class Session:
         self.await_message(reply, old)
         self.check('source replacement cannot replace running components', True)
 
+    def await_block(self, pos, expected):
+        deadline = time.monotonic() + 10
+        while time.monotonic() < deadline:
+            block = self.control('block', *pos)
+            if block.get('loaded') and block.get('state') == expected:
+                return
+            time.sleep(0.1)
+        raise AssertionError(f'expected {expected} at {pos}, observed {block}')
+
+    def check_static_states(self, default_pos, restart=False):
+        default = 'paired_activation:marker[axis=y,enabled=true]'
+        self.await_block(default_pos, default)
+        self.check(self.phase + ': implicit nonfirst default matches declared tuple', True)
+        cases = []
+        for i, (axis, enabled) in enumerate((a, e) for a in ['x', 'y', 'z'] for e in ['false', 'true']):
+            pos = [default_pos[0] + 2 + 2 * (i % 3), default_pos[1], default_pos[2] + 2 * (i // 3)]
+            expected = f'paired_activation:marker[axis={axis},enabled={enabled}]'
+            if not restart:
+                self.control('command', f'setblock {pos[0]} {pos[1]} {pos[2]} {expected}')
+            self.await_block(pos, expected)
+            cases.append({'pos': pos, 'state': expected})
+            self.check(self.phase + ': exact static tuple ' + expected, True)
+        dump(self.out / (self.phase + '-static-state-cases.json'), {'default': default, 'cases': cases})
+        placed = [default_pos[0] - 3, default_pos[1] - 1, default_pos[2]]
+        if not restart:
+            self.control('command', f'setblock {placed[0]} {placed[1] - 1} {placed[2]} minecraft:stone')
+            self.control('command', f'setblock {placed[0]} {placed[1]} {placed[2]} minecraft:air')
+            self.control('give', 'paired_activation:marker', 1)
+            deadline = time.monotonic() + 10
+            while time.monotonic() < deadline:
+                inventory = self.control('inventory')
+                if inventory['counts'].get('paired_activation:marker', 0) > 0:
+                    break
+                time.sleep(0.1)
+            if not any(slot.get('item') == 'paired_activation:marker' for slot in inventory['hotbar']):
+                source = next(slot['slot'] for slot in inventory['main'] if slot.get('item') == 'paired_activation:marker')
+                self.control('open-inventory')
+                ui = self.control('ui')
+                if ui['screen'] == 'creative':
+                    # The control API's live focus targets include the icon tabs
+                    # omitted by the labelled widget tree. The personal tab is
+                    # bottom-right; verify the item slot after clicking it.
+                    targets = self.control('pad', 'status')['menu']['targets']
+                    tabs = [w for w in targets if w['kind'].startswith('tab')]
+                    rect = max(tabs, key=lambda w: (w['rect'][1], w['rect'][0]))['rect']
+                    self.control('click-at', rect[0] + rect[2] / 2, rect[1] + rect[3] / 2)
+                    ui = self.control('ui')
+                self.check('given item visible in personal inventory', any(
+                    w['id'] == f'slot-{source}' and (w.get('stack') or {}).get('item') == 'paired_activation:marker'
+                    for w in ui['widgets']))
+                for slot in [source, 0, source]:
+                    self.control('click-slot', slot)
+                moved = self.control('inventory')
+                self.check('hotbar setup preserves inventory counts', moved['counts'] == inventory['counts']
+                           and moved['carried'] is None)
+                self.control('key', 'escape', 'tap')
+            self.control('place', *placed, '--item', 'paired_activation:marker')
+        self.await_block(placed, default)
+        self.check(self.phase + ': block-item placement tuple survives', True)
+        if not restart:
+            # The capture is diagnostic, not a line-of-sight or pixel assertion.
+            self.control('look-at', *(p + 0.5 for p in default_pos))
+            self.control('screenshot', str(self.out / 'static-states.png'))
+
     def mismatch_controls(self):
         before = tree(self.world)
         descriptor = self.package / 'horizon-paired.toml'
@@ -340,10 +421,11 @@ def main():
     parser.add_argument('--game', type=Path, required=True)
     parser.add_argument('--resources', type=Path, default=ENGINE / '.local/horizon-client/26.3')
     parser.add_argument('--extended', action='store_true')
+    parser.add_argument('--static-states', action='store_true', help='also exercise six explicit static tuples and a nonfirst default')
     args = parser.parse_args()
     modes = ['integrated', 'in-frame'] if args.mode == 'both' else [args.mode]
     for mode in modes:
-        Session(mode, args.game, args.resources).run(args.extended)
+        Session(mode, args.game, args.resources, args.static_states).run(args.extended)
 
 
 if __name__ == '__main__':
