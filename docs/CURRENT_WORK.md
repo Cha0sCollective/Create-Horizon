@@ -9,8 +9,8 @@ Require fresh independent read-only Sol High review for substantive candidates.
 - Engine branch: `codex/h08-world-clock-metadata`, based on reviewed/tested local commit
   `b9b32da57e124221110c82b28a3fd95e0624cf4a`, tree
   `42f0d4b50b0bc7f5ae5ce4750c3abec164fdde96`. H08a9 source worker owns only
-  save.rs, game/chat.rs and game.rs. Harness worker owns only the new private
-  tools/run_clock_save_error_smoke.py. Coordinator owns serialized Cargo/commits.
+  save.rs, game/chat.rs and game.rs. Harness worker released the new private
+  tools/run_clock_save_error_smoke.py; coordinator owns it and serialized Cargo/commits.
 - Engine commits stay local; normal hooks enabled, upstream push disabled.
 - Create reference stays clean detached `7ff2760e4924d35d4bc2e22c4b19923f0178cd16`.
   Pins are in workspace.toml. Never alter Prism/playable saves/reference snapshots.
@@ -70,7 +70,9 @@ H08_DIRTY_HANDOFF_RESULTS.
 Active packet: `docs/design/H08_WORLD_CLOCK_METADATA_PACKET.md` (H08a9), shared
 strict clock merge for both Level/Game writers and explicit error propagation,
 plus a separately reviewed isolated game-error harness. Fresh initial design review
-passes; source/harness implementation and all runtime validation remain pending.
+passes. Harness source SHA071648b1... passes fresh static security review, with
+base/NBT/control hashes recorded by that review; no imports/games executed.
+Engine source/cross-boundary review and all runtime validation remain pending.
 Transition/unload/player/entity/raid ownership stays separate.
 
 Coordinator owns the native Cargo target. Serialize every Cargo operation and
