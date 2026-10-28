@@ -7,7 +7,7 @@ remain proposed until their corresponding gate accepts them.
 | Stage | Outcome | Current state |
 | --- | --- | --- |
 | S0 | Runnable pinned reference, repeatable traces and bounded host contract | G0 accepted for bounded experiments; performance qualification open |
-| S1 | Persistent synchronized generic machine with retained animation | H05a-d counters, H06a/b native transfer/World ownership and H08a1-a12 prerequisites qualified; H08a13 transition ownership active; full H02/H03/H04/H05/G1 open |
+| S1 | Persistent synchronized generic machine with retained animation | H05a-d counters, H06a/b native transfer/World ownership and H08a1-a13 prerequisites qualified; H06c checked receiver active; full H02/H03/H04/H05/G1 open |
 | S2 | Verified motor, shafts and two cog sizes | P02a/b and six-case repeated source-arbitration observations reviewed; native multi-source rules and full P02/integration open, live integration requires G1 |
 | S3 | Five-component playable milling MVP and two-client evidence | Planned; G3 open |
 | S4 | Obtainable survival power and a small factory | Future scope |
@@ -60,9 +60,11 @@ pass in `docs/reference/H05_GUEST_GAME_RESULTS.md`. The detached native two-slot
 core passes source review, focused tests and broad checks; see
 `docs/reference/H06_NATIVE_SLOT_TRANSFER_RESULTS.md`. Actual World slot ownership
 passes native tests, broad checks and final independent receipt review;
-see `docs/reference/H06_WORLD_SLOT_OWNERSHIP_RESULTS.md`. Next is synchronous
-dimension-transition ownership in
-`docs/design/H08_DIMENSION_TRANSITION_OWNERSHIP_PACKET.md`.
+see `docs/reference/H06_WORLD_SLOT_OWNERSHIP_RESULTS.md`. Synchronous dimension-
+transition ownership also passes actual headless Game faults, both-mode full
+counter tests, broad checks and final independent receipt review in
+`docs/reference/H08_DIMENSION_TRANSITION_OWNERSHIP_RESULTS.md`. Next is the
+resident checked receiver in `docs/design/H06_CHECKED_RETIREMENT_RECEIVER_PACKET.md`.
 Coherent recovery remains separate in `docs/design/H08_CHECKPOINT_FEASIBILITY.md`;
 completed arbitration observations are in `docs/reference/P02_ARBITRATION_RESULTS.md`.
 G1/G2/G3 remain open.
