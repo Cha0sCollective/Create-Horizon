@@ -5,12 +5,13 @@ input, superseding the earlier cutoff/break. No public publication, promotion or
 standing team is authorized. Require fresh independent Sol High review for each
 substantive candidate. Preserve source-informed personal-use provenance and R01.
 
-- Private branch `codex/h02-smoke-h03-notes`; backup `c6b5cf2`.
-- Engine `codex/h08-proto-save-errors` based at
-  `1e87673f3ee88b9799b41d240486af9bd7d4fcfa`, tree
-  `2ede08b80d184d450751768f998aa6e2a12356bd`; a bounded worker now owns three
-  proto-error files. The H08a1 completion fix is independently reviewed and passes
-  targeted checks, actual-game regression and broader quick checks.
+- Private branch `codex/h02-smoke-h03-notes`; checkpoints backed up privately.
+- Engine `codex/h08-finished-chunk-handoff` based at
+  `928f43c2db203049c6266baf3682b16a806f028a`, tree
+  `a0d9537b4e044716318ce4c00f4b319a45175ca3`; one bounded worker now owns three
+  finished-chunk handoff files. H08a2 is independently reviewed and passes targeted
+  checks, both actual modes and broad quick verification. H08a1
+  completed all checks at `1e87673`.
   The qualified counter branch remains `codex/h05-counter-integration`.
   Commits remain local only;
   normal hooks enabled, upstream push disabled.
@@ -57,11 +58,18 @@ tests plus format/Clippy/doc/public-tree checks (parity skipped). Independent re
 one expected refusal cleanup race accurately. See
 `docs/reference/H08_SAVE_COMPLETION_RESULTS.md`; this is not a checkpoint barrier.
 
-Active next packet `docs/design/H08_PROTO_SAVE_ERRORS_PACKET.md` changes only native
+Completed H08a2 packet `docs/design/H08_PROTO_SAVE_ERRORS_PACKET.md` changes only native
 proto callback errors/ownership with a sticky fault that stops new terrain producer
-jobs while draining old results. Worker owns streaming.rs, Persistent in save.rs,
-and generation_saves.rs; no worker Cargo/formatting/commits. Its draft remains
-unreviewed/unqualified. No finished-chunk/entity/player/checkpoint expansion.
+jobs while draining old results. Reviewed three-file change passes six controlled
+resource groups, three generation-save tests, 33 disk-save tests, 137 binary tests
+and on/off Clippy; frozen game `66a51ee6...21fc81d` passes integrated 362/in-frame
+347 assertions with independent receipt review; broad checks pass 369 Python/
+1,307 client tests and format/lint/doc/public-tree checks (parity skipped). See
+`docs/reference/H08_PROTO_SAVE_ERRORS_RESULTS.md`. Active next packet is
+`docs/design/H08_FINISHED_CHUNK_HANDOFF_PACKET.md`: worker owns streaming.rs,
+save.rs and generation_saves.rs, source only, no Cargo/formatting/commits. Its
+draft is unreviewed/unqualified.
+No player/native-entity-unload/checkpoint expansion.
 
 Earlier qualified residency proof: a4470cd, integrated 228/in-frame 212; see
 `docs/reference/H04_RESIDENCY_GAME_RESULTS.md`. The in-frame lighting failure and
