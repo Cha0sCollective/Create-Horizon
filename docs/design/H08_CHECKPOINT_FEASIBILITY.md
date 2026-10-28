@@ -110,3 +110,12 @@ level state explicitly. New transition errors must also preserve portal player
 ownership: enter_dimension currently takes the player before fallible switch_level
 and does not restore it on Err, unlike the command teleport path. These are source
 findings for later bounded transition work, not repaired behavior.
+
+The 0028c89 borrowed-dirty metadata audit scopes fight/trader/portal-arrival Result
+propagation in H08_BORROWED_DIRTY_METADATA_PACKET. Fight has an eager death save
+after committed portal/gateway/egg/flag effects: keep that call nonfatal with a
+warning and dirty retry. Separately, world entry resets trader/Portals but has no
+corresponding Fight reset; its loaded guard can carry prior-world fight state.
+Portal entity removal before arrival creation, and arrival removal before exit
+resolution/publication, are additional transfer-ownership boundaries. None is
+repaired merely by returning metadata save errors.

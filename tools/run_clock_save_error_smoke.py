@@ -26,7 +26,7 @@ class ClockSession(base.Session):
         try:
             self.env.pop('HORIZON_SESSION_FILE', None)
             for key, name in [('HOME', 'child-home'), ('USERPROFILE', 'child-home'),
-                              ('XDG_CACHE_HOME', 'child-cache'), ('XDG_RUNTIME_DIR', 'child-runtime')]:
+                              ('XDG_CACHE_HOME', 'child-cache')]:
                 path = self.scratch / name
                 path.mkdir(exist_ok=True)
                 self.env[key] = str(path)
@@ -38,9 +38,10 @@ class ClockSession(base.Session):
             self.meta.update(driver=str(own), driver_sha256=base.sha(own),
                              base_driver_sha256=base.sha(helper), nbt_driver_sha256=base.sha(nbt_source),
                              expected_revision=expected_revision, session_file_environment_cleared=True,
+                             display_runtime_directory=self.env.get('XDG_RUNTIME_DIR'),
                              scope=__doc__, isolated_environment={k: self.env[k] for k in
                                  ['HOME', 'USERPROFILE', 'HORIZON_HOME', 'HORIZON_LAUNCHER_HOME',
-                                  'XDG_DATA_HOME', 'XDG_CONFIG_HOME', 'XDG_CACHE_HOME', 'XDG_RUNTIME_DIR']})
+                                  'XDG_DATA_HOME', 'XDG_CONFIG_HOME', 'XDG_CACHE_HOME']})
             spec = importlib.util.spec_from_file_location('clock_smoke_nbt', nbt_source)
             self.nbt = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(self.nbt)

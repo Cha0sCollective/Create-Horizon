@@ -62,7 +62,10 @@ event loop exits naturally with code one; capture that expected outcome before
 repair/reopen/save/clean exit. Transport closure or forced termination alone does
 not pass. Same-process live-control retention is not claimed after process death.
 Clear HORIZON_SESSION_FILE inside the new harness as well as its invocation;
-verify fresh home/launcher/XDG paths and never use playable/account directories.
+verify fresh home/launcher/XDG data/config/cache paths and never use playable/account
+directories. Preserve the existing display-service XDG_RUNTIME_DIR connection as
+the qualified base helper does; it is not a save-data home. Do not create or change
+display-service files there.
 This fault usually reaches the earlier Level shared writer, so native cases still
 cover both writer modes. Assert only clock-byte preservation, not whole-world
 atomicity. Preserve existing mode-specific error policy.

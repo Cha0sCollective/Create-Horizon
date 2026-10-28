@@ -5,87 +5,64 @@ input, superseding the old cutoff/break. No public publication, promotion or
 standing team is authorized. Keep source-informed personal-use provenance and R01.
 Require fresh independent read-only Sol High review for substantive candidates.
 
-- Private branch: `codex/h02-smoke-h03-notes`; checkpoints backed up privately.
-- Engine branch: `codex/h08-world-clock-metadata`, based on reviewed/tested local commit
-  `b9b32da57e124221110c82b28a3fd95e0624cf4a`, tree
-  `42f0d4b50b0bc7f5ae5ce4750c3abec164fdde96`. H08a9 source worker owns only
-  save.rs, game/chat.rs and game.rs. Harness worker released the new private
-  tools/run_clock_save_error_smoke.py; coordinator owns it and serialized Cargo/commits.
-- Engine commits stay local; normal hooks enabled, upstream push disabled.
-- Create reference stays clean detached `7ff2760e4924d35d4bc2e22c4b19923f0178cd16`.
+- Private branch: codex/h02-smoke-h03-notes; checkpoints backed up privately.
+- Engine branch: codex/h08-borrowed-dirty-metadata, based on qualified local commit
+  0028c89d31438d159ee088eafe14827ba6c76488, tree
+  b24c06a7221e56818f04b1c9765bb70dcf7bb2ad. H08a10 source worker owns only game.rs,
+  game/dragon.rs, game/wandering_trader.rs and game/nether_portal.rs. No worker Cargo.
+- Coordinator owns serialized Cargo, validation and commits. Engine commits stay
+  local; normal hooks enabled, upstream push disabled. No public engine push.
+- Create reference stays clean detached 7ff2760e4924d35d4bc2e22c4b19923f0178cd16.
   Pins are in workspace.toml. Never alter Prism/playable saves/reference snapshots.
 
-Completed bounded foundations: H05a transient counter and H08a1-a8 save
-prerequisites have source review, focused tests, real games in both modes and
-broad quick verification. Latest frozen game SHA256
-`5691d4efaa5e24157fdb7f38d7e373670ba91788fa4dc8a38a2fb23943b6b0b5` passes:
+Completed bounded foundations: H05a transient counter and H08a1-a9 save
+prerequisites have independent source/receipt review, focused tests, actual games
+and broad quick checks. Latest frozen game SHA256
+00d38a8a24efc2ab7e78568e6c9348b59f01067c14d6d4e5c6c4c08551e0852e passes:
 
-- Integrated `64c7d520-1088-41dc-993a-160c1bcdf91a`: 362 assertions.
-- In-frame `57ad47e3-06fe-4fb1-892c-aa51d8599252`: 347 assertions.
+- Integrated 64ec267b-cbc6-418a-833a-6967ea1dddef: 362 counter checks.
+- In-frame 19c8af4d-c1c4-4b07-8d24-ead875940edf: 347 counter checks.
 
-Same qualified driver `tools/run_counter_game_smoke.py`, SHA256
-`d19c480572c3fbcb0ce01afeb868efb5dc276ad64606ab01f40edd9bf2d970e0`.
-Counter remains transient; loading its saved block does not restore payload.
-See H05_COUNTER_RESULTS and H08_SAVE_COMPLETION/PROTO_SAVE_ERRORS/
-FINISHED_CHUNK_HANDOFF/STRICT_POI_WRITER_RESULTS in docs/reference. They preserve
-failed preflight/calibration, red raw-NBT test, precise refusal cleanup races and
-all unqualified limits. Latest quick check passes 369 Python/1,331 client tests
-plus format/lint/doc/public-tree. Vanilla parity is explicitly skipped.
+Qualified tools/run_counter_game_smoke.py SHA256
+d19c480572c3fbcb0ce01afeb868efb5dc276ad64606ab01f40edd9bf2d970e0 stays immutable.
+Normal initial/restart exits are clean; precise expected-refusal cleanup races
+remain in the result notes. Counter payload stays transient. Latest broad quick
+passes 369 Python/1,339 client tests plus fmt/lint/doc/public-tree; parity skipped.
+Scope has a disclosed soft warning for clock tests/mechanical moves; no PR proposed.
 
-Separate focused vanilla 26.3 reader run `ad33ad7f-f997-4f2c-832c-f220e6d7733b`
-passes on frozen a75184e/325e1f53..., proving this chest23/pig fixture's shared
-save format reads correctly in actual Java25/Minecraft. Both processes exit0,
-no helper-filtered problems or cleanup errors. See H08_VANILLA_SAVE_READBACK_RESULTS.
-It is not full parity, out-of-range callback execution or coherent recovery.
+H08a9 focused actual clock-error runs pass with no cleanup errors:
 
-H08a5 map/random results preserve immutable local/LAN loan snapshots and refuse
-conflicting stream states without choosing an ownership winner. H08a6 scoreboard
-results cover storage/stopwatch dirty retention, all four component write errors
-and default-border reset. Both have independent source/receipt review and targeted,
-both-mode and broad verification. See their result files. Metadata remains
-nonatomic; live loan/reset policy and other metadata/retirement gaps remain open.
-H08_CHECKPOINT_FEASIBILITY records direct dirty-marker and raid transition gaps,
-plus the frozen-owner audit: tick-freeze/server-hold alone cannot guard capture.
+- Integrated 152e9ad3-6f1d-47b1-bfde-9ef7f2c42212: 19 checks, repair/exit0.
+- In-frame 96dd95e0-ecb6-4315-b9ac-b1625ebdd5f6: 21 checks, natural1, reopen/exit0.
 
-H08a7: `docs/design/H08_BARS_SCHEDULE_METADATA_PACKET.md`. Propagate
-bossbar/schedule write errors while preserving live borrowed state, guards, ordering,
-empty reset and sparse defaults. Fresh independent source review and targeted
-checks pass (153 binary tests, three ignored; feature-on/off lint/fmt/public-tree).
-The parser move preserves existing load/reload policy. Frozen game 9421b04a... passes
-362/347 counter checks; normal initial/restart exits are clean. Independent receipt
-follow-up agrees; broad quick checks pass (369 Python/1,331 client and fmt/lint/doc/
-public-tree; parity skipped). See H08_BARS_SCHEDULE_METADATA_RESULTS.
+Qualified tools/run_clock_save_error_smoke.py SHA256
+e29e1b9d823a077be0172cac4b4a296e33c3643059f54778227f3c80125f5f30 stays immutable.
+Preserve failed071648 startup2de93d5d...: scratch XDG_RUNTIME_DIR hid WSLg before
+world readiness/injection. Reviewed correction keeps the display-service runtime
+connection and fresh save/data/config/cache homes. Original failed and corrected
+status records remain separate. See H08_WORLD_CLOCK_METADATA_RESULTS.
 
-H08a8: `docs/design/H08_DIRTY_HANDOFF_PACKET.md` has fresh read-only
-design review. Retain direct-save dirty markers through chunk enqueue, clear only
-submitted coordinates on acceptance, and distinguish real queue/partial-POI errors
-from asynchronous disk failure. Fresh independent code review finds no issue in
-the exact candidate and five new owned-resource tests. All targeted checks pass:
-8 explicit resource-save/37 regular save/3 generation/153 bin tests, on/off lint,
-fmt/public-tree. Frozen game 5691d4ef... passes 362/347 counter checks with clean
-normal initial/restart exits. Independent receipt follow-up agrees; broad quick
-passes 369 Python/1,331 client plus fmt/lint/doc/public-tree (parity skipped). See
-H08_DIRTY_HANDOFF_RESULTS.
+Earlier results preserve actual queue faults, raw-NBT red-test correction, strict
+POI reads, RNG loan-conflict refusal and nonatomic metadata limits. See H05_COUNTER
+and H08_*_RESULTS in docs/reference. Focused actual Java26.3 chest/pig readback on
+older a75184e/325e1f53... passes in H08_VANILLA_SAVE_READBACK_RESULTS; not full parity.
 
-Active packet: `docs/design/H08_WORLD_CLOCK_METADATA_PACKET.md` (H08a9), shared
-strict clock merge for both Level/Game writers and explicit error propagation,
-plus a separately reviewed isolated game-error harness. Fresh initial design review
-passes. Harness source SHA071648b1... passes fresh static security review, with
-base/NBT/control hashes recorded by that review; no imports/games executed.
-Engine source/cross-boundary review and all runtime validation remain pending.
-Transition/unload/player/entity/raid ownership stays separate.
+Active packet: docs/design/H08_BORROWED_DIRTY_METADATA_PACKET.md (H08a10).
+Propagate borrowed fight/trader/portal-arrival write errors; retain dirty state and
+schemas/guards. Eager dragon-death failure logs and retries through later saves,
+without aborting already committed gameplay. Source not yet reviewed/validated.
+H08_CHECKPOINT_FEASIBILITY records separate fight-world lifetime, raid, portal,
+unload and player/entity ownership gaps. Tick-freeze/server-hold alone cannot
+protect a checkpoint capture. No coherent checkpoint or G1 is qualified.
 
-Coordinator owns the native Cargo target. Serialize every Cargo operation and
-its test execution. Use native Linux clones for broad CI; never export
-GIT_DIR/GIT_WORK_TREE into tests. Current clone path is in .local/h05-ci-checkout.txt.
-Clear HORIZON_SESSION_FILE in every test child environment; invoke immutable older
-smoke drivers through an environment-sanitizing wrapper. Do not modify their
-qualified bytes. Fresh independent Sol High review cleared this restriction and
-the readback-driver guard; current Windows/WSL presence checks are both false.
-All runtime worlds/homes/launcher/XDG folders stay fresh and isolated; generated
-JARs/assets/worlds/raw evidence never enter Git.
+Serialize every Cargo operation including test execution. Use native Linux clones
+for broad CI; never export GIT_DIR/GIT_WORK_TREE into tests. Clone path remains in
+.local/h05-ci-checkout.txt. Clear HORIZON_SESSION_FILE in every test child; invoke
+immutable older drivers through a sanitizing wrapper. Reviewed new drivers also
+clear it internally. Keep game/launcher/data/config/cache homes fresh and isolated;
+leave the reviewed display-service runtime connection intact. No JARs, assets,
+worlds, account data or raw generated evidence enter Git.
 
-Full H02/H03/H04/H05, saved generations, guest callbacks, staged transactions,
-inventories, coherent checkpoints, external paired networking, retained animation,
-performance and G1/G2/G3 remain open. Earlier S0/P02/B0 and R01 evidence stays in
-its result records; this work does not promote those gates.
+Full H02/H03/H04/H05, persistent generations, guest callbacks, transactions,
+inventories, coherent recovery, external paired networking, retained animation,
+performance and G1/G2/G3 remain open. S0/P02/B0 and R01 evidence stays in its records.
