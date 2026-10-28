@@ -69,3 +69,24 @@ control tasks; use a blocking owner operation or an equivalent admission barrier
 H08a1/a2/a3 improve generation completion/errors but do not establish that barrier.
 Strict writer-side POI reads, suppressed metadata writes and player/native-entity
 retirement ownership remain separate prerequisites. No checkpoint is qualified.
+
+## Remaining metadata audit after H08a5
+
+The c161eaa audit scopes H08a6 to scoreboard/storage/stopwatches/border. Storage
+and stopwatches clear dirty state before writing; default borders skip existing
+files and can restore stale nondefault settings. Their bounded repair is in
+H08_SCORE_METADATA_PACKET. The remaining helpers need distinct handling:
+
+- Bossbars and scheduled events serialize borrowed state and suppress write
+  failures; their existing empty-with-existing-file checks preserve resets.
+- World clocks merge old NBT with current fields. Suppressed writes and tolerant
+  merge reads are separate concerns: a failed old-file read can lose unknown fields.
+- Statistics and advancements serialize borrowed JSON. Stats dirty/events track
+  notifications rather than disk completion; Stats::write also serves LAN records.
+- Fight, trader and portal arrivals already clear dirty flags only on success,
+  but callers do not receive failure. Dragon fight also saves eagerly on a kill;
+  that gameplay call requires explicit handling rather than incidental propagation.
+- Owner/guest records and native entity retirement require retained failed
+  snapshots; converting their calls to question marks alone cannot prove ownership.
+
+This is a source audit, not completed failure coverage or checkpoint acceptance.

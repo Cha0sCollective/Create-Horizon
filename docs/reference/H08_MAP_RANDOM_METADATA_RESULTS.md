@@ -29,7 +29,11 @@ for real blocked _new writes, repair/retry, retained map/index/live loan states,
 identical/conflicting streams, empty/reset defaults and remote no-write behavior.
 The named-random library regression passes. Formatting, feature-on/off library/
 binary/test Clippy and the normal public-tree hook pass. Broader quick verification
-is in progress. Raw records remain `.local/h08a5-*.log`.
+passes in the immutable native Linux clone at c161eaa: 369 Python and 1,318 client
+tests, formatting, workspace/feature-off lint, zero doc tests and public-tree checks.
+Cargo.lock is unchanged. Vanilla parity is explicitly skipped by --quick, and
+content/launcher/theme checks are unchanged-scope skips. Raw records remain
+`.local/h08a5-*.log`.
 
 Frozen optimized game SHA256
 `a8570b081c3c754f1b5760eab52b24c8f0ff3e26f03d88033955d9640a458cbf`
@@ -48,6 +52,9 @@ are recorded refusal/quit races, not normal shutdown failures. The driver SHA256
 remains `d19c480572c3fbcb0ce01afeb868efb5dc276ad64606ab01f40edd9bf2d970e0`;
 launcher-session environment is removed before invocation. These are regressions
 of counter/lifecycle/save paths, not game-driven map/RNG failure injection.
+Independent read-only receipt review confirms source/build/run attribution,
+checks, retirement receipts, exits and recorded refusal races; it did not recompute
+the Linux executable hash from its bytes.
 
 Conflicting live merchant streams remain intentionally unsavable. This is safe
 refusal without choosing an ownership winner; it is not support for every merchant
