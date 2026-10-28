@@ -6,11 +6,10 @@ standing team is authorized. Keep source-informed personal-use provenance and R0
 Require fresh independent read-only Sol High review for substantive candidates.
 
 - Private branch: codex/h02-smoke-h03-notes; checkpoints backed up privately.
-- Engine branch: codex/h08-player-json-metadata, based on qualified local commit
-  19c86308d069d4d6a316cba72406336a8ccdb86b, tree
-  4764b36738453ebf3da4131eae9d6f856c5703ca. H08a11 source worker owns game.rs and
-  game/stats.rs, advancements.rs, lan.rs, integrated.rs, dedicated.rs. Harness
-  worker owns only new tools/run_player_json_error_smoke.py. No worker Cargo.
+- Engine branch: codex/h08-player-json-metadata, reviewed/tested local candidate
+  ecb93cc57f749037dfdb8e26ccad0123e1ba5240, tree
+  a872296669da48fe499f8abb6534d094cb14f663, clean. Source/harness workers released
+  files. Coordinator owns frozen build, game/JSON probes and serialized Cargo.
 - Coordinator owns serialized Cargo, validation and commits. Engine commits stay
   local; normal hooks enabled, upstream push disabled. No public engine push.
 - Create reference stays clean detached 7ff2760e4924d35d4bc2e22c4b19923f0178cd16.
@@ -58,8 +57,12 @@ Active packet: docs/design/H08_PLAYER_JSON_METADATA_PACKET.md (H08a11). Checked
 borrowed local/owner stats/advancement writes, with deferred JSON errors until
 world metadata attempts and minimal integrated cleanup before returning failure.
 Fresh design review found/closed the initial shutdown-order gap; no owner decision
-needed. Source and new focused owner-JSON/shutdown probe are not yet reviewed or
-validated. Legacy guest retirement/playerdata ownership stays open.
+needed. New probe SHAb4dd9dcf... passes static source/security review. Full stable
+engine/cross-boundary review and targeted172 binary/on-off lint/fmt/public-tree
+checks pass. Frozen normal games, JSON shutdown probes and broad checks are
+running (.local/h08a11-*); qualification remains pending. Legacy guest retirement/playerdata ownership
+stays open. Both guest write attempts require native content assertions; the
+runtime probe's independent-record shape check alone does not establish them.
 H08_CHECKPOINT_FEASIBILITY records separate fight-world lifetime, raid, portal,
 unload and player/entity ownership gaps. Tick-freeze/server-hold alone cannot
 protect a checkpoint capture. No coherent checkpoint or G1 is qualified.
