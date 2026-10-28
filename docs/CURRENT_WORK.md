@@ -6,22 +6,21 @@ standing team is authorized. Keep source-informed personal-use provenance and R0
 Require fresh independent read-only Sol High review for substantive candidates.
 
 - Private branch: `codex/h02-smoke-h03-notes`; checkpoints backed up privately.
-- Engine branch: `codex/h08-bars-schedule-metadata`, based on reviewed/tested local commit
-  `1d144d017b7d238293353e5c25c7f21080da4944`, tree
-  `aa4b44f95ccef1f73d023ee86b22c1255ba3e0f1`. H08a7 source worker owns only
-  game.rs, game/bossbars.rs and game/functions.rs. Coordinator owns native Cargo,
-  validation and commits; no worker Cargo or commits.
+- Engine branch: `codex/h08-dirty-handoff`, based on reviewed/tested local commit
+  `dcea02b5fbf58b895c6052f316a6d0a75b97dae9`, tree
+  `d769407b0eb3af50f180372604c7c773a24a906d`. H08a8 source worker owns only game.rs
+  and save.rs. Coordinator owns serialized native Cargo, validation and commits.
 - Engine commits stay local; normal hooks enabled, upstream push disabled.
 - Create reference stays clean detached `7ff2760e4924d35d4bc2e22c4b19923f0178cd16`.
   Pins are in workspace.toml. Never alter Prism/playable saves/reference snapshots.
 
-Completed bounded foundations: H05a transient counter and H08a1-a6 save
+Completed bounded foundations: H05a transient counter and H08a1-a7 save
 prerequisites have source review, focused tests, real games in both modes and
 broad quick verification. Latest frozen game SHA256
-`d86ad4e265c672ec8c79808d60ae90cac9cd9e8df82eab1b2f86a80a9103932e` passes:
+`9421b04a1bea650e5d5f6887c17ccca0f0e90dba1d7f0e57774aa08eb8f4f5f0` passes:
 
-- Integrated `640a3687-dbbe-4e21-9c9e-1550ac5f9854`: 362 assertions.
-- In-frame `8bf723e6-8b64-4a97-9309-917508e7f098`: 347 assertions.
+- Integrated `0b4bbf5d-9d5c-45ab-b35b-0426e057a59c`: 362 assertions.
+- In-frame `a7549be7-4430-49ed-9652-28482f7ccc03`: 347 assertions.
 
 Same qualified driver `tools/run_counter_game_smoke.py`, SHA256
 `d19c480572c3fbcb0ce01afeb868efb5dc276ad64606ab01f40edd9bf2d970e0`.
@@ -29,7 +28,7 @@ Counter remains transient; loading its saved block does not restore payload.
 See H05_COUNTER_RESULTS and H08_SAVE_COMPLETION/PROTO_SAVE_ERRORS/
 FINISHED_CHUNK_HANDOFF/STRICT_POI_WRITER_RESULTS in docs/reference. They preserve
 failed preflight/calibration, red raw-NBT test, precise refusal cleanup races and
-all unqualified limits. Latest quick check passes 369 Python/1,325 client tests
+all unqualified limits. Latest quick check passes 369 Python/1,331 client tests
 plus format/lint/doc/public-tree. Vanilla parity is explicitly skipped.
 
 Separate focused vanilla 26.3 reader run `ad33ad7f-f997-4f2c-832c-f220e6d7733b`
@@ -47,9 +46,20 @@ nonatomic; live loan/reset policy and other metadata/retirement gaps remain open
 H08_CHECKPOINT_FEASIBILITY records direct dirty-marker and raid transition gaps,
 plus the frozen-owner audit: tick-freeze/server-hold alone cannot guard capture.
 
-Active packet: `docs/design/H08_BARS_SCHEDULE_METADATA_PACKET.md` (H08a7). Propagate
+H08a7: `docs/design/H08_BARS_SCHEDULE_METADATA_PACKET.md`. Propagate
 bossbar/schedule write errors while preserving live borrowed state, guards, ordering,
-empty reset and sparse defaults. Source edits are not yet reviewed/validated.
+empty reset and sparse defaults. Fresh independent source review and targeted
+checks pass (153 binary tests, three ignored; feature-on/off lint/fmt/public-tree).
+The parser move preserves existing load/reload policy. Frozen game 9421b04a... passes
+362/347 counter checks; normal initial/restart exits are clean. Independent receipt
+follow-up agrees; broad quick checks pass (369 Python/1,331 client and fmt/lint/doc/
+public-tree; parity skipped). See H08_BARS_SCHEDULE_METADATA_RESULTS.
+
+Active packet: `docs/design/H08_DIRTY_HANDOFF_PACKET.md` (H08a8) has fresh read-only
+design review. Retain direct-save dirty markers through chunk enqueue, clear only
+submitted coordinates on acceptance, and distinguish real queue/partial-POI errors
+from asynchronous disk failure. Source implementation not yet reviewed/validated.
+Transition/unload/player/entity/raid ownership stays separate.
 
 Coordinator owns the native Cargo target. Serialize every Cargo operation and
 its test execution. Use native Linux clones for broad CI; never export
