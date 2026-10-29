@@ -14,7 +14,9 @@ from compare_reference import load_run
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('references', type=Path, nargs='+')
-    parser.add_argument('--geometry', action='store_true', help='Compare the bounded horizontal geometry set in native and sandbox probes')
+    modes = parser.add_mutually_exclusive_group()
+    modes.add_argument('--geometry', action='store_true', help='Compare the bounded horizontal geometry set in native and sandbox probes')
+    modes.add_argument('--vertical-equal', action='store_true', help='Compare six Y/UP/equal-cog static snapshots in native and sandbox probes')
     args = parser.parse_args()
     if sys.platform != 'linux':
         parser.error('Run in the pinned Ubuntu development environment')
@@ -55,6 +57,7 @@ def main():
                     repo / 'crates/create-core/examples/kinetic_probe.rs',
                     repo / 'crates/create-core/tests/geometry.rs',
                     repo / 'tools/compare_core.py', repo / 'tools/compare_geometry.py', repo / 'tools/compare_reference.py',
+                    repo / 'tools/compare_vertical_geometry.py',
                     repo / 'tools/kinetic_probe_bridge.rs',
                     *sorted((repo / 'crates/create-core/src').rglob('*.rs')),
                     *sorted((repo / 'tools/wasm-probe').rglob('*.rs')),
@@ -74,7 +77,8 @@ def main():
     port_diff = subprocess.check_output(['git', '-C', str(repo), 'diff', '--binary', 'HEAD'], env=env)
     (run / 'port.patch').write_bytes(port_diff)
     meta = {'scope': 'development server-component sandbox; no live world or machinery',
-            'mode': 'horizontal-static-geometry' if args.geometry else 'declared-topology',
+            'mode': ('vertical-equal-static-geometry' if args.vertical_equal else
+                     'horizontal-static-geometry' if args.geometry else 'declared-topology'),
             'engine_revision': engine_revision, 'engine_diff_sha256': hashlib.sha256(engine_diff).hexdigest(),
             'port_revision': subprocess.check_output(['git', '-C', str(repo), 'rev-parse', 'HEAD'], text=True, env=env).strip(),
             'port_diff_sha256': hashlib.sha256(port_diff).hexdigest(),
@@ -106,14 +110,14 @@ def main():
     meta['component_package_sha256'] = hashlib.sha256(artifact.read_bytes()).hexdigest()
     (run / 'environment.json').write_text(json.dumps(meta, indent=2) + '\n')
     component_env = {'CREATE_KINETIC_COMPONENT': str(artifact)}
-    if args.geometry:
+    if args.geometry or args.vertical_equal:
         execute('native-build', cargo + ['build', '--example', 'kinetic_probe', '--locked', '--offline'],
                 {'CARGO_TARGET_DIR': str(native)})
         native_probe = native / 'debug/examples/kinetic_probe'
         meta['native_probe_sha256'] = hashlib.sha256(native_probe.read_bytes()).hexdigest()
         meta['comparison_sha256'] = {}
         (run / 'environment.json').write_text(json.dumps(meta, indent=2) + '\n')
-        comparator = repo / 'tools/compare_geometry.py'
+        comparator = repo / ('tools/compare_vertical_geometry.py' if args.vertical_equal else 'tools/compare_geometry.py')
         for index, reference in enumerate(args.references, 1):
             outputs = []
             for mode, probe, extra in [('native', native_probe, None), ('sandbox', host, component_env)]:
@@ -146,7 +150,7 @@ def main():
     if (hashlib.sha256(core.read_bytes()).hexdigest() != meta['core_wasm_sha256']
             or hashlib.sha256(artifact.read_bytes()).hexdigest() != meta['component_package_sha256']):
         raise RuntimeError('Probe artifacts changed during the run')
-    if args.geometry:
+    if args.geometry or args.vertical_equal:
         if hashlib.sha256(native_probe.read_bytes()).hexdigest() != meta['native_probe_sha256']:
             raise RuntimeError('Native probe artifact changed during the run')
         if any(hashlib.sha256((run / name).read_bytes()).hexdigest() != value
@@ -154,7 +158,7 @@ def main():
             raise RuntimeError('Canonical comparison output changed during the run')
     (run / 'environment.json').write_text(json.dumps(meta, indent=2) + '\n')
     (run / 'complete.txt').write_text('All selected sandbox comparisons and controls passed; '
-                                       'geometry mode also matches native canonical output\n')
+                                       'static geometry mode also matches native canonical output\n')
 
 
 if __name__ == '__main__':

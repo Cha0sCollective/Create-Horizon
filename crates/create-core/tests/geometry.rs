@@ -348,11 +348,8 @@ fn identity_domain_placement_and_unimplemented_physical_couplings_have_specific_
         derive_topology(&[a, shaft(1, [0, 0, 0], Axis::X)]),
         Err(GeometryError::DuplicatePosition(0, 1))
     );
-    assert_eq!(
-        derive_topology(&[shaft(0, [0, 0, 0], Axis::Y)]),
-        Err(GeometryError::UnsupportedAxis(0, Axis::Y))
-    );
-    for facing in [Facing::West, Facing::South, Facing::Up, Facing::Down] {
+
+    for facing in [Facing::West, Facing::South, Facing::Down] {
         assert_eq!(
             derive_topology(&[motor(0, [0, 0, 0], facing, 16)]),
             Err(GeometryError::UnsupportedFacing(0, facing))
@@ -369,8 +366,10 @@ fn identity_domain_placement_and_unimplemented_physical_couplings_have_specific_
         derive_topology(&[
             cog(0, [0, 0, 0], Axis::X, false),
             cog(1, [0, 1, 0], Axis::X, false)
-        ]),
-        Err(GeometryError::SmallCogMeshUnsupported(0, 1))
+        ])
+        .unwrap()
+        .edges,
+        vec![edge(0, 1, Transmission::EqualCogs)]
     );
     assert_eq!(
         derive_topology(&[
@@ -483,7 +482,7 @@ fn geometry_probe_refuses_malformed_extra_mixed_and_unsupported_input() {
         request[0]["geometry"]["blocks"][0][key] = value;
         controls.push(request);
     }
-    for value in [json!("y"), json!("unknown"), json!(true)] {
+    for value in [json!(null), json!("unknown"), json!(true)] {
         let mut request = base.clone();
         request[0]["geometry"]["blocks"][1]["axis"] = value;
         controls.push(request);
@@ -498,6 +497,12 @@ fn geometry_probe_refuses_malformed_extra_mixed_and_unsupported_input() {
         .as_object_mut()
         .unwrap()
         .remove("setting");
+    controls.push(request);
+    let mut request = base.clone();
+    request[0]["geometry"]["blocks"][1]
+        .as_object_mut()
+        .unwrap()
+        .remove("axis");
     controls.push(request);
     let mut request = base.clone();
     request[0]["edges"] = json!([]);
@@ -517,4 +522,334 @@ fn geometry_probe_refuses_malformed_extra_mixed_and_unsupported_input() {
             "malformed geometry control {index} accepted"
         );
     }
+}
+
+#[test]
+fn six_authored_vertical_snapshots_have_literal_present_ids_edges_and_states() {
+    for setting in [16, -16] {
+        let blocks = [
+            motor(0, [2, 2, 2], Facing::Up, setting),
+            shaft(1, [2, 3, 2], Axis::Y),
+            shaft(2, [2, 4, 2], Axis::Y),
+        ];
+        let topology = derive_topology(&blocks).unwrap();
+        assert_eq!(
+            topology.edges,
+            vec![
+                edge(0, 1, Transmission::Shaft),
+                edge(1, 2, Transmission::Shaft)
+            ]
+        );
+        let rotations = solve(&topology.nodes, &topology.edges).unwrap();
+        assert_eq!(
+            rotations.iter().map(|r| r.id).collect::<Vec<_>>(),
+            vec![0, 1, 2]
+        );
+        for r in rotations {
+            assert_eq!(
+                (r.theoretical_rpm, r.effective_rpm),
+                (f32::from(setting), f32::from(setting))
+            );
+            assert_eq!(
+                (r.stress_su, r.capacity_su, r.state),
+                (0.0, 262144.0, OperatingState::Running)
+            );
+        }
+    }
+    // direct_stop_reverse/070 is a separate static snapshot, not a removal event.
+    let topology = derive_topology(&[
+        motor(0, [2, 2, 2], Facing::Up, -16),
+        shaft(2, [2, 4, 2], Axis::Y),
+    ])
+    .unwrap();
+    assert!(topology.edges.is_empty());
+    let rotations = solve(&topology.nodes, &topology.edges).unwrap();
+    assert_eq!(
+        rotations.iter().map(|r| r.id).collect::<Vec<_>>(),
+        vec![0, 2]
+    );
+    assert_eq!(
+        (
+            rotations[0].theoretical_rpm,
+            rotations[0].effective_rpm,
+            rotations[0].capacity_su
+        ),
+        (-16.0, -16.0, 262144.0)
+    );
+    assert_eq!(
+        (
+            rotations[1].theoretical_rpm,
+            rotations[1].effective_rpm,
+            rotations[1].capacity_su
+        ),
+        (0.0, 0.0, 0.0)
+    );
+    assert_eq!(rotations[1].state, OperatingState::Unpowered);
+    for (driver_large, target_large, target, mesh, target_rpm) in [
+        (
+            false,
+            false,
+            [3, 3, 2],
+            edge(1, 2, Transmission::EqualCogs),
+            -16.0,
+        ),
+        (
+            true,
+            false,
+            [3, 3, 3],
+            edge(1, 2, Transmission::LargeToSmall),
+            -32.0,
+        ),
+        (
+            false,
+            true,
+            [3, 3, 3],
+            edge(2, 1, Transmission::LargeToSmall),
+            -8.0,
+        ),
+    ] {
+        let blocks = [
+            motor(0, [2, 2, 2], Facing::Up, 16),
+            cog(1, [2, 3, 2], Axis::Y, driver_large),
+            cog(2, target, Axis::Y, target_large),
+        ];
+        let topology = derive_topology(&blocks).unwrap();
+        assert_eq!(topology.edges, vec![edge(0, 1, Transmission::Shaft), mesh]);
+        let rotations = solve(&topology.nodes, &topology.edges).unwrap();
+        assert_eq!(
+            rotations
+                .iter()
+                .map(|r| (r.id, r.theoretical_rpm, r.effective_rpm))
+                .collect::<Vec<_>>(),
+            vec![
+                (0, 16.0, 16.0),
+                (1, 16.0, 16.0),
+                (2, target_rpm, target_rpm)
+            ]
+        );
+        for r in rotations {
+            assert_eq!(
+                (r.stress_su, r.capacity_su, r.state),
+                (0.0, 262144.0, OperatingState::Running)
+            );
+        }
+    }
+}
+
+#[test]
+fn up_motor_faces_only_positive_y_and_preserves_signed_settings() {
+    for setting in [16, -16] {
+        for (position, connected) in [
+            ([0, 1, 0], true),
+            ([0, -1, 0], false),
+            ([1, 0, 0], false),
+            ([0, 0, 1], false),
+            ([0, 2, 0], false),
+        ] {
+            let topology = derive_topology(&[
+                motor(0, [0, 0, 0], Facing::Up, setting),
+                shaft(1, position, Axis::Y),
+            ])
+            .unwrap();
+            assert_eq!(topology.nodes[0].source.unwrap().rpm, f32::from(setting));
+            assert_eq!(
+                topology.edges,
+                if connected {
+                    vec![edge(0, 1, Transmission::Shaft)]
+                } else {
+                    vec![]
+                }
+            );
+        }
+    }
+    let topology = derive_topology(&[
+        motor(0, [0, 0, 0], Facing::Up, 16),
+        shaft(1, [0, 1, 0], Axis::X),
+    ])
+    .unwrap();
+    assert!(topology.edges.is_empty());
+    let mut request = geometry_request();
+    request[0]["geometry"]["blocks"][0]["facing"] = serde_json::json!("up");
+    request[0]["geometry"]["blocks"][1]["position"] = serde_json::json!([0, 1, 0]);
+    request[0]["geometry"]["blocks"][1]["axis"] = serde_json::json!("y");
+    let result = probe_bridge::run(request).unwrap();
+    assert_eq!(
+        result[0]["edges"],
+        serde_json::json!([{"from":0,"to":1,"transmission":"shaft"}])
+    );
+    assert_eq!(result[0]["rotations"][1]["effective_rpm"], 16.0);
+}
+
+#[test]
+fn source_derived_equal_cog_contacts_cover_xyz_signs_and_exclude_diagonals_gaps_wrong_axes() {
+    // Only the Y/+X equal-cog contact is an observed E/F equality case.
+    for (axis, axial, perpendicular, diagonal, wrong_axis) in [
+        (
+            Axis::X,
+            [1, 0, 0],
+            [[0, 1, 0], [0, 0, 1]],
+            [0, 1, 1],
+            Axis::Z,
+        ),
+        (
+            Axis::Y,
+            [0, 1, 0],
+            [[1, 0, 0], [0, 0, 1]],
+            [1, 0, 1],
+            Axis::X,
+        ),
+        (
+            Axis::Z,
+            [0, 0, 1],
+            [[1, 0, 0], [0, 1, 0]],
+            [1, 1, 0],
+            Axis::X,
+        ),
+    ] {
+        for sign in [-1, 1] {
+            for unit in perpendicular {
+                let position = unit.map(|v| v * sign);
+                let topology = derive_topology(&[
+                    cog(8, [0, 0, 0], axis, false),
+                    cog(2, position, axis, false),
+                ])
+                .unwrap();
+                assert_eq!(topology.edges, vec![edge(2, 8, Transmission::EqualCogs)]);
+                assert!(
+                    derive_topology(&[
+                        cog(8, [0, 0, 0], axis, false),
+                        cog(2, position.map(|v| v * 2), axis, false)
+                    ])
+                    .unwrap()
+                    .edges
+                    .is_empty()
+                );
+                assert!(
+                    derive_topology(&[
+                        cog(8, [0, 0, 0], axis, false),
+                        cog(2, position, wrong_axis, false)
+                    ])
+                    .unwrap()
+                    .edges
+                    .is_empty()
+                );
+            }
+            let topology = derive_topology(&[
+                cog(8, [0, 0, 0], axis, false),
+                cog(2, axial.map(|v| v * sign), axis, false),
+            ])
+            .unwrap();
+            assert_eq!(topology.edges, vec![edge(2, 8, Transmission::Shaft)]);
+            assert!(
+                derive_topology(&[
+                    cog(8, [0, 0, 0], axis, false),
+                    cog(2, diagonal.map(|v| v * sign), axis, false)
+                ])
+                .unwrap()
+                .edges
+                .is_empty()
+            );
+        }
+    }
+}
+
+#[test]
+fn source_derived_y_size_quadrants_and_reverse_drive_reuse_existing_ratios() {
+    for x in [-1, 1] {
+        for z in [-1, 1] {
+            let topology = derive_topology(&[
+                cog(9, [0, 0, 0], Axis::Y, true),
+                cog(2, [x, 0, z], Axis::Y, false),
+            ])
+            .unwrap();
+            assert_eq!(topology.edges, vec![edge(9, 2, Transmission::LargeToSmall)]);
+        }
+    }
+    for setting in [-16, 16] {
+        let blocks = [
+            motor(0, [2, 2, 2], Facing::Up, setting),
+            cog(1, [2, 3, 2], Axis::Y, false),
+            cog(2, [3, 3, 3], Axis::Y, true),
+        ];
+        let topology = derive_topology(&blocks).unwrap();
+        assert_eq!(
+            topology.edges,
+            vec![
+                edge(0, 1, Transmission::Shaft),
+                edge(2, 1, Transmission::LargeToSmall)
+            ]
+        );
+        assert_eq!(
+            solve(&topology.nodes, &topology.edges).unwrap()[2].effective_rpm,
+            -0.5 * f32::from(setting)
+        );
+    }
+    for (other_axis, position) in [(Axis::X, [1, 1, 0]), (Axis::Z, [0, 1, 1])] {
+        assert_eq!(
+            derive_topology(&[
+                cog(0, [0, 0, 0], Axis::Y, true),
+                cog(1, position, other_axis, true)
+            ]),
+            Err(GeometryError::PerpendicularLargeCogsUnsupported(0, 1))
+        );
+    }
+    assert_eq!(
+        derive_topology(&[
+            cog(0, [0, 0, 0], Axis::Y, true),
+            cog(1, [1, 0, 0], Axis::Y, false)
+        ]),
+        Err(GeometryError::InvalidCogPlacement(0, 1))
+    );
+}
+
+#[test]
+fn y_equal_cog_translations_permutations_and_extreme_positions_remain_safe() {
+    let mut blocks = [
+        motor(7, [20, -5, 17], Facing::Up, 16),
+        cog(1, [20, -4, 17], Axis::Y, false),
+        cog(9, [21, -4, 17], Axis::Y, false),
+    ];
+    let topology = derive_topology(&blocks).unwrap();
+    assert_eq!(
+        topology.edges,
+        vec![
+            edge(1, 7, Transmission::Shaft),
+            edge(1, 9, Transmission::EqualCogs)
+        ]
+    );
+    assert_eq!(
+        solve(&topology.nodes, &topology.edges)
+            .unwrap()
+            .iter()
+            .map(|r| (r.id, r.effective_rpm))
+            .collect::<Vec<_>>(),
+        vec![(1, 16.0), (7, 16.0), (9, -16.0)]
+    );
+    blocks.reverse();
+    assert_eq!(derive_topology(&blocks).unwrap(), topology);
+    let far = [
+        shaft(0, [0, i32::MIN, 0], Axis::Y),
+        shaft(1, [0, i32::MAX, 0], Axis::Y),
+    ];
+    assert!(derive_topology(&far).unwrap().edges.is_empty());
+    for y in [i32::MIN, i32::MAX - 1] {
+        assert_eq!(
+            derive_topology(&[
+                shaft(0, [0, y, 0], Axis::Y),
+                shaft(1, [0, y + 1, 0], Axis::Y)
+            ])
+            .unwrap()
+            .edges,
+            vec![edge(0, 1, Transmission::Shaft)]
+        );
+    }
+    assert!(
+        derive_topology(&[
+            cog(0, [i32::MIN, 0, 0], Axis::Y, false),
+            cog(1, [i32::MAX, 0, 0], Axis::Y, false)
+        ])
+        .unwrap()
+        .edges
+        .is_empty()
+    );
 }

@@ -1,8 +1,8 @@
-//! Source-informed static dry X/Z geometry, not world discovery or propagation timing.
+//! Source-informed static dry XYZ geometry, not world discovery or propagation timing.
 //!
-//! The caller supplies every kinetic block in one closed fixture. Y, other motor
-//! facings, equal-cog meshes and perpendicular large-cog meshes are unsupported.
-//! See docs/design/P02_NATIVE_GEOMETRY_PACKET.md for measured versus source-only scope.
+//! The caller supplies every kinetic block in one closed fixture. Motors support
+//! EAST/NORTH/UP; other facings and perpendicular large-cog meshes are unsupported.
+//! See docs/design/P02_VERTICAL_EQUAL_COG_PACKET.md for measured versus source-only scope.
 use crate::{Edge, MotorSetting, Node, Source, Transmission};
 use std::collections::BTreeMap;
 
@@ -77,6 +77,9 @@ impl BlockKind {
                 facing: Facing::North,
                 ..
             } => direction == [0, 0, -1],
+            Self::Motor {
+                facing: Facing::Up, ..
+            } => direction == [0, 1, 0],
             Self::Motor { .. } => false,
             _ => self.passive_axis().is_some_and(|axis| {
                 direction[axis.index()].abs() == 1
@@ -107,10 +110,8 @@ pub struct Topology {
 pub enum GeometryError {
     DuplicateId(u32),
     DuplicatePosition(u32, u32),
-    UnsupportedAxis(u32, Axis),
     UnsupportedFacing(u32, Facing),
     InvalidCogPlacement(u32, u32),
-    SmallCogMeshUnsupported(u32, u32),
     PerpendicularLargeCogsUnsupported(u32, u32),
 }
 
@@ -190,7 +191,11 @@ fn pair_edge(a: &Block, b: &Block) -> Result<Option<Edge>, GeometryError> {
                 && b.kind.is_small()
                 && unit_axis(diff).is_some_and(|face| face != axis)
             {
-                return Err(GeometryError::SmallCogMeshUnsupported(a.id, b.id));
+                return Ok(Some(Edge {
+                    from: a.id,
+                    to: b.id,
+                    transmission: Transmission::EqualCogs,
+                }));
             }
         } else if a.kind.is_large()
             && b.kind.is_large()
@@ -227,16 +232,10 @@ pub fn derive_topology(blocks: &[Block]) -> Result<Topology, GeometryError> {
         }
     }
     for block in &blocks {
-        match block.kind {
-            BlockKind::Shaft { axis: Axis::Y }
-            | BlockKind::SmallCog { axis: Axis::Y }
-            | BlockKind::LargeCog { axis: Axis::Y } => {
-                return Err(GeometryError::UnsupportedAxis(block.id, Axis::Y));
-            }
-            BlockKind::Motor { facing, .. } if !matches!(facing, Facing::East | Facing::North) => {
-                return Err(GeometryError::UnsupportedFacing(block.id, facing));
-            }
-            _ => {}
+        if let BlockKind::Motor { facing, .. } = block.kind
+            && !matches!(facing, Facing::East | Facing::North | Facing::Up)
+        {
+            return Err(GeometryError::UnsupportedFacing(block.id, facing));
         }
     }
     legal_cog_placement(&blocks)?;
