@@ -83,8 +83,9 @@ qualification in `docs/reference/H08_IDLE_CLOSE_RESTORATION_RESULTS.md`. The nex
 WORLD/container/deferred-state observation now passes focused, feature and broad
 qualification with final independent acceptance in
 `docs/reference/H08_WORLD_OWNER_OBSERVATION_RESULTS.md`. It is named presence only,
-not global checkpoint readiness. A proposed actual capture/recovery mechanism cell
-is audited separately; it is not implemented or a reduced S1 deliverable. The private declared-
+not global checkpoint readiness. A bounded native capture/recovery mechanism cell
+has independent design acceptance and implementation release; qualification is
+pending and S1 deliverables remain unchanged. The private declared-
 event arbitration trial now passes native/Wasm against both retained Java captures,
 controls and regressions, with final independent acceptance in
 `docs/reference/P02_DECLARED_ARBITRATION_RESULTS.md`. It remains a closed-path,

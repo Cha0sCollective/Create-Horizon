@@ -4,7 +4,7 @@ Latest owner resume authorizes development to a genuine blocker or required inpu
 superseding the old cutoff/break. No public publication/promotion/standing team.
 Preserve personal source-informed provenance, R01 and independent Sol High reviews.
 
-Private branch: codex/h02-smoke-h03-notes. Prior private checkpoint: fe94065;
+Private branch: codex/h02-smoke-h03-notes. Prior private checkpoint: 7318c4e;
 accepted event-trial code is 3e82f2f. This checkpoint records accepted W1 results
 and the proposed capture integration audit. Verify actual local/remote state.
 Verify actual revisions and dirty files before work; preserve the author's active
@@ -12,7 +12,7 @@ private source changes. Coordinator owns all integration and execution.
 
 ## Qualified engine and current assignment
 
-Engine codex/h08-world-owner-observation is clean at ACCEPTED local W1 commit
+Accepted base is local W1 commit
 afb38260b562c2df1b12e36aec304ccf51eb0e31, tree
 3131fc796880a1a04d94c4a8de7a5af6c094ad2c. Engine commits remain LOCAL ONLY,
 normal hooks on, upstream push disabled. No public push/merge/release.
@@ -67,13 +67,21 @@ H08_WORLD_ITEM_OWNER_AUDIT.md remains source analysis, not an acceptance itself.
 Named WORLD refusal complements PLAYER/E1;
 hidden ticks/updater/functions/mod/lent-world/streaming and history are NOT covered.
 
-NEXT: H08_CAPTURE_INTEGRATION_AUDIT.md is a PROPOSED executable research direction,
-not implementation authority or a replacement S1 deliverable. It recommends one
-capture/publication/recovery mechanism cell in fresh actual Game fixtures with
-positive PLAYER inventory and item-free native counter, no drops/slot trial. Real
-owner completion must survive generic call timeout; no false fresh=true gate or
-post-save E1 exception. Detached counter archival is NOT live generation restore.
-Detailed design and different fresh independent review must precede source release.
+ACTIVE: H08_CAPTURE_MECHANISM_PACKET.md has fresh independent design/delta
+acceptance for its exact seven-path Linux+test+paired native capture/recovery cell.
+Engine branch codex/h08-capture-mechanism starts at accepted afb3826. Author owns
+levels declaration/new capture implementation/new resource tests; separate author
+owns streaming pristine accessor/tests and lan consuming exporter; coordinator owns
+integrated declaration/completion tests and ALL execution/integration. Preserve
+existing bodies; no runtime/SDK/CLI enabling caller. Source/evidence review pending.
+Two actual channel-backed players have positive plain inventories, native world
+files and one item-free counter archive. Qualification must test definite Task
+completion, physical copies, manifest-last/fsync/publication uncertainty and
+whole-epoch recovery.
+Initial design omitted native random_sequences.dat from exact save footprint;
+reviewed amendment includes its exact file/companions and independent defaults.
+No false fresh=true admission, post-save E1 exception or fabricated fault hooks.
+Detached counter archival is NOT live generation restore or a reduced S1/G1 scope.
 
 ## Established scope and open gates
 
