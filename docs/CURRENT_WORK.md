@@ -5,21 +5,22 @@ superseding the old cutoff/break. No public publication/promotion/standing team.
 Preserve personal source-informed provenance, R01 and fresh independent Sol High reviews.
 
 - Private branch: codex/h02-smoke-h03-notes; checkpoints backed up privately.
-- Engine branch: codex/h06-player-cell-adapter; accepted local base
-  51e2882cd582e862e5e709e7d6d8b7e7978d852e, tree
-  3736b0d0ab39792add8a7475dda93e2418f1e729.
-- Active packet: docs/design/H06_PLAYER_CELL_ADAPTER_PACKET.md, accepted design.
-  Bounded author owns game.rs module declaration, new game/slot_player.rs,
-  commands/items.rs resolver visibility, slot_retirement.rs validator visibility,
-  integrated/transition_ownership_tests.rs declaration and new slot_player_tests.rs.
-  Coordinator owns private docs, formatting, serialized Cargo/tests and integration.
+- Engine branch: codex/h08-checked-raid-save; accepted base
+  62756231205b1b2b65fcf92c180fc29497f29715, tree
+  939047a8e540e178b9176830fdea8d8c64e0b8f4.
+- Active accepted packet: docs/design/H08_RAID_METADATA_PACKET.md. Bounded author
+  owns raids.rs writer/lazy warning/test declaration, game.rs save_level ordering,
+  saving.rs incremental propagation, integrated.rs test-module visibility,
+  transition_ownership_tests.rs Fixture/new/game TEST-ONLY visibility and new
+  game/raids/metadata_tests.rs. Preserve every existing fixture body/loader/Options.
+  Coordinator owns docs, formatting, serialized validation and integration.
   Independent reviewers stay read-only. No standing team or permission expansion.
 - Engine commits LOCAL ONLY, normal hooks on, upstream push disabled. No public push.
 - Create stays clean detached 7ff2760e4924d35d4bc2e22c4b19923f0178cd16.
   Never alter Prism/playable worlds/reference snapshots. Pins in workspace.toml.
 
 Qualified bounded foundations: S0/P02/B0, H02/H03/H04/H05a-d native/guest counters,
-H06a-c native transfer/World ownership/checked receiver and H08a1-a13 save
+H06a-d native transfer/World ownership/checked receiver/player-cell and H08a1-a13 save
 prerequisites. Named docs/reference result notes retain scope and validation limits.
 Actual guest counter normal/trap/reject/invalid trials pass both modes; counters
 and backends remain transient. World slots have NO Game enabling callsite.
@@ -32,6 +33,14 @@ encountering a CR-only blank line. Raw original/status/log preserved; intended s
 is a byte-identical copy. No engine fix/retest/relabel. Exact evidence and limits:
 H06_CHECKED_RETIREMENT_RECEIVER_RESULTS.md. Ordinary Game coverage is explicitly
 reused from H08a13, not new H06c gameplay activation.
+
+H06d accepted: seven actual-Game cases including real as_guest, seven library tests
+in each feature mode, 173 bin tests (21 ignored), three lints, normal hook, broad
+369 Python/1357 client/zero doc and final independent review. First resource run
+6pass/1setup failure preserved; test-only resident-column repair then7pass22.67s.
+No production fix after source review. Frozen test SHA256
+315eb288059c2eccc2418e67a63059087b5cf765671de43427ba14e58590d890.
+See H06_PLAYER_CELL_ADAPTER_RESULTS.md for exact candidate, limits and artifacts.
 
 Latest full native counter Game evidence, H08a13 frozen binary SHA256
 7a70263c620f6013e4c5eb020aa0f167fd988e088daec4584ad4d22256f5b46c:
@@ -65,5 +74,11 @@ All-owner teardown, shutdown-error retention, off-resident entity ownership,
 coherent recovery, external paired peers, retained animation/performance and
 G1/G2/G3 remain open. H08_CHECKPOINT_FEASIBILITY records remaining gaps; tick freeze
 or server hold is not a capture barrier. Next bounded audit proposes detached guest
-cursor normalization/source-dimension overflow; no implementation is yet authorized
-by an accepted packet. No native precursor implies durable machine ownership.
+cursor ownership; primary vanilla bytecode rejects cursor-to-inventory on disconnect:
+the whole stack drops. See H08_DISCONNECTED_CURSOR_FEASIBILITY.md. A separate audit
+found suppressed raid save errors; H08a14 is the accepted bounded writer precursor.
+Preserve queued flush attempts and earlier raid-error precedence, exact dirty data,
+omen projection and incremental pending-save ownership. Lazy load_raids replacement
+after failed save is explicitly UNFIXED; do not simply return old-dimension data to
+new-dimension callers. New disk readers must prove queued writes, not pending cache.
+Separate dual-fault fixtures retain sticky writer errors. No precursor implies durable ownership.
