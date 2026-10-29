@@ -4,91 +4,92 @@ Latest owner resume authorizes development to a genuine blocker or required inpu
 superseding the old cutoff/break. No public publication/promotion/standing team.
 Preserve personal source-informed provenance, R01 and independent Sol High reviews.
 
-- Private branch codex/h02-smoke-h03-notes; accepted checkpoint0ba2818 is backed up
-  privately. Code candidatec821d21 is the accepted static-geometry source identity.
-- Engine branch codex/h08-parked-save-restoration, QUALIFIED base
-  3ded3a2f8b7e012eae08dfaf06e6985686e95912, tree
-  cffabea129c8e95fa74c19f4ac489a7c41fb2ac4. Author is writing the next candidate;
-  verify actual dirty files. Engine commits remain LOCAL ONLY, normal hooks on,
-  upstream push disabled. No public push/merge/release.
-- Latest qualified packet: docs/design/H08_GLOBAL_OWNER_PACKET.md. Different fresh
-  design/delta review passes after correcting the lib/bin field-access conflict.
-  Additions ONLY to game/levels.rs,persist.rs,nether_portal.rs,lib world_slot_trial.rs
-  plus3named test children; preserve all qualified bodies/helpers. The sole public
-  lib addition is paired-gated borrowed Boolean has_world_slot_trial; fields stay
-  private. Root owns formatting, frozen-source review, ALL tests and integration.
-  Eight resource cases,9lib tests in eachpaired configuration,177bin tests with
-  53ignored,3feature lints and broad369/1358/0/final receipt review pass. Initial
-  failed compile/test-only fixes remain in .local/h08e1-build-attempt1. No new GUI
-  smoke is claimed; unchanged63a7d62 both-mode normal paths are explicitly reused.
-- The diagnostic observes active+every Parked ENTITY owners only. Fresh resident
-  drops may pass; other named native families, retained maps, pending loaded data,
-  whole slot trials and portal owners refuse. No payload clone/take, normalization,
-  IO, new Game field or lasting readiness token. It does not reduce S1/G1 scope.
-- Active accepted H08_PARKED_SAVE_RESTORATION_PACKET.md targets ONLY
-  game/levels.rs::save_parked_levels and new levels/parked_save_tests.rs. Capture
-  loop Result, always attempt original-dimension restoration, preserve first error;
-  current invariants make restoration-error runtime coverage unreachable. Keep
-  all existing entity helpers/bodies intact; no sticky-error reset, new fields,
-  owner rebuilding, journal or close_idle_levels change. Root owns all execution.
-- Parallel P02_VERTICAL_EQUAL_COG_PACKET.md passes different fresh independent
-  design review. Assigned Y/UP+small-small geometry uses exactly
-  retained E/F6checkpoints/17present machines, with explicit old-schema limits.
-  Source review/native17geometry+10legacy+3host tests/lints/Wasmcheck pass at code
-  candidate49fa0e5; actual native/sandbox/evidence qualification now PASSES. See
-  P02_VERTICAL_EQUAL_COG_RESULTS.md. Eight vertical/eight retained horizontal
-  actual controls,24derived output/10reference controls and legacy regressions
-  pass. Initial task-local self-comparison wrapper failure remains archived at
-  .local/p02v1-control-attempt1; corrected controls/continuation pass, unchanged
-  successful probes reused. Source freeze is released after final independent review.
+Private branch: codex/h02-smoke-h03-notes. Last privately backed-up checkpoint is
+c1224d2; subsequent named design/result notes are being checkpointed separately.
+Verify actual revisions and dirty files before work; preserve the author's active
+private source changes. Coordinator owns all integration and execution.
 
-Qualified bounded foundations: S0/G0 research, H02/H03/H04/H05a-d counters, H06a-d
-native ownership/player-cell, H08a1-a15 save prerequisites, native participant
-preflight/projections, P02a/b and bounded static X/Z geometry. S1/G1 remains open;
-live S2 integration requires G1. S3 still has exactly the five specified components.
-Named docs/reference results hold exact source/binary/commands/failures/limits.
+## Qualified engine and current assignment
 
-Latest accepted H08_RAID_LIFETIME_RESULTS.md:12focused cases,176ordinary tests,
-45ignored,3feature lints,1900separate vanilla-library cases, both Game modes,
-broad369Python/1358client/zero doc and final independent receipt review pass.
-Qualified Game SHA2567738d0c23944068344a07d673e6054ef9bda863d37aee22d81c8205b0543fc39:
-integratedd1b12272-6486-4d4d-8c32-6c96416ea471 (368checks),
-in-frame3c7301a6-d3df-4feb-a3a6-bcf2dcaa4e34 (353checks).
-Four normal exits0, four intended refusal exits1; all cleanup null. Earlier failed
-runs/wrapper errors remain accurately archived in their original result notes.
+Engine codex/h08-parked-save-restoration is clean at ACCEPTED local commit
+aa170bc4fd3214790a2363732d0c7cdd57ba6451, tree
+1dec4b02fe540af63c4453ff2ff7e1c221a1056f. Engine commits remain LOCAL ONLY,
+normal hooks on, upstream push disabled. No public push/merge/release.
 
-P02_STATIC_GEOMETRY_RESULTS.md accepts c821d21:12geometry/10legacy/3host tests,
-lints/format/Wasmcheck, actual native+sandbox against BOTH horizontal captures,
-8actual controls,21derived controls and legacy regressions/final review pass.
-Only exact captured layouts/settled snapshots get measured equality claims;
-source-derived other quadrants do not establish arbitrary-axis conformance.
-Multiple-source arbitration/live graph ownership remain unimplemented.
+H08_PARKED_SAVE_RESTORATION_RESULTS.md accepts unconditional original-dimension
+restoration with first-error precedence after failed parked saves. Six actual
+isolated fault cases, 9+9lib/177bin tests (59ignored), three feature lints,
+format/public-tree/hook, both full Game modes and broad369/1358/0 pass with final
+independent review. Initial compile-only attempts, failed fixture assumption and
+test-only lint failures remain archived. No global checkpoint claim follows.
 
-Serialize ALL Cargo including test execution. Broad native clone pointer is
+Latest frozen Game SHA256:
+52ed94ea1e7575d88b8abf26c15409c959d81d989014a675d8728eacf19a268c.
+Integrated aa962658-0466-4853-9baf-bfe08059e478 passes368checks;
+in-frame8cb6d72b-fe2d-461a-8452-c02e368c0ef3 passes353.
+Four normal exits0, four intended refusal exits1; all cleanup null. Original
+proofs remain in workspace-root .local/h02d/game-runs, not just summary indexes.
+
+Active PRIVATE packet: P02_DECLARED_ARBITRATION_PACKET.md passed different fresh
+independent design review. Author is implementing only its six named files for
+three-node declared-event unequal merge, dominant removal and subordinate reversal.
+Keep solve/geometry/engine/Java/dependencies/host/guest unchanged. No candidate
+execution until author release, root formatting/freeze and independent source review.
+Root owns all Cargo/tests/native+Wasm controls and evidence integration. Exact static
+vertical neighbor enumeration is now bytecode-supported; global BE/callback order
+and transient timing stay authored/unqualified. Domain effects are not world drops.
+
+Next H08_IDLE_CLOSE_RESTORATION_PACKET.md has independent design acceptance.
+Implementation stays FROZEN until root releases the exact qualified successor and
+the current private native/Wasm qualification no longer needs a clean engine pin.
+Preserve successful save->return->retire->remove order and failed native owners;
+normal idle reset makes immediate repair success insufficient retry evidence.
+
+## Established scope and open gates
+
+S0/G0 bounded research, H02/H03/H04/H05a-d counters, H06a-d native ownership/player
+cell, H08a1-a15 save prerequisites, PLAYER preflight/projections and E1 entity-owner
+observation are qualified. E1 at3ded3a2 is diagnostic only: fresh resident drops
+may pass, unsupported families/maps/pending loaded data/slots/portal owners refuse.
+It does not certify historical losses or reduce S1/G1 scope.
+
+P02_STATIC_GEOMETRY_RESULTS.md accepts c821d21 X/Z geometry;
+P02_VERTICAL_EQUAL_COG_RESULTS.md accepts49fa0e5 Y/UP+equal-small-cog geometry.
+Measured projections are horizontal12checkpoints/48machines and vertical6/17,
+with explicit gap IDs and old-schema limits. Other directions/quadrants remain
+source-derived only. Earlier failed control wrapper is preserved; corrected
+continuation reuses successful probes. Full arbitration is still unimplemented.
+
+S1/G1 remains open; live S2 integration requires G1. S3 has exactly motor, shaft,
+small+large cog and cobblestone-to-gravel millstone. Open hard gates include block/
+container/spill/pending-event owners, producer/writer/error lifetime, failed Left/
+unload/portal/reconnect history, full item scalar/byte support, ordinary in-frame
+capture adaptation, machine persistence, exclusive definite-completion capture,
+immutable copies/manifest-last recovery, two external paired peers and retained
+animation/performance. Tick freeze/server hold is not a barrier; Integrated::call
+timeout does not cancel its task. World slots have NO Game enabling caller.
+See HOST_CONTRACT, H08_CHECKPOINT_FEASIBILITY and current owner/cursor audits.
+
+## Execution constraints
+
+Serialize ALL Cargo, including test execution. Broad native clone pointer is
 workspace-root .local/h05-ci-checkout.txt. Never export GIT_DIR/GIT_WORK_TREE.
+Reviewers stay native read-only despite runtime write capability; no execution or
+permission expansion. A role label never authorizes a standing team.
+
 Clear HORIZON_SESSION_FILE in EVERY child. Game/launcher/HOME/data/config/cache/temp
 must be fresh; preserve XDG_RUNTIME_DIR. Use short sockets and TWO approved guest
-components copied under the old driver's fresh HOME. Raw binaries/worlds/Mojang
-files/account data/generated runs stay outside Git at workspace-root .local.
+components under the old driver's fresh HOME. Raw binaries/worlds/Mojang files/
+account data/generated runs stay outside Git at workspace-root .local.
 Normalize new Linux scripts to LF. Never alter Prism/playable worlds/references.
 Create stays clean detached7ff2760e4924d35d4bc2e22c4b19923f0178cd16; pins in workspace.toml.
 
-Immutable entrypoint SHA256 values (and their qualified parents must stay unchanged):
+Immutable entrypoints AND qualified parents must stay unchanged:
 run_counter_game_smoke.py
  d19c480572c3fbcb0ce01afeb868efb5dc276ad64606ab01f40edd9bf2d970e0;
 run_stable_counter_game_smoke.py
  b09390209a9f03f3597ddcd25f9a412d40cc93344ad1858b78994a76ce31c35e;
 run_guest_counter_game_smoke.py
  c1b2a0b1875029c69264a12cbfa871f02a48fad87bd4e875297f8b3c69a48926.
-Restoration needs CURRENT command feedback or exact no-op state, not old chat.
-Reviewers stay native read-only despite runtime writes. No permission expansion.
-
-Open hard gates: block/container/spill/pending-event owners; producer/writer and
-all-level completion/error lifetime; failed Left/unload/portal/reconnect history;
-full item/component/byte support; ordinary in-frame capture adaptation; machine
-persistence; exclusive definite-completion capture; physical immutable copies,
-manifest-last publication/recovery; two external paired peers; retained animation/
-performance and G1/G2/G3. PLAYER/entity observations cannot reconstruct earlier
-loss. Tick freeze/server hold is not a barrier; Integrated::call timeout does not
-cancel its task. World slots have NO Game enabling callsite. See host contract,
-H08_CHECKPOINT_FEASIBILITY and current owner/cursor audits before the next packet.
+Restoration requires CURRENT coordinate-specific command feedback or exact no-op,
+not old chat. Earlier failures remain honestly recorded in their result notes.

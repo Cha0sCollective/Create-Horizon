@@ -7,7 +7,7 @@ remain proposed until their corresponding gate accepts them.
 | Stage | Outcome | Current state |
 | --- | --- | --- |
 | S0 | Runnable pinned reference, repeatable traces and bounded host contract | G0 accepted for bounded experiments; performance qualification open |
-| S1 | Persistent synchronized generic machine with retained animation | H05a-d, H06a-d, H08a1-a15, participant preflight/projections and bounded entity-owner diagnostic qualified; full H02/H03/H04/H05/G1 open |
+| S1 | Persistent synchronized generic machine with retained animation | H05a-d, H06a-d, H08a1-a15, participant preflight/projections, entity-owner diagnostic and failed parked-save restoration qualified; full H02/H03/H04/H05/G1 open |
 | S2 | Verified motor, shafts and two cog sizes | P02a/b, arbitration/reference observations, static X/Z and selected Y/equal-cog native/Wasm geometry accepted; remaining geometry/arbitration and full P02/integration open, live integration requires G1 |
 | S3 | Five-component playable milling MVP and two-client evidence | Planned; G3 open |
 | S4 | Obtainable survival power and a small factory | Future scope |
@@ -75,9 +75,12 @@ raid ownership passes in `docs/reference/H08_RAID_LIFETIME_RESULTS.md`. A bounde
 entity-owner observation passes in `docs/reference/H08_ENTITY_OWNER_OBSERVATION_RESULTS.md`;
 it is not a complete checkpoint barrier. Bounded private static geometry passes
 in `docs/reference/P02_STATIC_GEOMETRY_RESULTS.md`; selected Y/equal-cog results
-pass in `docs/reference/P02_VERTICAL_EQUAL_COG_RESULTS.md`. The next bounded S1
-correction restores the starting dimension after failed parked saves under
-`docs/design/H08_PARKED_SAVE_RESTORATION_PACKET.md`.
+pass in `docs/reference/P02_VERTICAL_EQUAL_COG_RESULTS.md`. Failed parked saves
+now restore the starting dimension, accepted in
+`docs/reference/H08_PARKED_SAVE_RESTORATION_RESULTS.md`. The analogous idle-close
+design is reviewed separately and still frozen. The private declared-event
+arbitration trial has accepted design and is being implemented; it is not yet a
+native/Wasm result. See `docs/design/P02_DECLARED_ARBITRATION_PACKET.md`.
 Coherent recovery remains separate in `docs/design/H08_CHECKPOINT_FEASIBILITY.md`;
 completed arbitration and horizontal observations are in
 `docs/reference/P02_ARBITRATION_RESULTS.md` and
