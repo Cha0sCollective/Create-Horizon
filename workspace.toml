@@ -6,7 +6,7 @@ namespace = "create_horizon"
 repository = "https://github.com/Cha0sCollective/Create-Horizon"
 visibility = "private"
 stage = "post-G0 foundations"
-active_packet = "Capture/publication/recovery fixture mechanism implementation released after design review; W1/PLAYER/E1 and bounded kinetics qualified; G1 open"
+active_packet = "Bounded fresh native capture/recovery mechanism qualified; actual machine restoration source audit next; G1 open"
 next_stage = "S1 host foundations and remaining P02; G1/G2/G3 open"
 
 [specification]

@@ -4,17 +4,18 @@ Latest owner resume authorizes development to a genuine blocker or required inpu
 superseding the old cutoff/break. No public publication/promotion/standing team.
 Preserve personal source-informed provenance, R01 and independent Sol High reviews.
 
-Private branch: codex/h02-smoke-h03-notes. Prior private checkpoint: 7318c4e;
-accepted event-trial code is 3e82f2f. This checkpoint records accepted W1 results
-and the proposed capture integration audit. Verify actual local/remote state.
+Private branch: codex/h02-smoke-h03-notes. Prior private checkpoint: 4d95e71;
+accepted event-trial code is 3e82f2f. This checkpoint records accepted native capture
+mechanism results. Verify actual local/remote state.
 Verify actual revisions and dirty files before work; preserve the author's active
 private source changes. Coordinator owns all integration and execution.
 
 ## Qualified engine and current assignment
 
-Accepted base is local W1 commit
-afb38260b562c2df1b12e36aec304ccf51eb0e31, tree
-3131fc796880a1a04d94c4a8de7a5af6c094ad2c. Engine commits remain LOCAL ONLY,
+Accepted engine is clean on codex/h08-capture-mechanism at
+88bfcb05c4ac9c8b817c171e28ea6e5527b11cb5, tree
+ffb1c243f7d630f85a364b893845305857f058b1, based on accepted W1 afb3826.
+Engine commits remain LOCAL ONLY,
 normal hooks on, upstream push disabled. No public push/merge/release.
 
 H08_PARKED_SAVE_RESTORATION_RESULTS.md accepts unconditional original-dimension
@@ -67,21 +68,25 @@ H08_WORLD_ITEM_OWNER_AUDIT.md remains source analysis, not an acceptance itself.
 Named WORLD refusal complements PLAYER/E1;
 hidden ticks/updater/functions/mod/lent-world/streaming and history are NOT covered.
 
-ACTIVE: H08_CAPTURE_MECHANISM_PACKET.md has fresh independent design/delta
-acceptance for its exact seven-path Linux+test+paired native capture/recovery cell.
-Engine branch codex/h08-capture-mechanism starts at accepted afb3826. Author owns
-levels declaration/new capture implementation/new resource tests; separate author
-owns streaming pristine accessor/tests and lan consuming exporter; coordinator owns
-integrated declaration/completion tests and ALL execution/integration. Preserve
-existing bodies; no runtime/SDK/CLI enabling caller. Source/evidence review pending.
-Two actual channel-backed players have positive plain inventories, native world
-files and one item-free counter archive. Qualification must test definite Task
-completion, physical copies, manifest-last/fsync/publication uncertainty and
-whole-epoch recovery.
-Initial design omitted native random_sequences.dat from exact save footprint;
-reviewed amendment includes its exact file/companions and independent defaults.
-No false fresh=true admission, post-save E1 exception or fabricated fault hooks.
+H08_CAPTURE_MECHANISM_RESULTS.md ACCEPTS the seven-path Linux+test+paired cell.
+Two actual channel-backed players with positive inventories, native1/3dim worlds
+and item-free counter archive pass actual Task capture, physical immutable copies,
+manifest-last publication, whole-epoch recovery, five publisher interruptions and
+actual10s observer timeout/definite completion. Four native streamer cases,180bin/
+79ignored, six Game groups82.80s,3feature lints/fmt/public-tree/hook, broad369/1358/0
+and different fresh final independent source/receipt review pass. Valid post-test
+mechanical/ordinary/library/GUI evidence reuse is explicit; no final-source GUI or
+resource-binary rerun is invented. Preserve all source/compile/resource/lint attempts.
+Existing bodies remain unchanged prefixes; no runtime/SDK/CLI caller or new field.
+No fresh=true admission, post-save E1 exception or fabricated fault hook. Process
+kills prove restart selection; fsync ordering is a source-backed durability argument.
 Detached counter archival is NOT live generation restore or a reduced S1/G1 scope.
+
+NEXT: bounded source audit for actual nonzero machine/counter restoration, stable
+placement/world identity, fresh runtime identity/allocator and native phase resume.
+H08_MACHINE_RESTORE_INTEGRATION_AUDIT.md, when released, is PROPOSED only; no next
+implementation is released before detailed design and fresh independent review.
+Coordinator owns all execution/integration; no standing team or public publication.
 
 ## Established scope and open gates
 
@@ -103,8 +108,8 @@ S1/G1 remains open; live S2 integration requires G1. S3 has exactly motor, shaft
 small+large cog and cobblestone-to-gravel millstone. Open hard gates include block/
 container/spill/pending-event owners, producer/writer/error lifetime, failed Left/
 unload/portal/reconnect history, full item scalar/byte support, ordinary in-frame
-capture adaptation, machine persistence, exclusive definite-completion capture,
-immutable copies/manifest-last recovery, two external paired peers and retained
+capture adaptation, machine persistence and general runtime capture/recovery,
+two external paired peers and retained
 animation/performance. Tick freeze/server hold is not a barrier; Integrated::call
 timeout does not cancel its task. World slots have NO Game enabling caller.
 See HOST_CONTRACT, H08_CHECKPOINT_FEASIBILITY and current owner/cursor audits.

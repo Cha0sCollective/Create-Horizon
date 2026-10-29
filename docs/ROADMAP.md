@@ -7,7 +7,7 @@ remain proposed until their corresponding gate accepts them.
 | Stage | Outcome | Current state |
 | --- | --- | --- |
 | S0 | Runnable pinned reference, repeatable traces and bounded host contract | G0 accepted for bounded experiments; performance qualification open |
-| S1 | Persistent synchronized generic machine with retained animation | H05a-d, H06a-d, H08a1-a15, PLAYER/E1/W1 diagnostics and failed save/idle-close restoration qualified; capture/persistence/full H02/H03/H04/H05/G1 open |
+| S1 | Persistent synchronized generic machine with retained animation | H05a-d, H06a-d, H08a1-a15, PLAYER/E1/W1, save/idle restoration and bounded fresh capture/recovery mechanism qualified; runtime/machine persistence/full H02/H03/H04/H05/G1 open |
 | S2 | Verified motor, shafts and two cog sizes | P02a/b, reference observations, static XYZ/equal-cog geometry and declared three-path event arbitration accepted in native/Wasm; general arbitration and full P02/integration open, live integration requires G1 |
 | S3 | Five-component playable milling MVP and two-client evidence | Planned; G3 open |
 | S4 | Obtainable survival power and a small factory | Future scope |
@@ -84,8 +84,9 @@ WORLD/container/deferred-state observation now passes focused, feature and broad
 qualification with final independent acceptance in
 `docs/reference/H08_WORLD_OWNER_OBSERVATION_RESULTS.md`. It is named presence only,
 not global checkpoint readiness. A bounded native capture/recovery mechanism cell
-has independent design acceptance and implementation release; qualification is
-pending and S1 deliverables remain unchanged. The private declared-
+now passes native/feature/broad qualification and final independent review in
+`docs/reference/H08_CAPTURE_MECHANISM_RESULTS.md`; runtime admission and live machine
+generation installation remain open. S1 deliverables are unchanged. The private declared-
 event arbitration trial now passes native/Wasm against both retained Java captures,
 controls and regressions, with final independent acceptance in
 `docs/reference/P02_DECLARED_ARBITRATION_RESULTS.md`. It remains a closed-path,
