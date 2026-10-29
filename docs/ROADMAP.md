@@ -7,7 +7,7 @@ remain proposed until their corresponding gate accepts them.
 | Stage | Outcome | Current state |
 | --- | --- | --- |
 | S0 | Runnable pinned reference, repeatable traces and bounded host contract | G0 accepted for bounded experiments; performance qualification open |
-| S1 | Persistent synchronized generic machine with retained animation | H05a-d counters, H06a-d native transfer/ownership/player-cell and H08a1-a13 prerequisites qualified; H08a14 checked raid writer active; full H02/H03/H04/H05/G1 open |
+| S1 | Persistent synchronized generic machine with retained animation | H05a-d counters, H06a-d native transfer/ownership/player-cell and H08a1-a14 prerequisites qualified; native participant preflight active; full H02/H03/H04/H05/G1 open |
 | S2 | Verified motor, shafts and two cog sizes | P02a/b and six-case repeated source-arbitration observations reviewed; native multi-source rules and full P02/integration open, live integration requires G1 |
 | S3 | Five-component playable milling MVP and two-client evidence | Planned; G3 open |
 | S4 | Obtainable survival power and a small factory | Future scope |
@@ -67,7 +67,9 @@ counter tests, broad checks and final independent receipt review in
 resident checked receiver also passes native, broad and final independent review in
 `docs/reference/H06_CHECKED_RETIREMENT_RECEIVER_RESULTS.md`. The dormant real
 player-cell adapter passes in `docs/reference/H06_PLAYER_CELL_ADAPTER_RESULTS.md`.
-Next is checked raid-save propagation in `docs/design/H08_RAID_METADATA_PACKET.md`.
+Checked raid-save propagation passes in `docs/reference/H08_RAID_METADATA_RESULTS.md`.
+Next is the dormant native player-owner roster preflight in
+`docs/design/H08_PARTICIPANT_PREFLIGHT_PACKET.md`.
 Coherent recovery remains separate in `docs/design/H08_CHECKPOINT_FEASIBILITY.md`;
 completed arbitration observations are in `docs/reference/P02_ARBITRATION_RESULTS.md`.
 G1/G2/G3 remain open.

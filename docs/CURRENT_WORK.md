@@ -4,61 +4,55 @@ Latest owner resume authorizes development to a genuine blocker or required inpu
 superseding the old cutoff/break. No public publication/promotion/standing team.
 Preserve personal source-informed provenance, R01 and fresh independent Sol High reviews.
 
-- Private branch: codex/h02-smoke-h03-notes; checkpoints backed up privately.
-- Engine branch: codex/h08-checked-raid-save; accepted base
-  62756231205b1b2b65fcf92c180fc29497f29715, tree
-  939047a8e540e178b9176830fdea8d8c64e0b8f4.
-- Active accepted packet: docs/design/H08_RAID_METADATA_PACKET.md. Bounded author
-  owns raids.rs writer/lazy warning/test declaration, game.rs save_level ordering,
-  saving.rs incremental propagation, integrated.rs test-module visibility,
-  transition_ownership_tests.rs Fixture/new/game TEST-ONLY visibility and new
-  game/raids/metadata_tests.rs. Preserve every existing fixture body/loader/Options.
-  Coordinator owns docs, formatting, serialized validation and integration.
-  Independent reviewers stay read-only. No standing team or permission expansion.
+- Private branch: codex/h02-smoke-h03-notes; accepted checkpoints backed up privately.
+- Engine branch: codex/h08-participant-preflight; accepted base
+  b3e0d3561a8849c03cd19012ed42c4710b7ec0fe, tree
+  822c230744135df8a63195a5b0bbcdcc029f8c31.
+- Active accepted packet: docs/design/H08_PARTICIPANT_PREFLIGHT_PACKET.md.
+  Bounded author owns game/lan.rs observation/types/test declaration,
+  game/lan_actions.rs and game/lan_crafting.rs borrowed predicates/local tests,
+  and NEW game/lan/participant_preflight_tests.rs. No other engine edits.
+  Coordinator owns docs, formatting, serialized Cargo/tests and integration.
+  Reviewers stay read-only despite runtime writes. No permission expansion/team.
 - Engine commits LOCAL ONLY, normal hooks on, upstream push disabled. No public push.
-- Create stays clean detached 7ff2760e4924d35d4bc2e22c4b19923f0178cd16.
+- Create clean detached reference: 7ff2760e4924d35d4bc2e22c4b19923f0178cd16.
   Never alter Prism/playable worlds/reference snapshots. Pins in workspace.toml.
 
 Qualified bounded foundations: S0/P02/B0, H02/H03/H04/H05a-d native/guest counters,
-H06a-d native transfer/World ownership/checked receiver/player-cell and H08a1-a13 save
-prerequisites. Named docs/reference result notes retain scope and validation limits.
-Actual guest counter normal/trap/reject/invalid trials pass both modes; counters
-and backends remain transient. World slots have NO Game enabling callsite.
+H06a-d native transfer/World ownership/receiver/player-cell, H08a1-a14 save
+prerequisites. Named docs/reference result notes retain exact scope/evidence limits.
+Actual guest counter normal/trap/reject/invalid trials pass both modes. Counters and
+backends remain transient. World slots have NO Game enabling callsite.
 
-H06c acceptance: six explicit resource-backed Game cases, seven library tests in
-both feature modes, 173 binary tests (14 ignored), three feature lints, fmt,
-public-tree/hook, broad 369 Python/1357 client/zero doc and final independent review.
-Broad checks exit0; wrapper exits1 after writing a CR-suffixed status filename and
-encountering a CR-only blank line. Raw original/status/log preserved; intended status
-is a byte-identical copy. No engine fix/retest/relabel. Exact evidence and limits:
-H06_CHECKED_RETIREMENT_RECEIVER_RESULTS.md. Ordinary Game coverage is explicitly
-reused from H08a13, not new H06c gameplay activation.
+Latest H08a14: five real Game disk-fault cases (5 pass/0 ignored/13.93s), 173 ordinary
+bin tests (26 ignored), three feature lints, fmt/public-tree/normal hook, broad
+369 Python/1357 client/zero doc, new full counter Game both modes and final review.
+Composite counter/quick statuses both0; source unchanged after review. See
+H08_RAID_METADATA_RESULTS.md. Parity selection355 is --list only; none executed.
+Lazy load_raids replacement after a failed save remains explicitly UNFIXED.
+H08_RAID_LIFETIME_AUDIT.md proposes a later one-module fix, not implementation.
 
-H06d accepted: seven actual-Game cases including real as_guest, seven library tests
-in each feature mode, 173 bin tests (21 ignored), three lints, normal hook, broad
-369 Python/1357 client/zero doc and final independent review. First resource run
-6pass/1setup failure preserved; test-only resident-column repair then7pass22.67s.
-No production fix after source review. Frozen test SHA256
-315eb288059c2eccc2418e67a63059087b5cf765671de43427ba14e58590d890.
-See H06_PLAYER_CELL_ADAPTER_RESULTS.md for exact candidate, limits and artifacts.
+New clean-commit Game SHA256
+01a55d6ec222c0a389f97235ac647d0c430c9cfa35bbeafa7c0f1e47606646cb:
+- Integrated0814a185-60e7-4f98-b441-3bc96a7d1be4: 368 checks/final65.
+- In-frame75395689-ae25-43d3-9153-07ac0aaa0b0f: 353 checks/final27.
+- Four normal initial/restart exits0/cleanup null. Four expected refusal exits1;
+  integrated changed-package cleanup races an already-exited game. Others null.
+- These are normal-path regressions, separate from focused headless raid faults.
 
-Latest full native counter Game evidence, H08a13 frozen binary SHA256
-7a70263c620f6013e4c5eb020aa0f167fd988e088daec4584ad4d22256f5b46c:
-- Stable integrated 5e9ecb59-3816-4bda-9257-fa6a3551777e: 368 checks/final64.
-- Stable in-frame 326d5ed4-494a-4a77-808b-f241183b5615: 353 checks/final19.
-- Original integrated23ce9294 failed90 checks BEFORE counter (sample grass versus
-  SDK previous dirt); original in-frameb6127120 passed347/final27. Preserved failures.
-- Normal initial/restart exits0/null. Integrated changed-package refusal cleanup
-  races an already-exited process/missing socket; other refusal cleanup errors null.
-
-Qualified immutable entrypoints: run_counter_game_smoke.py SHA256
+Earlier H06c/H06d accepted result notes retain their source/binary/native/broad
+proofs. H06c broad checks pass despite a preserved post-check CRLF wrapper exit1.
+H06d first resource run6pass/1setup failure is preserved, then7pass after a test-only
+resident-column repair. H08a13's old grass/dirt fixture failure stays archived too.
+No failed run was relabelled. Qualified immutable entrypoints SHA256:
+run_counter_game_smoke.py
  d19c480572c3fbcb0ce01afeb868efb5dc276ad64606ab01f40edd9bf2d970e0;
 run_stable_counter_game_smoke.py
  b09390209a9f03f3597ddcd25f9a412d40cc93344ad1858b78994a76ce31c35e;
 run_guest_counter_game_smoke.py
  c1b2a0b1875029c69264a12cbfa871f02a48fad87bd4e875297f8b3c69a48926.
-Do not edit these or qualified parents. Stable fixture restoration uses CURRENT
-command feedback/exact no-op state, never dispatch-ok or old chat membership.
+Do not edit these or qualified parents. Stable restoration uses CURRENT command
+feedback/exact no-op state, never dispatch-ok or old chat membership.
 
 Serialize ALL Cargo including test execution. Native broad clone pointer:
 .local/h05-ci-checkout.txt. Never export GIT_DIR/GIT_WORK_TREE into tests.
@@ -66,19 +60,19 @@ Clear HORIZON_SESSION_FILE in EVERY child. Game/launcher/HOME/data/config/cache/
 must be fresh; preserve inherited XDG_RUNTIME_DIR display service. Short socket paths;
 old smoke helpers need copies of TWO approved components under their fresh HOME.
 Raw binaries/worlds/Mojang files/account data/generated runs stay outside Git at
-workspace-root .local. Normalize newly authored Linux wrapper scripts to LF.
+workspace-root .local. Normalize new Linux wrappers to LF.
 
-H06d supplies a dormant real-player-cell guard only, not player authentication,
-reach/session/replay proof. Real as_guest test checks active guest inventory swaps.
-All-owner teardown, shutdown-error retention, off-resident entity ownership,
-coherent recovery, external paired peers, retained animation/performance and
-G1/G2/G3 remain open. H08_CHECKPOINT_FEASIBILITY records remaining gaps; tick freeze
-or server hold is not a capture barrier. Next bounded audit proposes detached guest
-cursor ownership; primary vanilla bytecode rejects cursor-to-inventory on disconnect:
-the whole stack drops. See H08_DISCONNECTED_CURSOR_FEASIBILITY.md. A separate audit
-found suppressed raid save errors; H08a14 is the accepted bounded writer precursor.
-Preserve queued flush attempts and earlier raid-error precedence, exact dirty data,
-omen projection and incremental pending-save ownership. Lazy load_raids replacement
-after failed save is explicitly UNFIXED; do not simply return old-dimension data to
-new-dimension callers. New disk readers must prove queued writes, not pending cache.
-Separate dual-fault fixtures retain sticky writer errors. No precursor implies durable ownership.
+Participant preflight is a dormant PLAYER-state observation only: native host/sender
+Arc identity plus exact expected roster/canonical owner mapping and strict idle
+owner checks. It does no byte projections, normalization, ownership take, IO or
+publication. It is NOT global readiness or a lasting barrier; later capture must
+recheck inside the SAME exclusive owner operation. No global conn uniqueness,
+arbitrary same-marker reconstruction detection, authentication or replay claim.
+
+All-owner teardown, shutdown-error retention, failed Left/reconnect history,
+off-resident/global ownership, byte projections, coherent publication/recovery,
+external paired peers, retained animation/performance and G1/G2/G3 remain open.
+H08_CHECKPOINT_FEASIBILITY records gaps; tick freeze/server hold is not a barrier.
+Integrated::call timeout does not cancel its task. Disconnected cursor native drops
+are distinct from connected inventory return; see H08_DISCONNECTED_CURSOR_FEASIBILITY.
+No native precursor implies durable machine ownership or Create conformance.
