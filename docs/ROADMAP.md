@@ -26,11 +26,15 @@ final reviews: `docs/reference/H08_SLOT_EPOCH_RESULTS.md` and
 final acceptance at LOCALbb6f718, including native/retained, fresh both-mode GUI
 and broad checks: `docs/reference/H08_SLOT_ADVANCE_CAPTURE_RESULTS.md`. It preserves
 clean-region LastUpdateT and distinguishes current4 from whole baseline3 physical
-fallback. Next is the three-path used-streamer ownership/ONE real native tick
-prerequisite in `docs/design/H08_USED_STREAMER_OWNERSHIP_PACKET.md`, with independent
-design acceptance. Preserve pristine capture refusal. Ordinary host identity has
-a separate source audit, not implementation acceptance. General runtime/history/
-scalar support and G1 stay open.
+fallback. Used-streamer ownership/ONE real native tick now has different final
+acceptance at LOCALb0f1bf6, including native/resource/retained, fresh BOTH-mode GUI
+and broad checks: `docs/reference/H08_USED_STREAMER_OWNERSHIP_RESULTS.md`. Pristine
+capture refusal remains unchanged; a pre-existing idle shutdown wake gap is closed.
+Next is explicit host identity creation/reopen in
+`docs/design/H08_HOST_WORLD_IDENTITY_PACKET.md`, with original lifecycle and revised
+concrete header design acceptance. Only the five bounded paths may be released
+after the private checkpoint. No ordinary activation or used-streamer capture is
+accepted. General runtime/history/scalar support and G1 stay open.
 
 ## Foundation history
 

@@ -6,7 +6,7 @@ namespace = "create_horizon"
 repository = "https://github.com/Cha0sCollective/Create-Horizon"
 visibility = "private"
 stage = "post-G0 foundations"
-active_packet = "Fixed4/T+1 capture accepted at LOCAL bb6f718; used-streamer ownership and ONE real native tick design accepted for three-path release after private checkpoint; G1 open"
+active_packet = "Used-streamer ownership/ONE real tick refusal accepted LOCAL b0f1bf6; five-path explicit host identity creation/reopen design accepted (2cfa88ad) for release after private checkpoint; G1 open"
 next_stage = "S1 host foundations and remaining P02; G1/G2/G3 open"
 
 [specification]

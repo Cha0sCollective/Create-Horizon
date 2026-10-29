@@ -3,11 +3,16 @@
 DESIGN ACCEPTED after fresh independent read-only Sol High review of clarified
 proposalSHA40c2dbe4dd6646223f61e44b10ed9ef62bf7620a8246c17e230238d23caffcb2
 (originale3ea1fd3efb35a778765d033668cb150fe3ff9d2fccede5b230a4263954012d1).
-NOT RELEASED: used-streamer final acceptance and a pinned clean successor remain
-required. Source audit: H08_HOST_WORLD_IDENTITY_AUDIT.md. Exact-source review must
-freeze metadata bounds/types and verify lifecycle, sync and actual launch proof.
-Planning input is accepted LOCALbb6f718/treea243 plus the separately reviewed
-used-streamer packet. Pin its accepted clean successor before any future release.
+Concrete header policy also has fresh independent DESIGN ACCEPT at revised
+proposalSHA2cfa88adb700954a8510640ee73ed170a00b64c921a330495ef49450302026f8.
+Proposal642220da was withheld for native negative-zero incompatibility and is not
+accepted. Used-streamer has different final acceptance. Accepted clean input:
+LOCALb0f1bf67704a15ded6d5d64ae1ce1a9c52c5a178/tree
+015636f48428a160aa7fb01cc7b4b70b30d413fb. Source audit:
+H08_HOST_WORLD_IDENTITY_AUDIT.md. Coordinator may release ONLY five paths on fresh
+codex/h08-host-world-identity after recording/pushing this private checkpoint.
+Exact-source review must verify concrete metadata/lock/lifecycle/sync/launch proof
+before execution; source/runtime/final acceptance remains open.
 This is an anchor/lifetime prerequisite, not ordinary machine activation, capture
 admission, general recovery, migration or G1 acceptance. No owner input is currently
 needed to source-review this proposal.
@@ -102,6 +107,33 @@ parent-directory sync guarantees must be stated for the Linux validation target;
 unsupported platform guarantees stay unqualified rather than silently promised.
 
 ## Ownership and defining proof
+
+### Accepted concrete native-header restriction
+
+Use existing public APIs inside the new child, not save::read_dat's tolerant/raw
+fallback. Proposed bounds: level.dat compressed1MiB, inflated1MiB,16384 NBT nodes,
+depth64; regular bounded reads and exact inflated consumption. Require gzip success,
+empty named Compound root/Data Compound; DataVersion Int and Version.Id Int both
+exact horizon_world::DATA_VERSION; Time Long, LevelName String and GameType Int.
+Refuse root legacy region/entities/poi/DIM-1/DIM1 and embedded legacy metadata before
+any upgrade/migration writes. Preserve other bounded current-native Data fields.
+
+Do NOT require inflated bytes to equal native re-encoding. Source review found a
+native Level::write counterexample: spawn yaw/pitch may contain -0.0, preserved by
+the writer but normalized to +0 by the native reader. Adopt the native NBT reader's
+normalization and last-duplicate-wins semantics for level.dat; make NO canonical-
+wire or duplicate-free native-header claim. Required header types/version still
+must match after bounded decoding, and exact ORIGINAL preflight bytes must remain
+unchanged under the lock. Strict duplicate/unknown-field rejection applies to the
+separate closed identity JSON record. Add a positive native-written -0.0 rotation
+control and malformed typed-header refusals. No new wire scanner or full Level
+schema is introduced; do not silently normalize or rewrite admitted source files.
+Bounding level.dat does not bound all saved-data/player inputs used by Level::read.
+This revised subsection has fresh independent design ACCEPT at2cfa88ad; the earlier
+40c2 acceptance did not choose these concrete limits/policy. Proposal642220da was
+withheld for canonical equality; this revision resolves that finding explicitly.
+
+### Original lifetime and qualification obligations
 
 Own lock and identity in one session wrapper so existing None/take/drop/close paths
 release both. Audit normal close, preparation failure, cancelled background loader,

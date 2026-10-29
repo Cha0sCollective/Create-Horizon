@@ -86,3 +86,61 @@ this ordering and partial-failure contract explicitly, including unpaired worlds
 Do not silently extend package v1, ignore arbitrary new files, claim zero writes
 before all checks or promise atomic rollback. This is a source-level dependency
 question for a reviewed future scope, not an owner blocker or current scope change.
+
+## Strict native-header preparation audit
+
+Fresh finite read-only preparation audit against cleanb0f1bf6 confirms existing
+public APIs suffice inside the proposed child; no parser/save.rs change is needed.
+save.rs2357 read_dat uses unbounded fs::read, gzip decoding capped64MiB but raw
+fallback on ANY decompression error, default NBT limits, ignores consumed tail and
+returns Option. Required-reopen admission must bypass this tolerant helper.
+horizon_world::DATA_VERSION reexports the current constant5023 (lib.rs126,
+horizon-core/version.rs11). Public Compression::Gzip.decode, nbt::read_named with
+explicit Limits and nbt::write_named are available to the new child.
+
+NBT reader checks available bytes/array counts before allocation (nbt.rs181), list
+node budget and remaining bytes before capacity allocation (253-269), bounded
+wire-string length (197), and depth/node budgets (229). Defaults are64MiB/1million
+nodes/depth512. Compounds keep last duplicate (294); some list wrappers unwrap and
+negative float zero normalizes. Decoded tags alone therefore do not prove unique/
+canonical wire encoding. Native re-encoding equality is a POSSIBLE restrictive
+check, not an already accepted general-world rule; native-writer roundtrip and
+unsupported readable inputs must be explicit before adopting it.
+
+Candidate limits for independent review:1MiB compressed and inflated level.dat,
+16384 NBT nodes, depth64. Require exact gzip success with no raw fallback, bounded
+regular read and exact consumed inflated length. Candidate native header matches
+Level::write3456: empty root name/Compound, Data Compound, DataVersion Int5023,
+Time Long, LevelName String, GameType Int, Version Compound with Id Int5023.
+Unknown bounded Data fields may remain preserved; this is not a complete Level schema.
+
+Refuse migration layouts independently of version: upgrade_older_world170 is
+tolerant/coercing; migrate_legacy195 relocates root region/entities/poi and DIM-1/
+DIM1 even at current version. Data.Player/WorldGenSettings and obsolete keys listed
+in Level::write3370 identify legacy conversion inputs. Required reopen retains and
+compares exact preflight bytes under lock, then demands Level::read success without
+fresh-world fallback. Bounded level.dat does NOT bound/strictly validate every
+saved-data/player startup input; do not extend the claim that far.
+
+Additional sourceSHA pins: nbt.rsa32fd0ac8fe94ab1b23c000b51c3a81b28d40c518c5befb5272818792d1cf1ac;
+compression.rs4db73e6ca9a0d552d415ce60e7e88b89c9cf2b7d060a669ff8328f518316e101;
+version.rs7a6cd0ca8f69b22d70ffc63e16e0b2872f3b128b25deb6604aa493d5ca2177ef.
+Original save/world_loading pins above remain unchanged. These are source facts/
+recommendations only; limits/canonical policy still need reviewed acceptance.
+
+Independent concrete-policy review finds a native counterexample to canonical
+equality: Level::write3477-3478 preserves spawn.yaw/pitch f32::to_bits(-0.0), while
+NBT reader245/249 normalizes signed zero; setworldspawn may supply that rotation.
+Proposal642220da is NOT accepted. Minimal revised policy omits equality, adopts
+native-reader normalization/last-duplicate-wins for level.dat and claims only
+bounded typed current header, not canonical/duplicate-free wire. Strict duplicate
+rejection remains on closed identity JSON. Require native -0.0 positive control,
+preserve original bytes under lock and never rewrite merely to gain admission.
+Fresh exact revised-policy review remains required before implementation release.
+
+Revised policy2cfa88adb700954a8510640ee73ed170a00b64c921a330495ef49450302026f8
+now has fresh independent DESIGN ACCEPT, no findings: native normalization is
+preserved, original-byte checks remain, bounds/header APIs fit five paths and no
+extra native-header wire-uniqueness rule is required. Accepted clean successor
+input is b0f1bf6/tree015636 after used-streamer FINAL ACCEPT. This is design/source
+preparation, not implementation/runtime or G1 acceptance.

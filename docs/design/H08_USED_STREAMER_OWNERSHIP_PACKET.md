@@ -14,6 +14,12 @@ obligations below remain part of the accepted design. Source analysis:
 H08_USED_STREAMER_OWNERSHIP_AUDIT.md.
 No capture admission, ordinary startup recovery, G1 or publication acceptance.
 
+Implementation now has different fresh independent FINAL ACCEPT at clean LOCAL
+b0f1bf67704a15ded6d5d64ae1ce1a9c52c5a178/tree
+015636f48428a160aa7fb01cc7b4b70b30d413fb. All required gates and historical limits
+are recorded in docs/reference/H08_USED_STREAMER_OWNERSHIP_RESULTS.md. This does
+not extend the accepted scope beyond observation/conservative refusal.
+
 ## Objective and bounded source paths
 
 Observe named streamer work ownership across existing asynchronous handoffs and
@@ -112,7 +118,7 @@ payload values/allocations while held or queued; no queue drain to manufacture z
 
 ## Required validation
 
-### Discovered idle shutdown correction, pending exact source review
+### Reviewed idle shutdown correction
 
 This amendment has fresh independent DESIGN ACCEPT at packetSHA8f61b477bb09a846045e7b8d43c8aa12eabca3ae620085ef61243982c664b073.
 Its corrected source/test assertion has full independent execution clearance;
