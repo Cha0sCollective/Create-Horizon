@@ -8,7 +8,7 @@ remain proposed until their corresponding gate accepts them.
 | --- | --- | --- |
 | S0 | Runnable pinned reference, repeatable traces and bounded host contract | G0 accepted for bounded experiments; performance qualification open |
 | S1 | Persistent synchronized generic machine with retained animation | H05a-d, H06a-d, H08a1-a15, participant preflight/projections, entity-owner diagnostic and failed parked-save restoration qualified; full H02/H03/H04/H05/G1 open |
-| S2 | Verified motor, shafts and two cog sizes | P02a/b, arbitration/reference observations, static X/Z and selected Y/equal-cog native/Wasm geometry accepted; remaining geometry/arbitration and full P02/integration open, live integration requires G1 |
+| S2 | Verified motor, shafts and two cog sizes | P02a/b, reference observations, static XYZ/equal-cog geometry and declared three-path event arbitration accepted in native/Wasm; general arbitration and full P02/integration open, live integration requires G1 |
 | S3 | Five-component playable milling MVP and two-client evidence | Planned; G3 open |
 | S4 | Obtainable survival power and a small factory | Future scope |
 | S5 | One controlled moving assembly with collision and recovery | Separate feasibility decision |
@@ -78,9 +78,11 @@ in `docs/reference/P02_STATIC_GEOMETRY_RESULTS.md`; selected Y/equal-cog results
 pass in `docs/reference/P02_VERTICAL_EQUAL_COG_RESULTS.md`. Failed parked saves
 now restore the starting dimension, accepted in
 `docs/reference/H08_PARKED_SAVE_RESTORATION_RESULTS.md`. The analogous idle-close
-design is reviewed separately and still frozen. The private declared-event
-arbitration trial has accepted design and is being implemented; it is not yet a
-native/Wasm result. See `docs/design/P02_DECLARED_ARBITRATION_PACKET.md`.
+design is reviewed separately and implementation is released. The private declared-
+event arbitration trial now passes native/Wasm against both retained Java captures,
+controls and regressions, with final independent acceptance in
+`docs/reference/P02_DECLARED_ARBITRATION_RESULTS.md`. It remains a closed-path,
+settled-state experiment with declared native scheduling and domain effect records.
 Coherent recovery remains separate in `docs/design/H08_CHECKPOINT_FEASIBILITY.md`;
 completed arbitration and horizontal observations are in
 `docs/reference/P02_ARBITRATION_RESULTS.md` and

@@ -2,8 +2,11 @@
 
 DESIGN ACCEPTED by a DIFFERENT fresh independent read-only Sol High review of
 draft SHA256 f334544c167d436c6c501327ea87bce5beef118bdd62d696f86ac36559388b19.
-Implementation remains FROZEN until the coordinator releases the exact fully
-qualified parked-save successor. This acceptance is not a runtime result.
+Implementation is RELEASED on codex/h08-idle-close-restoration at fully qualified
+aa170bc4fd3214790a2363732d0c7cdd57ba6451, tree
+1dec4b02fe540af63c4453ff2ff7e1c221a1056f. The preceding private event-trial
+qualification also finished with this engine unchanged, releasing that source
+freeze. This design acceptance is not an idle-close runtime result.
 Pregen eligibility may remain explicitly source-supported in this bounded packet;
 do not add process-global test controls merely to manufacture executed coverage.
 

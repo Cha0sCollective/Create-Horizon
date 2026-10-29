@@ -5,13 +5,13 @@ superseding the old cutoff/break. No public publication/promotion/standing team.
 Preserve personal source-informed provenance, R01 and independent Sol High reviews.
 
 Private branch: codex/h02-smoke-h03-notes. Last privately backed-up checkpoint is
-c1224d2; subsequent named design/result notes are being checkpointed separately.
+962762a; accepted event-trial code is3e82f2f and its result note is being recorded.
 Verify actual revisions and dirty files before work; preserve the author's active
 private source changes. Coordinator owns all integration and execution.
 
 ## Qualified engine and current assignment
 
-Engine codex/h08-parked-save-restoration is clean at ACCEPTED local commit
+Engine codex/h08-idle-close-restoration starts at ACCEPTED local commit
 aa170bc4fd3214790a2363732d0c7cdd57ba6451, tree
 1dec4b02fe540af63c4453ff2ff7e1c221a1056f. Engine commits remain LOCAL ONLY,
 normal hooks on, upstream push disabled. No public push/merge/release.
@@ -30,20 +30,22 @@ in-frame8cb6d72b-fe2d-461a-8452-c02e368c0ef3 passes353.
 Four normal exits0, four intended refusal exits1; all cleanup null. Original
 proofs remain in workspace-root .local/h02d/game-runs, not just summary indexes.
 
-Active PRIVATE packet: P02_DECLARED_ARBITRATION_PACKET.md passed different fresh
-independent design review. Author is implementing only its six named files for
-three-node declared-event unequal merge, dominant removal and subordinate reversal.
-Keep solve/geometry/engine/Java/dependencies/host/guest unchanged. No candidate
-execution until author release, root formatting/freeze and independent source review.
-Root owns all Cargo/tests/native+Wasm controls and evidence integration. Exact static
-vertical neighbor enumeration is now bytecode-supported; global BE/callback order
-and transient timing stay authored/unqualified. Domain effects are not world drops.
+P02_DECLARED_ARBITRATION_RESULTS.md accepts3e82f2f:9new/17geometry/10legacy/3host
+tests, lints/format/Wasmcheck, actual native+sandbox against both original captures,
+43output/15reference controls, retained horizontal/vertical/legacy modes and final
+independent evidence review pass. Measured projection is9settled rows/22present+
+5absent slots per capture. Initial source-only numeric-overflow finding remains
+archived; no bad-candidate runtime occurred. Solve/geometry/engine/Java/dependencies/
+host/guest unchanged. Global BE/callback order and transient timing stay authored/
+unqualified; domain effects are not world item spawning/conservation.
 
-Next H08_IDLE_CLOSE_RESTORATION_PACKET.md has independent design acceptance.
-Implementation stays FROZEN until root releases the exact qualified successor and
-the current private native/Wasm qualification no longer needs a clean engine pin.
-Preserve successful save->return->retire->remove order and failed native owners;
-normal idle reset makes immediate repair success insufficient retry evidence.
+ACTIVE ENGINE: H08_IDLE_CLOSE_RESTORATION_PACKET.md has independent design acceptance
+and is released at qualified aa170bc. Author may edit ONLY close_idle_levels plus
+gated new levels/idle_close_tests.rs declaration and that child. Root owns formatting,
+source freeze/review and ALL execution. Preserve successful save->return->retire->
+remove order and failed/unprocessed native owners; normal idle reset makes immediate
+repair success insufficient retry evidence. No process-global pregen controls or
+manufactured restoration-error tests. Preserve all other qualified helpers/bodies.
 
 ## Established scope and open gates
 
@@ -58,7 +60,8 @@ P02_VERTICAL_EQUAL_COG_RESULTS.md accepts49fa0e5 Y/UP+equal-small-cog geometry.
 Measured projections are horizontal12checkpoints/48machines and vertical6/17,
 with explicit gap IDs and old-schema limits. Other directions/quadrants remain
 source-derived only. Earlier failed control wrapper is preserved; corrected
-continuation reuses successful probes. Full arbitration is still unimplemented.
+continuation reuses successful probes. The bounded event trial does not establish
+general graph arbitration, equal/opposed merge or overspeed destruction.
 
 S1/G1 remains open; live S2 integration requires G1. S3 has exactly motor, shaft,
 small+large cog and cobblestone-to-gravel millstone. Open hard gates include block/
