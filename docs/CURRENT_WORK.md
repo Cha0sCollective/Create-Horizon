@@ -5,15 +5,16 @@ superseding the old cutoff/break. No public publication/promotion/standing team.
 Preserve personal source-informed provenance, R01 and independent Sol High reviews.
 
 Private branch: codex/h02-smoke-h03-notes. Last privately backed-up checkpoint is
-962762a; accepted event-trial code is3e82f2f and its result note is being recorded.
+fda69a4; accepted event-trial code is3e82f2f. Current idle-close result/audit notes
+are not yet part of that backup.
 Verify actual revisions and dirty files before work; preserve the author's active
 private source changes. Coordinator owns all integration and execution.
 
 ## Qualified engine and current assignment
 
-Engine codex/h08-idle-close-restoration starts at ACCEPTED local commit
-aa170bc4fd3214790a2363732d0c7cdd57ba6451, tree
-1dec4b02fe540af63c4453ff2ff7e1c221a1056f. Engine commits remain LOCAL ONLY,
+Engine codex/h08-world-owner-observation starts at ACCEPTED local commit
+b41427c6b20d0a7458a3de730dc532d3a68d4081, tree
+6142ddc068e22801d6150277e65eadedf6605f8d. Engine commits remain LOCAL ONLY,
 normal hooks on, upstream push disabled. No public push/merge/release.
 
 H08_PARKED_SAVE_RESTORATION_RESULTS.md accepts unconditional original-dimension
@@ -24,9 +25,9 @@ independent review. Initial compile-only attempts, failed fixture assumption and
 test-only lint failures remain archived. No global checkpoint claim follows.
 
 Latest frozen Game SHA256:
-52ed94ea1e7575d88b8abf26c15409c959d81d989014a675d8728eacf19a268c.
-Integrated aa962658-0466-4853-9baf-bfe08059e478 passes368checks;
-in-frame8cb6d72b-fe2d-461a-8452-c02e368c0ef3 passes353.
+8e33586ad5bfe57780229de6e71a8f8f2238ade47e1bb03152883fccabdc5270.
+Integrated e504307e-a29c-409f-a5f4-160ebe59d768 passes368checks;
+in-frame869d9d9d-2a65-4fd9-861d-004dfb2db34a passes353.
 Four normal exits0, four intended refusal exits1; all cleanup null. Original
 proofs remain in workspace-root .local/h02d/game-runs, not just summary indexes.
 
@@ -39,13 +40,28 @@ archived; no bad-candidate runtime occurred. Solve/geometry/engine/Java/dependen
 host/guest unchanged. Global BE/callback order and transient timing stay authored/
 unqualified; domain effects are not world item spawning/conservation.
 
-ACTIVE ENGINE: H08_IDLE_CLOSE_RESTORATION_PACKET.md has independent design acceptance
-and is released at qualified aa170bc. Author may edit ONLY close_idle_levels plus
-gated new levels/idle_close_tests.rs declaration and that child. Root owns formatting,
-source freeze/review and ALL execution. Preserve successful save->return->retire->
-remove order and failed/unprocessed native owners; normal idle reset makes immediate
-repair success insufficient retry evidence. No process-global pregen controls or
-manufactured restoration-error tests. Preserve all other qualified helpers/bodies.
+H08_IDLE_CLOSE_RESTORATION_RESULTS.md accepts the two-file idle-close correction.
+Source/resource review, six actual cases,19native counter allocations/four retirement
+receipts,177bin/65ignored and3feature lints/format/public-tree/hook pass. Root's first
+receipt parser used the wrong retired-record field; archived correction reuses SAME
+six valid runs, source unchanged. New both-mode Game/broad369/1358/0 and final
+independent receipt review pass. Root owns all execution/integration.
+No process-global pregen controls or manufactured restoration-error tests. Private
+slot payload addresses, successful slot conservation and outer lifetime remain open.
+
+ACTIVE: H08_WORLD_OWNER_OBSERVATION_PACKET.md has fresh independent design/delta
+acceptance and source implementation release at b41427c. Author may edit ONLY
+block_entities.rs/world.rs/levels.rs, new levels/world_owner_tests.rs, and two
+paired+test helpers in brush.rs. Preserve every existing qualified body/helper.
+Five paths = three production files, new test child and test-only brush helpers.
+Fixed three-slot stack report;28named categories; no allocation/payload clone/IO/
+pump/new fields/token/caller. Root owns source freeze/review and all execution.
+Resource MANIFEST will be checked before/after, not the whole prepared tree. If
+strictly dormant additive scope survives frozen-diff review, ordinary b414 Game
+proof above may be reused explicitly; changed normal paths need fresh GUI checks.
+H08_WORLD_ITEM_OWNER_AUDIT.md remains source analysis, not an acceptance itself.
+Named WORLD refusal complements PLAYER/E1;
+hidden ticks/updater/functions/mod/lent-world/streaming and history are NOT covered.
 
 ## Established scope and open gates
 
