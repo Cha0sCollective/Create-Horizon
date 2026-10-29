@@ -85,8 +85,13 @@ qualification with final independent acceptance in
 `docs/reference/H08_WORLD_OWNER_OBSERVATION_RESULTS.md`. It is named presence only,
 not global checkpoint readiness. A bounded native capture/recovery mechanism cell
 now passes native/feature/broad qualification and final independent review in
-`docs/reference/H08_CAPTURE_MECHANISM_RESULTS.md`; runtime admission and live machine
-generation installation remain open. S1 deliverables are unchanged. The private declared-
+`docs/reference/H08_CAPTURE_MECHANISM_RESULTS.md`. The bounded native counter
+identity/restore cell now passes native/Game/feature/fresh both-mode GUI/broad checks
+and different final independent review in `docs/reference/H08_MACHINE_RESTORE_RESULTS.md`:
+actual3/T state restores with fresh runtime authority and resumes4/T+1. Runtime
+admission, general machine/item-slot recovery and recapture remain open. The next
+library slot direction is proposed in `docs/design/H08_SLOT_RESTORE_INTEGRATION_AUDIT.md`;
+it does not bypass E1/W1. S1 deliverables are unchanged. The private declared-
 event arbitration trial now passes native/Wasm against both retained Java captures,
 controls and regressions, with final independent acceptance in
 `docs/reference/P02_DECLARED_ARBITRATION_RESULTS.md`. It remains a closed-path,

@@ -117,6 +117,14 @@ block ID and physical vanilla template are distinct fields, not a claim that thi
 fixture activated a registered custom block. No numeric registry ID is persisted.
 Native backend ONLY; Guest backend restore refuses until separately qualified.
 
+Reviewed implementation refinements: the binding borrows the prepared assets'
+immutable `&'static BlockRegistry` rather than copying its descriptors. The native
+`persistent_counter_key()` getter returns checked current opaque authority after
+a new generation; it has no serialized constructor, setter or SDK exposure. It
+requires a healthy resident domain consistent with the sole Trial payload.
+Declared template properties must also be default: light, hardness and tool
+overrides refuse, alongside nonempty canonical properties/state plans.
+
 Initialize requires no existing domain/trial and resident matching state. It
 obtains world UUID and an independently fresh session via existing
 horizon_protocol::crypto::random_bytes. Failure refuses; no seed/path/player UUID,
