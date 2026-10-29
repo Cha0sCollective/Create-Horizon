@@ -82,10 +82,12 @@ No fresh=true admission, post-save E1 exception or fabricated fault hook. Proces
 kills prove restart selection; fsync ordering is a source-backed durability argument.
 Detached counter archival is NOT live generation restore or a reduced S1/G1 scope.
 
-NEXT: bounded source audit for actual nonzero machine/counter restoration, stable
-placement/world identity, fresh runtime identity/allocator and native phase resume.
-H08_MACHINE_RESTORE_INTEGRATION_AUDIT.md, when released, is PROPOSED only; no next
-implementation is released before detailed design and fresh independent review.
+NEXT: H08_MACHINE_RESTORE_INTEGRATION_AUDIT.md is released as PROPOSED source
+analysis for actual nonzero machine/counter restoration, stable placement/world
+identity, fresh runtime identity/allocator and native phase resume. Detailed
+H08_MACHINE_RESTORE_PACKET.md is being prepared; no next implementation is released
+before fresh independent design review. Native Game eligibility needs9resident/lit
+columns and actual tickets; reloaded opaque ChunkExtras still refuse recapture.
 Coordinator owns all execution/integration; no standing team or public publication.
 
 ## Established scope and open gates
