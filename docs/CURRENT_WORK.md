@@ -84,10 +84,18 @@ Detached counter archival is NOT live generation restore or a reduced S1/G1 scop
 
 NEXT: H08_MACHINE_RESTORE_INTEGRATION_AUDIT.md is released as PROPOSED source
 analysis for actual nonzero machine/counter restoration, stable placement/world
-identity, fresh runtime identity/allocator and native phase resume. Detailed
-H08_MACHINE_RESTORE_PACKET.md is being prepared; no next implementation is released
-before fresh independent design review. Native Game eligibility needs9resident/lit
-columns and actual tickets; reloaded opaque ChunkExtras still refuse recapture.
+identity, fresh runtime identity/allocator and native phase resume.
+ACTIVE: H08_MACHINE_RESTORE_PACKET.md has fresh independent design/delta acceptance
+for its exact eight-path counter-only cell at accepted88bfcb05. Engine branch
+codex/h08-machine-restore starts there. Library author owns counter_trial.rs,
+world.rs and new world/counter_restore.rs; adapter author owns current capture
+module, new V2 adapter/tests and only old helper visibility; coordinator owns the
+fixed integrated dispatch helper and ALL execution/integration. Source/evidence
+acceptance remains pending. Independent host target and native payload/time/gen
+invariants are explicit. Native Game eligibility needs9resident/lit columns and
+actual tickets; reloaded opaque ChunkExtras still refuse recapture. Publish active
+epochs only; dormant/head proofs are native library tests, not tombstone epochs.
+World construction/mutation changes REQUIRE fresh ordinary GUI in BOTH modes.
 Coordinator owns all execution/integration; no standing team or public publication.
 
 ## Established scope and open gates
