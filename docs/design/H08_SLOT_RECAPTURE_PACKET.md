@@ -1,11 +1,16 @@
 # H08 restored active slot recapture packet
 
-DESIGN ACCEPTED after fresh independent read-only Sol High review of proposal
+PACKET ACCEPTED at clean LOCALc05401ecf869ea471c68986ff9b7709567e1c8c0/tree
+d915d07e85afbdd9a8ab5edaf6cd407eed1812b3 after different final independent review.
+See H08_SLOT_RECAPTURE_RESULTS.md. Ordinary runtime/history/scalars, G1 and
+publication remain open.
+
+Original design acceptance followed fresh independent read-only Sol High review of proposal
 SHA256621e6e592867b43c7e178235626f4dd3d13866066e63107b5f9b8df535192a3c.
 The slot-epoch prerequisite now has different final acceptance. Coordinator releases
 only these six paths on a fresh codex/h08-slot-recapture branch at the input below,
-after recording the private checkpoint. Exact-source review precedes execution;
-source/runtime/final acceptance remains open. Input is clean
+after recording the private checkpoint. Exact-source review preceded execution;
+completed bounded source/runtime/final gates are recorded above. Original input was clean
 LOCALbfa5ced912bed16f955e65824317a0b259c2cb6a/tree
 d14db6c4a5b5a9eb511cddf5c443832d024b48f5. Source analysis is
 H08_SLOT_RECAPTURE_INTEGRATION_AUDIT.md. No G1, ordinary runtime admission, general

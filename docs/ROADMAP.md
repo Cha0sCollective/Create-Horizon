@@ -19,14 +19,15 @@ demonstration is superseded by the supplied five-component scope.
 
 ## Next bounded packet
 
-The active slot epoch at localbfa5ced passes six actual-Game groups, retained
-regressions, feature checks, fresh both-mode GUI/broad and different final review:
-`docs/reference/H08_SLOT_EPOCH_RESULTS.md`. The next restored3/T recapture cell has
-fresh design acceptance in `docs/design/H08_SLOT_RECAPTURE_PACKET.md`, based on
-`docs/design/H08_SLOT_RECAPTURE_INTEGRATION_AUDIT.md`. Release is bounded to six
-paths after the private checkpoint. It must enumerate actual native empty metadata,
-keep all other W1 refusals and replace only validated pending-image sidecars.
-After4/T+1, general runtime/history/scalar support and G1 remain open.
+The active slot epochbfa5ced and restored3/T recapturec05401e both pass new/retained
+actual-Game groups, native/feature checks, fresh both-mode GUI/broad and different
+final reviews: `docs/reference/H08_SLOT_EPOCH_RESULTS.md` and
+`docs/reference/H08_SLOT_RECAPTURE_RESULTS.md`. The next fixed4/T+1 capture cell
+has fresh design acceptance in `docs/design/H08_SLOT_ADVANCE_CAPTURE_PACKET.md`,
+based on `docs/design/H08_SLOT_ADVANCE_CAPTURE_AUDIT.md`. Release is bounded to six
+paths after the private checkpoint. It must distinguish inherited3/T baseline
+from current4/T+1, preserve clean-region LastUpdateT and explicitly type a whole
+baseline3 physical fallback. General runtime/history/scalar support and G1 stay open.
 
 ## Foundation history
 
