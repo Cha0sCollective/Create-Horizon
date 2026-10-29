@@ -4,17 +4,17 @@ Latest owner resume authorizes development to a genuine blocker or required inpu
 superseding the old cutoff/break. No public publication/promotion/standing team.
 Preserve personal source-informed provenance, R01 and independent Sol High reviews.
 
-Private branch: codex/h02-smoke-h03-notes. Last privately backed-up checkpoint is
-fda69a4; accepted event-trial code is3e82f2f. Current idle-close result/audit notes
-are not yet part of that backup.
+Private branch: codex/h02-smoke-h03-notes. Prior private checkpoint: fe94065;
+accepted event-trial code is 3e82f2f. This checkpoint records accepted W1 results
+and the proposed capture integration audit. Verify actual local/remote state.
 Verify actual revisions and dirty files before work; preserve the author's active
 private source changes. Coordinator owns all integration and execution.
 
 ## Qualified engine and current assignment
 
-Engine codex/h08-world-owner-observation starts at ACCEPTED local commit
-b41427c6b20d0a7458a3de730dc532d3a68d4081, tree
-6142ddc068e22801d6150277e65eadedf6605f8d. Engine commits remain LOCAL ONLY,
+Engine codex/h08-world-owner-observation is clean at ACCEPTED local W1 commit
+afb38260b562c2df1b12e36aec304ccf51eb0e31, tree
+3131fc796880a1a04d94c4a8de7a5af6c094ad2c. Engine commits remain LOCAL ONLY,
 normal hooks on, upstream push disabled. No public push/merge/release.
 
 H08_PARKED_SAVE_RESTORATION_RESULTS.md accepts unconditional original-dimension
@@ -24,7 +24,7 @@ format/public-tree/hook, both full Game modes and broad369/1358/0 pass with fina
 independent review. Initial compile-only attempts, failed fixture assumption and
 test-only lint failures remain archived. No global checkpoint claim follows.
 
-Latest frozen Game SHA256:
+Latest frozen ordinary Game (qualified b414, explicitly reused for dormant W1):
 8e33586ad5bfe57780229de6e71a8f8f2238ade47e1bb03152883fccabdc5270.
 Integrated e504307e-a29c-409f-a5f4-160ebe59d768 passes368checks;
 in-frame869d9d9d-2a65-4fd9-861d-004dfb2db34a passes353.
@@ -49,19 +49,31 @@ independent receipt review pass. Root owns all execution/integration.
 No process-global pregen controls or manufactured restoration-error tests. Private
 slot payload addresses, successful slot conservation and outer lifetime remain open.
 
-ACTIVE: H08_WORLD_OWNER_OBSERVATION_PACKET.md has fresh independent design/delta
-acceptance and source implementation release at b41427c. Author may edit ONLY
-block_entities.rs/world.rs/levels.rs, new levels/world_owner_tests.rs, and two
-paired+test helpers in brush.rs. Preserve every existing qualified body/helper.
+H08_WORLD_OWNER_OBSERVATION_RESULTS.md ACCEPTS W1. Source/delta,7final
+resource groups,4new+9retained lib tests EACH feature config,177bin/72ignored and
+3feature lints/format/public-tree/hook pass. Initial compile-only/test findings and
+test formatting lints remain archived; unchanged lib/bin results are reused after
+the mechanical delta. Final resource binary6fc8b2f4... checks source/binary/manifest
+before/after. Broad369/1358/0 and final independent evidence review pass.
+Preserve block_entities.rs/world.rs/levels.rs, new levels/world_owner_tests.rs and
+test-only brush helpers. Every original file byte remains a prefix of its candidate.
 Five paths = three production files, new test child and test-only brush helpers.
 Fixed three-slot stack report;28named categories; no allocation/payload clone/IO/
 pump/new fields/token/caller. Root owns source freeze/review and all execution.
-Resource MANIFEST will be checked before/after, not the whole prepared tree. If
-strictly dormant additive scope survives frozen-diff review, ordinary b414 Game
-proof above may be reused explicitly; changed normal paths need fresh GUI checks.
+Resource MANIFEST is checked before/after, not the whole prepared tree. Source
+review confirms dormant additions, so ordinary b414 Game proof above is explicitly
+reused; no new ordinary Game binary execution claimed. Changed paths need fresh GUI.
 H08_WORLD_ITEM_OWNER_AUDIT.md remains source analysis, not an acceptance itself.
 Named WORLD refusal complements PLAYER/E1;
 hidden ticks/updater/functions/mod/lent-world/streaming and history are NOT covered.
+
+NEXT: H08_CAPTURE_INTEGRATION_AUDIT.md is a PROPOSED executable research direction,
+not implementation authority or a replacement S1 deliverable. It recommends one
+capture/publication/recovery mechanism cell in fresh actual Game fixtures with
+positive PLAYER inventory and item-free native counter, no drops/slot trial. Real
+owner completion must survive generic call timeout; no false fresh=true gate or
+post-save E1 exception. Detached counter archival is NOT live generation restore.
+Detailed design and different fresh independent review must precede source release.
 
 ## Established scope and open gates
 
