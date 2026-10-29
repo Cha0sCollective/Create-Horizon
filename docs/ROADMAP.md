@@ -7,7 +7,7 @@ remain proposed until their corresponding gate accepts them.
 | Stage | Outcome | Current state |
 | --- | --- | --- |
 | S0 | Runnable pinned reference, repeatable traces and bounded host contract | G0 accepted for bounded experiments; performance qualification open |
-| S1 | Persistent synchronized generic machine with retained animation | H05a-d, H06a-d, H08a1-a14, participant preflight and borrowed player projections qualified; retained lazy raid ownership active; full H02/H03/H04/H05/G1 open |
+| S1 | Persistent synchronized generic machine with retained animation | H05a-d, H06a-d, H08a1-a15, participant preflight and borrowed player projections qualified; entity-owner diagnostic proposed; full H02/H03/H04/H05/G1 open |
 | S2 | Verified motor, shafts and two cog sizes | P02a/b, repeated arbitration observations and four-case X/Z reference observations accepted; native geometry/multi-source rules and full P02/integration open, live integration requires G1 |
 | S3 | Five-component playable milling MVP and two-client evidence | Planned; G3 open |
 | S4 | Obtainable survival power and a small factory | Future scope |
@@ -70,9 +70,11 @@ player-cell adapter passes in `docs/reference/H06_PLAYER_CELL_ADAPTER_RESULTS.md
 Checked raid-save propagation passes in `docs/reference/H08_RAID_METADATA_RESULTS.md`.
 Native player-owner roster preflight passes in
 `docs/reference/H08_PARTICIPANT_PREFLIGHT_RESULTS.md`. Borrowed player NBT/JSON
-projections pass in `docs/reference/H08_PLAYER_PROJECTION_RESULTS.md`. The next
-bounded correction retains lazy raid ownership across failed saves under
-`docs/design/H08_RAID_LIFETIME_PACKET.md`.
+projections pass in `docs/reference/H08_PLAYER_PROJECTION_RESULTS.md`. Retained lazy
+raid ownership passes in `docs/reference/H08_RAID_LIFETIME_RESULTS.md`. A bounded
+entity-owner observation is proposed in `docs/design/H08_GLOBAL_OWNER_PACKET.md`;
+it is not a complete checkpoint barrier. Private static geometry is being qualified
+separately under `docs/design/P02_NATIVE_GEOMETRY_PACKET.md`.
 Coherent recovery remains separate in `docs/design/H08_CHECKPOINT_FEASIBILITY.md`;
 completed arbitration and horizontal observations are in
 `docs/reference/P02_ARBITRATION_RESULTS.md` and

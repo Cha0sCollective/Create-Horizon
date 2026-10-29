@@ -4,19 +4,24 @@ Latest owner resume authorizes development to a genuine blocker or required inpu
 superseding the old cutoff/break. No public publication/promotion/standing team.
 Preserve personal source-informed provenance, R01 and fresh independent Sol High reviews.
 
-- Private branch: codex/h02-smoke-h03-notes. Accepted checkpoint b60fae1 is backed
+- Private branch: codex/h02-smoke-h03-notes. Accepted checkpoint584ed55 is backed
   up privately, including horizontal source candidate 4dbc092 and accepted results.
-- Engine branch: codex/h08-retained-raid-lifetime; accepted base
-  3c4e7e278fd2b8b3776291227c2698490298053a, tree
-  a321f3aca20feda05f54e9b751ac23d9acbf6753. Prior projection packet is QUALIFIED.
-- Active accepted packet: docs/design/H08_RAID_LIFETIME_PACKET.md. Fresh different
-  independent design review passes. Author owns ONLY game/raids.rs plus new
-  raids/lifetime_tests.rs, with no runtime/Cargo/formatting/commit authority.
+- Engine branch: codex/h08-retained-raid-lifetime; QUALIFIED clean commit
+  63a7d62fae27dcd9ce8bfbe1209616f4e4988607, tree
+  571ad7e2cc20d8178898c6fdd9a0244252f8dcad. Hold this engine fixed through geometry
+  sandbox qualification. No engine assignment may edit it during those runs.
+- Latest accepted packet: docs/design/H08_RAID_LIFETIME_PACKET.md. Fresh different
+  independent design/source reviews pass. Author RELEASED ONLY game/raids.rs plus
+  new raids/lifetime_tests.rs. Root formatted/froze, no-run build passes50.08s;
+  12 actual Game cases pass44.88s (new7+unchanged5), native176pass45ignored and
+  three feature lints/fmt/public-tree/hook pass. Local candidate63a7d62/tree571ad7e
+  passes clean-commit both-mode Game/broad/final independent receipt review.
+  See H08_RAID_LIFETIME_RESULTS.md for exact evidence and accepted limits.
   Preserve existing metadata tests and Fixture bodies. Root owns all validation.
-- Existing 1900-case vanilla raid-library parity is running separately on the
-  frozen clean Linux clone at3c4e7e2, with unmodified harness/source and redirected
-  isolated output paths. It does not test Game's handoff/identity boundary. Do not
-  update that clone or start another Cargo operation until it completes.
+- Existing vanilla raid-library parity passes separately on the frozen clean Linux
+  clone at3c4e7e2:1000patrol/400raid/500codec. Unmodified harness/source and redirected
+  isolated outputs; source hashes unchanged, exit0. It does not test Game's new
+  handoff/identity boundary. Evidence is workspace-root .local/h08a15-raid-parity*.
 - Coordinator owns all serialized Cargo/tests, integration and documentation.
   Reviewers remain read-only despite runtime writes. No permission expansion.
 - Engine commits LOCAL ONLY, normal hooks on, upstream push disabled. No public push.
@@ -87,15 +92,23 @@ comparisons and all 14 derived software controls pass, with final independent re
 Core/probe unchanged. No native geometry, arbitrary-axis proof, multi-source solver,
 live S2 or G1/G2 acceptance follows.
 P02_NATIVE_GEOMETRY_PACKET.md passes a fresh different independent design review.
-A bounded private pure static X/Z geometry adapter is assigned next; code and
-runtime evidence are not yet accepted. Engine and private source files are separate.
+A bounded private pure static X/Z geometry adapter is under runtime qualification.
+Initial source review found a host batch
+duplicate-geometry-name bypass and missing new-test hash. Different independent
+design/source delta reviews accept those corrections. Root formatting/mechanical
+hash review pass. Native12geometry/10legacy tests,3host tests, Clippy and Wasm
+compile checks pass; actual sandbox comparisons are next. Engine and private source
+files are separate. New H08_GLOBAL_OWNER_PACKET.md needs design-delta review after
+an initial crate-boundary finding: Game cannot read lib World's private trial
+field. The correction proposes one borrowed Boolean library presence method;
+no engine implementation while geometry qualification requires a frozen engine.
 H08_GLOBAL_OWNER_AUDIT.md records concrete active/parked/entity/producer gaps,
 including omitted trident/rocket owners; it is not an accepted implementation.
 
-Current bounded raid-lifetime design passes a different fresh independent review;
-implementation is underway from the qualified projection base. Lazy load_raids
-at the accepted base still replaces old state after
-a failed save. Fixing that also needs dimension identity guards, not a bare return.
+The bounded raid-lifetime fix is QUALIFIED at63a7d62: failed lazy replacement now
+retains the prior owner and direct access requires matching dimension identity.
+Effect expiry, skipped-event replay, cross-world identity and shutdown retention
+remain explicitly outside that correction.
 Disconnected cursor drops differ from connected inventory return; see
 H08_DISCONNECTED_CURSOR_FEASIBILITY.md. Neither audit accepts broader teardown.
 

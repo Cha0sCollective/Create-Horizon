@@ -197,6 +197,20 @@ Private files only; no new crate, dependency, lock or engine change:
   receipts. The guest/example already share the bridge; change them only if a
   demonstrated compile/interface need arises, with review of that delta.
 
+Source-review correction: the development host dispatches a batch as individual
+guest calls, so the shared bridge alone cannot enforce unique geometry case names
+across that batch. Add ONLY `tools/wasm-probe/host/src/main.rs` to the bounded file
+scope for a borrowed batch geometry-name preflight before dispatch. Preserve the
+legacy duplicate-name policy, manifest/capabilities, reply checks and one-case
+dispatch. Verify duplicate valid geometry case names refuse through BOTH actual
+native and sandbox probes; include a focused host helper test. The runner must
+hash ALL changed source files before/after, including tests/geometry.rs and this
+host source. This demonstrated interface correction changes no geometry/solver
+rule or host permission. A different independent read-only Sol High design delta
+review accepts this correction with no findings (reviewed document SHA256:
+e101d1a1cf59ac814869eb35ff1516a1066ceac6f953193c5c978f0de821cc02).
+Corrected source and actual execution still require independent qualification.
+
 Any additional file/dependency/host API need requires a stated packet correction
 before scope grows. Do not edit qualified game-smoke drivers. The coordinator
 serializes Cargo and chooses a frozen reviewed engine source identity for the
