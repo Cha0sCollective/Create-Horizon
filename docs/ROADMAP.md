@@ -7,7 +7,7 @@ remain proposed until their corresponding gate accepts them.
 | Stage | Outcome | Current state |
 | --- | --- | --- |
 | S0 | Runnable pinned reference, repeatable traces and bounded host contract | G0 accepted for bounded experiments; performance qualification open |
-| S1 | Persistent synchronized generic machine with retained animation | H05a-d, H06a-d, H08a1-a15, PLAYER/E1/W1, save/idle restoration and bounded fresh capture/recovery mechanism qualified; runtime/machine persistence/full H02/H03/H04/H05/G1 open |
+| S1 | Persistent synchronized generic machine with retained animation | H05a-d, H06a-d, H08a1-a15, PLAYER/E1/W1, save/idle restoration and bounded counter+slot epochs qualified; general runtime persistence/full H02/H03/H04/H05/G1 open |
 | S2 | Verified motor, shafts and two cog sizes | P02a/b, reference observations, static XYZ/equal-cog geometry and declared three-path event arbitration accepted in native/Wasm; general arbitration and full P02/integration open, live integration requires G1 |
 | S3 | Five-component playable milling MVP and two-client evidence | Planned; G3 open |
 | S4 | Obtainable survival power and a small factory | Future scope |
@@ -18,6 +18,17 @@ The S3 component boundary excludes a gearbox. The earlier audit's suggested gear
 demonstration is superseded by the supplied five-component scope.
 
 ## Next bounded packet
+
+The active slot epoch at localbfa5ced passes six actual-Game groups, retained
+regressions, feature checks, fresh both-mode GUI/broad and different final review:
+`docs/reference/H08_SLOT_EPOCH_RESULTS.md`. The next restored3/T recapture cell has
+fresh design acceptance in `docs/design/H08_SLOT_RECAPTURE_PACKET.md`, based on
+`docs/design/H08_SLOT_RECAPTURE_INTEGRATION_AUDIT.md`. Release is bounded to six
+paths after the private checkpoint. It must enumerate actual native empty metadata,
+keep all other W1 refusals and replace only validated pending-image sidecars.
+After4/T+1, general runtime/history/scalar support and G1 remain open.
+
+## Foundation history
 
 The initial P01/H01 packet made the pinned environments runnable, rechecked the
 overlapping Horizon drafts, repeated six direct-drive/cog/milling fixtures and
@@ -93,10 +104,11 @@ admission, general machine/item-slot recovery and recapture remain open. The nex
 library slot codec/install/lifecycle prerequisite now passes native/retained Game/
 feature/fresh both-mode GUI/broad checks and different final independent review in
 `docs/reference/H08_NATIVE_SLOT_RESTORE_RESULTS.md`. It restores a positive7-item
-payload with fresh authority and retained heads; pending wire/Game epoch admission
-and full scalar support remain open. The next active epoch direction is proposed
-in `docs/design/H08_SLOT_EPOCH_PACKET.md`; it must account the slot while keeping
-all other E1/W1 refusals. S1 deliverables are unchanged. The private declared-
+payload with fresh authority and retained heads. Its bounded active Game epoch
+now passes all acceptance gates in `docs/reference/H08_SLOT_EPOCH_RESULTS.md`,
+accounting the slot while preserving all remaining E1/W1 refusals. Pending wire,
+general runtime/history/full scalar support remain open. S1 deliverables are
+unchanged. The private declared-
 event arbitration trial now passes native/Wasm against both retained Java captures,
 controls and regressions, with final independent acceptance in
 `docs/reference/P02_DECLARED_ARBITRATION_RESULTS.md`. It remains a closed-path,

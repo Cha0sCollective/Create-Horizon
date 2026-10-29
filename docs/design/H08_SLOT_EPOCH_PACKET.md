@@ -1,11 +1,16 @@
 # H08 active native slot epoch cell
 
-DESIGN ACCEPTED FOR BOUNDED IMPLEMENTATION after fresh independent read-only
+PACKET ACCEPTED at clean LOCALbfa5ced912bed16f955e65824317a0b259c2cb6a/tree
+d14db6c4a5b5a9eb511cddf5c443832d024b48f5 after different final independent review;
+see H08_SLOT_EPOCH_RESULTS.md. Ordinary runtime/S1/G1/publication remain open.
+
+Original design acceptance followed fresh independent read-only
 Sol High review of proposal SHA256
 fbbae312185b065cb760b3fc733bf31c00f4d92ab8007499cdab6310760008fc.
 Slot-library b17c44d8841fa8659ec96a850c039734c56e4435 has completed fresh
-GUI/broad/final qualification. This is not source/runtime/epoch/S1/G1 acceptance;
-coordinator release and exact-source/evidence reviews remain required.
+GUI/broad/final qualification. Design acceptance alone was not source/runtime/
+epoch/S1/G1 acceptance; the completed bounded source/evidence gates are recorded
+in the results above.
 Counter f90d369f43567042d7729d08026633bd67015356 is accepted. At drafting, clean
 local engine codex/h08-native-slot-restore is b17c44d, tree
 d0d9f858d73a6e450c74408a437e397c97d02340. Coordinator qualification and different
