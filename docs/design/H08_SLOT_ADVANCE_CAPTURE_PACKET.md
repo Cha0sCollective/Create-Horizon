@@ -8,7 +8,10 @@ Accepted clean input: c05401ecf869ea471c68986ff9b7709567e1c8c0/tree
 d915d07e85afbdd9a8ab5edaf6cd407eed1812b3, matching the reviewed frozen input.
 Coordinator releases ONLY the six paths below on a fresh codex/h08-slot-advance
 branch after recording this private checkpoint. Exact-source review precedes
-execution; source/runtime/final acceptance remains open.
+execution. Implementation now has different fresh independent final ACCEPT at
+LOCAL bb6f718cecb41ff0ffd563699dd3d731f9b3fe53/tree
+a243ac6bd646ed8152eaa5ebe6be846c1f0cf878. All gates and limits are recorded in
+docs/reference/H08_SLOT_ADVANCE_CAPTURE_RESULTS.md; general runtime/G1 stay open.
 Original reviewed input: exact six-file recapture candidate at acceptedbfa5ced plus manifest
 71de0cee4274a84100db3de25594609a0880847af9d9f3314b6174cada5385b7. The implementation
 input is the accepted clean commit/tree above.

@@ -22,12 +22,15 @@ demonstration is superseded by the supplied five-component scope.
 The active slot epochbfa5ced and restored3/T recapturec05401e both pass new/retained
 actual-Game groups, native/feature checks, fresh both-mode GUI/broad and different
 final reviews: `docs/reference/H08_SLOT_EPOCH_RESULTS.md` and
-`docs/reference/H08_SLOT_RECAPTURE_RESULTS.md`. The next fixed4/T+1 capture cell
-has fresh design acceptance in `docs/design/H08_SLOT_ADVANCE_CAPTURE_PACKET.md`,
-based on `docs/design/H08_SLOT_ADVANCE_CAPTURE_AUDIT.md`. Release is bounded to six
-paths after the private checkpoint. It must distinguish inherited3/T baseline
-from current4/T+1, preserve clean-region LastUpdateT and explicitly type a whole
-baseline3 physical fallback. General runtime/history/scalar support and G1 stay open.
+`docs/reference/H08_SLOT_RECAPTURE_RESULTS.md`. Fixed4/T+1 capture now has different
+final acceptance at LOCALbb6f718, including native/retained, fresh both-mode GUI
+and broad checks: `docs/reference/H08_SLOT_ADVANCE_CAPTURE_RESULTS.md`. It preserves
+clean-region LastUpdateT and distinguishes current4 from whole baseline3 physical
+fallback. Next is the three-path used-streamer ownership/ONE real native tick
+prerequisite in `docs/design/H08_USED_STREAMER_OWNERSHIP_PACKET.md`, with independent
+design acceptance. Preserve pristine capture refusal. Ordinary host identity has
+a separate source audit, not implementation acceptance. General runtime/history/
+scalar support and G1 stay open.
 
 ## Foundation history
 

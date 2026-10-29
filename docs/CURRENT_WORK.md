@@ -2,91 +2,90 @@
 
 Latest owner resume authorizes continued development to a genuine blocker or
 required input. Old cutoff/break is superseded. No public publication, promotion
-or standing team. Preserve personal source-informed provenance, R01 pinned Java
-full-output item-loss behavior and fresh independent Sol High review requirements.
-Coordinator owns all integration, formatting, Cargo/tests and commits; serialize
-all Cargo/tests. Verify actual branches, revisions and dirty files before work.
+or standing team. Preserve personal source-informed provenance and the pinned
+R01 Java full-output item-loss behavior. Fresh independent Sol High review is
+required for substantive changes. Coordinator owns all integration, formatting,
+Cargo/tests and commits; serialize all Cargo/tests.
 
-Private branch codex/h02-smoke-h03-notes; prior checkpoint2f8c7c0f29b45fab9f7c9f17c6222bae78ddb2ad
-is pushed. Verify actual HEAD/remote; freshly verify origin PRIVATE before EVERY
-push. Engine is LOCAL ONLY; upstream push stays disabled. Never commit raw worlds,
-resources, binaries, session/account data, private material or review prompts there.
+Private branch codex/h02-smoke-h03-notes; last pushed accepted checkpoint
+904265736d309fc2593637de91e837f556dc7b77. Verify actual state and freshly verify
+origin PRIVATE before EVERY push. Engine stays LOCAL ONLY; upstream push disabled.
+No raw worlds/resources/binaries/session data/private materials in engine Git.
 
-## Accepted restored slot recapture
+## Accepted counter-advance capture
 
-Clean LOCAL engine codex/h08-slot-recapture c05401ecf869ea471c68986ff9b7709567e1c8c0,
-treed915d07e85afbdd9a8ab5edaf6cd407eed1812b3. Six paths2431+/22-; normal public-tree
-commit hook passes. All source assignments released; no source writes active.
-Different fresh independent final review ACCEPTS every gate, no actionable findings.
-Results: docs/reference/H08_SLOT_RECAPTURE_RESULTS.md and .local/h08sr1-*.
+Clean LOCAL engine codex/h08-slot-advance:
+bb6f718cecb41ff0ffd563699dd3d731f9b3fe53, tree
+a243ac6bd646ed8152eaa5ebe6be846c1f0cf878. Exactly six packet paths, 3716+/21-;
+normal public-tree commit hook passes. All source assignments released.
+Packet: docs/design/H08_SLOT_ADVANCE_CAPTURE_PACKET.md.
+Results: docs/reference/H08_SLOT_ADVANCE_CAPTURE_RESULTS.md; raw .local/h08sa1-*.
 
-Four new actual-Game primary groups pass FIRSTTRY: epoch1->fresh native nine-root
-proof->actual Task epoch2->fresh owned recovery/continuation; full remaining W1 and
-malformed-root refusal; inherited/pending-copy preservation; actual timeout/rename
-interruption/whole recovery. One explicit auxiliary is never primary credit.
-Native56 EACH mods+paired and paired-only pass, all53 retained+3new required names.
-Retained slot6/counter6/capture6/entity8/W1seven and180ordinary/98ignored pass;
-all180 baseline names retained. Threefeaturelints/fmt/scope/public-tree pass.
-Source/review/execution/current hashes match, no mechanical-delta reuse needed.
-Resourcebinary12daa01e4b033243db9832c732dd006e2a4f6a9fecff421e6cb84085203ed779;
-frozen manifest .local/h08sr1-source-sha256.json SHA71de0cee4274a84100db3de25594609a0880847af9d9f3314b6174cada5385b7.
-One copied-wrapper8-vs6prebuild guard stops beforeCargo, archived then fixed; no
-candidate runtimefailure. Pregen remains source-only, not a runtime claim.
+Final frozen six-source manifest SHA256
+f5e2f908b95ddc8daa4e2803569b99cad31580a14a2b8a700b707b39c58fcd92.
+Resource binary6c409e5a570b95be8c96eb1ccc199320fee7a8321a264ee586bf6a264fecf2e9.
+Fresh new4, targeted unchanged old matrix, native59 EACH feature mode, all retained
+recapture4/slot6/counter6/capture6/entity8/W1seven and180 ordinary/103ignored pass.
+Three feature lints/fmt/scope/public-tree pass. Current source and executed source
+match; no later mechanical-delta reuse. Every failed attempt remains preserved
+and described in results. Old test bodies stay unchanged. Different final reviewer
+clears source/new/native/feature/retained/clean-commit gates without findings.
 
-Fresh ordinary Game7684157e93c8908be8c63ab022a017659cbf3629b6f9562552bce9abb59a0ddc
-passes integratedc8f76825-fad6-45c9-81cf-aecde3b39e52(368checks/final61) and
-in-frame327331a8-8eb8-4117-8567-483c286fe3cb(353/final18). Four normal0/fourrefusal1,
-worldbytesunchanged. Seven cleanupnull/one integratedmissing-package quit/socket
-race; independently accepted benign expecteddenial/naturalexit1/reaped/poststop
-worldcomparison. Never claim allclean or silently rerun. Indexh08sr1-game-run-index;
-raw originals .local/h02d/game-runs/{UUID}; temporary fixtures restored.
+Fresh ordinary Gamefe88e2d9 passes integrated368checks/final67 and in-frame353/
+final26. Two preserved benign integrated refusal quit races have natural exits/
+reaping and AFTER-cleanup saved-world comparisons. Six cleanup records are null;
+never claim all clean. Index: .local/h08sa1-game-run-index.json. Broad exactbb6f718
+passes369Python/1358client/0doc in7m32s/status0; logSHA
+64e73fd97d3ab026287480e817703790ad516e61bbc51fc28d9cbb8310f552b7. Scope warning,
+quick parity NOT RUN and untouched notes remain. Different final independent
+review ACCEPTS all gates without findings. This is a bounded fixture acceptance.
 
-Broad nativeclone exactc054 --quick/basebfa passes369Python/1358client/0doc,
-7m25s/status0. LogSHA72de5a419fab7b7ae919ccd3a87ee4292fbd5e06bfd72f8f5b89e5ced4d6e5e6.
-ci-update/build proveHEAD; printedbfa is comparisonbase. Preserve scopewarning and
-skipped parity/untouchedcontentroot/theme/launcher notes. Final review accepts the
-clean exact packet after source/new/retained/native/lint/GUI/broad verification.
-This is restored3/T, PLAYER3, slot7/revision1 fixture acceptance, not G1.
+Qualified scope: actual counter phase3/T->4/T+1, PLAYER3/slot7 revision1 unchanged,
+Task epoch3 and fresh Current4 recovery. This is not a complete running Game tick.
+Inherited canonical3/T is baseline, distinct from current4/T+1. Clean region roots
+retain LastUpdateT; no fake dirtying/pre-save/normalization. Physical fallback
+selects one whole baseline image; selected semantic errors and old3-selected4
+refuse before copy. Source and prior epochs remain immutable.
 
-## Next bounded counter-advance capture release
+## Next bounded prerequisite release
 
-H08_SLOT_ADVANCE_CAPTURE_PACKET.md has fresh independent Sol High design ACCEPT
-of proposal6317a8edcec410badbd9b70ded2760d9203c048ccd5cced107d02f7af6ef6255,
-auditb3a7661f550f2adc92624fcfee4465fe712d25292a9dd125c3402bbe7f2364ef.
-Its accepted clean input is c05401e/tree d915 above, identical to the reviewed
-frozen candidate. Prerequisite acceptance and input-pin conditions are satisfied.
-After recording this private checkpoint, coordinator creates codex/h08-slot-advance
-at c054 and releases only the six packet paths to ONE bounded author. No shared
-source writer, no execution before exact frozen-source review. Root owns all
-execution/integration/commits. Source/runtime/final gates remain open.
+H08_USED_STREAMER_OWNERSHIP_PACKET.md and its source audit have fresh independent
+read-only Sol High DESIGN ACCEPT, clarified packetSHA
+df88d50c4b9f98c05d0fe69304e9f5cba9be5415baca79105077b07c701cd09f.
+Accepted clean input is bb6f718/treea243 above. After this private checkpoint push,
+root releases fresh codex/h08-used-streamer and exactly three paths: streaming.rs,
+declaration-only slot_epoch_integration.rs, new used_streamer_tick_tests.rs. One
+bounded author, no shared source writers; exact-source review before execution.
 
-Target the actual qualified counter phase3/T->4/T+1, PLAYER3+slot7 unchanged,
-Task epoch3 and fresh recovery. This is not a complete running Game tick/history
-claim. Inherited canonical3/T records are a BASELINE, not current4/T+1. Counter
-advancement does not dirty chunks; retain exact clean-region LastUpdateT while
-Level.Time/current frames becomeT+1. No fake dirtying/pre-save/normalization.
-Closed recovery distinguishes current4 versus whole baseline3 physical fallback;
-selected semantic errors and old3-caller-selected4 refuse before copy. Share ALL
-remaining E1/W1 checks, preserve old profiles/epochs/source and rejected ownership.
-No codec/writer/schema/Gamefield/general-admission changes; report concrete scope
-blockers before widening. Verify new evidence prefix unused before any wrappers.
+Observe native enqueue/worker/result/error ownership and exercise ONE actual
+native tick_server(false), proving current capture refuses while preserving all
+post-tick facts. Keep pristine admission unchanged. Cover synchronous save callbacks,
+worker initialization, every receive/drop path, explicit request origin and checked
+fault accounting. Persistent callbacks prove asynchronous enqueue acceptance only,
+not writer completion. Sibling fixture setup must use visible ancestor APIs.
+No used-streamer capture or ordinary startup recovery is authorized by this packet.
+H08_HOST_WORLD_IDENTITY_AUDIT.md is a separate source-only future prerequisite;
+it does not release ordinary activation or identity implementation.
 
-## Established scope and open gates
+## Accepted history and open gates
 
-Accepted prior layers include counterf90d369f, native slot libraryb17c44d, active
-slot epochbfa5ced, S0/G0 bounded research, H02/H03/H04/H05 counters, H06 ownership/
-player, native-save prerequisites, PLAYER/E1/W1, parked/idle restoration and capture
-mechanism. Details under docs/reference. Private P02 static geometry/declared
-arbitration native+Wasm is accepted; liveS2 requiresG1. No playable Create claim.
+Prior accepted engine pins: restored3/T recapturec05401e/tree d915d07e, active slot
+epochbfa5ced, native slot libraryb17c44d and counter restoref90d369f. New/retained,
+fresh both-mode GUI/broad and different final reviews are recorded under
+reference/H08_*_RESULTS.md. Recapture private acceptance is pushed at9042657.
 
-S1/G1 stays OPEN. Hard gates: general item-bearing slot/block/container/spill/
-pending-event owners; producer/writer/error lifetime; failed Left/unload/portal/
-reconnect histories; full scalar/byte support; ordinary in-frame capture/runtime
-recovery; two external paired peers; retained animation/performance. S3 remains
-exactly motor, shaft, small+large cog and cobblestone-to-gravel millstone; no gearbox.
-References/Prism/playable saves stay unchanged; Java21/25 are per-process pinned.
+S0/G0 bounded research, H02/H03/H04/H05 counters, H06 ownership/player, native-save
+prerequisites, PLAYER/E1/W1, parked/idle restoration and capture mechanism remain
+accepted within their documented bounds. P02 static geometry/declared arbitration
+native+Wasm is accepted; live S2 requires G1. No playable Create claim.
 
-Evidence prefixes: h08e1 is legacy ENTITY E1, h08se1 active slot epoch, h08sr1
-restored recapture. Never reuse/execute old wrappers as new evidence. Resolved
-prefix incident/caveats remain in H08_SLOT_EPOCH_RESULTS.md and
-.local/h08se1-evidence-recovery.json. Raw runs and failed attempts stay outside Git.
+S1/G1 stays OPEN: general item-bearing owners, producer/writer/error lifetime,
+failed unload/portal/reconnect histories, full scalar/byte support, ordinary
+in-frame capture/runtime recovery, two external paired peers, animation/performance.
+S3 is exactly motor, shaft, small+large cog and cobblestone-to-gravel millstone.
+References/Prism/playable saves stay unchanged; Java21/25 are process-pinned.
+
+Evidence prefixes: h08e1 legacy ENTITY E1; h08se1 active slot epoch; h08sr1 restored
+recapture; h08sa1 current advance. Verify any future prefix unused BEFORE wrappers.
+Resolved prefix incident/caveats remain in H08_SLOT_EPOCH_RESULTS.md and
+.local/h08se1-evidence-recovery.json. Never execute old wrappers as new proof.
