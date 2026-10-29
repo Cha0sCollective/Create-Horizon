@@ -7,8 +7,8 @@ remain proposed until their corresponding gate accepts them.
 | Stage | Outcome | Current state |
 | --- | --- | --- |
 | S0 | Runnable pinned reference, repeatable traces and bounded host contract | G0 accepted for bounded experiments; performance qualification open |
-| S1 | Persistent synchronized generic machine with retained animation | H05a-d counters, H06a-d native transfer/ownership/player-cell and H08a1-a14 prerequisites qualified; native participant preflight active; full H02/H03/H04/H05/G1 open |
-| S2 | Verified motor, shafts and two cog sizes | P02a/b and repeated arbitration observations reviewed; four-case X/Z reference candidate under validation in parallel; native geometry/multi-source rules and full P02/integration open, live integration requires G1 |
+| S1 | Persistent synchronized generic machine with retained animation | H05a-d counters, H06a-d native transfer/ownership/player-cell, H08a1-a14 and native participant preflight qualified; borrowed player projections under validation; full H02/H03/H04/H05/G1 open |
+| S2 | Verified motor, shafts and two cog sizes | P02a/b, repeated arbitration observations and four-case X/Z reference observations accepted; native geometry/multi-source rules and full P02/integration open, live integration requires G1 |
 | S3 | Five-component playable milling MVP and two-client evidence | Planned; G3 open |
 | S4 | Obtainable survival power and a small factory | Future scope |
 | S5 | One controlled moving assembly with collision and recovery | Separate feasibility decision |
@@ -68,8 +68,12 @@ resident checked receiver also passes native, broad and final independent review
 `docs/reference/H06_CHECKED_RETIREMENT_RECEIVER_RESULTS.md`. The dormant real
 player-cell adapter passes in `docs/reference/H06_PLAYER_CELL_ADAPTER_RESULTS.md`.
 Checked raid-save propagation passes in `docs/reference/H08_RAID_METADATA_RESULTS.md`.
-Next is the dormant native player-owner roster preflight in
-`docs/design/H08_PARTICIPANT_PREFLIGHT_PACKET.md`.
+Native player-owner roster preflight passes in
+`docs/reference/H08_PARTICIPANT_PREFLIGHT_RESULTS.md`. The next dormant precursor
+returns borrowed player NBT/JSON projections under
+`docs/design/H08_PLAYER_PROJECTION_PACKET.md`.
 Coherent recovery remains separate in `docs/design/H08_CHECKPOINT_FEASIBILITY.md`;
-completed arbitration observations are in `docs/reference/P02_ARBITRATION_RESULTS.md`.
+completed arbitration and horizontal observations are in
+`docs/reference/P02_ARBITRATION_RESULTS.md` and
+`docs/reference/P02_HORIZONTAL_RESULTS.md`.
 G1/G2/G3 remain open.

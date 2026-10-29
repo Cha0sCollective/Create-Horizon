@@ -4,86 +4,94 @@ Latest owner resume authorizes development to a genuine blocker or required inpu
 superseding the old cutoff/break. No public publication/promotion/standing team.
 Preserve personal source-informed provenance, R01 and fresh independent Sol High reviews.
 
-- Private branch: codex/h02-smoke-h03-notes; accepted checkpoints backed up privately.
-- Engine branch: codex/h08-participant-preflight; local candidate 78c5a0d,
-  accepted base b3e0d3561a8849c03cd19012ed42c4710b7ec0fe.
-- Active accepted packet: docs/design/H08_PARTICIPANT_PREFLIGHT_PACKET.md.
-  Source committed/author released. Seven resource Game tests (23.74s), 175 ordinary
-  bin tests (33 ignored), three feature lints/fmt/public-tree/normal hook pass;
-  fresh independent source/resource reviews pass. Broad check is running. Ordinary
-  Game coverage is explicitly reused from unchanged H08a14 paths, not new activation.
-  Coordinator owns docs, serialized qualification and integration.
-  Reviewers stay read-only despite runtime writes. No permission expansion/team.
+- Private branch: codex/h02-smoke-h03-notes. Accepted checkpoint 5626968 is backed
+  up privately; horizontal source candidate 4dbc092 and subsequent notes are local
+  until the next verified-private push.
+- Engine branch: codex/h08-player-projections; accepted base
+  78c5a0d70824ce397d1a26bd6736a149000d99db. Exactly lan.rs, stats.rs and the new
+  lan/player_projection_tests.rs form the current candidate.
+- Active accepted packet: docs/design/H08_PLAYER_PROJECTION_PACKET.md. Author
+  released. Fresh independent design/source/resource reviews pass. Five actual
+  initial resource Game tests pass (15.66s, zero ignored); 176 ordinary bin tests
+  pass (38 ignored). First lint catches two test-only collapsible-if warnings;
+  original artifacts are preserved at .local/h08p2-attempt1. A test-only let-chain
+  correction also adds directory entries to the disk snapshot, addressing review's
+  coverage limitation. Revised resource/native checks and then clean-commit
+  Game/broad qualification are running/pending. Production source is unchanged.
+- Coordinator owns all serialized Cargo/tests, integration and documentation.
+  Reviewers remain read-only despite runtime writes. No permission expansion.
 - Engine commits LOCAL ONLY, normal hooks on, upstream push disabled. No public push.
 - Create clean detached reference: 7ff2760e4924d35d4bc2e22c4b19923f0178cd16.
   Never alter Prism/playable worlds/reference snapshots. Pins in workspace.toml.
 
 Qualified bounded foundations: S0/P02/B0, H02/H03/H04/H05a-d native/guest counters,
 H06a-d native transfer/World ownership/receiver/player-cell, H08a1-a14 save
-prerequisites. Named docs/reference result notes retain exact scope/evidence limits.
-Actual guest counter normal/trap/reject/invalid trials pass both modes. Counters and
-backends remain transient. World slots have NO Game enabling callsite.
+prerequisites and native participant preflight. Exact evidence and limits live in
+the named docs/reference results. World slots have NO Game enabling callsite.
+Actual guest counter normal/trap/reject/invalid trials pass both modes; counters
+and backends remain transient. S1/G1 are still open.
 
-Latest H08a14: five real Game disk-fault cases (5 pass/0 ignored/13.93s), 173 ordinary
-bin tests (26 ignored), three feature lints, fmt/public-tree/normal hook, broad
-369 Python/1357 client/zero doc, new full counter Game both modes and final review.
-Composite counter/quick statuses both0; source unchanged after review. See
-H08_RAID_METADATA_RESULTS.md. Parity selection355 is --list only; none executed.
-Lazy load_raids replacement after a failed save remains explicitly UNFIXED.
-H08_RAID_LIFETIME_AUDIT.md proposes a later one-module fix, not implementation.
+Participant preflight 78c5a0d passes seven resource cases, 175 ordinary bin tests
+(33 ignored), three feature lints/fmt/public-tree/normal hook, broad 369 Python/
+1357 client/zero doc and final independent receipt review. See
+H08_PARTICIPANT_PREFLIGHT_RESULTS.md. This is dormant PLAYER-state observation:
+native host/sender Arc allocation identity, exact roster/canonical mapping and
+strict idle owner checks. No global conn uniqueness, same-marker reconstruction,
+authentication, replay or lasting-barrier claim. Later capture must recheck inside
+the SAME exclusive owner operation.
 
-New clean-commit Game SHA256
+Current projection successor returns detached existing-format Tag/JSON values for
+EVERY matched player after that real preflight, shared-tree and named count checks.
+No gameplay callsite, IO, ownership take, normalization, new Game field, compressed
+bytes or global readiness. Other component scalar/byte-codec constraints remain
+unqualified. Stats' ordinary writer uses its extracted borrowed formatter, so new
+full-counter Game regressions in BOTH modes are required for this candidate.
+
+Latest qualified ordinary Game artifact is H08a14 b3e0d356, SHA256
 01a55d6ec222c0a389f97235ac647d0c430c9cfa35bbeafa7c0f1e47606646cb:
-- Integrated0814a185-60e7-4f98-b441-3bc96a7d1be4: 368 checks/final65.
-- In-frame75395689-ae25-43d3-9153-07ac0aaa0b0f: 353 checks/final27.
-- Four normal initial/restart exits0/cleanup null. Four expected refusal exits1;
-  integrated changed-package cleanup races an already-exited game. Others null.
-- These are normal-path regressions, separate from focused headless raid faults.
+integrated0814a185-60e7-4f98-b441-3bc96a7d1be4 (368 checks/final65),
+in-frame75395689-ae25-43d3-9153-07ac0aaa0b0f (353/final27).
+Four normal initial/restart exits0/cleanup null; four intended refusal exits1.
+Integrated changed-package cleanup races an already-exited game; other cleanup
+fields null. These are ordinary regressions, separate from focused disk faults.
 
-Earlier H06c/H06d accepted result notes retain their source/binary/native/broad
-proofs. H06c broad checks pass despite a preserved post-check CRLF wrapper exit1.
-H06d first resource run6pass/1setup failure is preserved, then7pass after a test-only
-resident-column repair. H08a13's old grass/dirt fixture failure stays archived too.
-No failed run was relabelled. Qualified immutable entrypoints SHA256:
+Preserved failures: H06c's broad check passes but post-check CRLF wrapper exits1;
+H06d first resource run6pass/1setup failure precedes a test-only column repair;
+H08a13 old grass/dirt fixture failure remains archived. No failed run is relabelled.
+Qualified immutable entrypoint SHA256 values:
 run_counter_game_smoke.py
  d19c480572c3fbcb0ce01afeb868efb5dc276ad64606ab01f40edd9bf2d970e0;
 run_stable_counter_game_smoke.py
  b09390209a9f03f3597ddcd25f9a412d40cc93344ad1858b78994a76ce31c35e;
 run_guest_counter_game_smoke.py
  c1b2a0b1875029c69264a12cbfa871f02a48fad87bd4e875297f8b3c69a48926.
-Do not edit these or qualified parents. Stable restoration uses CURRENT command
-feedback/exact no-op state, never dispatch-ok or old chat membership.
+Do not edit these or qualified parents. Restoration uses CURRENT command feedback
+or exact no-op state, never dispatch-ok or old chat membership.
 
-Serialize ALL Cargo including test execution. Native broad clone pointer:
-.local/h05-ci-checkout.txt. Never export GIT_DIR/GIT_WORK_TREE into tests.
+Serialize ALL Cargo including test execution. Native broad clone pointer is
+workspace-root .local/h05-ci-checkout.txt. Never export GIT_DIR/GIT_WORK_TREE.
 Clear HORIZON_SESSION_FILE in EVERY child. Game/launcher/HOME/data/config/cache/temp
-must be fresh; preserve inherited XDG_RUNTIME_DIR display service. Short socket paths;
-old smoke helpers need copies of TWO approved components under their fresh HOME.
-Raw binaries/worlds/Mojang files/account data/generated runs stay outside Git at
-workspace-root .local. Normalize new Linux wrappers to LF.
+must be fresh; preserve XDG_RUNTIME_DIR. Use short sockets and copies of TWO approved
+components under the old driver's fresh HOME. Raw binaries/worlds/Mojang files/
+account data/generated runs stay outside Git at workspace-root .local. New Linux
+wrappers use LF. No source reference or playable installation changes.
 
-Participant preflight is a dormant PLAYER-state observation only: native host/sender
-Arc identity plus exact expected roster/canonical owner mapping and strict idle
-owner checks. It does no byte projections, normalization, ownership take, IO or
-publication. It is NOT global readiness or a lasting barrier; later capture must
-recheck inside the SAME exclusive owner operation. No global conn uniqueness,
-arbitrary same-marker reconstruction detection, authentication or replay claim.
+P02 four-case X/Z reference experiment is ACCEPTED. See P02_HORIZONTAL_RESULTS.md
+and P02_NEXT_KERNEL_AUDIT.md. Both fresh runs have 4 fixtures/240 samples/960 machine
+observations, matching pinned inputs/configs and complete traces. Strict old-corpus
+comparisons and all 14 derived software controls pass, with final independent review.
+Core/probe unchanged. No native geometry, arbitrary-axis proof, multi-source solver,
+live S2 or G1/G2 acceptance follows.
+
+Next bounded raid-lifetime packet is being drafted from H08_RAID_LIFETIME_AUDIT.md;
+no implementation is accepted yet. Lazy load_raids still replaces old state after
+a failed save. Fixing that also needs dimension identity guards, not a bare return.
+Disconnected cursor drops differ from connected inventory return; see
+H08_DISCONNECTED_CURSOR_FEASIBILITY.md. Neither audit accepts broader teardown.
 
 All-owner teardown, shutdown-error retention, failed Left/reconnect history,
-off-resident/global ownership, byte projections, coherent publication/recovery,
+off-resident/global owners, full byte encoding, coherent publication/recovery,
 external paired peers, retained animation/performance and G1/G2/G3 remain open.
-H08_CHECKPOINT_FEASIBILITY records gaps; tick freeze/server hold is not a barrier.
-Integrated::call timeout does not cancel its task. Disconnected cursor native drops
-are distinct from connected inventory return; see H08_DISCONNECTED_CURSOR_FEASIBILITY.
-No native precursor implies durable machine ownership or Create conformance.
-
-Parallel bounded P02 reference candidate: P02_NEXT_KERNEL_AUDIT.md accepted by
-fresh design/source reviews. Five private source files only: new
-tools/reference/java/dev/ch4os/reference/HorizontalGeometryReferenceTests.java,
-PortReferenceTests.java schema dispatch, tools/reference.py, reference/init.gradle
-and compare_reference.py. Author released; compile/captures are still pending.
-Set p02-horizontal-1 has four X/Z connection/mismatch fixtures,60 samples each,
-source-authored +16/-16 GENERATED RPM expectations with NORTH setting inversion.
-Core/probe unchanged; reference snapshot remains clean. Freeze reviewed sources
-before two fresh matching captures and strict old-corpus/derived-control checks.
-No native geometry/arbitration, live S2 or G1/G2 acceptance follows.
+H08_CHECKPOINT_FEASIBILITY records gaps. Tick freeze/server hold is not a barrier;
+Integrated::call timeout does not cancel its task. No native precursor implies
+durable machine ownership or Create conformance.
