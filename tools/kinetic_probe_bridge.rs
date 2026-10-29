@@ -1,4 +1,7 @@
 //! Development-only JSON bridge; the player library has no serialization dependency.
+use create_horizon_core::declared_arbitration::{
+    Event as TrialEvent, NodeView, TrialSpec, run_declared_trial,
+};
 use create_horizon_core::geometry::{Axis, Block, BlockKind, Facing, derive_topology};
 use create_horizon_core::{
     Edge, MotorSetting, Node, OperatingState, Sign, Source, Transmission, solve,
@@ -137,10 +140,114 @@ fn geometry_case(case: &Value) -> Result<Value, String> {
     Ok(json!({"case":name, "edges":edges, "rotations":rotations}))
 }
 
+fn trial_setting(value: &Value) -> Result<MotorSetting, String> {
+    let value = value
+        .as_i64()
+        .and_then(|v| i16::try_from(v).ok())
+        .ok_or("Expected signed trial generation")?;
+    MotorSetting::from_signed(value).map_err(|_| "Invalid trial generation".into())
+}
+fn trial_event(value: &Value) -> Result<TrialEvent, String> {
+    match value["op"].as_str() {
+        Some(op @ ("place_generator" | "set_generated")) => {
+            exact_fields(value, &["op", "node", "generated"])?;
+            let node = id(&value["node"])?;
+            let generated = trial_setting(&value["generated"])?;
+            Ok(if op == "place_generator" {
+                TrialEvent::PlaceGenerator { node, generated }
+            } else {
+                TrialEvent::SetGenerated { node, generated }
+            })
+        }
+        Some("place_join") => {
+            exact_fields(value, &["op"])?;
+            Ok(TrialEvent::PlaceJoin)
+        }
+        Some("destroy_generator") => {
+            exact_fields(value, &["op", "node"])?;
+            Ok(TrialEvent::DestroyGenerator {
+                node: id(&value["node"])?,
+            })
+        }
+        Some("settle") => {
+            exact_fields(value, &["op", "label"])?;
+            Ok(TrialEvent::Settle {
+                label: value["label"]
+                    .as_str()
+                    .ok_or("Expected trial label")?
+                    .into(),
+            })
+        }
+        _ => Err("Unknown trial event".into()),
+    }
+}
+fn trial_case(case: &Value) -> Result<Value, String> {
+    exact_fields(case, &["case", "arbitration_trial"])?;
+    let name = case["case"]
+        .as_str()
+        .filter(|n| !n.is_empty())
+        .ok_or("Expected trial case metadata")?;
+    let input = &case["arbitration_trial"];
+    exact_fields(input, &["spec", "events"])?;
+    let s = &input["spec"];
+    exact_fields(
+        s,
+        &[
+            "lower",
+            "join",
+            "upper",
+            "capacity_per_rpm",
+            "join_neighbor_order",
+            "be_order",
+        ],
+    )?;
+    let neighbors = array(&s["join_neighbor_order"])?;
+    let order = array(&s["be_order"])?;
+    if neighbors.len() != 2 || order.len() != 3 {
+        return Err("Wrong trial order length".into());
+    }
+    let spec = TrialSpec {
+        lower: id(&s["lower"])?,
+        join: id(&s["join"])?,
+        upper: id(&s["upper"])?,
+        capacity_per_rpm: id(&s["capacity_per_rpm"])?,
+        join_neighbor_order: [id(&neighbors[0])?, id(&neighbors[1])?],
+        be_order: [id(&order[0])?, id(&order[1])?, id(&order[2])?],
+    };
+    let events = array(&input["events"])?;
+    if events.len() > 16 {
+        return Err("TooManyEvents".into());
+    }
+    let events = events
+        .iter()
+        .map(trial_event)
+        .collect::<Result<Vec<_>, _>>()?;
+    let trace = run_declared_trial(&spec, &events).map_err(|e| format!("{name}: {e:?}"))?;
+    let checkpoints: Vec<_> = trace.checkpoints.into_iter().map(|checkpoint| {
+        let nodes: Vec<_> = checkpoint.nodes.into_iter().map(|node| match node {
+            NodeView::Absent { node } => json!({"id":node,"present":false}),
+            NodeView::Present { node, generator, generated_rpm, theoretical_rpm, effective_rpm,
+                source_parent, network_present, network_members, capacity_su, stress_su, flicker } =>
+                json!({"id":node,"present":true,"kind":if generator {"generator"} else {"shaft"},
+                    "generated_rpm":generated_rpm,"theoretical_rpm":theoretical_rpm,"effective_rpm":effective_rpm,
+                    "source_parent":source_parent,"network_present":network_present,"network_members":network_members,
+                    "capacity_su":capacity_su,"stress_su":stress_su,"flicker":flicker}),
+        }).collect();
+        let effects: Vec<_> = checkpoint.effects.iter().map(|effect|
+            json!({"node":effect.node,"kind":"generator","with_drops":true})).collect();
+        json!({"label":checkpoint.label,"nodes":nodes,"effects":effects})
+    }).collect();
+    Ok(json!({"case":name,"checkpoints":checkpoints}))
+}
+
 pub fn run(input: Value) -> Result<Value, String> {
     let mut results = Vec::new();
     let mut geometry_names = BTreeSet::new();
     for case in array(&input)? {
+        if case.get("arbitration_trial").is_some() {
+            results.push(trial_case(case)?);
+            continue;
+        }
         if case.get("geometry").is_some() {
             let result = geometry_case(case)?;
             if !geometry_names.insert(result["case"].as_str().unwrap().to_owned()) {

@@ -2,6 +2,7 @@
 //!
 //! This does not discover world connections or model propagation tick timing,
 //! multiple-source arbitration, unloaded contributions, or overspeed destruction.
+pub mod declared_arbitration;
 pub mod geometry;
 
 use std::collections::{BTreeMap, BTreeSet, VecDeque};

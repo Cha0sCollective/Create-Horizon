@@ -17,6 +17,7 @@ def main():
     modes = parser.add_mutually_exclusive_group()
     modes.add_argument('--geometry', action='store_true', help='Compare the bounded horizontal geometry set in native and sandbox probes')
     modes.add_argument('--vertical-equal', action='store_true', help='Compare six Y/UP/equal-cog static snapshots in native and sandbox probes')
+    modes.add_argument('--declared-arbitration', action='store_true', help='Compare three bounded complete event streams in native and sandbox probes')
     args = parser.parse_args()
     if sys.platform != 'linux':
         parser.error('Run in the pinned Ubuntu development environment')
@@ -27,7 +28,7 @@ def main():
     if not lock.is_file():
         parser.error('Resolve and review the separate dev-tool Cargo.lock first')
     reference_hashes = []
-    required_set = 'p02-horizontal-1' if args.geometry else 's0-edges-1'
+    required_set = 'p02-arbitration-1' if args.declared_arbitration else 'p02-horizontal-1' if args.geometry else 's0-edges-1'
     for reference in args.references:
         loaded = load_run(reference)
         if loaded['environment']['fixture_set'] != required_set:
@@ -36,6 +37,8 @@ def main():
                  'config-sha256.json', *loaded['configs']}
         if args.geometry:
             files.add('resources/data/create_horizon_horizontal/structure/empty.nbt')
+        if args.declared_arbitration:
+            files.add('resources/data/create_horizon_arbitration/structure/empty.nbt')
         reference_hashes.append({name: hashlib.sha256((reference / name).read_bytes()).hexdigest()
                                  for name in sorted(files)})
     run = workspace / '.local/p02/wasm-runs' / str(uuid.uuid4())
@@ -57,7 +60,7 @@ def main():
                     repo / 'crates/create-core/examples/kinetic_probe.rs',
                     repo / 'crates/create-core/tests/geometry.rs',
                     repo / 'tools/compare_core.py', repo / 'tools/compare_geometry.py', repo / 'tools/compare_reference.py',
-                    repo / 'tools/compare_vertical_geometry.py',
+                    repo / 'tools/compare_vertical_geometry.py', repo / 'tools/compare_declared_arbitration.py',
                     repo / 'tools/kinetic_probe_bridge.rs',
                     *sorted((repo / 'crates/create-core/src').rglob('*.rs')),
                     *sorted((repo / 'tools/wasm-probe').rglob('*.rs')),
@@ -77,7 +80,8 @@ def main():
     port_diff = subprocess.check_output(['git', '-C', str(repo), 'diff', '--binary', 'HEAD'], env=env)
     (run / 'port.patch').write_bytes(port_diff)
     meta = {'scope': 'development server-component sandbox; no live world or machinery',
-            'mode': ('vertical-equal-static-geometry' if args.vertical_equal else
+            'mode': ('declared-event-arbitration' if args.declared_arbitration else
+                     'vertical-equal-static-geometry' if args.vertical_equal else
                      'horizontal-static-geometry' if args.geometry else 'declared-topology'),
             'engine_revision': engine_revision, 'engine_diff_sha256': hashlib.sha256(engine_diff).hexdigest(),
             'port_revision': subprocess.check_output(['git', '-C', str(repo), 'rev-parse', 'HEAD'], text=True, env=env).strip(),
@@ -110,14 +114,15 @@ def main():
     meta['component_package_sha256'] = hashlib.sha256(artifact.read_bytes()).hexdigest()
     (run / 'environment.json').write_text(json.dumps(meta, indent=2) + '\n')
     component_env = {'CREATE_KINETIC_COMPONENT': str(artifact)}
-    if args.geometry or args.vertical_equal:
+    if args.geometry or args.vertical_equal or args.declared_arbitration:
         execute('native-build', cargo + ['build', '--example', 'kinetic_probe', '--locked', '--offline'],
                 {'CARGO_TARGET_DIR': str(native)})
         native_probe = native / 'debug/examples/kinetic_probe'
         meta['native_probe_sha256'] = hashlib.sha256(native_probe.read_bytes()).hexdigest()
         meta['comparison_sha256'] = {}
         (run / 'environment.json').write_text(json.dumps(meta, indent=2) + '\n')
-        comparator = repo / ('tools/compare_vertical_geometry.py' if args.vertical_equal else 'tools/compare_geometry.py')
+        comparator = repo / ('tools/compare_declared_arbitration.py' if args.declared_arbitration else
+                             'tools/compare_vertical_geometry.py' if args.vertical_equal else 'tools/compare_geometry.py')
         for index, reference in enumerate(args.references, 1):
             outputs = []
             for mode, probe, extra in [('native', native_probe, None), ('sandbox', host, component_env)]:
@@ -129,11 +134,20 @@ def main():
             if outputs[0] != outputs[1]:
                 raise RuntimeError(f'Native and sandbox canonical outputs differ for reference {index}')
         for mode, probe, extra in [('native', native_probe, None), ('sandbox', host, component_env)]:
-            for control in ('axis', 'facing', 'edge-ratio'):
-                execute(f'{mode}-{control}-control', ['python3', str(comparator), str(args.references[0]),
-                        '--probe', str(probe), '--negative-control', control], extra, expected=1)
-            execute(f'{mode}-duplicate-case-control', ['python3', str(comparator), str(args.references[0]),
-                    '--probe', str(probe), '--negative-control', 'duplicate-case'], extra, expected=2)
+            if args.declared_arbitration:
+                for control in ('same-sign', 'removal-target', 'omit-join'):
+                    execute(f'{mode}-{control}-control', ['python3', str(comparator), str(args.references[0]),
+                            '--probe', str(probe), '--control', control], extra, expected=1)
+                execute(f'{mode}-duplicate-node-control', ['python3', str(comparator), str(args.references[0]),
+                        '--probe', str(probe), '--control', 'duplicate-node'], extra, expected=2)
+                execute(f'{mode}-repeated-labels-control', ['python3', str(comparator), str(args.references[0]),
+                        '--probe', str(probe), '--control', 'repeated-labels'], extra)
+            else:
+                for control in ('axis', 'facing', 'edge-ratio'):
+                    execute(f'{mode}-{control}-control', ['python3', str(comparator), str(args.references[0]),
+                            '--probe', str(probe), '--negative-control', control], extra, expected=1)
+                execute(f'{mode}-duplicate-case-control', ['python3', str(comparator), str(args.references[0]),
+                        '--probe', str(probe), '--negative-control', 'duplicate-case'], extra, expected=2)
     else:
         for index, reference in enumerate(args.references, 1):
             execute(f'comparison-{index}', ['python3', str(repo / 'tools/compare_core.py'), str(reference), '--probe', str(host)], component_env)
@@ -150,7 +164,7 @@ def main():
     if (hashlib.sha256(core.read_bytes()).hexdigest() != meta['core_wasm_sha256']
             or hashlib.sha256(artifact.read_bytes()).hexdigest() != meta['component_package_sha256']):
         raise RuntimeError('Probe artifacts changed during the run')
-    if args.geometry or args.vertical_equal:
+    if args.geometry or args.vertical_equal or args.declared_arbitration:
         if hashlib.sha256(native_probe.read_bytes()).hexdigest() != meta['native_probe_sha256']:
             raise RuntimeError('Native probe artifact changed during the run')
         if any(hashlib.sha256((run / name).read_bytes()).hexdigest() != value
@@ -158,7 +172,7 @@ def main():
             raise RuntimeError('Canonical comparison output changed during the run')
     (run / 'environment.json').write_text(json.dumps(meta, indent=2) + '\n')
     (run / 'complete.txt').write_text('All selected sandbox comparisons and controls passed; '
-                                       'static geometry mode also matches native canonical output\n')
+                                       'bounded native/sandbox modes also match canonical output\n')
 
 
 if __name__ == '__main__':
