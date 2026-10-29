@@ -304,6 +304,16 @@ reconcile, insertion and removal cannot clear it or admit another slot. There is
 no acknowledgement/reset service in this packet. Caller owns any returned
 payload and must retain it if its sink refuses it.
 
+Fresh independent design follow-up accepts the required conservative presence
+clarification: `has_world_slot_trial()` is true when the native Trial exists OR
+retained persistent slot metadata exists. Inspect metadata presence regardless of
+counter/slot health, residency, payload count or successful anchor validation.
+Persistent Active/Pending/Dormant/Faulted/Detached participation remains visible,
+including after teardown removes the Trial. Counter-only slot=None and transient
+teardown retain their previous false result. Document the broader presence meaning;
+this keeps unchanged E1 refusing persistent participation after an owner is returned.
+No Game/E1 path or accounted-slot exception is added.
+
 The existing counter-only Detached/fault rules are not weakened. Pending slot
 export is refused even when counter metadata is otherwise healthy. This deliberately
 stops before proving pending recovery; live owner retention is not a durable epoch.
@@ -342,6 +352,9 @@ Freeze concrete names at implementation source review; proposed groups:
   ONE exact pending projection/Box/reason/time persists. Export refuses; take
   returns original owner, latches Detached, old enable/reconcile/restore cannot
   admit, and retained caller value is still recoverable after repeated writes.
+  Pending take and subsequent teardown keep conservative presence true with exact
+  returned owners/head/Detached metadata. Presence reads change no owner/key/
+  revision/metadata/clock/RNG; test every mode, counter-only None and transient teardown.
 - native_slot_restore_real_unload_reinsert_and_teardown: defining-module calls
   remove_streamed_chunk/insert_streamed_chunk, not direct map edits, prove same
   owner across unload/matching reload and owned pending on mismatch/replacement.
