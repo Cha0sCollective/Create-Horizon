@@ -6,7 +6,7 @@ namespace = "create_horizon"
 repository = "https://github.com/Cha0sCollective/Create-Horizon"
 visibility = "private"
 stage = "post-G0 foundations"
-active_packet = "Native slot library b17c44d accepted after all checks/final review; next active slot epoch proposal pending design review; G1 open"
+active_packet = "Active slot epoch eight-path cell released after fresh design acceptance at qualified b17c44d; source/evidence gates pending; G1 open"
 next_stage = "S1 host foundations and remaining P02; G1/G2/G3 open"
 
 [specification]

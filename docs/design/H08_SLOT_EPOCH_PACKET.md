@@ -1,9 +1,11 @@
 # H08 active native slot epoch cell
 
-PROPOSED DESIGN ONLY. No implementation release or new E1 exception is authorized
-by this draft. Start only after slot-library b17c44d8841fa8659ec96a850c039734c56e4435
-finishes fresh GUI/broad/final qualification AND this exact design receives a
-fresh independent read-only Sol High acceptance and coordinator release.
+DESIGN ACCEPTED FOR BOUNDED IMPLEMENTATION after fresh independent read-only
+Sol High review of proposal SHA256
+fbbae312185b065cb760b3fc733bf31c00f4d92ab8007499cdab6310760008fc.
+Slot-library b17c44d8841fa8659ec96a850c039734c56e4435 has completed fresh
+GUI/broad/final qualification. This is not source/runtime/epoch/S1/G1 acceptance;
+coordinator release and exact-source/evidence reviews remain required.
 Counter f90d369f43567042d7729d08026633bd67015356 is accepted. At drafting, clean
 local engine codex/h08-native-slot-restore is b17c44d, tree
 d0d9f858d73a6e450c74408a437e397c97d02340. Coordinator qualification and different
@@ -275,8 +277,9 @@ Decide fresh ordinary both-mode GUI by exact changed source paths: any productio
 levels/owner-observation body change requires fresh GUI; test-only adapter changes
 do not by themselves establish ordinary behavior. Do not assume old b17/f90 reuse.
 
-Concrete design choices needing review: separate SlotManifest/profile factoring,
+Accepted bounded design choices: separate SlotManifest/profile factoring,
 borrowed slot inspection, the one explicit accounted E1 path, helper visibility
-and private sequential-install failure ownership. None is an accepted implementation
-yet. Report concrete path/ownership blockers before widening the eight-path cap.
+and private sequential-install failure ownership. Only bounded authoring is
+released; exact-source and runtime acceptance remain separate gates. Report concrete
+path/ownership blockers before widening the eight-path cap.
 No additional owner product decision is presently needed for this bounded proposal.

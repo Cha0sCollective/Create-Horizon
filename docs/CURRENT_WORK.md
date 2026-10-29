@@ -52,7 +52,7 @@ fresh Game, installs fresh opaque authority, skipsT and advances4 atT+1. Active 
 only; dormant/head proofs are LIB evidence. Reloaded opaque ChunkExtras still refuse
 recapture: stop before a second capture; never clear extras or bypass W1.
 
-ACTIVE: H08_NATIVE_SLOT_RESTORE_PACKET.md has fresh independent Sol High DESIGN
+Accepted prerequisite: H08_NATIVE_SLOT_RESTORE_PACKET.md has fresh independent Sol High DESIGN
 acceptance for its exact six library paths at acceptedf90. Author released all six;
 no source writes are active. Coordinator owns all integration, formatting, Cargo/
 tests and qualification. Clean LOCAL candidate on codex/h08-native-slot-restore:
@@ -77,9 +77,14 @@ generation, lossless scalar/component/byte support and exact ownership need a bo
 reviewed packet. Native item persistence normalizes some values; Eq ignores bundle
 selection. Do not treat it as a complete strict checkpoint codec.
 
-ROOT ACTIVE: checkpoint slot-library acceptance, then independent design review of
-PROPOSED H08_SLOT_EPOCH_PACKET.md. Its source input is H08_SLOT_EPOCH_INTEGRATION_AUDIT.md.
-No implementation or E1 exception is released. Accounted slot preflight must run
+Slot-library acceptance/proposed epoch checkpoint6dd7a980dcfd453fe512823629703c8d1e2512c4
+is pushed to freshly verified private origin.
+ACTIVE: H08_SLOT_EPOCH_PACKET.md has fresh independent Sol High DESIGN acceptance
+at clean acceptedb17. Branch codex/h08-slot-epoch starts there. Coordinator owns
+world/slot_restore.rs borrowed-view API and ALL integration/fmt/Cargo/tests; bounded
+author owns the other seven exact packet paths, with no shared source ownership.
+No runtime execution before frozen-source review; final source/evidence gates open.
+Its source input is H08_SLOT_EPOCH_INTEGRATION_AUDIT.md. Accounted slot preflight must run
 every remaining E1 check, not catch the first slot refusal and bypass the rest.
 Explicit slot-aware profile selection must prevent older recovery from ignoring
 the owner or treating known semantic/profile failures as corruption fallback.
