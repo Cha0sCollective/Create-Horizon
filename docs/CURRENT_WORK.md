@@ -6,10 +6,10 @@ Preserve personal source-informed provenance, R01 and independent Sol High revie
 
 - Private branch codex/h02-smoke-h03-notes; accepted checkpoint0ba2818 is backed up
   privately. Code candidatec821d21 is the accepted static-geometry source identity.
-- Engine branch codex/h08-entity-owner-observation, QUALIFIED clean commit
+- Engine branch codex/h08-parked-save-restoration, QUALIFIED base
   3ded3a2f8b7e012eae08dfaf06e6985686e95912, tree
-  cffabea129c8e95fa74c19f4ac489a7c41fb2ac4. Hold engine fixed through upcoming
-  Y/equal-cog sandbox qualification. Engine commits remain LOCAL ONLY, normal hooks on,
+  cffabea129c8e95fa74c19f4ac489a7c41fb2ac4. Author is writing the next candidate;
+  verify actual dirty files. Engine commits remain LOCAL ONLY, normal hooks on,
   upstream push disabled. No public push/merge/release.
 - Latest qualified packet: docs/design/H08_GLOBAL_OWNER_PACKET.md. Different fresh
   design/delta review passes after correcting the lib/bin field-access conflict.
@@ -25,12 +25,22 @@ Preserve personal source-informed provenance, R01 and independent Sol High revie
   drops may pass; other named native families, retained maps, pending loaded data,
   whole slot trials and portal owners refuse. No payload clone/take, normalization,
   IO, new Game field or lasting readiness token. It does not reduce S1/G1 scope.
+- Active accepted H08_PARKED_SAVE_RESTORATION_PACKET.md targets ONLY
+  game/levels.rs::save_parked_levels and new levels/parked_save_tests.rs. Capture
+  loop Result, always attempt original-dimension restoration, preserve first error;
+  current invariants make restoration-error runtime coverage unreachable. Keep
+  all existing entity helpers/bodies intact; no sticky-error reset, new fields,
+  owner rebuilding, journal or close_idle_levels change. Root owns all execution.
 - Parallel P02_VERTICAL_EQUAL_COG_PACKET.md passes different fresh independent
   design review. Assigned Y/UP+small-small geometry uses exactly
   retained E/F6checkpoints/17present machines, with explicit old-schema limits.
   Source review/native17geometry+10legacy+3host tests/lints/Wasmcheck pass at code
-  candidate49fa0e5. Actual sandbox/evidence qualification is next; no new Java runs
-  or engine changes. Parked-save restoration is the next S1 draft under preparation.
+  candidate49fa0e5; actual native/sandbox/evidence qualification now PASSES. See
+  P02_VERTICAL_EQUAL_COG_RESULTS.md. Eight vertical/eight retained horizontal
+  actual controls,24derived output/10reference controls and legacy regressions
+  pass. Initial task-local self-comparison wrapper failure remains archived at
+  .local/p02v1-control-attempt1; corrected controls/continuation pass, unchanged
+  successful probes reused. Source freeze is released after final independent review.
 
 Qualified bounded foundations: S0/G0 research, H02/H03/H04/H05a-d counters, H06a-d
 native ownership/player-cell, H08a1-a15 save prerequisites, native participant
