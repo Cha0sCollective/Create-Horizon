@@ -73,3 +73,16 @@ shared new/reopen preparation and authoritative integrated/in-frame transport pl
 mismatch refusal before copy. Retain current native/actual-Game/streaming checks,
 fresh both-mode ordinary GUI and broad qualification for production lifecycle changes.
 No owner product choice is needed merely to draft and review this prerequisite.
+
+## Concrete ordering question for the proposal
+
+Root identifies a package-admission interaction in the source above: check_world
+treats ANY non-session.lock entry as existing when package pins are absent. If a
+new separate identity anchor is written before record_world, new paired-package
+admission may reject its own root as an unmarked existing world. If identity is
+created after package recording, identity-create failure may leave package-pin
+side effects even though no playable level was published. A proposal must resolve
+this ordering and partial-failure contract explicitly, including unpaired worlds.
+Do not silently extend package v1, ignore arbitrary new files, claim zero writes
+before all checks or promise atomic rollback. This is a source-level dependency
+question for a reviewed future scope, not an owner blocker or current scope change.

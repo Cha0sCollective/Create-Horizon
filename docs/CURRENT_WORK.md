@@ -8,7 +8,7 @@ required for substantive changes. Coordinator owns all integration, formatting,
 Cargo/tests and commits; serialize all Cargo/tests.
 
 Private branch codex/h02-smoke-h03-notes; last pushed accepted checkpoint
-904265736d309fc2593637de91e837f556dc7b77. Verify actual state and freshly verify
+3bb2ac5657311ee4342cb963296d3cd4d2b80be9. Verify actual state and freshly verify
 origin PRIVATE before EVERY push. Engine stays LOCAL ONLY; upstream push disabled.
 No raw worlds/resources/binaries/session data/private materials in engine Git.
 
@@ -52,10 +52,12 @@ refuse before copy. Source and prior epochs remain immutable.
 H08_USED_STREAMER_OWNERSHIP_PACKET.md and its source audit have fresh independent
 read-only Sol High DESIGN ACCEPT, clarified packetSHA
 df88d50c4b9f98c05d0fe69304e9f5cba9be5415baca79105077b07c701cd09f.
-Accepted clean input is bb6f718/treea243 above. After this private checkpoint push,
-root releases fresh codex/h08-used-streamer and exactly three paths: streaming.rs,
+Accepted clean input is bb6f718/treea243 above. Private checkpoint3bb2ac5 is pushed;
+root released clean codex/h08-used-streamer and exactly three paths: streaming.rs,
 declaration-only slot_epoch_integration.rs, new used_streamer_tick_tests.rs. One
-bounded author, no shared source writers; exact-source review before execution.
+bounded author ACTIVE, no shared source writers; exact-source review before execution.
+Fresh unused prefixh08us1 reserved. Inert wrappers prepared; exact new test names
+not frozen, no candidate execution. H08_USED_STREAMER_OWNERSHIP_RESULTS.md tracks gates.
 
 Observe native enqueue/worker/result/error ownership and exercise ONE actual
 native tick_server(false), proving current capture refuses while preserving all
@@ -64,8 +66,11 @@ worker initialization, every receive/drop path, explicit request origin and chec
 fault accounting. Persistent callbacks prove asynchronous enqueue acceptance only,
 not writer completion. Sibling fixture setup must use visible ancestor APIs.
 No used-streamer capture or ordinary startup recovery is authorized by this packet.
-H08_HOST_WORLD_IDENTITY_AUDIT.md is a separate source-only future prerequisite;
-it does not release ordinary activation or identity implementation.
+H08_HOST_WORLD_IDENTITY_AUDIT.md records a separate future prerequisite. Its packet
+now has independent DESIGN ACCEPT of clarified40c2dbe4; NOT RELEASED until this
+streamer packet has final acceptance and a clean pin. No identity implementation
+or ordinary activation assignment. Explicit intent/lock lifetime/current-native
+preflight and partial creation artifacts are required; archive-copy proof deferred.
 
 ## Accepted history and open gates
 
