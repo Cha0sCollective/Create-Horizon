@@ -6,17 +6,21 @@ Preserve personal source-informed provenance, R01 and independent Sol High revie
 
 - Private branch codex/h02-smoke-h03-notes; accepted checkpoint0ba2818 is backed up
   privately. Code candidatec821d21 is the accepted static-geometry source identity.
-- Engine branch codex/h08-entity-owner-observation, qualified base
-  63a7d62fae27dcd9ce8bfbe1209616f4e4988607, tree
-  571ad7e2cc20d8178898c6fdd9a0244252f8dcad. Author is writing a bounded candidate;
-  verify actual dirty files. Engine commits remain LOCAL ONLY, normal hooks on,
+- Engine branch codex/h08-entity-owner-observation, QUALIFIED clean commit
+  3ded3a2f8b7e012eae08dfaf06e6985686e95912, tree
+  cffabea129c8e95fa74c19f4ac489a7c41fb2ac4. Hold engine fixed through upcoming
+  Y/equal-cog sandbox qualification. Engine commits remain LOCAL ONLY, normal hooks on,
   upstream push disabled. No public push/merge/release.
-- Active accepted packet: docs/design/H08_GLOBAL_OWNER_PACKET.md. Different fresh
+- Latest qualified packet: docs/design/H08_GLOBAL_OWNER_PACKET.md. Different fresh
   design/delta review passes after correcting the lib/bin field-access conflict.
   Additions ONLY to game/levels.rs,persist.rs,nether_portal.rs,lib world_slot_trial.rs
   plus3named test children; preserve all qualified bodies/helpers. The sole public
   lib addition is paired-gated borrowed Boolean has_world_slot_trial; fields stay
   private. Root owns formatting, frozen-source review, ALL tests and integration.
+  Eight resource cases,9lib tests in eachpaired configuration,177bin tests with
+  53ignored,3feature lints and broad369/1358/0/final receipt review pass. Initial
+  failed compile/test-only fixes remain in .local/h08e1-build-attempt1. No new GUI
+  smoke is claimed; unchanged63a7d62 both-mode normal paths are explicitly reused.
 - The diagnostic observes active+every Parked ENTITY owners only. Fresh resident
   drops may pass; other named native families, retained maps, pending loaded data,
   whole slot trials and portal owners refuse. No payload clone/take, normalization,
@@ -24,7 +28,9 @@ Preserve personal source-informed provenance, R01 and independent Sol High revie
 - Parallel P02_VERTICAL_EQUAL_COG_PACKET.md passes different fresh independent
   design review. Assigned Y/UP+small-small geometry uses exactly
   retained E/F6checkpoints/17present machines, with explicit old-schema limits.
-  Code/runtime qualification remains pending; no new Java runs or engine changes.
+  Source review/native17geometry+10legacy+3host tests/lints/Wasmcheck pass at code
+  candidate49fa0e5. Actual sandbox/evidence qualification is next; no new Java runs
+  or engine changes. Parked-save restoration is the next S1 draft under preparation.
 
 Qualified bounded foundations: S0/G0 research, H02/H03/H04/H05a-d counters, H06a-d
 native ownership/player-cell, H08a1-a15 save prerequisites, native participant
