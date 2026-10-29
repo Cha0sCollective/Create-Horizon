@@ -68,9 +68,9 @@ public class PortReferenceTests {
     }
 
     static void sample(GameTestHelper helper, String fixture, Map<String, Object> context, BlockPos... positions) {
-        boolean arbitration = fixture.startsWith("arbitration_");
+        boolean sourceObservation = fixture.startsWith("arbitration_") || fixture.startsWith("horizontal_");
         Map<String, Object> row = new LinkedHashMap<>();
-        row.put("schema", arbitration ? 3 : 2);
+        row.put("schema", sourceObservation ? 3 : 2);
         row.put("fixture", fixture);
         row.put("tick", helper.getTick());
         row.put("phase", "gametest_scheduled_callback");
@@ -90,7 +90,7 @@ public class PortReferenceTests {
             if (entity instanceof KineticBlockEntity be) {
                 value.put("theoretical_rpm", be.getTheoreticalSpeed());
                 value.put("effective_rpm", be.getSpeed());
-                if (arbitration) {
+                if (sourceObservation) {
                     value.put("generated_rpm", be.getGeneratedSpeed());
                     value.put("flicker", be.getFlickerScore());
                     value.put("source_parent", be.source == null ? new int[] {} : relative(helper, be.source, positions));

@@ -39,7 +39,7 @@ def main():
     parser.add_argument('mode', choices=('tasks', 'compile', 'capture', 'lock'))
     parser.add_argument('--offline', action='store_true')
     parser.add_argument('--workspace', type=Path, help='Workspace containing references/ and shared .local/ (default: repository parent)')
-    parser.add_argument('--fixture-set', choices=('s0-edges-1', 'p02-arbitration-1'), default='s0-edges-1')
+    parser.add_argument('--fixture-set', choices=('s0-edges-1', 'p02-arbitration-1', 'p02-horizontal-1'), default='s0-edges-1')
     args = parser.parse_args()
     if sys.platform != 'linux':
         parser.error('Run this tool inside the Ubuntu WSL development environment.')
@@ -69,7 +69,11 @@ def main():
         parser.error('Java runtime differs from the pinned reference environment')
     run = workspace / '.local/s0/reference-runs' / str(uuid.uuid4())
     run.mkdir(parents=True)
-    namespace = 'create_horizon_arbitration' if args.fixture_set == 'p02-arbitration-1' else 'create_horizon_reference'
+    namespace, extra_adapter = {
+        's0-edges-1': ('create_horizon_reference', None),
+        'p02-arbitration-1': ('create_horizon_arbitration', 'ArbitrationReferenceTests.java'),
+        'p02-horizontal-1': ('create_horizon_horizontal', 'HorizontalGeometryReferenceTests.java'),
+    }[args.fixture_set]
     template_name = f'data/{namespace}/structure/empty.nbt'
     template_archive = run / 'resources' / template_name
     empty_template(template_archive)
@@ -79,10 +83,19 @@ def main():
     empty_template(template_root / template_name)
     if (template_root / template_name).read_bytes() != template_archive.read_bytes():
         parser.error('Generated template source differs from its per-run archive')
+    java_adapter = repo / 'tools/reference/java/dev/ch4os/reference'
+    excluded_adapters = {java_adapter / name for name in
+                         ('ArbitrationReferenceTests.java', 'HorizontalGeometryReferenceTests.java')
+                         if name != extra_adapter}
     adapter_files = [Path(__file__).resolve(), *sorted((repo / 'tools/reference').rglob('*'))]
     adapter_hashes = {str(p.relative_to(repo)): hashlib.sha256(p.read_bytes()).hexdigest()
-                      for p in adapter_files if p.is_file() and
-                      (args.fixture_set == 'p02-arbitration-1' or p.name != 'ArbitrationReferenceTests.java')}
+                      for p in adapter_files if p.is_file() and p not in excluded_adapters}
+    expected_adapters = {'tools/reference.py', 'tools/reference/init.gradle',
+                         'tools/reference/java/dev/ch4os/reference/PortReferenceTests.java'}
+    if extra_adapter:
+        expected_adapters.add(f'tools/reference/java/dev/ch4os/reference/{extra_adapter}')
+    if set(adapter_hashes) != expected_adapters:
+        parser.error('Missing or unexpected selected reference adapter input')
     metadata = {'reference_revision': revision, 'minecraft': pins['create_reference']['minecraft'],
                 'neoforge': pins['create_reference']['neoforge'], 'java': version.strip(),
                 'mode': args.mode, 'adapter': str(repo / 'tools/reference'),

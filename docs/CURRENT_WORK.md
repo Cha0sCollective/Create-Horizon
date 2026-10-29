@@ -5,14 +5,14 @@ superseding the old cutoff/break. No public publication/promotion/standing team.
 Preserve personal source-informed provenance, R01 and fresh independent Sol High reviews.
 
 - Private branch: codex/h02-smoke-h03-notes; accepted checkpoints backed up privately.
-- Engine branch: codex/h08-participant-preflight; accepted base
-  b3e0d3561a8849c03cd19012ed42c4710b7ec0fe, tree
-  822c230744135df8a63195a5b0bbcdcc029f8c31.
+- Engine branch: codex/h08-participant-preflight; local candidate 78c5a0d,
+  accepted base b3e0d3561a8849c03cd19012ed42c4710b7ec0fe.
 - Active accepted packet: docs/design/H08_PARTICIPANT_PREFLIGHT_PACKET.md.
-  Bounded author owns game/lan.rs observation/types/test declaration,
-  game/lan_actions.rs and game/lan_crafting.rs borrowed predicates/local tests,
-  and NEW game/lan/participant_preflight_tests.rs. No other engine edits.
-  Coordinator owns docs, formatting, serialized Cargo/tests and integration.
+  Source committed/author released. Seven resource Game tests (23.74s), 175 ordinary
+  bin tests (33 ignored), three feature lints/fmt/public-tree/normal hook pass;
+  fresh independent source/resource reviews pass. Broad check is running. Ordinary
+  Game coverage is explicitly reused from unchanged H08a14 paths, not new activation.
+  Coordinator owns docs, serialized qualification and integration.
   Reviewers stay read-only despite runtime writes. No permission expansion/team.
 - Engine commits LOCAL ONLY, normal hooks on, upstream push disabled. No public push.
 - Create clean detached reference: 7ff2760e4924d35d4bc2e22c4b19923f0178cd16.
@@ -76,3 +76,14 @@ H08_CHECKPOINT_FEASIBILITY records gaps; tick freeze/server hold is not a barrie
 Integrated::call timeout does not cancel its task. Disconnected cursor native drops
 are distinct from connected inventory return; see H08_DISCONNECTED_CURSOR_FEASIBILITY.
 No native precursor implies durable machine ownership or Create conformance.
+
+Parallel bounded P02 reference candidate: P02_NEXT_KERNEL_AUDIT.md accepted by
+fresh design/source reviews. Five private source files only: new
+tools/reference/java/dev/ch4os/reference/HorizontalGeometryReferenceTests.java,
+PortReferenceTests.java schema dispatch, tools/reference.py, reference/init.gradle
+and compare_reference.py. Author released; compile/captures are still pending.
+Set p02-horizontal-1 has four X/Z connection/mismatch fixtures,60 samples each,
+source-authored +16/-16 GENERATED RPM expectations with NORTH setting inversion.
+Core/probe unchanged; reference snapshot remains clean. Freeze reviewed sources
+before two fresh matching captures and strict old-corpus/derived-control checks.
+No native geometry/arbitration, live S2 or G1/G2 acceptance follows.

@@ -12,6 +12,8 @@ gradle.projectsEvaluated {
     project.sourceSets.main.java.exclude('com/simibubi/create/infrastructure/gametest/CreateGameTests.java')
     if (System.getenv('CREATE_REFERENCE_NAMESPACE') != 'create_horizon_arbitration')
         project.sourceSets.main.java.exclude('dev/ch4os/reference/ArbitrationReferenceTests.java')
+    if (System.getenv('CREATE_REFERENCE_NAMESPACE') != 'create_horizon_horizontal')
+        project.sourceSets.main.java.exclude('dev/ch4os/reference/HorizontalGeometryReferenceTests.java')
     def templateNamespace = System.getenv('CREATE_REFERENCE_NAMESPACE') ?: 'create_horizon_reference'
     def templateSource = new File(System.getenv('CREATE_REFERENCE_TEMPLATE_SOURCE') ?: new File(runRoot, 'resources').path)
     project.tasks.named('processResources').configure {

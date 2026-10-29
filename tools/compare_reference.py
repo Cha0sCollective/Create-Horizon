@@ -21,12 +21,17 @@ FIXTURE_SETS = {'s0-initial-1': (1, FIXTURES),
                                          'arbitration_opposite_merge': 120,
                                          'arbitration_dominant_removal': 160,
                                          'arbitration_subordinate_reversal': 160,
-                                         'arbitration_large_small_overspeed': 120})}
+                                         'arbitration_large_small_overspeed': 120}),
+                'p02-horizontal-1': (3, {'horizontal_x_connected': 60,
+                                        'horizontal_x_mismatch': 60,
+                                        'horizontal_z_connected': 60,
+                                        'horizontal_z_mismatch': 60})}
 MARKER = 'CREATE_HORIZON_TRACE '
 HEX256 = re.compile(r'[0-9a-f]{64}')
 ADAPTER_FILES = {'tools/reference.py', 'tools/reference/init.gradle',
                  'tools/reference/java/dev/ch4os/reference/PortReferenceTests.java'}
 ARBITRATION_ADAPTER_FILES = ADAPTER_FILES | {'tools/reference/java/dev/ch4os/reference/ArbitrationReferenceTests.java'}
+HORIZONTAL_ADAPTER_FILES = ADAPTER_FILES | {'tools/reference/java/dev/ch4os/reference/HorizontalGeometryReferenceTests.java'}
 GENERATED_PROPERTIES_DATE = re.compile(
     rb'^#(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun) (?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) '
     rb'\d{2} \d{2}:\d{2}:\d{2} \S+ \d{4}\r?\n?$')
@@ -43,6 +48,12 @@ def comparison_config_hash(path):
 
 def expected_machines(fixture, tick):
     motor = ('create:creative_motor', [2, 2, 2])
+    if fixture in FIXTURE_SETS['p02-horizontal-1'][1]:
+        x_axis = fixture.startswith('horizontal_x_')
+        return [('create:creative_motor', [2, 3, 3] if x_axis else [3, 3, 4]),
+                ('create:shaft', [3, 3, 3]),
+                ('create:large_cogwheel', [4, 3, 3] if x_axis else [3, 3, 2]),
+                ('create:cogwheel', [4, 4, 4] if x_axis else [4, 4, 2])]
     if fixture == 'arbitration_large_small_overspeed':
         return [motor, ('create:large_cogwheel' if tick <= 30 else 'minecraft:air', [2, 3, 2]),
                 ('create:cogwheel', [3, 3, 3])]
@@ -76,7 +87,19 @@ def expected_machines(fixture, tick):
 
 def validate_context(fixture, tick, context):
     require(type(context) is dict, 'Missing fixture context')
-    if fixture.startswith('arbitration_'):
+    if fixture in FIXTURE_SETS['p02-horizontal-1'][1]:
+        require(set(context) == {'drops', 'max_rpm', 'motor_capacity_per_rpm', 'rotation_basis'},
+                'Invalid horizontal context fields')
+        require(type(context['max_rpm']) is int and context['max_rpm'] == 256
+                and finite_number(context['motor_capacity_per_rpm'])
+                and context['motor_capacity_per_rpm'] == 16384, 'Invalid horizontal configuration')
+        require(type(context['drops']) is dict and context['drops'] == {},
+                'Unexpected horizontal live-drop map')
+        basis = context['rotation_basis']
+        require(type(basis) is list and all(type(axis) is list and all(type(n) is int for n in axis)
+                for axis in basis) and basis == [[1, 0, 0], [0, 1, 0], [0, 0, 1]],
+                'Horizontal fixture requires actual unrotated coordinate basis')
+    elif fixture.startswith('arbitration_'):
         require(set(context) == {'drops', 'max_rpm'} and type(context['max_rpm']) is int
                 and context['max_rpm'] == 256, 'Invalid arbitration configuration')
         require(type(context['drops']) is dict and all(isinstance(key, str) and key in
@@ -145,13 +168,15 @@ def load_run(directory):
     fixture_set = environment.get('fixture_set', 's0-initial-1')
     require(fixture_set in FIXTURE_SETS, 'Unknown reference fixture set')
     schema, fixtures = FIXTURE_SETS[fixture_set]
+    horizontal = fixture_set == 'p02-horizontal-1'
     require(isinstance(environment['reference_revision'], str)
             and re.fullmatch(r'[0-9a-f]{40}', environment['reference_revision']), 'Invalid source revision')
     require(environment['minecraft'] == '1.21.1' and environment['neoforge'] == '21.1.219', 'Unexpected platform')
     require(isinstance(environment['java'], str) and environment['java'].startswith('openjdk version "21.')
             and 'OpenJDK 64-Bit Server VM' in environment['java'], 'Missing Java runtime identity')
     adapter = environment['adapter_sha256']
-    require(type(adapter) is dict and set(adapter) == (ARBITRATION_ADAPTER_FILES if schema == 3 else ADAPTER_FILES),
+    expected_adapters = HORIZONTAL_ADAPTER_FILES if horizontal else ARBITRATION_ADAPTER_FILES if schema == 3 else ADAPTER_FILES
+    require(type(adapter) is dict and set(adapter) == expected_adapters,
             'Incomplete adapter identity')
     require(all(isinstance(value, str) and HEX256.fullmatch(value) for value in adapter.values()), 'Invalid adapter hash')
     log = (directory / 'console.log').read_text()
@@ -185,7 +210,17 @@ def load_run(directory):
                             'Air node must explicitly omit kinetic state')
                 continue
             require(machine['block'].startswith('create:'), 'Unexpected block namespace')
-            if machine['block'] == 'create:creative_motor':
+            if horizontal:
+                axis = 'x' if fixture.startswith('horizontal_x_') else 'z'
+                facing = 'east' if axis == 'x' else 'north'
+                if machine['block'] == 'create:creative_motor':
+                    require(properties == {'facing': facing}, 'Wrong horizontal motor properties')
+                else:
+                    if machine['block'] == 'create:cogwheel' and fixture.endswith('_mismatch'):
+                        axis = 'z' if axis == 'x' else 'x'
+                    require(properties == {'axis': axis, 'waterlogged': 'false'},
+                            'Wrong horizontal shaft/cog properties')
+            elif machine['block'] == 'create:creative_motor':
                 facing = 'down' if schema == 3 and machine['position'] == [2, 4, 2] else 'up'
                 require(properties.get('facing') == facing, 'Wrong motor facing')
             elif machine['block'] == 'create:hand_crank':
@@ -204,7 +239,7 @@ def load_run(directory):
                 if machine['block'] == 'create:creative_motor':
                     keys.add('setting')
                     require(type(machine['setting']) is int and 1 <= abs(machine['setting']) <= 256, 'Invalid motor setting')
-                    require(machine['generated_rpm'] == machine['setting'] * (-1 if facing == 'down' else 1),
+                    require(machine['generated_rpm'] == machine['setting'] * (-1 if facing in ('down', 'north') else 1),
                             'Motor generated RPM disagrees with oriented setting')
                 else:
                     require(machine['generated_rpm'] == 0, 'Passive node cannot generate rotation')
@@ -272,7 +307,8 @@ def load_run(directory):
     require(configs == actual_configs and any(Path(key).name == 'create-server.toml' for key in configs),
             'Incomplete configuration manifest or changed configuration files')
     if schema == 3:
-        template = directory / 'resources/data/create_horizon_arbitration/structure/empty.nbt'
+        namespace = 'create_horizon_horizontal' if horizontal else 'create_horizon_arbitration'
+        template = directory / f'resources/data/{namespace}/structure/empty.nbt'
         require(isinstance(environment.get('template_sha256'), str)
                 and HEX256.fullmatch(environment['template_sha256'])
                 and hashlib.sha256(template.read_bytes()).hexdigest() == environment['template_sha256'],
