@@ -6,7 +6,7 @@ namespace = "create_horizon"
 repository = "https://github.com/Cha0sCollective/Create-Horizon"
 visibility = "private"
 stage = "post-G0 foundations"
-active_packet = "Native counter restore f90d369 accepted after all checks/final review; next native slot restore audit/design proposed; G1 open"
+active_packet = "Native slot restore six-path library cell released after fresh design acceptance at qualified f90d369; source/evidence gates pending; G1 open"
 next_stage = "S1 host foundations and remaining P02; G1/G2/G3 open"
 
 [specification]

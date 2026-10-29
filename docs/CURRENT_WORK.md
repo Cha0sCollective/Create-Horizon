@@ -43,17 +43,22 @@ Different fresh independent final overall review ACCEPTS cleanf90/tree59 with no
 actionable findings. World constructor/
 mutation changed; NEW both-mode GUI above qualifies, no old b414 substitution.
 Build/run scripts and raw receipts at workspace-root .local/h08m1-*.
-ACTIVE coordinator: checkpoint acceptance, then bound/review the next slot design;
-continue within S1 until an actual blocker/input need. Counter cell is not G1 or playable Create.
+Counter acceptance checkpoint82b2da2b4211402c986ec8d5a44a73f30485d965 is pushed
+to freshly verified private origin. Continue within S1 until an actual blocker/
+input need. Counter cell is not G1 or playable Create.
 
 This cell captures3/T through actual Task, loads actual9 native chunks/PLAYER into
 fresh Game, installs fresh opaque authority, skipsT and advances4 atT+1. Active epochs
 only; dormant/head proofs are LIB evidence. Reloaded opaque ChunkExtras still refuse
 recapture: stop before a second capture; never clear extras or bypass W1.
 
-NEXT source analysis: H08_SLOT_RESTORE_INTEGRATION_AUDIT.md is PROPOSED only. Positive
-native slot codec/checked installation can be a library prerequisite; no slot engine
-changes yet. Existing E1 refuses ANY slot trial. Never temporarily take/hide owners
+ACTIVE: H08_NATIVE_SLOT_RESTORE_PACKET.md has fresh independent Sol High DESIGN
+acceptance for its exact six library paths at acceptedf90. Native slot author owns
+those six paths; coordinator owns all integration, formatting, Cargo/tests and
+qualification. Branch codex/h08-native-slot-restore starts at f90. Source/evidence
+acceptance pending; no execution before independent frozen-source review.
+H08_SLOT_RESTORE_INTEGRATION_AUDIT.md remains source analysis. Positive native slot
+codec/checked installation is a library prerequisite. Existing E1 refuses ANY slot trial. Never temporarily take/hide owners
 to pass it. Allocation head/detached metadata, distinct slot incarnation vs counter
 generation, lossless scalar/component/byte support and exact ownership need a bounded
 reviewed packet. Native item persistence normalizes some values; Eq ignores bundle
