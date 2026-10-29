@@ -90,8 +90,13 @@ identity/restore cell now passes native/Game/feature/fresh both-mode GUI/broad c
 and different final independent review in `docs/reference/H08_MACHINE_RESTORE_RESULTS.md`:
 actual3/T state restores with fresh runtime authority and resumes4/T+1. Runtime
 admission, general machine/item-slot recovery and recapture remain open. The next
-library slot direction is proposed in `docs/design/H08_SLOT_RESTORE_INTEGRATION_AUDIT.md`;
-it does not bypass E1/W1. S1 deliverables are unchanged. The private declared-
+library slot codec/install/lifecycle prerequisite now passes native/retained Game/
+feature/fresh both-mode GUI/broad checks and different final independent review in
+`docs/reference/H08_NATIVE_SLOT_RESTORE_RESULTS.md`. It restores a positive7-item
+payload with fresh authority and retained heads; pending wire/Game epoch admission
+and full scalar support remain open. The next active epoch direction is proposed
+in `docs/design/H08_SLOT_EPOCH_PACKET.md`; it must account the slot while keeping
+all other E1/W1 refusals. S1 deliverables are unchanged. The private declared-
 event arbitration trial now passes native/Wasm against both retained Java captures,
 controls and regressions, with final independent acceptance in
 `docs/reference/P02_DECLARED_ARBITRATION_RESULTS.md`. It remains a closed-path,

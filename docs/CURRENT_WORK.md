@@ -53,16 +53,36 @@ only; dormant/head proofs are LIB evidence. Reloaded opaque ChunkExtras still re
 recapture: stop before a second capture; never clear extras or bypass W1.
 
 ACTIVE: H08_NATIVE_SLOT_RESTORE_PACKET.md has fresh independent Sol High DESIGN
-acceptance for its exact six library paths at acceptedf90. Native slot author owns
-those six paths; coordinator owns all integration, formatting, Cargo/tests and
-qualification. Branch codex/h08-native-slot-restore starts at f90. Source/evidence
-acceptance pending; no execution before independent frozen-source review.
+acceptance for its exact six library paths at acceptedf90. Author released all six;
+no source writes are active. Coordinator owns all integration, formatting, Cargo/
+tests and qualification. Clean LOCAL candidate on codex/h08-native-slot-restore:
+b17c44d8841fa8659ec96a850c039734c56e4435/tree
+d0d9f858d73a6e450c74408a437e397c97d02340. Fresh source review clears execution after
+two bounded codec/anchor fixes. Native53tests EACH feature mode pass (9new), retained
+6+6Game/180bin pass,3feature lints/fmt/public-tree/hook pass. One pure let-chain
+cleanup has independently accepted evidence reuse. Different final reviewer finds
+no issues. NEW b17Game2f4d181a passes integrated593c5503-d1bc-4db5-9cf6-9d40a6a04374
+(368) and in-frameedb1ee27-b31d-420e-abfa-90a4af0a2e78 (353). Four normal0clean/
+four refusal1; two integrated refusal cleanup socket races independently accepted
+as benign/reaped/world unchanged, observations retained. No old f90 GUI reuse.
+Broad exactb17/basef90 passes369Python/1358client/0doc in8m4s, status0; preserve
+scope warning/skipped parity/untouched-component notes. Different fresh final
+overall review ACCEPTS cleanb17/tree d0d9. Current slot-library packet is ACCEPTED.
+See H08_NATIVE_SLOT_RESTORE_RESULTS.md and
+workspace-root .local/h08s1-* for exact sources, attempts and receipts.
 H08_SLOT_RESTORE_INTEGRATION_AUDIT.md remains source analysis. Positive native slot
 codec/checked installation is a library prerequisite. Existing E1 refuses ANY slot trial. Never temporarily take/hide owners
 to pass it. Allocation head/detached metadata, distinct slot incarnation vs counter
 generation, lossless scalar/component/byte support and exact ownership need a bounded
 reviewed packet. Native item persistence normalizes some values; Eq ignores bundle
 selection. Do not treat it as a complete strict checkpoint codec.
+
+ROOT ACTIVE: checkpoint slot-library acceptance, then independent design review of
+PROPOSED H08_SLOT_EPOCH_PACKET.md. Its source input is H08_SLOT_EPOCH_INTEGRATION_AUDIT.md.
+No implementation or E1 exception is released. Accounted slot preflight must run
+every remaining E1 check, not catch the first slot refusal and bypass the rest.
+Explicit slot-aware profile selection must prevent older recovery from ignoring
+the owner or treating known semantic/profile failures as corruption fallback.
 
 ## Established scope and open gates
 
