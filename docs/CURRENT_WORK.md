@@ -7,8 +7,8 @@ R01 Java full-output item-loss behavior. Fresh independent Sol High review is
 required for substantive changes. Coordinator owns all integration, formatting,
 Cargo/tests and commits; serialize all Cargo/tests.
 
-Private branch codex/h02-smoke-h03-notes; last pushed accepted checkpoint
-3bb2ac5657311ee4342cb963296d3cd4d2b80be9. Verify actual state and freshly verify
+Private branch codex/h02-smoke-h03-notes; last pushed project checkpoint
+9ede5ebf2e9173926e3b11ba49dbafec56ebb596. Verify actual state and freshly verify
 origin PRIVATE before EVERY push. Engine stays LOCAL ONLY; upstream push disabled.
 No raw worlds/resources/binaries/session data/private materials in engine Git.
 
@@ -47,30 +47,48 @@ retain LastUpdateT; no fake dirtying/pre-save/normalization. Physical fallback
 selects one whole baseline image; selected semantic errors and old3-selected4
 refuse before copy. Source and prior epochs remain immutable.
 
-## Next bounded prerequisite release
+## Active used-streamer qualification
 
-H08_USED_STREAMER_OWNERSHIP_PACKET.md and its source audit have fresh independent
-read-only Sol High DESIGN ACCEPT, clarified packetSHA
-df88d50c4b9f98c05d0fe69304e9f5cba9be5415baca79105077b07c701cd09f.
-Accepted clean input is bb6f718/treea243 above. Private checkpoint3bb2ac5 is pushed;
-root released clean codex/h08-used-streamer and exactly three paths: streaming.rs,
-declaration-only slot_epoch_integration.rs, new used_streamer_tick_tests.rs. One
-bounded author ACTIVE, no shared source writers; exact-source review before execution.
-Fresh unused prefixh08us1 reserved. Inert wrappers prepared; exact new test names
-not frozen, no candidate execution. H08_USED_STREAMER_OWNERSHIP_RESULTS.md tracks gates.
+Packet H08_USED_STREAMER_OWNERSHIP_PACKET.md has original clarified design ACCEPT
+atdf88d50c4 and shutdown amendment ACCEPT at8f61b477. Accepted clean input is
+bb6f718/treea243 above. Private3bb2ac5/9ede5eb are pushed. Engine branch is LOCAL
+codex/h08-used-streamer; HEAD remainsbb6f718 with exactly3 dirty packet paths:
+streaming.rs, declaration-only slot_epoch_integration.rs, new used_streamer_tick_tests.rs.
+All author assignments released; source writes stopped. Root owns integration/tests.
 
-Observe native enqueue/worker/result/error ownership and exercise ONE actual
-native tick_server(false), proving current capture refuses while preserving all
-post-tick facts. Keep pristine admission unchanged. Cover synchronous save callbacks,
-worker initialization, every receive/drop path, explicit request origin and checked
-fault accounting. Persistent callbacks prove asynchronous enqueue acceptance only,
-not writer completion. Sibling fixture setup must use visible ancestor APIs.
-No used-streamer capture or ordinary startup recovery is authorized by this packet.
-H08_HOST_WORLD_IDENTITY_AUDIT.md records a separate future prerequisite. Its packet
-now has independent DESIGN ACCEPT of clarified40c2dbe4; NOT RELEASED until this
-streamer packet has final acceptance and a clean pin. No identity implementation
-or ordinary activation assignment. Explicit intent/lock lifetime/current-native
-preflight and partial creation artifacts are required; archive-copy proof deferred.
+Current hashes: stream5827ecc86bbe87dfef12f911f404d62756379ade335a8c7cfec85d66625ae032;
+decl837407d6e9d9aab9a0d7e9f3096af2460d375c150b24fc018b2a0aff5c45e71e;
+Gamee4e198af1b10cfff89c544f179d143d88436745d0b7b1729fce0ab1fe9dcde6e.
+Manifest797194c739f3faaf558bfbf1830ee445e0b083d53d6e304b8d2e94559b215767.
+Bin38b2c02f/library88ece5a5/paired-libraryadeee40c are immutable raw receipts.
+
+Fresh source/design reviews clear execution. THREE lints/fmt/tree pass; targeted2
+(new idle-shutdown assertion + exact previously stalled case), actualGame1,
+native71/resource17 EACH mods+paired and paired-only pass. Different final reviewer
+independently clears current completed gates, all names/logs/guards, no findings.
+Retained advance4 is running (first3pass); recap4/slot6/counter6/capture6/entity8/
+W1seven/ordinary180 follow serially. Clean commit/fresh BOTH-mode GUI/broad/overall
+acceptance remain OPEN. Raw prefixh08us1; results H08_USED_STREAMER_OWNERSHIP_RESULTS.md.
+
+The native report tracks origins/current work/faults, never readiness or writer
+completion. ONE actual tick126->127 reaches counter4, PLAYER3/slot7 and submissions;
+actual SlotAdvance Task refuses Validate/Streamer/PreviouslySubmitted NotPublished,
+preserving post-tick/source/archive state. Pristine admission remains unchanged.
+
+Historical corrections are preserved: two early P2, diagnostic compile error,
+ignored-count wrapper stop, one style warning, an old retained-case futex stall
+explicitly stopped by rootSIGTERM and a rescue-masking P2 found by final review.
+Source confirms a PREEXISTING possible stop/Condvar lost wake, not the interrupted
+process's exact PC. Shutdown now publishes stop/notify under the queue mutex before
+join; regression requires ORIGINAL completion success before any cleanup rescue.
+All stopped runs stay interrupted/unqualified; no silent rerun or runtime reuse.
+See raw stopped-process/stop receipts and named attempt archives in results.
+
+H08_HOST_WORLD_IDENTITY_PACKET.md has separate DESIGN ACCEPT at40c2dbe4, NOT RELEASED
+until current packet final acceptance and accepted clean successor pin. Five-path
+intent/owned lock-context/strict current-native metadata and honest partial creation
+artifacts are required. Public counter-restore UUID refusal only; archive selection/
+copy proof and ordinary activation remain deferred. No new source assignment yet.
 
 ## Accepted history and open gates
 

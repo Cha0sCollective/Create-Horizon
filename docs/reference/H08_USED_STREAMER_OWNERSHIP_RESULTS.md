@@ -73,3 +73,220 @@ contains17 names (12retained+5new), prepared for BOTH mods+paired and paired-onl
 Source/runner/expected/binary/resource guards and fresh per-case isolation remain.
 Actual listing/execution must confirm exact names after complete-source review;
 these prepared names are not pass evidence.
+
+Early independent source review WITHHOLDS subset clearance for two P2 findings in
+immutable streamingc2e27ad7: reconcile_ready_save_results uses try_iter, hiding
+Disconnected instead of retaining its named state during save(false)/idle save;
+the concurrent-send test releases one init gate and can pass with one worker doing
+both jobs. Required fixes: explicit Empty/Disconnected handling preserving native
+order/outcomes plus defining assertion; independent actual Generate/Finish gates
+with BOTH worker-held before release, then origin/payload pairing. Other lease/
+send/fault paths, raw payload definitions, old bodies and pristine admission inspect
+coherent. Author is sole writer and receives bounded correction; snapshot is kept.
+No candidate build/test execution or full-source clearance has occurred.
+
+Root parses21 inert raw wrappers using Python AST/bash -n ONLY; bodies/candidate
+remain unexecuted. Receipt .local/h08us1-wrapper-syntax.json. This is wrapper syntax
+proof, never candidate runtime credit.
+
+Author corrects frozen streaming source to SHA256
+595885b2da6df522c8867e9346773156700041a3bd8d1f3cb9023aeb2036abe8;
+root verifies before/copy/after into .local/h08us1-production-review2. Fresh
+independent delta review clears this SOURCE SUBSET without new findings. Explicit
+Empty/Disconnected handling preserves deferred-first order/native outcomes; both
+idle save entry points have assertions. Concurrent Generate/Finish jobs are BOTH
+worker-held before release, then origin/payload and early-poll tail are checked.
+Added actual Decorate native path preserves all9 addresses/values. Six names stay
+unchanged. Full Game child/three-source clearance/runtime/final gates remain open.
+
+Author releases ALL3 and stops writes. Root verifies handoff hashes and preserves
+.local/h08us1-before-fmt, runs cargo fmt successfully (only3paths), then freezes
+.local/h08us1-full-source-review1. Formatted/current hashes:
+
+- streaming.rs 8722344483405401ee148eb80a19e79e255eec58bf513339bc36be75b2183d13
+- slot_epoch_integration.rs 837407d6e9d9aab9a0d7e9f3096af2460d375c150b24fc018b2a0aff5c45e71e
+- used_streamer_tick_tests.rs c6144feeeab66f8722d74cf487a9adb720ebf3fa6934ae98b00bbc5d94424721
+
+Fresh independent FULL SOURCE review grants execution clearance without findings.
+Streaming delta is formatting only; declaration appends only the new child. ONE
+ignored actual-Game primary is used_streamer_actual_native_tick_observes_owners_and_preserves_refused_capture
+under slot_epoch_integration::used_streamer_tests; NO auxiliary. The source invokes
+ONE actual native tick, retains independent WorldId before candidate reads, checks
+counter4/T+1 and PLAYER3/slot7, records actual inhabited/native metadata, and compares
+post-tick state/source/archive after actual Task refusal. Natural worker-to-result
+transitions are allowed under per-origin conservation, never readiness.
+
+Root begins serialized compile/new/native/resource/feature/retained qualification.
+Current source manifestSHA256639056d3796d29206e9055d40ee29613af91d474c03e8db368bd4a6f7a45043c.
+No compile/test/GUI/broad/final pass is inferred from source clearance.
+
+First no-run build stops at ONE test-only E0277: CaptureError derives Debug, not
+Display, but new diagnostic uses detail={error}. No candidate runtime executes.
+Root preserves all3 sources/manifest/scripts/compiler JSON/stderr in
+.local/h08us1-compile-attempt1 before changing only that format string to
+detail={error:?}. New Game hash
+e4e198af1b10cfff89c544f179d143d88436745d0b7b1729fce0ab1fe9dcde6e;
+stream/declaration unchanged. Fresh independent delta review verifies exact
+diagnostic-only change/all3 hashes and renews source execution clearance. Root
+retries with fmt check before compile/serial qualification. Runtime gates stay open.
+
+Corrected source compiles in42.65s and ONE actual-Game group passes in13.27s.
+Frozen resource binarySHA256
+0c9ad8b634dc58fcd7b8b5331c64fe0ee7005fbdede1a8dd088f7cc046a866a2;
+manifestSHA25694d611251c9cbf2b00d66e5f833b597d478a14344bb0b92b1f4c2c7eba1cd73c.
+ResultSHA2564fe3a118dd092507910c2fd07ee35fac39b099a85672525b57dd048e738ccdae.
+Actual Task refuses at Validate/Streamer/PreviouslySubmitted with NotPublished;
+counter4/T+1, PLAYER3/slot7, live post-tick state and all source/archive bytes pass.
+This establishes the bounded tick/refusal test, not capture admission or G1.
+
+First native wrapper stops despite all underlying cases passing: retained59 and
+streaming12 ordinary pass, while module-prefix output correctly reports19ignored.
+The wrapper incorrectly demanded zero ignored for every prefix. Root preserves
+all3/current scripts/new-Game/native logs in .local/h08us1-native-wrapper-attempt1;
+streaming logSHA2569cbe8b14b5f3bac3c1481b424bb134031a0057532699f6aec2a44f7d78663f27.
+Fix ONLY both native wrappers: expected ignored count now derives from the frozen
+binary's ignored listing for that prefix; every required ordinary name must still
+be present and passed. Source and expected test names unchanged. Root AST-parses
+both corrected wrappers and reruns the serial pipeline freshly. No candidate
+failure or full-suite acceptance is inferred from the wrapper stop.
+
+Corrected wrappers freshly rerun the actual-Game group successfully, then all71
+ordinary native names pass in mods+paired, including exact old59 and all12ordinary
+streaming names. All17 resource streaming controls also pass in that feature mode:
+12retained plus5new defining groups. Actual native worker holds/concurrent sends,
+Decorate9 payloads, storage enqueue/partial errors, panic/disconnect/drop, stale/
+deferred ownership and borrowed observations execute successfully. Two benchmarks
+remain ignored/deferred, never credited. Paired-only qualification is now running;
+three-feature/retained/GUI/broad/final gates remain open. Different final reviewer
+has a finite first-evidence follow-up, separate from production/source authors.
+
+Paired-only library builds in57.34s; all71 ordinary native names pass there too.
+Its17resource controls are running. Different final reviewer independently clears
+the first actual-Game/native71/mods-resource17 gates without findings: all3 current
+hashes, manifest, real tick/refusal/preservation,26 associated log hashes, exact
+names, wrapper correction and diagnostic-only compile delta verified. No credit
+for then-pending paired-only/feature/retained/clean/GUI/broad/overall gates.
+
+All17 resource controls also pass paired-only, completing native71+resource17 EACH
+feature mode. First mods clippy then stops at ONE collapsible_if in the drop guard.
+Root preserves ALL3 sources/receipts/scripts/logs in .local/h08us1-lint-attempt1.
+Root changes ONLY nested iflet/!thread::panicking to equivalent short-circuit
+let-chain, retaining take-once, nonpanic settle and unresolved Drop-on-panic.
+New streamingSHA25689412726ebb09081b40d3a8d5ab690d5d03c7c253bc0410958968ba58a74c5ba;
+declaration837407d6 andGamee4e198af unchanged. Fresh independent source-delta review
+verifies exact behavior/hashes/three-path scope and renews execution clearance.
+Root retries with THREE feature lints FIRST, then fresh build/new/native/resource/
+retained tests on corrected source. No earlier runtime reuse is credited.
+
+Corrected source passes THREE feature lints: mods+paired46.70s, paired-only49.85s,
+feature-off44.23s; fmt/public-tree/native-status0 pass. No source changes afterward.
+Root now rebuilds the exact corrected source and freshly reruns new/native/resource/
+retained suites. Runtime/clean/fresh-GUI/broad/final qualification remains open.
+
+Corrected candidate builds in32.19s and fresh actual-Game test passes13.43s, then
+native71mods passes. Current binSHA
+4f3691c5303c2e577d874e74cc62867fcae104d03438f5d9e42587476d7d83bd;
+librarySHA9c124b70b48fa8c16a123fd9c899b17c9fe6ac8e3f7a1c0e317ccc0e8bd5c3cd;
+source manifestc6cddbbb70b36d666e2c12200243ad888a436f043d8bcd03f5bf7b5079b85051.
+NewGame resultSHA336e237e57d6c087833a1c0e66eb23943316ae0bd3e0a7706eb62846044b9d1e.
+
+Fresh mods resource suite completes6 cases, then unchanged old proto_save_fault_wins_poll_budget_without_losing_deferred_tail
+stalls in case06. Root records live main/test/native-worker futex waits in
+.local/h08us1-stalled-process.json; OS denies syscall/kernel-stack reads, so no
+stack-based root-cause claim. After minutes without completion root validates its
+exact isolated PID1913/cmdline, records SIGTERM in h08us1-stalled-test-stop.json,
+and stops ONLY that process. Actual case exit-15, timed_outfalse, no passed result;
+this is explicit coordinator interruption, not native panic or a silently retried pass.
+Case logSHAe653ca404d336dc995893f30911bc475dd648b91c977efb533e59725ab73e6bd.
+Pipeline stops before paired/retained gates. All3/current wrappers/receipts/logs
+are archived in .local/h08us1-stall-attempt1 BEFORE further source changes.
+
+Source suggests a possible pre-existing idle stop/Condvar lost wake: Drop sets
+stop/notifies without queue mutex, while worker checks under it before waiting.
+One bounded author now diagnoses/fixes ONLY streaming.rs and adds actual native
+shutdown regression, preserving old test bodies and remaining two hashes. Packet
+records this narrow correctness obligation; exact source/design review precedes
+any candidate execution. No owner input or outside-scope dependency is known.
+
+Author and independent reviewer separately confirm the lost-wakeup possibility
+exists at acceptedbb6f718: false stop check -> unlocked Drop store/notify -> worker
+wait -> join stalls. This is a demonstrated source interleaving, NOT proof of the
+interrupted process's exact program counter. Inspected lock graph has queue ->
+queued_owners -> book and returned -> book, no reverse book -> queue/returned edge.
+Same-queue stop/notify critical section released before join is appropriate; exact
+new source/regression still requires review before execution. Author remains the
+sole streaming writer, with two other source hashes frozen.
+
+Fresh independent review ACCEPTS the narrow shutdown amendment8f61b477; exact
+candidate review remains required. Author releases streaming8e53ef98, root preserves
+all3 in .local/h08us1-shutdown-fix-before-fmt and formats successfully. Frozen
+.local/h08us1-shutdown-source-review1 has streamingSHA
+147959ae7f02157fdee0a07081c71917c0dbd68720f3441045f34ee85a41f59d;
+declaration837407d6 andGamee4e198af remain unchanged. Author stops all writes.
+
+Fresh FULL THREE-SOURCE review grants renewed execution clearance without findings:
+stop/publication/notify hold the same queue mutex, guard releases before join;
+save drain/first-error/payload disposition/abandoned leases are preserved. Actual
+native regression holds the pre-wait boundary, requires contention before publication,
+rescues/reaps failure before asserting and checks clean shutdown. Six names and
+old test bodies remain unchanged. This is not readiness or exact stalled-PC proof.
+
+Root prepares an inert TWO-case targeted library suite (existing worker-fault group
+with new shutdown regression, then the exact unchanged stalled case), parses it,
+and begins fresh serial qualification: three lints, build, targeted2, actualGame1,
+native71/resource17 EACH mode, retained suites. Prior runtime receives NO reuse
+credit for current source. Clean/freshGUI/broad/final gates remain open.
+
+Shutdown-corrected source passes three feature lints40.92/36.55/34.86s plus fmt/
+public-tree/status0. Fresh build50.92s freezes binSHA
+38b2c02fe179566f291dbef3ec589bbb3bf467461b39b8118542c3d4d47ffce8;
+librarySHAf8c77a59491149ac57734b5743e092da9c4af9832c69901c820276754ca6a574;
+source manifestSHA5aec9dca39656b5d11eff0803a0beebafcbec8e68eebf367784a5ef85c599ee0.
+Targeted2 BOTHpass: new shutdown/fault group5.90s, exact old stalled case5.27s.
+Targeted receiptSHA0ed9d5edc84f7ee276b4a5ea08549dc346f6e7e817aaf825cf6496bb37c6f659.
+Actual-Game1 passes again (receiptSHAd53a2278abbcd06f39ae7cdad4991a5c78ae009985291f85cc3d76e14c08fd80),
+then all71 native names pass mods. Resource17mods is running, paired and retained/
+clean/GUI/broad/final pending. Different final reviewer checks completed exact
+shutdown/source/targeted/first-runtime gates independently; no acceptance inferred.
+
+Different final reviewer WITHHOLDS shutdown-test clearance for one P2: after the
+expected contention event, initial completion could time out, rescue wake could
+complete Drop, and later assertions still pass. Production correction inspects
+sound, but this cannot qualify unassisted shutdown. Root stops its verified owned
+qualification tree while paired no-run build is active; review-stop.json records
+exact descendant commands/SIGTERM. Completed mods17 stays historical; interruption
+is not native failure/pass. All3/scripts/receipts/logs are preserved BEFORE changes
+in .local/h08us1-rescue-mask-attempt1. No unknown user process is touched.
+
+Root changes ONLY two test sites: preserve completed_before_rescue from FIRST
+completion result, then assert it AFTER rescue/reap/join and the first-event check.
+Cleanup still avoids leaving a stuck worker; rescue can no longer qualify success.
+New streamingSHA5827ecc86bbe87dfef12f911f404d62756379ade335a8c7cfec85d66625ae032;
+declaration837407d6/Gamee4e198af unchanged. Fresh independent full3source review
+closes P2/renews execution clearance with no production delta. Root verifies the
+old owned process tree is gone, then restarts all three lints/targeted/new/native/
+resource/retained serially; current runtime/clean/GUI/broad/final gates remain open.
+
+Current5827 source passes three lints33.93/28.17/26.01s, fmt/tree and fresh build31.40s.
+Fresh Game binary remains38b2c02f (production unchanged); library becomes
+88ece5a545342a96b277c413ab52092bbf8e552175e5a11bf08950d09003d638.
+ManifestSHA797194c739f3faaf558bfbf1830ee445e0b083d53d6e304b8d2e94559b215767.
+Targeted2 pass with ORIGINAL completion assertion, receiptSHA
+8576e7ae7ecf90402ff33e80c43bd02c1fb70b631e5feca4716f89aee5c88f84;
+freshGame1 resultSHA848a548d1a6c8f72951bf1bb7b9c39fd004df6468ddd244264087864c448fe24.
+Native71 and resource17 freshly pass EACH feature mode, with paired-librarySHA
+adeee40c66c8aa1caecad0667ce7393b46fb2aaf72b51da3f8a7aa4def616354
+built50.89s. Mods resource receiptSHAd0aba1028effae8f26f97285924c127daa510dbc680f7096b854de2b01edf08f;
+paired resource receiptSHAb4819e3e1c1867bf5e5e0802afb185bfc3f8cc01f9caa42400b083bc2ccac216.
+
+Different final reviewer closes rescue P2 and independently clears ALL current
+completed source/feature/targeted/newGame/native/resource gates without findings:
+exact hashes/names and50 native/resource associated logs/runner/expected guards
+match. Both modes execute the stronger assertion; rescue cannot qualify success.
+Two benchmarks stay deferred. Retained advance/recap/slot/counter/capture/entity/
+W1/ordinary are running serially; clean/freshGUI/broad/overall remain open.
+
+Retained advance4 and recapture4 now pass on current5827 source; slot6 is running
+and its first4cases pass, including the unchanged semantic/corruption matrix. No
+remaining retained or clean/GUI/broad/final acceptance is inferred. Root records
+this reviewed shutdown/evidence checkpoint privately while serial tests continue.

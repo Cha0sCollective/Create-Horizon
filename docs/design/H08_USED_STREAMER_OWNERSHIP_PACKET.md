@@ -112,6 +112,31 @@ payload values/allocations while held or queued; no queue drain to manufacture z
 
 ## Required validation
 
+### Discovered idle shutdown correction, pending exact source review
+
+This amendment has fresh independent DESIGN ACCEPT at packetSHA8f61b477bb09a846045e7b8d43c8aa12eabca3ae620085ef61243982c664b073.
+Its corrected source/test assertion has full independent execution clearance;
+runtime/clean/GUI/broad/final acceptance remains separate. The exact interrupted
+process's program counter remains unknown, as stated below.
+
+An unchanged retained save-budget test stalls on the corrected candidate after
+earlier runs passed. Root preserves its multi-minute futex wait and explicitly
+stops ONLY its verified isolated process; no pass or spontaneous test failure is
+claimed. Source inspection identifies a possible pre-existing lost-wakeup window:
+worker checks stop while holding the queue mutex, then waits, but Drop publishes
+stop/notifies without that mutex. Scheduling inference alone is not root-cause proof.
+
+The bounded author may diagnose and correct this within streaming.rs only. If
+confirmed, publish stop/notify under the SAME queue mutex used by the worker's
+check-and-wait, release it before join, preserve existing save drain/error/result/
+abandoned ownership semantics and add an actual native idle wait/shutdown handshake
+regression within the existing defining group where feasible. No old test edits,
+retries-to-pass, new scheduler, timeout increase or readiness inference. Exact
+source/design-delta independent review must clear the correction before execution.
+All prior source-specific runtime evidence remains historical until requalification.
+
+### Original defining and retained gates
+
 Freeze exact names at source review. Native defining groups must exercise actual
 existing enqueue/worker/result mechanics with deterministic handshakes:
 
