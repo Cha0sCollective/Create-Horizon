@@ -2,6 +2,8 @@
 //!
 //! This does not discover world connections or model propagation tick timing,
 //! multiple-source arbitration, unloaded contributions, or overspeed destruction.
+pub mod geometry;
+
 use std::collections::{BTreeMap, BTreeSet, VecDeque};
 
 /// A normal motor control never selects zero.

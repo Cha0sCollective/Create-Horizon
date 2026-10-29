@@ -6,6 +6,7 @@ use horizon_mods::{
 };
 use serde_json::{Value, json};
 use std::{
+    collections::BTreeSet,
     io::{self, Read},
     path::Path,
 };
@@ -18,6 +19,25 @@ fn package(core: &Path, output: &Path) -> Result<(), String> {
     Manifest::parse(MANIFEST)?
         .check_imports(component_imports(&component)?.iter().map(String::as_str))?;
     std::fs::write(output, Package::write(MANIFEST, &component)?).map_err(|e| e.to_string())
+}
+
+/// The guest receives one case per command, so batch-only geometry identity must
+/// be checked here first. Legacy names do not participate in this policy.
+fn preflight_geometry_names(cases: &[Value]) -> Result<(), String> {
+    let mut names = BTreeSet::new();
+    for case in cases {
+        if case.get("geometry").is_none() {
+            continue;
+        }
+        let name = case["case"]
+            .as_str()
+            .filter(|name| !name.is_empty())
+            .ok_or("Expected nonempty case name")?;
+        if !names.insert(name) {
+            return Err("Duplicate geometry case name".into());
+        }
+    }
+    Ok(())
 }
 
 fn evaluate() -> Result<Value, String> {
@@ -42,6 +62,7 @@ fn evaluate() -> Result<Value, String> {
         .map_err(|e| e.to_string())?;
     let input: Value = serde_json::from_str(&input).map_err(|e| e.to_string())?;
     let cases = input.as_array().ok_or("Expected cases")?;
+    preflight_geometry_names(cases)?;
     let mut all = Vec::new();
     for case in cases {
         let text = json!([case]).to_string();
@@ -90,6 +111,65 @@ fn main() {
         Err(error) => {
             eprintln!("{error}");
             std::process::exit(2);
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::preflight_geometry_names;
+    use serde_json::{Value, json};
+
+    fn geometry(name: &str) -> Value {
+        json!({"case":name,"geometry":{"blocks":[
+            {"id":0,"position":[0,0,0],"kind":"motor","facing":"east","setting":16,"capacity_per_rpm":16384},
+            {"id":1,"position":[1,0,0],"kind":"shaft","axis":"x"}
+        ]}})
+    }
+
+    fn legacy(name: &str) -> Value {
+        json!({"case":name,"nodes":[],"edges":[]})
+    }
+
+    #[test]
+    fn unique_geometry_and_repeated_legacy_names_are_accepted_without_mutation() {
+        let cases = [geometry("a"), legacy("a"), legacy("a"), geometry("b")];
+        let before = cases.clone();
+        assert_eq!(preflight_geometry_names(&cases), Ok(()));
+        assert_eq!(cases, before);
+        assert_eq!(
+            preflight_geometry_names(&[legacy("a"), geometry("a")]),
+            Ok(())
+        );
+        assert_eq!(preflight_geometry_names(&[]), Ok(()));
+    }
+
+    #[test]
+    fn repeated_valid_geometry_names_refuse_even_across_a_legacy_case() {
+        let cases = [geometry("a"), legacy("a"), geometry("a")];
+        let before = cases.clone();
+        assert_eq!(
+            preflight_geometry_names(&cases),
+            Err("Duplicate geometry case name".into())
+        );
+        assert_eq!(cases, before);
+    }
+
+    #[test]
+    fn geometry_name_shape_is_checked_only_for_geometry_cases() {
+        assert_eq!(
+            preflight_geometry_names(&[json!({"case":false,"nodes":[],"edges":[]})]),
+            Ok(())
+        );
+        for case in [
+            json!({"geometry":{"blocks":[]}}),
+            json!({"case":false,"geometry":{"blocks":[]}}),
+            json!({"case":"","geometry":{"blocks":[]}}),
+        ] {
+            assert_eq!(
+                preflight_geometry_names(&[case]),
+                Err("Expected nonempty case name".into())
+            );
         }
     }
 }
