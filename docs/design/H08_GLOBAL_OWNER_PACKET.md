@@ -1,11 +1,14 @@
 # H08 all-loaded-level entity-owner observation
 
-DRAFT ONLY. Authorship is not design or implementation acceptance. Prepare against
-clean local engine candidate 63a7d62fae27dcd9ce8bfbe1209616f4e4988607,
+Accepted bounded design after a DIFFERENT fresh independent read-only Sol High
+design-delta review with no remaining blocking findings. Reviewed corrected draft
+SHA256:6e8539f3869901560b478cbb87d8841f6a12da3ea2a505b14502ca4ab3a4b142.
+Implement against qualified clean local engine63a7d62fae27dcd9ce8bfbe1209616f4e4988607,
 tree 571ad7e2cc20d8178898c6fdd9a0244252f8dcad, on
-codex/h08-retained-raid-lifetime. That candidate is undergoing final Game/broad
-qualification. Wait for the coordinator's qualified-base checkpoint and a
-DIFFERENT fresh independent read-only Sol High design review before implementation.
+codex/h08-retained-raid-lifetime. Its resource/native/both-mode Game/broad and final
+independent receipt qualification passes. Geometry sandbox qualification and final
+independent evidence review also finish with this engine unchanged, releasing
+that temporary source freeze. Coordinator assignment still owns exact scope.
 Read H08_GLOBAL_OWNER_AUDIT.md and the actual native source, not the audit alone.
 
 ## One bounded objective
@@ -55,7 +58,8 @@ Production additions only, with existing bodies unchanged:
   library surface; it confers no ownership or publication authority.
 
 All added production types/methods are paired-packages-gated and visible at most
-within crate::game. No new Game field, World field, identity/history ledger,
+within crate::game, except the library Boolean presence method above. No new
+Game field, World field, identity/history ledger,
 serialization schema, crate dependency, SDK/control/network command, scheduler,
 save cadence, runtime enabling callsite or public publication.
 
@@ -84,8 +88,8 @@ Relevant source hashes at the proposed base:
 Initial independent design review found the library/binary field-access conflict;
 the original draft SHA256 is7833ae027a21d640e07c434fbc95b727bad47fcb6c4b8c32736bcb2b9db42d03
 and is preserved at workspace-root .local/h08g1-design-initial.md. The narrow
-presence method above corrects that proposed surface. Independent design-delta
-review is required before implementation; no acceptance is implied by this edit.
+presence method above corrects that proposed surface and passes independent
+design-delta review at the corrected draft hash recorded above.
 
 ## Proposed native call and result
 

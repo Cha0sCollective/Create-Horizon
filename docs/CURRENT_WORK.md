@@ -6,11 +6,16 @@ Preserve personal source-informed provenance, R01 and fresh independent Sol High
 
 - Private branch: codex/h02-smoke-h03-notes. Accepted checkpoint584ed55 is backed
   up privately, including horizontal source candidate 4dbc092 and accepted results.
-- Engine branch: codex/h08-retained-raid-lifetime; QUALIFIED clean commit
+- Engine branch: codex/h08-entity-owner-observation; QUALIFIED base
   63a7d62fae27dcd9ce8bfbe1209616f4e4988607, tree
-  571ad7e2cc20d8178898c6fdd9a0244252f8dcad. Hold this engine fixed through geometry
-  sandbox qualification. No engine assignment may edit it during those runs.
-- Latest accepted packet: docs/design/H08_RAID_LIFETIME_PACKET.md. Fresh different
+  571ad7e2cc20d8178898c6fdd9a0244252f8dcad. Geometry source freeze is released after
+  successful runtime/drift checks and final independent evidence review.
+- Active accepted packet: docs/design/H08_GLOBAL_OWNER_PACKET.md. Different fresh
+  independent design/delta review passes. Author owns additions ONLY to
+  game/levels.rs,persist.rs,nether_portal.rs,lib world_slot_trial.rs plus3new test
+  children. The lib method is public paired-gated borrowed Boolean presence only;
+  fields stay private. No new Game fields, IO, normalization or ownership moves.
+- Latest qualified packet: docs/design/H08_RAID_LIFETIME_PACKET.md. Fresh different
   independent design/source reviews pass. Author RELEASED ONLY game/raids.rs plus
   new raids/lifetime_tests.rs. Root formatted/froze, no-run build passes50.08s;
   12 actual Game cases pass44.88s (new7+unchanged5), native176pass45ignored and
@@ -29,7 +34,7 @@ Preserve personal source-informed provenance, R01 and fresh independent Sol High
   Never alter Prism/playable worlds/reference snapshots. Pins in workspace.toml.
 
 Qualified bounded foundations: S0/P02/B0, H02/H03/H04/H05a-d native/guest counters,
-H06a-d native transfer/World ownership/receiver/player-cell, H08a1-a14 save
+H06a-d native transfer/World ownership/receiver/player-cell, H08a1-a15 save
 prerequisites, native participant preflight and borrowed player projections. Exact
 evidence and limits live in
 the named docs/reference results. World slots have NO Game enabling callsite.
@@ -55,10 +60,10 @@ unqualified. See H08_PLAYER_PROJECTION_RESULTS.md: revised5resource cases pass,
 successful tests and later test-only lint failure remain in .local/h08p2-attempt1;
 revised tests add directory-aware disk snapshots and pass15.83s. No failed relabel.
 
-Latest qualified ordinary Game artifact is3c4e7e2, SHA256
-7000141ed0d87cb6eaa6612af2fcff9ef00393b76ca7b90fe5e074d5fd18b115:
-integrated57a75697-020b-441a-8d91-ba7bf5838ac1 (368 checks/final72),
-in-frame583ddf0e-8ccf-4b2e-9095-cd5742b6176f (353/final24).
+Latest qualified ordinary Game artifact is63a7d62, SHA256
+7738d0c23944068344a07d673e6054ef9bda863d37aee22d81c8205b0543fc39:
+integratedd1b12272-6486-4d4d-8c32-6c96416ea471 (368 checks/final61),
+in-frame3c7301a6-d3df-4feb-a3a6-bcf2dcaa4e34 (353/final27).
 Four normal initial/restart exits0/cleanup null; four intended refusal exits1.
 All eight cleanup fields are null. These are ordinary regressions, separate from
 focused disk faults. Composite counter/quick statuses both0. The old H08a14
@@ -89,19 +94,18 @@ P02 four-case X/Z reference experiment is ACCEPTED. See P02_HORIZONTAL_RESULTS.m
 and P02_NEXT_KERNEL_AUDIT.md. Both fresh runs have 4 fixtures/240 samples/960 machine
 observations, matching pinned inputs/configs and complete traces. Strict old-corpus
 comparisons and all 14 derived software controls pass, with final independent review.
-Core/probe unchanged. No native geometry, arbitrary-axis proof, multi-source solver,
-live S2 or G1/G2 acceptance follows.
-P02_NATIVE_GEOMETRY_PACKET.md passes a fresh different independent design review.
-A bounded private pure static X/Z geometry adapter is under runtime qualification.
-Initial source review found a host batch
-duplicate-geometry-name bypass and missing new-test hash. Different independent
-design/source delta reviews accept those corrections. Root formatting/mechanical
-hash review pass. Native12geometry/10legacy tests,3host tests, Clippy and Wasm
-compile checks pass; actual sandbox comparisons are next. Engine and private source
-files are separate. New H08_GLOBAL_OWNER_PACKET.md needs design-delta review after
-an initial crate-boundary finding: Game cannot read lib World's private trial
-field. The correction proposes one borrowed Boolean library presence method;
-no engine implementation while geometry qualification requires a frozen engine.
+P02_STATIC_GEOMETRY_RESULTS.md accepts private candidatec821d21: source-derived
+X/Z geometry,12geometry/10legacy tests,3host tests, lints/fmt/Wasmcheck, actual
+native/sandbox comparisons against BOTHcaptures,8actual controls,21derived controls
+and legacy regressions/final different independent review all pass. Original source
+review catches host batch duplicate-name bypass and omitted test hash; design/
+source/format deltas accept the fixes BEFORE all execution. No runtime failure.
+No arbitrary-axis conformance, multi-source solver, live S2 or G1/G2 follows.
+H08_GLOBAL_OWNER_PACKET.md corrects its original lib/bin field-privacy conflict
+with one borrowed public Boolean library presence method; different independent
+design-delta review accepts it. Observation is ENTITY-only/fresh resident drops,
+never global readiness or a permanent S1 restriction. Other native families/maps/
+pending/slot/portal owners explicitly refuse until separately qualified.
 H08_GLOBAL_OWNER_AUDIT.md records concrete active/parked/entity/producer gaps,
 including omitted trident/rocket owners; it is not an accepted implementation.
 
