@@ -78,3 +78,5 @@ tracking, notwindowlocalcounter. No current owner decision. LiveS2 requiresG1;
 S3 exactlymotor,shaft,small+largecog,millstone cobble→gravel; no gearbox. B2deferred.
 
 October30 continuation: three-path author draft awaits final BlockRegistry helpers; narrow constructor-invariant clarification dd1dd7d0 accepted by fresh read-only Sol High. Public complete-map checks remain. No source execution yet. One separate native-read-only H11a design task is active without source writes. Coordinator prepares targeted qualification; no standing team.
+
+H09 source author RELEASED original3; root formatted and froze review1 hashes; fresh read-only SolHigh source review ACTIVE, no lint/build/test yet. H11a manually owned retained diagnostic design877534e1 independently accepted after precise anchor/lifecycle limits. Separate engine worktree at acceptedEA will isolate exact8-path authoring from H09 qualification; ALL Cargo/tests still coordinator-serialized. One read-only H09b admission design task also active; no admission API released.
