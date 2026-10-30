@@ -3,8 +3,9 @@
 OWNER RESUMED October30. Root verifies accepted clean input
 c0ad9e09e1e2a641716d978600153fe142702ae7/tree d5f5e6a371c5520ef7db9134a401752b77e6d348,
 private pause checkpoint65e66a42c5ec18ab07e5761c97311d02e4ae5141 and unchanged audit
-source pins. Release ONLY four paths on a clean codex/h08-native-write-fence after
-this private resume checkpoint is pushed. Exact-source review precedes execution.
+source pins. Four original paths released after resume checkpointdbc8019. Accepted
+test-only fifth Task seam (proposal06369385) releases only after its private amendment
+checkpoint is pushed. Exact-source review precedes execution.
 
 DESIGN ACCEPTED, NOT RELEASED. Fresh independent read-only Sol High review accepts
 revised proposalSHA f770c99a0d3e9cd800892af71386272539bd773dad0d35eb19581561fad4e4e3,
@@ -18,7 +19,7 @@ exact clean accepted successor revision recorded by root, and fresh independent
 Sol High design acceptance. Source pins are in H08_NATIVE_WRITE_FENCE_AUDIT.md;
 recheck them at release. No ordinary capture admission or G1 promotion is proposed.
 
-## Objective and four paths
+## Objective and scoped paths
 
 Prove a bounded native write-producer fence under exclusive actual Game ownership,
 followed by the participating SaveDir writer barrier, in ONE used-streamer fixture.
@@ -33,6 +34,8 @@ Proposed paths relative crates/horizon-client/src:
    production writer semantics. No new durability format or retry policy.
 3. game/levels/slot_epoch_integration.rs: test-child declaration ONLY.
 4. NEW game/levels/native_write_fence_tests.rs: real used-streamer actual Task proof.
+5. game/integrated/capture_completion_tests.rs: TEST ONLY closed fence Task dispatch,
+   per H08_NATIVE_WRITE_FENCE_TASK_SEAM_AMENDMENT.md, accepted proposal06369385.
 
 No capture_integration.rs, admission guard, SDK, schema, dependency, queue payload
 or general Game scheduling change. Report a concrete outside-path dependency or

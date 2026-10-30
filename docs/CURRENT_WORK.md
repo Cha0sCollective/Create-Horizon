@@ -22,8 +22,8 @@ post-writer fault revalidation. Root rechecks all five relevant audit hashes and
 original proposal snapshot; unchanged. Bootstrap has different FINAL acceptance.
 No new owner decision is needed to implement this already reviewed packet.
 
-After this private resume checkpoint is pushed, root creates clean
-codex/h08-native-write-fence at acceptedc0/tree d5f5 and releases ONLY FOUR paths
+Private resume checkpointdbc8019 is PUSHED after fresh PRIVATE check. Root created
+clean codex/h08-native-write-fence at acceptedc0/tree d5f5 and released FOUR paths
 relative horizon-client/src: streaming.rs; save.rs; declaration-only
  game/levels/slot_epoch_integration.rs; NEWgame/levels/native_write_fence_tests.rs.
 One bounded author, no shared writers. Native source reads/assigned edits ONLY;
@@ -46,7 +46,14 @@ POST-fence baseline. PreviouslySubmitted/NotPublished capture refusal UNCHANGED.
 No ordinary activation/capture/recovery, global epoch, E1/W1/scalar/history or G1 pass.
 
 Fresh unused proof prefixh08nf1 verified before reservation; exact new names not
-frozen. No candidate execution or source release yet. Build/check source at pinned
+frozen. One author ACTIVE in original four; no candidate execution. Fifth path
+game/integrated/capture_completion_tests.rs is independently DESIGN ACCEPTED under
+H08_NATIVE_WRITE_FENCE_TASK_SEAM_AMENDMENT.md proposal06369385. Existing accounted
+cell's Task helper has fixed capture operations, so a closed TEST ONLY fence operation
+is required. No supplied callback/general Task API, startup/scheduler/old-helper
+visibility changes. New owned request/result types at most crate::game; fixed Game
+operation in new child. Fifth remains UNRELEASED until private amendment push.
+Build/check source at pinned
 Rust1.99.1, fresh homes/roots, launcher session environment removed. Retain all
 bootstrap/identity/native/streaming/old42Game/ordinary185 coverage, feature lints,
 fresh BOTH-mode GUI and broad checks. Preserve historical proof namespaces.
