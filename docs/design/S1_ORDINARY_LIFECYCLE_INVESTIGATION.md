@@ -90,3 +90,41 @@ current fresh-headless recovery profile. It needs its own actual local-owner ada
 before the promised in-frame lifecycle can pass; this is not permission to remove
 that mode from S1. This feasibility result resolves no implementation or acceptance
 gate and authorizes no changes by itself.
+
+## Authority and failure lifetime precursor
+
+A further native read-only planning audit identified an ordinary coordination gap:
+the current destination WorldSession lock does not prevent two recovered copies of
+the same world from running. Before ordinary activation, a non-clone session owner
+must bind the live Game/host/native lock to a separate authority lock in one stable
+trusted coordinator namespace keyed by expected WorldUUID. Existing
+save::SessionLock::acquire (save.rs:138-161) supplies the OS-held lifetime primitive.
+Keep it outside the archive, whose enumeration deliberately permits only epochs and
+pending attempts. Derive expected identity from the trusted selected owner folder,
+not a caller-supplied archive manifest or claimed hash. One configured namespace
+must map the same UUID to the same lock regardless of disposable destination paths.
+
+Acquire this authority before selecting an epoch or opening a recovered candidate.
+Under it, ordinary reopen must exclusively select a checked complete archive image,
+never fall forward to native-only files. Reserve unused epochs accounting for failed
+pending names. No moving-pointer record or generic journal is necessary. Initial
+identified creation/bootstrap must acquire authority before playable exposure.
+
+Keep the Game, actual host, native session and authority together on failed or
+uncertain checkpoint publication. A failed close must freeze the owned session for
+inspection/retry, not return through a scope that drops its Game. This needs actual
+server-worker lifetime changes: save_for_exit retires after errors and integrated
+serve retires when its loop returns. Merely inserting a checkpoint before save_game
+does not establish retained failure ownership. The server handle/worker must survive
+an unsuccessful stop request until an explicit supported resolution.
+
+The smallest proposed dependency order is private authority/lifetime ownership with
+item ingress disabled, then real positive-owner staging, then the actual in-frame
+local-owner adapter. A candidate first scope is a new game/session_lifecycle.rs and
+focused tests, game.rs configuration/ownership, integrated.rs readiness/failed-stop
+lifetime, saving.rs checkpoint-before-release, and only needed trusted routing seams
+in world_loading.rs/host_identity.rs. This is a source-path proposal, not release.
+The exact state transitions and namespace/layout need a concrete accepted design.
+Zero-roster recovery cannot substitute for the later positive-owner or in-frame
+outcomes. The audit identifies technical design dependencies, no new owner policy
+decision, new portable save format or permission to reduce S1.

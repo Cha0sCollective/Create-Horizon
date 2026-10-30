@@ -19,14 +19,18 @@ demonstration is superseded by the supplied five-component scope.
 
 ## Next bounded packet
 
-The active packet is native session checkpoint qualification in
-`docs/design/S1_SESSION_CHECKPOINT_PACKET.md`, with the accepted current-resident
-save clarification in `docs/design/S1_SESSION_CHECKPOINT_RESIDENT_SAVE_CLARIFICATION.md`.
-The exact branch, current source and test status are in `docs/CURRENT_WORK.md`.
-It uses actual native streaming/save history and participating player/counter/slot
-owners; its save/recover success is not yet qualified. No ordinary startup, close
-or filled-slot caller is enabled by this packet.
+The native session checkpoint foundation has FINAL local acceptance at engine
+`872dac2`, after independent source and final result review. See
+`docs/reference/S1_SESSION_CHECKPOINT_RESULTS.md` for actual checks and limitations.
+It uses real native streaming/save history and participant/counter/slot owners,
+but has no ordinary startup, close or filled-slot caller. It does not close G1.
 
+The next bounded work is ordinary authority/lifetime design, informed by
+`docs/design/S1_ORDINARY_LIFECYCLE_INVESTIGATION.md`. Exact implementation scope
+needs independent design review before source release. Current ownership gaps
+include concurrent recovered copies, retained failed-close lifetime, real positive
+roster staging and a separate in-frame local-owner adapter. Filled ingress stays
+disabled until the corresponding release paths preserve ownership.
 Prerequisites now have separate local final acceptance: producer/writer fence
 (ea96036), H09a compatibility snapshot (3ac2d4c), H09b.1 frozen inputs/wire data
 (765dc8d), H11a retained diagnostic (70fd6aa), and closed debug writer controls
