@@ -1,6 +1,6 @@
 # H09a bounded peer compatibility snapshot
 
-DESIGN ACCEPTED, NOT RELEASED. Fresh independent read-only Sol High review accepts
+FINAL ACCEPT for dormant snapshot LOCAL3ac2d4ca8290f7fcf666116e0035b0ddbb7c7122/tree7c3740d44d7dc2c01970abc785bc1917b5cda11d; different independent final reviewer accepted all bounded source/targeted/broad gates, no findings. Engine remains LOCAL ONLY; no admission/G1/publication. Historical design/release gates below were satisfied; full results H09_COMPATIBILITY_SNAPSHOT_RESULTS.md. Fresh independent read-only Sol High review accepts
 revised proposalSHA d17bb651e2bcd07bf826af9c578c73d40ddd3750333b1db2ea8cf720c8e8733d,
 no remaining blocking findings. Exact snapshot .local/h09a-compatibility-proposal2.md.
 Native fence has different FINAL acceptance at cleanLOCALea96036ce48c269225169e4865e02e4860182b47,
