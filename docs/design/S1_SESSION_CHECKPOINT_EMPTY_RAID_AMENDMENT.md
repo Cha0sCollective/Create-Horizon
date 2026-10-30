@@ -6,7 +6,9 @@ The exact proposed text remains .local/s1sc1-empty-raid-proposal1.md. Private
 checkpoint, exact source/tool reviews and execution qualification still precede
 acceptance of an implementation. Native write_dat rotates files nontransactionally;
 errors must remain visible with in-memory ownership retained, without disk rollback
-claims. No ninth-path source author has been released yet.
+claims. Private checkpoint efe6c078 was pushed before the bounded three-file author
+release. The implementation now has independent exact-source clearance; runtime
+qualification and different final acceptance remain outstanding.
 
 Narrow amendment to accepted checkpoint
 proposal47cf3a13 and resident-save clarificationfc93a257. Current candidate is the

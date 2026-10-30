@@ -6,7 +6,7 @@ namespace = "create_horizon"
 repository = "https://github.com/Cha0sCollective/Create-Horizon"
 visibility = "private"
 stage = "post-G0 foundations"
-active_packet = "S1 checkpoint qualification:192 ordinary and nine actual resource cases pass; real-tick second checkpoint exposes empty-raid metadata dependency; bounded ninth-path amendment DESIGN ACCEPT1c06a492, private checkpoint before source release, G1 open"
+active_packet = "S1 checkpoint:193 ordinary and nine resources pass; dedicated tick exposes phantom local warden metadata; tenth-path contamination-only design ACCEPT4f3e2ed5, private checkpoint before source release, G1 open"
 next_stage = "S1 host foundations and remaining P02; G1/G2/G3 open"
 
 [specification]

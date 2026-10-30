@@ -1,6 +1,6 @@
 # Native session checkpoint qualification
 
-QUALIFYING, not final acceptance. Source remains an eight-path local engine
+QUALIFYING, not final acceptance. Source is now a nine-path local engine
 candidate on `codex/s1-session-checkpoint`, based on
 `ff69d5fcb043500f315fd2e2452add9320ec415a`. No engine publication, ordinary
 startup/close/filled-slot activation, external admission, G1 or live S2 claim.
@@ -11,7 +11,51 @@ identified native TestTerrain Overworld, one active counter and persistent slot,
 and actual native participant owners. It consumes a fresh unpublished Game for
 checked recovery. Existing research APIs and their pristine-history guards remain.
 
-## Current candidate and checks
+## Nine-path correction, not yet runtime qualified
+
+The accepted empty-raid amendment adds paired private helpers in game/raids.rs.
+Core SHA-256 `820762e04dc00bbb6ff7f424099e4a8595f081ee366ffaa15395109040db4b1f`,
+test source `2705ad3a78b6719d59c8c7015cbcc9f8976390e3f8c40466f3598fd560170d06`,
+raids source `719efe1cfd45fd3eb05d48ed6c41eebdfd96fc6b3ae778fdf7e879e94a827994`;
+other six paths unchanged. Root formatting and both independent source-delta reviews
+cleared these hashes. Validation37509 passed all three feature lints, formatting
+and public-tree checks. Build71841 passed with debug test binary
+`08b8bb5289edd77eb459ea31a089e78779d2e4d3b070c94111fd5bdbe9a015ae`.
+Run89418 finished nonzero:193 ordinary tests and resource0..8 passed. Resource9
+passed its integrated-owner three epochs, clean-raid write failure/retry and metadata
+controls, then failed the dedicated second checkpoint in101.64s. The inert native
+local-player record was not canonical. Remaining six new and twelve retained cases
+were not run. The one supporting ordinary test was added while the existing21
+checkpoint names remain unchanged. This is not a full current suite pass.
+
+The correction preserves current clean native empty metadata, rejects every named
+raid/patrol/siege/omen owner, validates primary and backup records independently,
+preserves valid unloaded disk metadata, uses actual native write_dat and restores
+verified state without a random draw. The extended real-Game case includes a further
+genuine clean tick, raid-file EISDIR failure/retry, third recovery and corrupt native
+metadata controls. All nine baselines/prefix artifacts and author source are retained.
+
+An unchanged-source focused reproduction18524 failed identically in103.26s under
+fresh persistent storage. Its retained world was verified present. Native record
+comparison found both participant records unchanged; only the dedicated inert
+record gained warden_spawn_tracker with exact Int elapsed1/warning0/cooldown0.
+The fixture already uses dedicated options. Native global ticking loaded and later
+saved a player-owned tracker through the absent local player's cache. Pinned
+ServerPlayer bytecode confirms that this field belongs to a player. The bounded
+tenth-path proposal is `../design/S1_SESSION_CHECKPOINT_LOCAL_TRACKER_AMENDMENT.md`;
+it has independent design acceptance at exact proposal4f3e2ed5. Private checkpoint
+still precedes source release; no implementation qualification is implied.
+
+Evidence-storage correction: prior /tmp retained paths were logged at failure but
+later unavailable after WSL restarted; they are not currently verified world artifacts.
+G source/log/receipt archives remain. No root-issued shutdown/restart/cleanup occurred.
+The independently reviewed runner now uses fresh isolated directories under
+/home/arbiter/.cache/create-horizon/session-tests. Focused mode has a separate receipt
+explicitly marked incomplete and cannot establish a full suite pass. Repro18524's
+verified fixture is s1sc1-session-resource-9-uhiuzemr/temp/
+horizon-transition-411-0-session-two-epochs-retained-411-0/fixture under that parent.
+
+## Prior eight-path candidate and checks
 
 Raw prefix `.local/s1sc1`. Current core SHA-256:
 `c69a091f900154f88538357e51aa44faf920bf8c5a34771c17d29b0c26213d7d`.
@@ -51,8 +95,8 @@ fixture. The live empty raid counter advances every tick but native clean saving
 writes it only periodically. Merely whitelisting its disk file could lose current
 metadata. The bounded ninth-path amendment has independent design acceptance at exact
 proposal1c06a492 and is recorded in
-`../design/S1_SESSION_CHECKPOINT_EMPTY_RAID_AMENDMENT.md`; source release awaits its
-private checkpoint. Design acceptance is not implementation qualification.
+`../design/S1_SESSION_CHECKPOINT_EMPTY_RAID_AMENDMENT.md`; source release followed
+private checkpoint efe6c078. Design acceptance is not implementation qualification.
 
 ## Failures and corrections retained
 
