@@ -1,12 +1,12 @@
 # H08 initial-world host counter bootstrap
 
-IMPLEMENTATION RELEASED after final identity acceptance/private checkpointb6f111f
-and clean accepted79b successor. Candidate LOCALc0ad9e09e1e2a641716d978600153fe142702ae7
-passes source/focused/retained/feature checks and normal clean commit; fresh GUI/
-broad/final qualification remains pending. See ../reference/H08_HOST_COUNTER_BOOTSTRAP_RESULTS.md.
+IMPLEMENTATION FINAL ACCEPT at LOCALc0ad9e09e1e2a641716d978600153fe142702ae7,
+tree d5f5e6a371c5520ef7db9134a401752b77e6d348, with different final independent
+review of every bounded gate, including fresh BOTH-mode GUI and broad qualification.
+See ../reference/H08_HOST_COUNTER_BOOTSTRAP_RESULTS.md. Owner PAUSED after this run.
 Earlier release conditions below retain accepted design history.
 
-DESIGN ACCEPTED, NOT RELEASED. Fresh independent read-only Sol High review accepts
+Original DESIGN ACCEPTANCE: fresh independent read-only Sol High review accepts
 proposalSHA c0413fb40217d5e077dda5bb39e209def153205c8d5cbd27a41437aa3e93c858,
 with no blocking finding. Exact source must verify one-time binding, pointer identity
 with a live strong marker, explicit actual dimension and final infallible commit.

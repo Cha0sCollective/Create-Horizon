@@ -34,11 +34,12 @@ Explicit host identity creation/reopen now has different final acceptance at
 LOCAL79b5951, including actual startup/lifetime, focused/retained/feature, fresh
 BOTH-mode GUI and broad checks in `docs/reference/H08_HOST_WORLD_IDENTITY_RESULTS.md`.
 The six-path initial-World-bound, one-use host counter bootstrap at LOCALc0ad9e0
-passes focused/retained/feature/clean checks; fresh GUI/broad/final are pending in
+has FINAL independent acceptance of focused/retained/feature/clean/fresh GUI/broad in
 `docs/reference/H08_HOST_COUNTER_BOOTSTRAP_RESULTS.md`. Legacy/reopen refuse.
 Next bounded native producer-to-writer fence design is accepted in
-`docs/design/H08_NATIVE_WRITE_FENCE_PACKET.md`; no next source release until current
-final acceptance/private checkpoint/clean pin. Capture refusal stays unchanged. No
+`docs/design/H08_NATIVE_WRITE_FENCE_PACKET.md`; it is QUEUED during the owner-requested
+pause. No source release until fresh resume/private checkpoint/clean pin. Capture
+refusal stays unchanged. No
 ordinary activation or used-streamer capture is
 accepted. General runtime/history/scalar support and G1 stay open.
 
