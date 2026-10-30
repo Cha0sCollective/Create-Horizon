@@ -155,3 +155,5 @@ H08 acceptance/guards untouched and retain supported prior package refusal tests
 H09b actual negotiation and H10 server commit/tracking/replicas remain separate.
 H11 renderer ownership may be designed alongside these; H12 needs H10 timestamped
 committed input. No ordinary activation/recovery, G1 or public release follows.
+
+Accepted narrow clarification: H09_BLOCK_REGISTRY_CLARIFICATION.md proposalSHA dd1dd7d0a531e6acbdfda4d2b966e9060b09dd901ff4982f18689dd366f86ac0 received independent read-only Sol High ACCEPT. BlockRegistry inspection relies explicitly on immutable constructor invariants at registry.rs SHA714bc53cc9a811beacdf7aaa1ab55705b65f59d8f7fe8de5242cb62a00bb0027; complete public Builtin/Dynamic checks remain. No fourth path or runtime behavior change. All numeric states and one checked default per distinct name are covered under existing budgets; independent hidden-map enumeration is not claimed.

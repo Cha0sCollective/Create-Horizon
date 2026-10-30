@@ -7,8 +7,8 @@ changes need fresh independent read-only Sol High review. Reviewers use native
 read-only commands ONLY; no WSL/candidate execution. Preserve personal source-
 informed provenance, R01 pinned Java item-loss rule, references/Prism/playable saves.
 
-Private codex/h02-smoke-h03-notes last pushede2df6c2; this checkpoint records FINAL
-native fence and accepted next design. Fresh PRIVATE check before EVERY private
+Private codex/h02-smoke-h03-notes last pusheda443ecc99822148ba9933e92744f97ed1712831f,
+records FINAL native fence and accepted next design. Fresh PRIVATE check before EVERY private
 push. Engine LOCAL ONLY, normal .githooks, no engine push/PR/merge/release.
 
 ## Accepted native producer-to-writer fence
@@ -50,8 +50,8 @@ aggregate/per-entry/node/depth/string/MUTF budgets and fallible write_network;
 never protocolWriter.nbt fallback. Positive-resource conflict needs reviewed
 amendment, no silent limit raise/trim. Exact ordering/reverse/Dynamic rules inpacket.
 
-After this PRIVATE checkpoint push, root creates clean
-codex/h09-peer-compatibility-snapshot at acceptedEA/tree7828 and releases ONLY THREE
+PRIVATE checkpoint PUSHED after fresh PRIVATE check; root created clean
+codex/h09-peer-compatibility-snapshot at acceptedEA/tree7828 and released ONLY THREE
 paths: lan/data.rs; game/mod_packages.rs; NEWgame/peer_contract_snapshot_tests.rs
 (including declaration inmod_packages). One bounded author/sourceedits ONLY, no
 WSL/scripts/imports/Cargo/tests/fmt/Python/Java/network/commits/escalation/delegation/
@@ -62,8 +62,9 @@ Dormant DATAONLY snapshot of actual captured package/build/current machine schem
 and registry/config metadata. Onepair/oneschema/noextraenabledlegacy profile. No
 wireformat/negotiation/admission/remoteattestation/permanentlive-tablefreeze claim.
 Snapshot equality must NOT bypass external_network, anycaller or world/package pins.
-Oldmethods/default/no-pair behavior unchanged. No next source released/proof prefix
-reserved yet. Validation is relevant package/content/snapshot/feature/baseline/broad;
+Oldmethods/default/no-pair behavior unchanged. One author ACTIVE in exact3/no shared
+writers. Fresh unused proof prefixh09cs1 verified/reserved, names not frozen;
+no candidate execution. Validation is relevant package/content/snapshot/feature/baseline/broad;
 no new gameplay smoke unlessscopeactuallychangesstartup/gameplay (firstamendreview).
 
 S1 remaining outcomes in S1_REMAINING_WORK_AUDIT.md; H09_PEER_ADMISSION_AUDIT.md and
@@ -75,3 +76,5 @@ H09/H10 externalnegotiation/replication, H11/H12 retainedpresentation andordinar
 lifecycle/transactions/coherent save-recovery remain OPEN. H12 needsH10 committed
 tracking, notwindowlocalcounter. No current owner decision. LiveS2 requiresG1;
 S3 exactlymotor,shaft,small+largecog,millstone cobble→gravel; no gearbox. B2deferred.
+
+October30 continuation: three-path author draft awaits final BlockRegistry helpers; narrow constructor-invariant clarification dd1dd7d0 accepted by fresh read-only Sol High. Public complete-map checks remain. No source execution yet. One separate native-read-only H11a design task is active without source writes. Coordinator prepares targeted qualification; no standing team.
