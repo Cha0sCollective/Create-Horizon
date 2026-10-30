@@ -1,5 +1,11 @@
 # H08 explicit host world identity creation and reopen
 
+IMPLEMENTATION FINAL ACCEPTED at LOCAL79b5951e2e86c17b40d6c5f0a8c26e191ef9219b,
+treee0d7d8941a204d723f23afa1605f5a541d4f47de, with different final independent
+review. Exact results and limits: ../reference/H08_HOST_WORLD_IDENTITY_RESULTS.md.
+Earlier future-tense requirements below are the accepted design history; all
+bounded gates pass. No ordinary activation/recovery or G1 acceptance follows.
+
 DESIGN ACCEPTED after fresh independent read-only Sol High review of clarified
 proposalSHA40c2dbe4dd6646223f61e44b10ed9ef62bf7620a8246c17e230238d23caffcb2
 (originale3ea1fd3efb35a778765d033668cb150fe3ff9d2fccede5b230a4263954012d1).

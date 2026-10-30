@@ -30,10 +30,13 @@ fallback. Used-streamer ownership/ONE real native tick now has different final
 acceptance at LOCALb0f1bf6, including native/resource/retained, fresh BOTH-mode GUI
 and broad checks: `docs/reference/H08_USED_STREAMER_OWNERSHIP_RESULTS.md`. Pristine
 capture refusal remains unchanged; a pre-existing idle shutdown wake gap is closed.
-Next is explicit host identity creation/reopen in
-`docs/design/H08_HOST_WORLD_IDENTITY_PACKET.md`, with original lifecycle and revised
-concrete header design acceptance. Only the five bounded paths may be released
-after the private checkpoint. No ordinary activation or used-streamer capture is
+Explicit host identity creation/reopen now has different final acceptance at
+LOCAL79b5951, including actual startup/lifetime, focused/retained/feature, fresh
+BOTH-mode GUI and broad checks in `docs/reference/H08_HOST_WORLD_IDENTITY_RESULTS.md`.
+Next is the independently accepted six-path initial-World-bound, one-use host
+counter bootstrap in `docs/design/H08_HOST_COUNTER_BOOTSTRAP_PACKET.md`, after
+the private checkpoint and clean pinned successor. Legacy/reopen refuse. No
+ordinary activation or used-streamer capture is
 accepted. General runtime/history/scalar support and G1 stay open.
 
 ## Foundation history
