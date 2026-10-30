@@ -6,7 +6,7 @@ namespace = "create_horizon"
 repository = "https://github.com/Cha0sCollective/Create-Horizon"
 visibility = "private"
 stage = "post-G0 foundations"
-active_packet = "Native producer-to-writer fence implementation on FINALc0ad9e0; design f770c99a plus TEST ONLY fifth Task seam amendment06369385 accepted, fifth release after private checkpoint; capture refusal/G1 unchanged"
+active_packet = "Native fence FINAL accepted LOCALea96036; H09a data-only compatibility snapshot DESIGN accepted d17bb651, three-path release after private checkpoint/clean branch; capture/paired-network refusal and G1 unchanged"
 next_stage = "S1 host foundations and remaining P02; G1/G2/G3 open"
 
 [specification]

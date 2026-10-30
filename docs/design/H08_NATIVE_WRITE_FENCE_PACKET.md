@@ -1,5 +1,10 @@
 # H08 bounded native producer-to-writer fence proof
 
+IMPLEMENTATION FINAL ACCEPTED at LOCALea96036ce48c269225169e4865e02e4860182b47,
+tree7828a3f89b775f36503070175f3c8784d7c65cf3, with different final independent review
+of every bounded gate. Results ../reference/H08_NATIVE_WRITE_FENCE_RESULTS.md.
+Earlier future-tense release/qualification clauses below retain design history.
+
 OWNER RESUMED October30. Root verifies accepted clean input
 c0ad9e09e1e2a641716d978600153fe142702ae7/tree d5f5e6a371c5520ef7db9134a401752b77e6d348,
 private pause checkpoint65e66a42c5ec18ab07e5761c97311d02e4ae5141 and unchanged audit

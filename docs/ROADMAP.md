@@ -7,7 +7,7 @@ remain proposed until their corresponding gate accepts them.
 | Stage | Outcome | Current state |
 | --- | --- | --- |
 | S0 | Runnable pinned reference, repeatable traces and bounded host contract | G0 accepted for bounded experiments; performance qualification open |
-| S1 | Persistent synchronized generic machine with retained animation | H05a-d, H06a-d, H08a1-a15, PLAYER/E1/W1, save/idle restoration and bounded counter+slot epochs qualified; general runtime persistence/full H02/H03/H04/H05/G1 open |
+| S1 | Persistent synchronized generic machine with retained animation | Bounded host/counter/slot/identity foundations qualified; normal supported-machine lifecycle/coherent recovery, external admission/replication and retained presentation/G1 remain open |
 | S2 | Verified motor, shafts and two cog sizes | P02a/b, reference observations, static XYZ/equal-cog geometry and declared three-path event arbitration accepted in native/Wasm; general arbitration and full P02/integration open, live integration requires G1 |
 | S3 | Five-component playable milling MVP and two-client evidence | Planned; G3 open |
 | S4 | Obtainable survival power and a small factory | Future scope |
@@ -37,11 +37,19 @@ The six-path initial-World-bound, one-use host counter bootstrap at LOCALc0ad9e0
 has FINAL independent acceptance of focused/retained/feature/clean/fresh GUI/broad in
 `docs/reference/H08_HOST_COUNTER_BOOTSTRAP_RESULTS.md`. Legacy/reopen refuse.
 Next bounded native producer-to-writer fence design is accepted in
-`docs/design/H08_NATIVE_WRITE_FENCE_PACKET.md`; owner resumed October30 and clean
-acceptedc0/source pins are verified. Four-path release follows private checkpoint. Capture
-refusal stays unchanged. No
+`docs/design/H08_NATIVE_WRITE_FENCE_PACKET.md`; reviewed fifth test-only Task seam
+is added by amendment06369385. LOCALea96036 has FINAL independent acceptance of
+all bounded gates in `docs/reference/H08_NATIVE_WRITE_FENCE_RESULTS.md`. H09a
+compatibility snapshot DESIGN ACCEPTd17bb651 follows in
+`docs/design/H09_COMPATIBILITY_SNAPSHOT_PACKET.md`, release after private checkpoint/
+clean branch. It changes no external admission or wire protocol. Capture
+and external paired-network refusals stay unchanged. No
 ordinary activation or used-streamer capture is
 accepted. General runtime/history/scalar support and G1 stay open.
+
+Remaining S1 outcomes and precise first-experiment bounds are mapped in
+`docs/design/S1_REMAINING_WORK_AUDIT.md`. H09 peer and H11 renderer source audits
+identify independent gaps; neither adopts a wire format/API or authorizes code.
 
 ## Foundation history
 
