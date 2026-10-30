@@ -1,5 +1,10 @@
 # Native session checkpoint proposal
 
+Accepted current-resident save clarification fc93a257 is recorded in
+S1_SESSION_CHECKPOINT_RESIDENT_SAVE_CLARIFICATION.md: checkpoint-specific real native
+resident submissions follow save_game_with(false) and precede the same second fence.
+Original proposal47cf3a13 remains preserved as its exact accepted snapshot.
+
 DESIGN ACCEPTED at exact amended proposal
 47cf3a13e2ebdf136c6dab372249ffd2783c64b4158fe3ff56ad10f6e01a0997 by fresh independent
 native read-only Sol High review. Original4024fcc4 was withheld; all three corrections

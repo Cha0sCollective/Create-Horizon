@@ -8,7 +8,7 @@ final reviewer. Assigned authors native source reads/edits ONLY; no WSL/scripts/
 imports/Cargo/tests/fmt/Python/Java/network/commits/escalation/delegation.
 Preserve reference snapshots, Prism/playable saves/accounts, source provenance and R01.
 
-Private codex/h02-smoke-h03-notes last pushed261a649; current docs await checkpoint.
+Private codex/h02-smoke-h03-notes last pushedd815eed5bdacc2b0ce967d9d64527a63586c5c2f.
 Every private push: fresh GitHub PRIVATE + exact origin. Engine LOCAL ONLY, normal
 hooks/upstream push disabled; no engine push/PR/merge/release. No owner decision pending.
 
@@ -63,18 +63,36 @@ raw region entries hidden by native constructor, absent TestTerrain proto restor
 and cached player bodies hiding lost velocity/exhaustion/timer. All corrected in
 accepted proposal; original+eight sources preserved.local/s1-session-checkpoint-proposal1.
 
-Successor .local/worktrees/s1-session-checkpoint CLEAN codex/s1-session-checkpoint
-at exact FINALff69d5f. Prefixs1sc1 reserved; reservation/source hashes retained.
-No production source released YET; this private checkpoint precedes release.
+Successor .local/worktrees/s1-session-checkpoint codex/s1-session-checkpoint
+at exact FINALff69d5f, eight-path source ACTIVE after pushedd815eed checkpoint.
+Prefixs1sc1 reserved; before-author/source manifests retained. No execution yet.
 Exactly eight allowed paths relative crates/horizon-client/src:
 game/levels.rs, new game/levels/session_checkpoint.rs and session_checkpoint_tests.rs,
 game/lan.rs, game/world_loading.rs, game/world_loading/host_identity.rs, game.rs,
 game/counter_control.rs. Existing research capture/pristine guards and streaming
 wrapper signatures unchanged. No ordinary filled-slot startup/close callers.
 
-Three disjoint author assignments prepared in.local/s1-session-checkpoint-coordination.md:
-provenance author five existing files; player author lan.rs; checkpoint author two new
-files. No standing team, no shared file writers. Root coordinates then exact eight-file
+Three disjoint assignments in.local/s1-session-checkpoint-coordination.md:
+session_native_provenance RELEASED five existing files286+/3-, independently SOURCE
+SLICE CLEAR at its exact hashes, freeze.local/s1sc1-provenance-author-freeze.
+session_player_restore RELEASED lan.rs, source624+/0- rawSHA
+a113a5a938f84ad3e56951079271e34c90da105962b81963c5343775525e5cec SOURCE SLICECLEAR.
+Initialc182 withheld: missing native defaults and actual-mode clamp; all8/prefix
+preserved player-source-review-attempt1 before reviewed18linefix. No execution.
+session_checkpoint_core RELEASED/frozen main124bd34b4c797b8e15e663eb196735dc72d0b22697e38c0948ffc53423c79573,
+tests b1c1c1f5b206045e35781422709d46336023223615aabb4010fb570998a6d8ac (17 defining:
+4 ordinary/13 ignored resource, three feature+debug writer cases). Real freshGame::new,
+no source/scaffold world clearing; testOnceLock retains one pinnedResourcesArc.
+Core SOURCE NOTCLEAR: real clean inhabited metadata not submitted; read_dir eagerly
+collects before bound; dedicated native UUID collision can publish unrecoverable image.
+All8complete/prefix preserved core-source-review-attempt1. Accepted resident native
+save clarificationfc93a257bd0f86be4106b5cd5ce5caed65cd1e67702249110169982e49e57bed
+in docs/design/S1_SESSION_CHECKPOINT_RESIDENT_SAVE_CLARIFICATION.md; exactsnapshot
+.local/s1sc1-resident-save-proposal1.md. Same8paths, actual checked asyncnative current
+resident save_later before secondfence, fullmetadataequality, nofake dirtymarkers.
+Private checkpoint before core correction; all8formatted source+test review before
+ANYcompilation/execution. No S1checkpointqualificationresult yet.
+No standing team/shared writers. Root coordinates then exact eight-file
 source review, isolated serial qualification and different final review.
 
 Actual identified native open -> genuine residency -> physical iron bootstrap ->empty
@@ -83,6 +101,17 @@ Continuous borrow fence/save(false)/fence, complete checked physical copy/envelo
 conservative publication uncertainty and consumed fresh headless Game+actual roster
 recovery. Region raw preflight first; this TestTerrain profile refuses saved proto;
 actual bodies projected/restored/verified. No fixed-nine/pristine-history gate.
+Current native refinement: zero dedicated roster supported only with canonical inert
+native UUID player record, no fabricated participant. Dedicated positive roster also
+retains separate singleplayer_uuid-correlated inert record; its UUID must be disjoint
+from actual guests and preserved for next native Level::write. Nonempty orphan/item/
+body authority refuses. Actual body attributes/effects/speeds outside closed profile
+refuse explicitly; no cached defaulting/loss. Two-epoch tests must inspect real guest
+files remain positive and inert UUID stable. Partial drafts NOT qualification results.
+Root fixture guard initial PowerShell per-property Count error preserved before fix
+in s1sc1-fixture-count-wrapper-attempt1; all five pinned fixture bytes then verified,
+receipt s1sc1-fixture-inputs.json, oldbuild83649 provenance retained/no compiler run.
+Root validation scripts prepared but NOT EXECUTED; frozen eight-source review first.
 
 Ordinary lifecycle/coherent recovery, actual H09 admission/H10 replication/H12 committed
 presentation and G1 still OPEN. S1: onecounter/ownedslot/dimension/current schema, then
