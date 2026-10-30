@@ -35,7 +35,12 @@ Raw evidence stays ignored under `.local/s1sc1*`; no runtime artifacts enter Git
 Develop the bounded S1 ordinary-session authority/lifetime design from
 `docs/design/S1_ORDINARY_LIFECYCLE_INVESTIGATION.md`, then obtain a fresh independent
 Sol High review and checkpoint its acceptance before releasing source changes.
-No follow-on source scope is accepted yet. Keep filled-item ingress disabled.
+Authority precursor DESIGN ACCEPTED at exact6f98cc8d; see
+`docs/design/S1_SESSION_AUTHORITY_PACKET.md`. Worktree
+`.local/worktrees/s1-session-authority`, branch codex/s1-session-authority,
+clean base872dac2. Release only the five scoped existing/new paths after this private
+checkpoint. Root implements; independent exact-source review before execution.
+No ordinary caller or failed-close worker retention in this precursor. Keep filled-item ingress disabled.
 The next design must address one authority per trusted WorldUUID across recovery
 copies, authoritative archive reopen, retained live ownership on failed/uncertain
 publication, real positive-owner staging, and the separate in-frame owner path.
