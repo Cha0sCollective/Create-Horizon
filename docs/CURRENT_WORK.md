@@ -1,120 +1,122 @@
 # Current work
 
-Owner October 30: continue S1 until a genuine blocker or required input, with updates.
-Prior pauses/cutoffs superseded. No public release, promotion or standing team.
-Root owns ALL formatting/Cargo/tests/commits, SERIAL across worktrees. Substantive
-source/design needs fresh independent native-read-only Sol High review and a different
-final reviewer. Assigned authors native source reads/edits ONLY; no WSL/scripts/
-imports/Cargo/tests/fmt/Python/Java/network/commits/escalation/delegation.
-Preserve reference snapshots, Prism/playable saves/accounts, source provenance and R01.
+Owner instruction: continue S1 with periodic updates until a real blocker or required
+input. Earlier cutoff and pause requests were superseded. No owner decision pending.
+Coordinator implements directly; bounded delegation only. Serialize all Cargo and
+runtime processes across worktrees. Source authors use native reads/assigned edits;
+reviewers native read-only, no WSL/scripts/Cargo/tests/writes/network/escalation.
+Substantive source needs fresh independent Sol High clearance before execution and
+a different final reviewer. Preserve all eight source files and all s1sc1 artifacts
+before each correction. Preserve playable saves, Prism, references and R01 behavior.
 
-Private codex/h02-smoke-h03-notes last pushedd815eed5bdacc2b0ce967d9d64527a63586c5c2f.
-Every private push: fresh GitHub PRIVATE + exact origin. Engine LOCAL ONLY, normal
-hooks/upstream push disabled; no engine push/PR/merge/release. No owner decision pending.
+Private branch codex/h02-smoke-h03-notes, last pushed e220e9020feaee524d005da5960bc0a17b464f57.
+Every private push requires fresh GitHub PRIVATE metadata and exact origin. Engine
+work remains LOCAL ONLY with normal hooks; no engine push, merge, PR or release.
+Never commit runtime worlds/resources/JARs/logs/binaries/private docs into engine.
 
-## Accepted engine components, S1/G1 still open
+## Completed local components
 
-Main engine clean codex/h09-peer-compatibility-snapshot at
-3ac2d4ca8290f7fcf666116e0035b0ddbb7c7122: H09a DATA snapshot FINAL.
-.local/worktrees/h09b1-frozen-wire clean765dc8d0fa893d5ee89c24fd02fa394f434961eb:
-H09b.1 frozen actual owners + wire DATA FINAL. Neither activates admission.
-.local/worktrees/h11a-retained-diagnostic clean70fd6aaeb16f2157b4961a12c2dbc73b5e59c013:
-H11a manually owned original retained diagnostic FINAL (targeted/both-mode GPU/
-lifecycle/camera-light supplement/broad all PASS). No automatic H12/G1/performance.
-Full scoped results in docs/reference/H09_COMPATIBILITY_SNAPSHOT_RESULTS.md,
-H09B_FROZEN_INPUTS_WIRE_RESULTS.md and H11_RETAINED_DIAGNOSTIC_RESULTS.md.
-Prior H08 native fence ea96036 is FINAL; actual Game case had ZERO storage callbacks.
-Native controls had nonzero I/O separately; never relabel that Game case as positive.
+- H08 native producer fence FINAL: ea96036. Its earlier actual-Game case observed
+  ZERO storage callbacks; do not relabel it as nonzero coverage.
+- H09a compatibility snapshot FINAL: main engine 3ac2d4c, data only.
+- H09b.1 frozen owners/wire FINAL: worktree h09b1-frozen-wire 765dc8d, data only.
+- H11a retained diagnostic FINAL: worktree h11a-retained-diagnostic 70fd6aa,
+  manually owned original geometry with both-mode GPU/lifecycle evidence.
+- Closed writer controls FINAL: worktree native-writer-test-control
+  ff69d5fcb043500f315fd2e2452add9320ec415a, tree976cfe565d2e50a99d2f631bf67fd1d1c8429966.
+  134 unique focused tests, debug/fast feature matrix and broad369Python/1375client/
+  0doc passed, different FINAL review. Preserve null lint-runner provenance caveat,
+  native CRLF disclosure and quick-parity NOT RUN. Results in corresponding
+  docs/reference/*RESULTS.md, including NATIVE_WRITER_TEST_CONTROL_RESULTS.md.
 
-## Closed writer control FINAL
+## Active: S1 native session checkpoint qualification
 
-.local/worktrees/native-writer-test-control CLEAN codex/native-writer-test-control
-atff69d5fcb043500f315fd2e2452add9320ec415a/tree976cfe565d2e50a99d2f631bf67fd1d1c8429966,
-parent765dc8d. Exactly Cargo.toml/save.rs 409+/5-, normal public-tree hook passed.
-Designaa471a58 accepted; private361bcc8 before author release. Source author released,
-root formatted, fresh source/tool review CLEAR; no Rust source fixes/warning suppression.
-Cargo rawSHA8c0c624f6120d588ce2e1f21af002a621178bac0d95048dbe9418633b3394afc;
-save rawSHAdcf780e4919f5312eb9f9c1d7e54113e1edc4f605be1e0bb53ee1d8af34a0d67.
+Worktree .local/worktrees/s1-session-checkpoint, branch codex/s1-session-checkpoint,
+base ff69d5f. Exactly eight paths under crates/horizon-client/src:
+game.rs; game/levels.rs; game/world_loading.rs; game/world_loading/host_identity.rs;
+game/counter_control.rs; game/lan.rs; new game/levels/session_checkpoint.rs and
+session_checkpoint_tests.rs. No ordinary startup/close/filled-slot caller yet.
 
-Nondefault native-writer-test-control AND debug_assertions gates closed Block/Panic
-RAII controls/actual non-atomic observer. Old arbitrary hook remains cfg(test).
-Panic retains pending/count/no sticky error; writes_finished false and flush may hang.
-Direct SaveDir Drop joins without flush. Future actual Game panic fixtures: NO live
-Integrated wrapper; release gates/settle owned tasks/direct Drop, no fake count repair.
+Accepted proposal47cf3a13 and resident-save clarificationfc93a257 are in
+ docs/design/S1_SESSION_CHECKPOINT_PACKET.md and
+ docs/design/S1_SESSION_CHECKPOINT_RESIDENT_SAVE_CLARIFICATION.md.
+Checkpoint uses actual identified native origin, genuine streaming residency,
+actual counter/slot/player owners, complete bounded native image, same-deadline
+producer/writer fencing, manifest-last publication and strict fresh-Game recovery.
+Proto/nonfull/unknown owners and unsupported native shapes explicitly refuse.
+Dedicated zero/positive roster retains separate inert native local UUID metadata.
+Resident snapshots use actual with_entities/save_later; preserve full metadata.
 
-Rawprefixh08wc1. Three feature lints/fmt/publictree PASS; six newcontrols/old2/50save
-prefix INCLUDING6+2/all78retained names/eight exact resource cases PASS (134 unique).
-Full debug off/on and fast off/on crosscrate exact positive/absence matrix PASS;
-fast old2 PASS and new public cases absent. Sessions47519/82438/7665 all FINISHED0.
-Broad39310 FINISHED0:369Python/fmt/clippy/1375client/0doc. LogSHA
-288af5633ca3b371e5b1204992499b1c7b66039245d101eaf2e5e51ce7bc6147.
-Postverify68583 FINISHED0 both checkouts clean exactff69, lock Gitblob unchanged.
-Windows Cargo.toml/lock CRLF versus native clone LF explicitly recorded.
-Different /root/writer_control_final_review FINAL ACCEPT, nofindings.
-Results docs/reference/NATIVE_WRITER_TEST_CONTROL_RESULTS.md. Keep lint null-runner
-provenance caveat, pre-fix source/prefix archives, quick parity NOTRUN and no GUI/G1 claim.
+Source review cleared all eight paths, then finite corrections were independently
+reviewed. Raw prefix s1sc1; all attempts preserved. Five ordinary + sixteen explicit
+resource tests authored; three require debug writer controls. Full ordinary Game
+suite has 192 passing tests (187 existing +5 new). No resource suite pass yet.
 
-## Next accepted design; author release after private checkpoint
+Validation3838 completed all three feature lints/fmt/public-tree checks successfully.
+Build32301 passed: frozen bin5495253c1028fd3919707578f641e4130351a6c4918a713145956cba23bfeb1d,
+lib82476822a5f34843dc77c3d7890cd9e4273521dae558ff7f758cf90c603ad4e7.
+Latest tests63676: ordinary192 PASS; resource0 passed the palette check but refused
+native section semantic roundtrip, 27.70s. Remaining cases NOT RUN. Whole failed
+world retained /tmp/s1sc1-session-resource-0-cq_h8qef/temp/
+horizon-transition-990-0-session-body-refusals-retained-990-0/fixture.
+All8+prefix preserved .local/s1sc1-native-section-roundtrip-attempt1 before correction.
+The validator omitted native SaveDir::load's separate public load_light step after
+decode. Exact narrow correction now formatted and independently SOURCE DELTA CLEAR:
+corea4bc14516b989c145849f37b5a9047c46853bb85aef77b56aee387a753d72be5,
+testsb0ea25ffd50b884ea0d4488613be3f7a86a7d0fe322daa1680b0e60c97fb0c9b;
+other six unchanged. Strict raw/section equality preserved; existing shape case
+adds actual lit/unlit native records, flags, exact layers and every block/light/biome
+cell. Build72593 passed, then post-open advancement initialization was corrected after
+run75923 published a checkpoint but recovery refused an unavailable native tree.
 
-S1_SESSION_CHECKPOINT_PACKET.md accepted amended proposal
-47cf3a13e2ebdf136c6dab372249ffd2783c64b4158fe3ff56ad10f6e01a0997,
-exact snapshot.local/s1-session-checkpoint-proposal2.md. Original4024 withheld for
-raw region entries hidden by native constructor, absent TestTerrain proto restore,
-and cached player bodies hiding lost velocity/exhaustion/timer. All corrected in
-accepted proposal; original+eight sources preserved.local/s1-session-checkpoint-proposal1.
+Previous tests18339 refused NotPublished/unknown NBT field, 27.60s, world retained
+/tmp/s1sc1-session-resource-0-4f6ebaor/temp/
+horizon-transition-643-0-session-body-refusals-retained-643-0/fixture.
+All8+prefix archived .local/s1sc1-unknown-native-field-attempt1 before strict native
+palette correction Name/Properties to id/properties, independently cleared. Existing
+shape case adds actual native writer compound positive and five malformed negatives.
+Current manifest .local/s1sc1-formatted-source-sha256.json/expected21 names retained.
 
-Successor .local/worktrees/s1-session-checkpoint codex/s1-session-checkpoint
-at exact FINALff69d5f, eight-path source ACTIVE after pushedd815eed checkpoint.
-Prefixs1sc1 reserved; before-author/source manifests retained. No execution yet.
-Exactly eight allowed paths relative crates/horizon-client/src:
-game/levels.rs, new game/levels/session_checkpoint.rs and session_checkpoint_tests.rs,
-game/lan.rs, game/world_loading.rs, game/world_loading/host_identity.rs, game.rs,
-game/counter_control.rs. Existing research capture/pristine guards and streaming
-wrapper signatures unchanged. No ordinary filled-slot startup/close callers.
+Earlier failures retained: first callback assumption11182 (world removed by old
+FixtureDrop, explicitly disclosed); real public far-Finish callback test correction;
+guest view-distance0 panic56571 with whole world retained, corrected to2. All16
+resource fixtures now retain their whole owned root on unexpected panic only after
+Game/runtime drops settle. No fake callbacks/count repair or owner clearing.
 
-Three disjoint assignments in.local/s1-session-checkpoint-coordination.md:
-session_native_provenance RELEASED five existing files286+/3-, independently SOURCE
-SLICE CLEAR at its exact hashes, freeze.local/s1sc1-provenance-author-freeze.
-session_player_restore RELEASED lan.rs, source624+/0- rawSHA
-a113a5a938f84ad3e56951079271e34c90da105962b81963c5343775525e5cec SOURCE SLICECLEAR.
-Initialc182 withheld: missing native defaults and actual-mode clamp; all8/prefix
-preserved player-source-review-attempt1 before reviewed18linefix. No execution.
-session_checkpoint_core RELEASED/frozen main124bd34b4c797b8e15e663eb196735dc72d0b22697e38c0948ffc53423c79573,
-tests b1c1c1f5b206045e35781422709d46336023223615aabb4010fb570998a6d8ac (17 defining:
-4 ordinary/13 ignored resource, three feature+debug writer cases). Real freshGame::new,
-no source/scaffold world clearing; testOnceLock retains one pinnedResourcesArc.
-Core SOURCE NOTCLEAR: real clean inhabited metadata not submitted; read_dir eagerly
-collects before bound; dedicated native UUID collision can publish unrecoverable image.
-All8complete/prefix preserved core-source-review-attempt1. Accepted resident native
-save clarificationfc93a257bd0f86be4106b5cd5ce5caed65cd1e67702249110169982e49e57bed
-in docs/design/S1_SESSION_CHECKPOINT_RESIDENT_SAVE_CLARIFICATION.md; exactsnapshot
-.local/s1sc1-resident-save-proposal1.md. Same8paths, actual checked asyncnative current
-resident save_later before secondfence, fullmetadataequality, nofake dirtymarkers.
-Private checkpoint before core correction; all8formatted source+test review before
-ANYcompilation/execution. No S1checkpointqualificationresult yet.
-No standing team/shared writers. Root coordinates then exact eight-file
-source review, isolated serial qualification and different final review.
+Pinned resources /home/arbiter/.cache/create-horizon/resources/26.3-cf62fe-smoke,
+manifest f35140182f95862e5330fabe4c6a449805f2d83be94dce2f01e770a2ede68ce2.
+Read-only prebuilt guest pair .local/h09cs1-counter-pair-fixture: five files,
+receipt32c83f6b..., old83649 build explicitly retained; no nested guest compilation.
+Root tools SOURCE/TOOL CLEAR; Python verifiers use -I and explicit optimization
+rejection. Never edit a running tool. Guard exact eight-source/build/fixture hashes.
 
-Actual identified native open -> genuine residency -> physical iron bootstrap ->empty
-persistent slot ->actual participant transfer ->more real native I/O ->checkpoint.
-Continuous borrow fence/save(false)/fence, complete checked physical copy/envelope,
-conservative publication uncertainty and consumed fresh headless Game+actual roster
-recovery. Region raw preflight first; this TestTerrain profile refuses saved proto;
-actual bodies projected/restored/verified. No fixed-nine/pristine-history gate.
-Current native refinement: zero dedicated roster supported only with canonical inert
-native UUID player record, no fabricated participant. Dedicated positive roster also
-retains separate singleplayer_uuid-correlated inert record; its UUID must be disjoint
-from actual guests and preserved for next native Level::write. Nonempty orphan/item/
-body authority refuses. Actual body attributes/effects/speeds outside closed profile
-refuse explicitly; no cached defaulting/loss. Two-epoch tests must inspect real guest
-files remain positive and inert UUID stable. Partial drafts NOT qualification results.
-Root fixture guard initial PowerShell per-property Count error preserved before fix
-in s1sc1-fixture-count-wrapper-attempt1; all five pinned fixture bytes then verified,
-receipt s1sc1-fixture-inputs.json, oldbuild83649 provenance retained/no compiler run.
-Root validation scripts prepared but NOT EXECUTED; frozen eight-source review first.
+Current corec69a091f900154f88538357e51aa44faf920bf8c5a34771c17d29b0c26213d7d
+adds native advancement_tree completion after finish_open resets progress; testsb0ea25
+unchanged. All8+prefix archived recovery-advancement-tree-attempt1 before correction;
+fresh source-delta clearance and validation56037 allthreefeaturelints/fmt/publictree
+PASS. Build1880 PASS, bindigest43d6de400db191cd590e56502cb763a8488e9a3e23212266ec32f4ca89d88f15.
+Run22607 FINISHEDnonzero:192ordinaryPASS +resource0..8PASS (ninecases). Resource9
+twoepochs secondcheckpoint792 refuses native dimensions/minecraft/overworld/data/
+minecraft/raids.dat afteractualGame.tick,38.99s. Resource10..15/12legacy NOTRUN.
+All8+prefix archived .local/s1sc1-native-raids-sidecar-attempt1; wholefailedworld
+retained /tmp/s1sc1-session-resource-9-3qgm4gpn/temp/
+horizon-transition-2633-0-session-two-epochs-retained-2633-0/fixture.
+Different final reviewer provisional SOURCECLEAR c69a/b0ea; FINALWITHHELD.
+Empty nativeRaids.tick increments everytick butordinarycleanwrites onlyevery200;
+simplefilewhitelist wouldlosecurrentmetadata. NINTHpath game/raids.rs amendment
+DESIGN ACCEPTED in S1_SESSION_CHECKPOINT_EMPTY_RAID_AMENDMENT.md, exactsnapshot
+.local/s1sc1-empty-raid-proposal1.md SHA1c06a492c754a80e631898516697bc4224cd928cc38accba8ac0a43b9c45b555.
+Fresh independent DESIGN ACCEPT exact1c06a492; privatecheckpoint required BEFORE
+ninthpath source release. No runtime/Cargoactive. All8source unchanged c69a/b0ea.
+Read-only follow-on planning is S1_ORDINARY_LIFECYCLE_INVESTIGATION.md; no source release.
 
-Ordinary lifecycle/coherent recovery, actual H09 admission/H10 replication/H12 committed
-presentation and G1 still OPEN. S1: onecounter/ownedslot/dimension/current schema, then
-dedicated+TWOexactclients. LiveS2 requiresG1. S3 exactlymotor/shaft/small+largecog/
-millstone cobble-to-gravel; nogearbox. B2/fullperformance deferred. No broad journal,
-global codec rewrite, save-compatibility change, relaxed conservation or reduced S1.
+Next: review/privately checkpoint strict empty-raid amendment before ninthpath
+source release; exactsource/proof-tool delta reviews, then finish actual cases and twelve retained resource
+cases, optimized type check (not runtime evidence), appropriate clean broad checks,
+different final review, local engine commit and private evidence checkpoint.
+
+S1/G1 OPEN: ordinary lifecycle/coherent recovery, live H09 admission/H10 replication/
+H12 committed presentation, then dedicated + TWO exact clients. No combined-branch
+or G1 claim. Live S2 requires G1. S3 exact motor/shaft/small+large cog/millstone,
+cobblestone-to-gravel, no gearbox. B2/full performance deferred. No broad journal,
+global codec/save compatibility change, relaxed conservation or reduced S1 adopted.

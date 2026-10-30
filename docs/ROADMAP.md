@@ -19,37 +19,26 @@ demonstration is superseded by the supplied five-component scope.
 
 ## Next bounded packet
 
-The active slot epochbfa5ced and restored3/T recapturec05401e both pass new/retained
-actual-Game groups, native/feature checks, fresh both-mode GUI/broad and different
-final reviews: `docs/reference/H08_SLOT_EPOCH_RESULTS.md` and
-`docs/reference/H08_SLOT_RECAPTURE_RESULTS.md`. Fixed4/T+1 capture now has different
-final acceptance at LOCALbb6f718, including native/retained, fresh both-mode GUI
-and broad checks: `docs/reference/H08_SLOT_ADVANCE_CAPTURE_RESULTS.md`. It preserves
-clean-region LastUpdateT and distinguishes current4 from whole baseline3 physical
-fallback. Used-streamer ownership/ONE real native tick now has different final
-acceptance at LOCALb0f1bf6, including native/resource/retained, fresh BOTH-mode GUI
-and broad checks: `docs/reference/H08_USED_STREAMER_OWNERSHIP_RESULTS.md`. Pristine
-capture refusal remains unchanged; a pre-existing idle shutdown wake gap is closed.
-Explicit host identity creation/reopen now has different final acceptance at
-LOCAL79b5951, including actual startup/lifetime, focused/retained/feature, fresh
-BOTH-mode GUI and broad checks in `docs/reference/H08_HOST_WORLD_IDENTITY_RESULTS.md`.
-The six-path initial-World-bound, one-use host counter bootstrap at LOCALc0ad9e0
-has FINAL independent acceptance of focused/retained/feature/clean/fresh GUI/broad in
-`docs/reference/H08_HOST_COUNTER_BOOTSTRAP_RESULTS.md`. Legacy/reopen refuse.
-Next bounded native producer-to-writer fence design is accepted in
-`docs/design/H08_NATIVE_WRITE_FENCE_PACKET.md`; reviewed fifth test-only Task seam
-is added by amendment06369385. LOCALea96036 has FINAL independent acceptance of
-all bounded gates in `docs/reference/H08_NATIVE_WRITE_FENCE_RESULTS.md`. H09a
-compatibility snapshot DESIGN ACCEPTd17bb651 follows in
-`docs/design/H09_COMPATIBILITY_SNAPSHOT_PACKET.md`, release after private checkpoint/
-clean branch. It changes no external admission or wire protocol. Capture
-and external paired-network refusals stay unchanged. No
-ordinary activation or used-streamer capture is
-accepted. General runtime/history/scalar support and G1 stay open.
+The active packet is native session checkpoint qualification in
+`docs/design/S1_SESSION_CHECKPOINT_PACKET.md`, with the accepted current-resident
+save clarification in `docs/design/S1_SESSION_CHECKPOINT_RESIDENT_SAVE_CLARIFICATION.md`.
+The exact branch, current source and test status are in `docs/CURRENT_WORK.md`.
+It uses actual native streaming/save history and participating player/counter/slot
+owners; its save/recover success is not yet qualified. No ordinary startup, close
+or filled-slot caller is enabled by this packet.
 
-Remaining S1 outcomes and precise first-experiment bounds are mapped in
-`docs/design/S1_REMAINING_WORK_AUDIT.md`. H09 peer and H11 renderer source audits
-identify independent gaps; neither adopts a wire format/API or authorizes code.
+Prerequisites now have separate local final acceptance: producer/writer fence
+(ea96036), H09a compatibility snapshot (3ac2d4c), H09b.1 frozen inputs/wire data
+(765dc8d), H11a retained diagnostic (70fd6aa), and closed debug writer controls
+(ff69d5f). Their respective result summaries under `docs/reference/` preserve
+scope, checks and limitations. Data-only H09 and manually owned H11a do not provide
+live admission, replication, committed presentation or G1.
+
+Remaining S1 outcomes and the first-experiment bounds are mapped in
+`docs/design/S1_REMAINING_WORK_AUDIT.md`: ordinary machine lifecycle and coherent
+save/recovery, external admission/replication, retained committed presentation,
+then integrated and dedicated with two exact-match clients. G1 remains open;
+live S2 integration requires its acceptance.
 
 ## Foundation history
 
