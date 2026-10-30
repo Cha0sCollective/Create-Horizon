@@ -6,7 +6,7 @@ namespace = "create_horizon"
 repository = "https://github.com/Cha0sCollective/Create-Horizon"
 visibility = "private"
 stage = "post-G0 foundations"
-active_packet = "Explicit host identity creation/reopen FINAL accepted LOCAL79b5951; six-path initial-World one-use host counter bootstrap DESIGN accepted c0413fb4, release after private checkpoint/clean successor; G1 open"
+active_packet = "Host identity FINAL79b5951; initial-World one-use bootstrap LOCALc0ad9e0 passes focused/retained/feature/clean, fresh GUI/broad/final pending; next four-path native writer fence DESIGN accepted f770c99a, not released; G1 open"
 next_stage = "S1 host foundations and remaining P02; G1/G2/G3 open"
 
 [specification]
