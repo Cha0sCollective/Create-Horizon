@@ -6,7 +6,7 @@ namespace = "create_horizon"
 repository = "https://github.com/Cha0sCollective/Create-Horizon"
 visibility = "private"
 stage = "post-G0 foundations"
-active_packet = "H09a3ac2d4c/H09b.1 765dc8d/H11a70fd6aa FINAL accepted on local component branches; closed debug-only writer control source active in isolated worktree after design/private checkpoint361bcc8; ordinary checkpoint/admission/replication/H12/G1 open"
+active_packet = "Closed writer test controls FINAL local ff69d5f; native session checkpoint eight-path design47cf3a13 accepted, isolated clean successor at ff69d5f, private checkpoint before three disjoint author assignments; ordinary lifecycle/admission/replication/H12/G1 open"
 next_stage = "S1 host foundations and remaining P02; G1/G2/G3 open"
 
 [specification]

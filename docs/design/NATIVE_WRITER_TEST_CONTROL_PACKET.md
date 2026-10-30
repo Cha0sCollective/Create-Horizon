@@ -1,6 +1,12 @@
 # Closed debug-only native writer test control
 
-PROPOSED ONLY, no source release. Concrete amendment prerequisite to strict actual
+IMPLEMENTATION FINAL ACCEPTED at LOCALff69d5fcb043500f315fd2e2452add9320ec415a,
+tree976cfe565d2e50a99d2f631bf67fd1d1c8429966, with different final review and all
+bounded source/targeted/matrix/broad gates passed. Results
+../reference/NATIVE_WRITER_TEST_CONTROL_RESULTS.md. Earlier proposal/release clauses
+below retain history; no production checkpoint/recovery/G1/publication acceptance.
+
+Concrete amendment prerequisite to strict actual
 Game production-checkpoint writer-fault evidence. Existing cfg(test) library hook
 is absent/private in the library linked by binary tests. Do not expose its callback.
 

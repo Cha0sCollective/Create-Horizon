@@ -1,91 +1,91 @@
 # Current work
 
-OWNER October30: continueS1 until genuine blocker/requiredinput, withupdates. Prior
-pause/cutoff superseded. No publicrelease/promotion/standingteam. RootALL formatting/
-Cargo/tests/commits, SERIAL acrossworktrees. Substantive design/source fresh independent
-native-read-onlySolHigh, differentfinalreview. Agentsnative source-only asassigned;
-NO WSL/scripts/imports/Cargo/tests/fmt/Python/Java/network/commits/escalation/delegation.
-Preserve references/Prism/playable saves/accounts, source-informed provenance andR01.
-Privatebranchcodex/h02-smoke-h03-notes lastpushed e58a4db; newdocs DIRTY. EVERYprivate
-push freshGitHubPRIVATE +exactorigin. EngineLOCALONLY/normal.githooks/upstreampushdisabled;
-noenginepush/PR/merge/release. No ownerinputdecisionpending.
+Owner October 30: continue S1 until a genuine blocker or required input, with updates.
+Prior pauses/cutoffs superseded. No public release, promotion or standing team.
+Root owns ALL formatting/Cargo/tests/commits, SERIAL across worktrees. Substantive
+source/design needs fresh independent native-read-only Sol High review and a different
+final reviewer. Assigned authors native source reads/edits ONLY; no WSL/scripts/
+imports/Cargo/tests/fmt/Python/Java/network/commits/escalation/delegation.
+Preserve reference snapshots, Prism/playable saves/accounts, source provenance and R01.
 
-## Accepted H09a and H09b.1
+Private codex/h02-smoke-h03-notes last pushed261a649; current docs await checkpoint.
+Every private push: fresh GitHub PRIVATE + exact origin. Engine LOCAL ONLY, normal
+hooks/upstream push disabled; no engine push/PR/merge/release. No owner decision pending.
 
-MainengineCLEAN codex/h09-peer-compatibility-snapshot FINAL
-3ac2d4ca8290f7fcf666116e0035b0ddbb7c7122/tree7c3740d44d7dc2c01970abc785bc1917b5cda11d.
-H09a snapshot exact3paths1605+/0-, targeted1248lib/186bin/10resourcecases andbroad
-369Python/1369client/0doc PASS; differentFINAL ACCEPT. Fullresultsreference/H09_COMPATIBILITY_SNAPSHOT_RESULTS.md;
-rawh09cs1. Capture-timeDATAONLY, existingallstartup/world/externalrefusalsunchanged.
+## Accepted engine components, S1/G1 still open
 
-Separateworktree .local/worktrees/h09b1-frozen-wire CLEANcodex/h09b1-frozen-wire,
-FINAL765dc8d0fa893d5ee89c24fd02fa394f434961eb/treec609bc79a6cb77ea95adf98a22a0935b94adcc1d,
-parent3ac. Exact4paths1097+/2-; design1a61082e, privatee58beforeauthorrelease.
-Source/deltaCLEAR: unusedmuttest, chunks_exact->as_chunks under64byteguard andfmtwrap
-allpreservedbeforefixes withALL4/prefix, no warningssuppressed. Exactfinalmanifest
-.local/h09fw1-hex-format-source-sha256.json. Targeted5codec/187bin/3resourcePASS;
-broad369Python/1375client/0doc9m03/status0, logSHAa1f1df182544f2a152c0fcc70f0bb45f4bf98ccc9ad2988aedd4be610d08330d.
-Differentfinalreview FINAL ACCEPT, nofindings. Needdocpendingwordingcleanup/private
-checkpointbeforeanysuccessorwriterrelease. ResultsH09B_FROZEN_INPUTS_WIRE_RESULTS.md.
-WireclaimsDATA/privatecapturedowner only; NO livefreeze/transport/admission/G1.
+Main engine clean codex/h09-peer-compatibility-snapshot at
+3ac2d4ca8290f7fcf666116e0035b0ddbb7c7122: H09a DATA snapshot FINAL.
+.local/worktrees/h09b1-frozen-wire clean765dc8d0fa893d5ee89c24fd02fa394f434961eb:
+H09b.1 frozen actual owners + wire DATA FINAL. Neither activates admission.
+.local/worktrees/h11a-retained-diagnostic clean70fd6aaeb16f2157b4961a12c2dbc73b5e59c013:
+H11a manually owned original retained diagnostic FINAL (targeted/both-mode GPU/
+lifecycle/camera-light supplement/broad all PASS). No automatic H12/G1/performance.
+Full scoped results in docs/reference/H09_COMPATIBILITY_SNAPSHOT_RESULTS.md,
+H09B_FROZEN_INPUTS_WIRE_RESULTS.md and H11_RETAINED_DIAGNOSTIC_RESULTS.md.
+Prior H08 native fence ea96036 is FINAL; actual Game case had ZERO storage callbacks.
+Native controls had nonzero I/O separately; never relabel that Game case as positive.
 
-## H11a retained diagnostic: final review awaits supplement
+## Closed writer control FINAL
 
-Worktree .local/worktrees/h11a-retained-diagnostic CLEANcodex/h11a-retained-diagnostic
-at70fd6aaeb16f2157b4961a12c2dbc73b5e59c013/treecd791bf97e22e5a4900bea474dcfc52bc39df02a,
-baseFINALEA96036. Exact8paths; bc5first1133+/3-, ONElightfix1+/1-. Designd877534e1,
-privatecheckpointdbcbbeforeauthor. Source/delta/formatCLEAR. Predictionhooksfixedafter
-review;2testArcargborrowerrorsfixedafterpreservation; WindowsworktreeWSL Gitmapping
-fixedtoolsONLY beforeCargo. Lightbugfoundinrootimages andconfirmed/fixedsampleY+1.
-ALL8/prefix preservedbeforeEVERYsource/toolfix underh11rd1-*attempt1 archives.
-Exactcurrentmanifesth11rd1-light-probe-source-sha256.json, gameretaindSHA0d0e48df...
-Other7samecleared. 3featurelints/2CPUlib/186bin/2actualGameheadless-predictioncasesPASS;
-lightdelta pairedlint/fmt/treePASS (otherunchangedcoverage reusedhonestly).
+.local/worktrees/native-writer-test-control CLEAN codex/native-writer-test-control
+atff69d5fcb043500f315fd2e2452add9320ec415a/tree976cfe565d2e50a99d2f631bf67fd1d1c8429966,
+parent765dc8d. Exactly Cargo.toml/save.rs 409+/5-, normal public-tree hook passed.
+Designaa471a58 accepted; private361bcc8 before author release. Source author released,
+root formatted, fresh source/tool review CLEAR; no Rust source fixes/warning suppression.
+Cargo rawSHA8c0c624f6120d588ce2e1f21af002a621178bac0d95048dbe9418633b3394afc;
+save rawSHAdcf780e4919f5312eb9f9c1d7e54113e1edc4f605be1e0bb53ee1d8af34a0d67.
 
-FAST70gameSHA25a8a1c36b886c6cff583e081d57009fef98a7229a6cb174449e44b70cca87b3,
-receipt.local/h11rd1-light-build.json. CorrectedGPU36EACHmode/cleanexit; initialdark
-bc5runsretained. Actual1056bytemodel/32byteparams/geometryhash1e9487dc...; counter+
-inventoryfrozenpreserved, allocations1acrossposes/replacement,reload+1/off/stalerefusals.
-Lifecycle32integratedd7c18ca2-fc19-48a8-a5e1-21e20d6f8ce0 and33inframe35e7e1d4-bd84-4967-a5f7-24b156976267 PASS/cleanexit. RealCPUcacheobstructionpreservesoldGPU;
-restoredsuccessfulreload, actualrangeshrink/dimension/pkgdisable/close/reopen cleanup.
-FirstwrapperfailedONLYmissingacceptedremote-range-shrink reason; ALL8/prefixarchived
-beforefix, toolsCLEAR abc9d6bd...031038, frame-invalidatedstillnotaccepted.
-Broad369Python/1363client/0doc8m30/status0 exact70, logSHAdc50cdca71faefbda1f889f4af3cd62f22e619bb37b06f4cca71e0c27d6dcc1a.
-Serialchain50742 FINISHED0 bothbroads. Root48113 ACTIVE lastliveSUPPLEMENT camera/light
-variation+unloadedcreate/replaceatomicrefusals, driverh11rd1-variation-game-smoke.py.
-Freshfinalreview /root/h11a_final_review prelimno sourcefindings; awaitsactualsupplement
-receipts+broadclosingfollowup beforeFINAL. No H11aFINALyet. ActualGPUfailureinjection/
-minimizedarrival/filledslotcombinedscene/automaticH12/G1/perf NOTclaimed.
-Fullresultreference/H11_RETAINED_DIAGNOSTIC_RESULTS.md, rawh11rd1 +immutableUUIDs
-under.local/h02d/game-runs. Keepallsizewarnings/quickparityNOTRUN andscopeboundaries.
+Nondefault native-writer-test-control AND debug_assertions gates closed Block/Panic
+RAII controls/actual non-atomic observer. Old arbitrary hook remains cfg(test).
+Panic retains pending/count/no sticky error; writes_finished false and flush may hang.
+Direct SaveDir Drop joins without flush. Future actual Game panic fixtures: NO live
+Integrated wrapper; release gates/settle owned tasks/direct Drop, no fake count repair.
 
-## Next design work, no source release
+Rawprefixh08wc1. Three feature lints/fmt/publictree PASS; six newcontrols/old2/50save
+prefix INCLUDING6+2/all78retained names/eight exact resource cases PASS (134 unique).
+Full debug off/on and fast off/on crosscrate exact positive/absence matrix PASS;
+fast old2 PASS and new public cases absent. Sessions47519/82438/7665 all FINISHED0.
+Broad39310 FINISHED0:369Python/fmt/clippy/1375client/0doc. LogSHA
+288af5633ca3b371e5b1204992499b1c7b66039245d101eaf2e5e51ce7bc6147.
+Postverify68583 FINISHED0 both checkouts clean exactff69, lock Gitblob unchanged.
+Windows Cargo.toml/lock CRLF versus native clone LF explicitly recorded.
+Different /root/writer_control_final_review FINAL ACCEPT, nofindings.
+Results docs/reference/NATIVE_WRITER_TEST_CONTROL_RESULTS.md. Keep lint null-runner
+provenance caveat, pre-fix source/prefix archives, quick parity NOTRUN and no GUI/G1 claim.
 
-NATIVE_WRITER_TEST_CONTROL_PACKET.md proposalSHAaa471a58f82c6f67da81ebbae82f4182163c7852f93c970ae4649ca3cdbf146c
-underfreshSolHighDESIGN review /root/writer_test_control_design_review. Exactly2paths
-clientCargo.toml+save.rs nondefaultfeature native-writer-test-control +debugassertions,
-closedBlock/PanicownedRAIIcontrol+actualnonatomicobserver; no publicarbitrarycallback,
-SDK/CLI/net ordefault/releasebehavior. Existingpanicstrandsactualcount, stickyerrorNone,
-writes_finishedfalse/flushhang; directSaveDirDropjoinswithoutflush. No panicrecovery
-policyadopted. NEEDacceptance/privatecheckpointbeforeauthorrelease.
+## Next accepted design; author release after private checkpoint
 
-Productionnormalhistorycheckpoint7paths stillPROPOSED. Investigationconfirmedactual
-identifiednativeopen ->genuinetargetstreaming ->physicaliron ->hostbootstrap ->empty
-persistent-slotadmit ->actualparticipanttransfer ->more realnativeIO ->checkpoint.
-No fixed9/pristine admissionguard; no before-allhistorybootstrappossible(emptyworld).
-Providerprovenance mustcomefromactualmake_streaming ctor, notoptionflag/fencesuccess.
-Newproductionparticipantrowadapterwithinlan.rs needed; privatepackagepins checkedvia
-check_world no mod_packagesextraAPI. StrictGamewriterfaultproof needsabove2pathtest
-seamamendment; no standalone7pathsource releaseyet. No broadjournal/globalcodec/
-relaxedconservation/ownerdecisionadopted. S1_SESSION_CHECKPOINT_INVESTIGATION.md.
+S1_SESSION_CHECKPOINT_PACKET.md accepted amended proposal
+47cf3a13e2ebdf136c6dab372249ffd2783c64b4158fe3ff56ad10f6e01a0997,
+exact snapshot.local/s1-session-checkpoint-proposal2.md. Original4024 withheld for
+raw region entries hidden by native constructor, absent TestTerrain proto restore,
+and cached player bodies hiding lost velocity/exhaustion/timer. All corrected in
+accepted proposal; original+eight sources preserved.local/s1-session-checkpoint-proposal1.
 
-Lastprior FINAL nativefenceEA96036, privatea443ecc, allboundedresults in
-H08_NATIVE_WRITE_FENCE_RESULTS.md (actualGameZEROstoragecallbacks, nativecontrols
-nonzero/faults); noordinaryrecovery/globalready. S1ONEcounter/slot/dimension/schema/
-diagnostic thenDEDICATED+TWOEXACTCLIENTS. Ordinarylifecycle/save-recovery,H09actual
-admission/H10replication/H12presentation/G1 remainOPEN. LiveS2requiresG1. S3exactly
-motor/shaft/small+largecog/millstone cobble->gravel, nogearbox. B2deferred.
+Successor .local/worktrees/s1-session-checkpoint CLEAN codex/s1-session-checkpoint
+at exact FINALff69d5f. Prefixs1sc1 reserved; reservation/source hashes retained.
+No production source released YET; this private checkpoint precedes release.
+Exactly eight allowed paths relative crates/horizon-client/src:
+game/levels.rs, new game/levels/session_checkpoint.rs and session_checkpoint_tests.rs,
+game/lan.rs, game/world_loading.rs, game/world_loading/host_identity.rs, game.rs,
+game/counter_control.rs. Existing research capture/pristine guards and streaming
+wrapper signatures unchanged. No ordinary filled-slot startup/close callers.
 
-LATEST12:22: H11broad FINISHED369Python/1363client/0doc8m30/status0, logSHAdc50cdca...6dcc1a. Supplementfirstintegratedd674d914... camera/unloadedrefusals/actualmodelcelllightPASS butmeasurementbaselinecapturedAFTERdeduplicatedGPUlightwrite causedharness90stimeout; appcleanExit0, sourcestillclean70. ALL8/prefixarchivedvariation-upload-wrapper-attempt1 beforeONLYmovingbaselinebeforeglowstone; newdriverSHA4b643b8d...30e142 underTOOLreview. No newGPUrununtilclear. WriterControl designaa471a58 freshSolHighACCEPT; privatecheckpointbeforesource release. H09b1FINAL acceptance now recorded. No newownerblocker or permissions.
+Three disjoint author assignments prepared in.local/s1-session-checkpoint-coordination.md:
+provenance author five existing files; player author lan.rs; checkpoint author two new
+files. No standing team, no shared file writers. Root coordinates then exact eight-file
+source review, isolated serial qualification and different final review.
 
-LATEST12:26 H11a FINAL ACCEPT differentreviewer, allsource/targeted/live/supplement/broadgatesnofindings. Supplement15EACH/cleanexit/status0 integrated3462170d-5d1a-4c64-99af-250193785887 +inframe91857c3c-2f49-45bd-b4ce-702cd08cce65 actualcamera/light0->e/unloadedon-replaceatomicrefusals. Historicalmeasurementfailurepreservedtool-onlycorrectionreviewed; source70/25a8binaryunchanged. NewprivatecheckpointwillrecordFINAL. Closedwriter-testfeature author ACTIVE EXACT2files in.local/worktrees/native-writer-test-control branchcodex/native-writer-test-control at765, designaa471a58, privatecheckpoint361bcc8 alreadyPUSHED. Native-read/sourceeditsONLY/noexecution, rootALLCargo/testsserial. No ownerinputblocker. DoNOTinfer fullH11/H12/G1/network/performance.
+Actual identified native open -> genuine residency -> physical iron bootstrap ->empty
+persistent slot ->actual participant transfer ->more real native I/O ->checkpoint.
+Continuous borrow fence/save(false)/fence, complete checked physical copy/envelope,
+conservative publication uncertainty and consumed fresh headless Game+actual roster
+recovery. Region raw preflight first; this TestTerrain profile refuses saved proto;
+actual bodies projected/restored/verified. No fixed-nine/pristine-history gate.
+
+Ordinary lifecycle/coherent recovery, actual H09 admission/H10 replication/H12 committed
+presentation and G1 still OPEN. S1: onecounter/ownedslot/dimension/current schema, then
+dedicated+TWOexactclients. LiveS2 requiresG1. S3 exactlymotor/shaft/small+largecog/
+millstone cobble-to-gravel; nogearbox. B2/fullperformance deferred. No broad journal,
+global codec rewrite, save-compatibility change, relaxed conservation or reduced S1.
