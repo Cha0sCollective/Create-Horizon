@@ -1,6 +1,6 @@
 # H11a retained diagnostic results
 
-TARGETED AND LIVE PASS; broad and different final acceptance pending.
+FINAL ACCEPT: different independent native-read-only Sol High review accepts bounded H11a source, targeted, live, supplemental and broad gates; no findings.
 Manual client diagnostic only; H11/H12 combined machine presentation/G1 remain open.
 
 Clean LOCAL worktreebranchcodex/h11a-retained-diagnostic at
@@ -82,5 +82,8 @@ Filledslot+machine combinedGPUscene,automaticcommittedtracking,universalinframe
 mutationhistory/generalstaticsuppression,H12/dedicated+two-clients/G1/performance
 remainseparate. Nativeironfixture/staticmodel usesownedlocalresources, notoriginalart.
 
-Broadnativecleancheckout pr_ready --quick againstEA queuedsecondinserialchain50742,
-afterwire765'sbroad. Differentfinalreviewpending; no H11aFINAL acceptanceyet.
+Broadnativecleancheckout pr_ready --quick againstEA completed0 secondinserialchain50742,
+afterwire765'sbroad. Different final review FINAL ACCEPT for bounded H11a; full H11/H12/G1 remain open.
+
+SUPPLEMENT15EACH/cleanexit/status0: integrated3462170d-5d1a-4c64-99af-250193785887 andinframe91857c3c-2f49-45bd-b4ce-702cd08cce65. Actualcamera positionchanged+compactuploads, model-cellblocklight changed byrealglowstoneandnextcompactupdate, samehandle/geometry/allocations1; unloadedonallocatesnothingandunloadedreplacepreservesoldinstance. Rawlighting-control.json recordsbefore/after/sample/source. Historicald674d914firstsupplementharness90stimeoutwasbaselineAFTERdeduplicatedGPUwrite (actualuploads3), ALL8/prefixpreservedvariation-upload-wrapper-attempt1 beforemovingONLYbaselineBEFOREmutation. NativeindependenttoolsCLEAR newdriverSHA4b643b8dc4046047d64db4441d4d36f4a24fdf1a64655ce8b94687189730e142; alloldassertionskept. Initialfailure/cleanexitretained; freshrunsabovePASS.
+BROAD completed369Python/1363client/0doc8m30/status0 exact70fd6aa;fmt6s/clippy1m15/client5m52/doc31s,logSHAdc50cdca71faefbda1f889f4af3cd62f22e619bb37b06f4cca71e0c27d6dcc1a. Scopewarning1133+/3-1136changedlines,Cargo.lockunchanged,quickparityNOTRUN/content-theme-launcheruntouched/perflimits retained. Different final review closing follow-up FINAL ACCEPT after independently checking all receipts.
