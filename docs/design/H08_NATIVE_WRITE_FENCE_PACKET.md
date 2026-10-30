@@ -1,13 +1,15 @@
 # H08 bounded native producer-to-writer fence proof
 
-QUEUED FOR OWNER RESUME. Owner PAUSED after bootstrap qualification. Final bootstrap
-acceptance/private checkpoint does NOT release this packet while paused. Obtain a
-fresh owner resume and verify the accepted clean source pins before release.
+OWNER RESUMED October30. Root verifies accepted clean input
+c0ad9e09e1e2a641716d978600153fe142702ae7/tree d5f5e6a371c5520ef7db9134a401752b77e6d348,
+private pause checkpoint65e66a42c5ec18ab07e5761c97311d02e4ae5141 and unchanged audit
+source pins. Release ONLY four paths on a clean codex/h08-native-write-fence after
+this private resume checkpoint is pushed. Exact-source review precedes execution.
 
 DESIGN ACCEPTED, NOT RELEASED. Fresh independent read-only Sol High review accepts
 revised proposalSHA f770c99a0d3e9cd800892af71386272539bd773dad0d35eb19581561fad4e4e3,
 no remaining blocking findings. Exact snapshot .local/h08-native-write-fence-proposal2.md.
-Current host-counter bootstrap qualification is pending.
+Host-counter bootstrap has different FINAL acceptance at the clean input above.
 Original proposal427a54af was WITHHELD for pending worker-initialization and final
 post-writer validation gaps. This revised proposal addresses both; fresh review
 accepted the revision above. Original snapshot .local/h08-native-write-fence-proposal1.md retained.

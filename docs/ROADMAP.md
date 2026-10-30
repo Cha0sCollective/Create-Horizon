@@ -37,8 +37,8 @@ The six-path initial-World-bound, one-use host counter bootstrap at LOCALc0ad9e0
 has FINAL independent acceptance of focused/retained/feature/clean/fresh GUI/broad in
 `docs/reference/H08_HOST_COUNTER_BOOTSTRAP_RESULTS.md`. Legacy/reopen refuse.
 Next bounded native producer-to-writer fence design is accepted in
-`docs/design/H08_NATIVE_WRITE_FENCE_PACKET.md`; it is QUEUED during the owner-requested
-pause. No source release until fresh resume/private checkpoint/clean pin. Capture
+`docs/design/H08_NATIVE_WRITE_FENCE_PACKET.md`; owner resumed October30 and clean
+acceptedc0/source pins are verified. Four-path release follows private checkpoint. Capture
 refusal stays unchanged. No
 ordinary activation or used-streamer capture is
 accepted. General runtime/history/scalar support and G1 stay open.
