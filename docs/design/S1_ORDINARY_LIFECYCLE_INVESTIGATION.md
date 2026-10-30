@@ -128,3 +128,41 @@ The exact state transitions and namespace/layout need a concrete accepted design
 Zero-roster recovery cannot substitute for the later positive-owner or in-frame
 outcomes. The audit identifies technical design dependencies, no new owner policy
 decision, new portable save format or permission to reduce S1.
+
+## Failed-stop worker feasibility after authority precursor
+
+A bounded native read-only follow-up at authority candidate base872dac2 identifies
+this transition: Running -> StopRequested -> CheckpointAttempt -> either confirmed
+receipt/retire/Stopped or RetainedFailure; only explicit Retry returns to an attempt.
+The same actual worker must hold Game, LanHost/players, machine/slot, native session
+and UUID authority while frozen. No ordinary ticks, paused ticks, arbitrary Task
+closures, connection dispatch, guest kicks, lan_close or trial retirement in failure.
+One request causes one attempt; repeated close/polling must not retry automatically.
+Retry reserves an unused epoch including published and retained pending names.
+
+Current integrated::stop_integrated takes Serving and removes player ownership before
+saving; serve retires after every return, then drops Game. Integrated::stop consumes
+the handle; halt and Drop join unconditionally. Retaining only session_lock inside a
+returned error therefore retains no live owner. A next precursor needs typed status
+(Running/Stopping/RetainedFailure with attempt/publication/detail/Stopped), a separate
+typed retry/status channel and nonconsuming request/status/completed-join operations.
+No resume/discard feature is required. Confirmed-publication cleanup must be explicit;
+destructive legacy shutdown cannot decide its failure semantics implicitly.
+
+Ordinary integration additionally spans saving.rs's saving spinner/taken handle,
+remote::leave_server(reason), synchronous save_for_exit, about_to_wait error exits,
+loading failure and final event-loop return. Current pending_save blocks ordinary
+control polling and accepts quit only. A frozen session needs usable narrow status/
+retry access and preserved quit intent; it cannot enter title, mark saved_for_exit,
+acknowledge success or silently drop the handle. A detached worker or invisible Drop
+join is not an adequate process-level retained owner after a window loop ends.
+
+The next investigable packet is a dormant actual-Game managed-stop worker and
+nonconsuming handle, before ordinary UI callers. Actual native resource tests must
+show both publication classes, unchanged complete ownership while frozen, explicit
+retry and release only after receipt. UI/process-exit routing, transport queue/liveness
+handling and ordinary startup remain subsequent design work. This is feasibility,
+not accepted implementation scope or normal lifecycle evidence. Forced termination,
+panic and power loss cannot retain live memory; coherent recovery from the last
+complete archive is the separate required outcome. No new forced-discard policy or
+owner decision was identified for the bounded precursor.

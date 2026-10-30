@@ -38,9 +38,26 @@ Sol High review and checkpoint its acceptance before releasing source changes.
 Authority precursor DESIGN ACCEPTED at exact6f98cc8d; see
 `docs/design/S1_SESSION_AUTHORITY_PACKET.md`. Worktree
 `.local/worktrees/s1-session-authority`, branch codex/s1-session-authority,
-clean base872dac2. Release only the five scoped existing/new paths after this private
-checkpoint. Root implements; independent exact-source review before execution.
+base872dac2, exactly five scoped paths dirty. Private design checkpoint1e3f026
+preceded source release. Root implementation is independently SOURCE CLEAR at
+`.local/s1sa1-source-sha256.json`; authority module20333e3c, four other hashes unchanged.
+P2 linked authority-target preflight ordering was corrected before execution; all
+five sources and artifacts were preserved under s1sa1-attempt2-linked-target-review.
+Proof tools independently TOOLCLEAR. Validation57288 FINISHED0: fmt/three feature lints/public-tree PASS.
+Debug test build72866 FINISHED0. Frozen debug bin9c374df9 under
+/home/arbiter/.cache/create-horizon/bin/s1sa1-tests-sa6g_e7t, library15ef8e0a.
+Full reviewed test runner70650 ACTIVE, SERIAL; no other Cargo/test/game process.
+Ordinary199 PASS; resource0..10 PASS as last observed. Full suite NOT complete.
+Broad tool3405d5ea independently TOOLCLEAR; execute only after all focused checks
+and clean engine commit. Optimized TYPECHECK still pending.
+Tools and exact source remain frozen at reviewed hashes.
+Frozen expected coverage:199 ordinary,18 checkpoint resource,12 legacy resource.
 No ordinary caller or failed-close worker retention in this precursor. Keep filled-item ingress disabled.
+Next dormant stop-worker design independently ACCEPTED at exact000d1599; see
+`docs/design/S1_MANAGED_STOP_WORKER_PROPOSAL.md`. Its FOUR source paths are NOT
+released until authority final acceptance/clean commit/private checkpoint. No new
+owner policy decision. Avoid bare JoinHandle unwind: accepted private fatal guard
+requires separate actual abort proof; ordinary failures retain for explicit retry.
 The next design must address one authority per trusted WorldUUID across recovery
 copies, authoritative archive reopen, retained live ownership on failed/uncertain
 publication, real positive-owner staging, and the separate in-frame owner path.
