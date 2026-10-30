@@ -390,3 +390,30 @@ before Ready and outside a stop attempt. A successful STOP receipt alone trigger
 receipt-only teardown; the earlier setup baseline does not close its new session.
 This makes the finite failure/retry cases coherent without a second live Game or
 releasing/reconstructing any current owner.
+
+## Startup route clarification
+
+The concrete new-session factory knows its namespace, new world and archive roots.
+Preflight their complete pairwise separation and all existing path components BEFORE
+any native/authority lock acquisition or new-world mutation. Do not rely on
+WorldRequest::check_new_world alone for archive separation: that existing precursor
+entry knows only namespace and world, while its trusted configuration precondition
+also requires the archive to be elsewhere. A misselected namespace inside an existing
+archive must not add authority keys to that archive. The managed worker must seal
+this configuration before starting the new Game.
+
+This packet starts a genuinely new identity only: require an absent new-world root
+with a checked existing real parent, an existing real EMPTY archive root and the
+existing real namespace root, all nonoverlapping and without linked/reparse path
+components. No cleanup or reuse of prior failed roots. After this read-only route
+check, existing managed preparation validates/acquires its native and UUID locks.
+Create the pre-Ready baseline in that same new archive after actual setup. Existing
+archive recovery is not a startup mode for this stop-worker precursor. Add a focused
+wrong-root regression that leaves an existing archive's names and bytes unchanged.
+Implement this bounded factory preflight in managed_stop.rs; the FOUR source paths
+stay unchanged and authority acquisition semantics are not modified.
+
+DELTA DESIGN ACCEPTED by the same independent read-only reviewer at exact input
+SHA2561bcefe0228665d8d845fcf34a9c163cac22a0b9d96d4acd9d720176d377e0139;
+snapshot .local/s1ms1-startup-route-clarification.md. This does not release source
+or change the current authority packet's already reviewed implementation.

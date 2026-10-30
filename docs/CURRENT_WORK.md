@@ -1,86 +1,88 @@
 # Current work
 
 Owner: continue S1 with periodic updates until a genuine blocker or required input.
-Earlier cutoff and pauses are superseded. Coordinator implements directly; bounded
-useful delegation only. Root serializes all Cargo, tests and game processes.
-Prism, playable saves, reference snapshots, global Java and R01 remain unchanged.
+Earlier cutoff/pauses are superseded. No owner input pending. Coordinator implements;
+useful bounded delegation only, no standing team. Root alone runs SERIAL Cargo/tests/
+games and commits. Keep updates roughly each minute; continue after milestones.
+Prism/playable data/accounts, references, global Java and R01 remain unchanged.
 
-## Completed checkpoint foundation
+## Completed authority precursor
 
-Local engine worktree `.local/worktrees/s1-session-checkpoint`, branch
-`codex/s1-session-checkpoint`, clean commit
-`872dac2da765f0b290bfcfe13502f7d97724be1f`, tree
-`029393f94f254150052873597d34dd28f7b6423e`, parent
-`ff69d5fcb043500f315fd2e2452add9320ec415a`.
-Different fresh independent Sol High final review: FINAL ACCEPT, no findings.
-Reviewed results input SHA256
-`98a46d5b07605703f8d82a37cd5c68404c09f2a07707c09df82e6cd96ffe4aea`;
-subsequent results header records acceptance rather than a new test execution.
-Full authored evidence: `docs/reference/S1_SESSION_CHECKPOINT_RESULTS.md`.
+Worktree .local/worktrees/s1-session-authority, branch codex/s1-session-authority,
+CLEAN LOCAL938859881792438b39e5f597eb331a829e266199,
+tree3ae121f3df5320c7eb8e63dd900aa9fac851be60, parent872dac2;5files/740insertions.
+NormalhookPASS. Different independent s1_authority_final_review FINAL ACCEPT at
+reviewed results input8e43de41083715bef9e870c8ddfedb96ca8136d98b919098db1babc5485a3fe3.
+Full authored evidence: docs/reference/S1_SESSION_AUTHORITY_RESULTS.md.
 
-All qualification is complete; no Cargo/test/game process remains active.
-193 ordinary +16 new resource +12 retained cases passed across disclosed runs,
-not one successful full invocation. Optimized build is TYPECHECK ONLY.
-Clean broad:369 Python,1375 client,0 doc failures; general parity omitted by quick
-mode. Separate sculk:435 scenarios/55725 requested ticks per CLI configuration;
-both use the same IntegratedServer component, not distinct in-frame gameplay.
-Named decay unit covers cooldown200/initialized12000 boundary, not full simulation.
-Ten native raw source hashes remain pinned; four CRLF files differ from committed
-Linux bytes only by CRLF-to-LF conversion. Preserve that disclosure and all attempts.
-Old precommit source guards expect ff69 and MUST NOT be executed on committed872.
-Raw evidence stays ignored under `.local/s1sc1*`; no runtime artifacts enter Git.
+ALL checks complete; no Cargo/test/game/Java/parity process remains active.
+229unique/31groups =199ordinary+18checkpointresource+12legacy, SPLIT qualification.
+Qualifiedreceipt27cae77b; reusedoldbin9c374df9/test4199 for199+resource0..16;
+firstnew17abortedstackoverflow before sourceworld. Only newfixture heap-refactored,
+production4unchanged; corrected17PASS83.66s and12legacyPASS currentbinf2c2e214/test72c.
+Old inheritedstack unrecorded (no defaultstackclaim), currentrunner removesRUST_MIN_STACK.
+Feature/fmt/publictree49127PASS; optimized43244 TYPECHECKONLY; broad22486PASS exact938:
+369Python/1375client/0docfailures/Cargo.lockunchanged. Generalparity omitted--quick,
+740sizeadvisory notpublicPRapproval. Broadlog409a350b, comparison591b3f8c before=after.
+Two rawCRLFfiles(world_loading607,hostidentity836) differ ONLY CRLF->LF fromGit/Linux;
+other3rawidentical. Immutable rawmanifest .local/s1sa1-source-sha256.json.
+Allfive+prefix preservedbeforecorrections (attempt1..5), failedscratch persistent.
+Old s1sa1 sourceguard/build/test/validate/fast scripts expectdirtybase872 and MUSTNOT
+execute atcommitted938. Raw evidence stays ignored; no engine publication.
 
-## Active next work
+## Next accepted source packet
 
-Develop the bounded S1 ordinary-session authority/lifetime design from
-`docs/design/S1_ORDINARY_LIFECYCLE_INVESTIGATION.md`, then obtain a fresh independent
-Sol High review and checkpoint its acceptance before releasing source changes.
-Authority precursor DESIGN ACCEPTED at exact6f98cc8d; see
-`docs/design/S1_SESSION_AUTHORITY_PACKET.md`. Worktree
-`.local/worktrees/s1-session-authority`, branch codex/s1-session-authority,
-base872dac2, exactly five scoped paths dirty. Private design checkpoint1e3f026
-preceded source release. Root implementation is independently SOURCE CLEAR at
-`.local/s1sa1-source-sha256.json`; authority module20333e3c, four other hashes unchanged.
-P2 linked authority-target preflight ordering was corrected before execution; all
-five sources and artifacts were preserved under s1sa1-attempt2-linked-target-review.
-Proof tools independently TOOLCLEAR. Validation57288 FINISHED0: fmt/three feature lints/public-tree PASS.
-Debug test build72866 FINISHED0. Frozen debug bin9c374df9 under
-/home/arbiter/.cache/create-horizon/bin/s1sa1-tests-sa6g_e7t, library15ef8e0a.
-Full reviewed test runner70650 ACTIVE, SERIAL; no other Cargo/test/game process.
-Ordinary199 PASS; resource0..10 PASS as last observed. Full suite NOT complete.
-Broad tool3405d5ea independently TOOLCLEAR; execute only after all focused checks
-and clean engine commit. Optimized TYPECHECK still pending.
-Tools and exact source remain frozen at reviewed hashes.
-Frozen expected coverage:199 ordinary,18 checkpoint resource,12 legacy resource.
-No ordinary caller or failed-close worker retention in this precursor. Keep filled-item ingress disabled.
-Next dormant stop-worker design independently ACCEPTED at exact000d1599; see
-`docs/design/S1_MANAGED_STOP_WORKER_PROPOSAL.md`. Its FOUR source paths are NOT
-released until authority final acceptance/clean commit/private checkpoint. No new
-owner policy decision. Avoid bare JoinHandle unwind: accepted private fatal guard
-requires separate actual abort proof; ordinary failures retain for explicit retry.
-The next design must address one authority per trusted WorldUUID across recovery
-copies, authoritative archive reopen, retained live ownership on failed/uncertain
-publication, real positive-owner staging, and the separate in-frame owner path.
-Split implementation only at concrete useful boundaries; do not reduce S1.
+After this private checkpoint, prepare isolated .local/worktrees/s1-managed-stop,
+branch codex/s1-managed-stop based EXACTLY final9388598. Read its upstreamAGENTS,
+CONTRIBUTING and copiedignored AGENTS.override; verify clean branch/base before edits.
+Accepted docs/design/S1_MANAGED_STOP_WORKER_PROPOSAL.md: exactoriginal000d1599 and
+startup-route delta1bcefe02 (snapshot .local/s1ms1-startup-route-clarification.md).
+Initial80aec draftWITHHELD forpanicdetachingworker, resolvedbyprivatefatalguard;
+startupfactorymustpreflight ALLroots beforeanymutation, no archive/namespace overlap.
 
-Reviewers are procedurally read-only in a write-capable runtime: native PowerShell,
-Get-Content, rg, Git reads, hashes and JSON/text inspection only. No WSL, scripts,
-imports, Cargo/tests/fmt, Python/Java, writes, network, commits, escalation or delegation.
-Authors edit assigned native source only. Root alone executes validation and commits.
-Exact-source independent review precedes execution; a different final reviewer checks
-results. Preserve all scoped sources and packet artifacts before each correction.
+Source release FOUR paths only, after privatecheckpoint:
+1. crates/horizon-client/src/game/integrated.rs (moduledeclaration/necessaryfactoryseam).
+2. new game/integrated/managed_stop.rs (bounded supervisor/worker/types).
+3. new game/integrated/managed_stop_tests.rs (focused+actualresource proofs).
+4. game/levels/session_checkpoint.rs (strictnextunusedepoch inclpending/capacity;
+   narrowcfg(test) Copied/Promoted phasefaultadapter, no ordinaryprimitive weakening).
 
-Private repo branch `codex/h02-smoke-h03-notes`; each push requires fresh GitHub
-PRIVATE metadata and exact origin `https://github.com/Cha0sCollective/Create-Horizon.git`.
-Engine stays LOCAL ONLY, normal hooks, no public push/PR/merge/release.
+Dormant actualserverGame/newidentifiedTestTerrain/closednativehost/zero roster/empty
+persistent slot. Same Game/host/counter/slot/native+UUID leases survive either
+NotPublished/Uncertain until explicit typedretry. No ordinaryticks/tasks/packetdispatch
+whilefrozen. Onecommand/oneattempt, unusedepochs preservepending/promoted images.
+Synchronous supervisor ownsworker independently ofdroppable controls. Private
+abort-on-unwind guard preventsunwinding/earlyreturn detachment; no hiddenDropjoin,
+ordinarydiscard or automaticretry. Separately root-orchestrated actualSIGABRT child
+proof; no Rust nestedcompiler/Java/Python/test subprocess. SuccessfulSTOPreceipt only
+permitsretirement/release; baselinecapture isbeforeReady, not aSTOPreceipt.
 
-## Remaining stage gates
+Use concrete factory/finitetestdriver and immutableobservations specified inproposal.
+Allsourceexactreview by freshindependentSolHigh beforeexecution; root formats/checks.
+Different finalreview. No ordinaryUI/startup/positive-roster/in-frame/filledingress
+claim. Those remain required S1 outcomes. No new ownerpolicydecision identified.
 
-S1/G1 OPEN: ordinary machine lifecycle/coherent recovery, live compatibility
-admission/replication and retained committed presentation, then integrated and
- dedicated with TWO exact clients, plus promised in-frame checks.
-Prior separately accepted components: H08 fenceea96036; H09a3ac2d4c;
-H09b.1 wire765dc8d; H11a manual diagnostic70fd6aa; writercontrolsff69d5f.
-Their data-only/manual coverage does not establish live ordinary activation.
-Live S2 requires G1. S3 remains exactly motor, shaft, small/large cogs and
-cobblestone-to-gravel millstone; no gearbox. Performance qualification deferred.
+## Operating and publication boundaries
+
+Reviewers procedurally READONLY in write-capable runtime: nativePowerShell/GetContent/
+rg/Git reads/hashes/JSONtext ONLY; no WSL/scripts/imports/Cargo/tests/fmt/Python/Java/
+writes/network/commits/escalation/delegation. Authors edit assignednativefiles ONLY;
+no WSL/scripts/Cargo/test/fmt/network/commits/escalation/delegation. Root ownsruntime.
+Before every correction preserve ALL scoped sources and ALL packet-prefix artifacts,
+including failed worlds when available. No generalorchestration/artifact framework.
+Privatebranch codex/h02-smoke-h03-notes. Everypush: freshGitHubPRIVATE metadata and
+exactorigin https://github.com/Cha0sCollective/Create-Horizon.git. EngineLOCALONLY,
+normalhooks/footer, no push/PR/merge/release. No raw runtime data or memory writes.
+
+## Prior gates
+
+Checkpoint872dac2 FINAL: see S1_SESSION_CHECKPOINT_RESULTS.md for193/16/12 split,
+fastTYPECHECK,369/1375/0 broad,435sculk scenarios/55725ticks perCLIconfig SAMEcomponent,
+unit-only12000boundary, CRLF/retainedfailure limits. No in-framegameplay/clientsclaim.
+OtherseparateFINAL components: H08fenceea96036; H09a3ac2d4c; H09b.1wire765dc8d;
+H11a manualdiagnostic70fd6aa; writercontrolsff69d5f. Preserve each component's limits.
+S1/G1 OPEN: ordinary lifecycle/recovery, real positive-roster/in-frame adapters,
+authorized interactions/retirement, admission/replication and committedpresentation;
+then integrated+dedicated with TWO exactclients and promised in-framechecks.
+LiveS2 requiresG1. S3 exactlymotor/shaft/small+largecogs/millstone cobble->gravel,
+no gearbox; fullperformance deferred. No generaljournal/globalcodec/reducedS1.

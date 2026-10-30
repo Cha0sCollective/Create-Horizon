@@ -25,12 +25,18 @@ The native session checkpoint foundation has FINAL local acceptance at engine
 It uses real native streaming/save history and participant/counter/slot owners,
 but has no ordinary startup, close or filled-slot caller. It does not close G1.
 
-The next bounded work is ordinary authority/lifetime design, informed by
-`docs/design/S1_ORDINARY_LIFECYCLE_INVESTIGATION.md`. Exact implementation scope
-needs independent design review before source release. Current ownership gaps
-include concurrent recovered copies, retained failed-close lifetime, real positive
-roster staging and a separate in-frame local-owner adapter. Filled ingress stays
-disabled until the corresponding release paths preserve ownership.
+The trusted managed-authority precursor also has FINAL local acceptance at9388598;
+see `docs/reference/S1_SESSION_AUTHORITY_RESULTS.md` for229 split-case coverage,
+feature/optimized/broad evidence and retained failure/EOL limits. It excludes
+concurrent cooperating managed copies using one trusted namespace; ordinary
+startup, failed-close retention and connected-player recovery remain open.
+
+The next bounded source packet is the accepted dormant managed-stop worker in
+`docs/design/S1_MANAGED_STOP_WORKER_PROPOSAL.md`: actual Game/closed native host,
+zero roster/empty slot, explicit status/retry and retained owners on either
+publication-error class, with a synchronous supervisor and explicit fatal-unwind
+guard. Four source paths only, based on final9388598 after its private checkpoint.
+Ordinary UI/positive-player/in-frame routing and filled ingress remain separate.
 Prerequisites now have separate local final acceptance: producer/writer fence
 (ea96036), H09a compatibility snapshot (3ac2d4c), H09b.1 frozen inputs/wire data
 (765dc8d), H11a retained diagnostic (70fd6aa), and closed debug writer controls
