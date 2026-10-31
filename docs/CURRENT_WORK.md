@@ -23,7 +23,7 @@ Engine bridge worktree `.local/worktrees/s1-managed-connected`, branch
 `codex/s1-managed-connected`, CLEAN7a08. All dirty-parent s1cw1 guard/build/validate/
 test/exception/fast scripts MUST NOT run atcommitted7a08. Likewise old s1cr1 tools
 must not run atcommittedc95. No active Cargo/test/game process after bridge checks.
-Private last pushed WIPe95dc29; FINAL checkpoint is being committed/pushed now.
+Private FINAL checkpoint1088968 is verified private and pushed; new source prerequisites are met.
 
 ## Next packet: concrete pollable application owner
 
@@ -39,7 +39,7 @@ First stage scope ONLY three engine paths under crates/horizon-client/src/:
 - game/integrated/managed_stop_tests.rs
 - game/integrated/managed_connected_tests.rs
 
-Worktree/branch planned `.local/worktrees/s1-managed-application-owner` /
+Active worktree/branch `.local/worktrees/s1-managed-application-owner` /
 `codex/s1-managed-application-owner`; prefixs1ao1. Verify actual clean base and
 preserve all three sources+ALLprefix artifacts before EVERY correction.
 Extract a private concrete pollable owner around existing NewClosed/Connected
@@ -85,3 +85,18 @@ Engine local only, normal native Windows Git hooks/attribution. Private branch
 `codex/h02-smoke-h03-notes`; every push fresh GitHub PRIVATE metadata and exact
 origin https://github.com/Cha0sCollective/Create-Horizon.git. No raw resources/worlds/
 evidence in Git; no memory writes.
+
+Private FINAL checkpoint1088968 pushed successfully; new owner worktree/branch
+created at exact7a08 and three scoped sources authored. Source manifest2b627334,
+suitef31694dc independently SOURCE CLEAR; tool review is finishing. Root will run
+feature/format checks BEFORE building/running the fresh actual test suite, to catch
+compile/style issues before runtime. No current Cargo/test/game process.
+
+Current stage1 source2b627334 and suitef31694dc SOURCE/TOOL CLEAR. Validation94912
+PASSfmt/threefeatureClippies/publictree(e3dfb8a0); freshbuild28279running alone.
+No stage1 game result yet. Future safe window API audit is
+docs/design/S1_FROZEN_WINDOW_API_AUDIT.md (planning only; no new source authority).
+
+Current stage1 validation94912 and build28279 PASS. Full runtime62617 is running
+on frozen bina605c812, source2b627334. Ordinary/protocol completed; actual cases
+in progress. Different final reviewer has preflight clearance only, FINAL pending.
