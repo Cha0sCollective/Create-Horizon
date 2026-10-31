@@ -48,12 +48,19 @@ fails identically on the parent/current source. This baseline defect remains ope
 Gameplay/filled machine ingress, Creative, TCP, ordinary UI and live departure
 resolution remain separate S1 work.
 
-The active six-path managed connected-worker bridge follows independently accepted
-`docs/design/S1_MANAGED_CONNECTED_WORKER_BRIDGE_PROPOSAL.md`, pinned to finalc95.
-Exact source and tools have independent clearance; build/runtime/final review are
-pending in `docs/reference/S1_MANAGED_CONNECTED_WORKER_RESULTS.md`. It moves the
-existing recovery wholly onto an owned worker with one-shot client endpoints and
-typed close/retry; it does not activate ordinary UI or Running.
+The six-path managed connected-worker bridge is FINAL at local7a08dc2; see
+`docs/reference/S1_MANAGED_CONNECTED_WORKER_RESULTS.md`. It qualifies312 normal
+cases and two separate exceptions, feature/optimized compilation and explicitly
+calendar-conditioned broad369 Python/1375 client checks. Native Halloween fixture
+qualification remains unresolved. Actual recovery stays wholly on an owned worker
+with one-shot client endpoints and typed close/retry; ordinary UI and Running
+remain open.
+
+The next independently accepted design is
+`docs/design/S1_MANAGED_APPLICATION_HOLDER_PROPOSAL.md`: first extract the concrete
+pollable owner in three integrated-worker paths, then qualify an actual isolated
+frozen window with retained close/retry and signal intent. Each stage has its own
+source/evidence gate against the clean7a08 successor. This does not close G1.
 Prerequisites now have separate local final acceptance: producer/writer fence
 (ea96036), H09a compatibility snapshot (3ac2d4c), H09b.1 frozen inputs/wire data
 (765dc8d), H11a retained diagnostic (70fd6aa), and closed debug writer controls

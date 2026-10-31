@@ -404,3 +404,12 @@ preserved as .local/s1app1-proposal2.md. Nine-path scope and primitive-first/win
 second sequence accepted. The second-signal escape was resolved in design only;
 all bridge FINAL/clean-successor/private-checkpoint and per-stage source/evidence
 prerequisites remain. No source release or Running/rendering/G1 claim follows.
+
+Connected-worker prerequisite is now independently FINAL at clean local successor
+7a08dc25c0e3135e3a0e0a4eaae7c11af5e1d99e, source17432ff7, reviewed result44cfad2a.
+Pin this exact successor for the holder. First bounded stage is the pollable owner
+extraction in exactly managed_stop.rs, managed_stop_tests.rs and
+managed_connected_tests.rs under game/integrated, with meaningful direct actual
+worker/client ownership proof and unchanged synchronous wrapper regressions. The
+remaining application/window/signal paths stay outside this first source packet.
+Private FINAL evidence checkpoint must finish before source authoring starts.

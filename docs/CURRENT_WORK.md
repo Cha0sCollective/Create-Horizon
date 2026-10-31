@@ -1,86 +1,87 @@
 # Current work
 
-Owner: work until S1 is complete, with periodic updates. Earlier cutoff and pauses
-are superseded. Stop only for a genuine blocker or required owner decision.
-No public release, public engine push, S2 activation or gate reduction is authorized.
+Owner: work until S1 is complete; periodic updates; stop only for a genuine blocker
+or required owner input. Earlier pauses/cutoff are superseded. Packet gates do not
+end the task. No public release/push/PR/merge or S2 activation is authorized.
 
-## Accepted foundations
+## Accepted foundation and just-completed packet
 
-S0/G0 and bounded package/counter/reference foundations are accepted. Checkpoint
-872dac2, managed authority9388598, managed stop23e09dd and connected recovery
-c95ba7ec7ccdaba06e4a23cea5fdbb4e4ddeb076 are FINAL/local engine commits.
-Detailed current acceptance: docs/reference/S1_CONNECTED_RECOVERY_RESULTS.md;
-independent final input7c8af21f. Private evidence checkpoint30306db pushed to verified
-private Create-Horizon. Engine remains LOCAL ONLY.
+Local FINAL commits: checkpoint872dac2, authority9388598, managed stop23e09dd,
+connected recoveryc95ba7e, managed connected-worker bridge
+7a08dc25c0e3135e3a0e0a4eaae7c11af5e1d99e (tree90791f7e, soleparentc95).
+Bridge exact raw manifest17432ff7; reviewed authored result44cfad2a. See
+`docs/reference/S1_MANAGED_CONNECTED_WORKER_RESULTS.md` and `.local/s1cw1-final-review.json`.
+312 normal cases/8groups and two separate exceptions pass currentcandidatea63c;
+fmt/3featureClippies/publictree/optimizedTYPECHECK pass. Native broad fails the
+unchanged Halloween drowned fixture; fresh candidate/parent four-cell proof
+reproduces it. Separate NON-HALLOWEEN conditioned broad passes369Python/1375client.
+Native Halloween qualification remains UNRESOLVED. No optimized runtime/parity/
+broad default-stack claim. Raw/Git/Linux maps match except explicit CRLF-only
+lan.rs3965/oldtests420 normalization. All evidence/sources before corrections kept.
 
-Connected proof:328 normal cases (203 ordinary/103 protocol/9 transport/13 real-game),
-three additional old-wrapper resource regressions and four separate exception
-proofs; exceptions are not normal passing tests. Exact raw manifest1dffa36f.
-Broad clean check PASS369 Python+1478 client/protocol only under explicitly verified
-NON-HALLOWEEN child calendar. Native Oct31 drowned fixture fails identically on
-parent23/currentc95; reproduced four-cell baseline qualification remains unresolved.
-No source/global clock/global timezone changes. Seven source files raw=Git/Linux;
-protocol connection.rs differs only558 CRLF normalization. See result for limitations.
-All old dirty-parent s1cr1 guard/build/test scripts MUST NOT run at committedc95.
+Engine bridge worktree `.local/worktrees/s1-managed-connected`, branch
+`codex/s1-managed-connected`, CLEAN7a08. All dirty-parent s1cw1 guard/build/validate/
+test/exception/fast scripts MUST NOT run atcommitted7a08. Likewise old s1cr1 tools
+must not run atcommittedc95. No active Cargo/test/game process after bridge checks.
+Private last pushed WIPe95dc29; FINAL checkpoint is being committed/pushed now.
 
-## Active packet: managed connected worker bridge
+## Next packet: concrete pollable application owner
 
-Design docs/design/S1_MANAGED_CONNECTED_WORKER_BRIDGE_PROPOSAL.md independently
-DESIGN ACCEPT at exactinput026d3415869a27f7b1726f16b1724adac1d51cc1a6a0749cd680ab1e46432f42.
-All conditional prerequisites satisfied: connected FINAL, clean c95, private30306db.
-Successor pin c95ba7ec7ccdaba06e4a23cea5fdbb4e4ddeb076.
-Worktree .local/worktrees/s1-managed-connected; branchcodex/s1-managed-connected.
-Prefixs1cw1. Exact six scoped engine paths under crates/horizon-client/src/:
-game/integrated/managed_stop.rs, NEW game/integrated/managed_connected_tests.rs,
-game/lan.rs, game/lan/connected_recovery.rs, game/lan/connected_recovery_tests.rs,
-game/integrated/managed_stop_tests.rs.
+Design `docs/design/S1_MANAGED_APPLICATION_HOLDER_PROPOSAL.md` independently accepted
+at exact inputcb1f1496b9404120bd44f734cd015a91b5fa5fffa2bc1345ed8af12b0c156db9,
+frozen `.local/s1app1-proposal2.md`. Accepted primitive-first/window-second sequence.
+Current bridge FINAL/clean-successor prerequisites met; private FINAL checkpoint
+must finish before new source authoring. Exact successor pin7a08dc25c0e3135e3a0e0a4eaae7c11af5e1d99e.
 
-Bounded objective: existing fixed2-profile memory ReadyFrozen recovery wholly on
-owned managed worker; one-shot pipe offers to caller-thread real clients,
-coalesced bounded status, typed monotonic close/retry, actual native joins then
-receipt-only successful stop. Retain failed owners/leases, no Game/raw task escape,
-no drop cancellation/detach/hidden join. Separate fatal supervisor unwind and
-late-departure retained evidence. Preserve legacy closed-profile entry.
-NO Running/gameplay/counterstep/slot ingress/TCP/normal UI/singleowner/protocol/
-save schema/general framework edits. Ordinary outer UI/process holder is a later
-separate accepted packet. No packet milestone ends owner instruction to finish S1.
+First stage scope ONLY three engine paths under crates/horizon-client/src/:
 
-Root implements managed stop + serial validation. Bounded author s1cw_lan_author
-owns narrow LAN visibility/setter, then NEW actual connected worker tests only.
-All six sources+ALL prefix evidence preserved before EVERY correction. Fresh
-independent Sol High exact source review BEFORE compile/runtime; DIFFERENT final
-reviewer. Root alone formats/runs ALL Cargo/tests/games/commits SERIAL.
+- game/integrated/managed_stop.rs
+- game/integrated/managed_stop_tests.rs
+- game/integrated/managed_connected_tests.rs
+
+Worktree/branch planned `.local/worktrees/s1-managed-application-owner` /
+`codex/s1-managed-application-owner`; prefixs1ao1. Verify actual clean base and
+preserve all three sources+ALLprefix artifacts before EVERY correction.
+Extract a private concrete pollable owner around existing NewClosed/Connected
+starts; non-owning controls, one-shot endpoint offer, coalesced status, one terminal
+classification only after actual is_finished and explicit matching join/receipt.
+No Game/raw task/host/transport owner escapes. No Clone/cancel/discard/detach/hidden
+join. Preserve both synchronous wrappers and fatal unresolved discipline. Actual
+worker/two-client direct poll/early completion/one-shot completion proof plus
+unchanged closed/connected retry/refusal/exception regressions. No new headless CLI.
+Root implements production; delegate only a bounded useful test/review assignment.
+Fresh independent exact-source Sol High clearance BEFORE compile/runtime; DIFFERENT
+final evidence reviewer. Root runs ALL Cargo/tests/games/commits SERIAL.
+
+The second window stage remains OUTSIDE this first packet. Overall accepted
+nine-path maximum includes a narrow horizon-threads retained repeated-signal policy;
+default legacy second-signal hard exit must remain separate. Real frozen window,
+input suppression, actual close/retry/signal/failure evidence require that later
+bounded source/evidence gate. No Running/world-rendering/animation/G1 claim.
 
 ## Remaining S1
 
-G1 OPEN: ordinary machine placement/removal/generations/unload/reload/close,
+G1 OPEN: ordinary machine placement/removal/generation/unload/reload/close;
 authorized player-slot transactions/replay/reach/permissions/revision/retirement/
-departure custody, persistent ordinary startup/status/retry, Creative/Running,
-live package admission and initial/delta/gap/resync/untracking/reconnect replication,
-committed retained animation, combined integrated+dedicated(two exactclients) and
-promised in-frame qualification. Then explicit G1 assessment. No reduced S1.
-Future audits S1_CREATIVE_ATTRIBUTES_AUDIT.md and S1_LIVE_ADMISSION_SEAM_AUDIT.md
-are evidence/planning inputs, not accepted source designs. No unavoidable owner
-policy question identified. Live S2 requires G1. S3 exact motor/shaft/small+largecogs/
-millstone cobble-to-gravel, no gearbox. R01 matches pinned Java item loss.
+departure custody; persistent ordinary startup/status/retry; Creative/Running;
+live package admission and snapshot/delta/gap/resync/untracking/reconnect;
+committed retained animation; combined integrated/dedicated(two exact clients) and
+promised in-frame qualification; explicit G1 assessment. No reduced S1.
+Creative attributes and live-admission audits remain planning inputs, not accepted
+source designs. No unavoidable owner-policy question. Live S2 requires G1. S3 exact
+motor/shaft/small+large cogs/millstone cobble-to-gravel; no gearbox. R01 matches Java
+full-output item loss.
 
 ## Operating boundaries
 
-Reviewer procedural native READONLY in write-capable runtime: PS/GetContent/rg/
-Gitreads/hashes/text only; no WSL/scripts/import execution/runtime/writes/network/
-escalation/delegation. Authors assigned native source only, no runtime/fmt/Gitwrites.
-No standing team. Preserve Prism/playable saves/accounts/references/global Java.
-All runtime children isolated cwd/home/data/config/cache/temp/game/launcher/trash/
-clipboard/desktop, clear Git/session/RUST_MIN_STACK/fatal flags. Python -I and
-explicit optimize rejection for proof tools. No nested compiler/Java/test processes
-inside Rust tests. Engine normal hooks, no public pushes/PR/merge/release.
-Private branchcodex/h02-smoke-h03-notes; every push fresh GitHub PRIVATE metadata
-and exact origin https://github.com/Cha0sCollective/Create-Horizon.git.
-No memory writes. Keep raw runtime worlds/resources/evidence ignored.
-
-Currentbridgebuild39445PASS; positive15450complete0,312normalcases/8groups.
-Receipt92623a9d. Bothseparateexceptionsverified/reaped; validation63621running, fast/broad/final
-stillpending. Exactsource3d64unchanged. FutureapplicationholderdesignACCEPT at
-cb1f1496b9404120bd44f734cd015a91b5fa5fffa2bc1345ed8af12b0c156db9,
-frozen.local/s1app1-proposal2.md; 9paths inclretainedsignalpolicy, conditionalon
-currentFINAL/cleancommit/privatecheckpoint. No futuresourceyet.
+Reviewers procedural native READONLY in write-capable runtime: PS/GetContent/rg/
+Git reads/hash/text only; no WSL/scripts/import execution/runtime/writes/network/
+escalation/delegation. Authors assigned native writes only, no runtime/fmt/Git writes.
+No standing team. All runtime children isolated cwd/home/data/config/cache/temp/
+game/launcher/trash/clipboard/desktop; clear Git/session/RUST_MIN_STACK/fatal flags.
+Proof Python -I and explicit optimize rejection. Rust tests never spawn compiler/
+Java/test children. Preserve Prism/playables/accounts/references/global Java.
+Engine local only, normal native Windows Git hooks/attribution. Private branch
+`codex/h02-smoke-h03-notes`; every push fresh GitHub PRIVATE metadata and exact
+origin https://github.com/Cha0sCollective/Create-Horizon.git. No raw resources/worlds/
+evidence in Git; no memory writes.
