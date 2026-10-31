@@ -70,6 +70,15 @@ actual nested-X11 minimization. Explicit NON-HALLOWEEN broad passes369Python/
 final review accepts bounded close/retry/signal ownership, not ordinary gameplay,
 committed machine animation or G1. Next conceptual retirement/readmission design
 has fresh exact-pin/API acceptance, gated on its private evidence checkpoint.
+Persistent retirement/readmission is now FINAL at localab23989; see
+`docs/reference/S1_PERSISTENT_RETIREMENT_RESULTS.md`.54focused cases/8groups,
+three-feature test-target lint and explicit non-Halloween369Python/1375Rust broad
+checks pass. Rich delivery keeps the genuine dropped owner; empty delivery
+reconciles and genuinely saves/recovers/recaptures higher independent heads.
+Dropped-item checkpoint custody and ordinary activation remain open. The next
+eight-path dropped-item design has conditional independent acceptance and fresh
+ab pin/seam recheck. Separate login negotiation is source-cleared and compiled,
+with real TCP qualification still pending; configuration/admission remain closed.
 Prerequisites now have separate local final acceptance: producer/writer fence
 (ea96036), H09a compatibility snapshot (3ac2d4c), H09b.1 frozen inputs/wire data
 (765dc8d), H11a retained diagnostic (70fd6aa), and closed debug writer controls
