@@ -18,26 +18,26 @@ One scoped file differs raw/GitLinux only182CRLF conversions; beforeafterrecorde
 Earlier localFINALs: frozenwindow173ad2a (source01e66234/input1e649ee9),
 pollableownera56e013, workerbridge7a08dc2, connectedrecoveryc95ba7e, managedstop23e09dd,
 authority9388598, checkpoint872dac2. Their resultdocs retain scope/limits.
-Private priorcheckpointded1646 pushedverifiedPRIVATE. Commit/push this FINAL
-checkpoint before dropped-item source authoring. Engine stays unpublished.
+Private FINAL checkpoint6a569bc and subsequent D9 design checkpoint6fc3707 are
+pushed after fresh private-visibility checks. Engine stays unpublished.
 
 ## Parallel login-negotiation component
 
-Worktree .local/worktrees/s1-login-negotiation, branchcodex/s1-login-negotiation,
-base173. Exact8path proposal37dc504c independently ACCEPTconcept; privateded1646
-preceded source. Author s1ln_source_author DONE; initialall8/absencemarkers/prefix
-preservedattempt0, candidatebeforeRootfmtattempt1. Freshindependent
-s1ln_source_review SOURCECLEAR manifestb8bd74977a709175544180b077ee7f27c4ab39a1398dadc7ab19487b437a90ca.
-Qualificationtool4f6042f0 BUILD/TEST/CHECKS TOOLCLEAR, currentBUILDverifiedPASS.
-ALL134focusedPASS (17negotiation/5defaultnet/5frozencapture/107protocol), receiptc5cfd430.
-FullmodsONtestclippyPASS; pairedNO-runtimecheckFAILEDmissingdeadlineAPIsdespite
-actualunconditionalmethods. Crossworktreecacheartifactfilename reuseobserved;
-exactfailedexternnotproven. Cachefingerprint/.d evidencepreserved363files and
-ALL8+prefixattempt3. Noenginefix; independentlyCLEARisolateddriver84c4bb9a
-sets dedicatedtarget-s1ln1, mustfreshBUILD/TEST/CHECKS afteroldoutputs labeled.
-No passingNO-runtimeclaim yet. Fullprefix selects17cases,8mandatorybynames.
-No paired configuration/world admission/external_network relaxation.
-Prefixs1ln1 snapshots0–3. Root alone serial runtime/Git across branches.
+Clean LOCAL5b41f44fe83b53fc6b7c4dfe550cc0bc1aca5b83, tree71e9accb,
+soleparent173. Eight-path source manifestb8bd7497 has independent SOURCE CLEAR.
+Dedicated physical-worktree target driver84c4bb9a passes fresh build, all134
+focused cases (17negotiation/5defaultnet/5frozencapture/107protocol), formatting,
+allthreeclientfeature test-target Clippy, protocol test Clippy and publictree.
+Isolated receipts: build9e7c95b1, tests3a6e0597, checksc48cf8f3. Prior shared-target
+no-runtime failure is preserved; identical artifact filename reuse was observed,
+but exact failed --extern selection was not captured. No networking code change.
+Separate CI-checkout target driver eab92bdb is independently TOOL CLEAR and broad
+qualification PASSES exactclean5b41:369Python/1486Rust/doc0 with explicitNON-HALLOWEEN
+condition/nativeHalloweenunresolved. Different s1ln_final_review FINALACCEPTS
+input09439e1c/summary35a52ae0/all27receiptshashes.
+See FINAL S1_LOGIN_NEGOTIATION_RESULTS.md. Required agreement deliberately ends in
+Disconnect before registry/Guest/world admission; full configuration stays closed.
+All dirty-parent login build/test/check tools retired after5b41.
 
 ## Next bounded persistence component
 
@@ -62,7 +62,7 @@ Reviewed DELAY AMENDMENT S1_DROPPED_ITEM_CHECKPOINT_DELAY_AMENDMENT.md exact
 e62f2036b1ddec1df6f14a8c4ae9330659d6f7ef0aaf1e20dc774dd91d0bf4a2 addsNINTH
 streaming.rs only. Independent s1_drop_design_review ACCEPT; privatecheckpoint
 mustcomplete before9thfileauthoring. RootfrozeauthorandpreservedALL9/current8+
-untouchedStreamingbaseline+ALLprefixattempt1. Authorresumes8onlyuntilcheckpointACK.
+untouchedStreamingbaseline+ALLprefixattempt1. Private6fc3707 preceded ninth-file authoring; all9 are now authored.
 Closednative-writer-test-control+debug-onlyactualGeneratelease onecolumngate;
 no provider/origin/arrival replacement. ReceiptDrop+StreamingDrop releasebefore
 drain/join, Arc-matchedcleanup/noqueueLockwait, actualentereddeadline/refusal and
@@ -83,11 +83,25 @@ Initial7pathproposal33b966ab blockedprivateportalowner; preserveds1di1-proposal0
 Sourceauthority afteramendmentcheckpoint is ONLYthis9pathcomponent; fresh exactsource
 review before compilation/runtime and differentFINAL remain required.
 
-Next fullconfiguration/admission proposal e95487ef revisedafterindependentBLOCK
-onouterteardown: C0retainedordinaryclose BEFOREC1fullactivation;26pathunion,
-polledexistingcontrolsurface+ownedwriterretry+concreteclose/return/lockgates.
-Independentre-reviewACTIVE, NOsourceauthority. Original87f/intermediate3a6b
-preserved s1pc1-proposal0/1. Keepfullstrictconfig/livehandoff andactualTCP/Pipe.
+D source747950e2 (exact9) has fresh independent SOURCE CLEAR. First cold build
+failed only a JavaString Display test diagnostic; ALL9+ALLprefix preserved
+attempt3 before sole Debug-format correction, then attempt4 before receipt updates.
+Driver19390c7a remains TOOL CLEAR, expected tests6b154385 (13actual/8pure/2stream).
+Prior build outputs retained -source3e. Corrected actualopt0 debug build nowPASS; focusedruntime/checks pending serial
+Root execution. No D runtime/FINAL claim.
+
+Fullconfiguration/admission proposal95484fa4 has independent planning-only
+acceptance, not 46-path source authority. Bounded C0a/b/c/d/e prerequisites must
+individually qualify before composite retained ordinary close and C1 activation.
+Preparation/producer C0a3ef2bed2 and FIRST nativewriter C0b8ecc6f48 have independent
+conditional design acceptance; writerFINAL mustprecede terminalpreparationclose.
+Registeredcounter binding3ec3363a also has conditional acceptance: explicitnewclosed
+counter/slot kinds preserve actualphysicalprofile whiledormant,7pathbudget, real
+materializedalias active/dormant recovery; no ordinaryplacement/Running caller.
+Local B/D composition167a3f09 has conditional conceptual acceptance: exact17pathunion,
+no semanticchanges, freshcomposedruntime+differentFINAL. ALL these sourceassignments
+require bothcomponentFINALs, acceptedcleancombinedpin/privatecheckpoint/APIrefresh.
+No standing team or ordinary activation implied.
 
 ## Remaining S1 and constraints
 

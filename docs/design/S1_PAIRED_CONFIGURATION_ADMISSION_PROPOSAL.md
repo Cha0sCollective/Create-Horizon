@@ -13,8 +13,13 @@ its private checkpoint is pending. These abbreviated research identifiers are
 not an implementation pin. Require login packet B's actual accepted clean exact
 FINAL pin, private durable checkpoint, a fresh full seam/constructor inventory,
 and independent Sol High acceptance of this exact design before source work.
-Record any retirement integration and exact parent/tree explicitly. Freeze and
-independently review source before runtime; obtain a DIFFERENT FINAL afterward.
+Record retirement and dropped-custody integration and exact parent/tree explicitly.
+The active dropped-custody D packet is NOT FINAL at this revision; its nine-source
+candidate includes streaming/native-record work. C0 must use a freshly accepted
+clean combined successor accounting for those exact changes, not this older B
+streaming source or an unreviewed overlay. Its coherent profile requires the
+accepted D-supported item ownership profile. Freeze/review source before runtime;
+obtain a DIFFERENT FINAL afterward. No active B/D worktree is source authority here.
 
 This packet replaces the paired startup refusal ONLY for a complete retained-input
 configuration/admission route. Real selected paired packages must join through
@@ -52,6 +57,10 @@ Source locations are candidate-relative and must be refreshed at the clean pin.
 | game/integrated.rs:614 publish; game/lan.rs:2446 lan_start | Replace blanket refusal only when the existing retained configured policy is installed and matches actual owners. |
 | game.rs:15467 early server/dedicated guard | Select the reviewed pending paired launch route BEFORE resource materialization; do not merely delete this guard or call a successful data comparison permission. |
 | game/lan/connected_recovery.rs:405-414 | Existing staged memory recovery injects Lan::start_staged through the detached builder; propagate the same captured configured policy here. |
+| streaming.rs:1989 native_write_fence_until; :2562 Drop | Fence waits/sleeps and permits Light/Mesh; actual worker stop/join currently happens in Drop. Neither is a close poll service. |
+| game/world_loading.rs:113 prepare; :330 cancel | Partial preparation owns locks/Streaming/SaveDir before returning; cancel creates a disposal thread which drops the prepared result. |
+| game/world_loading/host_identity.rs:391 finish | Takes SessionLock by value before a fallible identity write; paired partial-failure ownership needs a borrowed retained-lock variant. |
+| game/levels.rs:207 swap_level | Clears native_checkpoint_origin. Close must borrow parked owners directly instead of swapping dimensions and destroying coherent eligibility. |
 
 Add a narrow package preflight method in mod_packages.rs, for example
 preflight_paired_network_launch(role), that checks selected prepared pair/profile,
@@ -353,14 +362,17 @@ Paired ClosingSave stages, in order:
    held input, freeze simulation, invalidate pending configured receipts. Retain
    Hub guests and all their payloads even when transport terminal events arrive;
    do not process Left into guest destruction before saved custody is complete.
-2. PeerSnapshot: project/store native participant records from retained guests,
+2. PeerSnapshot: prepare owned native participant records from retained guests,
    close menus through existing item-preserving services exactly once, preserve
-   cursors on failure. All player/metadata writes are checked, not log-and-continue
+   cursors on failure. Owned CloseIo performs/acknowledges filesystem writes;
+   no direct IO occurs on this poll. All results are checked, not log-and-continue
    save_guest calls. A failed player save keeps the same guest/body and lock.
-3. NativeSave: existing Generation/Chunks/Entities/metadata snapshot services,
-   followed by the native producer fence for ACTIVE AND PARKED Game level SaveDir
-   owners. Keep exact queued snapshots and dirty/cursor state across errors. Native
-   terminal queues and late finishes must be accounted, not erased to close.
+3. Producers: poll retained preparation outcomes, then reconcile/seal/stop ALL
+   actual active/parked/client streamers through the pollable services below.
+   Every unique native result stays accounted; include Light/Mesh and actual
+   worker initialization/completion. No blocking native_write_fence_until call.
+   NativeSave then follows the explicit NativeWorld/CoherentSession profile below;
+   preserve exact snapshot/dirty cursors and all late native record payloads.
 4. Writes: require every native writer's durable success, including metadata and
    guest results. Then explicitly stop each writer submission owner, observe its
    actual thread is_finished, join/check it, and retain its result. No SaveDir Drop
@@ -388,6 +400,306 @@ pipe, but the client Session must also be explicitly reaped. Server and client
 completion remain separate observations. Do not release either owner from a
 shared status flag or discard a failed writer to unblock the other side.
 
+### Pollable streaming close and exact level membership
+
+Add streaming.rs to C0. Existing native_write_fence_until loops/sleeps (:1989),
+poll_save may scan a whole deferred prefix, and the existing fence explicitly
+excludes Light/Mesh from quiescence. These methods cannot be called from a close
+poll and described as responsive. Existing Streaming::Drop stops workers, waits
+and unconditionally joins; paired close must resolve those exact handles BEFORE
+any destructor. Preserve legacy save/fence/Drop behavior for unpaired users.
+
+Introduce a concrete NativeStreamClose owned in the actual Streaming (or its
+paired close token), with begin_retained_close, poll_retained_close and exact
+retry methods. It retains original thread count, per-origin work receipts,
+deferred cursor, retained native record/proto handoffs and stage. No arbitrary
+executor, external callback or reset-to-empty readiness API. Begin blocks ALL
+ordinary submission/scheduling for this streamer; update/render/mesh/distance/
+pregen changes cannot schedule through the gate. It does NOT set shared.stop
+while queued jobs still own data, because workers check stop BEFORE queue.pop.
+
+Poll uses try_recv and bounded retained/deferred cursors, at most16 results or2ms
+between indivisible result actions per turn. Do not take_deferred into an unbounded
+prefix scan, recv_timeout, sleep, call update, or call the blocking fence/save(true).
+Use nonwaiting lock acquisition for close's queue/receipt transitions; a contended
+worker lock returns Pending, not a blocking wait on the UI/control turn. Ordinary
+native callbacks/one record encode can still be indivisible; report that limit.
+The same fixed close-attempt deadline applies, and expiry retains Blocked state.
+
+Allow existing queued/worker-held jobs to RETURN while no new ordinary jobs are
+submitted. Reconcile each actual origin explicitly:
+
+- Proto/Decorated/Save return the SAME owned proto regions to their exact maps or
+  close-retained handoff records. Keep written markers until native storage
+  acceptance, then await actual SaveDir durability separately. No missing proto
+  is replaced by generation or default air.
+- Generated/Finish returns retain the WHOLE native finished record, including
+  original entity/block-entity payload, before any tolerant decoding/filtering.
+  During close, do not activate it via ordinary update/receive_generated into
+  newly live entities or silently replace a resident machine column. Reuse the
+  accepted D NativeChunkRecord staging, classification and retry rules exactly;
+  preserve resident saved semantics and retain late/off-range records for the
+  actual native finished-column/entity writer. No narrowed native record codec,
+  host drops file, owner clear or alternate classification is introduced.
+- Light results reconcile matching saved-light sequence data for their existing
+  frozen resident owner without scheduling more jobs; stale derived light is
+  explicitly classified/settled under native rules. Mesh results are derived
+  display data: acknowledge/settle their exact receipt without GPU upload after
+  checking origin/sequence. Queued and worker-held Light/Mesh still must finish;
+  do not merely omit their outstanding counts or clear their payload queue.
+
+At every terminal handoff check submitted = queued + worker-held + returned +
+reconciling + deliberately settled/retained facts, with no unexplained receipt,
+unique payload or unresolved owner. Storage acceptance is not durability. Keep
+monotonic failure history and D's exact retained record custody through explicit
+retry; do not zero accounting errors to create a witness. A provably retained
+native writer failure uses the native Record retry service below. Uncorrelatable
+generation/receipt faults remain owned Blocked; there is no invented recovery
+from a lost payload. Routine healthy worlds and repairable writer errors must
+close successfully; this is not a normal-operation refusal substitute.
+
+Only when all queued/held/returned/deferred work INCLUDING Light/Mesh is reconciled
+and every native handoff has been accepted, set shared.stop under the SAME queue
+mutex ordering as worker wait, notify_all, and release it. Capture intentional
+stop in the close state; the old running fence's stopped==fault predicate is not
+reused. Poll each actual worker handle with is_finished, join/check only finished
+handles, and retain all unfinished handles/receipts/payloads. Worker initialization
+may still be blocked inside generator.worker; deadline yields Blocked with that
+worker/streamer owned, never constructor/Drop cleanup. An initialization failure
+or joined panic is reported, not counted as a normal initialized worker. An
+unprovable lost unique payload is not repaired. No queue.clear/Drop destruction
+is a successful close step. A typed SealedStream witness records exact streamer
+allocation/membership and successful intentional stop/join; it grants no world
+or player authority. All native writer acknowledgments must still complete.
+
+Use NEW narrow direct per-level services in game/levels.rs, not enter_level.
+At Freeze snapshot original dimension and sorted exact active+parked membership,
+streamer/save native allocation identities, plus the Remote client's streamer
+when present. A LevelCloseCursor visits those existing owners in place, borrowing
+Parked.world/streaming/save inside levels.rs and Game fields for the active level.
+Do not open a missing level, swap Game into another dimension, mutate idle state,
+call close_idle_levels or clear native_checkpoint_origin. Preserve the original
+dimension, clocks, persistent frames, native origin and item ownership throughout
+errors/retry. Membership change after Freeze refuses while retaining ALL owners.
+This avoids a fallible restore-dimension escape and preserves coherent capture
+eligibility; levels.rs is therefore an honest extra path. After all witnesses
+exist, native snapshot/write stages iterate the same fixed owners without running
+server/world ticks. Client-only streamers also stop/join before world replacement.
+
+### Retained world preparation, harvest and cancellation
+
+Add world_loading.rs AND host_identity.rs. The Game lifetime guard alone cannot
+protect WorldRequest::prepare's worker-local partially acquired resources, nor
+can a JoinHandle prevent prepare's ? paths from dropping them. Paired construction
+uses an explicit PrepareOwner from BEFORE the first SessionLock/authority/native
+streamer acquisition. It retains Options/intent and optional raw SessionLock,
+WorldSession/authority, World/Level, Streaming, SaveDir and native record owners
+as each is acquired. A lifetime backstop precedes those fields. Unexpected panic
+is fatal; normal Result errors return an OWNED PrepareFailure, never String with
+the owners discarded. Every fallible step after acquisition transfers the SAME
+owner value on failure. No error cleanup worker or hidden destructor join.
+
+Add a borrowed retained-lock identity finish service: perform all fallible identity
+creation checks/write/sync BEFORE taking raw_lock: &mut Option<SessionLock> into
+WorldSession. A failed write leaves the raw lock, preflight/identity intent and
+partial native artifacts in PrepareOwner. Existing consuming finish remains
+legacy-only. install_authority already borrows its Option; keep that property.
+No recreation/regeneration retry of a partially created identity is introduced.
+A close Retry retries owned drain/storage, not creation of another world identity.
+
+Streaming construction in paired prepare must itself be retained: create its
+owner/state BEFORE spawning the first worker, register each actual handle before
+it can escape, and return a partial StreamingStartFailure owner on a later spawn/
+initialization error. No collect/expect panic drops already spawned handles as
+planned error handling. Workers blocked during initialization remain owned by
+that partial streamer. SaveDir is immediately stored in PrepareOwner before any
+further fallible generator/metadata setup. Late metadata failure after streamer
+creation returns that SAME partial native owner for close; it cannot drop locals.
+Arbitrary unexpected worker/generator panic remains a fault/backstop, not success.
+
+WorldLoader's paired variant owns the actual initialization handle, non-owning
+cancel intent and eventual PreparedOutcome: Ready(PreparedWorld) or
+Failed(PrepareFailure). Worker-local PrepareOwner is retained until that owned
+outcome is transferred; it is not represented only by a thread completion bit.
+Add poll_retained_outcome which returns Pending until is_finished, then explicitly
+joins/checks and harvests the owned result ONCE. Paired cancellation never calls
+WorldLoader::cancel's disposal-thread route (:330-336), never drop(self.finish()).
+Game retains the loader while it is pending, including after close-attempt expiry.
+Keep publishing close status and accepting Retry without waiting for initialization.
+
+Quit/Escape/replacement during preparation records intent. A late Ready result
+is HARVESTED into Game's pending preparation owner and routed either to ADOPT
+only if the original entry is still current/no close is pending, or to CLOSE of
+its exact world/streamer/save/lock resources. Adoption is the single checked move
+into Game; failure retains the original owner rather than dropping PreparedWorld.
+Failed preparation after native acquisition is harvested and closed through the
+same per-owner producer/writer stages; close completion returns the stored
+initialization error, not a ready Game or save-success claim. Artifacts remain.
+Partial preparation without a complete World does not synthesize a Game/column;
+it closes exact acquired helpers and accepted native writes, then releases its
+locks at terminal Commit. Initialization failures before any native acquisition
+can return without an armed native owner. Test both distinctions.
+
+The same retained prepare entry is used by paired synchronous load_world on the
+integrated/dedicated worker. It can poll inline in that worker's retained loop,
+not return on expected error with a worker-local resource destroyed. game.rs
+resume_world_entry, WindowEvent Escape/CloseRequested, queued replacement and
+loading-error branches all use this harvest/adopt/close route. WorldRestLoader
+(resource preparation only) is also retained/polled/joined before Game relinquish;
+no world loader or resource loader is canceled by dropping a handle. Default
+vanilla preparation/cancel behavior remains unchanged.
+
+### Explicit native and coherent close profiles
+
+Select profile from actual native ownership, not merely packages.has_pairs or an
+assumption that every paired world has an active counter. Store it with the
+retained Game close configuration before enabling machines/connections:
+
+- NativeWorld: fresh paired world with NO persistent counter/slot domain or
+  machine payload owner. Use actual native player/world/entity records, polled
+  producer closure and checked writes/helper joins. This MUST succeed for a real
+  new paired world with no counter; do not call counter_checkpoint_frame and
+  convert the missing counter into permanent Blocked.
+- CoherentSession: actual identified authority plus healthy persistent counter/
+  slot domain. Preserve active keys, generation/revision/payload and the D-supported
+  item/player owners through successful existing-format coherent checkpoint.
+  No retirement/clearing/replacement of those owners is used to obtain eligibility.
+  Pending/faulted/detached custody cannot fall back to NativeWorld; retain Blocked
+  with its actual reason and the same owners. This does not invent late-departure
+  recovery or silently acknowledge a pending item.
+
+Close storage is concrete trusted local configuration: at native paired world
+attachment, derive the archive directory as world_root.parent()/
+.horizon-session-checkpoints/<actual-world-UUID>, checking canonical nonoverlap,
+identity/package binding and retained native authority before use. It is a local
+host path convention, not a new format/configuration file or a decoded-peer path.
+The Game factory records this request with actual target/type from its retained
+binding when a persistent domain is installed. Healthy active domains therefore
+have a usable coherent close strategy; the tests must not manufacture a missing
+archive option to refuse ordinary machine close. Existing explicit managed
+recovery continuation paths remain caller-owned and unchanged. NativeWorld needs
+no counter target or invented frame. Persistent startup/recovery selection remains
+its separately required S1 outcome; close keeps the complete authoritative image.
+
+Add session_checkpoint.rs and its existing actual-Game tests to C0 for a PRIVATE
+begin_close_session_checkpoint/poll_close_session_checkpoint cursor. Do not call
+its current blocking checkpoint_session or session_fence from poll_paired_close.
+The cursor retains baseline and exact staged image/publication state, while the
+concrete owned CloseIo job below performs filesystem work. Game polls only job
+status/completion and bounded CPU snapshot preparation; it never performs copy,
+read/hash/verification or waits/sleeps for a producer on the status/retry thread. The final receipt
+and existing manifest/native formats remain unchanged; synchronous existing
+wrappers may drive the same stages under their original exclusive-call contract.
+
+The cursor accepts only the exact SealedStream set of THIS retained Game/level
+membership with actual finished/joined producers, not the running fence's
+observation or caller-supplied Boolean. It revalidates world/package/authority,
+frames, players and D's native item record profile, compares native source/copy
+and promotes under existing rules. No configured packet/game task/world tick may
+mutate Game between polls; the Game's close gate provides the same exclusive
+ownership premise across event turns, and each poll checks that exact epoch/
+identity/membership. No cursor/mutable Game escape is public. Keep peers alive
+through coherent snapshot while input is frozen; actual departure retains the
+existing custody refusal and owners, not an invented late-departure policy.
+
+Producer stop does NOT mean its native writes are durable. Coherent profile uses
+the same polled SaveDir durability/retry service and all original pending native
+records, then image validation/promotion, then explicit writer close/join before
+Commit. Complete capture can be uncertain after promotion; retain error/publication
+and explicitly retry at a fresh epoch. Do not release native owners merely because
+an image name appeared. Native profile performs normal native writes; coherent
+profile adds the required image without a new machine/journal/save-compat schema.
+Both profiles must have actual positive close/failed-write-repair/retry evidence.
+
+The existing session_context rejects pending_save and expects running producers;
+C0 therefore adds a PRIVATE session_context_for_close with a concrete CloseContext,
+not a bypass Boolean. It validates the exact armed close epoch/ClosingSave mode,
+retained authority/origin, immutable frame/participant projections and sealed
+producer membership. All preparation owners have already been harvested/sealed;
+replacement intent is stored in CloseIntent, not a live pending_entry. The ordinary
+session_context predicate and synchronous capture route remain unchanged. Split
+its filesystem identity/package/pin validation into the owned CloseImageContext
+job; do not quietly execute those reads on the status/retry thread. Other accepted
+coherent-profile restrictions, including its current single authoritative initial
+Overworld representation, remain explicit. Counterless native active+parked close
+and coherent single-Overworld close are separately positive; no implicit new
+multi-dimension machine representation or save-compatibility claim is made.
+
+### Concrete owned filesystem work, not blocking poll wrappers
+
+A poll name does not make filesystem IO responsive. Game::save_game_metadata
+also dispatches direct IO in maps, trading/random sequences, dragon fight,
+wandering trader, portal arrivals, stats, advancements, scoreboard/storage/border/
+stopwatches, bossbars, functions, and chat clock state; save_level also writes raids.
+Include those TWELVE actual metadata adapter paths below rather than calling them
+unchanged from a UI poll. They are a bounded prerequisite split, not a new format.
+
+In each adapter, separate native state preparation from filesystem action and
+successful dirty-state acknowledgment. prepare_close_record borrows the real
+frozen state and produces only that family's owned native save payload/decision,
+using its existing native pack/to_nbt/JSON methods. It performs NO read, write,
+path.try_exists, lazy load or sync. Existence-dependent sparsity/replace decisions
+remain explicit in the job and are resolved on the IO worker. Preserve unloaded
+versus loaded and dirty flags; do not load absent families just to save them.
+Where existing native types such as CommandStorage/Stopwatches are Clone, an
+owned native snapshot may use the same save method on the worker; return its
+checked acknowledgment instead of mutating the original state early. No maps,
+scoreboard, schedules or other owner are cleared/refused to avoid this work.
+Player/owner Level, advancements/stats and native clock state use the same rule.
+
+Define ONE concrete CloseIoOwner in game/paired_close.rs, with a fixed enum of
+NativeMetadata and CoherentImage jobs and owned result/ack types. It is not an
+arbitrary closure executor, task service or a worker accepting &mut Game. It owns
+one actual JoinHandle, native cancellation intent, bounded immutable status and
+the job's captured native payload/context. Only close code constructs these jobs.
+The Game retains actual guests/items/metadata state, world/authority locks,
+SealedStream set and pending close cursor while the job runs; no write authority
+is reconstructed from serialized receipts. A job retains its immutable native
+Resources/pack/package context needed for native IO validation, with same-instance
+checks when harvested. It holds no borrowed Game pointer or UI/renderer object.
+
+All expensive filesystem existence/read/write/sync/directory enumeration, physical
+copy, raw region/NBT read, hash and complete image verification run on this owned
+worker (or the already owned SaveDir writer for native queued records). Refactor
+session_checkpoint helpers to accept its private owned CloseImageContext: actual
+retained resource/package/registry owners plus the validated frozen session
+projection, expected identity/target/type and native path configuration. Do not
+replace Game provenance with an arbitrary claims-only public constructor.
+The worker's coherent image uses the exact existing complete-inventory/member/
+format/promotion checks, including D records; no shortened validator or new format.
+
+The main UI/dedicated/integrated close loop performs only bounded CPU snapshot
+preparation, nonblocking command/status work, is_finished checks and result harvest.
+Native serialization of one bounded graph can still be indivisible CPU work;
+there is no hard real-time latency promise. It does not call filesystem helpers
+inside the poll and then excuse a stuck UI as an indivisible IO call. A stalled
+metadata/read/copy/verify/sync operation leaves the ACTUAL CloseIoOwner running;
+the close-attempt deadline publishes Blocked with that same worker/payload/locks
+retained. Status/retry requests continue on the owning event/worker loop. Retry
+while that IO handle is unfinished is RetainedBusy; it cannot start a competing
+job, drop the handle or release the lock. After actual completion, harvest only
+with is_finished -> checked join -> owned outcome. Stay Blocked until explicit
+Retry if the attempt already expired; no silent new attempt on late success.
+
+NativeMetadata output acknowledges exact prepared family snapshots. Apply dirty/
+saved markers to the retained frozen Game ONLY after successful matching worker
+receipt; any partial failure keeps all original state and retry payloads. Retry
+uses the same native projection after external filesystem repair, without item
+loss or a pretend Saved flag. CoherentImage output retains publication state and
+pending/published path evidence on every outcome. Record Uncertain BEFORE the
+native rename attempt, so a worker error/panic cannot be misreported as a definite
+rollback. After final artifact receipt, revalidate the retained Game's relevant
+identity/projection without filesystem work on the main turn. Complete source/
+image re-reading is performed by the owned validator job while Game stays frozen.
+
+Spawn failure before a job starts preserves all prepared payloads in the close
+cursor and returns Blocked. Expected IO errors preserve their actual payloads and
+artifacts; unexpected worker panic yields a checked joined failure and no ready
+receipt. Do not release native locks/owners merely because a job thread finished.
+A completed job whose full outcome cannot be validated remains owned Blocked.
+All CloseIo handles are explicitly joined before any metadata owner, lock or Game
+can be relinquished; Drop is only an unexpected invariant backstop. No hard kill,
+timeout-based detach, new journal or claim that interrupted OS writes rolled back.
 ### Native writer failure and explicit retry
 
 Actual save.rs writer errors are sticky (:2291/:2424); failed Record snapshots
@@ -639,9 +951,46 @@ and two caught signals while Open AND Blocked (no hard exit/retry/release). Reso
 or externally terminate/reap intentionally retained children; do not drop them as
 test cleanup. No default ordinary/platform signal behavior changes are inferred.
 
+Additional REQUIRED C0 cases are actual generation, Light and Mesh worker-held
+stalls and contended initialization/stop gates. Poll close and status through
+multiple turns; deadline must retain Blocked, all payloads/handles/locks and no
+queue destruction. Release the controlled native work, explicitly Retry and
+observe exact all-origin reconciliation, actual worker completion/join and writer
+acknowledgment before Closed. Exercise active AND parked native writer IO errors,
+repair and Retry independently, while preserving original dimension/native origin.
+A remote client's own streamer must also be stopped/reaped before replacement.
+
+Control preparation at: before native acquisition; immediately after raw lock;
+post-authority/identity-write failure; after SaveDir; during worker initialization;
+post-streamer level metadata failure; and late successful PreparedWorld after
+Quit/Escape/replacement. Hold each actual worker, observe responsive polled control/
+HUD through Blocked, release it and harvest once. Verify no disposal worker,
+no implicit destructor wait, no early lock release or next-world lock acquisition,
+no adopted canceled result and no partially acquired resource lost on Err. Keep
+original failed native artifacts. Normal negative startup can finish only after
+its actual acquired helpers have closed; it is never published as a ready Game.
+
+Require two separate positive close profiles: (1) genuine fresh paired World with
+NO counter/slot domain, native player/entity save, actual worker/writer close and
+new native reopen checks; (2) active healthy coherent owner, real D-supported rich
+item custody, unchanged active frame keys/payload through actual checkpoint and
+restore/recapture. Include coherent save/promotion failure followed by explicit
+new-epoch Retry, ordinary native writer repair, live exact peers and no generation/
+clock catch-up. No retiring/clearing counter, dropping items or permanent missing-
+counter refusal can satisfy either case. No source authority or format promise.
+Owned CloseIo qualification must STALL actual native metadata IO, source read,
+physical copy, member hash/verification and sync separately while the main
+polled endpoint/window processes bounded status and rejected/accepted retry turns.
+No direct filesystem call on the status/retry thread counts as a poll. Prove
+RetainedBusy while the actual IO handle is unfinished; after late completion,
+remain Blocked until explicit Retry, then harvest/check actual handle and preserve
+all source/previous image/dirty metadata owners. Also prove spawn failure and
+partial per-family native write error retain their original snapshot/ack state.
+The fixed-context image result must preserve package/world/authority/native item
+checks and existing format bytes; no self-generated summary receipt replaces them.
 ## Honest provisional source budget
 
-Twenty-one production paths (under crates/horizon-client/src except item13):
+Thirty-eight production paths (under crates/horizon-client/src except item13):
 
 1. lan/login_negotiation.rs: original live allocation, states and guarded handoff.
 2. NEW lan/paired_configuration.rs: finite sequence, checked result/receipt services.
@@ -678,29 +1027,79 @@ Twenty-one production paths (under crates/horizon-client/src except item13):
     preserve/pin its polled retry endpoint through every Blocked state.
 21. save.rs: explicit retained native writer close/retry over original pending
     Record owners, checked completion and no hidden planned Drop join.
+22. streaming.rs: retained partial construction, bounded all-origin producer
+    reconciliation/seal/stop and finished-only joins; preserve D record semantics.
+23. game/world_loading.rs: paired retained PrepareOwner/outcomes and harvest/adopt/
+    close cancellation, no result-disposal thread or worker-local error destruction.
+24. game/world_loading/host_identity.rs: retained borrowed-lock identity finish,
+    preserving actual lock on post-acquisition identity-write failure.
+25. game/levels.rs: direct fixed-membership active/parked close cursor services,
+    no enter_level/swap_level/provenance destruction or fallible dimension restore.
+26. game/levels/session_checkpoint.rs: private pollable close-image cursor over
+    actual sealed producers and owned IO context; existing formats/wrappers retained.
+27. game/maps.rs: pure native map/id save preparation and checked dirty acknowledgment.
+28. game/trading.rs: native random-sequence snapshot, no live RNG advance/inline IO.
+29. game/dragon.rs: native fight save projection and checked acknowledgment.
+30. game/wandering_trader.rs: native trader state projection/acknowledgment.
+31. game/nether_portal.rs: native arrival save projection/acknowledgment, no removal.
+32. game/stats.rs: owned native player stats save input/receipt.
+33. game/advancements.rs: owned native advancement save input/receipt.
+34. game/scoreboard.rs: native board/storage/border/stopwatch save snapshots/ack.
+35. game/bossbars.rs: native bossbar projection with original loaded/sparsity rules.
+36. game/functions.rs: native scheduled-event snapshot with original ordering.
+37. game/chat.rs: native clock save snapshot, no direct filesystem call in close poll.
+38. game/raids.rs: native raid save projection/acknowledgment for fixed level owners.
 
-Five test paths:
+Eight test paths:
 
-22. NEW lan/paired_configuration_tests.rs: direct owned TCP/memory defining tests,
+39. NEW lan/paired_configuration_tests.rs: direct owned TCP/memory defining tests,
     ordered native packet and stale receipt/reservation controls.
-23. game/peer_contract_snapshot_tests.rs: independent actual retained captures,
+40. game/peer_contract_snapshot_tests.rs: independent actual retained captures,
     pointer provenance and startup guard tests; no claims-only positive authority.
-24. NEW game/paired_admission_tests.rs: actual integrated/dedicated/two-client and
+41. NEW game/paired_admission_tests.rs: actual integrated/dedicated/two-client and
     in-frame game flows, declared from already scoped game.rs.
-25. game/lan/connected_recovery_tests.rs: genuine paired staged fixture starts and
+42. game/lan/connected_recovery_tests.rs: genuine paired staged fixture starts and
     existing frozen positive/refusal regressions; retain test-only fixture helpers.
-26. NEW game/paired_close_tests.rs: actual native close/retry/retained-loop tests,
-    declared in paired_close.rs; focused writer/control service tests stay inline.
+43. NEW game/paired_close_tests.rs: actual native close/retry/retained-loop tests,
+    declared in paired_close.rs; focused writer/control/streaming tests stay inline.
+44. NEW game/world_loading/retained_prepare_tests.rs: partial acquisition, late
+    Ready/error and no-disposal cancellation controls using actual native owners.
+45. game/levels/session_checkpoint_tests.rs: genuine no-counter native close and
+    active coherent owner close/capture/failure/retry results, not cleared owners.
+46. NEW game/paired_close_metadata_tests.rs: real native per-family metadata/save
+    receipts, partial failure, ownership and blocked-IO responsiveness controls.
 
-This is26 paths, NOT an eight-path packet. Split execution into concrete bounded
-C0 then C1, with independent exact-source/actual qualification/different FINAL
-for each. C0's16 production paths are items3,4,6,8-11,13-21 plus test26; they add
-retained close ownership without enabling paired admission. C1 completes items1-13
-and22-25 on that accepted clean foundation. The union is21 production +5 test
-paths, with overlapping native services reviewed again for C1 effects. Intermediate
-configuration primitives never relax external guards. C1 is atomic activation:
-no full-admission claim before strict config, consumers AND C0 teardown work.
+This46-path UNION is a design dependency map, NEVER an atomic implementation
+assignment or permission to author all C0. No source edits follow this document.
+Each packet below needs its own bounded fresh design/source acceptance, actual
+qualification, DIFFERENT independent FINAL and clean/private checkpoint. Pin the
+accepted combined B/D successor before the first overlapping native packet;
+recheck D's streaming/native-record changes before every dependent source freeze.
+Primitives must have their real ownership outcome, not a diagnostic refusal proof.
 
+| Packet | Exact planned path subset (numbers above) | Input, concrete outcome and stop condition |
+| --- | --- | --- |
+| C0a retained producer/preparation | 11,22-24,44 | Actual paired native WorldRequest/worker resources. Bounded all-origin Streaming close including initialization/Light/Mesh and retained partial prepare/late outcome. Actual lock/helper completion and no disposal-thread proof. Stop after accepted clean component FINAL; no UI/network guard relaxation. |
+| C0b retained native writer retry | 21 (focused inline tests) | Actual native SaveDir pending Record batches. Explicit close/join and repaired IO retry preserving region/entity/POI payloads. Positive durability + blocked/failure controls. Stop at component FINAL; no gameplay or format change. |
+| C0c1 core native metadata IO inputs | 16,28,32-37,46 | Real frozen stats/advancements/scoreboard/storage/border/stopwatch/bossbar/schedule/clock/random state. Fixed owned native projection + same-codec IO + checked acknowledgment, actual partial-failure/retry. No live Game callback. Stop at this family-set FINAL. |
+| C0c2 remaining native metadata IO inputs | 16,27,29-31,38,46 | Real maps/fight/trader/portal-arrival/raid owners. Preserve native fields/dirty/sparsity and resolve actual filesystem work on owned CloseIo. Stop at this family-set FINAL; no dropping an unsupported family to pass. |
+| C0d fixed level and coherent image IO | 8,11,16,25,26,43,45 | Accepted producer/writer/metadata primitives plus real retained NativeWorld AND CoherentSession. Direct active/parked borrowing preserves origin/dim; fixed owned CloseIo performs full native metadata/image reads/copy/hash/verify. Counterless native close and active coherent close/restore both succeed. Stop at source/component FINAL without external admission. |
+| C0e1 concrete transport ownership | 3,4,6,13,43 (inline native tests too) | Actual TCP/Pipe/read/write/listener handles. Close-only interruption, complete tracked finished-only reaping and terminal latch proof; no online-count substitute. Stop at actual ownership FINAL, default/B diagnostic behavior retained. |
+| C0e2 window/in-frame owner/control | 8,9,11,14,16,17,19,20,43 | Accepted native/IO/transport primitives, actual window Game and same polled control grammar. All normal close/error/replacement routes retain owners, Retry/status stays responsive under stalled real IO. Stop at owner-wiring FINAL; no paired external startup enablement. |
+| C0e3 integrated/dedicated owners | 10,11,14-16,18,43 | Actual worker-local Game, UI Integrated handle and dedicated control loop. Ordinary Ok/Err returns wait for CloseCommit; failed save/drain and late prepare retain worker/locks until explicit retry and actual joins. Stop at worker owner FINAL. |
+| C0 composite gate | No unreviewed new source; exact accepted combined tree | Requalify all native/control/thread/error seams together, both positive close profiles and accepted frozen memory recovery. Independent composite FINAL/private checkpoint is REQUIRED before C1. |
+| C1 full configuration activation | 1-13,39-42; accepted C0 paths only for freshly reviewed necessary integration deltas | Exact B agreement + full ordered native configuration + live one-shot admission/reservation consumers on actual integrated memory/TCP, dedicated/two exact clients and in-frame comparison. Enable only after complete real qualification/different FINAL. |
+
+Any changed shared path must be reviewed against the accepted exact predecessor,
+not overlaid onto a concurrently qualifying tree. The union is38 production +8
+test paths; C0 uses33 production plus tests43-46, in the bounded packets above.
+C1 completes the13 production admission paths plus tests39-42 on that foundation.
+A packet dependency discovered during concrete source prep changes THAT bounded
+proposal before edits; the46-path map is not standing permission or a new executor.
+Primitive entry points remain dormant to ordinary launch until the retained
+owner-wiring packet is qualified. Direct genuine native resource/Game component
+tests establish their actual ownership outcomes without granting partial ordinary
+admission. S1 continues across these gates; none substitutes for full admission.
 Constructor inventory: Parts has one definition/literal (conn.rs:942/:1075);
 Joined has two production literals (:1188/:1302) plus twelve fixture paths, hence
 the separate envelope. NetConfig has its Self initializer (lan/mod.rs:419), a full

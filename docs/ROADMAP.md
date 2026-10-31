@@ -75,10 +75,15 @@ Persistent retirement/readmission is now FINAL at localab23989; see
 three-feature test-target lint and explicit non-Halloween369Python/1375Rust broad
 checks pass. Rich delivery keeps the genuine dropped owner; empty delivery
 reconciles and genuinely saves/recovers/recaptures higher independent heads.
-Dropped-item checkpoint custody and ordinary activation remain open. The next
-eight-path dropped-item design has conditional independent acceptance and fresh
-ab pin/seam recheck. Separate login negotiation is source-cleared and compiled,
-with real TCP qualification still pending; configuration/admission remain closed.
+Dropped-item checkpoint custody and ordinary activation remain open. The accepted
+nine-path dropped-item design is source-cleared, with runtime qualification pending.
+Separate login negotiation is a clean local candidate5b41f44; all134focused cases,
+including actual TCP controls, and three-feature test-target lint pass. Postcommit
+explicit NON-HALLOWEEN369Python/1486Rust broad checks pass and different FINAL
+review ACCEPTS; native Halloween remains unresolved. Configuration/admission stay closed.
+The ordinary-close plan is split into bounded prerequisites. Retained native writer
+C0b must qualify before preparation/producer C0a can complete terminal cleanup;
+C0a has conditional design acceptance only. No ordinary activation or G1 follows.
 Prerequisites now have separate local final acceptance: producer/writer fence
 (ea96036), H09a compatibility snapshot (3ac2d4c), H09b.1 frozen inputs/wire data
 (765dc8d), H11a retained diagnostic (70fd6aa), and closed debug writer controls
