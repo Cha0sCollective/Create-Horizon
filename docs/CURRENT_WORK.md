@@ -37,8 +37,9 @@ fills accepted D pins in concept-approved167a3f09; same17path budget/no newbehav
 Private durable FINAL checkpoint must precede actual composition. Newignoredworktree
 codex/s1-login-checkpoint-combined starts6a5; apply ONLYexact B8delta STAGED with
 cherry-pick --no-commit. Fresh exact17raw/canonical/source/effects CLR beforecompile.
-Tool65aa6867 conditionallyCLEAR expects actualstagedunion/bothFINALs/SourceCLR17/
-matchingexpectedJSON/newdedicatedtarget. ALL211focused(77D+134B)freshoncomposedbinary,
+Tool65aa6867 CLEAR withSOURCECLR66e/expected4df5/actual17union; buildPASS and
+ALL211focused(77D+134B)freshPASS oncomposedbuild; featurechecksPASS,cleanLOCALC1fa55c619a2f4666a505461822a97efa5732db01/
+treed0b2c224/soleparentD6a committed; allstagedqualifytoolsretired. Broader/FINALpending,
 27groups; 3clientfeatures+protocoltestClippy/fmt/pubtree, cleancommit/broad thenDIFFERENT
 FINAL. Existing component runs are not combined runtime. No semantic fix/extra path
 without revised review. C0b is NOT partofthis17pathbudget. Engine LOCALONLY.
@@ -52,8 +53,11 @@ pushedverifiedPRIVATE beforeONEfileauthorACK. Sourceauthor s1_c0a_packet_design.
 Firstunformatted88ff0b04 SOURCEBLOCKED byfreshSolHigh s1wr_source_review: wholecache
 resetcouldwaiveinnerfilepoison; missingpendingcouldfalseClosed; repaircoveragegaps.
 ALL1source+ALLs1wr1prefixpreservedattempt3 BEFOREcorrectionACK; authorfixingONLYsave.rs.
-NOC0bfmt/compile/runtime yet. Freeze/reviewexactcandidate; Rootfmtthenmechanicaldelta
-re-CLEAR beforecompile. Nativeauthor cannotrunWSL/scripts/Cargo/fmt/tests/Gitwrites.
+Priorcandidate04f alsoBLOCKEDuncorrelatedstickyerrorretirement; attempt6preserved
+beforefix. Author9966SOURCECLRpreformat, Rootfmt72daSOURCECLRmanifestc3d/expectedc2e1/
+tool7987applicable;40definingcases16normal3resource21fatal+8legacyresourceplanned.
+NOC0bcompile/runtime yet; Rootserialqueue. DifferentFINALreviewer s1wr_final_review
+haspreliminarynoblocker/hold pendingactualresults. Nativeauthor cannotrunWSL/scripts/Cargo/fmt/tests/Gitwrites.
 Writer-localFINAL neednotwaitcombined, but laterseparatewriteradoption MUSTfreshD/B
 actualregressionsabsentonab. Defaultpathunchanged, no ordinarycaller/activation.
 
@@ -100,3 +104,12 @@ cleanupguards incorporated. Independentwriter-source amendment017ca420 ACCEPTEDw
 privatecheckpointmustprecedeauthoring; newcleanabworktree codex/s1-native-writer-close
 exists; onefileauthoringONLYafterthisprivatecheckpoint. WriterlocalFINALdoesnotclaimDregressionsabsentonab;
 fullDfocusedcasesmandatoryinlaterseparatelyreviewedwritercomposition.
+
+RegisteredDRAFTSOURCEamendment56ca2e33 conditionallyACCEPTED: onlynative7path
+draftafter211fresh+allfeaturechecks+cleanC/privatecheckpoint/freshpinreview; child
+FMT/compile/runtime/adoption/FINAL STRICTWAITparentcombinedFINAL SAMEC. Parentchange
+HOLD+ALL7/prefixpreserve/rebase/review. Noauthorreleasebeforeactualprerequisites.
+
+ActualregisteredDRAFTparent C1fa55c619a2f4666a505461822a97efa5732db01/tree d0b2c224
+nowCLEANwith211/featurePASS. Freshactualpin/APIrecheck PASS byindependentreviewer (33loghashes); private
+checkpointmustprecede7pathnativeDRAFTassignment; childallFMT/execution WAITparentFINALsameC.
