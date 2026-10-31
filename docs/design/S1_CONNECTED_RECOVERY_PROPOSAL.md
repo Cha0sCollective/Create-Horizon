@@ -496,3 +496,28 @@ process-memory or pipe-buffer bounds. Track and close all three possible local
 attempts, including rejected/pre-Joined threads, with native writer completion.
 This acceptance releases only the seven-path design after prerequisite private
 checkpoints; exact-source review and actual-resource qualification still apply.
+
+## Native-close design delta for independent review
+
+The seven-path draft cannot prove finite pre-Joined closure universally: native
+ConnReader::recv loops internally and its read timeout resets on each read, so a
+trickled incomplete frame can prevent the outer close check from running.
+Expand this packet by exactly one path: crates/horizon-protocol/src/connection.rs.
+Add a cloneable PipeShutdown capability with private incoming/outgoing Arc<Channel>
+fields and shutdown only; no Read, Write, endpoint reconstruction or transport clone.
+Pipe::shutdown_handle clones Channel Arcs rather than Arc<End>, preserving endpoint
+last-clone drop semantics. Staged attempts retain the capability before reader spawn.
+Global failure and explicit close snapshot at most three capabilities under the
+stage mutex, release that mutex, then close channels. Remove staged string-based
+timeout retries and retain normal native decoding. Future writes fail once channels close. The pipe buffer is unbounded before close;
+after close a receive returns one bounded frame (wire maximum 2MiB minus one,
+uncompressed maximum 8MiB) or drains a finite incomplete prefix and reaches EOF.
+This does not bound the pipe buffer or change ordinary pipe behavior. Close/finished/
+join still require all tracked readers, their joined writers, and zero body charges.
+Also reject staged Lan::listen before TcpListener::bind, not only in listen_on.
+This delta needs independent acceptance before the eighth-path source is written.
+
+Independent native-close delta review: DESIGN DELTA ACCEPT for exact proposal4
+d2e9f38d45cb139aad639afb96076a784def5e593559bbe2db89207a07caa213.
+Registration/closing races, checks around receives, all-reader/writer joins and
+zero charges remain exact-source gates. No total memory or uniform latency claim.
