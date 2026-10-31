@@ -46,7 +46,7 @@ Exactly8sourcepaths under crates/horizon-client/src:
 
 - game/levels/session_checkpoint.rs
 - NEW game/levels/session_checkpoint_items.rs
-- NEW game/levels/session_checkpoint_item_tests.rs
+- NEW game/levels/session_checkpoint_items_tests.rs
 - game/levels.rs
 - game/persist.rs
 - game/lan.rs
