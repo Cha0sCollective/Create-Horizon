@@ -1,96 +1,123 @@
 # Bounded native dropped-item checkpoint
 
-Status: WIP. Exact nine-source candidate independently cleared; runtime
-qualification and a different independent FINAL review remain. S1/G1 stay open.
+Status: FINAL ACCEPT for this bounded local component.
+S1/G1 stay open.
 
-## Inputs and authorization
+## Candidate and accepted inputs
 
-Worktree .local/worktrees/s1-dropped-item-checkpoint, branch
-codex/s1-dropped-item-checkpoint, baseab239890cd62595889f7f0302cd1396a5e2c547c.
-Main design0e15ae34 and delay amendmente62f2036 have independent conceptual and
-fresh pin/API review. Private6a569bc preceded initial source; private6fc3707
-preceded the ninth streaming.rs path. Source manifest6066f9a4cdb6bc827639d396bd85c2189744232e107fa8284f35c5a02a3afb1a
-has independent exact-source clearance from s1di_source_review. No engine
-publication, ordinary activation, format compatibility promise or G1 follows.
+Clean LOCAL6a5a16e2b5b65e952e10f2b106fcc10d7838a3da,
+tree390d9d9a99d1f2cfaab2a9c3ddf11a84d3934b96, soleparentab239890cd62595889f7f0302cd1396a5e2c547c.
+Worktree .local/worktrees/s1-dropped-item-checkpoint, branchcodex/s1-dropped-item-checkpoint.
+Nine-source raw manifest6066f9a4cdb6bc827639d396bd85c2189744232e107fa8284f35c5a02a3afb1a
+has independent exact-source clearance from s1di_source_review. Normal commit
+public-tree hook passes; all tested raw bytes remain unchanged. Engine unpublished.
 
-## Candidate behavior
+Main design0e15ae34f9423ee375a976b94a41c68600177e2329b8acf119e62aab0b5e39aa
+and delay amendmente62f2036b1ddec1df6f14a8c4ae9330659d6f7ef0aaf1e20dc774dd91d0bf4a2
+have independent concept and fresh base/API review. Private6a569bc preceded source;
+private6fc3707 preceded ninth-file streaming.rs authoring. Bounded author
+s1di_source_author wrote the nine paths; Root formatted, preserved failures,
+corrected test fixtures and ran all runtime/Git serially. Different final reviewer
+s1ln_final_review FINAL ACCEPTS input136cf1dcb8ca5d55398993705ed6f16941f31e3e68957f5b743f1eb23e4d4b7b,
+frozen summary669e5803dbcdbce4dac8aa9884bbdc370720bd8f0b8f7ffb16245a48e02afb91
+and all56 indexed hashes. The pre-acceptance review summary remains frozen in
+ignored evidence; this authored report now records that acceptance.
 
-The candidate retains original retired ItemEntity owners through native capture,
-source and copied-record validation, checked restoration and coherent recapture.
-It uses native entity regions and existing envelope1, not a substitute drop file.
-Bounded representable items carry stable UUIDs and exact persistent scalar/item
-projections. UUID preparation validates the whole owner set before assigning
-identities and reports the assigned count on later failure. It does not draw the
-world RNG. Fresh installation checks columns, identity and maps before publishing
-original decoded stacks, once, with native-recreated transient fields identified.
+## Behavior and supported profile
 
-Complete source entity-region records are validated before native save can repair
-or overwrite them, including records outside current residency. Record and
-compression framing, duplicate keys, UTF/type/count bounds, coercive signed zero,
-unknown owner fields and unsupported runtime state refuse. Nested representable
-metadata and native canonical template count-one omission remain positive profiles.
-Nondefault runtime BundleSelected is checked recursively in actual participating
-player and dropped-item graphs because native item equality omits that state.
+Original retired ItemEntity owners survive native capture, copied-record
+validation, checked restoration and coherent recapture. The implementation uses
+native entity regions and existing envelope1, with no substitute drops file,
+journal or new native codec. Stable UUID-keyed projections correlate exact item
+metadata and persistent scalars. Whole-set preflight precedes identity preparation;
+later errors disclose item_identities_assigned. UUID preparation and checked
+installation do not draw world RNG. Installation reserves/checks IDs and maps
+before consuming the decoded queue and publishing each original stack once.
+Native-recreated transient fields have explicit positive assertions.
 
-Private portal ownership is observed before UUID preparation and after save;
-nondefault process/cooldown, unmatched, negative and nonfinite state refuses.
-Every verified item column must genuinely arrive through native streaming before
-installation. Unverified or regenerated extra columns refuse. A closed debug-only
-control can delay one actual saved-column load; its lease and Streaming teardown
-release the gate before drain/join, including cancellation before worker entry.
-This does not make normal Streaming destruction pollable.
+Complete raw source entity regions are checked BEFORE native save could repair,
+overwrite or omit them, including off-resident records. Strict record/compression
+framing rejects duplicate keys, invalid UTF/types/counts, unsupported owners,
+coercive signed zero and unclaimed stream/NBT bytes. Native canonical nested
+template count-one omission and represented rich metadata remain positive profiles.
+Recursive nondefault runtime BundleSelected refuses in actual player/drop graphs,
+independently of NativeItemEq's omission of that field.
 
-## Qualification status
+Actual private portal owners are immutably observed before UUID preparation and
+after save. Nondefault cooldown/process, unmatched owners, negative and nonfinite
+values refuse without cleanup ticks. General owner census is not relaxed.
+Every verified item column must arrive through genuine native streaming before
+installation; missing, unverified or regenerated surrounding columns refuse.
 
-The first cold opt0 debug build failed at a test diagnostic: JavaString lacks
-Display. All nine sources and all packet evidence were preserved before the sole
-change from `missing {key}` to `missing {key:?}`. Eight sources were byte-identical;
-independent follow-up cleared that diagnostic-only delta. Failed output remains
-preserved under attempt3/attempt4 and labeled -source3e. No assertion or production
-behavior changed in that correction.
+A closed native-writer-test-control AND debug-only lease delays one actual saved
+column load after worker advancement and before SavedGenerator.load. No provider,
+origin or arrival is fabricated. Receipt Drop and Streaming Drop release the gate
+before drain/join, with matched allocation cleanup and before-entry cancellation.
+This does not make ordinary Streaming destruction pollable.
 
-Initial driver19390c7a and current expected-tests7b720bfe have independent tool clearance. Dedicated
-physical-worktree target-s1di1 avoids the cross-worktree compiler artifact filename
-reuse observed during separate login qualification. The planned 23 groups select
-77 cases: eight pure record cases, two actual Streaming gate cases, thirteen
-separate actual Game cases and inherited slot/trial/counter/transfer/receiver
-regressions. Each real Game case gets fresh isolated data and an independent
-bounded wait. The runtime driver uses prebuilt binaries, with no child compiler,
-Java oracle or test subprocess inside Rust tests.
+## Actual qualification and source generations
 
-The diagnostic-corrected build passed, then its first pure group passed seven and
-failed one fixture assertion. The native writer protects an empty-key compound
-with another wrapper, so that fixture did not produce the intended wire input.
-All nine sources/prefix artifacts were preserved in attempt6 before replacing only
-that fixture with a literal single-wrapper byte sequence. It still requires exact
-native unwrapping AND strict raw refusal, with unchanged signed-zero assertions.
-Eight sources stayed byte-identical. Independent follow-up cleared source109a031a;
-Root formatting/rebuild pass. Prior runtime/build artifacts remain -source7479;
-attempt7 preserves all inputs before bookkeeping changes. No production change.
+Dedicated physical-worktree target-s1di1 prevents cross-worktree compiler artifact
+reuse. Current source6066 build receipt21f47402c53ea5652a38a257486a84694200850e99d95893c513d0e8368bee72
+pins actual opt0/debug-asserting/overflow-checking client tests:
 
-Current actual runtime, three-feature test-target lint, clean local commit,
-postcommit broad checks and different independent FINAL review remain pending.
-Writer filesystem-error retention does not yet imply repair/retry of a sticky
-SaveDir failure. New ordinary close ownership remains separate work. Native
-Halloween baseline qualification remains unresolved; any conditioned broad pass
-must disclose the process-local date and unchanged ancestor calendar sources.
+- libb62dd0e97896ce1187d0c5781edff1e833d79b37fac15189cd61563fe305638b
+- binf97cdc162176c6f1392fb41aaf9ed9ba798655163fc19d5e46659683420cc4d6
 
-The109a runtime passed17groups/66cases before filesystem-error fixture11 failed
-creating its deliberately blocking directory because the parent did not exist.
-All9+allprefix were preservedattempt8; ONLY parent creation was added in that
-fixture. Independent SOURCE CLEAR6066f9a4 confirms production and all previously
-passed test bodies are unchanged. Attempt9 preserves inputs before bookkeeping.
-The failed overall result remains verified:false, SHA75ee8c85, and original passed
-logs/binaries remain pinned. Independently reviewed completion driver2316284a
-checks those source/binary/log/receipt identities and literal single-line diff,
-then fresh-builds current source and runs only six remaining groups/11cases.
-Qualification must explicitly distinguish66prior109a cases from11current6066
-cases; it must never report77cases on one binary. Current checks/broad remain required.
+Focused qualification is explicitly MIXED REVISION:66passed cases on source109a
+and11fresh cases on6066, totaling77cases over23groups. It is NOT77passes on one
+binary. Completion receipt148a77c44a7b2317d73ee10cfd02fe68227bf3131da47b5c488b60e40dc5d7e9
+and reviewed driver2316284a bind the previous source, exact one-line fixture-only
+difference, old binaries/logs and current six groups. The previous partial receipt
+75ee8c854d314907705ef18bad2e342e3b3744d8b7bab6d59566750492efb793 stays
+verified:false for its failed aggregate; its17passed rows are reused individually.
+Preserved attempt8 source-manifest hash is exactly109a031ad7ea2771e8e30dcc1be04bda55c6e29b00d83f37690087255f0e19b1;
+its bin is54299ee1e5e99223c101adfe655581bc3334c614d64f7cd07765029c6be7c5f5.
+Production and all66passed test bodies are byte-unchanged by the final correction.
 
-Focused completion nowPASS: source6066/buildreceipt21f47402 and completionreceipt
-148a77c4 verify six fresh groups/11cases on current opt0 debug binary. Preserved
-109a66cases plus current606611cases provide77mixed-revision checks over23groups.
-All13new actualGame cases nowpass across these two unchanged-production builds.
-Real filesystem failure retains originaldrop/priorimage; delayedactualnativeitem
-column deadline/release/cancellation passes; legacyreceivers6+rich/empty/epochs3pass.
-Currentfeature/lint/publictree, cleancommit, postcommitbroad and FINAL remainpending.
+The77cases comprise eight pure raw-record cases, two actual Streaming controls,
+13new actual Game cases,13slots/8trial/16counter/8transfer, six checked receiver
+cases and three older rich/empty/two-epoch Game regressions. New actual cases cover
+four plain/rich owner-role profiles, two fresh restores/recapture, distant verified
+native arrival, portal graphs, nested metadata, UUID/installer refusals, source and
+resealed corruption/off-resident records, publication uncertainty/retry, actual
+writer deadline/release and filesystem error, and delayed column deadline/release/
+cancellation. These are headless genuine Game constructor roles, not actual TCP,
+default integrated windows, dedicated two-client admission or a G1 demonstration.
+No Rust test launches another test, compiler or Java process.
+
+Formatting, all three client feature configurations WITH test-target Clippy and
+public-tree audit PASS current6066, receipt698e83a7faead6135f4272dd2b1ff12e39adbcb422c1c8ff55dbf3ff5721c0c2.
+All dirty-parent qualification/complete drivers are retired after clean6a5a16e.
+Reviewed broad driverfcc60108 uses a DIFFERENT physical-checkout target-s1di1-ci,
+exact clean revision/parent/nine-path source comparison and explicit NON-HALLOWEEN
+process-local calendar. Actual clean6a5 qualification exits0:369Python/1375Rust/
+0doc tests, formatting, Clippy and public-tree pass; all9source comparisons match
+before/after. Observed dates2026-11-01T03:58:58+1400 through04:15:55+1400.
+Native Halloween fixture
+qualification stays unresolved against unchanged ancestor173 calendar sources.
+No parity, optimized runtime, performance or general stack result follows.
+
+One tested native file, game/lan.rs, differs from its Git/Linux bytes ONLY by3968
+CRLF conversions (rawc8801276, canonicalc2dd402f); the other eight are identical.
+The broad driver verified the same exact comparisons before AND after.
+
+## Preserved failed attempts
+
+All scoped sources and all prefix artifacts were preserved before every change.
+First cold build failed because JavaString lacks Display in a test diagnostic;
+only the Debug format was changed. Eight other files were identical. Source7479
+then built, but its pure group passed7/failed1: write_named intentionally added a
+protective second layer, so the supposed single-wrapper fixture was wrong.
+A literal single-wrapper wire fixture retained exact native-unwrapping and strict
+raw-refusal assertions; no production or assertion weakening occurred. Source109a
+built and passed66cases before filesystem-error fixture11 hit NotFound creating
+its obstruction because its parent did not exist. Source6066 adds only parent
+creation before the existing blocked .mca directory. That real native writer
+fault then passes with original item and prior epoch conserved. Failures stay
+in attempt3/4/6/7/8/9 and labeled-source artifacts; nothing is relabeled a pass.
+
+Sticky writer error demonstrates retention, not native writer repair/retry.
+Ordinary startup, complete retained close, registered placement, authorized player
+transactions, connected configuration/replication and retained animation remain
+separate S1 work. No existing-world/format compatibility or G1 promise follows.

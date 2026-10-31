@@ -8,11 +8,16 @@ FINAL before composition; no public push, PR, merge, release or G1 is authorized
 Input B: clean login5b41f44fe83b53fc6b7c4dfe550cc0bc1aca5b83,
 tree71e9accbcbb4a031f50ebf8f212a6798524ff69a, soleparent173ad2a7b496b11b15e1492ad57c4ce4da9cf21d,
 exact eight-source manifestb8bd74977a709175544180b077ee7f27c4ab39a1398dadc7ab19487b437a90ca.
-Input D: future clean FINAL dropped-item successor of
-ab239890cd62595889f7f0302cd1396a5e2c547c, exactly the accepted nine-source packet.
-D revision/tree/raw-manifest/final-input pins must be filled and independently
-verified before local integration. Retirement ab is already FINAL and is an
-ancestor of D. Its six-source behavior remains part of the composed foundation.
+Input D: clean FINAL6a5a16e2b5b65e952e10f2b106fcc10d7838a3da,
+tree390d9d9a99d1f2cfaab2a9c3ddf11a84d3934b96, soleparentab239890cd62595889f7f0302cd1396a5e2c547c,
+exact nine-source raw manifest6066f9a4cdb6bc827639d396bd85c2189744232e107fa8284f35c5a02a3afb1a.
+Different FINAL accepts input136cf1dc/summary669e5803/all56 indexed hashes;
+77mixed-revision focused cases and explicitly conditioned broad qualification
+retain their disclosed limits. Both B and D are FINAL; they are NOT yet combined.
+Retirement ab is already FINAL and an ancestor of D. Its six-source behavior
+remains part of the composed foundation. These exact pins replace the provisional
+D input in concept-accepted proposal167a3f09; scope and gates are unchanged.
+Fresh actual-pin/source-union review remains mandatory before compilation.
 
 Create one ignored local worktree on codex/s1-login-checkpoint-combined, starting
 at exact clean D FINAL. Apply B's exact eight-path delta from173, preserving normal

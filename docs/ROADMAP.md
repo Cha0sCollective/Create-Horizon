@@ -75,15 +75,21 @@ Persistent retirement/readmission is now FINAL at localab23989; see
 three-feature test-target lint and explicit non-Halloween369Python/1375Rust broad
 checks pass. Rich delivery keeps the genuine dropped owner; empty delivery
 reconciles and genuinely saves/recovers/recaptures higher independent heads.
-Dropped-item checkpoint custody and ordinary activation remain open. The accepted
-nine-path dropped-item design is source-cleared, with runtime qualification pending.
-Separate login negotiation is a clean local candidate5b41f44; all134focused cases,
-including actual TCP controls, and three-feature test-target lint pass. Postcommit
-explicit NON-HALLOWEEN369Python/1486Rust broad checks pass and different FINAL
-review ACCEPTS; native Halloween remains unresolved. Configuration/admission stay closed.
-The ordinary-close plan is split into bounded prerequisites. Retained native writer
-C0b must qualify before preparation/producer C0a can complete terminal cleanup;
-C0a has conditional design acceptance only. No ordinary activation or G1 follows.
+Dropped-item native checkpoint profile is FINAL at LOCAL6a5a16e; see
+`docs/reference/S1_DROPPED_ITEM_CHECKPOINT_RESULTS.md`.77focused checks are explicit
+mixed66old+11fresh evidence; currentfeature/lint and conditioned369Python/1375Rust
+broad checks pass. Its genuine item ownership/recovery is bounded, with no general
+writer retry, ordinary startup, compatibility promise or G1.
+Login negotiation is FINAL at LOCAL5b41f44,134focused andconditioned369Python/1486Rust
+broad checks; see S1_LOGIN_NEGOTIATION_RESULTS.md. Configuration/admission stayclosed.
+Exact17path local B/D composition is next, with fresh211focused cases andindependent
+source/final review. Native Halloween baseline remains unresolved.
+Retained native writer C0b has accepted independent one-file source start; first
+candidate is blocked by source review and being corrected, with no compilation yet.
+Its accepted source-start amendment does not relax later combined D/B tests.
+C0b must qualify before C0a terminalpreparationclose. Registeredbinding/lifecycle/
+playerintent designs are conditionally accepted with bounded source prerequisites.
+No ordinary activation or G1 follows from those designs.
 Prerequisites now have separate local final acceptance: producer/writer fence
 (ea96036), H09a compatibility snapshot (3ac2d4c), H09b.1 frozen inputs/wire data
 (765dc8d), H11a retained diagnostic (70fd6aa), and closed debug writer controls

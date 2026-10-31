@@ -4,121 +4,79 @@ Owner: work until S1 is complete, with periodic updates. Earlier pauses/cutoff a
 superseded. Packet FINAL is not the end of the task. Stop only for a genuine
 blocker/required owner input. No public push/PR/merge/release or later-stage activation.
 
-## Latest accepted foundation
+## Accepted local components; not yet combined
 
-Persistent retirement/readmission FINAL at LOCALab239890cd62595889f7f0302cd1396a5e2c547c,
-treecf2c3c5578941319ca068fb5959052e034c4c9dd, soleparent173ad2a7b496b11b15e1492ad57c4ce4da9cf21d.
-Clean worktree .local/worktrees/s1-persistent-retirement, branchcodex/s1-persistent-retirement.
-Different s1pr_final_review accepts inputfbdc8978c71bfbded79d38aad75d797d11c85ab55c3ac45876241445c27aa198,
-summaryad4fa5b0 and25verifiedreceipts. See S1_PERSISTENT_RETIREMENT_RESULTS.md.
-Source5139a3df, debugbin12edf504;54focused/8groups, fmt/threefeaturetestClippy/
-publictreePASS. ExplicitNON-HALLOWEEN broad369Python/1375RustPASS. NativeHalloween
-UNRESOLVED: reuseancestor173failure/4cellproof24a4af51, unchangedcalendarsources.
-One scoped file differs raw/GitLinux only182CRLF conversions; beforeafterrecorded.
-Earlier localFINALs: frozenwindow173ad2a (source01e66234/input1e649ee9),
-pollableownera56e013, workerbridge7a08dc2, connectedrecoveryc95ba7e, managedstop23e09dd,
-authority9388598, checkpoint872dac2. Their resultdocs retain scope/limits.
-Private FINAL checkpoint6a569bc and subsequent D9 design checkpoint6fc3707 are
-pushed after fresh private-visibility checks. Engine stays unpublished.
+D dropped-item checkpoint FINAL LOCAL6a5a16e2b5b65e952e10f2b106fcc10d7838a3da,
+tree390d9d9a99d1f2cfaab2a9c3ddf11a84d3934b96, soleparentab239890cd62595889f7f0302cd1396a5e2c547c.
+Clean worktree .local/worktrees/s1-dropped-item-checkpoint, branchcodex/s1-dropped-item-checkpoint.
+Different s1ln_final_review ACCEPTS input136cf1dc/summary669e5803/all56hashes.
+Source6066;77mixedfocused=66prior109a+11fresh6066 (NOT77singlebinary), all23groups;
+currentfmt/3featuretestClippy/pubtree PASS. ExplicitNON-HALLOWEEN broad369Python/
+1375Rust/doc0PASS. NativeHalloweenUNRESOLVED; raw game/lan.rs differsGitLinux
+ONLY3968CRLF conversions, exactbeforeafter. See FINAL S1_DROPPED_ITEM_CHECKPOINT_RESULTS.md.
+ALLdirty-parent s1di1 qualify/complete tools retired after6a5a16e.
 
-## Parallel login-negotiation component
+B login negotiation FINAL cleanLOCAL5b41f44fe83b53fc6b7c4dfe550cc0bc1aca5b83,
+tree71e9accbcbb4a031f50ebf8f212a6798524ff69a, soleparent173ad2a.
+Worktree .local/worktrees/s1-login-negotiation. Sourceb8bd7497/input09439e1c/
+summary35a52ae0/27verifiedhashes;134focused andisolatedallfeature/protocolchecks PASS;
+explicitNON-HALLOWEEN broad369Python/1486Rust/doc0PASS. Requiredagreement deliberately
+Disconnects BEFOREconfiguration/admission. See FINAL S1_LOGIN_NEGOTIATION_RESULTS.md.
+Bdirty-parentbuild/test/checktoolsretired; sharedcachefailurehistorypreserved.
 
-Clean LOCAL5b41f44fe83b53fc6b7c4dfe550cc0bc1aca5b83, tree71e9accb,
-soleparent173. Eight-path source manifestb8bd7497 has independent SOURCE CLEAR.
-Dedicated physical-worktree target driver84c4bb9a passes fresh build, all134
-focused cases (17negotiation/5defaultnet/5frozencapture/107protocol), formatting,
-allthreeclientfeature test-target Clippy, protocol test Clippy and publictree.
-Isolated receipts: build9e7c95b1, tests3a6e0597, checksc48cf8f3. Prior shared-target
-no-runtime failure is preserved; identical artifact filename reuse was observed,
-but exact failed --extern selection was not captured. No networking code change.
-Separate CI-checkout target driver eab92bdb is independently TOOL CLEAR and broad
-qualification PASSES exactclean5b41:369Python/1486Rust/doc0 with explicitNON-HALLOWEEN
-condition/nativeHalloweenunresolved. Different s1ln_final_review FINALACCEPTS
-input09439e1c/summary35a52ae0/all27receiptshashes.
-See FINAL S1_LOGIN_NEGOTIATION_RESULTS.md. Required agreement deliberately ends in
-Disconnect before registry/Guest/world admission; full configuration stays closed.
-All dirty-parent login build/test/check tools retired after5b41.
+Retirement/readmission FINALab239890, treecf2c3c55, soleparent173:source5139a3df,
+inputfbdc8978/25hashes/54focused8groups/conditioned369Python1375RustPASS.
+Frozenwindow173ad2a/source01e66234/input1e649ee9 alsoFINAL; ancestorcalendarproof24a4
+preserves unchangedHalloween defect. Earlier ownersa56e/7a08/c95ba/23e09/9388/872d
+retain their bounded resultdoc limits. No ordinaryRunning/G1 follows.
 
-## Next bounded persistence component
+## Next: exact B/D local composition
 
-Accepted design docs/design/S1_DROPPED_ITEM_CHECKPOINT_PROPOSAL.md,
-exact0e15ae34f9423ee375a976b94a41c68600177e2329b8acf119e62aab0b5e39aa.
-Independent s1_drop_design_review ACCEPTconcept +fresh actualcleanab/tree/parent/
-APIseamrecheckPASS; retirementFINAL SAMEab nowmet. PrivateFINALcheckpoint must
-complete before new source. New worktree .local/worktrees/s1-dropped-item-checkpoint,
-branchcodex/s1-dropped-item-checkpoint basedab, prefixs1di1.
-Original8sourcepaths under crates/horizon-client/src:
+S1_LOGIN_CHECKPOINT_COMPOSITION_PROPOSAL.md now67036a36521208c231b511760d3d9c22c17068f50a193db5915a25b0944d3ba2
+fills accepted D pins in concept-approved167a3f09; same17path budget/no newbehavior.
+Private durable FINAL checkpoint must precede actual composition. Newignoredworktree
+codex/s1-login-checkpoint-combined starts6a5; apply ONLYexact B8delta STAGED with
+cherry-pick --no-commit. Fresh exact17raw/canonical/source/effects CLR beforecompile.
+Tool65aa6867 conditionallyCLEAR expects actualstagedunion/bothFINALs/SourceCLR17/
+matchingexpectedJSON/newdedicatedtarget. ALL211focused(77D+134B)freshoncomposedbinary,
+27groups; 3clientfeatures+protocoltestClippy/fmt/pubtree, cleancommit/broad thenDIFFERENT
+FINAL. Existing component runs are not combined runtime. No semantic fix/extra path
+without revised review. C0b is NOT partofthis17pathbudget. Engine LOCALONLY.
 
-- game/levels/session_checkpoint.rs
-- NEW game/levels/session_checkpoint_items.rs
-- NEW game/levels/session_checkpoint_items_tests.rs
-- game/levels.rs
-- game/persist.rs
-- game/lan.rs
-- game/levels/session_checkpoint_tests.rs
-- game/nether_portal.rs
+## Parallel C0b independent native writer source
 
-Reviewed DELAY AMENDMENT S1_DROPPED_ITEM_CHECKPOINT_DELAY_AMENDMENT.md exact
-e62f2036b1ddec1df6f14a8c4ae9330659d6f7ef0aaf1e20dc774dd91d0bf4a2 addsNINTH
-streaming.rs only. Independent s1_drop_design_review ACCEPT; privatecheckpoint
-mustcomplete before9thfileauthoring. RootfrozeauthorandpreservedALL9/current8+
-untouchedStreamingbaseline+ALLprefixattempt1. Private6fc3707 preceded ninth-file authoring; all9 are now authored.
-Closednative-writer-test-control+debug-onlyactualGeneratelease onecolumngate;
-no provider/origin/arrival replacement. ReceiptDrop+StreamingDrop releasebefore
-drain/join, Arc-matchedcleanup/noqueueLockwait, actualentereddeadline/refusal and
-releasedpositive/recapture+reapedcleanup. Negativezero itemvalues thatnativeNBT
-wouldnormalize refusebeforeUUIDprep/write/nativeparse; positiveprofilemandatory.
+Solepath save.rs in .local/worktrees/s1-native-writer-close, branchcodex/s1-native-writer-close,
+baseFINALab/treecf2c/parent173, nativebase49997051/Git59346116.
+Main8ecc6f48 +independent-sourceamendment017ca420 acceptedfreshabAPI; privatee99c3aa
+pushedverifiedPRIVATE beforeONEfileauthorACK. Sourceauthor s1_c0a_packet_design.
+Firstunformatted88ff0b04 SOURCEBLOCKED byfreshSolHigh s1wr_source_review: wholecache
+resetcouldwaiveinnerfilepoison; missingpendingcouldfalseClosed; repaircoveragegaps.
+ALL1source+ALLs1wr1prefixpreservedattempt3 BEFOREcorrectionACK; authorfixingONLYsave.rs.
+NOC0bfmt/compile/runtime yet. Freeze/reviewexactcandidate; Rootfmtthenmechanicaldelta
+re-CLEAR beforecompile. Nativeauthor cannotrunWSL/scripts/Cargo/fmt/tests/Gitwrites.
+Writer-localFINAL neednotwaitcombined, but laterseparatewriteradoption MUSTfreshD/B
+actualregressionsabsentonab. Defaultpathunchanged, no ordinarycaller/activation.
 
-Use actual native entity regions and existing envelope1, staged checked UUID
-preparation (disclose identity mutation), exact live/postsave/copied projection
-correlation, complete strict raw record checks and checked no-worldRNG installer.
-Recursive nondefault selection refusal in actual players/drops; represented nested
-metadata/plain-stone positive save/recover/recapture required. Immutable actual
-portal entities/before-map census beforeUUIDprep andaftersave: nondefault/process/
-orphan/nonfinite refuse, defaults observedunchanged; generalcensusunchanged.
-Load ALL verifieditemcolumns before installation, refusingunverified/regenerated
-extras ormissing/delayedarrivals. No hostdropssubstitute/journal/newnativecodec/
-savecompatpromise. Rich retirement entity must remainowned. Fullplancontrols inexactdoc.
-Initial7pathproposal33b966ab blockedprivateportalowner; preserveds1di1-proposal0.md.
-Sourceauthority afteramendmentcheckpoint is ONLYthis9pathcomponent; fresh exactsource
-review before compilation/runtime and differentFINAL remain required.
+## Subsequent scoped designs and remaining S1
 
-D source6066f9a4 (exact9) has fresh independent SOURCE CLEAR. First cold build
-failed only a JavaString Display test diagnostic; ALL9+ALLprefix preserved
-attempt3 before sole Debug-format correction, then attempt4 before receipt updates.
-Originaldriver19390c7a remainspreserved; completiondriver2316284a TOOLCLEAR.
-Expected7b720bfe retains13actual/8pure/2stream.109A first17groups66PASS, then
-FSfixtureparentNotFoundbeforewriter; ALL9+prefixattempt8 beforeONLYparentmkdirfix.
-Production/66passedbodiesunchanged; source6066CLEAR. Completiontoolpins109A
-source/bin/log/partialreceipt75ee8c85, preservesfailedoverall, freshcurrentBUILD/
-sixremaininggroups11cases PASS receipt148a77c4/currentbuild21f47402; CHECKSpending.
-Explicitmixed66old109A+11current6066, no77singlebinclaim.
-Prior build outputs retained -source3e. Corrected actualopt0 debug build nowPASS; focusedruntime/checks pending serial
-Root execution. D77mixedfocusedPASS; feature/broad/FINALpending.
+Registeredbinding3ec3363a conditionaldesign ACCEPT:7paths, explicitclosedregistered
+counter/slotkinds (format-profileextension, nocompatpromise), realmaterializedalias
+active+dormant recovery. Registeredlifecycle4ae01a12 ACCEPT:8paths, stagedblock+
+counter+slot+grant publication, richcustodybeforeexplicitreadmission; commandcleanup
+AFTERsuccessfulrawcommit, no preflightcapabilityfiction. Playerintent73255c71 ACCEPT:
+5paths, actualcurrentordinarycell, exact1024request/resultledger, residentnative-ray
+cells andactualheldC1livenesslease; genuineAPIs/retaineddeparture prerequisite.
+C0b8ecc mustprecede C0a3ef2bed2 terminalprepare/producerclose. C0a5path design
+ACCEPTEDconditional; fullC0/C1 planning95484fa4 has no46path sourceauthority.
+All source-start prerequisites/privatecheckpoints/freshactualAPIs remain required.
 
-Fullconfiguration/admission proposal95484fa4 has independent planning-only
-acceptance, not 46-path source authority. Bounded C0a/b/c/d/e prerequisites must
-individually qualify before composite retained ordinary close and C1 activation.
-Preparation/producer C0a3ef2bed2 and FIRST nativewriter C0b8ecc6f48 have independent
-conditional design acceptance; writerFINAL mustprecede terminalpreparationclose.
-Registeredcounter binding3ec3363a also has conditional acceptance: explicitnewclosed
-counter/slot kinds preserve actualphysicalprofile whiledormant,7pathbudget, real
-materializedalias active/dormant recovery; no ordinaryplacement/Running caller.
-Local B/D composition167a3f09 has conditional conceptual acceptance: exact17pathunion,
-no semanticchanges, freshcomposedruntime+differentFINAL. ALL these sourceassignments
-require bothcomponentFINALs, acceptedcleancombinedpin/privatecheckpoint/APIrefresh.
-No standing team or ordinary activation implied.
-
-## Remaining S1 and constraints
-
-G1 OPEN: ordinary lifecycle/registered binding/placement/generations/chunkcycles/
-close; authorized player transactions/replay/reach/permissions/revision/departure;
-coherent dropped-owner save; ordinary persistent startup/status/retry/Creative/
-Running; live configuration admission + snapshots/deltas/gaps/resync/untracking/
-reconnect; committed retained animation; combined defaultintegrated/dedicated
-TWOexactclients and promisedinframe qualification; explicitG1decision. No reducedS1.
-LiveS2 requiresG1. S3 exactmotor/shaft/small+largecogs/millstone cobble→gravel,
-NOgearbox; R01matchespinnedJava fulloutputitemloss. No unavoidableownerinput now.
+G1 OPEN: ordinary startup/identity/registered lifecycle/placement/generations/chunk
+cycles/coherent normal save+close; authorizedplayer transactions/replay/reach/
+permissions/revisions/retirement/departurecustody; configuration admission+initial/
+deltas/gaps/resync/untracking/reconnect; committed retained animation; combined
+DEFAULTintegrated/dedicatedTWOexactclients+promisedinframe checks; explicitG1decision.
+No reducedS1. LiveS2 requiresG1. S3exactmotor/shaft/small+largecogs/millstone,
+NOgearbox; R01matchespinnedJavafulloutputitemloss. No requiredownerinputnow.
 
 Coordinator implements directly; bounded native-file authors, no standingteam.
 Root alone ALL Cargo/tests/games/fmt/Gitwrites SERIAL. Reviewers proceduralnative
