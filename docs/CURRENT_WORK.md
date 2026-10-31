@@ -25,8 +25,8 @@ One scoped rawsource differs from Git/Linux only by941CRLF conversions; exact
 before/after comparisons recorded. Engine remains unpublished.
 Earlier local FINALs: checkpoint872dac2, authority9388598, managedstop23e09dd,
 connectedrecoveryc95ba7e, workerbridge7a08dc2, pollableownera56e013. Their result
-documents retain claims/limits. Private previous checkpoint88c0833 is pushed.
-Commit/push this FINAL evidence checkpoint before next source authoring.
+documents retain claims/limits. Private FINAL checkpoint4573856c3e712bd4aba3e575e39e28a0c7a2004a
+is pushed after fresh GitHub PRIVATE metadata and exact-origin verification.
 
 ## Next bounded packet: persistent retirement and readmission
 
@@ -34,7 +34,15 @@ Accepted conceptual proposal docs/design/S1_PERSISTENT_RETIREMENT_ADAPTER_PROPOS
 exactSHA09f7bca60bdea943dd871eb8bdd6735ac261743f378408cb5dafbb8ba8405c1e.
 Independent s1_persistent_retirement_design_review accepted concept and freshly
 verified clean173/tree/parent and all6paths/APIs unchanged froma56. WindowFINAL
-at SAME173 is now met; private checkpoint must complete before implementation.
+at SAME173 and private checkpoint are now met. Active worktree
+.local/worktrees/s1-persistent-retirement, branchcodex/s1-persistent-retirement,
+base173ad2a. Root Gamehalf +bounded s1pr_world_author Worldhalf authored and Root
+formatted. Fresh independent s1pr_source_review SOURCE CLEAR exact6pathmanifest
+810bb70691f4f50d415fdac8c561195d8a257a17aeeaca187e6b63389c4dc53b beforecompile.
+Build PASS actual unoptimized/debug-asserting client lib+bin test artifacts frozen
+in .local/s1pr1-build-result.json. No tests executed yet. Qualification tool
+1a83c4ea independently CLEAR after compiler/target override sanitization; old
+unexecuted tools preserved. Initial/allsource/tool snapshots attempts0–3. Prefixs1pr1.
 Exactly six engine paths under crates/horizon-client/src:
 
 - world_slot_trial.rs
@@ -54,7 +62,24 @@ succeed. Full scope and controls remain in the exact proposal.
 Research only: S1_PERSISTENT_LIFECYCLE_API_AUDIT.md,
 S1_DROPPED_ITEM_CHECKPOINT_AUDIT.md and S1_LIVE_ADMISSION_SEAM_AUDIT.md under
 docs/design. Bounded login-negotiation proposal authoring may progress independently;
-exact protocol/design review is still needed. No other source authority.
+exact login design37dc504c8bae09acee6fefc70227ae6fd14bc41d33a482e3f483fb7ed30f06d6
+has fresh independent ACCEPT CONCEPT from s1_login_design_review at clean173.
+
+## Parallel bounded packet: login negotiation
+
+After this private checkpoint, permit bounded native-file authoring in separate
+worktree .local/worktrees/s1-login-negotiation, branchcodex/s1-login-negotiation,
+clean accepted base173ad2a. Exact eight paths are those in
+docs/design/S1_LOGIN_NEGOTIATION_PROPOSAL.md. All are disjoint from retirement's
+six paths. Preserve its initial sources/artifacts before authoring. Keep optional
+policy in private Shared/narrow constructors; NO NetConfig field (dedicated.rs
+literal is outside budget). Default login and external_network refusal remain.
+Review specifically first-query silent-peer total deadline, bounded post-agreement
+Disconnect, actual unsplit connection/receipt liveness and no release/try_admit on
+required-path outcomes. Fresh exact-source review before all compilation/runtime,
+different FINAL and explicit configuration/receipt-consumption successor remain
+required. Root alone serializes tests/builds/fmt/Git writes across both packets.
+No public publication or live paired admission is enabled by negotiation alone.
 
 ## Remaining S1
 
