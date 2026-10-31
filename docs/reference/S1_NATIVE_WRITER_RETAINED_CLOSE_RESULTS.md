@@ -1,12 +1,11 @@
 # Retained native writer close and repair retry
 
-Status: WIP. Formatted source independently CLEAR and first actual build PASS;
-runtime qualification remains. Different final reviewer reports no static blocker.
+Status: WIP. Current style correction independently SOURCE/TOOL CLEAR; fresh runtime qualification remains. Earlier source passed77normal and21fatal. Different final reviewer is HOLD pending final evidence.
 S1/G1 remain open; no ordinary caller, startup or publication.
 
 Worktree .local/worktrees/s1-native-writer-close, branchcodex/s1-native-writer-close,
 baseFINALab239890cd62595889f7f0302cd1396a5e2c547c/treecf2c3c55/parent173ad2a.
-Only crates/horizon-client/src/save.rs changes. Raw72da7bc8a2a384423c403d377534d905121bf3d639d12d06731b6c003a76ff24,
+Only crates/horizon-client/src/save.rs changes. Initial source72da7bc8a2a384423c403d377534d905121bf3d639d12d06731b6c003a76ff24,
 manifestc3d4095afd5634e363dc8aba350c4c7ee107f1560fc26d9d42da14ac82c0532c
 have exact independent source clearance after Root formatting. Design8ecc6f48 and
 independent-sourceamendment017ca420 had concept and fresh ab/API acceptance;
@@ -34,7 +33,7 @@ inner file owners, and checks a typed current error witness before advance or
 retirement. A later genuine failure cannot mask an unknown previous cell/witness.
 No new codec, journal, general executor or World/Game close capability is claimed.
 
-## Qualification inventory; not yet executed
+## Qualification inventory and first-source results
 
 Reviewed tool7987340b and final expectedc2e1d55a select19 normal/resource retained
 cases (16normalLinuxarbiter+3resource), the complete legacy save tests including
@@ -47,7 +46,7 @@ is dedicated to this physical worktree. Initial actual opt0/debug/overflow-check
 build PASS: libcb7041ef7d5793544e5ae2983db91a10aa419a8d9aa84e057250068fe3707449,
 bin95a8e9dba7355579f199aa9c2d72f58fb07c45a1369485a416f13b102e84ffbb.
 InitialnormalruntimePASS:19newnormal/resource+58legacy save tests, all8legacy
-resourcesexecuted, zeroignored. Separate21fatalprocessproofs/checks/broad/FINALpending.
+resourcesexecuted, zeroignored. All21fatalprocessproofsPASS on72da; checks blocked on five style issues. Broad/FINALpending.
 
 Source review blocked88ff for blanket-cache poison waiver, one-way missing-record
 reconciliation and missing repair controls;04f for uncorrelated sticky-error
@@ -64,3 +63,26 @@ reviewed adoption into the accepted B/D foundation. A local writer FINAL will no
 claim that composition or ordinary retained close. Postcommit broad must disclose
 the unresolved ancestor Halloween fixture and any process-local calendar condition;
 no parity, optimized runtime, performance or G1 acceptance follows.
+
+## Current correction and evidence boundary
+
+Source72da/c3d passed77normal and21distinct marked SIGABRT/reaped processes.
+Checks then found five Clippy style issues, without a runtime failure. Preserved
+all source/prefix before correcting four let chains and one test slice conversion.
+Prefmt513b received SOURCE CLEAR; Root formatting changed only one test call.
+Current save.rs e4c2ecec1305252449435be62cfeeef8c44d9b2a6fbc49c35d47eaf1c2b2d21b,
+manifestd8556049598151c0273ac5c18cc4d5730e17d8f51659f5f4312e4da23ba6b359,
+expectedfcd6a067/tool7987 independently SOURCE/TOOL CLEAR. Write/join evaluation
+order and all selectors unchanged. Fresh build/77normal/21fatal/checks remain
+required; previous passes are not current-source passes. Original runtime artifacts
+are preserved together under .local/s1wr1-source72da-runtime and attempt snapshots.
+
+## Owner-requested pause
+
+Paused after the separate registered225test battery finished. No fresh writer
+build/test/check battery started. Current e4c/d855 remains SOURCE/TOOL CLEAR;
+different s1wr_final_review also found no blocker in exact five mechanical fixes
+and formatting, with FINAL HOLD. Allcurrent source+prefix frozen in
+.local/s1wr1-attempt18; old72da runtime archive remains separately intact.
+Resume ALLfour current stages before commit/broad/FINAL. No current-source
+runtime pass, adopted Game close or G1 is claimed.

@@ -1,7 +1,6 @@
 # Registered counter binding
 
-Status: WIP. Seven-file native draft independently CLEAR preformat; no child
-formatting, compilation or runtime yet. Parent C is now FINAL at the same base.
+Status: WIP. Formatted seven-file source independently CLEAR; first actual build and all225focused tests PASS. Paused at owner request. Parent C is FINAL at the same base.
 S1/G1 remain open; ordinary placement/Running/player authority are separate.
 
 Worktree .local/worktrees/s1-registered-counter-binding, branchcodex/s1-registered-counter-binding,
@@ -32,3 +31,29 @@ After this private checkpoint Root may format, obtain exact mechanical-delta/sou
 and tool clearance, compile and qualify. Any parent source change still requires
 HOLD/full preservation/new qualified pin/review. Individual parent tests cannot
 substitute for registered runtime evidence. Different component FINAL remains.
+
+## First execution on the accepted parent
+
+Verified-private6e812e8 recorded parentFINAL at SAMEC before Root formatting.
+Formatted source manifest1f6e020ec52feee3448db229a8c9d5c7dc8b5ebce5131eb324ce15e79ce70caa
+received independent SOURCE CLEAR; tool3607a0a/expecteda9cfe43a apply.
+Actual build PASS with opt0/debug assertions/overflow checks: lib21319e8fecfbe9c7,
+bin1dfa1bc46f4580a3, protocole8485c797690446f. Dedicated target-s1rb1.
+Fresh225cases/36groups are underway, including nine actual materialized Game
+cases and every211parentcase. No runtime pass, feature-check pass, clean child
+commit, broad pass or childFINAL is claimed yet. Broadtool e87cf03e has conditional
+clearance only after focused/check success and Root's clean unchanged-source commit.
+Different final reviewer s1rb_final_review is assigned.
+
+## Completed focused battery and pause
+
+Root stage process exited0. Current source1f6e/tool3607a0a passed225distinct
+cases across36groups with zero failures/ignored, including all nine new actual
+registered cases and every211parentcase. Receipt SHA256:
+90e7fea9cc4582c74efd5935142a6e9d8dea48722581fdc48f53213414099f2e.
+Native coordinator verified all36loghashes, exact census and no duplicate names.
+All7source+prefix snapshot .local/s1rb1-attempt5 preserves this completed run.
+No feature/fmt/lint stage, clean child commit, broader run or childFINAL yet.
+The prior underway wording describes the initial run state, not an outstanding
+queue. Different FINAL stays HOLD. Owner requested checkpoint/pause now; do not
+start remaining checks until resumed. No new engine commit or public publication.
