@@ -413,3 +413,16 @@ managed_connected_tests.rs under game/integrated, with meaningful direct actual
 worker/client ownership proof and unchanged synchronous wrapper regressions. The
 remaining application/window/signal paths stay outside this first source packet.
 Private FINAL evidence checkpoint must finish before source authoring starts.
+
+Primitive stage is now independently FINAL at exact clean successor
+ a56e0136a87ef723d4866c341ccbe11ec3678bd9 (tree3f604010), source2b627334,
+reviewed result9e9c7930. Pin that successor for actual frozen-window activation.
+Private FINAL evidence checkpoint must finish before new window source starts.
+Proposed narrowed window scope is eight of the accepted nine maximum paths:
+game.rs, game/integrated.rs, game/integrated/managed_stop.rs,
+game/integrated/managed_connected_tests.rs (test verifier visibility only),
+new game/integrated/managed_application.rs, managed_application_view.rs,
+managed_application_tests.rs, and crates/horizon-threads/src/lib.rs.
+Keep Game Options unchanged; private parsed-launch wrapper avoids a tenth fixture
+path. Reuse native loading_renderer/loading_frame/HUD services and full loaded GUI
+atlas. The frozen window is not gameplay/world rendering or G1 qualification.

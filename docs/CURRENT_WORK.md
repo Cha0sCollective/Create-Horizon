@@ -1,102 +1,101 @@
 # Current work
 
-Owner: work until S1 is complete; periodic updates; stop only for a genuine blocker
-or required owner input. Earlier pauses/cutoff are superseded. Packet gates do not
-end the task. No public release/push/PR/merge or S2 activation is authorized.
+Owner: work until S1 is complete, with periodic updates. Earlier pauses/cutoff are
+superseded. Stop only for a genuine blocker/required owner input. Packet FINAL is
+not the end of the task. No public push/PR/merge/release or later-stage activation.
 
-## Accepted foundation and just-completed packet
+## Latest accepted foundation
 
 Local FINAL commits: checkpoint872dac2, authority9388598, managed stop23e09dd,
-connected recoveryc95ba7e, managed connected-worker bridge
-7a08dc25c0e3135e3a0e0a4eaae7c11af5e1d99e (tree90791f7e, soleparentc95).
-Bridge exact raw manifest17432ff7; reviewed authored result44cfad2a. See
-`docs/reference/S1_MANAGED_CONNECTED_WORKER_RESULTS.md` and `.local/s1cw1-final-review.json`.
-312 normal cases/8groups and two separate exceptions pass currentcandidatea63c;
-fmt/3featureClippies/publictree/optimizedTYPECHECK pass. Native broad fails the
-unchanged Halloween drowned fixture; fresh candidate/parent four-cell proof
-reproduces it. Separate NON-HALLOWEEN conditioned broad passes369Python/1375client.
-Native Halloween qualification remains UNRESOLVED. No optimized runtime/parity/
-broad default-stack claim. Raw/Git/Linux maps match except explicit CRLF-only
-lan.rs3965/oldtests420 normalization. All evidence/sources before corrections kept.
+connected recoveryc95ba7e, worker bridge7a08dc2, pollable owner
+ a56e0136a87ef723d4866c341ccbe11ec3678bd9 (tree3f604010, soleparent7a08).
+Pollable result docs/reference/S1_MANAGED_APPLICATION_OWNER_RESULTS.md accepted by
+independent DIFFERENT final reviewer at input9e9c7930dd3098070183b00659461bc1bd52b4aa573438425bd83c76ca2882e1;
+source2b627334/suitef31694dc/bin a605c812. 314 normal/10groups, two separate
+exceptions, fmt/threefeatures/publictree/optimizedTYPECHECK pass. Native broad fails
+unchanged Halloween drowned fixture; fresh current/parent four-cell proof confirms
+sameassertion. Explicit NON-HALLOWEEN conditioned broad passes369Python/1375client.
+Native Halloween qualification remains UNRESOLVED. No optimizedruntime/parity/
+generaldefaultstack claim. All3native/Git/Linux sourcebytes equal, clean a56e.
+Private last pushed WIPabf40d4; current FINAL checkpoint being saved/pushed now.
 
-Engine bridge worktree `.local/worktrees/s1-managed-connected`, branch
-`codex/s1-managed-connected`, CLEAN7a08. All dirty-parent s1cw1 guard/build/validate/
-test/exception/fast scripts MUST NOT run atcommitted7a08. Likewise old s1cr1 tools
-must not run atcommittedc95. No active Cargo/test/game process after bridge checks.
-Private FINAL checkpoint1088968 is verified private and pushed; new source prerequisites are met.
+Pollable worktree `.local/worktrees/s1-managed-application-owner`, branch
+`codex/s1-managed-application-owner`. Dirty-parent s1ao1 guard/build/validate/test/
+exception/fast scripts MUST NOT run aftera56e. Same restriction for old s1cw1 at7a08
+and s1cr1 atc95. No active Cargo/test/game after all pollable-owner checks.
 
-## Next packet: concrete pollable application owner
+## Next packet: actual isolated frozen window
 
-Design `docs/design/S1_MANAGED_APPLICATION_HOLDER_PROPOSAL.md` independently accepted
-at exact inputcb1f1496b9404120bd44f734cd015a91b5fa5fffa2bc1345ed8af12b0c156db9,
-frozen `.local/s1app1-proposal2.md`. Accepted primitive-first/window-second sequence.
-Current bridge FINAL/clean-successor prerequisites met; private FINAL checkpoint
-must finish before new source authoring. Exact successor pin7a08dc25c0e3135e3a0e0a4eaae7c11af5e1d99e.
+Accepted design `docs/design/S1_MANAGED_APPLICATION_HOLDER_PROPOSAL.md`, exact
+inputcb1f1496b9404120bd44f734cd015a91b5fa5fffa2bc1345ed8af12b0c156db9,
+frozen `.local/s1app1-proposal2.md`, permits primitive-first/window-second sequence.
+Primitive FINAL and exact clean successor are met. Finish private FINAL checkpoint
+before source begins. Successor pin a56e0136a87ef723d4866c341ccbe11ec3678bd9.
 
-First stage scope ONLY three engine paths under crates/horizon-client/src/:
+Planned worktree `.local/worktrees/s1-frozen-window`, branch `codex/s1-frozen-window`;
+prefixs1fw1. Narrowed EIGHT paths within the accepted nine maximum:
 
-- game/integrated/managed_stop.rs
-- game/integrated/managed_stop_tests.rs
-- game/integrated/managed_connected_tests.rs
+- crates/horizon-client/src/game.rs
+- crates/horizon-client/src/game/integrated.rs
+- crates/horizon-client/src/game/integrated/managed_stop.rs (narrow visibility)
+- crates/horizon-client/src/game/integrated/managed_connected_tests.rs (test verifier visibility only)
+- NEW crates/horizon-client/src/game/integrated/managed_application.rs
+- NEW crates/horizon-client/src/game/integrated/managed_application_view.rs
+- NEW crates/horizon-client/src/game/integrated/managed_application_tests.rs
+- crates/horizon-threads/src/lib.rs (retained signal policy/inline tests)
 
-Active worktree/branch `.local/worktrees/s1-managed-application-owner` /
-`codex/s1-managed-application-owner`; prefixs1ao1. Verify actual clean base and
-preserve all three sources+ALLprefix artifacts before EVERY correction.
-Extract a private concrete pollable owner around existing NewClosed/Connected
-starts; non-owning controls, one-shot endpoint offer, coalesced status, one terminal
-classification only after actual is_finished and explicit matching join/receipt.
-No Game/raw task/host/transport owner escapes. No Clone/cancel/discard/detach/hidden
-join. Preserve both synchronous wrappers and fatal unresolved discipline. Actual
-worker/two-client direct poll/early completion/one-shot completion proof plus
-unchanged closed/connected retry/refusal/exception regressions. No new headless CLI.
-Root implements production; delegate only a bounded useful test/review assignment.
-Fresh independent exact-source Sol High clearance BEFORE compile/runtime; DIFFERENT
-final evidence reviewer. Root runs ALL Cargo/tests/games/commits SERIAL.
+Actual frozen MemoryOwner window plus explicitly owned headless MemoryGuest; one
+lexical app owns pollable worker, both client Games, window/renderer/resources;
+replaceable view holds only presentation. Use existing full GUI atlas,
+loading_renderer/loading_frame/HUD geometry. No ordinary Game handler/render/tick/
+extras/input/task callbacks. Stationary client pumping only, state-aware skip during
+Stopping/Stopped/Closing; supervision continues minimized/failed-render. No world
+scene/animation claim from status panel.
 
-The second window stage remains OUTSIDE this first packet. Overall accepted
-nine-path maximum includes a narrow horizon-threads retained repeated-signal policy;
-default legacy second-signal hard exit must remain separate. Real frozen window,
-input suppression, actual close/retry/signal/failure evidence require that later
-bounded source/evidence gate. No Running/world-rendering/animation/G1 claim.
+Strict opt-in parser before auth/session consumption/ordinary side effects. Keep
+Game Options unchanged via private parsed-launch wrapper (field would require tenth
+fixture path). Reject session flags/env presence incl empty/malformed, in-memory
+auth, conflicting names and all incompatible world/server/control/fixture/pregen/
+benchmark/frame-exit modes. Do not read/delete/log account paths. Real absolute
+unlinked coordinator ROOT, fixed expected target/type from trusted configured pair,
+no image-derived authority/new portable format. Refuse resource-pack fallback.
+Reuse synchronous resources before normal title/heartbeat/Discord/control setup.
 
-## Remaining S1
+Native Close/Retry only, monotonic typed requests, one joined completion before
+normal app/main return; startup close records intent, failures retain and require
+explicit retry. CleanupBlocked never releases. Unexpected irreversible exit/unwind
+with live worker is fatal, never hidden join/save/discard. Opt-in signal service
+reuses existing handler/atomics; repeated caught signals count/intents only with
+saturation. Legacy second-signal exit130 remains default. No new unsafe UI. Actual
+window/resize/minimize/input suppression/close/retry/renderer-error/two-signal and
+separate exceptional-child qualification required. Source/evidence gates stillapply.
+Read-only implementation map: docs/design/S1_FROZEN_WINDOW_API_AUDIT.md; no extra
+source authority. Invalid-Unicode argv baseline panic occurs before game::run; no
+new graceful guarantee for main.rs outside budget. Re-review any needed ninth path
+or changed boundary before expanding source.
 
-G1 OPEN: ordinary machine placement/removal/generation/unload/reload/close;
+## Remaining S1 and boundaries
+
+G1 OPEN: ordinary machine lifecycle/placement/generations/unload/reload/close;
 authorized player-slot transactions/replay/reach/permissions/revision/retirement/
 departure custody; persistent ordinary startup/status/retry; Creative/Running;
-live package admission and snapshot/delta/gap/resync/untracking/reconnect;
-committed retained animation; combined integrated/dedicated(two exact clients) and
-promised in-frame qualification; explicit G1 assessment. No reduced S1.
-Creative attributes and live-admission audits remain planning inputs, not accepted
-source designs. No unavoidable owner-policy question. Live S2 requires G1. S3 exact
-motor/shaft/small+large cogs/millstone cobble-to-gravel; no gearbox. R01 matches Java
-full-output item loss.
+live admission/snapshots/deltas/gaps/resync/untracking/reconnect; committed retained
+animation; combined default integrated and dedicated(two exact clients) plus
+promised in-frame qualification; explicit G1 decision. No reduced S1. Live S2
+requires G1. S3 exact motor/shaft/small+largecogs/millstone cobble-to-gravel, no gearbox.
+R01 matches pinned Java full-output item loss. No current unavoidable owner input.
 
-## Operating boundaries
-
-Reviewers procedural native READONLY in write-capable runtime: PS/GetContent/rg/
-Git reads/hash/text only; no WSL/scripts/import execution/runtime/writes/network/
-escalation/delegation. Authors assigned native writes only, no runtime/fmt/Git writes.
-No standing team. All runtime children isolated cwd/home/data/config/cache/temp/
-game/launcher/trash/clipboard/desktop; clear Git/session/RUST_MIN_STACK/fatal flags.
-Proof Python -I and explicit optimize rejection. Rust tests never spawn compiler/
-Java/test children. Preserve Prism/playables/accounts/references/global Java.
-Engine local only, normal native Windows Git hooks/attribution. Private branch
-`codex/h02-smoke-h03-notes`; every push fresh GitHub PRIVATE metadata and exact
-origin https://github.com/Cha0sCollective/Create-Horizon.git. No raw resources/worlds/
-evidence in Git; no memory writes.
-
-Private FINAL checkpoint1088968 pushed successfully; new owner worktree/branch
-created at exact7a08 and three scoped sources authored. Source manifest2b627334,
-suitef31694dc independently SOURCE CLEAR; tool review is finishing. Root will run
-feature/format checks BEFORE building/running the fresh actual test suite, to catch
-compile/style issues before runtime. No current Cargo/test/game process.
-
-Current stage1 source2b627334 and suitef31694dc SOURCE/TOOL CLEAR. Validation94912
-PASSfmt/threefeatureClippies/publictree(e3dfb8a0); freshbuild28279running alone.
-No stage1 game result yet. Future safe window API audit is
-docs/design/S1_FROZEN_WINDOW_API_AUDIT.md (planning only; no new source authority).
-
-Current stage1 validation94912 and build28279 PASS. Full runtime62617 is running
-on frozen bina605c812, source2b627334. Ordinary/protocol completed; actual cases
-in progress. Different final reviewer has preflight clearance only, FINAL pending.
+Before EVERY source/tool correction preserve ALL scoped sources+ALLprefix artifacts.
+Fresh independent Sol High exact-source review BEFORE compile/runtime; DIFFERENT
+final reviewer. Root alone formats/runs ALL Cargo/tests/games/commits SERIAL.
+Authors assigned native writes only, no runtime/fmt/Git writes. Reviewers procedural
+native READONLY in write-capable runtime: PS/GetContent/rg/Gitread/hash/text only;
+no WSL/scripts/importexecution/runtime/writes/network/escalation/delegation.
+No standing team. Runtime children isolated cwd/home/data/config/cache/temp/game/
+launcher/trash/clipboard/desktop; clear Git/session/RUST_MIN_STACK/fatal flags.
+Proof Python -I and explicit optimize rejection; no compiler/Java/test children
+inside Rust tests. Preserve Prism/playables/accounts/references/global Java.
+Engine LOCAL ONLY, normal native Windows Git hooks/attribution. Private branch
+codex/h02-smoke-h03-notes; each push fresh GitHub PRIVATE metadata and exact origin
+https://github.com/Cha0sCollective/Create-Horizon.git. No raw worlds/resources/evidence
+in Git or memory writes.

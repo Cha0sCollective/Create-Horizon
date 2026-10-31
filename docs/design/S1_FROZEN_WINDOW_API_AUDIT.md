@@ -54,3 +54,54 @@ have unrelated startup, persistence, input or gameplay side effects. Handle nati
 Close/Retry controls and selected physical keys locally. No unsafe UI operation or
 new generic graphics layer appears necessary. Actual window/signal/failure evidence
 and fresh exact-source review remain mandatory in the later window packet.
+
+## Startup and routing audit
+
+A second read-only audit found two concrete implementation hazards. Adding a field
+to Game Options requires a tenth path (the complete literal in
+integrated/transition_ownership_tests.rs around92). Only game::run calls Options::read,
+so keep Options unchanged and return a private ordinary/frozen launch wrapper in
+game.rs. This remains within the accepted path budget; no default initializer edits
+outside it are needed.
+
+Collect/classify managed arguments before the ordinary parser's dedicated remainder,
+quick-play filesystem checks, pregen global mutation and AuthSession::load branch.
+Recognize every session-file token and malformed equals form. Use var_os to reject
+HORIZON_SESSION_FILE presence, including empty/non-Unicode values. Return a fixed
+message without echoing account paths. Refuse auth::current before resources; no
+reset API is added. Explicit MemoryOwner avoids player_name fallback writing
+horizon-player.txt. Existing main.rs collects Unicode arguments before game::run;
+invalid-Unicode argv can panic there before account/resource/worker effects. Do not
+claim a new graceful guarantee for that untouched baseline or exceed nine paths
+without fresh design review.
+
+A strict managed whitelist should admit only fixed root, resources, window size,
+exact offline name and pinned package input. Reject duplicates, conflicting values
+and world/server/quick-play/dedicated/in-frame/benchmark/control/offscreen/frame/
+screenshot/report exits/creative/time/weather/dimension/look/pregen modes. Refuse
+command/net/component hooks and auxiliary settings before launch. Examples include
+HORIZON_COMMAND_SCRIPT/OUTPUT, HORIZON_DISPENSE_FIXTURE, HORIZON_SCULK_FIXTURE and
+HORIZON_NET_REPORT; re-enumerate actual hooks at the exact successor.
+
+Branch immediately after parsing, before heartbeat, legacy signals and Discord.
+Select the accepted retained signal policy. Reuse isolated Settings::load,
+Packages::read, packs::startup_root, mods::content_root and
+load_resources(menu=false). The latter returns full GUI and synchronously fills
+Resources::rest, without the unfinished ordinary loading path. Keep loaded.resources
+in the enclosing scope; borrow into clients and clone its Arc into worker startup.
+Never call start_game or ordinary selection/control/extras startup.
+
+load_resources can fall back to vanilla on pack failure. Require no fallback error
+and the expected final prepared content root before admission; do not assume the
+returned root still denotes the captured pair. Refuse pack startup errors rather
+than copying the ordinary fallback. Narrow client construction still needs explicit
+package-role/startup checks.
+
+The fixed coordinator ROOT layout is source-world/source-archive/authority/fresh
+recovered/empty continuation. Expected target is trusted fixed Overworld [2,120,2];
+expected type comes from the exactly required configured prepared fixture package,
+not an arbitrary first catalog entry or decoded image. Existing namespace owner
+anchor grants recovery routing; image manifest UUID is not a grant. Existing verifier
+then correlates physical/native/package/player/core data. No portable config format
+or arbitrary-world discovery is needed. These are implementation notes, not source
+release or a change to the accepted frozen profile.

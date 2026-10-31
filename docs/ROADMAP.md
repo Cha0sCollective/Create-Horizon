@@ -56,11 +56,16 @@ qualification remains unresolved. Actual recovery stays wholly on an owned worke
 with one-shot client endpoints and typed close/retry; ordinary UI and Running
 remain open.
 
-The next independently accepted design is
-`docs/design/S1_MANAGED_APPLICATION_HOLDER_PROPOSAL.md`: first extract the concrete
-pollable owner in three integrated-worker paths, then qualify an actual isolated
-frozen window with retained close/retry and signal intent. Each stage has its own
-source/evidence gate against the clean7a08 successor. This does not close G1.
+The concrete pollable owner is FINAL at locala56e013; see
+`docs/reference/S1_MANAGED_APPLICATION_OWNER_RESULTS.md`. Its314 normal cases,
+two separate exceptions, feature/optimized compilation and explicitly conditioned
+broad369 Python/1375 client checks preserve actual worker ownership until joined
+completion. The native Halloween fixture qualification remains unresolved.
+
+The next accepted stage of `docs/design/S1_MANAGED_APPLICATION_HOLDER_PROPOSAL.md`
+qualifies an actual isolated frozen window with retained close/retry and signal
+intent against exacta56e. It has its own bounded source/evidence gate. This does
+not activate gameplay, retained machine animation or close G1.
 Prerequisites now have separate local final acceptance: producer/writer fence
 (ea96036), H09a compatibility snapshot (3ac2d4c), H09b.1 frozen inputs/wire data
 (765dc8d), H11a retained diagnostic (70fd6aa), and closed debug writer controls
