@@ -29,10 +29,15 @@ preceded source. Author s1ln_source_author DONE; initialall8/absencemarkers/pref
 preservedattempt0, candidatebeforeRootfmtattempt1. Freshindependent
 s1ln_source_review SOURCECLEAR manifestb8bd74977a709175544180b077ee7f27c4ab39a1398dadc7ab19487b437a90ca.
 Qualificationtool4f6042f0 BUILD/TEST/CHECKS TOOLCLEAR, currentBUILDverifiedPASS.
-No tests yet; run realTCP/default/protocol/frozen-capture groups then feature
-checks/broad/differentFINAL.18negotiationtests selectedbyfullprefix,8explicitly
-mandatorybynames. No paired configuration/world admission or external_network
-relaxation. Prefixs1ln1 snapshots0–2. Root alone serial runtime/Git across branches.
+ALL134focusedPASS (17negotiation/5defaultnet/5frozencapture/107protocol), receiptc5cfd430.
+FullmodsONtestclippyPASS; pairedNO-runtimecheckFAILEDmissingdeadlineAPIsdespite
+actualunconditionalmethods. Crossworktreecacheartifactfilename reuseobserved;
+exactfailedexternnotproven. Cachefingerprint/.d evidencepreserved363files and
+ALL8+prefixattempt3. Noenginefix; independentlyCLEARisolateddriver84c4bb9a
+sets dedicatedtarget-s1ln1, mustfreshBUILD/TEST/CHECKS afteroldoutputs labeled.
+No passingNO-runtimeclaim yet. Fullprefix selects17cases,8mandatorybynames.
+No paired configuration/world admission/external_network relaxation.
+Prefixs1ln1 snapshots0–3. Root alone serial runtime/Git across branches.
 
 ## Next bounded persistence component
 
@@ -42,7 +47,7 @@ Independent s1_drop_design_review ACCEPTconcept +fresh actualcleanab/tree/parent
 APIseamrecheckPASS; retirementFINAL SAMEab nowmet. PrivateFINALcheckpoint must
 complete before new source. New worktree .local/worktrees/s1-dropped-item-checkpoint,
 branchcodex/s1-dropped-item-checkpoint basedab, prefixs1di1.
-Exactly8sourcepaths under crates/horizon-client/src:
+Original8sourcepaths under crates/horizon-client/src:
 
 - game/levels/session_checkpoint.rs
 - NEW game/levels/session_checkpoint_items.rs
@@ -52,6 +57,17 @@ Exactly8sourcepaths under crates/horizon-client/src:
 - game/lan.rs
 - game/levels/session_checkpoint_tests.rs
 - game/nether_portal.rs
+
+Reviewed DELAY AMENDMENT S1_DROPPED_ITEM_CHECKPOINT_DELAY_AMENDMENT.md exact
+e62f2036b1ddec1df6f14a8c4ae9330659d6f7ef0aaf1e20dc774dd91d0bf4a2 addsNINTH
+streaming.rs only. Independent s1_drop_design_review ACCEPT; privatecheckpoint
+mustcomplete before9thfileauthoring. RootfrozeauthorandpreservedALL9/current8+
+untouchedStreamingbaseline+ALLprefixattempt1. Authorresumes8onlyuntilcheckpointACK.
+Closednative-writer-test-control+debug-onlyactualGeneratelease onecolumngate;
+no provider/origin/arrival replacement. ReceiptDrop+StreamingDrop releasebefore
+drain/join, Arc-matchedcleanup/noqueueLockwait, actualentereddeadline/refusal and
+releasedpositive/recapture+reapedcleanup. Negativezero itemvalues thatnativeNBT
+wouldnormalize refusebeforeUUIDprep/write/nativeparse; positiveprofilemandatory.
 
 Use actual native entity regions and existing envelope1, staged checked UUID
 preparation (disclose identity mutation), exact live/postsave/copied projection
@@ -64,13 +80,14 @@ Load ALL verifieditemcolumns before installation, refusingunverified/regenerated
 extras ormissing/delayedarrivals. No hostdropssubstitute/journal/newnativecodec/
 savecompatpromise. Rich retirement entity must remainowned. Fullplancontrols inexactdoc.
 Initial7pathproposal33b966ab blockedprivateportalowner; preserveds1di1-proposal0.md.
-Sourceauthority aftercheckpoint is ONLYthis8pathcomponent; fresh exactsource
+Sourceauthority afteramendmentcheckpoint is ONLYthis9pathcomponent; fresh exactsource
 review before compilation/runtime and differentFINAL remain required.
 
-Next fullconfiguration/admission seam research is underway as private document
-only. Liveagreement scope must survive config/play split and queued joins,
-owner-matched reservation required, strict full registry/features/tags validation,
-actualmemory/integrated/dedicated startup routes. No implementation authority yet.
+Next fullconfiguration/admission proposal e95487ef revisedafterindependentBLOCK
+onouterteardown: C0retainedordinaryclose BEFOREC1fullactivation;26pathunion,
+polledexistingcontrolsurface+ownedwriterretry+concreteclose/return/lockgates.
+Independentre-reviewACTIVE, NOsourceauthority. Original87f/intermediate3a6b
+preserved s1pc1-proposal0/1. Keepfullstrictconfig/livehandoff andactualTCP/Pipe.
 
 ## Remaining S1 and constraints
 
