@@ -31,12 +31,17 @@ feature/optimized/broad evidence and retained failure/EOL limits. It excludes
 concurrent cooperating managed copies using one trusted namespace; ordinary
 startup, failed-close retention and connected-player recovery remain open.
 
-The next bounded source packet is the accepted dormant managed-stop worker in
-`docs/design/S1_MANAGED_STOP_WORKER_PROPOSAL.md`: actual Game/closed native host,
-zero roster/empty slot, explicit status/retry and retained owners on either
-publication-error class, with a synchronous supervisor and explicit fatal-unwind
-guard. Four source paths only, based on final9388598 after its private checkpoint.
-Ordinary UI/positive-player/in-frame routing and filled ingress remain separate.
+The dormant managed-stop worker has FINAL local acceptance at23e09dd; see
+`docs/reference/S1_MANAGED_STOP_WORKER_RESULTS.md`. Its actual zero-participant/
+empty-slot worker retains owners through both publication-error classes and explicit
+retry. Positive203+2 cases, separate actualfatal proof, optimizedTYPECHECK and
+clean broad checks passed. Ordinary startup/UI and connected-player behavior remain.
+
+The next proposal is real two-client memory-protocol positive-roster recovery in
+`docs/design/S1_CONNECTED_RECOVERY_PROPOSAL.md`. Seven paths have independent design acceptance atb2adefe5; source release requires
+the managed-stop FINAL/private evidence and accepted design checkpoint. It keeps recovered gameplay/filled machine
+ingress disabled and targets real restored player inventories, readiness and coherent
+recapture/close; TCP, ordinary UI and live departure resolution remain separate S1 work.
 Prerequisites now have separate local final acceptance: producer/writer fence
 (ea96036), H09a compatibility snapshot (3ac2d4c), H09b.1 frozen inputs/wire data
 (765dc8d), H11a retained diagnostic (70fd6aa), and closed debug writer controls
