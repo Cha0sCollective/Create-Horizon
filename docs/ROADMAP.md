@@ -62,10 +62,14 @@ two separate exceptions, feature/optimized compilation and explicitly conditione
 broad369 Python/1375 client checks preserve actual worker ownership until joined
 completion. The native Halloween fixture qualification remains unresolved.
 
-The next accepted stage of `docs/design/S1_MANAGED_APPLICATION_HOLDER_PROPOSAL.md`
-qualifies an actual isolated frozen window with retained close/retry and signal
-intent against exacta56e. It has its own bounded source/evidence gate. This does
-not activate gameplay, retained machine animation or close G1.
+The actual isolated frozen window is FINAL at local173ad2a, against parenta56e;
+see `docs/reference/S1_FROZEN_WINDOW_RESULTS.md`. It passes323component checks,
+15startup refusals,14normal window cases plus4separate exceptional children and
+actual nested-X11 minimization. Explicit NON-HALLOWEEN broad passes369Python/
+1383Rust; native Halloween fixture remains unresolved. The different independent
+final review accepts bounded close/retry/signal ownership, not ordinary gameplay,
+committed machine animation or G1. Next conceptual retirement/readmission design
+has fresh exact-pin/API acceptance, gated on its private evidence checkpoint.
 Prerequisites now have separate local final acceptance: producer/writer fence
 (ea96036), H09a compatibility snapshot (3ac2d4c), H09b.1 frozen inputs/wire data
 (765dc8d), H11a retained diagnostic (70fd6aa), and closed debug writer controls

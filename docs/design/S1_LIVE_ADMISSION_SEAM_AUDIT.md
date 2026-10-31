@@ -57,3 +57,45 @@ real fixture seams; synthetic agreement values alone cannot qualify them.
 This audit found no unavoidable owner-policy decision. Ordinary lifecycle/worker/UI,
 Creative attributes and live admission/replication remain distinct required S1 work.
 No public release, schema promise, broad framework or later-stage authority follows.
+
+## Follow-up source map at173ad2a (research only)
+
+The smallest useful next component is live login negotiation before profile
+reservation, followed by separately reviewed configuration validation and receipt
+consumption. Existing default network behavior remains closed for paired packages.
+
+Current source locations: Packages::freeze_peer_inputs game/mod_packages.rs:161;
+WireContract codec lan/peer_contract.rs:160/207/235; authenticated profile
+lan/conn.rs:884; Shared::try_admit call:901; duplicate-profile eviction
+lan/mod.rs:535; client query response net.rs:463; first server registry:1038;
+server Joined publication:1188; Hub admission lan/hub.rs:1181; client Joined
+net.rs:505; remote registry installation game/remote.rs:865. Native
+connection.rs:300 loops partial reads and lacks a total negotiation deadline.
+
+A candidate bounded service would retain actual endpoint expectation, profile
+UUID, fresh connection identity and phase in an AdmissionAttempt. Successful
+live confirmation alone constructs a non-Clone/nonserializable AgreementReceipt;
+decoded contract equality cannot construct it. A later consumer must verify the
+same live connection and retained input instance after full configuration. Either
+endpoint's termination invalidates the attempt. Existing WireContract bytes stay
+unchanged. Challenges/transcript binding remain unadopted protocol work requiring
+an exact proposal; do not append fields to the strict contract decoder silently.
+
+Approximately eight paths: new lan/admission.rs and focused TCP tests, lan/mod.rs,
+lan/conn.rs, net.rs, game/mod_packages.rs, frozen-input tests and narrow
+horizon-protocol/src/connection.rs deadline support. This is not a source budget
+authorization. Preserve ordinary/default login constructors and behavior.
+
+Refuse mismatches, malformed/replayed/reordered exchange, missing support and total
+deadline before try_admit: zero registry transmission, Guest/entity/player/world
+admission and replacement of an existing profile. Release only reservations
+actually acquired. Reap attempt-owned transport work; observer timeout alone is
+not cleanup. A subsequent exact fresh connection must succeed.
+
+Do not relax Packages::external_network in that first component. The next must
+force full registry NBT, incrementally validate exact groups/entries/data/tags/
+features, reject unsupported reconfiguration/transfer and consume receipts at Hub
+and remote installation. Exercise independent TCP endpoint captures, all nine
+mismatch classes, trickled frames, stale/replayed challenges, disconnect at every
+phase and queued Joined after socket death. Combined integrated/dedicated with
+two exact clients remains required. Research by read-only s1cw_lan_author.

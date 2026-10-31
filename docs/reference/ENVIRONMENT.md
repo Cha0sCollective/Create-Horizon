@@ -137,3 +137,13 @@ both with dpkg-query. This supplies the X11 runtime loader, not a Rust source or
 Java/Prism change. Wayland Vulkan surface reconfiguration and OpenGL startup had
 failed their first visible-window trials; preserve those failures separately
 from any subsequently successful X11/software-Vulkan qualification.
+
+The bounded real-minimization fixture additionally uses xserver-xephyr
+`2:21.1.12-1ubuntu1.9`, Openbox `3.6.1-12build5`, xauth `1:1.1.2-1build1`
+and xdotool/libxdo3 `1:3.20160805.1-5build1`. Native WM_DELETE_WINDOW close uses
+wmctrl `1.07-7ubuntu3`. Xephyr/Openbox installation added34
+packages and upgraded none. Package installation registered the normal system
+window/session-manager alternatives; no user startup file or running WSLg session
+was replaced. The fixture starts its own authenticated local-only display and
+isolated Openbox process, then reaps server, manager and game. It does not install
+a persistent test service or establish WSLg minimize behavior.
