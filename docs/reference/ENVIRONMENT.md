@@ -129,3 +129,11 @@ Game launches
 must additionally use fresh data/config/launcher directories and the isolation
 variables required by Horizon's AGENTS.md. Building binaries and preparing resources
 alone do not verify rendering, networking, machinery or game conformance.
+
+On October 31, native X11 frozen-window qualification exposed a missing runtime
+keyboard library. Installed Ubuntu packages `libxkbcommon-x11-0:amd64`
+`1.6.0-1build1` and its dependency `libxcb-xkb1:amd64` `1.15-1ubuntu2`; verified
+both with dpkg-query. This supplies the X11 runtime loader, not a Rust source or
+Java/Prism change. Wayland Vulkan surface reconfiguration and OpenGL startup had
+failed their first visible-window trials; preserve those failures separately
+from any subsequently successful X11/software-Vulkan qualification.

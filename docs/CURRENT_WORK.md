@@ -17,7 +17,7 @@ unchanged Halloween drowned fixture; fresh current/parent four-cell proof confir
 sameassertion. Explicit NON-HALLOWEEN conditioned broad passes369Python/1375client.
 Native Halloween qualification remains UNRESOLVED. No optimizedruntime/parity/
 generaldefaultstack claim. All3native/Git/Linux sourcebytes equal, clean a56e.
-Private last pushed WIPabf40d4; current FINAL checkpoint being saved/pushed now.
+Private FINAL checkpoint963555c is pushed and verified private.
 
 Pollable worktree `.local/worktrees/s1-managed-application-owner`, branch
 `codex/s1-managed-application-owner`. Dirty-parent s1ao1 guard/build/validate/test/
@@ -32,7 +32,7 @@ frozen `.local/s1app1-proposal2.md`, permits primitive-first/window-second seque
 Primitive FINAL and exact clean successor are met. Finish private FINAL checkpoint
 before source begins. Successor pin a56e0136a87ef723d4866c341ccbe11ec3678bd9.
 
-Planned worktree `.local/worktrees/s1-frozen-window`, branch `codex/s1-frozen-window`;
+Active worktree `.local/worktrees/s1-frozen-window`, branch `codex/s1-frozen-window`;
 prefixs1fw1. Narrowed EIGHT paths within the accepted nine maximum:
 
 - crates/horizon-client/src/game.rs
@@ -43,6 +43,38 @@ prefixs1fw1. Narrowed EIGHT paths within the accepted nine maximum:
 - NEW crates/horizon-client/src/game/integrated/managed_application_view.rs
 - NEW crates/horizon-client/src/game/integrated/managed_application_tests.rs
 - crates/horizon-threads/src/lib.rs (retained signal policy/inline tests)
+
+Current exact SOURCE CLEAR manifest01e662344ff50b7c0be15fd7087c1aeb4f73b65e2ecd0a73b7f04c49e9be71d6
+is in ignored s1fw1-source-sha256.json. It fixes a real repeated-event-loop-turn
+bug that overwrote the already-consumed joined completion. Previous sourcead357
+passed formatting/three features/threads Clippy/publictree and15 startup negatives
+(receipt02de39ad); old buildf4f3436a/bin e8072073 lives in
+/home/arbiter/.cache/create-horizon/bin/s1fw1-tests-8t7i_43e. All old proof preserved
+attempt27. Corrected candidate validation PASS (afed45c6), rebuiltc0fd70fa;
+current bin e40ac6c2b31f426d6b5cd62ec3a79ccf96c278a9f74dd3fc5a2c2fd56128fb2c
+in /home/arbiter/.cache/create-horizon/bin/s1fw1-tests-oafno432. Positive real X11
+window PASS: receipt d0dfe46b6cfb6e359d57671ac3b610be8ca3cc27e114e9f30c302372f2c99add,
+actual rendered800x600 status PNG, native resize720x480, one offer, joined close,
+3/5 native continuation verification, frozen clocks, manual view replacement/input
+suppression. Immediate native minimize acknowledgment wasfalse; typed occlusion
+supervision is proved, not actual platform minimize acknowledgment. Copied fault/
+retry PASS25dbc0f3; actual OS mouse Close+Retry native-copied PASS3170aa97 with
+UI record65df171f; actual mouse Close+R-key native-promoted PASSe6c4e64f with
+UI record11d3b394. Both classes retain native owners/locks/items through failure
+and verify a genuine joined continuation. Remaining qualification and independent
+FINAL stillpending; Root asked read-only review for the actual-minimize evidence gap.
+Failed trials remain explicit: automatic and
+software Vulkan Wayland surface reconfiguration, OpenGL startup, then missing X11
+runtime library. Installed xkbcommon-x11/xcb-xkb versions are in ENVIRONMENT.md.
+X11/software Vulkan then actually rendered Ready3/5 with frozen clocks and joined
+close, exposing the completion overwrite above. Captured actual Ready PNG visually
+checked at s1fw1-ready-first-window.png. Current reviewed window tool6d21cdb4 uses
+isolated X11/lavapipe selectors and records them as requested, not hardware proof.
+Validation tool1d9c66bf and optimizedTYPECHECK-only tool04eafba4 are reviewed.
+Tests include nonblocking actual
+signal observation, ten CleanupBlocked turns, actual rendered status PNGs and
+three cases waiting for external OS Close/Retry input. Root initialized the
+computer-use skill for those actual window actions. No standing agents.
 
 Actual frozen MemoryOwner window plus explicitly owned headless MemoryGuest; one
 lexical app owns pollable worker, both client Games, window/renderer/resources;
@@ -84,6 +116,9 @@ animation; combined default integrated and dedicated(two exact clients) plus
 promised in-frame qualification; explicit G1 decision. No reduced S1. Live S2
 requires G1. S3 exact motor/shaft/small+largecogs/millstone cobble-to-gravel, no gearbox.
 R01 matches pinned Java full-output item loss. No current unavoidable owner input.
+Next lifecycle seam research is in docs/design/S1_PERSISTENT_LIFECYCLE_API_AUDIT.md;
+it is research only, not source authority. Persistent retirement/readmission and
+registered binding/Game lifetime custody require their own bounded design review.
 
 Before EVERY source/tool correction preserve ALL scoped sources+ALLprefix artifacts.
 Fresh independent Sol High exact-source review BEFORE compile/runtime; DIFFERENT
