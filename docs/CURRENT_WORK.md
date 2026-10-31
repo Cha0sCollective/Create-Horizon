@@ -4,7 +4,13 @@ Owner: work until S1 is complete, with periodic updates. Earlier pauses/cutoff a
 superseded. Packet FINAL is not the end of the task. Stop only for a genuine
 blocker/required owner input. No public push/PR/merge/release or later-stage activation.
 
-## Accepted local components; not yet combined
+## Accepted local composed foundation and component history
+
+LatestC FINAL1fa55c619a2f4666a505461822a97efa5732db01/tree d0b2c224/parentD6a.
+Different s1bc_final_review ACCEPTS input72c45e27/summary2346d158/55hashes: exactD9/B8
+union17source66e;211fresh/27groups+6checks+conditioned369Python1486Rust/doc0PASS.
+All17nativeRaw vsGit/Linux ONLYexactCRLFconversions, beforeafterstable. Native
+HalloweenUNRESOLVED/noParity/optimizedruntime/G1. See FINALcompositionresults.
 
 D dropped-item checkpoint FINAL LOCAL6a5a16e2b5b65e952e10f2b106fcc10d7838a3da,
 tree390d9d9a99d1f2cfaab2a9c3ddf11a84d3934b96, soleparentab239890cd62595889f7f0302cd1396a5e2c547c.
@@ -39,7 +45,7 @@ codex/s1-login-checkpoint-combined starts6a5; apply ONLYexact B8delta STAGED wit
 cherry-pick --no-commit. Fresh exact17raw/canonical/source/effects CLR beforecompile.
 Tool65aa6867 CLEAR withSOURCECLR66e/expected4df5/actual17union; buildPASS and
 ALL211focused(77D+134B)freshPASS oncomposedbuild; featurechecksPASS,cleanLOCALC1fa55c619a2f4666a505461822a97efa5732db01/
-treed0b2c224/soleparentD6a committed; allstagedqualifytoolsretired. Broader/FINALpending,
+treed0b2c224/soleparentD6a committed; allstagedqualifytoolsretired. Broader/FINALPASS,
 27groups; 3clientfeatures+protocoltestClippy/fmt/pubtree, cleancommit/broad thenDIFFERENT
 FINAL. Existing component runs are not combined runtime. No semantic fix/extra path
 without revised review. C0b is NOT partofthis17pathbudget. Engine LOCALONLY.
@@ -56,7 +62,9 @@ ALL1source+ALLs1wr1prefixpreservedattempt3 BEFOREcorrectionACK; authorfixingONLY
 Priorcandidate04f alsoBLOCKEDuncorrelatedstickyerrorretirement; attempt6preserved
 beforefix. Author9966SOURCECLRpreformat, Rootfmt72daSOURCECLRmanifestc3d/expectedc2e1/
 tool7987applicable;40definingcases16normal3resource21fatal+8legacyresourceplanned.
-NOC0bcompile/runtime yet; Rootserialqueue. DifferentFINALreviewer s1wr_final_review
+C0binitialactualBUILD PASS onsource72da/script7987; libcb7041ef/bin95a8e9db.
+WriterNORMALruntime19new+58legacy(saveincl8resource)=77PASS; 21separatefatal
+fixturesNOTyetexecuted. Parentbroadrun63609reapedPASS andFINALaccepted. DifferentFINALreviewer s1wr_final_review
 haspreliminarynoblocker/hold pendingactualresults. Nativeauthor cannotrunWSL/scripts/Cargo/fmt/tests/Gitwrites.
 Writer-localFINAL neednotwaitcombined, but laterseparatewriteradoption MUSTfreshD/B
 actualregressionsabsentonab. Defaultpathunchanged, no ordinarycaller/activation.
@@ -113,3 +121,16 @@ HOLD+ALL7/prefixpreserve/rebase/review. Noauthorreleasebeforeactualprerequisites
 ActualregisteredDRAFTparent C1fa55c619a2f4666a505461822a97efa5732db01/tree d0b2c224
 nowCLEANwith211/featurePASS. Freshactualpin/APIrecheck PASS byindependentreviewer (33loghashes); private
 checkpointmustprecede7pathnativeDRAFTassignment; childallFMT/execution WAITparentFINALsameC.
+
+Registered7path DRAFTauthorACK followedprivate8030b9c+freshCpinreview+ALL7/prefix
+preserveattempt0. Worktreecodex/s1-registered-counter-binding basedC1fa; nativeauthor
+s1di_source_author activeONLY7files, nofmt/executionbeforeparentFINAL SAMEC.
+ParentCbroadrun63609 nowACTIVEsource9b0a/separateCIcache. C0bfirstbuild57479reapedPASS.
+
+RegisteredDRAFTsourcef28blockedONLYtesthelperunboundlabel; ALL7+prefixattempt2
+preservedbeforetwo-test-fileexplicitcallerlabelfix. Newa703 DRAFTSOURCECLRpreformat.
+PARENTC1fa nowFINAL SAMEbase meetsexecutiongate; privateFINALcheckpoint mustprecede
+Rootchildfmt/mechanicaldeltaSOURCErecheck/compile. NochildFMT/runtimeyet.
+H10observerproposal a460f875 conditionalCONCEPTACCEPT, no sourceauthority; nativepersistentviewfirst,
+borrowedboundedclone; genuinepersistentGuestbridge+callbacksuccess/trap remains
+MANDATORY S1/G1 work, notprovidedbycurrentNativebackend. No scope/gatereduction.

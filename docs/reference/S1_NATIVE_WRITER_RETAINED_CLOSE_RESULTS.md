@@ -1,7 +1,7 @@
 # Retained native writer close and repair retry
 
-Status: WIP. Formatted source independently CLEAR; compilation and runtime have
-not started. Different final reviewer reports preliminary no new blocker only.
+Status: WIP. Formatted source independently CLEAR and first actual build PASS;
+runtime qualification remains. Different final reviewer reports no static blocker.
 S1/G1 remain open; no ordinary caller, startup or publication.
 
 Worktree .local/worktrees/s1-native-writer-close, branchcodex/s1-native-writer-close,
@@ -43,7 +43,11 @@ case must complete genuine assertions, flush its distinct marker, abort with
 SIGABRT and be reaped; a generic panic is insufficient. Process-local core limits
 avoid dumps without changing host settings. No Rust test spawns another test,
 compiler or Java process. Children get fresh isolated homes and data; target-s1wr1
-is dedicated to this physical worktree. Actual compile/results remain pending.
+is dedicated to this physical worktree. Initial actual opt0/debug/overflow-checking
+build PASS: libcb7041ef7d5793544e5ae2983db91a10aa419a8d9aa84e057250068fe3707449,
+bin95a8e9dba7355579f199aa9c2d72f58fb07c45a1369485a416f13b102e84ffbb.
+InitialnormalruntimePASS:19newnormal/resource+58legacy save tests, all8legacy
+resourcesexecuted, zeroignored. Separate21fatalprocessproofs/checks/broad/FINALpending.
 
 Source review blocked88ff for blanket-cache poison waiver, one-way missing-record
 reconciliation and missing repair controls;04f for uncorrelated sticky-error

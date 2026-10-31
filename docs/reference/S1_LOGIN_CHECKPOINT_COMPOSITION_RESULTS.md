@@ -1,7 +1,6 @@
 # Local login and checkpoint composition
 
-Status: WIP. Exact source, build, all211focused and feature checks PASS;
-cleanLOCAL1fa55c6 committed. Broad qualification and different FINAL remain.
+Status: FINAL ACCEPT for this bounded local composition.
 S1/G1 are open. No ordinary caller, configuration admission or public publication.
 
 ## Exact source
@@ -49,3 +48,16 @@ performance, general stack, full save compatibility or G1 claim follows.
 C0b writer source is NOT included. Its first candidates are undergoing independent
 source corrections in a separate one-file worktree. Any later writer adoption
 requires another bounded composition and genuine D/B regression qualification.
+
+Actual postcommit broad exits0 on exactclean1fa:369Python/1486Rust/doc0/fmt/Clippy/
+public-tree PASS. ExplicitNON-HALLOWEEN process-local dates11-01T05:32:13+1400 through
+05:55:00+1400; nativeHalloween remains UNRESOLVED. All17testednative raw sources
+are unchanged and differGit/Linux ONLYby exactCRLF-to-LF conversion; all17before/
+after comparisons identical, counts/hashvalues inreviewedreceipt. No parityrun.
+BothcomponentFINALs, all211fresh andbroad are nowavailable for finalauditing.
+
+Different s1bc_final_review FINAL ACCEPTS input72c45e27d6174f6b51e9aeb6a63716b94e961f5ac672bb8cfe7348f35829b5bb,
+frozen summary2346d158a991f431477eede3d7eafd0a3a56a9e0d36843b0aefe7da2e279fb4e
+andall55indexedhashes. Pre-acceptance summary remainsfrozen inignoredevidence.
+Registeredchildparentgate ismetatSAMEC1fa; writerandregisteredcomponentsremainoutside
+thisacceptance andneedtheirownsource/runtime/FINAL gates. No S1/G1 follows.
