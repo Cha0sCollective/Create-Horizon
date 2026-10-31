@@ -6,7 +6,7 @@ namespace = "create_horizon"
 repository = "https://github.com/Cha0sCollective/Create-Horizon"
 visibility = "private"
 stage = "post-G0 foundations"
-active_packet = "S1 authority FINAL local9388598; next accepted dormant managed-stop worker four-path packet on that base, no ordinary activation or G1"
+active_packet = "PAUSED by owner: authority FINAL9388598; managed-stop four-path source/tool review clear but uncompiled/untested on base938; resume only on request"
 next_stage = "S1 host foundations and remaining P02; G1/G2/G3 open"
 
 [specification]
