@@ -29,19 +29,31 @@ The trusted managed-authority precursor also has FINAL local acceptance at938859
 see `docs/reference/S1_SESSION_AUTHORITY_RESULTS.md` for229 split-case coverage,
 feature/optimized/broad evidence and retained failure/EOL limits. It excludes
 concurrent cooperating managed copies using one trusted namespace; ordinary
-startup, failed-close retention and connected-player recovery remain open.
+startup and general departure resolution remain open.
 
 The dormant managed-stop worker has FINAL local acceptance at23e09dd; see
 `docs/reference/S1_MANAGED_STOP_WORKER_RESULTS.md`. Its actual zero-participant/
 empty-slot worker retains owners through both publication-error classes and explicit
 retry. Positive203+2 cases, separate actualfatal proof, optimizedTYPECHECK and
-clean broad checks passed. Ordinary startup/UI and connected-player behavior remain.
+clean broad checks passed. Ordinary startup/UI remains open.
 
-The next proposal is real two-client memory-protocol positive-roster recovery in
-`docs/design/S1_CONNECTED_RECOVERY_PROPOSAL.md`. Seven paths have independent design acceptance atb2adefe5; source release requires
-the managed-stop FINAL/private evidence and accepted design checkpoint. It keeps recovered gameplay/filled machine
-ingress disabled and targets real restored player inventories, readiness and coherent
-recapture/close; TCP, ordinary UI and live departure resolution remain separate S1 work.
+Two-client memory-protocol positive-roster recovery has FINAL local acceptance at
+`c95ba7e`; see `docs/reference/S1_CONNECTED_RECOVERY_RESULTS.md`. Actual restored
+Survival player inventories3/5, native terrain/teleport/Loaded readiness, frozen
+clocks, coherent recapture and receipt-only joined close are qualified. All328
+normal cases, three component regressions and four separate exception proofs pass
+their bounded checks. Broad369 Python+1478 client/protocol pass is explicitly
+non-Halloween-calendar-conditioned; an unchanged native Oct31 drowned fixture
+fails identically on the parent/current source. This baseline defect remains open.
+Gameplay/filled machine ingress, Creative, TCP, ordinary UI and live departure
+resolution remain separate S1 work.
+
+The active six-path managed connected-worker bridge follows independently accepted
+`docs/design/S1_MANAGED_CONNECTED_WORKER_BRIDGE_PROPOSAL.md`, pinned to finalc95.
+Exact source and tools have independent clearance; build/runtime/final review are
+pending in `docs/reference/S1_MANAGED_CONNECTED_WORKER_RESULTS.md`. It moves the
+existing recovery wholly onto an owned worker with one-shot client endpoints and
+typed close/retry; it does not activate ordinary UI or Running.
 Prerequisites now have separate local final acceptance: producer/writer fence
 (ea96036), H09a compatibility snapshot (3ac2d4c), H09b.1 frozen inputs/wire data
 (765dc8d), H11a retained diagnostic (70fd6aa), and closed debug writer controls

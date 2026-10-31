@@ -1,125 +1,86 @@
 # Current work
 
-Owner: work until S1 is complete, with periodic updates. Stop only for a genuine
-blocker/required owner decision. Earlier pauses/cutoff superseded. Packet gates do
-not end the task. No public release or later-stage S2 authority is implied.
+Owner: work until S1 is complete, with periodic updates. Earlier cutoff and pauses
+are superseded. Stop only for a genuine blocker or required owner decision.
+No public release, public engine push, S2 activation or gate reduction is authorized.
 
-## Completed accepted foundations
+## Accepted foundations
 
-Checkpoint872dac2, managed authority9388598, managed-stop worker23e09dd are FINAL.
-See docs/reference/S1_SESSION_AUTHORITY_RESULTS.md and S1_MANAGED_STOP_WORKER_RESULTS.md.
-Their dirty-parent tools MUST NOT run against committed successors. Engine LOCAL ONLY.
+S0/G0 and bounded package/counter/reference foundations are accepted. Checkpoint
+872dac2, managed authority9388598, managed stop23e09dd and connected recovery
+c95ba7ec7ccdaba06e4a23cea5fdbb4e4ddeb076 are FINAL/local engine commits.
+Detailed current acceptance: docs/reference/S1_CONNECTED_RECOVERY_RESULTS.md;
+independent final input7c8af21f. Private evidence checkpoint30306db pushed to verified
+private Create-Horizon. Engine remains LOCAL ONLY.
 
-## Active packet: connected recovery, awaiting broad/final review
+Connected proof:328 normal cases (203 ordinary/103 protocol/9 transport/13 real-game),
+three additional old-wrapper resource regressions and four separate exception
+proofs; exceptions are not normal passing tests. Exact raw manifest1dffa36f.
+Broad clean check PASS369 Python+1478 client/protocol only under explicitly verified
+NON-HALLOWEEN child calendar. Native Oct31 drowned fixture fails identically on
+parent23/currentc95; reproduced four-cell baseline qualification remains unresolved.
+No source/global clock/global timezone changes. Seven source files raw=Git/Linux;
+protocol connection.rs differs only558 CRLF normalization. See result for limitations.
+All old dirty-parent s1cr1 guard/build/test scripts MUST NOT run at committedc95.
 
-Worktree .local/worktrees/s1-connected-recovery; branch codex/s1-connected-recovery.
-CLEAN LOCAL commit c95ba7ec7ccdaba06e4a23cea5fdbb4e4ddeb076;
-tree8cd9d431f8a07c06e42810a339f809371acece62; soleparent23e09dd1f0ec3c2a0a69e6e002ddab4a92736b11.
-Eight files3836insertions/32deletions. Normal nativeWindowsGit PublicTree hook PASS.
-LinuxGit identity/hook attempts failed BEFOREcommit; no hook bypass/source change.
+## Active packet: managed connected worker bridge
 
-Exact eight paths: crates/horizon-client/src/game/lan.rs; new game/lan/connected_recovery.rs
-and connected_recovery_tests.rs; game/levels/session_checkpoint.rs; lan/mod.rs,
-lan/conn.rs, lan/hub.rs; crates/horizon-protocol/src/connection.rs.
-Raw-source manifest1dffa36fc51b3ccccdf3775eb2aa51ffc37ef2bf414850e1883de12dc78797bd
-independently SOURCE CLEAR. Designinputb2adefe5/native-close deltainputd2e9f38d accepted.
-All eight sources+ALL prefix evidence before corrections preservedattempt0-16.
+Design docs/design/S1_MANAGED_CONNECTED_WORKER_BRIDGE_PROPOSAL.md independently
+DESIGN ACCEPT at exactinput026d3415869a27f7b1726f16b1724adac1d51cc1a6a0749cd680ab1e46432f42.
+All conditional prerequisites satisfied: connected FINAL, clean c95, private30306db.
+Successor pin c95ba7ec7ccdaba06e4a23cea5fdbb4e4ddeb076.
+Worktree .local/worktrees/s1-managed-connected; branchcodex/s1-managed-connected.
+Prefixs1cw1. Exact six scoped engine paths under crates/horizon-client/src/:
+game/integrated/managed_stop.rs, NEW game/integrated/managed_connected_tests.rs,
+game/lan.rs, game/lan/connected_recovery.rs, game/lan/connected_recovery_tests.rs,
+game/integrated/managed_stop_tests.rs.
 
-Detailed authoritative INPROGRESS record: docs/reference/S1_CONNECTED_RECOVERY_RESULTS.md.
-Mainfull24577PASS328normal/24groups:203ordinary+103protocol+9library+13actualgames.
-Exactreceipt4bd817308da682110fef4e8137f0dab6b83cd71247d5976f421c95fa781c6829.
-Three ADDITIONAL oldwrapper component regressions allPASS85.19/40.66/76.45seconds.
-Four SEPARATE exceptionproofs allverified:LAN/writer/Readyunwind SIGABRT(-6),late
-retaineddeparture thenEXPLICITownedfixture SIGTERM(-15), allreaped. NOTlibtestpasses.
-First3old873tool; failedlate19640partialJSONreadverifiedfalse preservedattempt15;
-newline-recordfix9f7d3094 independentlycleared, late46250rerunPASS89.54s.
+Bounded objective: existing fixed2-profile memory ReadyFrozen recovery wholly on
+owned managed worker; one-shot pipe offers to caller-thread real clients,
+coalesced bounded status, typed monotonic close/retry, actual native joins then
+receipt-only successful stop. Retain failed owners/leases, no Game/raw task escape,
+no drop cancellation/detach/hidden join. Separate fatal supervisor unwind and
+late-departure retained evidence. Preserve legacy closed-profile entry.
+NO Running/gameplay/counterstep/slot ingress/TCP/normal UI/singleowner/protocol/
+save schema/general framework edits. Ordinary outer UI/process holder is a later
+separate accepted packet. No packet milestone ends owner instruction to finish S1.
 
-Currentfrozen debugbin7d83e91face868210fa05418145a9a92cc62c50d5f9bf279fba5b949aa3734fa
-at /home/arbiter/.cache/create-horizon/bin/s1cr1-tests-_yvujj1u/bin-tests;
-lib2ee2057a/protocol964fa602. Builderf74ca6e7, source1d, featuresmods/paired-packages/
-native-writer-test-control. Refreshed27795PASSfmt/3featureclippies/publictree;
-fastOPTIMIZED TYPECHECKONLYPASS(opt3/debugassertionsfalse/tests_executedfalse),log758cd2d3.
+Root implements managed stop + serial validation. Bounded author s1cw_lan_author
+owns narrow LAN visibility/setter, then NEW actual connected worker tests only.
+All six sources+ALL prefix evidence preserved before EVERY correction. Fresh
+independent Sol High exact source review BEFORE compile/runtime; DIFFERENT final
+reviewer. Root alone formats/runs ALL Cargo/tests/games/commits SERIAL.
 
-ExactcleanLinuxbroad93264 RUNNING via reviewedwrapperab9cca7c. Python/fmt/workspace
-clippyPASS; client+protocol tests currentlyrunning. Compare testedraw/Git/Linuxbytes
-before/after. Sevenrawfilesidentical; protocolconnection.rs558CRLF differsONLYexact
-CRLF->LF normalization. Scope reverseconsumerCOMPILEonly; touchedclient/protocol
-runtime/docs; --quick parityomitted/no broaddefaultstack/publicPRapprovalclaim.
-Differentfinalreviewer s1_connected_final_review preflightNOmaterialfindings in
-source/normal/exception/componentproofs; acceptanceWITHHELD forbroadevidence and
-exactcommittedsource/finaldocSHA. No currentCargo/game otherthanserializedbroad.
+## Remaining S1
 
-IMPORTANT: s1cr1 dirty-parent23 guard/build/validate/test/exception/regression/fast
-scripts MUSTNOTEXECUTE atcommittedc95. Broadwrapper usesexactcleancommit route.
-No publicenginepush/PR/merge/release. Private lastpushedcheckpointc4c4717.
+G1 OPEN: ordinary machine placement/removal/generations/unload/reload/close,
+authorized player-slot transactions/replay/reach/permissions/revision/retirement/
+departure custody, persistent ordinary startup/status/retry, Creative/Running,
+live package admission and initial/delta/gap/resync/untracking/reconnect replication,
+committed retained animation, combined integrated+dedicated(two exactclients) and
+promised in-frame qualification. Then explicit G1 assessment. No reduced S1.
+Future audits S1_CREATIVE_ATTRIBUTES_AUDIT.md and S1_LIVE_ADMISSION_SEAM_AUDIT.md
+are evidence/planning inputs, not accepted source designs. No unavoidable owner
+policy question identified. Live S2 requires G1. S3 exact motor/shaft/small+largecogs/
+millstone cobble-to-gravel, no gearbox. R01 matches pinned Java item loss.
 
-## Material qualification limits
+## Operating boundaries
 
-ActualsourceSurvival0 BEFOREadmission/ticks/owners, opscommands/spawn_mobsfalse;
-real /give3/5, realmemoryclients/terrain/teleport/Loaded, zerorecoveryticks,
-core/body/rows/keys/clocks preserved; receipt-onlyclose andallstagednativejoins.
-EarlierCreativeSource failedstrictattributecheck; diagnostic/profilefixpreserved,
-no state/attribute clearing/checkweakening. Creativepreservation remainsS1gap.
-Trustednamespaceexclusion is forcooperatingentries; nativepipebuffers unbounded,
-only stagedmailbox/body budgetsqualified/no totalmemory/uniformlatencyclaim.
-TypedCopied/Promoted faults notOSIO/powerloss. SourcefixtureordinaryLANouterreaders
-remainuntracked; explicitclientdisconnect/nativeonline0observed, onlystagedjoinsclaimed.
+Reviewer procedural native READONLY in write-capable runtime: PS/GetContent/rg/
+Gitreads/hashes/text only; no WSL/scripts/import execution/runtime/writes/network/
+escalation/delegation. Authors assigned native source only, no runtime/fmt/Gitwrites.
+No standing team. Preserve Prism/playable saves/accounts/references/global Java.
+All runtime children isolated cwd/home/data/config/cache/temp/game/launcher/trash/
+clipboard/desktop, clear Git/session/RUST_MIN_STACK/fatal flags. Python -I and
+explicit optimize rejection for proof tools. No nested compiler/Java/test processes
+inside Rust tests. Engine normal hooks, no public pushes/PR/merge/release.
+Private branchcodex/h02-smoke-h03-notes; every push fresh GitHub PRIVATE metadata
+and exact origin https://github.com/Cha0sCollective/Create-Horizon.git.
+No memory writes. Keep raw runtime worlds/resources/evidence ignored.
 
-## Next accepted conditional design (NO source release yet)
-
-S1_MANAGED_CONNECTED_WORKER_BRIDGE_PROPOSAL.md input026d3415869a27f7b1726f16b1724adac1d51cc1a6a0749cd680ab1e46432f42
-independently DESIGN ACCEPT, privatebackupc4c4717, snapshot.local/s1cw1-proposal2.md.
-Six-path worker bridge requires currentFINAL+cleancommit+privatecheckpoint+successorpin.
-Runconnectedcoordinatorwhollyonworker; one-shotpipes/coalescedstatus/typedclose-retry
-only, noGameescape/freelydroppableowner. OrdinaryUI/processholder nextseparatepacket.
-Read-only futureS1audits: S1_CREATIVE_ATTRIBUTES_AUDIT.md and S1_LIVE_ADMISSION_SEAM_AUDIT.md;
-notformalproposals/sourceauthority. No unavoidableownerpolicyquestion identified.
-
-## Remaining S1 and operating rules
-
-G1 OPEN: ordinarymachine lifecycle/placement/generations/unload/reload/close,
-authorizedplayerslottransactions/retirement/departurecustody, persistentordinary
-startup/status/retry, Creative/Running, liveadmission/replication, committedanimation,
-combinedintegrated/dedicated(twoexactclients)/in-framequalification. Currentfrozen
-two-offlineprofilememoryproof is oneprerequisite. LiveS2requiresG1. S3exactmotor/
-shaft/small+largecogs/millstone cobble->gravel, nogearbox. R01matchespinnedJavaitemloss.
-No generaljournal/globalcodec/reducedS1/savecompatpromise adopted.
-
-Coordinatorimplementsdirectly; onlyboundedusefuldelegation. Rootaloneformats/runs
-ALLCargo/tests/games/commitsSERIAL. Authorsassignednativefilesonly/no runtime/fmt/Gitwrites.
-ReviewersproceduralREADONLY inwrite-capableruntime: nativePS/GetContent/rg/Gitreads/
-hashes/textONLY; noWSL/scripts/importexecution/runtime/writes/network/escalation/delegation.
-FreshindependentSolHighdesign/source, DIFFERENTfinalevidencereviewer. BeforeEVERY
-correction ALLscopedsources+ALLpacketprefix evidence innewnamedsnapshot.
-Privatebranchcodex/h02-smoke-h03-notes; everypushfreshGitHubPRIVATE metadata+exactorigin
-https://github.com/Cha0sCollective/Create-Horizon.git. Normalhooks/agentfooter. No raw
-runtime/privateplans inengineGit. PreservePrism/playablesaves/accounts/references/
-globalJava; nomemorywrites. Ownedisolatedcwd/home/data/config/cache/temp/game/
-launcher/trash/clipboard/desktop; clearGit/session/RUSTMIN/fatalflags inruntimechildren.
-
-BROAD93264 FINISHED1:369Python/fmt/workspaceclippy/docs0PASS;lib1172pass1fail,
-ocean_ruin_drowned_match_vanilla actualjack_o_lantern/RNGshift afterOct31rollover.
-Bothimplicatedvanillagen/structure_mobs.rs andmobs/finalize.rs UNCHANGED vsbase23;
-sourceReviewerconfirmedHalloweenLocalDate branchmechanism. All8+ALLprefix/broad
-failure/logs preservedattempt17. NOsource/globalclock/timezonechange/testskip.
-Bounded4-cellbaseline/calendar tool.local/s1cr1-calendar.py08ca21d2 awaiting
-independentTOOLCLEAR: currentc95+parent23 exactsinglefixture eachHalloween/non-
-HalloweenchildTZ, observedUTC/localdate/offsetbeforeafter, exactmatchingexpected
-assertfailurevs1PASS, restorecleanc95clone. Nativecalendarfixturedefectmustremain
-explicit evenifconditionedbroadpasses. PacketNOTFINALyet; no nextbridge source.
-
-Calendar4cell42650FINISHED0 verified: baseline23/currentc95 exactsameHalloween
-assertFAIL101 andbothobservednonHalloweenPASS0. Freshprocesses/default+mods/no-paired
-debuglibs,UTC/localTZ/offsetbeforeafter,sourceunchanged,cleanc95clonerestored.
-Result.local/s1cr1-calendar-result.json. ExpectedfailuresNOTnormaltestpasses.
-IndependentTOOLCLEAR conditionedbroad2d7953ff running66352, separateconditioned-*
-files;requirespinnedcalendarreceipt,onlyprocessTZ/nonHalloweenassertbeforeafter.
-ReportANYpassasNON-HALLOWEEN-CALENDAR-CONDITIONED. OriginalnativeHalloweenbaseline
-fixturequalificationUNRESOLVED;no source/globalclock/timezonechange/testskip.
-Differentfinalreviewer auditingcalendarproof; no nextsourceuntilactualFINAL.
-
-CONNECTED FINAL ACCEPT: reviewerinput7c8af21f, exactc95/tree8cd9/raw1d; nofindings.
-Conditioned66352PASS369Python+1478clientprotocol, before=aftercomparison0243bd27;
-log39cbecf0/status6f95c02e. All328normal+3component+4exceptionvalidated. Native
-HalloweenbaselinefixturequalificationUNRESOLVEDexplicit. No activeCargo/test/Game.
-Privatecheckpointnow; nextaccepted6pathworkerbridge atpinnedc95, noS1/G1completeclaim.
+Currentbridgebuild39445PASS; positive15450complete0,312normalcases/8groups.
+Receipt92623a9d. Bothseparateexceptionsverified/reaped; validation63621running, fast/broad/final
+stillpending. Exactsource3d64unchanged. FutureapplicationholderdesignACCEPT at
+cb1f1496b9404120bd44f734cd015a91b5fa5fffa2bc1345ed8af12b0c156db9,
+frozen.local/s1app1-proposal2.md; 9paths inclretainedsignalpolicy, conditionalon
+currentFINAL/cleancommit/privatecheckpoint. No futuresourceyet.
