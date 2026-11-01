@@ -2,3 +2,5 @@
 *.docx binary
 *.png binary
 *.jpg binary
+# Patch context lines intentionally contain a single space; preserve patch bytes.
+checkpoints/engine/**/*.patch -text whitespace=-blank-at-eol

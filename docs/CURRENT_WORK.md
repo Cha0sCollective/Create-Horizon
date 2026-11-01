@@ -1,5 +1,17 @@
 # Current work
 
+OWNER STORAGE STEERING November1: finish active Guest battery, checkpoint/sync,
+then reclaim local storage. Hold new development queues and precursor execution.
+Owner explicitly authorized pushing FULLY REVIEWED engine branches to the public
+Horizon fork; unfinished work remains private. No PR/merge/release. C:14.5GiBfree,
+UbuntuVHD341.1GiB with330GiB projectcache. Current test workload stable; no new
+large build until cleanup. Cleanup script d988f45e conditionally cleared by fresh
+storage_cleanup_review:17explicitoldCargo targets, ~250GiB, preserve currenttarget,
+ALLbin/resources/fixtures/runs/checkouts/Gsource+evidence/Prism/playables/references.
+Require reaped99311+actualremotecheckpoints+nonemptycompletepreservedmanifest first.
+Then verifiedcleanup, sync/fstrim/sync, inactiveUbuntu-onlyterminate+builtincompact;
+verifyCspace/Linuxhealth/hashes. No move/unregister/diskpart or broader shutdown.
+
 Resumed November 1 at the owner's request: finish remaining checks and writer
 retest, then continue S1 until a genuine blocker or required owner input. Keep the
 owner updated. S1/G1 OPEN. No public push, PR, merge, release or live S2.
@@ -70,14 +82,30 @@ snapshotattempt6 before Rootfmt. Formatted manifest
 cda2302e5b4fe2093252ff3bdd2d6681f111806b1cd40e1bd33c2fb041efae69 SOURCE CLEAR,
 mechanical-only delta. Nine normal/fourteen actual Game cases inventoried; private
 registered fixture reused through child module within the same10paths.
-No Guest compile/Game execution yet.
+Original R draft remains uncompiled; current adopted qualification is below.
 
 Released AFTER THIS PRIVATE CHECKPOINT: adoption FINAL/fresh parent API review
 accepted; create NEW clean child at accepted e369 and
 copy ONLY same10 frozen files. Preserve R draft. No semantic edit/save.rs edit.
 Exact27ancestral/10child inventory and parent FINAL must be rechecked. Ignored
-s1pg3 tool draft deliberately has PENDING source manifest; cannot execute yet.
-Proposed325fresh normal/21fatal/six checks. No unreviewed parent substitution.
+Actual adopted worktree copied after private dd54742,27manifestf88592bd. First
+static run failed ONLY items-after-test-module/unusedimport; no Game tests ran.
+ALL27/prefixattempt7 before Root mechanical correction; attempt8 before toolpins.
+Current2035b79e source/currentGuest2ba623d5/tool95541283/expected69bc4aea
+SOURCE/TOOL CLEAR. Failed original checks preserved in sourcef885-static-failure
+with relocation hashes andattempt7. Attempt9 snapshots current before retry.
+Root serial session99311: six checks then build, SEPARATE9real evaluator-boundary
+cases,325fresh normal/21fatal, stopping at first failure. ALLsixchecks/buildPASS;
+SEPARATE9evaluatorboundaryPASS. Actual00healthy/01trap GamecasesPASSbothroles;
+remainingactual/newpure/inherited/fatalpending. DIFFERENT s1_guest_final provisional
+CLEAR of28completedimmutableartifacts/27sources; allfinal gatesstillpending.
+A832 postcommitbroad SUPERSEDED, NOTPASSED by fresh independentlyreviewed workflow
+8631c054: aftermain325/9eval/21fatal/6checks actualpass+verify/reap, run7existing
+transientGuest cases(+2binprojection/receipt) frompinnedartifacts; ONEdefaultfeature
+alltargetsClippy mods,paired-packages WITHOUTnative-writer-test-control afterstorage
+cleanup. Exactunchangedtenfilechild/object/rawCRLF-onlyequivalence anddifferentFINAL
+stillrequired. All325normalnowPASS;21fatalactive. Extrahelper8d218ab2 TOOLCLEAR,
+requiresmaincompletionfirst. FormerFullbroadmustnotbeclaimedpassed/replayed.
 
 ## Qualified private fuel fixture and captured pairs
 
@@ -145,7 +173,46 @@ desktop; sanitize inherited Git/session/compiler/profile/stack/fatal controls.
 Python-I and optimization rejection. No compiler/Java/test children in Rust tests.
 Preserve Prism/playables/accounts/references/globalJava. Per-physical-worktree
 Cargo targets, separate CI target; never reuse shared cross-worktree cache proof.
-Native Windows Git, normal hooks/attribution, engine LOCAL ONLY. Private branch
+Native Windows Git, normal hooks/attribution. Ownerstorageinstruction nowpermits
+ONLYfullyreviewedenginebranchpublicpushes; unfinishedworkprivate,norelease/PR/merge.
+Private branch
 codex/h02-smoke-h03-notes; BEFORE EVERYpush fresh GitHub PRIVATE metadata and exact
 origin https://github.com/Cha0sCollective/Create-Horizon.git. No generated raw
 worlds/resources/run evidence in Git, no memory writes.
+
+## Active acquisition draft
+
+Private dd54742 preceded exact3 authoring at cleanadoptione369. Baselineattempt0.
+Native author s1_c0a_packet_design froze de495a00; fresh s1_acquisition_source_review
+found test-only return-observation race. ALL3/prefixattempt1 beforefix c8b2b155;
+return/unwind snapshot +deterministic nonwaiting negative control added. Reviewer
+then found second-spawn failure could strand heldworker; ALL3/prefixattempt2 before
+fix. Currentprefmtmanifestcbf2db50 (save4c27079c/authoritycaa53775/generator91e55d15)
+prefmtSOURCECLEAR by s1_acquisition_source_review; no fmt/build/runtime hereyet.
+Focusedtool2fa3a8a2/expected988a4abf conditionalCLEAR110normal/25fatal/sixchecks,
+sourcepinPENDING. This110/25plan is now SUPERSEDED by workflow8631:24focusednormal/
+4newfatal/sixstatic; reusedold77normal/21fatal keeporiginalrevision. Oldtool mustbe
+revised/reviewed beforeexecution; noautomaticnewprecursorqueue. Broad00993543 no
+longermandatorypercomponent; composedcheckpoint retainsbroadrequirement.
+ALL3/prefixattempt3 beforethattoolfix. Rootserialqueuefree+fmt/recheckstillrequired.
+No productionfinding beyond accepted3pathdesign; preserve existingtrustedpath
+threatboundary, no new portableinode-replacementpromise. Elevennormal plusfour
+ignoredfatal/fourignoredresourcecases; planned focused110normal/25fatal/sixchecks
+includes inherited regressions and actualNative Game bothrole roundtrip. Exact
+tool and source gates stillrequired. OriginalC0a5 source remainsblocked.
+
+## Storage checkpoint execution state
+
+Main99311 COMPLETEexit0/reaped:325normal/53groups,9separateevaluator,21marked
+fatal/6staticallPASS; rawsource27unchanged. Extra8d218ab2 ran7transientGuest+2bin
+projection/receiptPASS, receipt1f17209f. Clean LOCALGuest74cafefcdebf4e7adc013c76de7b49886ff06064
+treed48e644ea999c7241b057626ecc4e2719f513e8a,soleparentadoptione369,exact10paths.
+ALL955dirty-parentqualifiermodesRETIRED. ALL27/prefixattempt11 beforecommit;
+commit/rawsourcecomparisonbea46a6b allowsONLYrecordedCRLF normalization.
+GuestNOTFINALyet: ONEdefaultalltargets mods+paired NOtestcontrolcheckafterstorage
+cleanup anddifferentFINALstillpending. A832fullbroadSUPERSEDEDNOTPASSED.
+Reviewedpublicbranches e369(adoption)and3fe(writer) NOWPUSHED toexactHorizonorigin,
+normalprepushhistorycheckPASS,remoteSHAsverified. Nootherenginebranch/tag/PR/release.
+Private source-onlyGuest10/acquisition3patchesprepared andgitapply--checkverified
+againstexactindexes; nextprivatecheckpointpush thenstorageSyncgate/cleanup/compact.
+No cachedelete/compactyet. Keep allcurrentSource/logs/compiledbin/resources/fixtures.

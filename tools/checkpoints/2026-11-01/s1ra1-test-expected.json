@@ -1,0 +1,266 @@
+{
+  "source_manifest_sha256": "PENDING source formatting/review; DO NOT EXECUTE",
+  "platform": "linux-arbiter-uid1000",
+  "groups": [
+    {
+      "label": "new-locks",
+      "kind": "lib",
+      "selection": "save::retained_acquisition_tests::",
+      "count": 5,
+      "required": [
+        "save::retained_acquisition_tests::retained_lock_ready_finish_transfers_actual_exclusion",
+        "save::retained_acquisition_tests::retained_lock_wrong_route_and_repeated_repair_never_take_owner",
+        "save::retained_acquisition_tests::retained_lock_real_preacquisition_io_and_contention_have_no_capability",
+        "save::retained_acquisition_tests::retained_lock_partial_header_repair_keeps_same_handle_and_resets_cursor",
+        "save::retained_acquisition_tests::retained_lock_real_readonly_header_error_retains_actual_os_lock"
+      ],
+      "skip": [
+        "save::retained_acquisition_tests::retained_lock_partial_unresolved_drop_fatal",
+        "save::retained_acquisition_tests::retained_lock_ready_unresolved_drop_fatal"
+      ]
+    },
+    {
+      "label": "new-authority",
+      "kind": "bin",
+      "selection": "game::world_loading::host_identity::session_authority::tests::retained_authority_",
+      "count": 5,
+      "required": [
+        "game::world_loading::host_identity::session_authority::tests::retained_authority_route_finish_and_lock_only_release_preserve_native_owner",
+        "game::world_loading::host_identity::session_authority::tests::retained_authority_actual_postlock_path_failure_keeps_original_file_until_repair",
+        "game::world_loading::host_identity::session_authority::tests::retained_authority_actual_finish_revalidation_failure_retains_custody",
+        "game::world_loading::host_identity::session_authority::tests::retained_authority_prelock_path_refusal_never_creates_capability",
+        "game::world_loading::host_identity::session_authority::tests::retained_authority_partial_native_header_is_visible_across_library_boundary"
+      ],
+      "skip": [
+        "game::world_loading::host_identity::session_authority::tests::retained_authority_partial_unresolved_drop_fatal",
+        "game::world_loading::host_identity::session_authority::tests::retained_authority_ready_unresolved_drop_fatal"
+      ]
+    },
+    {
+      "label": "old-authority",
+      "kind": "bin",
+      "selection": "game::world_loading::host_identity::session_authority::tests::authority_",
+      "count": 6,
+      "required": [
+        "game::world_loading::host_identity::session_authority::tests::authority_copied_identities_contend_and_drop_releases_real_locks",
+        "game::world_loading::host_identity::session_authority::tests::authority_identity_only_anchor_never_requires_or_repairs_native_level",
+        "game::world_loading::host_identity::session_authority::tests::authority_invalid_anchor_records_refuse_without_creating_lock_or_identity",
+        "game::world_loading::host_identity::session_authority::tests::authority_route_refusal_precedes_all_lock_writes_including_archived_owner",
+        "game::world_loading::host_identity::session_authority::tests::authority_linked_namespace_anchor_identity_child_and_lock_preserve_targets",
+        "game::world_loading::host_identity::session_authority::tests::authority_new_identity_lock_failure_precedes_identity_publication"
+      ]
+    },
+    {
+      "label": "retained-writer",
+      "kind": "lib",
+      "selection": "save::retained_writer::retained_writer_tests::",
+      "count": 19,
+      "required": [
+        "save::retained_writer::retained_writer_tests::no_writer_close_and_extra_arcs_cannot_restart_or_reclose",
+        "save::retained_writer::retained_writer_tests::healthy_three_folder_records_delete_and_native_reread",
+        "save::retained_writer::retained_writer_tests::actual_writer_stall_deadline_requires_explicit_retry_after_join",
+        "save::retained_writer::retained_writer_tests::poll_and_begin_are_nonwaiting_under_real_mutex_contention",
+        "save::retained_writer::retained_writer_tests::real_filesystem_failure_repair_retry_each_native_folder",
+        "save::retained_writer::retained_writer_tests::partial_native_region_prefix_is_retained_then_repaired_without_other_slot_loss",
+        "save::retained_writer::retained_writer_tests::latest_sequence_supersession_and_sticky_failure_do_not_replay_old_values",
+        "save::retained_writer::retained_writer_tests::initial_and_retry_spawn_refusal_keep_original_unsent_record_and_counts",
+        "save::retained_writer::retained_writer_tests::producer_and_seal_race_commits_or_refuses_each_actual_native_batch",
+        "save::retained_writer::retained_writer_tests::sequence_and_batch_exhaustion_refuse_before_native_publication",
+        "save::retained_writer::retained_writer_tests::original_allocation_is_retained_and_finish_refuses_before_completion",
+        "save::retained_writer::retained_writer_tests::legacy_constructor_writer_flush_and_drop_remain_native",
+        "save::retained_writer::retained_writer_tests::actual_readonly_cached_handle_is_reopened_on_retry_after_path_repair",
+        "save::retained_writer::retained_writer_tests::failed_older_batch_then_successful_newer_retains_sticky_history_until_explicit_retry",
+        "save::retained_writer::retained_writer_tests::actual_durable_receipts_release_original_payload_owners",
+        "save::retained_writer::retained_writer_tests::correlated_repeated_native_failures_advance_witness_then_repair",
+        "save::retained_writer::retained_writer_tests::actual_rich_native_record_variants_survive_failure_repair_and_native_reread",
+        "save::retained_writer::retained_writer_tests::actual_strict_poi_failure_preserves_original_snapshots_until_real_repair",
+        "save::retained_writer::retained_writer_tests::actual_outer_region_acceptance_then_poi_refusal_preserves_dirty_markers"
+      ],
+      "skip": [
+        "save::retained_writer::retained_writer_tests::fatal_open_save_dir_before_any_hidden_cleanup",
+        "save::retained_writer::retained_writer_tests::fatal_unresolved_owner_before_worker_handle_detaches",
+        "save::retained_writer::retained_writer_tests::fatal_actual_worker_panic_retains_original_accounting",
+        "save::retained_writer::retained_writer_tests::fatal_unsent_batch_preserved_after_actual_receiver_exit",
+        "save::retained_writer::retained_writer_tests::fatal_poisoned_count_is_not_waived",
+        "save::retained_writer::retained_writer_tests::fatal_poisoned_ledger_is_not_waived",
+        "save::retained_writer::retained_writer_tests::fatal_poisoned_error_is_not_waived_after_actual_write",
+        "save::retained_writer::retained_writer_tests::fatal_poisoned_native_cache_is_not_waived",
+        "save::retained_writer::retained_writer_tests::fatal_poisoned_pending_is_not_waived",
+        "save::retained_writer::retained_writer_tests::fatal_poisoned_admission_is_not_waived",
+        "save::retained_writer::retained_writer_tests::fatal_unexplained_count_never_resets",
+        "save::retained_writer::retained_writer_tests::fatal_native_record_correlation_mismatch_retains_original",
+        "save::retained_writer::retained_writer_tests::fatal_outstanding_overflow_does_not_accept_or_reset_records",
+        "save::retained_writer::retained_writer_tests::fatal_poisoned_inner_region_file_retains_original_owner",
+        "save::retained_writer::retained_writer_tests::fatal_missing_pending_after_real_failure_retains_original",
+        "save::retained_writer::retained_writer_tests::fatal_inconsistent_durable_receipt_never_certifies_retry",
+        "save::retained_writer::retained_writer_tests::fatal_missing_record_before_actual_write_is_not_supersession",
+        "save::retained_writer::retained_writer_tests::fatal_unexplained_sticky_error_before_repair_never_closes",
+        "save::retained_writer::retained_writer_tests::fatal_late_unexplained_error_while_retry_worker_held_never_closes",
+        "save::retained_writer::retained_writer_tests::fatal_late_unexplained_error_while_deadline_blocked_never_closes",
+        "save::retained_writer::retained_writer_tests::fatal_actual_new_io_failure_cannot_mask_unexplained_error"
+      ]
+    },
+    {
+      "label": "legacy-save",
+      "kind": "lib",
+      "selection": "save::tests::",
+      "count": 58,
+      "required": [
+        "save::tests::dirty_handoff::dirty_handoff_acceptance_clears_only_submitted_keys_and_round_trips_snapshot",
+        "save::tests::dirty_handoff::dirty_handoff_disconnected_send_keeps_markers_original_arc_and_sticky_error",
+        "save::tests::dirty_handoff::dirty_handoff_poison_before_acceptance_keeps_all_markers_without_writer_fault",
+        "save::tests::dirty_handoff::dirty_handoff_partial_region_acceptance_then_poi_error_keeps_all_markers",
+        "save::tests::dirty_handoff::dirty_handoff_async_disk_failure_follows_acceptance_and_retains_pending_owner",
+        "save::tests::strict_poi_writer::strict_poi_batch_failure_keeps_all_original_snapshots_and_old_bytes",
+        "save::tests::strict_poi_writer::strict_poi_success_preserves_claims_missing_records_and_empty_sections",
+        "save::tests::strict_poi_writer::strict_poi_failed_older_batch_keeps_newer_sequence_and_writer_drains"
+      ]
+    },
+    {
+      "label": "worldgen-existing",
+      "kind": "world",
+      "selection": "worldgen::generator::tests::",
+      "count": 11,
+      "required": [
+        "worldgen::generator::tests::end_identity_surface_matches_normal_surface_and_rejects_custom_rules",
+        "worldgen::generator::tests::uniform_surface_biomes_preserve_zoom_and_missing_corner_errors",
+        "worldgen::generator::tests::far_surface_matches_undecorated_land_and_keeps_end_void",
+        "worldgen::generator::tests::local_carver_cache_is_worker_owned_and_eviction_preserves_terrain",
+        "worldgen::generator::tests::stronghold_rings_match_vanilla",
+        "worldgen::generator::tests::a_chunk_holds_its_starts_whose_pieces_lie_elsewhere",
+        "worldgen::generator::tests::chunks_far_from_the_rings_do_not_search_them",
+        "worldgen::generator::tests::ring_positions_are_shared_by_seed_and_dimension",
+        "worldgen::generator::tests::parameter_reports_quantize_like_vanilla",
+        "worldgen::generator::tests::neighbour_work_cleanup_keeps_active_keys_and_releases_idle_keys",
+        "worldgen::generator::tests::concurrent_neighbours_share_results_and_survive_invalidation"
+      ]
+    },
+    {
+      "label": "actual-loaders",
+      "kind": "world",
+      "selection": "worldgen::generator::retained_loader_tests::",
+      "count": 5,
+      "required": [
+        "worldgen::generator::retained_loader_tests::retained_loader_late_parse_error_waits_for_all_started_children",
+        "worldgen::generator::retained_loader_tests::retained_loader_absent_optional_features_waits_for_unconsumed_blocks",
+        "worldgen::generator::retained_loader_tests::retained_loader_partial_spawn_refusal_waits_for_earlier_children",
+        "worldgen::generator::retained_loader_tests::retained_loader_child_panic_unwinds_after_all_children_finish",
+        "worldgen::generator::retained_loader_tests::retained_loader_known_nonwaiting_return_is_rejected_before_fixture_release"
+      ]
+    },
+    {
+      "label": "actual-game-roundtrip",
+      "kind": "bin",
+      "selection": "game::levels::session_checkpoint::tests::registered::registered_actual_active_native_roundtrip_both_roles",
+      "count": 1,
+      "required": [
+        "game::levels::session_checkpoint::tests::registered::registered_actual_active_native_roundtrip_both_roles"
+      ],
+      "exact": true
+    }
+  ],
+  "fatal": {
+    "save::retained_writer::retained_writer_tests::fatal_open_save_dir_before_any_hidden_cleanup": {
+      "kind": "lib",
+      "marker": "HORIZON_RETAINED_WRITER_ASSERTED:open-save-dir"
+    },
+    "save::retained_writer::retained_writer_tests::fatal_unresolved_owner_before_worker_handle_detaches": {
+      "kind": "lib",
+      "marker": "HORIZON_RETAINED_WRITER_ASSERTED:unresolved-owner-held-worker"
+    },
+    "save::retained_writer::retained_writer_tests::fatal_actual_worker_panic_retains_original_accounting": {
+      "kind": "lib",
+      "marker": "HORIZON_RETAINED_WRITER_ASSERTED:worker-panic-original-accounting"
+    },
+    "save::retained_writer::retained_writer_tests::fatal_unsent_batch_preserved_after_actual_receiver_exit": {
+      "kind": "lib",
+      "marker": "HORIZON_RETAINED_WRITER_ASSERTED:unsent-original-batch"
+    },
+    "save::retained_writer::retained_writer_tests::fatal_poisoned_count_is_not_waived": {
+      "kind": "lib",
+      "marker": "HORIZON_RETAINED_WRITER_ASSERTED:poisoned-count-retained"
+    },
+    "save::retained_writer::retained_writer_tests::fatal_poisoned_ledger_is_not_waived": {
+      "kind": "lib",
+      "marker": "HORIZON_RETAINED_WRITER_ASSERTED:poisoned-ledger-retained"
+    },
+    "save::retained_writer::retained_writer_tests::fatal_poisoned_error_is_not_waived_after_actual_write": {
+      "kind": "lib",
+      "marker": "HORIZON_RETAINED_WRITER_ASSERTED:poisoned-error-retained"
+    },
+    "save::retained_writer::retained_writer_tests::fatal_poisoned_native_cache_is_not_waived": {
+      "kind": "lib",
+      "marker": "HORIZON_RETAINED_WRITER_ASSERTED:poisoned-cache-retained"
+    },
+    "save::retained_writer::retained_writer_tests::fatal_poisoned_pending_is_not_waived": {
+      "kind": "lib",
+      "marker": "HORIZON_RETAINED_WRITER_ASSERTED:poisoned-pending-retained"
+    },
+    "save::retained_writer::retained_writer_tests::fatal_poisoned_admission_is_not_waived": {
+      "kind": "lib",
+      "marker": "HORIZON_RETAINED_WRITER_ASSERTED:poisoned-admission-retained"
+    },
+    "save::retained_writer::retained_writer_tests::fatal_unexplained_count_never_resets": {
+      "kind": "lib",
+      "marker": "HORIZON_RETAINED_WRITER_ASSERTED:unexplained-count-retained"
+    },
+    "save::retained_writer::retained_writer_tests::fatal_native_record_correlation_mismatch_retains_original": {
+      "kind": "lib",
+      "marker": "HORIZON_RETAINED_WRITER_ASSERTED:native-record-correlation-retained"
+    },
+    "save::retained_writer::retained_writer_tests::fatal_outstanding_overflow_does_not_accept_or_reset_records": {
+      "kind": "lib",
+      "marker": "HORIZON_RETAINED_WRITER_ASSERTED:outstanding-overflow-retained"
+    },
+    "save::retained_writer::retained_writer_tests::fatal_poisoned_inner_region_file_retains_original_owner": {
+      "kind": "lib",
+      "marker": "HORIZON_RETAINED_WRITER_ASSERTED:inner-regionfile-poison-retained"
+    },
+    "save::retained_writer::retained_writer_tests::fatal_missing_pending_after_real_failure_retains_original": {
+      "kind": "lib",
+      "marker": "HORIZON_RETAINED_WRITER_ASSERTED:missing-pending-original-retained"
+    },
+    "save::retained_writer::retained_writer_tests::fatal_inconsistent_durable_receipt_never_certifies_retry": {
+      "kind": "lib",
+      "marker": "HORIZON_RETAINED_WRITER_ASSERTED:durable-receipt-mismatch-retained"
+    },
+    "save::retained_writer::retained_writer_tests::fatal_missing_record_before_actual_write_is_not_supersession": {
+      "kind": "lib",
+      "marker": "HORIZON_RETAINED_WRITER_ASSERTED:missing-before-write-retained"
+    },
+    "save::retained_writer::retained_writer_tests::fatal_unexplained_sticky_error_before_repair_never_closes": {
+      "kind": "lib",
+      "marker": "HORIZON_RETAINED_WRITER_ASSERTED:unexplained-before-repair-retained"
+    },
+    "save::retained_writer::retained_writer_tests::fatal_late_unexplained_error_while_retry_worker_held_never_closes": {
+      "kind": "lib",
+      "marker": "HORIZON_RETAINED_WRITER_ASSERTED:late-retry-error-retained"
+    },
+    "save::retained_writer::retained_writer_tests::fatal_late_unexplained_error_while_deadline_blocked_never_closes": {
+      "kind": "lib",
+      "marker": "HORIZON_RETAINED_WRITER_ASSERTED:deadline-blocked-error-retained"
+    },
+    "save::retained_writer::retained_writer_tests::fatal_actual_new_io_failure_cannot_mask_unexplained_error": {
+      "kind": "lib",
+      "marker": "HORIZON_RETAINED_WRITER_ASSERTED:new-io-error-does-not-mask-unknown"
+    },
+    "save::retained_acquisition_tests::retained_lock_partial_unresolved_drop_fatal": {
+      "kind": "lib",
+      "marker": "HORIZON_RETAINED_LOCK_PARTIAL_DROP_ARMED"
+    },
+    "save::retained_acquisition_tests::retained_lock_ready_unresolved_drop_fatal": {
+      "kind": "lib",
+      "marker": "HORIZON_RETAINED_LOCK_READY_DROP_ARMED"
+    },
+    "game::world_loading::host_identity::session_authority::tests::retained_authority_partial_unresolved_drop_fatal": {
+      "kind": "bin",
+      "marker": "HORIZON_RETAINED_AUTHORITY_PARTIAL_DROP_ARMED"
+    },
+    "game::world_loading::host_identity::session_authority::tests::retained_authority_ready_unresolved_drop_fatal": {
+      "kind": "bin",
+      "marker": "HORIZON_RETAINED_AUTHORITY_READY_DROP_ARMED"
+    }
+  },
+  "normal_total": 110,
+  "fatal_total": 25
+}
