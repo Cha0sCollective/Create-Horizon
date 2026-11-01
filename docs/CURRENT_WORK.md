@@ -3,9 +3,9 @@
 Owner's November 1 checkpoint is complete: finish active work, sync GitHub,
 reclaim storage and review excessive testing costs. Owner subsequently resumed
 development. Retained acquisition prerequisite now FINAL and publicly synced.
-Next: compose its accepted three files with the accepted Guest component, confirm
-the exact predecessor APIs, then release C0a's bounded preparation/producer-close
-assignment. S1/G1 OPEN; no live S2, release, PR or merge.
+Composition and exact predecessor API review are now FINAL. Active next source:
+C0a's bounded retained preparation/producer-close assignment, after the private
+checkpoint. S1/G1 OPEN; no live S2, release, PR or merge.
 
 ## Accepted and synced engine state
 
@@ -86,14 +86,24 @@ All qualifier modes RETIRED. Full S1_RETAINED_ACQUISITION_RESULTS.md.
 Public source/privacy CLEAR; normal pre-push history hook PASS; public origin
 verified codex/s1-retained-acquisition=b9463a5. No PR/merge/release.
 
-Next compose accepted Guest74cafef and acquisitionb9463a5 without altering either
-component's canonical source. Reuse their component qualification truthfully;
-check the actual intersection before C0a. Reuse the same physical checkout's
-Cargo target across serial revisions rather than another cold duplicate cache.
-Then fresh exact clean predecessor API acceptance/private source assignment
-before C0a authors any of its five paths. No C0a source has started.
+Composition1956eb4946bd75138bed57bdcdf9ccf1d51115f9/tree2b320806/soleb946
+FINAL by different s1_acquisition_final. Exact13 canonical union unchanged;
+two fresh Native/Guest both-role roundtrips and three static checks PASS.
+Input5ac6a388, FINALa7c4fcca. Normal public history hook and remote ref verified.
+Detailed S1_GUEST_ACQUISITION_COMPOSITION_RESULTS.md. Component results retain
+original pins; no broad replay. All composition qualifier modes RETIRED.
 
-C0a original5paths remain the budget. Proposed refinementea87dea3 conditionally
+Fresh s1_composition_api_review accepted exact predecessor APIs plus six-path
+visibility amendmentd4221f72:the sixth path only exposes validate_column within
+crate::game, avoiding duplicated validation; body/profile/callers unchanged.
+Assignment S1_RETAINED_PREPARATION_SOURCE_ASSIGNMENT.md releases only after its
+private checkpoint. Root preserved ALL6/prefix s1rp1-attempt0. Same physical
+checkout .local/worktrees/s1-retained-acquisition now codex/s1-retained-preparation
+at1956; target-s1ra1 retained. Streaming author owns streaming.rs; preparation
+author owns other five, with the sixth restricted to visibility only. Native
+source text only; Root all execution/Git. No C0a source has started yet.
+
+C0a original5paths plus visibility-only sixth are the budget. Refinementea87dea3
 accepted: own partial-acquisition wrappers BEFOREacquire; ready/failure keep same
 guard; worker-side identity/authority finish; no closeRetry identity replay;
 bypass legacy global preload and leave ordinary startup/resource error paths C0e.
