@@ -9,6 +9,8 @@ No test outputs, game files, generated worlds or raw run logs are included.
   that committed checkout. The completed execution is documented separately.
 - s1pg3-compatibility.py: seven transient Guest and two projection/receipt cases
   from pinned existing artifacts; completed successfully without a rebuild.
+- s1pg3-default-check.py: completed default audio/controllers plus paired mods
+  all-targets Clippy; no runtime test replay. Clean Guest74cafef received FINAL.
 - s1ra1-qualify.py and expected input: unexecuted draft110/25plan, now SUPERSEDED
   by reviewed24/4selection. Its source pin is intentionally PENDING. Revise and
   independently review it against the actual formatted candidate before use.
