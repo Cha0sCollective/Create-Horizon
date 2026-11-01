@@ -1,8 +1,11 @@
 # Current work
 
 Owner's November 1 checkpoint is complete: finish active work, sync GitHub,
-reclaim storage and review excessive testing costs. Further development queues
-remain held at this checkpoint. S1/G1 OPEN; no live S2, release, PR or merge.
+reclaim storage and review excessive testing costs. Owner subsequently resumed
+development. Retained acquisition prerequisite now FINAL and publicly synced.
+Next: compose its accepted three files with the accepted Guest component, confirm
+the exact predecessor APIs, then release C0a's bounded preparation/producer-close
+assignment. S1/G1 OPEN; no live S2, release, PR or merge.
 
 ## Accepted and synced engine state
 
@@ -70,28 +73,27 @@ replaces unnecessary per-case full Git traversal. Fixture batching needs a later
 bounded global-state review, not automatic adoption. Retention changes do not
 expand concrete deletion scopes. Full S1/G1/R01 unchanged.
 
-## Next bounded source: held, not qualified
+## Accepted acquisition and next source
 
-Worktree .local/worktrees/s1-retained-acquisition at accepted e369 has EXACT3dirty:
-client/src/save.rs; game/world_loading/host_identity/session_authority.rs;
-world/src/worldgen/generator.rs. Private dd54742 preceded source; baselineattempt0.
-Source author s1_c0a_packet_design; fresh s1_acquisition_source_review prefmt
-SOURCE CLEARcbf2db50: save4c27079c/authoritycaa53775/generator91e55d15.
-No fmt/compiler/runtime/cleanchild/FINAL yet. ALL3/prefix preserved before each
-correction. Review fixed return-observation falsepass and second-spawn cleanup;
-production unchanged after initial draft. Original APIs retain acquired File/
-authority before fallible IO, same-file cursor/header repair, checked finish,
-narrow release and fail-closed Drop; GeneratorData's3helpers lexically scoped.
-Existing trusted-path boundary retained, no new portable inode defense.
+Acquisition b9463a5835da3203c0521704548092825a57e67e,
+treeb0f191b6d6a122f2caf8eb647569ad2a0bf8ee6b, solee369, EXACT3Rust1260/-173:
+FINAL by different s1_acquisition_final. Source0330662b/raw3exactcommit;
+input71654402, FINAL2c3e7aa5. Qualification24normal=19fresh+5reused;
+fourfreshfatal; sixstatic=4fresh+2reused. Initial authority fixture failure
+remains failed/preserved; only cfg(test) path normalization changed afterward.
+Inherited writer coverage keeps original revision; broad not replayed/passed.
+All qualifier modes RETIRED. Full S1_RETAINED_ACQUISITION_RESULTS.md.
+Public source/privacy CLEAR; normal pre-push history hook PASS; public origin
+verified codex/s1-retained-acquisition=b9463a5. No PR/merge/release.
 
-Old110normal/25fatal runner is SUPERSEDED, unexecuted and sourcepinPENDING.
-Revised next qualification:24focusednormal/fournewfatal/sixinitialstatic; reuse
-unchanged77writer/save normal+21writer fatal under original revision. Revise/
-review exact tool after Rootfmt/currentmanifest recheck before execution.
-No new queue was started after the storage request.
+Next compose accepted Guest74cafef and acquisitionb9463a5 without altering either
+component's canonical source. Reuse their component qualification truthfully;
+check the actual intersection before C0a. Reuse the same physical checkout's
+Cargo target across serial revisions rather than another cold duplicate cache.
+Then fresh exact clean predecessor API acceptance/private source assignment
+before C0a authors any of its five paths. No C0a source has started.
 
-C0a original5paths remains BLOCKED until this precursorFINAL, fresh exactclean
-API acceptance/private assignment. Proposed refinementea87dea3 conditionally
+C0a original5paths remain the budget. Proposed refinementea87dea3 conditionally
 accepted: own partial-acquisition wrappers BEFOREacquire; ready/failure keep same
 guard; worker-side identity/authority finish; no closeRetry identity replay;
 bypass legacy global preload and leave ordinary startup/resource error paths C0e.
