@@ -1,7 +1,6 @@
 # Registered counter binding
 
-Status: WIP. Qualified clean LOCALf6a3c6a; currentbuild/9affectedcases/all6checks PASS.
-Focused225 are explicitly216reviewed priorcases+9freshcurrentcases. Broader/FINAL pending.
+Status: FINAL ACCEPT for bounded native registered binding at cleanLOCALf6a3c6a. Focused225 explicitly216prior+9fresh; allcurrentchecks andpostcommitbroadPASS.
 S1/G1 remain open; ordinary placement/Running/player authority are separate.
 
 Worktree .local/worktrees/s1-registered-counter-binding, branchcodex/s1-registered-counter-binding,
@@ -85,3 +84,17 @@ Normalattributed/publictree-hook cleanLOCALf6a3c6a06f500234ed1b3140c8d7cdd37bb89
 tree666bb0297cf79d046bc29fc079b1279179ce6b9e, soleparentC1fa55c619a2f4666a505461822a97efa5732db01.
 ALLdirty-parent3ae/3607modes RETIRED. Snapshotattempt9 preservesall7source/prefix
 precommit. Reviewedpostcommitbroad e87 and DIFFERENT FINAL remain pending.
+
+## Independent FINAL acceptance, November1
+
+Different s1_registered_final FINAL ACCEPT on exactcleanf6a3c6a/tree666bb029/parentC1fa.
+Frozeninputc829e36cde6a6ddc282d0aeede0a381876d5c8c828c84322aa262ebe8d2f49ea,
+summarydaf1af6f9b0db428c90fa6ab79d27df5d1b3b14a380e475d20e960fec7751db1;
+all96indexedhashes verified. Explicit216old1f6+9fresh7502 focusedbasis accepted;
+all6currentchecks and fresh postcommitbroad369Python/1379client/doc0/fmt/clippy/
+publictree PASS. Logc4a3f362/status58174007/comparison442223ac. Native/Git/Linux
+onlyexactCRLFconversions: counter_control624,slot_restore1500; other5identical;
+stablebeforeafter. Scopewarning2117linesdisclosed. NONHALLOWEENprocesscalendar,
+ancestorHalloweenUNRESOLVED, noParity/performance/optimizedruntime/G1.
+No implicitwriteradoption, persistentGuest, ordinaryplacement/Running/admission.
+PrivateactualFINALreceiptSHA832131aab825dfb2bb5c401b1256dc205b7257a9176dcbf6bdb04015aed13bcd.

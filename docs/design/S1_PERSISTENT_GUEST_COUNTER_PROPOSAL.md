@@ -65,11 +65,12 @@ All engine paths are relative to crates/horizon-client/src:
 5. world/slot_restore_tests.rs: Guest/Native kinds, fault-state storage and
    generation/custody refusal tests; original Native semantics retained.
 6. game/counter_control.rs: dormant genuine Guest bootstrap, actual evaluator
-   selection and persistent phase wiring; declare path9 as a child test module.
+   selection and persistent phase wiring; no cross-sibling test declaration.
 7. game/levels/session_checkpoint.rs: Guest image adapter, full native owner
    capture/fences, checked healthy/faulted recovery receipts and final correlation.
 8. game/levels/session_checkpoint_registered_tests.rs: owned materialized Game
-   healthy/faulted archive/recovery/recapture families and helper reuse.
+   healthy/faulted archive/recovery/recapture families and helper reuse; declare
+   path9 as a child module, retaining private fixture/ancestor access.
 9. NEW game/persistent_guest_counter_tests.rs: genuine persistent Game callback,
    read-set, bootstrap and stale completion/failure tests.
 10. world_slot_trial.rs: additive checked Guest restore using original owned input
@@ -402,9 +403,7 @@ No statement that all stages passed may be made from native host enums alone.
 Use actual owned materialized resources and Game::new/start_mods, as the registered
 FINAL fixture establishes. Require intended Loaded.root, no fallback/pack_error,
 registered alias physical ID/palette, collision/occlusion tables and nonfallback
-cube CPU model; vanilla cached Fixture does not qualify. Path8 may narrowly expose
-its owned helper to path9 within these scoped test modules, preserving default
-legacy helpers. Resources outlive Games. Run each artifact/resource family in its
+cube CPU model; vanilla cached Fixture does not qualify. Path9 is a child of path8, using its private owned fixture and ancestor native helpers without visibility widening or fixture cloning. Default legacy helpers remain unchanged. Resources outlive Games. Run each artifact/resource family in its
 own isolated pinned process; do not mutate process environment after resource
 statics initialize. Root records exact source/API/fixture pins and actual census.
 No compiler/Java/test child inside a Rust test.
@@ -476,3 +475,28 @@ source adoption with the committed observer, coherent retained close services,
 C1 actual configured allocation/held liveness, real TCP AND MemoryPipe two-client
 replication, player intent/departure custody and retained animation. These remain
 S1/G1 requirements; no automatic Running/S2/publication follows from this proposal.
+
+## Fresh registered-candidate test-module placement refinement
+
+Read-only inspection of clean Rf6a3c6a found session_checkpoint_tests.rs declares
+private mod registered. That parent file is outside this ten-path budget. Making
+Materialized public cannot give a counter_control sibling access through private
+registered. Declare the new file ONLY from already-budgeted path8 instead:
+
+```rust
+#[cfg(feature = "mods")]
+#[path = "../persistent_guest_counter_tests.rs"]
+mod persistent_guest;
+```
+
+The physical path9 stays game/persistent_guest_counter_tests.rs; actual prefix is
+game::levels::session_checkpoint::tests::registered::persistent_guest:: .
+The enclosing test/paired/Linux gates remain; mods gates genuine runtime cases.
+No eleventh file, visibility widening or fixture cloning is allowed. Use
+Materialized::new/fresh(owner) and ancestor native-owner helpers, but not existing
+Native binding/session/recover adapters as Guest setup. Add a small real Guest
+orchestration helper around the genuine atomic Guest pair bootstrap/recovery.
+Never bootstrap Native then flip backend. This refines test placement only; all
+production scope, ten paths, healthy/faulted semantics and source-start gates stay.
+R remains a candidate until its actual FINAL. Fresh source review must enumerate
+the resulting exact case names. No early source authority follows.

@@ -16,7 +16,7 @@ writer W with sole parent ab239890cd62595889f7f0302cd1396a5e2c547c. Record their
 full commit/tree/source-manifest/final-input/final-review pins in this document
 before execution. No candidate hash is implied by the current dirty worktrees.
 Current reviewed writer source is e4c2ecec1305252449435be62cfeeef8c44d9b2a6fbc49c35d47eaf1c2b2d21b;
-current registered source manifest is 1f6e020ec52feee3448db229a8c9d5c7dc8b5ebce5131eb324ce15e79ce70caa.
+current registered source manifest is 7502658a208dce433386d056818796df0b0605cd9c4e658a1b0584998c4c75af.
 These identify design inputs only and must be refreshed if either source changes.
 
 Before composition require a fresh independent Sol High check of actual accepted
@@ -78,3 +78,36 @@ It does not switch ordinary callers to the retained constructor, finish Game clo
 activate guest callbacks, configure clients, pass G1, or authorize publication.
 Only after adoption FINAL, fresh actual API review and another private checkpoint
 may the separately accepted C0a bounded source assignment begin.
+
+## Accepted concrete input pins, November1
+
+Registered R FINAL f6a3c6a06f500234ed1b3140c8d7cdd37bb89e6f,
+tree666bb0297cf79d046bc29fc079b1279179ce6b9e, soleparentC1fa55c619a2f4666a505461822a97efa5732db01.
+Source7502658a; FINALinputc829e36c/summarydaf1af6f/all96indexedhashes,
+different s1_registered_final. Focused216old1f6+9fresh7502 explicitlymixed;
+all6currentchecks and fresh369Python/1379client/doc0broadPASS.
+
+Writer W FINAL3fe2a2e8a85bc23e60ea53ebf74953a843cecc0f,
+treeceafda333c6c39f68cb69a6240acf419f91d73ff, soleparentab239890cd62595889f7f0302cd1396a5e2c547c.
+Sourced8556049/currentrawe4c2ecec; FINALinput972cc7e8/summaryd1271b97/58hashes,
+different s1_writer_final. Fresh77normal/21fatal/5checks and369Python/1375client/doc0broadPASS.
+Bothlocalcomponents retain their explicitcalendar/noParity/performance/G1limits.
+
+Rootfreshreadonly check RsaveGitblob59346116454a442afac14c7db62b15b7f26f841b
+EXACTLYequalsab; WdeltaONLYsave.rs. C17 unionR7 plusW1 is23canonicalsourcepaths.
+Thisrefreshes acceptedconditionalconcept183946eb inputpins only. Require fresh
+independent actualpin/API/delta acceptance and privatecheckpoint BEFOREcomposition.
+Childdelta remainsONEsave.rs; no ordinarycaller orsourceunionpermissionexpansion.
+
+### Full immutable SHA256 input references
+
+Rsource manifest7502658a208dce433386d056818796df0b0605cd9c4e658a1b0584998c4c75af.
+RFINALinputc829e36cde6a6ddc282d0aeede0a381876d5c8c828c84322aa262ebe8d2f49ea.
+Rsummarydaf1af6f9b0db428c90fa6ab79d27df5d1b3b14a380e475d20e960fec7751db1.
+RFINALreceipt832131aab825dfb2bb5c401b1256dc205b7257a9176dcbf6bdb04015aed13bcd.
+Wsource manifestd8556049598151c0273ac5c18cc4d5730e17d8f51659f5f4312e4da23ba6b359.
+WFINALinput972cc7e8f4c4eaf9300e1ebc7cb016450af61ace1f5223edf024ec48bdcf49a2.
+Wsummaryd1271b9772d47cea8e1de2ee18c8200fd0d1d545a0b16c4d9089b2af6098c03a.
+WFINALreceiptcb293d5bf17c4f6ea2d279e39e268007f2783dc766857f78e3adc13d48fb02d0.
+These fill the explicitfullpin requirement without changing the acceptedee09
+input/API refinement, onefilechilddelta or validation/source-start gates.
