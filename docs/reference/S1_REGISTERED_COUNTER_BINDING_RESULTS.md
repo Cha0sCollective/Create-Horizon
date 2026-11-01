@@ -57,3 +57,16 @@ No feature/fmt/lint stage, clean child commit, broader run or childFINAL yet.
 The prior underway wording describes the initial run state, not an outstanding
 queue. Different FINAL stays HOLD. Owner requested checkpoint/pause now; do not
 start remaining checks until resumed. No new engine commit or public publication.
+
+## November1 test-only correction
+
+Initial feature check found3Clippy style issues in NEWregistered test file only.
+ALL7/prefix preservedattempt6 before2clone-to-slice and sameSettings initializer
+fixes+fmt. Six other files unchanged; no production/assertion change. Current
+manifest7502658a/tool3ae95f9b/expected1ce2d63a SOURCE/TOOL CLEAR.
+Independent s1rb_source_review accepts216unchangedold1f6 cases+9fresh7502cases,
+NOT225singlecurrentbinary. New registered mode selects only9affectedactualcases.
+Old45runtimefiles archived together under .local/s1rb1-source1f6-runtime;
+relocation.json preserves exact oldpath/newpath/hash mapping and225receipt90e7.
+Fresh currentbuild/9cases/checks/cleancommit/broad/FINAL remain. Broad e87 has
+renewed conditional clearance on7502 with truthful mixed-focused disclosure.

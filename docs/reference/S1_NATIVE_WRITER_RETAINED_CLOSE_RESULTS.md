@@ -1,6 +1,7 @@
 # Retained native writer close and repair retry
 
-Status: WIP. Current style correction independently SOURCE/TOOL CLEAR; fresh runtime qualification remains. Earlier source passed77normal and21fatal. Different final reviewer is HOLD pending final evidence.
+Status: WIP. Current e4c/d855 build,77normal,21separatefatal and all5checks PASS.
+Clean local3fe2a2e committed; postcommit broad and DIFFERENT FINAL remain.
 S1/G1 remain open; no ordinary caller, startup or publication.
 
 Worktree .local/worktrees/s1-native-writer-close, branchcodex/s1-native-writer-close,
@@ -86,3 +87,16 @@ and formatting, with FINAL HOLD. Allcurrent source+prefix frozen in
 .local/s1wr1-attempt18; old72da runtime archive remains separately intact.
 Resume ALLfour current stages before commit/broad/FINAL. No current-source
 runtime pass, adopted Game close or G1 is claimed.
+
+## November1 resumed fresh current qualification
+
+Current e4c/d855 passes fresh opt0/debug/overflow build (lib3874570c556f428e),
+77normal (19retained+58legacy, all8legacyresource/zeroignored) and21separate
+fixed-marker/SIGABRT/reaped fatal cases. Receipts6a78c645/52fcb670. All5checks
+PASS (fmt, lib/bin/test Clippy runtimeon/runtimeabsent/featureoff, publictree),
+receipt6cba380f. All actual log hashes verified. No old72da result substituted.
+Normal attributed/public-tree-hook local commit3fe2a2e8a85bc23e60ea53ebf74953a843cecc0f,
+treeceafda333c6c39f68cb69a6240acf419f91d73ff, soleparentab239890. Clean worktree.
+Snapshotattempt19 preserves complete precommit source/runtime. ALL7987dirty-parent
+modes RETIRED after3fe; only reviewed broad376c may execute next on that clean pin.
+Different FINAL pending. No adopted retained Game close/D regression/G1 follows.
