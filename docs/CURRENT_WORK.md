@@ -111,6 +111,10 @@ refused loads keep original evidence, full payload/lease and error. AlreadyStore
 requires same-save relevant current sequences plus final writer completion.
 ALL8/prefix preserved s1rp1-attempt1 before updated private source release.
 Native source text only; Root all execution/Git. No C0a qualification yet.
+Fresh reviewer accepted d62158ab:distinct checked refused-read failed cleanup
+retains original evidence/error through actual producer/writer completion; no
+generation/rewrite/adoption/validity claim. It cannot waive unique unsaved output,
+unknown/missing work, held-work panic, writer fault or conflicting writes.
 
 C0a original5 plus bounded validator/read-capture amendments total8. Refinementea87dea3
 accepted: own partial-acquisition wrappers BEFOREacquire; ready/failure keep same

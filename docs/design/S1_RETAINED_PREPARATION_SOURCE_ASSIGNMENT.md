@@ -40,6 +40,11 @@ Root owns ONLY the eighth production path crates/horizon-client/src/save.rs for
 the accepted additive retained-load capture, original raw/pending evidence and
 read-only storage sequence accessors. Follow S1_PREPARE_RETAINED_LOAD_AMENDMENT.md
 exactly; preserve ordinary load/proto/cache/writer behavior. No ninth path.
+Accepted S1_PREPARE_REFUSED_READ_DISPOSITION_AMENDMENT.md (proposedd62158ab)
+permits only distinct failed-cleanup accounting of a genuine read-only refusal,
+with original evidence/error through same-save writer completion. It performs
+no new rewrite, generation, adoption or validity claim; unique unsaved/missing
+output, held-work panic, conflicting writes and writer faults stay Blocked.
 
 Authors may coordinate the narrow interface, but never edit one another's paths.
 Native source text only: no formatter, compiler, tests, scripts/import execution,
