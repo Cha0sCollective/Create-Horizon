@@ -16,7 +16,8 @@ visibility amendmentd4221f72, after the original3ef2bed2/ea87dea3 proposals.
 Root uses the SAME physical checkout .local/worktrees/s1-retained-acquisition
 on new branch codex/s1-retained-preparation. Its existing target-s1ra1 belongs to
 this checkout and can track serial revisions; no cross-worktree target sharing.
-Root preserves all six baseline paths and all s1rp1-prefix files before release.
+Root preserved six baseline paths/prefix at attempt0; the accepted original-load
+amendment6bcc3ac8 expands to eight, preserved at attempt1 before its release.
 
 ## Exact source budget and parallel authors
 
@@ -30,13 +31,21 @@ Preparation author c0a_preparation_author writes ONLY:
 - crates/horizon-client/src/game/world_loading/host_identity.rs
 - NEW crates/horizon-client/src/game/world_loading/retained_prepare_tests.rs
 - crates/horizon-client/src/game/levels/session_checkpoint.rs, ONLY changing
-  validate_column visibility to pub(in crate::game); body/signature/callers intact.
+  validate_column/raw_nbt visibility within crate::game and delegating raw_region
+  to its unchanged generic validator moved to save.rs; preserve profile/callers.
+- crates/horizon-client/src/game/levels/session_checkpoint_items.rs, ONLY exposing
+  existing read_item_record within crate::game; signature/body/profile intact.
+
+Root owns ONLY the eighth production path crates/horizon-client/src/save.rs for
+the accepted additive retained-load capture, original raw/pending evidence and
+read-only storage sequence accessors. Follow S1_PREPARE_RETAINED_LOAD_AMENDMENT.md
+exactly; preserve ordinary load/proto/cache/writer behavior. No ninth path.
 
 Authors may coordinate the narrow interface, but never edit one another's paths.
 Native source text only: no formatter, compiler, tests, scripts/import execution,
 WSL, Git writes, network, escalation or delegation. Root alone all execution and
 Git writes serially. After draft freeze, every correction first requires Root's
-preservation of ALL six sources and ALL packet-prefix artifacts/receipts.
+preservation of ALL eight sources and ALL packet-prefix artifacts/receipts.
 
 ## Accepted implementation seam
 
@@ -93,6 +102,6 @@ regressions, truthful precursor/writer reuse, cheap feature checks first. Distin
 origin/ownership edges may justify more than the planning prompt; explain them.
 Do not automatically replay component/broad batteries. Root freezes exact tools,
 obtains independent SOURCE/tool review, executes serially, creates a clean local
-candidate and obtains DIFFERENT FINAL before further activation. If six paths
+candidate and obtains DIFFERENT FINAL before further activation. If eight paths
 cannot implement the accepted behavior, report the smallest concrete amendment;
 do not duplicate validators, weaken closure or expand silently.

@@ -100,10 +100,19 @@ Assignment S1_RETAINED_PREPARATION_SOURCE_ASSIGNMENT.md releases only after its
 private checkpoint. Root preserved ALL6/prefix s1rp1-attempt0. Same physical
 checkout .local/worktrees/s1-retained-acquisition now codex/s1-retained-preparation
 at1956; target-s1ra1 retained. Streaming author owns streaming.rs; preparation
-author owns other five, with the sixth restricted to visibility only. Native
-source text only; Root all execution/Git. No C0a source has started yet.
+author initially owned other five. Initial preparation draft is frozen and
+Streaming draft/tests are in progress; no formatting/compiler/runtime yet.
+Saved-column closure exposed a genuine tolerant-load provenance gap. Fresh
+review accepted amendment6bcc3ac8:exact EIGHT paths, adding save.rs retained raw/
+pending capture (Root) and item-parser visibility; sixth also permits existing
+raw_nbt visibility and unchanged raw-region validator delegation. No ninth path,
+codec or profile expansion. Only true absence can generate; malformed/proto or
+refused loads keep original evidence, full payload/lease and error. AlreadyStored
+requires same-save relevant current sequences plus final writer completion.
+ALL8/prefix preserved s1rp1-attempt1 before updated private source release.
+Native source text only; Root all execution/Git. No C0a qualification yet.
 
-C0a original5paths plus visibility-only sixth are the budget. Refinementea87dea3
+C0a original5 plus bounded validator/read-capture amendments total8. Refinementea87dea3
 accepted: own partial-acquisition wrappers BEFOREacquire; ready/failure keep same
 guard; worker-side identity/authority finish; no closeRetry identity replay;
 bypass legacy global preload and leave ordinary startup/resource error paths C0e.
