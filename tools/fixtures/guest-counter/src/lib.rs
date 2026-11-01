@@ -2,7 +2,11 @@
 #[cfg(any(
     all(feature = "trap", feature = "reject"),
     all(feature = "trap", feature = "invalid"),
-    all(feature = "reject", feature = "invalid")
+    all(feature = "reject", feature = "invalid"),
+    all(
+        feature = "fuel",
+        any(feature = "trap", feature = "reject", feature = "invalid")
+    )
 ))]
 compile_error!("select at most one counter fixture fault feature");
 
@@ -73,6 +77,12 @@ impl exports::counter_trial::Guest for Fixture {
         #[cfg(feature = "reject")]
         if input.counter >= 3 {
             return Err(Rejection::Rejected);
+        }
+        #[cfg(feature = "fuel")]
+        if input.counter >= 3 {
+            loop {
+                core::hint::spin_loop();
+            }
         }
         let next_counter = input.counter.checked_add(1).ok_or(Rejection::Rejected)?;
         #[cfg(feature = "invalid")]

@@ -13,6 +13,7 @@ default = []
 trap = []
 reject = []
 invalid = []
+fuel = []
 
 [dependencies]
 wit-bindgen = { version = "=0.60.0", default-features = false, features = ["macros", "realloc"] }

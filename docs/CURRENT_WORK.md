@@ -1,114 +1,134 @@
 # Current work
 
-RESUMED November1 at owner request: finish registered remaining checks and writer
-retest, then continue S1 until a genuine blocker or required owner input. Periodic
-updates. Prior225distinctcases/36groups PASS remains source-pinned evidence;
-no need to replay unchanged tests. S1/G1 remain OPEN.
-No public push/PR/merge/release or later-stage activation.
+Resumed November 1 at the owner's request: finish remaining checks and writer
+retest, then continue S1 until a genuine blocker or required owner input. Keep the
+owner updated. S1/G1 OPEN. No public push, PR, merge, release or live S2.
 
 ## Accepted local foundation
 
 Combined C FINAL1fa55c619a2f4666a505461822a97efa5732db01/tree d0b2c224/parentD6a.
-Different s1bc_final_review ACCEPTS input72c45e27/summary2346d158/all55hashes:
-exactD9/B8 union17source66e;211fresh/27groups+6checks+conditioned369Python/
-1486Rust/doc0PASS. Native raw vsGit/Linux ONLYexactCRLF conversions, stable
-before/after. Private6e812e8 records FINAL. See composition RESULTS for full pins.
-D FINAL6a5a16e2/tree390d9d9a/parentab; B FINAL5b41f44f/tree71e9accb/parent173.
-Retirement ab239890, frozenwindow173ad2a and earlier owner components remain FINAL
-within their result-doc limits. Native Halloween fixture UNRESOLVED on unchanged
-ancestor; conditioned broad uses process-local Pacific/Kiritimati. No parity,
-optimized-runtime, ordinary Running, performance or G1 acceptance follows.
+D/B union17;211fresh cases/27groups/six checks and conditioned369Python/1486Rust/
+doc0 PASS. Different s1bc_final_review verified55 indexed hashes. Private6e812e8
+records acceptance. D6a5a16e2/B5b41f44f, retirementab239890 and frozen173ad2a
+remain FINAL within their authored result-document limits.
 
-## Accepted C0b native writer; adoption pending
+Registered R FINALf6a3c6a06f500234ed1b3140c8d7cdd37bb89e6f/tree666bb029/parentC.
+Exactly7paths;225focused explicitly216old1f6+9fresh7502, not225onecurrentbinary.
+Six checks and conditioned369Python/1379client/doc0 PASS. Different
+s1_registered_final verified96 hashes; receipt832131aa; source7502658a.
 
-Worktree .local/worktrees/s1-native-writer-close, branchcodex/s1-native-writer-close,
-baseab239890cd62595889f7f0302cd1396a5e2c547c; only save.rs. Main8ecc6f48 and
-independent-source amendment017ca420 accepted; privatee99c3aa preceded authoring.
-Previous72da/c3d passed77normal (19new+58legacy incl8resource) and21distinct
-markedSIGABRT/reaped cases. Clippy then found five mechanical style issues.
-All1source+ALLprefix preserved before corrections. Prefmt513b SOURCE CLEAR;
-Rootfmt e4c2ecec1305252449435be62cfeeef8c44d9b2a6fbc49c35d47eaf1c2b2d21b,
-manifestd8556049598151c0273ac5c18cc4d5730e17d8f51659f5f4312e4da23ba6b359,
-expectedfcd6a067/tool7987 SOURCE/TOOL CLEAR; write/join order unchanged.
-Fresh currentbuild PASS;77normalPASS/21markedSIGABRT-reapedPASS/all5checksPASS.
-Clean LOCAL3fe2a2e8a85bc23e60ea53ebf74953a843cecc0f/treeceafda333c6c39f68cb69a6240acf419f91d73ff/soleparentab.
-ALL7987dirty-parent modes RETIRED. Postcommit broad376c PASS369Python/
-1375client/doc0/fmt/clippy/publictree. DIFFERENT s1_writer_final FINAL ACCEPT:
-input972cc7e8/summaryd1271b97/all58hashes; raw/Git/Linuxidenticalbeforeafter.
-Old runtime preserved in
-.local/s1wr1-source72da-runtime and numbered attempts; never relabel old passes.
-Source reviewer s1wr_source_review; actual DIFFERENT FINAL s1_writer_final ACCEPT.
-Writer default path unchanged, no ordinary caller. Local ab qualification does
-not include D Game cases; later separately reviewed composition MUST freshly run
-actual D/B regressions on adopted writer. C0a cannot start before writer FINAL
-and fresh adopted API/private checkpoint.
+Retained W FINAL3fe2a2e8a85bc23e60ea53ebf74953a843cecc0f/treeceafda33/parentab.
+ONEsave.rs;77fresh normal/21marked fatal processes/five checks and conditioned
+369Python/1375client/doc0 PASS. Different s1_writer_final verified58 hashes;
+receiptcb293d5b; sourced8556049. Opt-in; ordinary callers unchanged. This component
+alone lacks D/R Game regressions. Native/Git/Linux comparisons retain their exact
+recorded CRLF-only distinctions. Private494eac6c746dcdc6a641da6678b09fecf4d94c8d
+records both FINALs and preceded the bounded adoption/Guest source releases.
 
-## Accepted registered binding component
+Old dirty-parent qualifiers are RETIRED after their clean commits; never replay
+colliding queues. Native-calendar Halloween fixture UNRESOLVED on unchanged173.
+Broad checks explicitly use process-local Pacific/Kiritimati, non-Halloween only.
+No parity, optimized Game, performance, ordinary Running or G1 acceptance follows.
 
-Worktree .local/worktrees/s1-registered-counter-binding, branchcodex/s1-registered-counter-binding,
-base SAME accepted C1fa. Exactly7paths under client/src: world/{counter_restore,
-slot_restore,slot_restore_tests}.rs, game/counter_control.rs,
-game/levels/{session_checkpoint,session_checkpoint_tests,
-session_checkpoint_registered_tests}.rs. Main3ec3363a/draft amendment56ca2e33;
-private8030b9c preceded native draft. Private6e812e8 recorded parentFINAL SAMEC
-before childfmt/runtime. Initial f28 helper-label defect fixed with all7/prefix
-preserved; a703 prefmtCLR. Formatted1f6e020ec52feee3448db229a8c9d5c7dc8b5ebce5131eb324ce15e79ce70caa
-SOURCE CLEAR, tool3607a0a/expecteda9cfe43a. Actual opt0/debug/overflow buildPASS
-(lib21319e8f/bin1dfa1bc4/protocole8485c79). Fresh225distinctcases/36groups PASS, zero failures/ignored, all36loghashes
-verified. Receipt90e7fea9cc4582c74efd5935142a6e9d8dea48722581fdc48f53213414099f2e.
-Initial checks found ONLY3testfixture style issues in the new test file.
-ALL7/prefix preservedattempt6, then corrected/formatted; other6paths unchanged.
-Current7502658a source/tool3ae95f9b/expected1ce2d63a SOURCE/TOOL CLEAR.
-Independent review accepts216unchangedold1f6cases plus9fresh7502cases (pending),
-NOT225ononecurrentbinary. Old45runtimefiles preserved together in
-.local/s1rb1-source1f6-runtime with exact relocation/hash index.
-Fresh current7502build/nineaffectedcases/ALL6checks PASS. Focused225explicitly
-216old1f6+9fresh7502, mixedreceipt5a7981d8/reuseindex576f6cdb.
-CleanLOCALf6a3c6a06f500234ed1b3140c8d7cdd37bb89e6f/
-tree666bb0297cf79d046bc29fc079b1279179ce6b9e/soleparentC1fa.
-ALL3ae/3607dirty-parentmodes RETIRED. Fresh postcommitbroad e87 PASS369Python/
-1379client/doc0/fmt/clippy/publictree. DIFFERENT s1_registered_final FINAL ACCEPT:
-inputc829e36c/summarydaf1af6f/ALL96hashes. CRLFonly624counter_control/
-1500slot_restore; other5native/Git/Linuxidentical, stablebeforeafter.
-Broad e87cf03e conditionallyCLEAR after focused/checkPASS+clean unchanged source.
-Source s1rb_source_review; actual DIFFERENT FINAL s1_registered_final ACCEPT.
-Explicit closed physicalprofile kinds, no compatibility/migration promise. Native
-backend only; no ordinary placement/Running or genuine persistentGuest proof yet.
+## Writer adoption: current qualification
 
-## Next scoped work
+Accepted proposal f5378d05 and renewed actual-pin/API review by
+s1_adoption_pin_review: exact R/W inputs;23ancestral paths but ONLY unchanged
+Wsave.rs child delta. Private494 preceded composition; snapshotattempt3 preserved
+all23 baseline sources/prefix before application. SOURCE702c8448/proof02db1b40,
+toolf209ae5f/expectedc2eb2db2 CLEAR before execution.
 
-PersistentGuest full bridge DESIGN ONLYdca49598 (productioncontract8cd402c6)
-accepted by independent
-s1_guest_bridge_design_review; latest narrow test-placement refinement reuses
-private registered fixture from its child module within the same10paths:
-game::levels::session_checkpoint::tests::registered::persistent_guest::.
-actual captured evaluator and guards at prepare AND completion, explicit Guest
-profile and finite faulted storage/recovery that stays stopped, no native fallback.
-Healthy native checkpoint APIs currently refuse fault; no silent recovery clearing.
-Actual callback success/abort and faulted persistence remain MANDATORY S1/G1.
-No engine source authority before registered FINAL/fresh actual APIs/privatecheckpoint.
+Fresh combined build, ALL302distinct normal cases/38groups,21separate marked
+SIGABRT/reaped cases and ALLsix checks PASS. Receipts: build eecddd4d; normal07e00e3c;
+fatalb58887bc; checks8c12f14b. ALL23/prefix preservedattempt9 before normal attributed
+LOCAL commit e369cac6da8f6e0b604a928fcb2e5233be3cf17c,
+tree459d436b07bc35d32264c4e1def9bca072868ccd, sole parent Rf6. Onlysave.rs,
+exact writer Git blobea0eff11. ALLf209dirty-parent modes RETIRED.
+Reviewed broad25c98384 completed once, exit0/reaped, isolatedtarget-s1wa1-ci:
+369Python/1379client/doc0/fmt/clippy/publictree PASS. Different s1_adoption_final
+FINAL ACCEPT; all93indexedhashes verified. Input44d3cfca/summary5b46a0b3.
+Adoption accepted locally; ordinary callers/G1 still open.
 
-H10 observer a460f875 conceptACCEPT: Native persistent only, borrowed validation
-and payload bounds BEFORE owned clone; genuine Guest bridge still mandatory.
-Registered lifecycle4ae01a12 (8paths) and player intent73255c71 (5paths) conditionally
-accepted, no source authority. C0a3ef2bed2 (5paths) waits writerFINAL/adoption.
-C0c metadata-family DESIGN1a1518f1 conditional DESIGN ACCEPT by fresh
-independent s1_metadata_design_review;11pathC0c1 maximum,
-separate future7pathC0c2. Writeradoptiondesignf5378d05 fullactualR/Wpins ACCEPT by s1_adoption_pin_review,
-exact23pathancestralunion but ONLYsave.rs childdelta; BOTHcomponentFINALnowmet. Full C0/C1 plan95484fa4 is
-planning ONLY, no46path union authority. Concrete liveness/departure prerequisites
-remain. Composite C0 FINAL precedes C1 configuration admission.
+## Persistent Guest: frozen source, no Game execution yet
 
-G1 OPEN: ordinary startup/identity/registered lifecycle/placement/generations/chunk
-cycles/coherent normal save+close; authorized player transactions/replay/reach/
-permissions/revisions/retirement/departure custody; actual configuration admission,
-initial/delta/gap/resync/untrack/reconnect; committed retained animation; combined
-DEFAULT integrated MemoryPipe/dedicated TWOexactTCPclients+promisedinframe tests;
-explicit G1 acceptance. No reduced S1. Live S2 requires G1. S3 exact motor/shaft/
-small+largecogs/millstone, NOgearbox; R01 matches pinnedJava full-output item loss.
-FailedGuestdisposaldesignf96b2a9a conditionalACCEPT by s1_disposal_design_review:
-sevenpathmax AFTER GuestbridgeFINAL+registeredlifecycleFINAL+acceptedcomposition.
-OldfaultendsONLYactualoriginalnativeSinkcommit/emptyack, notactiveclear/rearm.
+Proposaldca49598 (productioncontract8cd402c6), fresh R API inspection/private494
+preceded native authoring at Rf6. EXACTten paths under client/src:
+counter_trial.rs; world.rs; world/{counter_restore,slot_restore,slot_restore_tests}.rs;
+game/counter_control.rs; game/levels/{session_checkpoint,
+session_checkpoint_registered_tests}.rs; NEWgame/persistent_guest_counter_tests.rs;
+world_slot_trial.rs. No other engine source authority, ordinary caller or backend flip.
+
+Closed Guest3/GuestSlot1 profile, genuine captured evaluator/fresh completion guards.
+First fault persists through storage/recovery, which stays stopped. Native/public
+frames retained; original counter/slot/player/drop ownership and native fences
+mandatory. Faulted removal remains blocked pending separate disposal work.
+Healthy-only/transient Guest does not satisfy this component.
+
+Author s1_c0a_packet_design; independent s1_guest_source_review. Findings corrected
+with ALL10/prefix preserved before each change. Prefmtf33316d0 SOURCE CLEAR;
+snapshotattempt6 before Rootfmt. Formatted manifest
+cda2302e5b4fe2093252ff3bdd2d6681f111806b1cd40e1bd33c2fb041efae69 SOURCE CLEAR,
+mechanical-only delta. Nine normal/fourteen actual Game cases inventoried; private
+registered fixture reused through child module within the same10paths.
+No Guest compile/Game execution yet.
+
+Released AFTER THIS PRIVATE CHECKPOINT: adoption FINAL/fresh parent API review
+accepted; create NEW clean child at accepted e369 and
+copy ONLY same10 frozen files. Preserve R draft. No semantic edit/save.rs edit.
+Exact27ancestral/10child inventory and parent FINAL must be rechecked. Ignored
+s1pg3 tool draft deliberately has PENDING source manifest; cannot execute yet.
+Proposed325fresh normal/21fatal/six checks. No unreviewed parent substitution.
+
+## Qualified private fuel fixture and captured pairs
+
+Private two-file guest-counter fuel variant: scoped FINAL ACCEPT by different
+s1_fuel_results_review;26indexed artifacts/17inputs. Source/tool review before build.
+Buildcdb453ec/qualification410f56d7; input48076b99/summary8bf9f6d1.
+Actual C1fa API consumer: imports0/ABI/ordinary paired activation/selector, exact
+proposals0..2+1, real fuel-consumed Wasm refusal3, successful0again, immutable
+requests/quiet output. Component155579c3. No typed Fuel or Game/persistent authority.
+WIT provenance pinned; no SDK replacement. Qualified private two source files/results
+included in this normal private checkpoint.
+
+Five exact pairs normal/trap/reject/invalid/fuel pinned byc25aa49c. External
+tool726fe4b2 independently CLEAR. Fresh trap/reject/invalid captured API preflights
+PASS with the qualified C1fa consumer. Each shares only four unchanged normal
+files and has its distinct pinned server. These do not replace Guest Game tests.
+
+## Next components and remaining G1
+
+C0a prepare/producer close3ef2bed2, EXACTfive paths, is BLOCKED on three newly
+verified lower acquisition/helper edges. Fresh s1_prepare_parent_review found
+post-OS-lock header failures, authority post-lock validation and three detach-prone
+GeneratorData loader threads. The earlier API notes missed these internal edges.
+Separate prerequisite2df6d8fe is conditionally DESIGN/API ACCEPT: EXACTsave.rs,
+nestedhost_identity/session_authority.rs and horizon-world/worldgen/generator.rs.
+Retain original lock/partial authority; same-file full-header cursor repair;
+scoped loader children on every return/unwind, including optional-result omission.
+No new Cargo feature/path demonstrated. Predecessor FINAL/private assignment,
+SOURCE/tool/qualification/differentFINAL remain gates. EXACTthree-file precursor
+source released AFTER THIS PRIVATE CHECKPOINT under its separate assignment.
+C0a5 starts only after
+precursor FINAL/fresh actual API/private checkpoint, never silent scope expansion.
+NewC0atest game/world_loading/retained_prepare_tests.rs. Existing API map is a
+research aid with these corrections, not source authority.
+C0c metadata1a1518f1 conditional design only;11pathC0c1, separate7pathC0c2 after
+C0a FINAL. Full C0/C1 plan95484fa4 is planning only, no46path source authority.
+Composite C0 FINAL precedes C1 actual configuration admission.
+
+Registered ordinary lifecycle4ae01a12 (8paths), player intent73255c71 (5paths),
+H10 native observera460f875 and failed Guest disposalf96b2a9a (7paths) retain separate
+prerequisite gates; no source release here. Disposal requires Guest/registered
+lifecycle FINAL plus accepted composition. Old fault ends only at actual original
+native sink commit/empty acknowledgement, never active clear/rearm.
+
+G1 OPEN: ordinary startup/identity/registered placement/generations/chunk cycles/
+coherent save+close; persistent Guest success/abort; authorized player transactions/
+replay/reach/permissions/revisions/retirement/departure; actual config admission;
+initial/delta/gap/resync/untrack/reconnect; committed retained animation; DEFAULT
+integrated MemoryPipe/dedicated TWOexactTCPclients plus promised in-frame tests;
+explicit acceptance. No reduced S1. Live S2 waits G1. S3 exact motor/shaft/small+
+largecogs/millstone, NOgearbox. R01 matches pinned Java full-output item loss.
 No required owner input now.
 
 ## Execution rules
@@ -128,63 +148,4 @@ Cargo targets, separate CI target; never reuse shared cross-worktree cache proof
 Native Windows Git, normal hooks/attribution, engine LOCAL ONLY. Private branch
 codex/h02-smoke-h03-notes; BEFORE EVERYpush fresh GitHub PRIVATE metadata and exact
 origin https://github.com/Cha0sCollective/Create-Horizon.git. No generated raw
-worlds/resources/run evidence in Git, no memory writes. All old dirty-parent
-qualifiers retire after their clean commits; never rerun receipt-colliding queues.
-
-## Pause checkpoint, October31 at12:04Central
-
-Current-source manifests verified before pause. ALL7registered sources+ALLprefix
-artifacts preserved .local/s1rb1-attempt5; ALL1writer source+ALLprefix preserved
-.local/s1wr1-attempt18. Local pause receipt .local/s1-pause-20261031.json.
-Engine patches remain uncommitted on their exact parents pending required checks;
-these snapshots do not accept a component FINAL. All agent assignments finished.
-When resumed: registered remaining checks/clean commit/broad/FINAL; writer fresh
-current build/77normal/21fatal/checks/commit/broad/FINAL; reviewed adoption before
-C0a. NewGuest/metadata designs do not authorize immediate source work.
-
-## Next bounded private fixture draft
-
-Accepted Guest design8cd402c6 anticipates ONLY tools/fixtures/guest-counter/
-Cargo.toml and src/lib.rs for a mutually exclusive fuel variant at counter>=3.
-Before native authoring require a private durable checkpoint of this assignment
-and ALL2source/prefix snapshot. No SDK/WIT/client/server-hook or engine changes.
-Independent exact SOURCE/ABI/tool review precedes Root's external build/preflight;
-Root alone runtime/Git serial. Existing preflight hardcodes9->10 and current smoke
-CLI rejects fuel, so no fabricated positive or trap relabel. A separately reviewed
-ignored consumer must pin the actual engine dependency. Persistent Guest engine
-implementation still waits registeredFINAL/fresh APIs/private checkpoint.
-
-Privatefuel2files and ignoredconsumer SOURCE CLEAR; driver07e695d4/inputs2da9db3d
-TOOL CLEAR after fullWITtree/Gitcanonicalprovenance guard. Nofuelbuild/runtimeyet.
-WITfixtureecc68691 already equals acceptedGitLF; SDKnativea19 differsONLY837CRLF.
-No SDKinputreplacement occurred. CapturedAPI proof remains distinct frompersistentGame.
-
-## Released next source scopes AFTER this private checkpoint
-
-1. Writeradoption .local/worktrees/s1-registered-writer-adoption, branch
-codex/s1-registered-writer-adoption, cleanbaseR f6a3c6a/tree666bb029. Proposal
-f5378d05 acceptedfreshactualpins/API. Only exactW3fe save.rs delta STAGED;
-no semantic edits/calleractivation. ALL23baseline sources+prefix preserved
-.local/s1wa1-attempt3 beforecomposition. SourceCLR beforeRootcompile/runtime.
-FreshALL225 +19retained/58legacy/21fatal, checks/commit/broad/differentFINAL.
-RFINALreceipt832131aab825dfb2bb5c401b1256dc205b7257a9176dcbf6bdb04015aed13bcd;
-WFINALreceiptcb293d5bf17c4f6ea2d279e39e268007f2783dc766857f78e3adc13d48fb02d0.
-
-2. PersistentGuest NATIVE DRAFT .local/worktrees/s1-persistent-guest-counter,
-branchcodex/s1-persistent-guest-counter, sameacceptedR f6/tree666. Accepted
-proposal dca49598/productioncontract8cd402c6; freshR API/privatehelper checkPASS.
-Exact10paths underclient/src: counter_trial.rs; world.rs; world/counter_restore.rs;
-world/slot_restore.rs; world/slot_restore_tests.rs; game/counter_control.rs;
-game/levels/session_checkpoint.rs; game/levels/session_checkpoint_registered_tests.rs;
-NEWgame/persistent_guest_counter_tests.rs; world_slot_trial.rs. ALL10baseline/absence
-andprefix preserved .local/s1pg2-attempt0 BEFOREauthoring. Native author ONLYthese
-files, noformatter/compiler/tests/WSL/scripts/Git/network/delegation. Noordinarycaller
-orotherpaths; SourceCLR beforeRootformat/compile/runtime. Keepfirstfault/realGuest
-callbacks+fullnativeowners/explicitGuest3 storage, stoppedrecovery; nobackendflip.
-
-Privatefuel/sourceconsumer+driver source/toolCLEAR; actualbuild+capturequalification
-PASS onC1fa APIconsumer with its ownrecorded offline lock. Input0/1/2 exact+1;
-input3actualWasm fuelconsumed trap; input0againPASS; bothhalves/imports0/quiet
-output/identity/selectorchecksPASS. Receiptbuildcdb453ec/qualify410f56d7.
-Servercomponent155579c3; noGame/persistent/typedFuel authority follows. Private2code
-files remainuncommitted pendingfinalevidencereview; doNOTstageaccidentally.
+worlds/resources/run evidence in Git, no memory writes.
