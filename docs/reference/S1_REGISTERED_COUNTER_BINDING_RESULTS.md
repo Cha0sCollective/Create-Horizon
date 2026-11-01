@@ -1,6 +1,7 @@
 # Registered counter binding
 
-Status: WIP. Formatted seven-file source independently CLEAR; first actual build and all225focused tests PASS. Paused at owner request. Parent C is FINAL at the same base.
+Status: WIP. Qualified clean LOCALf6a3c6a; currentbuild/9affectedcases/all6checks PASS.
+Focused225 are explicitly216reviewed priorcases+9freshcurrentcases. Broader/FINAL pending.
 S1/G1 remain open; ordinary placement/Running/player authority are separate.
 
 Worktree .local/worktrees/s1-registered-counter-binding, branchcodex/s1-registered-counter-binding,
@@ -70,3 +71,17 @@ Old45runtimefiles archived together under .local/s1rb1-source1f6-runtime;
 relocation.json preserves exact oldpath/newpath/hash mapping and225receipt90e7.
 Fresh currentbuild/9cases/checks/cleancommit/broad/FINAL remain. Broad e87 has
 renewed conditional clearance on7502 with truthful mixed-focused disclosure.
+
+## Corrected candidate qualified and committed, November1
+
+Freshcurrent7502 buildPASS; all9affectedregistered actualcases PASS on current
+artifacts, receiptf7c8c4a6. All6currentchecksPASS (fmt/3clientlib-bin-test feature
+Clippy/protocoltestClippy/publictree), receipt97886a37. Independentapproved216prior
+1f6cases remain unchanged; all27priorgroup loghashes rechecked in reuse216index
+576f6cdbd62ad0a8355d2df6537ad8a5596d15cba0091420808afdb3c474de17.
+Mixed225distinct/36groups receipt5a7981d89d8b8e90cdc744487cc9666cee035cc5df87c2bc5e3c2d76e800024d;
+this is NOT225currentonebinary. Source/tool7502/3ae and allactual loghashesverified.
+Normalattributed/publictree-hook cleanLOCALf6a3c6a06f500234ed1b3140c8d7cdd37bb89e6f,
+tree666bb0297cf79d046bc29fc079b1279179ce6b9e, soleparentC1fa55c619a2f4666a505461822a97efa5732db01.
+ALLdirty-parent3ae/3607modes RETIRED. Snapshotattempt9 preservesall7source/prefix
+precommit. Reviewedpostcommitbroad e87 and DIFFERENT FINAL remain pending.

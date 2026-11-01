@@ -1,7 +1,8 @@
 # Retained native writer close and repair retry
 
-Status: WIP. Current e4c/d855 build,77normal,21separatefatal and all5checks PASS.
-Clean local3fe2a2e committed; postcommit broad and DIFFERENT FINAL remain.
+Status: FINAL ACCEPT, bounded local opt-in writer component on ab.
+Current e4c/d855 build,77normal,21separatefatal,all5checks and postcommit broad PASS.
+Different s1_writer_final accepts clean local3fe2a2e. No ordinary Game caller/adoption/G1.
 S1/G1 remain open; no ordinary caller, startup or publication.
 
 Worktree .local/worktrees/s1-native-writer-close, branchcodex/s1-native-writer-close,
@@ -100,3 +101,18 @@ treeceafda333c6c39f68cb69a6240acf419f91d73ff, soleparentab239890. Clean worktree
 Snapshotattempt19 preserves complete precommit source/runtime. ALL7987dirty-parent
 modes RETIRED after3fe; only reviewed broad376c may execute next on that clean pin.
 Different FINAL pending. No adopted retained Game close/D regression/G1 follows.
+
+## Independent FINAL acceptance, November1
+
+Different s1_writer_final FINAL ACCEPT on exact clean3fe2a2e/treeceafda33/parentab.
+Frozeninput972cc7e8f4c4eaf9300e1ebc7cb016450af61ace1f5223edf024ec48bdcf49a2,
+summaryd1271b9772d47cea8e1de2ee18c8200fd0d1d545a0b16c4d9089b2af6098c03a;
+all58indexedhashes verified. Native/Git/Linux sourceIDENTICAL before/after,0CRLF.
+Actual postcommit broad exit0:369Python/1375client/doc0/fmt/clippy/publictree PASS.
+Main logd670a9e5/status01d82637/comparisona1fa7b0b. ExplicitNON-HALLOWEEN
+TZPacific/Kiritimati2026-11-02T06:08:42+1400 to06:28:35+1400; unchangedancestor
+Halloween defect UNRESOLVED. Scopewarning2842linesdisclosed. NoParity/optimized
+runtime/performance/G1. Review nativeREADONLY, no reviewerexecution.
+This FINAL covers onlyoptinwriter onab; laterregisteredB/Dadoption MUSTfreshly
+qualify actualGameitemcases. Legacyconstructor unchanged; nofullGameclose/lock
+release/generaljournal/portablecodec/publication. EarlierWIP/pause sections arehistory.

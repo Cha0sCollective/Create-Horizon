@@ -19,7 +19,7 @@ within their result-doc limits. Native Halloween fixture UNRESOLVED on unchanged
 ancestor; conditioned broad uses process-local Pacific/Kiritimati. No parity,
 optimized-runtime, ordinary Running, performance or G1 acceptance follows.
 
-## Active C0b native writer qualification
+## Accepted C0b native writer; adoption pending
 
 Worktree .local/worktrees/s1-native-writer-close, branchcodex/s1-native-writer-close,
 baseab239890cd62595889f7f0302cd1396a5e2c547c; only save.rs. Main8ecc6f48 and
@@ -32,10 +32,12 @@ manifestd8556049598151c0273ac5c18cc4d5730e17d8f51659f5f4312e4da23ba6b359,
 expectedfcd6a067/tool7987 SOURCE/TOOL CLEAR; write/join order unchanged.
 Fresh currentbuild PASS;77normalPASS/21markedSIGABRT-reapedPASS/all5checksPASS.
 Clean LOCAL3fe2a2e8a85bc23e60ea53ebf74953a843cecc0f/treeceafda333c6c39f68cb69a6240acf419f91d73ff/soleparentab.
-ALL7987dirty-parent modes RETIRED. Postcommit broad376c and DIFFERENT FINAL remain.
+ALL7987dirty-parent modes RETIRED. Postcommit broad376c PASS369Python/
+1375client/doc0/fmt/clippy/publictree. DIFFERENT s1_writer_final FINAL ACCEPT:
+input972cc7e8/summaryd1271b97/all58hashes; raw/Git/Linuxidenticalbeforeafter.
 Old runtime preserved in
 .local/s1wr1-source72da-runtime and numbered attempts; never relabel old passes.
-Source reviewer s1wr_source_review, DIFFERENT FINAL s1wr_final_review (HOLD).
+Source reviewer s1wr_source_review; actual DIFFERENT FINAL s1_writer_final ACCEPT.
 Writer default path unchanged, no ordinary caller. Local ab qualification does
 not include D Game cases; later separately reviewed composition MUST freshly run
 actual D/B regressions on adopted writer. C0a cannot start before writer FINAL
@@ -60,7 +62,11 @@ Current7502658a source/tool3ae95f9b/expected1ce2d63a SOURCE/TOOL CLEAR.
 Independent review accepts216unchangedold1f6cases plus9fresh7502cases (pending),
 NOT225ononecurrentbinary. Old45runtimefiles preserved together in
 .local/s1rb1-source1f6-runtime with exact relocation/hash index.
-Fresh currentbuild/nineaffectedcases/ALLchecks/cleancommit/broad/FINAL remain.
+Fresh current7502build/nineaffectedcases/ALL6checks PASS. Focused225explicitly
+216old1f6+9fresh7502, mixedreceipt5a7981d8/reuseindex576f6cdb.
+CleanLOCALf6a3c6a06f500234ed1b3140c8d7cdd37bb89e6f/
+tree666bb0297cf79d046bc29fc079b1279179ce6b9e/soleparentC1fa.
+ALL3ae/3607dirty-parentmodes RETIRED. Fresh postcommitbroad e87/DIFFERENT FINAL remain.
 Broad e87cf03e conditionallyCLEAR after focused/checkPASS+clean unchanged source.
 Source s1rb_source_review; DIFFERENT FINAL s1rb_final_review preliminary no blocker/HOLD.
 Explicit closed physicalprofile kinds, no compatibility/migration promise. Native
@@ -94,6 +100,9 @@ initial/delta/gap/resync/untrack/reconnect; committed retained animation; combin
 DEFAULT integrated MemoryPipe/dedicated TWOexactTCPclients+promisedinframe tests;
 explicit G1 acceptance. No reduced S1. Live S2 requires G1. S3 exact motor/shaft/
 small+largecogs/millstone, NOgearbox; R01 matches pinnedJava full-output item loss.
+FailedGuestdisposaldesignf96b2a9a conditionalACCEPT by s1_disposal_design_review:
+sevenpathmax AFTER GuestbridgeFINAL+registeredlifecycleFINAL+acceptedcomposition.
+OldfaultendsONLYactualoriginalnativeSinkcommit/emptyack, notactiveclear/rearm.
 No required owner input now.
 
 ## Execution rules
@@ -138,3 +147,8 @@ Root alone runtime/Git serial. Existing preflight hardcodes9->10 and current smo
 CLI rejects fuel, so no fabricated positive or trap relabel. A separately reviewed
 ignored consumer must pin the actual engine dependency. Persistent Guest engine
 implementation still waits registeredFINAL/fresh APIs/private checkpoint.
+
+Privatefuel2files and ignoredconsumer SOURCE CLEAR; driver07e695d4/inputs2da9db3d
+TOOL CLEAR after fullWITtree/Gitcanonicalprovenance guard. Nofuelbuild/runtimeyet.
+WITfixtureecc68691 already equals acceptedGitLF; SDKnativea19 differsONLY837CRLF.
+No SDKinputreplacement occurred. CapturedAPI proof remains distinct frompersistentGame.
