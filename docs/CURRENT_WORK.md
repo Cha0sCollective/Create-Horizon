@@ -100,8 +100,8 @@ Assignment S1_RETAINED_PREPARATION_SOURCE_ASSIGNMENT.md releases only after its
 private checkpoint. Root preserved ALL6/prefix s1rp1-attempt0. Same physical
 checkout .local/worktrees/s1-retained-acquisition now codex/s1-retained-preparation
 at1956; target-s1ra1 retained. Streaming author owns streaming.rs; preparation
-author initially owned other five. Initial preparation draft is frozen and
-Streaming draft/tests are in progress; no formatting/compiler/runtime yet.
+author initially owned other five. All eight source files are now frozen and
+formatted, manifest096bd837 (seven staged modifications/one addition).
 Saved-column closure exposed a genuine tolerant-load provenance gap. Fresh
 review accepted amendment6bcc3ac8:exact EIGHT paths, adding save.rs retained raw/
 pending capture (Root) and item-parser visibility; sixth also permits existing
@@ -110,11 +110,21 @@ codec or profile expansion. Only true absence can generate; malformed/proto or
 refused loads keep original evidence, full payload/lease and error. AlreadyStored
 requires same-save relevant current sequences plus final writer completion.
 ALL8/prefix preserved s1rp1-attempt1 before updated private source release.
-Native source text only; Root all execution/Git. No C0a qualification yet.
+Native source text only; Root all execution/Git. Two initial static attempts
+failed (JavaString type, then four mechanical lints); preserved with all sources
+before corrections. Exact UTF16 compare, boxed carrier return/callers and lint
+corrections now in draft. No runtime cases or C0a FINAL yet.
 Fresh reviewer accepted d62158ab:distinct checked refused-read failed cleanup
 retains original evidence/error through actual producer/writer completion; no
 generation/rewrite/adoption/validity claim. It cannot waive unique unsaved output,
 unknown/missing work, held-work panic, writer fault or conflicting writes.
+Independent review resolved same-save constructor mismatch and original wrong
+coordinate refusal cleanup. Focused next queue32normal/fourfatal/sixstatic;
+one added actual Vanilla proto Save/callback/native reload closes TestTerrain's
+missing saved_proto codec coverage. Existing coverage remains truthful reuse.
+Source-only UNQUALIFIED backup checkpoints/engine/2026-11-01/
+s1-retained-preparation-source096bd837.patch reverse-apply-check matched actual
+eight-file draft; no generated worlds/resources/binaries/logs are in this backup.
 
 C0a original5 plus bounded validator/read-capture amendments total8. Refinementea87dea3
 accepted: own partial-acquisition wrappers BEFOREacquire; ready/failure keep same
