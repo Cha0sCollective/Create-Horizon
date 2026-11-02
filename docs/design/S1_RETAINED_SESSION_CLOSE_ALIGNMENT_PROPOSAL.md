@@ -15,7 +15,7 @@ existing dormant experimental owner before composing it into the original Game.
 
 Maximum source scope is ONE existing file:
 `crates/horizon-client/src/net.rs`, including its existing retained tests. Use
-logical branch `codex/s1-session-close-alignment` and evidence prefix `.local/s1sc1`
+logical branch `codex/s1-session-close-alignment` and evidence prefix `.local/s1sda1`
 in the same stable checkout and dedicated warm target. No new module, worker,
 executor, transport, owner facade, dependency, lockfile or public documentation.
 

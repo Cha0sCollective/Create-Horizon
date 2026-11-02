@@ -4,7 +4,7 @@ Read S1_RETAINED_SESSION_CLOSE_ALIGNMENT_PROPOSAL.md. This assignment is HELD
 until exact independent DESIGN acceptance, a synced private checkpoint and root
 release gate. Parent engine e6e584c53ff404b84fb364681d49d41701f9492f. Only allowed
 source is crates/horizon-client/src/net.rs. Proposed branch is
-codex/s1-session-close-alignment; evidence prefix .local/s1sc1.
+codex/s1-session-close-alignment; evidence prefix .local/s1sda1.
 
 Implement the proposal's replacement absolute-deadline/exact-attempt API in the
 actual existing RetainedSession and migrate only its existing test callers.

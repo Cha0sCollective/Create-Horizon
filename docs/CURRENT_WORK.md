@@ -32,8 +32,8 @@ Use only accepted decoder index `s1dc1-final-review-input-r1.json`; the incomple
 original draft remains preserved and is not accepted.
 
 Next bounded design is accepted: `S1_RETAINED_SESSION_CLOSE_ALIGNMENT_PROPOSAL.md`
-(`b4131d64`) and assignment (`981a111d`), net.rs only, proposed branch
-`codex/s1-session-close-alignment`, prefix `.local/s1sc1`. Independent fresh Sol
+(`cf3cf793`) and assignment (`bd76297d`), net.rs only, proposed branch
+`codex/s1-session-close-alignment`, prefix `.local/s1sda1`. Independent fresh Sol
 High reviewer `session_close_design_review` accepts exact absolute close deadlines
 and checked-attempt Retry on the actual retained owner. Private design sync and
 root release precede source. No activation source assignment is released.
