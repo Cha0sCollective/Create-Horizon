@@ -1,7 +1,8 @@
 # Current work
 
 Retained LAN and client Session are separately FINAL and publicly synced. Next:
-fresh bounded C0e2a LOD ownership design. No next source assignment released yet.
+C0e2a LOD full-family design revision; one-path proposal WITHHELD for hidden
+Far decoration worker and Persistent native read seam. No source assignment yet.
 S1/G1 remain OPEN. No ordinary activation, C1, live S2,
 PR, merge, tag or release. Owner resumed development until genuine blocker/input.
 
@@ -118,6 +119,15 @@ S3 exactly creative motor/shaft/small+large cogs/millstone cobble-to-gravel,
 NO gearbox. R01 matches pinned Java full-output item loss.
 
 ## Execution and publication
+
+Immutable source layout refinement independently ACCEPTED by fresh Sol High
+source_freeze_layout_review, proposalC8e2967a/receipt68140621; adopted in
+docs/design/VALIDATION_WORKFLOW.md. Preserve current physical checkout and all
+historical frozen live files. Prepare NEW stable active worktree
+.local/worktrees/s1-native-close-composition atc73 with dedicated EMPTY
+target-s1nc1, never share/copy targets. Future FINAL source/config/recipe inputs
+use immutable archives plus actual live/archive/commit and runtime proof. No old
+index rewriting, cleanup or deletion. Cfree239GiB/Gfree393GiB, oldtarget18GiB.
 
 Coordinator directly, only bounded useful authors/reviewers, no standing team.
 Root alone ALL Cargo/fmt/compiler/tests/game/WSL/Git writes SERIAL. Authors scoped
