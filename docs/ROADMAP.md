@@ -19,6 +19,14 @@ demonstration is superseded by the supplied five-component scope.
 
 ## Next bounded packet
 
+The current coordinator assignment is in `docs/CURRENT_WORK.md`. Original native
+window close C0e2c is FINAL at engine `60899d4`, public branch synced, with private
+results checkpoint `d8558d1`; see `docs/reference/S1_RETAINED_WINDOW_RESULTS.md`.
+This closes the explicit fixed in-frame window component, not ordinary startup or
+G1. The next one-path retained remote-chunk decoder prerequisite is a held design;
+no caller/default activation follows. The component notes below retain their
+historical point-in-time qualification and limitations.
+
 The native session checkpoint foundation has FINAL local acceptance at engine
 `872dac2`, after independent source and final result review. See
 `docs/reference/S1_SESSION_CHECKPOINT_RESULTS.md` for actual checks and limitations.

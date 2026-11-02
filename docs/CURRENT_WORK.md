@@ -18,14 +18,17 @@ revision archived with exact qualified-live/archive/Git mapping. Actual dirty
 source was qualified before commits; no fresh clean-commit/archive execution.
 Qualifiers s1wc1/s1wc2 naturally retired by parent guards; NEVER edit frozen tools.
 
-## Next bounded packet: design only
+## Next bounded packet: accepted design, source held
 
-HELD docs/design/S1_RETAINED_REMOTE_DECODER_PROPOSAL.md proposes one engine path,
+docs/design/S1_RETAINED_REMOTE_DECODER_PROPOSAL.md proposes one engine path,
 game/remote_chunks.rs plus inline tests. Exact proposed source parent60899d4.
 Original draft59a53d38 preserved.local/s1dc1-design-attempt0.md; updated proposal
 records accepted predecessor and still has NO source/activation authority.
-First sync this private window/evidence checkpoint, then fresh independent Sol
-High design/assignment review, accepted private checkpoint and explicit root gate.
+Window/evidence checkpointd8558d1 is synced. Fresh independent Sol High
+decoder_design_review DESIGN ACCEPT exact proposal0d7647f5 and held source
+assignmentb2e712da; local receipt records required custody/poison/linearization/
+nonblocking/handle-before-latch/checked-failure source checks. Sync the accepted
+private design/assignment checkpoint, then record the exact root gate.
 Do not start engine source or formatter/compiler/runtime before those gates and
 exact SOURCE/tool clearance. No ordinary/default caller activation, C1/live S2,
 G1, PR/merge/tag/release follows. A later remote-client/mesh/Session/server owner
