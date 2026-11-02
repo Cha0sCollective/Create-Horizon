@@ -51,11 +51,17 @@ private decoder results checkpoint74d4767 synced. Original native window
 FINAL60899d4/receipt a30abfdd/publicsynced; originalc6 WITHHELD and both window
 freezes remain unchanged. Results are in docs/reference/.
 
-After remote streaming FINAL/checkpoints, continue bounded design for ORIGINAL
-remote Game adoption of RetainedSession(net.rs), retained decoder and opaque
-streamer. Game currently owns concrete legacy Streaming/Session interfaces;
-prepare an explicit ownership/dispatch migration, not an inner-owner escape or
-fake storage witness. No new engine source assignment for that composition yet.
+Next design is accepted: S1_GAME_STREAMING_OWNERSHIP_MIGRATION_PROPOSAL.md f871e9d0,
+assignment b3086d3c, proposed39paths0bbccca1, independent game_streaming_design_review.
+Selected factory-invariant minimum introduces explicit checked Existing/
+RetainedRemote owner storage and mechanical access, while ALL actual Game
+factories/replacements remain Existing. Source awaits synced private design
+checkpoint/root gate. No remotely running Game, common dispatch facade or native
+provenance follows. Preserve all incoming/slot owners and original swap/disposal
+order; no wrapper inner escape, fake pool or storage witness.
+Original remote Game adoption of RetainedSession(net.rs), retained decoder,
+opaque streamer and honest no-local-storage representation remains later work.
+See S1_ORIGINAL_REMOTE_GAME_GAP_INVENTORY.md; no source release for activation.
 Original server startup/Hub transport and scoped checked server joining remain
 separate; client LOD must finish before sealing shared server storage.
 

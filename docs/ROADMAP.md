@@ -32,7 +32,10 @@ FINAL at `e724758`, reviewed public branch synced; see
 resource cases and two fatal controls qualify the opaque owner without a local
 save writer. Next is original remote Game ownership/dispatch composition with
 RetainedSession, retained decoder and retained streamer; no source assignment for
-that composition yet. G1 remains open. The component notes below retain historical
+that activation yet. Its first representation-only Game streaming owner migration
+has accepted design, keeping every production Game factory on Existing; see
+`docs/design/S1_GAME_STREAMING_OWNERSHIP_MIGRATION_PROPOSAL.md`. G1 remains open.
+The component notes below retain historical
 point-in-time qualification and limitations.
 
 The native session checkpoint foundation has FINAL local acceptance at engine

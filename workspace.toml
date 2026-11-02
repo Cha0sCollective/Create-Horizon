@@ -6,7 +6,7 @@ namespace = "create_horizon"
 repository = "https://github.com/Cha0sCollective/Create-Horizon"
 visibility = "private"
 stage = "post-G0 foundations"
-active_packet = "Continue S1; native window FINAL60899d4, remote decoder FINAL9f64664 and remote streaming FINALe724758 public synced; next original remote Game ownership design; G1 open"
+active_packet = "Continue S1; remote streaming FINALe724758 public/private synced; Game streaming owner representation DESIGN ACCEPT, source held for private checkpoint/root gate; G1 open"
 next_stage = "S1 host foundations and remaining P02; G1/G2/G3 open"
 
 [specification]
