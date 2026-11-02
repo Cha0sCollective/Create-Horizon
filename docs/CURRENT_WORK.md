@@ -1,8 +1,8 @@
 # Current work
 
-Coherent native close is component FINAL and its reviewed public engine branch is
-synced. S1/G1 remain OPEN. Next: fresh bounded C0e1 transport design at the accepted
-pin below. No next engine source assignment yet. No ordinary activation, C1,
+Coherent native close and C0e1a transport shutdown are component FINAL/publicly
+synced. S1/G1 remain OPEN. Active: fresh independent review of proposed C0e1b
+retained LAN ownership. No server source assignment is released yet. No ordinary activation, C1,
 connected G1, live S2, PR, merge, tag or release.
 
 The owner resumed development and authorized progress until a genuine blocker or
@@ -10,14 +10,22 @@ needed input. Keep each source packet bounded and its review/publication gates e
 
 ## Accepted baseline
 
-Engine114626f09afb77a4da97325e5bd4ae9f13dbcb25,
-tree64558c3469f71340ef9685192cf4e3866671d9a0, sole parent
-485d4b1914c639d2a6cfc68f6fa7191ae5adbdaf. Physical worktree
-.local/worktrees/s1-retained-acquisition is CLEAN on
-codex/s1-coherent-native-close. Public origin/remote branch verified at exact Q;
+Engine906f91b10683224532f8b300dd6a4a654acbe88a,
+tree9a349b3dd986c9718cb8ac0f9b769b3136e32891, sole parent
+114626f09afb77a4da97325e5bd4ae9f13dbcb25. Physical worktree
+.local/worktrees/s1-retained-acquisition CLEAN on codex/s1-transport-shutdown,
+public origin/remote branch verified at exact906f91b;
 normal commit and full-history push hooks PASS. No public unfinished source.
 
-Different independent s1_coherent_close_final ACCEPT/PUBLIC SOURCE PRIVACY CLEAR,
+Transport FINAL866c4acf by different transport_shutdown_final; frozen input10e44f52,
+20 independently rehashed files. One raw connection.rs42e6d8a matches commita88fe066.
+Fresh20 socket tests0.62s, build29.59s, four focused checks73.55s. Check67c8de10,
+testsAe435d3d, source/tool605f7165; qualifier RETIRED. Final record:
+[S1_TRANSPORT_SHUTDOWN_FINAL.md](reference/S1_TRANSPORT_SHUTDOWN_FINAL.md).
+No game/native-save battery replay, no Minecraft resources or Java needed.
+Preserve all20 frozen s1ts1 inputs. New work uses s1tl1 prefix.
+
+Prior coherent native close114626f: different s1_coherent_close_final ACCEPT/PUBLIC SOURCE PRIVACY CLEAR,
 receipt3b1c5723, frozen inputfeec68ab(147 hashes). All14 raw source bytes match
 qualified manifest14d590a2 and commit blobs; comparisone643bdac. Detailed results:
 [S1_COHERENT_NATIVE_CLOSE_RESULTS.md](reference/S1_COHERENT_NATIVE_CLOSE_RESULTS.md).
@@ -50,7 +58,20 @@ six passing cases are individually hashed/attributed, not relabeled fresh.
 Preserve the147 frozen inputs and receipt files; new research stays outside the
 s1cl1 prefix. Do not replay whole predecessor batteries.
 
-## Next bounded design: research only
+## Next bounded packet: C0e1b design review
+
+Proposal6da81085 and HELD assignment85c660d4 under fresh retained_lan_design_review.
+See design/S1_RETAINED_LAN_PROPOSAL.md and S1_RETAINED_LAN_SOURCE_ASSIGNMENT.md.
+Exactly client lan/mod.rs, lan/conn.rs, lan/discovery.rs including inline tests.
+Actual native listener/local+TCP/writer/Pinger custody, stop/registration fencing,
+checked finished-only reap and retained event/UUID/terminal outcomes. Typed offline
+modern profile avoids existing untracked online/resource-pack/Friends owners;
+pre-read capability avoids ordinary raw blocking legacy peek. Retained sender must
+bypass detached POST in all send/flush paths. No ordinary constructor activation.
+No source before exact design acceptance plus private checkpoint/local release.
+C0e1c Session and later full application workers still need their own assignments.
+
+## Later transport/application ownership
 
 Read-only C0e audit at the actual existing transport/application paths is saved in
 .local/c0e-readonly-research-14d590a2.md. It grants no source authority.
@@ -73,7 +94,7 @@ run_event_loop; keep the same control endpoint responsive through Blocked and
 retain late preparation/resource outcomes. C0e3 needs actual integrated/dedicated
 worker and stdin/control ownership. Then qualify the exact combined composition.
 Refresh accepted proposal/APIs/budget and obtain fresh Sol High design acceptance
-plus private assignment checkpoint before any next source edits.
+plus private assignment checkpoint before source edits beyond C0e1a.
 
 ## Remaining S1 and gates
 
