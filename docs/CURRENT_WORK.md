@@ -47,7 +47,13 @@ Qualifier retired by parent guard. Different FINAL/privacy receipt `74740bb3`
 accepts it; normal-hook public branch sync is exact (`f56a8421`). See
 `docs/reference/S1_RETAINED_SESSION_CLOSE_ALIGNMENT_RESULTS.md`. Next is bounded
 fixed-profile streamer/readiness/forget research toward the actual client; no
-activation assignment is released. The abandoned new s1sc1 prefix collided with
+activation assignment is released. Fresh independent DESIGN accepts
+`S1_REMOTE_STREAM_CLIENT_INTERFACE_PROPOSAL.md` (`3542cb94`) and assignment
+(`abb629ad`): streaming.rs only, explicit pre-spawn profile, checked received
+column/light/forget operations and selective current-stamp retirement. Proposed
+branch `codex/s1-remote-stream-interface`, unique prefix `.local/s1rsapi1`.
+Private design sync and exact root release precede source. No execution release.
+The abandoned new s1sc1 prefix collided with
 older unrelated history before source; its records and old files are preserved.
 Read `docs/design/S1_ORIGINAL_REMOTE_GAME_GAP_INVENTORY.md`
 as historical inventory at e724758: streaming/save representation gaps now have
