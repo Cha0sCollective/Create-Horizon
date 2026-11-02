@@ -57,9 +57,17 @@ Fresh s1_close_api_review accepted exact S1_COHERENT_CLOSE_PROPOSAL.md17c620a4
 at accepted485; design receipt513b5f95. The bounded SOURCE_ASSIGNMENT640adac3
 was privately checkpointed/synced at37c90d3 before Root release. Branch
 codex/s1-coherent-native-close remains at P in the same physical worktree/target.
-ALL14/prefix snapshots0..5 preserve the draft and early corrections. Root owns
+ALL14/prefix snapshots0..19 preserve the draft and corrections. Root owns
 the close-owner wiring; bounded writer/world/image/Level authors remain text-only.
-No C0d compiler/runtime or whole SOURCE/tool clearance yet.
+Whole SOURCE/tool aggregate CLEAR82f522e1 now applies to staged raw manifest
+f25aa8a9 (all14 raw/index exact), tool6b476ccb and expected5ee0f336.
+Independent owner/tool, writer/Level/LAN and world/image reviews cover the exact
+candidate; writer scope reused only after raw equality verification. First static
+pass: formatting PASS33.35s; feature-on compile/lint FAILED60.81s, before runtime.
+Failure logbf1238d4 and sourcef25 are preserved in attempt19 and authored
+compiler-failure-f25aa8a9.json. Narrow cfg/deadcode, deprecated-name, Debug-error
+and equivalent let-chain corrections await a fresh exact delta review/recompile.
+No runtime or FINAL/G1 result yet.
 
 Level retry amendment90c31ff6 received fresh independent design ACCEPT from
 level_retry_design_review and private checkpoint81c24f9 was synced before source
@@ -74,11 +82,21 @@ World audit found saved falling blocks omitted from entity coordinate selection;
 corrected with active/parked fixture helper, awaiting focused regression/review.
 Early audits do not establish whole-candidate SOURCE/tool or runtime acceptance.
 
-NativeWorld old-source reader needs a minimal reviewed structural/readability
-context: existing native readers tolerate malformed data, while the complete D
-reader requires a counter session/initial Overworld. Do not skip validation or
-apply D-only restrictions to arbitrary native entities. Read-only design research
-is underway within existing image paths; no new source release for that seam yet.
+NativeWorld structural/readability context, opaque completion custody and explicit
+retry amendment28b3bd02 received fresh independent design ACCEPT/private56445f9.
+Retained cold-fixture transfer297a0fdc and historical-Durable renewal addendum
+received focused design ACCEPT/private4871a0c. All source remains within14 paths.
+Native reader preserves raw inventory/hash; temporary native decoding can normalize
+zero/NaN, so it establishes routing/readability, not arbitrary semantic roundtrip.
+Complete CoherentSession/D restrictions remain intact. Constructor-proven populated
+test custody is separate from production transport disposal; native-ready retains
+original Game/locks and is not global CloseCommit.
+
+First full source pass caught dropped MetadataAcknowledged history and missing POI
+column/section/height routing. Both corrected after full preservation and cleared
+in independent delta reviews. Planned29 normal cases:14 Level/owner,8 writer/Level,
+5 structural/old-source,2 changed metadata regressions;3 distinct fatal backstops
+and6 static checks. No full predecessor replay. Different FINAL remains required.
 
 Fourteen paths: original7(game/lan.rs, game.rs, paired_close.rs, levels.rs,
 levels/session_checkpoint.rs, NEW paired_close_tests.rs, session_checkpoint_tests.rs)
