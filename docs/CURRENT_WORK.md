@@ -1,165 +1,115 @@
 # Current work
 
-Owner resumed S1 development until a genuine blocker or required input. S1/G1
-remain OPEN. No user decision is pending.
+Owner resumed S1 until a genuine blocker or required input. S1/G1 remain OPEN;
+no user decision is pending. Use the coordinator directly and bounded helpers.
 
-Active source packet is s1ogrc1, branch `codex/s1-original-remote-client`, parent
-`e52f0def9f4cfd297133c9c8d018e8061a7fe328` in the stable physical checkout.
-Private design `9b5e6b6` is synced; root gate `80e056ca` released the exact 24
-paths after attempt0 preservation. IO author has five dirty paths in its six-path
-assignment; candidate is unfrozen and unqualified. No runtime has used it.
-The packet-only disjoint text exception is independently OPERATING ACCEPTED:
-see `docs/design/S1_ORIGINAL_REMOTE_GAME_TEXT_AUTHORING_ADOPTION.md`. Both writers
-are paused for this checkpoint; root explicitly activates only after signature
-agreement. Six IO/skin paths belong to the bounded author; eighteen factory/window
-and guard paths belong to root. Both stop before execution/Git writes, and the
-first SOURCE freeze ends the exception. No later parallel corrections.
+## Active packet
 
-## Accepted checkpoint and next packet
+Original unpaired offline TCP client adoption is s1ogrc1, branch
+`codex/s1-original-remote-client`, parent
+`e52f0def9f4cfd297133c9c8d018e8061a7fe328`, tree `3efbc31c`.
+Physical checkout `.local/worktrees/s1-native-close-composition` has 22 dirty
+source paths within the exact released 24; no staged changes or public push.
+Dedicated warm target `/home/arbiter/.cache/create-horizon/target-s1nc1`.
+Historic `s1-retained-acquisition` stays CLEAN c73abbef; never edit it.
 
-Optional Game storage representation is FINAL at CLEAN engine
-`e6e584c53ff404b84fb364681d49d41701f9492f`, tree `b6d23d8a`, parent `7d443a1`,
-branch `codex/s1-game-storage-option`. Different independent FINAL/privacy receipt
-`.local/s1gs1-final-review.json` (`2074d4a1`) accepts the 24 existing Rust paths
-(450 additions/116 deletions). Normal-hook public push is exact; public-sync
-receipt `c694f2b4`. See `docs/reference/S1_GAME_STORAGE_OPTION_RESULTS.md`.
+Accepted original design `180510d0`, assignment `ccfb0b50`, private checkpoint
+`9b5e6b6`, and root gate `.local/s1ogrc1-parent-gate.json` (`80e056ca`) bind the
+24 paths. See `docs/design/S1_ORIGINAL_REMOTE_GAME_ADOPTION_PROPOSAL.md`.
+The packet-only disjoint draft exception was reviewed/adopted at private
+`9b0fc4c`, explicitly activated with six/18 ownership, and ENDED at first SOURCE
+freeze. Both writers are stopped. All subsequent source work is SERIAL.
 
-All current production constructors/replacements preserve Some(original Arc),
-raw native records and exact Some provenance predicates. Missing save refuses
-native authority, lookup, identity and checked metadata; swap/disposal order is
-unchanged. No production None or retained remote Game is activated.
+Pre-window candidate manifest `3a6110dc` is SOURCE/tool clear. Qualifier `9fc475d4`,
+expected `c7fd7067`: checks pass (35.52s), matching bin/lib build 29.34s, seven
+selected groups pass (four live remaining groups plus three explicitly reused
+successful cases at identical production/shared-input pins). Actual bin
+`d203b9c5`, lib `36efedcd`. No real window case has run; no FINAL or C0e2 pass.
+Initial type-alias and style check failures, and the wrong held-Login writer
+assertion, remain preserved verified=false in attempts4/6/8. The actual Session
+has only its reader before LoginFinished; corrected test proves partial native
+read, registered reader and decoder joins without inventing a writer.
 
-First attempt: four checks 47.04s, Game-bin build 40.62s, one meaningful existing
-cold-native authority/absence case 17.23s. Source manifest `f4db0bf0`, qualifier
-`deed94a3`, expected `9a2192f0`; 38 raw/archive pairs map `0191bec7`. FINAL index
-`.local/s1gs1-final-review-input.json` (`22b56dc6`) has 149 entries. All indexed
-inputs and 3,458 historic entries rehashed unchanged. Guarded dirty-parent code
-was committed raw-exact; qualifier is retired by its original-parent guard.
-No further testing is needed absent a changed source/dependency or concrete concern.
+A concrete integration issue precedes live qualification: interrupted TCP reads
+use Receive(String), and Game currently promotes even deliberate-stop receive
+outcomes into mandatory error acknowledgement. Fresh independent DESIGN ACCEPT
+now binds `S1_ORIGINAL_REMOTE_GAME_RECEIVE_DIAGNOSTIC_AMENDMENT.md` (`fb06e987`).
+Coordinator adopts this exact amendment: preserve pre-stop errors/raw terminals;
+a Reader Receive FIRST OBSERVED after deliberate stop may be a visible diagnostic
+with unresolved cause. Other failures/original_error stay fatal and visible.
+No causal claim, IO-success claim, library/sourcepath/permission expansion.
+This private checkpoint must sync, then root records exact release before source.
+Review receipt `.local/s1ogrc1-receive-design-review.json` binds acceptance.
 
-Accepted predecessors: Game streaming owner `7d443a1`, opaque remote streamer
-`e724758`, retained decoder `9f64664`, original native window `60899d4`. Each has
-independent FINAL, reviewed public sync and private results in `docs/reference/`.
-Use only accepted decoder index `s1dc1-final-review-input-r1.json`; the incomplete
-original draft remains preserved and is not accepted.
+Next: apply the reviewed amendment serially, preserve every packet source/prefix
+before edits, renew SOURCE/tool/formatted binding, requalify affected bin behavior,
+and run reviewed real isolated original-window/server cases. Production changes
+REVOKE the former three bin reuses. Only two already successful skin library
+cases may be reused if the actual new library binary remains byte-identical.
+Window driver `.local/s1ogrc1-window.py` (`a860649f`) is tool clear for two initial
+cases but requires amendment updates/review and actual matching results/binary
+binding. Ordinary dedicated fixture cleanup is NOT retained server closure.
 
-Next bounded design is accepted: `S1_RETAINED_SESSION_CLOSE_ALIGNMENT_PROPOSAL.md`
-(`cf3cf793`) and assignment (`bd76297d`), net.rs only, proposed branch
-`codex/s1-session-close-alignment`, prefix `.local/s1sda1`. Independent fresh Sol
-High reviewer `session_close_design_review` accepts exact absolute close deadlines
-and checked-attempt Retry on the actual retained owner. Private design `e9ea57c`
-is synced; root gate `.local/s1sda1-parent-gate.json` (`7a2d65ae`) released only
-net.rs after attempt0 preservation. Candidate is now qualified and cleancommitted
-at `9d3ecdc510adbeb70840371fec2c0b9db4c23746`, tree `7443d75e`, 235 additions/
-31 deletions. Renewed SOURCE/tool clear bound formatted manifest `c940719a`,
-tool `c5187c7c` and eight cases `928ea849`. First-attempt checks 74.45s, lib-test
-build 52.59s and eight exact network cases 0.15s passed. No resources or broad/
-fatal replay. Fifteen raw input pairs map `248cab80`; source raw-exact Git.
-Qualifier retired by parent guard. Different FINAL/privacy receipt `74740bb3`
-accepts it; normal-hook public branch sync is exact (`f56a8421`). See
-`docs/reference/S1_RETAINED_SESSION_CLOSE_ALIGNMENT_RESULTS.md`. Next is bounded
-fixed-profile streamer/readiness/forget research toward the actual client; no
-activation assignment is released. Fresh independent DESIGN accepts
-`S1_REMOTE_STREAM_CLIENT_INTERFACE_PROPOSAL.md` (`3542cb94`) and assignment
-(`abb629ad`): streaming.rs only, explicit pre-spawn profile, checked received
-column/light/forget operations and selective current-stamp retirement. Proposed
-branch `codex/s1-remote-stream-interface`, unique prefix `.local/s1rsapi1`.
-Private design `ee0838e` is synced; root gate
-`.local/s1rsapi1-parent-gate.json` (`38d7c42c`) releases only streaming.rs native
-text authoring after attempt0 preservation. Candidate is qualified and CLEAN at
-`e52f0def9f4cfd297133c9c8d018e8061a7fe328`, tree `3efbc31c`, parent `9d3ecdc`;
-one streaming.rs file, 540 additions/35 deletions. Exact source manifest `6ea46d90`,
-tool `6e0f9255`, four resource groups `f234abb2`; successful checks 70.27s,
-lib build 57.64s and four first-runtime-attempt cases 21.31s. First check failed
-only test Clippy chunks_exact style (preserved verified=false in attempt7); no
-runtime used that source. Source review also corrected fixture light and bounded
-Busy/handoff waits before execution. Production logic needed no correction.
-Corrected 15 raw input pairs use source-inputs-r2/map `d1d71304`; original failed
-archive stays immutable. Qualifier retired by parent guard. Different FINAL/
-privacy receipt `6aff7e5d` accepts it; normal-hook public sync is exact
-(`e368b404`). See `docs/reference/S1_REMOTE_STREAM_CLIENT_INTERFACE_RESULTS.md`.
-No Game activation assignment is released. Next actual remote Game design must
-include helper acquisition boundaries: skin helpers are inert only until state()
-spawns detached fetches (players/skulls/items); server-pack download/reload also
-needs pre-acquisition handling. Fixed offline alone does not exclude these. Silent
-audio is a genuine no-acquisition boundary; use controller feature-off or explicit
-preflight, complete synchronous resources and no mods/extras/menu loaders. Required
-paired admission remains later C1 after C0 composite; do not relax guards.
-Fresh independent DESIGN now accepts `S1_ORIGINAL_REMOTE_GAME_ADOPTION_PROPOSAL.md`
-(`180510d0`) and assignment (`ccfb0b50`), maximum 24 exact paths (22 existing/two
-new), proposed branch `codex/s1-original-remote-client`, prefix `.local/s1ogrc1`.
-Actual unpaired offline TCP Game factory/ordered dispatch/running original window
-and honest helper/close boundaries are one coherent packet. Native frozen App and
-storage completion remain native; no C1/default activation/G1. Private design sync
-and exact root release still precede source.
-The abandoned new s1sc1 prefix collided with
-older unrelated history before source; its records and old files are preserved.
-Read `docs/design/S1_ORIGINAL_REMOTE_GAME_GAP_INVENTORY.md`
-as historical inventory at e724758: streaming/save representation gaps now have
-accepted prerequisites, but actual Game factories remain legacy. Retained Session
-lives in net.rs. Native socket IO occurs outside its State lock; that fact alone
-does not require another worker/executor. CPU/encoding/allocations can hold State;
-there is no hard UI latency or global memory bound. Existing Session close uses
-relative deadlines and untokened Retry; parent exact-deadline/attempt composition
-needs an explicit design. Preserve refused encoded bodies and packet ordering.
+## Accepted predecessors and evidence
 
-Real client construction must select the retained recipe before legacy acquisition,
-use original Game/resources, dispatch actual decoder and Mesh/Light, configure
-settings before start or invalidate by revision, provide readiness/checked forget,
-and guard unsupported transitions before mutation or owned-input loss. Account
-for free_columns native acquisition, no-storage LAN tables and entity persistence.
-Do not create fake SaveDir/writer, substitute Game, wrapper escape or native
-provenance from presence. Original server startup/Hub transport/scoped checked
-server joining remain separate; finish client LOD before shared server storage.
+Remote streamer client interface is FINAL/CLEAN e52f0de, public
+`codex/s1-remote-stream-interface`, private results9c453a4; exact normal-hook public
+and private sync. Different FINAL/privacy `6aff7e5d`, accepted index
+`s1rsapi1-final-review-input.json` (`1631eb3a`,251entries). See its reference result.
+Earlier accepted engine prerequisites: session absolute close/attempt alignment
+9d3ecdc, optional Game storage e6e584c, Game streaming owner7d443a1, retained remote
+streamer e724758, decoder9f64664 and original native window60899d4. Durable results
+are under `docs/reference/`. Accepted decoder index is r1 only; do not use its
+incomplete original draft as accepted evidence.
 
-## Physical checkout and operating boundaries
+Fourteen accepted indices contain3,944 immutable entries; current preflight
+`.local/s1ogrc1-historical-preflight.json` (`4be2b014`) rehashed all unchanged.
+Preserve all old freezes, failures, archives, maps and receipts. Current source
+and CURRENT_WORK are mutable, excluded from historical frozen input sets.
+The new abandoned s1sc1 prefix collision was preserved without overwriting old
+history; never reuse that prefix. Resource/provenance pins remain unchanged.
 
-Active checkout `.local/worktrees/s1-native-close-composition` is CLEAN e52f0de,
-branch `codex/s1-remote-stream-interface`; only streaming.rs changed. Dedicated warm target
-`/home/arbiter/.cache/create-horizon/target-s1nc1`. Never share/copy targets between
-physical checkouts. Historic `s1-retained-acquisition` remains CLEAN c73abbef.
-A future accepted packet may create a logical branch here. Preserve all historic
-archives, maps, indices and receipts; do not modify frozen inputs. Every correction
-requires preserving all packet source paths and prefix artifacts first; a frozen
-FINAL correction needs a new revision prefix. Mutable CURRENT_WORK is excluded
-from freezes; supplemental snapshots are historical context only.
+## Operating and publication boundaries
 
-Root alone performs ALL serial formatter/Cargo/compiler/tests/game/WSL/Git writes.
-Await running exec sessions before dependent operations. Bounded authors use native
-TEXT only: no scripts/imports/formatter/compiler/tests/game/WSL/Git writes/network/
-escalation/delegation. Reviewers are native procedural READ-ONLY under inherited
-workspace-write, not profile-enforced: reads, JSON/foreach/hashing/Git reads only;
-no scripts/imports/runtime/edits/WSL/network/escalation/delegation/Git writes.
-Fresh independent Sol High DESIGN and substantive SOURCE/tool review; DIFFERENT
-fresh FINAL. No standing team or concurrent compilation/source/Git mutation.
+Root alone runs ALL serial formatter/Cargo/compiler/test/game/WSL/Git writes.
+Await running exec sessions before any dependent operation or source/Git write.
+Authors use only native TEXT in explicitly released paths; no scripts/imports,
+execution, WSL, network, Git writes, escalation or delegation. Reviewers are
+procedural native READ-ONLY under inherited workspace-write, not profile-enforced:
+reads/rg/hashing/JSON/Git reads only; no scripts/runtime/edits/WSL/network/Git writes.
+Fresh independent Sol High DESIGN/substantive SOURCE/tool; DIFFERENT fresh FINAL.
+No standing team or concurrent source/compiler/Git mutation.
 
-Choose defining checks and smallest affected regressions. Reuse predecessor
-results only at actual pins. No broad old battery absent affected dependencies or
-concrete concern. Thirty cases/10–15 minutes warm is a planning prompt, not a cap.
-Missing fixture/deadline/driver failure FAIL; elapsed time/flags/markers alone
-never prove native completion. Historic VALIDATION_WORKFLOW.md8631c054 remains
-untouched. Archive mutable execution/config/recipe/instruction inputs; distinguish
-raw Git equality from explicit unchanged baseline CRLF canonical comparison.
-
-No memory/reference/playable/Prism/Java edits or further cleanup/deletion. Preserve
-active targets/binaries/resources/evidence; prior 251 GiB cleanup/VHD compaction
-is complete.
-
-## Publication and remaining S1
+Preserve ALL24packet paths and ALL prefix artifacts before EVERY correction or
+formatter. Frozen FINAL corrections need a new prefix. Exact guarded LIVE source,
+recipe/profile/features/binary/resources and actual process/window observations
+bind evidence; archives alone do not prove execution. Missing fixture/deadline/
+nonzero result is failure. Native completion requires actual finished joins.
+Distinguish raw Git equality from explicit unchanged-baseline CRLF canonical
+comparison. Reuse actual pins; no broad prior battery absent concrete dependency.
+Thirty cases/10-15 warm minutes is a planning prompt, not a cap. Do not change the
+immutable historic VALIDATION_WORKFLOW.md or source-freeze layout.
 
 Every private push needs fresh GitHub PRIVATE metadata and exact origin
-https://github.com/Cha0sCollective/Create-Horizon.git. Every reviewed public engine
-push needs DIFFERENT FINAL/privacy CLEAR, fresh PUBLIC metadata/exact origin
+https://github.com/Cha0sCollective/Create-Horizon.git. Public engine push requires
+different FINAL/privacy CLEAR, fresh PUBLIC metadata/exact origin
 https://github.com/Cha0sCollective/Horizon.git and normal hooks. No unfinished
-source, private documents/configs/raw evidence/assets/resources enter public Git.
-No PR, merge, tag or release. Personal source-informed port/no Create contribution
-is authorized; preserve the original Create snapshot.
+source/private docs/configs/raw evidence/assets/resources enter public Git. No PR,
+merge, tag or release. Personal source-informed Create port/no Create contribution
+is authorized; original reference/attribution stays intact. No clean-room claim.
 
-Remaining: ordinary supported-machine lifecycle/coherent recovery, client/server
-composition, placement/generations/chunk cycles, authorized intents and replay/
-reach/permissions/revisions/retirement/departure, configuration admission,
-replication initial/delta/gap/resync/untrack/reconnect, committed animation,
-DEFAULT integrated MemoryPipe and dedicated TWO exact TCP clients, in-frame
-behavior and explicit G1. Live S2 waits G1. S3 is exactly motor, shaft, small/large
-cogs and millstone cobblestone-to-gravel; NO gearbox. R01 matches pinned Java
-full-output item loss.
+No memory/reference/playable/Prism/Java changes or further cleanup/deletion.
+Preserve active target/binaries/resources/evidence. Prior251GiBcleanup/VHD
+compaction is complete. Last native free-space read: C214GiB/G387GiB.
+
+## Remaining S1
+
+C0 client/server composition and honest ordinary lifecycle closure remain open;
+paired configuration admission C1 follows the accepted C0 composite. No default
+or C1 guard relaxation. G1 still needs supported-machine lifecycle/recovery,
+placement/generations/chunk cycles, intents/replay/reach/permissions/revisions/
+retirement/departure, replication initial/delta/gap/resync/untrack/reconnect,
+committed animation, DEFAULT integrated MemoryPipe and dedicated TWO exact TCP
+clients plus in-frame behavior. Live S2 waits G1. S3 is exactly creative motor,
+shaft, small/large cogs and millstone cobblestone-to-gravel; NO gearbox. R01 matches
+the pinned Java full-output item-loss behavior by explicit owner decision.
