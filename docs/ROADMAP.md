@@ -39,7 +39,12 @@ Optional Game storage representation is FINAL at `e6e584c`, reviewed public
 branch synced, with every production constructor retaining its original Some
 allocation; see `docs/reference/S1_GAME_STORAGE_OPTION_RESULTS.md`. Next are
 client connection/decoder ownership and actual no-storage retained remote Game
-construction and dispatch. G1 remains open.
+construction and dispatch. Retained Session close alignment is now FINAL at
+`9d3ecdc`, reviewed public branch synced; see
+`docs/reference/S1_RETAINED_SESSION_CLOSE_ALIGNMENT_RESULTS.md`. It accepts exact
+parent deadlines and checked-attempt Retry without activating a Game. Fixed-
+profile streamer configuration/readiness/forget and actual client composition
+remain next. G1 remains open.
 The component notes below retain historical
 point-in-time qualification and limitations.
 

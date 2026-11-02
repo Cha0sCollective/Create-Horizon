@@ -35,8 +35,20 @@ Next bounded design is accepted: `S1_RETAINED_SESSION_CLOSE_ALIGNMENT_PROPOSAL.m
 (`cf3cf793`) and assignment (`bd76297d`), net.rs only, proposed branch
 `codex/s1-session-close-alignment`, prefix `.local/s1sda1`. Independent fresh Sol
 High reviewer `session_close_design_review` accepts exact absolute close deadlines
-and checked-attempt Retry on the actual retained owner. Private design sync and
-root release precede source. No activation source assignment is released.
+and checked-attempt Retry on the actual retained owner. Private design `e9ea57c`
+is synced; root gate `.local/s1sda1-parent-gate.json` (`7a2d65ae`) released only
+net.rs after attempt0 preservation. Candidate is now qualified and cleancommitted
+at `9d3ecdc510adbeb70840371fec2c0b9db4c23746`, tree `7443d75e`, 235 additions/
+31 deletions. Renewed SOURCE/tool clear bound formatted manifest `c940719a`,
+tool `c5187c7c` and eight cases `928ea849`. First-attempt checks 74.45s, lib-test
+build 52.59s and eight exact network cases 0.15s passed. No resources or broad/
+fatal replay. Fifteen raw input pairs map `248cab80`; source raw-exact Git.
+Qualifier retired by parent guard. Different FINAL/privacy receipt `74740bb3`
+accepts it; normal-hook public branch sync is exact (`f56a8421`). See
+`docs/reference/S1_RETAINED_SESSION_CLOSE_ALIGNMENT_RESULTS.md`. Next is bounded
+fixed-profile streamer/readiness/forget research toward the actual client; no
+activation assignment is released. The abandoned new s1sc1 prefix collided with
+older unrelated history before source; its records and old files are preserved.
 Read `docs/design/S1_ORIGINAL_REMOTE_GAME_GAP_INVENTORY.md`
 as historical inventory at e724758: streaming/save representation gaps now have
 accepted prerequisites, but actual Game factories remain legacy. Retained Session
@@ -57,8 +69,8 @@ server joining remain separate; finish client LOD before shared server storage.
 
 ## Physical checkout and operating boundaries
 
-Active checkout `.local/worktrees/s1-native-close-composition` is CLEAN e6e584c,
-branch `codex/s1-game-storage-option`; dedicated warm target
+Active checkout `.local/worktrees/s1-native-close-composition` is CLEAN 9d3ecdc,
+branch `codex/s1-session-close-alignment`; only net.rs changed. Dedicated warm target
 `/home/arbiter/.cache/create-horizon/target-s1nc1`. Never share/copy targets between
 physical checkouts. Historic `s1-retained-acquisition` remains CLEAN c73abbef.
 A future accepted packet may create a logical branch here. Preserve all historic
