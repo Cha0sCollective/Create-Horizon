@@ -11,7 +11,7 @@ Commit485d4b1914c639d2a6cfc68f6fa7191ae5adbdaf,
 treeec926d221833e8c1279f7063e5cb43ff02dd940d, sole parent
 b7cdb4220029c7f5aff6afb18f3813fd13fdcc76. Physical worktree
 .local/worktrees/s1-retained-acquisition is clean on
-codex/s1-retained-metadata-remaining; reuse its target-s1ra1 serially.
+codex/s1-coherent-native-close at the same accepted P; reuse target-s1ra1 serially.
 
 Seven Rust paths, all raw byte-exact commit blobs; source manifestd56b4852.
 Different s1_remaining_metadata_final ACCEPT831b56f5; input11a5b1ec indexes60.
@@ -51,30 +51,50 @@ checkpoint06d8dfd and core authored checkpointa014deb remain historical pins.
 Prior evidence stays attributed to actual revisions, without full-battery replay.
 Preparation's one CRLF distinction stays explicit; both metadata packets are raw exact.
 
-## Next packet: design refresh only
+## Active packet: coherent native close, checkpoint before source
 
-The old C0d seven-path subset in S1_PAIRED_CONFIGURATION_ADMISSION_PROPOSAL is a
-dependency map, not an assignment. Fresh actual API/design review at accepted485
-must establish bounded scope and a private checkpoint before source. No C0d
-branch or source edits exist. Research in .local/s1close-research-notes.md suggests
-11 paths: old7(game/lan.rs, game.rs, paired_close.rs, levels.rs,
-levels/session_checkpoint.rs, NEW paired_close_tests.rs,
-levels/session_checkpoint_tests.rs) plus levels/session_checkpoint_items.rs,
-game/persist.rs, world_loading.rs and raids.rs. This is not source authority.
+Fresh s1_close_api_review accepted exact S1_COHERENT_CLOSE_PROPOSAL.md17c620a4
+at accepted485; design receipt513b5f95. The bounded SOURCE_ASSIGNMENT640adac3
+must be privately checkpointed before Root release. New clean branch
+codex/s1-coherent-native-close remains at P in the same physical worktree/target.
+ALL14/prefix baseline s1cl1-attempt0 preserved; no C0d source edits started.
 
-Full D item validators need an immutable resource context instead of Game, keeping
-ordinary wrappers and rich-item positives. Direct parked entity/UUID serialization
-needs a native borrowed view in persist, without swapping levels. Existing parked
-construction is legacy Streaming/SaveDir; retained close refuses it, so reuse C0a
-factories through world_loading. Initial-Overworld-only native_checkpoint_origin
-is not parked provenance; bind actual Dim/World/SaveDir and producer witnesses.
+Fourteen paths: original7(game/lan.rs, game.rs, paired_close.rs, levels.rs,
+levels/session_checkpoint.rs, NEW paired_close_tests.rs, session_checkpoint_tests.rs)
+plus session_checkpoint_items.rs, persist.rs, world_loading.rs, raids.rs, leads.rs,
+existing paired_close_metadata_tests.rs and library save.rs. No fifteenth path.
+Root owns five coordination/Level/participant/test files; bounded native-writer,
+native-world and image-context authors own disjoint one/five/three paths.
 
-Parked owns private per-level Raiding; Game-bound metadata adapters need a borrowed
-level seam in raids.rs. swap_level exchanges only raids/loaded/bar_hurts/homes;
-omen/patrol/siege remain active Game/player state. Parked raid saves use current
-Game omen context, never parked defaults. Maps/fight/trader are shared owners.
-Require genuine counterless active+parked NativeWorld and healthy initial-Overworld
-CoherentSession close/restore positives; no cleared owners or omitted validators.
+Extract private metadata state, preserve borrowed API, own original Box<Game>
+without self-reference or mutable escape. Keep native-only completion distinct
+from global CloseCommit/remaining transport owners. Fixed actual job variants;
+all new FS/durability/copy/hash/verification on owned worker. Retain actual Game,
+locks/items/controllers/payloads/artifacts through errors/deadlines and explicit Retry.
+
+Old producer callbacks settle pre-Freeze obligations as the predecessor fence did;
+accepted indivisible encode/enqueue mutex caveat stays explicit, no hard latency
+or zero-wait claim. Then staged historical writer repair/durability, complete old
+source read-preflight, final identity/owned native projections, final submission,
+terminal matching writer proof, full image validation/promotion and aggregate CPU ack.
+Save.rs needs nonterminal durability and close-only final submission with ordinary
+admission always sealed; existing terminal recovery cannot safely reopen it.
+Preserve C0a accepted/refused nonresident versions until exact final writer ack.
+
+Direct parked entity/leash/native codecs use borrowed views, no swapping or copied
+codec. Reuse retained C0a factories, not legacy upgrades/forged Overworld origin.
+Parked raids use active player omen context; prepared replacement feeds owned Level
+before write, original extra moves only after full ack. Resource/item/image context
+retains actual immutable native owners/Arc<Tree> and complete D validators. Set
+publication Uncertain BEFORE rename; new image retry uses fresh epoch/path while
+retaining old artifacts and the same semantic projection. No shortened validators,
+D-only NativeWorld, fake participant/configuration or dropped native owner to pass.
+
+Require both genuine counterless active+parked NativeWorld and healthy initial-
+Overworld CoherentSession with actual counter/slot/participants/rich D items and
+existing recovery. No ordinary C0e/C1 activation, global closure from native-only
+progress, connected G1 or live S2. Fresh SOURCE/tool before compiler/runtime,
+clean candidate and DIFFERENT FINAL/private checkpoint before consumption.
 
 ## Validation, storage and remaining S1
 
