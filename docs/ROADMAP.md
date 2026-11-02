@@ -23,9 +23,12 @@ The current coordinator assignment is in `docs/CURRENT_WORK.md`. Original native
 window close C0e2c is FINAL at engine `60899d4`, public branch synced, with private
 results checkpoint `d8558d1`; see `docs/reference/S1_RETAINED_WINDOW_RESULTS.md`.
 This closes the explicit fixed in-frame window component, not ordinary startup or
-G1. The next one-path retained remote-chunk decoder prerequisite is a held design;
-no caller/default activation follows. The component notes below retain their
-historical point-in-time qualification and limitations.
+G1. The one-path retained remote-chunk decoder is now FINAL at `9f64664`, reviewed
+public branch synced; see `docs/reference/S1_RETAINED_DECODER_RESULTS.md`. Its seven
+normal cases and two separate fatal controls use the actual production decoder,
+with no caller/default activation. Next is a held constructor design for received-
+column mesh/light workers without a local save writer. The component notes below
+retain historical point-in-time qualification and limitations.
 
 The native session checkpoint foundation has FINAL local acceptance at engine
 `872dac2`, after independent source and final result review. See

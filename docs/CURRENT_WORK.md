@@ -1,43 +1,50 @@
 # Current work
 
 Owner resumed S1 development until a genuine blocker/input. S1/G1 remain OPEN.
-C0e2c original native window close is FINAL ACCEPT at engine
-60899d4fbff3908cff243bc9581cdf3c39ab8a6f, tree991c6c4c, receipt a30abfdd.
-Different window_final_review resolved its synthetic-Enter P2; original c6a6e51
-WITHHELD record remains immutable. Public privacy CLEAR; normal-hook branch
-codex/s1-window-close pushed and remote verified exact60899. No PR/merge/release.
-See docs/reference/S1_RETAINED_WINDOW_RESULTS.md for mixed pins and limits.
+Latest retained remote decoder is FINAL ACCEPT at engine
+9f6466482189583678c6a16711086c037424ae75, treef5050909, parent60899d4.
+Fresh different decoder_final_review receipt a4502d26/publicprivacyCLEAR;
+normal-hook public codex/s1-retained-decoder pushed and remote verified exact.
+See docs/reference/S1_RETAINED_DECODER_RESULTS.md. Private results checkpoint
+is being prepared. No PR/merge/tag/release or ordinary caller activation.
 
-Latest correction four checks33.10s/build26.73s/TCP33.13s outer passed. Signal
-at3a7b6, Unix+2authority at2f05 and old17normal+fatal5929 retain actual pins.
-All window games/Xephyr/Openbox processes reaped. Eight failed window attempts
-and one failed authority attempt remain failed. Synthetic Enter rejection is
-static, not a negative runtime claim. Current library remains450d8029.
-Window freezes1970+252 and historical726 entries unchanged;25raw inputs per
-revision archived with exact qualified-live/archive/Git mapping. Actual dirty
-source was qualified before commits; no fresh clean-commit/archive execution.
-Qualifiers s1wc1/s1wc2 naturally retired by parent guards; NEVER edit frozen tools.
+Decoder one-path diff1050add0del preserves legacy constructor/algorithm/callers.
+Four checks46.20s/build47.10s; seven normal0.14s and two separate actual held-owner
+fatal controls0.14s all passed same source33fb77de/manifestdbb86c6d/tool74a57024.
+P1 stderr-diagnostic abort bypass and P2 busy-registry deadline visibility were
+corrected/reviewed BEFORE execution. Fatal stdoutmarker +actualSIGABRT/core0/
+reaping required, including read-only stderr. No resources/Java/game/broad replay.
+Actual guarded dirty source then raw-exact committed, no cleancommit/archive
+execution claim. Fifteen raw inputs archived; source/mapa18881a8. Accepted index
+is .local/s1dc1-final-review-input-r1.json53e9d762,151entries. Earlier106-entry
+incomplete draft remains preserved; it is NOT the accepted index. All2948older
+indexed entries unchanged. Qualifier naturally retired after cleancommit.
 
-## Next bounded packet: accepted design, source held
+Preceding C0e2c original native window FINAL60899d4/receipt a30abfdd/publicsynced;
+originalc6 WITHHELD record and1970+252 window freezes stay unchanged. Its results
+retain exact mixed component/window pins. See S1_RETAINED_WINDOW_RESULTS.md.
 
-docs/design/S1_RETAINED_REMOTE_DECODER_PROPOSAL.md proposes one engine path,
-game/remote_chunks.rs plus inline tests. Exact proposed source parent60899d4.
-Original draft59a53d38 preserved.local/s1dc1-design-attempt0.md; updated proposal
-records accepted predecessor and still has NO source/activation authority.
-Window/evidence checkpointd8558d1 is synced. Fresh independent Sol High
-decoder_design_review DESIGN ACCEPT exact proposal0d7647f5 and held source
-assignmentb2e712da; local receipt records required custody/poison/linearization/
-nonblocking/handle-before-latch/checked-failure source checks. Sync the accepted
-private design/assignment checkpoint, then record the exact root gate.
-Do not start engine source or formatter/compiler/runtime before those gates and
-exact SOURCE/tool clearance. No ordinary/default caller activation, C1/live S2,
-G1, PR/merge/tag/release follows. A later remote-client/mesh/Session/server owner
-composition remains separate work.
+## Next bounded packet: HELD design only
+
+Read-only research found retained Streaming currently requires a real SaveDir and
+matching NativeWriterClosed; remote clients need received-column worker ownership
+without local storage. HELD S1_RETAINED_REMOTE_STREAMING_PROPOSAL.md abe620ad
+is ready for streaming.rs-only construction/closure, covering reachable Mesh/Light
+work, original queued/active/context/result custody, distinct ClosedRemoteStreaming,
+no fakeSaveDir/writer/generation witness. Proposed1..8workers/64ownedjobs await
+fresh design review. Legacy/native factories stay unchanged. Draft819689f3 is
+preserved.local/s1rw1-design-attempt0.md.
+No source release. First finish/sync this private decoder evidence checkpoint,
+then fresh independent SolHigh DESIGN/assignment acceptance, private checkpoint
+and exact root gate. No formatter/compiler/runtime before exact SOURCE/tool CLEAR.
+Later RetainedSession(net.rs), original remote Game recipe, server startup/Hub and
+scopedcheckedserver joining are separate composition work. No G1/liveS2/default
+activation follows from standalone helpers.
 
 ## Physical checkout and operating boundaries
 
-Active .local/worktrees/s1-native-close-composition CLEAN at60899d4 on
-codex/s1-window-close. Same physical checkout and dedicated warm Linux target
+Active .local/worktrees/s1-native-close-composition CLEAN at9f64664 on
+codex/s1-retained-decoder. Same physical checkout and dedicated warm Linux target
 /home/arbiter/.cache/create-horizon/target-s1nc1. Never share or copy targets
 between physical checkouts. Future accepted packet may create a new logical
 codex branch here; old mutable-input archives/receipts/indices stay immutable.
