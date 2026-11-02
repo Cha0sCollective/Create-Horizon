@@ -76,6 +76,12 @@ original-parent guard; do not edit it for a future packet.
 No remotely running Game, common dispatch facade or native
 provenance follows. Preserve all incoming/slot owners and original swap/disposal
 order; no wrapper inner escape, fake pool or storage witness.
+Next storage representation design is accepted: S1_GAME_STORAGE_OPTION_PROPOSAL.md
+1a43a60a/assignmentb987d7c0,24paths a933cbfe, game_storage_design_review. Standard
+Option<Arc<SaveDir>> for Game only; ALL current factories/replacements Some,
+identity/native queries refuse None, raw native/prepared/parked records unchanged.
+One existing cold-native case gains meaningful absence/refusal/same-Arc restore,
+not Option-mirroring tests. Source held for synced private design/root gate.
 Original remote Game adoption of RetainedSession(net.rs), retained decoder,
 opaque streamer and honest no-local-storage representation remains later work.
 See S1_ORIGINAL_REMOTE_GAME_GAP_INVENTORY.md; no source release for activation.
