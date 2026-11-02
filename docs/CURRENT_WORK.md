@@ -1,7 +1,7 @@
 # Current work
 
 Owner resumed S1 after the November1 storage/GitHub checkpoint. Retained core
-metadata C0c1 is now FINAL and public/private checkpointing is finishing.
+metadata C0c1 is FINAL and public/private checkpointed at a014deb0.
 S1/G1 OPEN. Next bounded work is the remaining native metadata families;
 research/design refresh only until its assignment is accepted and checkpointed.
 No live S2, ordinary paired activation, PR, merge, tag or release.
@@ -10,8 +10,9 @@ No live S2, ordinary paired activation, PR, merge, tag or release.
 
 b7cdb4220029c7f5aff6afb18f3813fd13fdcc76, tree
 64223bde93195136434dc197e30015126b67b8c3, sole parent retained-preparation
-33e947a97d7186f5ee4bfc1f94aa820c8c5a0d54. Clean physical worktree
-.local/worktrees/s1-retained-acquisition remains on codex/s1-retained-metadata-core;
+33e947a97d7186f5ee4bfc1f94aa820c8c5a0d54. Public accepted branch is
+codex/s1-retained-metadata-core; physical .local/worktrees/s1-retained-acquisition
+is now clean at P on codex/s1-retained-metadata-remaining;
 same physical target-s1ra1 is reused serially. Eleven Rust paths; all raw files
 byte-exact commit objects, manifestda354db4. Different s1_metadata_final ACCEPT,
 receipt876d8a80, final input58ec85d2 indexes72. Fresh44normal/onefatal/sixstatic
@@ -40,24 +41,27 @@ Guest74cafef, adoptione369cac6, writer3fe2a2e8. Their detailed result reports an
 qualification remain attributed to their actual revisions. Preparation's one
 CRLF distinction remains explicit; metadata's eleven files are all raw exact.
 
-## Next packet: remaining metadata, no source release yet
+## Active packet: remaining metadata, checkpoint before source
 
-Existing S1_RETAINED_METADATA_FAMILIES_PROPOSAL.md exact1a1518f1 covers C0c2
-planning. Read-only actual API research suggests seven-path union: paired_close,
-maps, dragon, wandering_trader, nether_portal, raids and existing metadata tests.
-No eighth path, new executor/module/Game field or parked-level traversal granted.
-Require fresh actual API/design review at accepted b7cdb422, explicit bounded
-assignment/private checkpoint, preserved baselines and source release before edits.
-Preliminary research is .local/s1md1-next-family-research.md, not accepted authority.
+Fresh s1_remaining_metadata_api_review accepted exact new
+S1_RETAINED_REMAINING_METADATA_PROPOSAL.md c43fe1cd at clean acceptedP; design
+receipt17833594. Exact seven-path SOURCE_ASSIGNMENT divides Root coordinator/tests,
+map/fight author, trader/arrivals author and raid/omen author. Source release only
+after private checkpoint containing those documents and explicit Root release.
+New branch codex/s1-retained-metadata-remaining at b7cdb422; same physical checkout
+and target. ALL7/prefix baseline s1mx1-attempt0 preserved; no engine source edits yet.
 
-Maps must keep all original dirty flags until whole-batch success even if last_id
-write fails, with fixed sorted native IO. Fight/trader use loaded&&dirty; arrivals
-use dirty&&!remote independently of loaded, native arrivals root has no wrapper.
-Raid routing follows raiding.loaded, not current dimension. Prepare exact omen
-Level.player_extra replacement before IO, move it only on full success, preserving
-native None/empty/non-Compound semantics. Never load_raids/swap levels/draw RNG
-while preparing. Opaque runtime owners stay in place under lexical guard; new
-independent private equality accessors would need an explicit path amendment.
+Extend the same fixed job with Maps/Fight/Trader/Raids/Arrivals after core10;
+all15preflights before any CPU commit. Native map per-file/index partial evidence
+survives errors; all original map flags remain dirty through whole-batch failure.
+Fight/trader native loaded&&dirty guards have no added remote check; arrivals
+native dirty&&!remote guard is independent of loaded, root has no wrapper.
+Raid route is loaded Dim, omen targets current Level.player_extra. Exact complete
+replacement is prepared without mutation and moved only on full success; preserve
+native None/empty/non-Compound semantics. Do not load_raids/swap levels/draw RNG.
+Opaque raid/cache owners stay untouched under lexical guard; independent equality
+accessors would require explicit extra-path review. No game.rs/eighth path,
+ordinary caller, Game field, executor, Level::write, image/close/G1 authority.
 
 ## Storage and validation
 
