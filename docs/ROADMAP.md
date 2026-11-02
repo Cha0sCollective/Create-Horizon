@@ -35,8 +35,11 @@ RetainedSession, retained decoder and retained streamer; no source assignment fo
 that activation yet. Its first representation-only Game streaming owner migration
 is FINAL at `7d443a1`, reviewed public branch synced, keeping every production
 Game factory on Existing; see `docs/reference/S1_GAME_STREAMING_OWNER_RESULTS.md`.
-Next are honest no-local-storage and client connection/decoder ownership before
-actual retained remote Game adoption. G1 remains open.
+Optional Game storage representation is FINAL at `e6e584c`, reviewed public
+branch synced, with every production constructor retaining its original Some
+allocation; see `docs/reference/S1_GAME_STORAGE_OPTION_RESULTS.md`. Next are
+client connection/decoder ownership and actual no-storage retained remote Game
+construction and dispatch. G1 remains open.
 The component notes below retain historical
 point-in-time qualification and limitations.
 
