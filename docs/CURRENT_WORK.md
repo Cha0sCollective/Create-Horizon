@@ -1,8 +1,8 @@
 # Current work
 
 Coherent native close and C0e1a transport shutdown are component FINAL/publicly
-synced. S1/G1 remain OPEN. Active: C0e1b three-path source FROZEN for independent
-SOURCE review; focused tool CLEAR, no compiler/runtime yet. No ordinary activation, C1,
+synced. S1/G1 remain OPEN. Active: C0e1b SOURCE withheld; exact four-path correction
+amendment design ACCEPT, private checkpoint then correction release. No compiler/runtime yet. No ordinary activation, C1,
 connected G1, live S2, PR, merge, tag or release.
 
 The owner resumed development and authorized progress until a genuine blocker or
@@ -62,8 +62,15 @@ s1cl1 prefix. Do not replay whole predecessor batteries.
 ## Active bounded packet: C0e1b SOURCE review
 
 Fresh retained_lan_design_review ACCEPT of proposal6da81085/assignment85c660d4.
+Amendment74f26684 independently ACCEPT: add clientCargo.toml Unixdevrustixnet ONLY,
+normalproductionstd/time unchanged, --locked/noCargo.lock edits. Original43b617f7
+SOURCE withheld for codec/nativeIO conflation, Pinger startup-phase conflation and
+insufficient native writer progress proof. See S1_RETAINED_LAN_QUALIFICATION_AMENDMENT.md.
+Corrected scope exactly4paths; preserve ALL4/prefix before corrections. Revised
+selection32normal+2fatal adds two direct findings controls. No formatter/runtime yet.
 See design/S1_RETAINED_LAN_PROPOSAL.md and S1_RETAINED_LAN_SOURCE_ASSIGNMENT.md.
-Exactly client lan/mod.rs, lan/conn.rs, lan/discovery.rs including inline tests.
+Client lan/mod.rs, lan/conn.rs, lan/discovery.rs including inline tests, plus
+Cargo.toml dev-only feature amendment. No protocol or dependency-lock change.
 Actual native listener/local+TCP/writer/Pinger custody, stop/registration fencing,
 checked finished-only reap and retained event/UUID/terminal outcomes. Typed offline
 modern profile avoids existing untracked online/resource-pack/Friends owners;
