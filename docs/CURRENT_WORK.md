@@ -1,106 +1,95 @@
 # Current work
 
 Owner resumed development until a genuine blocker/input. S1/G1 remain OPEN.
-C0e2a native LOD and C0e2b native control are FINAL; reviewed public branches synced.
-Current work: honest window/in-frame close-composition research, no new source release.
+Current packet C0e2c: explicit Linux preloaded in-frame original window close.
+Fresh independent window_design_review DESIGN ACCEPT exact proposal bb7f5411,
+terminal amendment aca30066 and assignment ad7848d1; local review624bcdac.
+Held doc wording is overridden ONLY by the accepted private checkpoint plus
+.local/s1wc1-parent-gate.json SOURCE RELEASED. No source/execution before that.
 No ordinary activation, C1/live S2, PR, merge, tag or release.
 
-## Accepted predecessor and physical workspace
+## Physical checkout and bounded scope
 
-Engine231b136e325f058f2ea9141ddc957c6e00f88394, tree
-e9c7ca572ae70b39af44b1ae67e7bbd7e24b1868, sole parentc73abbef3f8175077abc5cd6e9e13e57c40cf401.
-Different LOD FINAL5a388caf ACCEPT/PUBLIC SOURCE PRIVACY CLEAR; public branch
-codex/s1-retained-lod verified exact231 with normal commit/full-history hooks.
-Private results checkpointb898bec synced. See
-[retained LOD results](reference/S1_RETAINED_LOD_RESULTS.md).
-Six fresh checks271.85s, build228.41s,26normal129.31s,1fatal5.89s; resources28176
-hashed before/after runtime. No native runtime failed. Initial two test lints
-preserved/corrected/reviewed. Qualified dirty-parent97d8ed89 raw source equals clean
-commit; no fresh commit/config-normalization execution claim.
+Active .local/worktrees/s1-native-close-composition CLEAN predecessor
+bd0647a6aef9efc2484629fb36a954167b738b30, tree471bbec26f30f863db77d6f1baf654fa5f7a29f7.
+Root creates codex/s1-window-close at that exact parent, same physical checkout
+and dedicated warm Linux target /home/arbiter/.cache/create-horizon/target-s1nc1.
+Never copy/share targets across physical worktrees. Prefix.local/s1wc1.
 
-Active stable .local/worktrees/s1-native-close-composition CLEAN at candidate
-bd0647a6aef9efc2484629fb36a954167b738b30, parent231; FINALFd730d8a/public synced on
-codex/s1-retained-control. Its dedicated Linux target
-/home/arbiter/.cache/create-horizon/target-s1nc1 is warm; reuse this physical
-checkout serially. Never copy/share targets between physical worktrees.
+ELEVEN client src paths exactly: game.rs; NEW game/window_close.rs;
+game/paired_close.rs; game/saving.rs; game/control.rs; game/agent_settings.rs;
+game/world_loading.rs; control.rs; NEW game/window_close_tests.rs; gfx.rs;
+gfx/occlusion.rs. No other source/dependency/lock/default activation without
+revised acceptance. Exact design/assignment governs boundaries and validation.
 
-Preserve ALL252 immutable LOD inputs/index1824615a, archive21/map7652cfb2 and
-prior300 frozen inputs147/20/80/53. Original .local/worktrees/s1-retained-acquisition
-stays CLEAN atc73; historical VALIDATION_WORKFLOW.md remains exact8631c054.
-Future FINAL archives mutable source/config/recipe with live/archive/Git and actual
-execution proof. No old index replacement. See
-[immutable layout adoption](design/IMMUTABLE_SOURCE_FREEZE_LAYOUT_ADOPTION.md).
-Old guarded qualifier modes remain retired; never modify frozen tools to revive.
+Original cold-prepared Game/Box, retained LOD/control/streaming/native save and
+fixed real native UI remain continuously owned. Separate renderer constructor
+selects inline CPU occlusion BEFORE acquisition; legacy construction unchanged.
+No mutable Game escape, callback executor, same-path replacement or test-only
+transfer as production proof. Preserve dormant NativeReady disposal guard.
+World close keeps original restricted RPC live through Blocked/exact Retry.
+App seal follows world completion and usable native UI. After RPC seal, unfinished
+native control work retains native UI Retry; checked-quiescent cleanup failure
+has original ClosedControl FAILURE, inert error view, explicit native Exit and
+original error return. No cleanup replay/rebind/false endpoint-release success.
+Control fixed bounded constructor: eight native slots, one request/reply each
+through late custody; reserve BEFORE accept; no local/raw Sender bypass;4096byte
+input,1MiB/client and8MiB aggregate response ownership; independent10second
+operation deadlines;32nativeoperations/shared2ms per-frame credits with expiry,
+no accumulation, stop/deadline checks without grant. No hard per-turn latency.
 
-## Completed C0e2b and preserved gates
+## Execution and preservation
 
-Fresh independent control_design_review DESIGN ACCEPT exact proposalEa6048e7 and
-assignmentE4166814. Docs/design/S1_RETAINED_CONTROL_PROPOSAL.md and
-S1_RETAINED_CONTROL_SOURCE_ASSIGNMENT.md held wording is overridden by private
-cc006f659f391eff66dd326080ed567ddc6c155a and.local/s1ct1-parent-gate.json RELEASED.
-Private accepted design synced. Prefix.local/s1ct1; initial one-file/prefix snapshot0.
+Root alone ALL serial fmt/Cargo/compiler/tests/game/WSL/Git writes. Bounded useful
+native-TEXT authors only; no script/import execution/fmt/compiler/tests/game/WSL/
+Git writes/network/escalation/delegation. Reviewer native procedural READONLY
+under inherited workspace-write: native reads/JSON/foreach/hashing/Git reads;
+no scripts/imports/runtime/WSL/edits/network/escalation/delegation.
+Preserve ALL ELEVEN source paths plus every top-level prefix artifact BEFORE
+every correction, with absent-new-file markers. Fresh exact SOURCE/tool CLEAR
+before any formatter/compiler/runtime. Different FINAL before use/public sync.
 
-ONE path: crates/horizon-client/src/control.rs, inline tests. New dormant paired
-RetainedControl owns actual listener/client resources before native acquisition;
-no legacy Server upgrade, detached handles or mutable Server/socket escape. Keep
-actual pending/queued/active/late/request-response receiver ownership, permanent
-fence, finished-only checked joins, same-owner Blocked/Retry/closed handoff.
-Native quiescence, cleanup success and external pending replies are distinct.
+Select defining tests and smallest affected regressions, actual visible Linux
+window with full pinned resources and original owners, stalled native IO plus
+resize/redraw/reconnect/exact Retry, Unix/authenticated TCP, signal/draw/minimize,
+terminal native failure Exit and separate fatal unresolved-owner controls.
+12-20new names/2-3window scenarios are estimates, not caps. Thirty cases/10-15min
+warm is a planning prompt. Reuse valid predecessor results at actual pins; no
+broad old battery replay. Driver deadline/missing fixture FAIL, never completion.
 
-Existing endpoint conservatively refused before probing/truncating. Checked
-owned-identity cleanup runs off UI; observed foreign replacement preserved and
-ambiguous/failed cleanup never claimed successful. Cooperative/isolated path
-profile, no hostile same-user check/unlink atomicity, Windows ACL or auth redesign
-claim. Original line/JSON/auth/legacy constructors stay unchanged. Local-no-worker
-mode proves no external benchmark/deferred Game action ownership or cancellation.
-No dependency/lock/Game/settings/saving/window/other-source edit without revised
-acceptance. Next actual Game handoff has separate pending-save polling gap/budget.
+## Accepted predecessors and immutable evidence
 
-## Execution and evidence
+C0e2b retained native control FINALFd730d8a; enginebd0647a public branch
+codex/s1-retained-control verified exact with normal commit/history hooks;
+private7c8cbb6 synced. Four checks75.29s, build57.84s,18normal0.98s,1fatal0.03s;
+no runtime failure. Initial two SOURCE findings/testlint preserved and corrected.
+See reference/S1_RETAINED_CONTROL_RESULTS.md. Qualifier modes retired.
 
-Coordinator directly, bounded useful native-text authors only. Root alone ALL
-formatter/Cargo/compiler/tests/game/WSL/Git writes SERIAL. Source authors no script/
-import execution/fmt/compiler/tests/game/WSL/Git writes/network/escalation/delegation.
-Reviewer native procedural READONLY under inherited workspace-write: native reads/
-JSON/foreach/hashing/Git reads permitted; no scripts/import execution/runtime/WSL/
-edits/network/escalation/delegation. Fresh exact SOURCE/tool before execution and
-different FINAL/private checkpoint before use/public push. Preserve ONE source and
-all prefix files before EVERY correction. No memory/playable/reference/Java changes.
+C0e2a retained complete native LOD FINAL5a388caf; engine231b136 public branch
+codex/s1-retained-lod exact synced. Six checks271.85s, build228.41s,26normal129.31s,
+1fatal5.89s. Real resource28176 inventory before/after. No native runtime failed.
+See reference/S1_RETAINED_LOD_RESULTS.md. Older evidence remains at actual pins.
 
-Validation plan12-16defining native names+3existing control regressions+separate
-fatal. Actual Unix/TCP/auth/read/write/response waits and independent worker races;
-fixed gates control production actors, no substitute echo loop/Game responsiveness
-claim. Four targeted static rows appropriate to std-only paired module: fmt,
-all-target paired mods/nativewriter Clippy, paired-OFF lib/bin compatibility,
-public-source check. Exact source/tool review decides final selection and features.
-No prepared game resources/Java/Game smoke needed. Pinned Rust1.99.1/offline--locked,
-LinuxUID1000/isolated paths/core0/actual Cargo artifact/binary hashes. Reuse valid
-predecessor evidence at its actual pin, no old LOD/network/save/Game battery replay.
-Exact SOURCE/tool/formatter/lint-delta review CLEAR manifest7d05dfd1/toolD7a898e3.
-Four fresh static checksF79e6991 PASS75.29s; buildC2f9d049 PASS57.84s/binary97531e63.
-18normalB84edd18 PASS0.98s and1fatal8c76560a PASS0.03s. No runtime failed.
-Initial twoP2 SOURCE findings fixed beforeexecution; one testlint preserved/corrected
-and reviewed, allfour checks passed fresh. Attempts0..8 preservedsource/prefix.
-Immutable15-input archive/map8f1ced22 andrawGit-equal candidate prepared; all552prior
-indexedentries unchanged. DifferentFINALFd730d8a ACCEPT/PUBLIC PRIVACY CLEAR,
-inputC1fddd55/174files; normalfull-historypublicsync verified exactbd0647a.
-Results: [retained control](reference/S1_RETAINED_CONTROL_RESULTS.md). Guardedmodesretired.
-Next originalBoxGame/window/in-frame/control-last-phase scope notyetaccepted.
-Thirty cases/10-15min warm is planning prompt, not cap. Prior251GiB cleanup/VHD
-compaction complete; no new deletion.
+Preserve control174/indexc1fddd55, LOD252/index1824615a and older300entries
+147/20/80/53, total726 indexed entries. Immutable source-input archives and
+live/archive/Git mapping required by design/IMMUTABLE_SOURCE_FREEZE_LAYOUT_ADOPTION.md.
+Never rewrite old indices/tools. Historic .local/worktrees/s1-retained-acquisition
+stays CLEAN atc73abbef; historical VALIDATION_WORKFLOW.md exact8631c054.
+No memory/reference/playable/Prism/Java edits. Prior251GiB cleanup/VHD compaction
+done; no further deletion. Preserve active cache/binaries/resources/evidence.
 
 ## Publication and remaining S1
 
-Private codex/h02-smoke-h03-notes: fresh GitHub PRIVATE metadata/exact
-https://github.com/Cha0sCollective/Create-Horizon.git origin before EVERY push.
-Public reviewed engine branches require different FINAL/privacy CLEAR, fresh PUBLIC
-metadata/exact Horizon origin and normal hooks. No unfinished public source,
-private material/raw runs/resources/config, PR/merge/tag/release.
+Before EVERY private push fresh GitHub PRIVATE metadata and exact native origin
+https://github.com/Cha0sCollective/Create-Horizon.git. Public reviewed engine
+branches require different FINAL/privacy CLEAR, fresh PUBLIC/exact Horizon origin
+and normal hooks. No unfinished public source/private documents/raw runs/assets/
+resources/local agent configuration. No PR/merge/tag/release.
 
-Remaining: ordinary close/composition; registered placement/generations/chunk
+Remaining ordinary close/composition; registered placement/generations/chunk
 cycles; failed Guest disposal; authorized intent/replay/reach/permissions/revisions/
 retirement/departure; configuration admission; replication initial/delta/gap/resync/
 untrack/reconnect; committed animation; DEFAULT integrated MemoryPipe, dedicated
 TWO exact TCP clients, promised in-frame behavior and explicit G1. Live S2 waitsG1.
 S3 motor/shaft/small+large cogs/millstone cobble-to-gravel, NO gearbox.
-R01 follows pinned Java full-output item loss.
+R01 matches pinned Java full-output item loss.
