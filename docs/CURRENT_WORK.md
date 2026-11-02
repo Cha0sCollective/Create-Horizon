@@ -1,177 +1,117 @@
 # Current work
 
-Both native metadata packets are FINAL and their reviewed engine branches are
-synced. S1/G1 remain OPEN. The reviewed fourteen-path coherent native/image close
-packet is in source development; no C0d compiler/runtime has run. No live S2, ordinary
-paired activation, PR, merge, tag or release.
+Coherent native close is component FINAL and its reviewed public engine branch is
+synced. S1/G1 remain OPEN. Next: fresh bounded C0e1 transport design at the accepted
+pin below. No next engine source assignment yet. No ordinary activation, C1,
+connected G1, live S2, PR, merge, tag or release.
 
-## Accepted predecessor
+The owner resumed development and authorized progress until a genuine blocker or
+needed input. Keep each source packet bounded and its review/publication gates explicit.
 
-Commit485d4b1914c639d2a6cfc68f6fa7191ae5adbdaf,
-treeec926d221833e8c1279f7063e5cb43ff02dd940d, sole parent
-b7cdb4220029c7f5aff6afb18f3813fd13fdcc76. Physical worktree
-.local/worktrees/s1-retained-acquisition is on codex/s1-coherent-native-close at
-the same accepted P with the bounded C0d source draft dirty; reuse target-s1ra1 serially.
+## Accepted baseline
 
-Seven Rust paths, all raw byte-exact commit blobs; source manifestd56b4852.
-Different s1_remaining_metadata_final ACCEPT831b56f5; input11a5b1ec indexes60.
-Fresh34 normal/one fatal/six static PASS:285.14s normal,10.99s fatal,140.33s static;
-bin-only build54.37s. All dirty-parent qualifier modes RETIRED. No library code
-changed or redundant library test executable copied. Detailed results:
-S1_RETAINED_REMAINING_METADATA_RESULTS.md.
+Engine114626f09afb77a4da97325e5bd4ae9f13dbcb25,
+tree64558c3469f71340ef9685192cf4e3866671d9a0, sole parent
+485d4b1914c639d2a6cfc68f6fa7191ae5adbdaf. Physical worktree
+.local/worktrees/s1-retained-acquisition is CLEAN on
+codex/s1-coherent-native-close. Public origin/remote branch verified at exact Q;
+normal commit and full-history push hooks PASS. No public unfinished source.
 
-The same original Game guard and actual single job cover all15 families. Core10
-plus Maps/Fight/Trader/Raids/Arrivals; all15 preflight before any CPU commit.
-Map sorted IO retains actual per-file/index evidence; every original dirty flag
-survives batch failure. Native fight/trader loaded&&dirty guards add no remote
-check. Arrivals dirty&&!remote is independent of loaded; its root has no wrapper.
-Raid routing uses loaded Dim; exact current-Level omen replacement is prepared
-and moved only on full success. Opaque Raid RNG/heroes/hash-order and PortalSections
-owners remain untouched under the lexical guard, without independent equality.
-No ordinary caller, Game field, Level::write, parked serialization, image,
-CloseCommit, world closure, lock release or G1 is established.
+Different independent s1_coherent_close_final ACCEPT/PUBLIC SOURCE PRIVACY CLEAR,
+receipt3b1c5723, frozen inputfeec68ab(147 hashes). All14 raw source bytes match
+qualified manifest14d590a2 and commit blobs; comparisone643bdac. Detailed results:
+[S1_COHERENT_NATIVE_CLOSE_RESULTS.md](reference/S1_COHERENT_NATIVE_CLOSE_RESULTS.md).
 
-Public source/privacy CLEAR; fresh PUBLIC metadata/exact origin, normal history
-hook PASS, remote codex/s1-retained-metadata-remaining verified at485d4b1.
-Reviewer verified all60 local indexed hashes/source blobs. Linux binary/resource
-correlation relies on accepted runner hashes and Cargo receipts, not independent
-reviewer executable rehash. Runtime assertions cover new-family snapshots plus
-representative core storage state; source establishes full commit ordering.
-Dirty-set test also changes atlas order, so it does not isolate dirty-only mismatch.
+Qualification: normalB0421279 covers29(23fresh274.40s+6 actual unchangedbcb9 passes),
+fatal0e0932fc covers3fresh39.09s with exact markers/diagnostics/SIGABRT/reaping/core0.
+StaticA329f58a covers3fresh+3 pinned unchanged05b2 feature checks. BuildE0a09bc3
+PASS27.32s, exact current Cargo artifacts/profile/features; immutable library copy
+reused only after actual equality. SOURCE/TOOL5ebde1c0. All dirty-parent qualifier
+modes RETIRED; do not run s1cl1-qualify again against the clean successor.
 
-Root accidentally appended new research to an indexed note after freeze. ALL7/
-prefix attempt7 preserved it; byte-exact restoration from attempt6 and independent
-followup reverified all60 hashes, clean candidate and unchanged FINAL/privacy.
-New research is separate at .local/s1close-research-notes.md; no replay needed.
+Actual original Box<Game>/locks/participants/items/native producers/writers remain
+retained through expected failures and explicit Retry. Fixed native active+parked
+payloads, complete Level plan, fifteen metadata families, participant projections,
+old-source preflight and image promotion precede aggregate CPU acknowledgment.
+NativeReady is not global CloseCommit and retains Game/locks for C0e. Populated
+fixture disposal is constructor-specific, not arbitrary transport proof.
 
-Earlier accepted/public pins: coreb7cdb422 (44/1/6, manifestda354db4, FINAL876d8a80,
-input58ec85d2); preparation33e947a9 (32/4/6, dcf8103d/ea5b9267); composition1956eb49,
-acquisitionb9463a5, Guest74cafef, adoptione369cac6, writer3fe2a2e8. Private assignment
-checkpoint06d8dfd and core authored checkpointa014deb remain historical pins.
-Prior evidence stays attributed to actual revisions, without full-battery replay.
-Preparation's one CRLF distinction stays explicit; both metadata packets are raw exact.
+NativeWorld evidence is bounded structural/readability/routing with raw inventory
+preserved; temporary native zero/NaN decoding is qualified, no arbitrary semantic
+roundtrip claim. Complete CoherentSession/D restrictions remain. New aggregate
+CPU packing/equality passes are indivisible; no hard per-poll latency. Original
+C0a callback encode/enqueue mutex caveat remains explicit.
 
-## Active packet: coherent native close source draft
+ALL14/prefix attempts0..27 preserve source and artifacts before corrections.
+Compiler/lint and runtime failures remain attributed to f25/433/05b2/bcb9.
+Real owner-respawn omission was fixed; case7's test timing was corrected without
+production change. The original partial bcb9 batch remains explicitly unverified;
+six passing cases are individually hashed/attributed, not relabeled fresh.
+Preserve the147 frozen inputs and receipt files; new research stays outside the
+s1cl1 prefix. Do not replay whole predecessor batteries.
 
-Fresh s1_close_api_review accepted exact S1_COHERENT_CLOSE_PROPOSAL.md17c620a4
-at accepted485; design receipt513b5f95. The bounded SOURCE_ASSIGNMENT640adac3
-was privately checkpointed/synced at37c90d3 before Root release. Branch
-codex/s1-coherent-native-close remains at P in the same physical worktree/target.
-ALL14/prefix snapshots0..19 preserve the draft and corrections. Root owns
-the close-owner wiring; bounded writer/world/image/Level authors remain text-only.
-Whole SOURCE/tool aggregate CLEAR82f522e1 now applies to staged raw manifest
-f25aa8a9 (all14 raw/index exact), tool6b476ccb and expected5ee0f336.
-Independent owner/tool, writer/Level/LAN and world/image reviews cover the exact
-candidate; writer scope reused only after raw equality verification. First static
-pass: formatting PASS33.35s; feature-on compile/lint FAILED60.81s, before runtime.
-Failure logbf1238d4 and sourcef25 are preserved in attempt19 and authored
-compiler-failure-f25aa8a9.json. Narrow cfg/deadcode, deprecated-name, Debug-error
-and equivalent let-chain corrections await a fresh exact delta review/recompile.
-No runtime or FINAL/G1 result yet.
+## Next bounded design: research only
 
-Level retry amendment90c31ff6 received fresh independent design ACCEPT from
-level_retry_design_review and private checkpoint81c24f9 was synced before source
-release. Within existing save.rs, capture complete native unknown fields,
-conditional decisions, clocks and one LastPlayed before final writes; retry exact
-retained plan. Ordinary Level::write ordering remains unchanged. Existing game.rs/
-lan.rs binding preserves actual integrated-owner body fields and per-file effects.
+Read-only C0e audit at the actual existing transport/application paths is saved in
+.local/c0e-readonly-research-14d590a2.md. It grants no source authority.
 
-Early writer/image audits found forced-ticket partial-rotation retry loss and
-missing old-sidecar validation; both corrected and provisionally source-cleared.
-World audit found saved falling blocks omitted from entity coordinate selection;
-corrected with active/parked fixture helper, awaiting focused regression/review.
-Early audits do not establish whole-candidate SOURCE/tool or runtime acceptance.
+Smallest next component is concrete paired transport ownership in protocol
+connection.rs and client lan/mod.rs, lan/conn.rs, net.rs plus a refreshed exact test
+map. Ordinary local/accepted connections discard handles; listener/client/writer
+shutdown includes blocking joins or ignored spawn/panic outcomes. Need actual
+pre-split TCP/Pipe close capability, stop/registration linearization and finished-
+only terminal custody. Preserve ordinary vanilla/default diagnostic behavior.
 
-NativeWorld structural/readability context, opaque completion custody and explicit
-retry amendment28b3bd02 received fresh independent design ACCEPT/private56445f9.
-Retained cold-fixture transfer297a0fdc and historical-Durable renewal addendum
-received focused design ACCEPT/private4871a0c. All source remains within14 paths.
-Native reader preserves raw inventory/hash; temporary native decoding can normalize
-zero/NaN, so it establishes routing/readability, not arbitrary semantic roundtrip.
-Complete CoherentSession/D restrictions remain intact. Constructor-proven populated
-test custody is separate from production transport disposal; native-ready retains
-original Game/locks and is not global CloseCommit.
+The old46-path map is incomplete for full composition: Remote ChunkDecoder in
+game/remote_chunks.rs discards its worker handle; LOD and announcement Pinger own
+blocking Drop joins; Friends and online-services fetch have additional real owners.
+Choose constructor-enforced bounded exclusions BEFORE acquiring owners, or amend
+exact scope for real retained APIs. Never clear fields or infer termination.
 
-First full source pass caught dropped MetadataAcknowledged history and missing POI
-column/section/height routing. Both corrected after full preservation and cleared
-in independent delta reviews. Planned29 normal cases:14 Level/owner,8 writer/Level,
-5 structural/old-source,2 changed metadata regressions;3 distinct fatal backstops
-and6 static checks. No full predecessor replay. Different FINAL remains required.
+C0e2 must reconcile original Box<Game>/NativeReady with App::Ready and by-value
+run_event_loop; keep the same control endpoint responsive through Blocked and
+retain late preparation/resource outcomes. C0e3 needs actual integrated/dedicated
+worker and stdin/control ownership. Then qualify the exact combined composition.
+Refresh accepted proposal/APIs/budget and obtain fresh Sol High design acceptance
+plus private assignment checkpoint before any next source edits.
 
-Fourteen paths: original7(game/lan.rs, game.rs, paired_close.rs, levels.rs,
-levels/session_checkpoint.rs, NEW paired_close_tests.rs, session_checkpoint_tests.rs)
-plus session_checkpoint_items.rs, persist.rs, world_loading.rs, raids.rs, leads.rs,
-existing paired_close_metadata_tests.rs and library save.rs. No fifteenth path.
-Root owns five coordination/Level/participant/test files; bounded native-writer,
-native-world and image-context authors own disjoint one/five/three paths.
+## Remaining S1 and gates
 
-Extract private metadata state, preserve borrowed API, own original Box<Game>
-without self-reference or mutable escape. Keep native-only completion distinct
-from global CloseCommit/remaining transport owners. Fixed actual job variants;
-all new FS/durability/copy/hash/verification on owned worker. Retain actual Game,
-locks/items/controllers/payloads/artifacts through errors/deadlines and explicit Retry.
+Remaining: ordinary close/composition; registered placement/generations/chunk
+cycles; failed Guest disposal; authorized intent/replay/reach/permissions/revisions/
+retirement/departure; configuration admission; replication initial/delta/gap/resync/
+untrack/reconnect; committed animation; DEFAULT integrated MemoryPipe, dedicated
+TWO exact TCP clients, promised in-frame behavior and explicit G1. Live S2 waits G1.
+S3 stays exactly creative motor/shaft/small+large cogs/millstone cobble-to-gravel,
+NO gearbox. R01 matches pinned Java full-output item loss.
 
-Old producer callbacks settle pre-Freeze obligations as the predecessor fence did;
-accepted indivisible encode/enqueue mutex caveat stays explicit, no hard latency
-or zero-wait claim. Then staged historical writer repair/durability, complete old
-source read-preflight, final identity/owned native projections, final submission,
-terminal matching writer proof, full image validation/promotion and aggregate CPU ack.
-Save.rs needs nonterminal durability and close-only final submission with ordinary
-admission always sealed; existing terminal recovery cannot safely reopen it.
-Preserve C0a accepted/refused nonresident versions until exact final writer ack.
-
-Direct parked entity/leash/native codecs use borrowed views, no swapping or copied
-codec. Reuse retained C0a factories, not legacy upgrades/forged Overworld origin.
-Parked raids use active player omen context; prepared replacement feeds owned Level
-before write, original extra moves only after full ack. Resource/item/image context
-retains actual immutable native owners/Arc<Tree> and complete D validators. Set
-publication Uncertain BEFORE rename; new image retry uses fresh epoch/path while
-retaining old artifacts and the same semantic projection. No shortened validators,
-D-only NativeWorld, fake participant/configuration or dropped native owner to pass.
-
-Require both genuine counterless active+parked NativeWorld and healthy initial-
-Overworld CoherentSession with actual counter/slot/participants/rich D items and
-existing recovery. No ordinary C0e/C1 activation, global closure from native-only
-progress, connected G1 or live S2. Fresh SOURCE/tool before compiler/runtime,
-clean candidate and DIFFERENT FINAL/private checkpoint before consumption.
-
-## Validation, storage and remaining S1
-
-VALIDATION_WORKFLOW8631c054: cheap features, defining new behavior/dependencies,
-truthful unchanged reuse, broad once at meaningful shared composition/G1.
-30cases/10-15min warm is a planning prompt, not a cap. Current34=20new+8changed
-shared-job+6tiny native regressions,4.75min normal; core44 took5.53min. Isolated
-Game/variant processes; no automatic Materialized batching. Preserve failures.
-Full S1/G1/R01 remain unchanged.
-
-Reviewed cleanup reclaimed251.07GiB from17 obsolete targets; Ubuntu VHD compact
-342.24to93.73GiB. Sources/evidence/binaries/resources/fixtures/Prism/playables/
-references/Java preserved. Never replay cleanup or share targets across physical
-checkouts. S1_STORAGE_CHECKPOINT.md records the exact outcomes.
-
-Remaining S1: coherent save and ordinary close; registered placement/generations/
-chunk cycles; failed Guest disposal; authorized intent/replay/reach/permissions/
-revisions/retirement/departure; configuration admission; replication initial/delta/
-gap/resync/untrack/reconnect; committed animation; DEFAULT integrated MemoryPipe,
-dedicated TWO exact TCP clients, promised in-frame and explicit G1. Live S2 waits G1.
-S3 is exactly creative motor/shaft/small+large cogs/millstone cobble-to-gravel,
-NO gearbox. R01 matches pinned Java full-output item loss, without weakening S1.
+Prior accepted/public pins: remaining metadata485d4b1(FINAL831b56f5), coreb7cdb422
+(876d8a80), preparation33e947a9(ea5b9267), composition1956eb49,
+acquisitionb9463a5, Guest74cafef, adoptione369cac6, writer3fe2a2e8. Earlier frozen
+managed/connected/window work establishes bounded patterns, not ordinary closure.
 
 ## Execution and publication
 
-Coordinator directly; bounded useful authors/reviewers, no standing team. Root
-alone ALL Cargo/tests/games/fmt/Git writes SERIAL. Authors scoped native TEXT only.
-Reviewers procedural native READONLY GetContent/rg/Gitread/hash/textJSON; inherited
-workspace-write is not enforced. No reviewer scripts/imports/WSL/runtime/edits/
-network/escalation/delegation. Fresh SolHigh SOURCE/tool before compiler/runtime;
-DIFFERENT FINAL. Before every correction preserve ALL scoped sources and packet
-prefix artifacts. Isolate all cwd/home/data/config/cache/temp/game/launcher/trash/
-clipboard/desktop paths; sanitize controls; Python-I/noopt; no nested compiler/
-Java/test subprocesses. Preserve playables/accounts/references/global Java.
-No memory writes.
+Coordinator directly; bounded useful authors/reviewers only, no standing team.
+Root alone ALL Cargo/tests/games/fmt/Git writes SERIAL. Authors scoped native TEXT;
+reviewers procedural native READONLY, inherited workspace-write is not enforcement.
+No reviewer scripts/imports/WSL/runtime/edits/network/escalation/delegation. Fresh
+Sol High exact SOURCE/tool before compiler/runtime, clean candidate and DIFFERENT
+FINAL before consumption/public push. Preserve ALL packet sources/prefix before
+every correction. No memory writes or playables/accounts/reference/Java changes.
 
-Owner authorized public pushes of fully reviewed engine branches only. No public
-unfinished code, PR/merge/tags/force/release. Private branchcodex/h02-smoke-h03-notes;
-before EVERY private push require fresh PRIVATE GitHub metadata and exact
-https://github.com/Cha0sCollective/Create-Horizon.git immediately before normal push.
-No raw generated runs/worlds/resources in Git.
+VALIDATION_WORKFLOW8631c054: defining new behavior/dependencies, truthful pinned
+unchanged reuse, broad once at meaningful shared composition/G1. The30case/10-15min
+warm prompt is planning, not a cap. Fresh isolated process paths and actual pinned
+resources; no nested compiler/Java/test processes. Same physical target-s1ra1 used
+serially, never shared across physical checkouts.
+
+Reviewed cleanup already reclaimed251.07GiB from17 obsolete targets and compacted
+Ubuntu VHD342.24to93.73GiB. Do not replay cleanup. Keep current binaries/targets,
+resources/fixtures/sources/references/Prism/playables/Java. Current storage healthy.
+
+Private branchcodex/h02-smoke-h03-notes. Before EVERY private push obtain fresh
+PRIVATE GitHub metadata and exact https://github.com/Cha0sCollective/Create-Horizon.git
+origin; public push analogously verifies PUBLIC/exact Horizon fork after FINAL/
+privacy CLEAR. Owner authorized fully reviewed public engine branches only.
+No private documents, raw runs/worlds/resources/agent configuration in public Git.
