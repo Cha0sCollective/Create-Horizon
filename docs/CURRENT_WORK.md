@@ -3,6 +3,18 @@
 Owner resumed S1 development until a genuine blocker or required input. S1/G1
 remain OPEN. No user decision is pending.
 
+Active source packet is s1ogrc1, branch `codex/s1-original-remote-client`, parent
+`e52f0def9f4cfd297133c9c8d018e8061a7fe328` in the stable physical checkout.
+Private design `9b5e6b6` is synced; root gate `80e056ca` released the exact 24
+paths after attempt0 preservation. IO author has five dirty paths in its six-path
+assignment; candidate is unfrozen and unqualified. No runtime has used it.
+The packet-only disjoint text exception is independently OPERATING ACCEPTED:
+see `docs/design/S1_ORIGINAL_REMOTE_GAME_TEXT_AUTHORING_ADOPTION.md`. Both writers
+are paused for this checkpoint; root explicitly activates only after signature
+agreement. Six IO/skin paths belong to the bounded author; eighteen factory/window
+and guard paths belong to root. Both stop before execution/Git writes, and the
+first SOURCE freeze ends the exception. No later parallel corrections.
+
 ## Accepted checkpoint and next packet
 
 Optional Game storage representation is FINAL at CLEAN engine
