@@ -9,8 +9,8 @@ reviewed public branch codex/s1-retained-decoder is synced. The accepted immutab
 index is .local/s1dc1-final-review-input-r1.json SHA256
 53e9d762ea1f05307ddd43911738053dcc92889ef30a5ebeef1e20eac36e282c.
 The original index without -r1 is a preserved incomplete draft, not accepted input.
-Record and sync the decoder's private results checkpoint before reviewing and
-releasing this next assignment. S1/G1 remain OPEN.
+Decoder private results checkpoint 74d4767e95b7fdd100811793ab73ed4db50ed113 is
+synced. S1/G1 remain OPEN.
 
 ## Actual gap and one-path budget
 
@@ -45,9 +45,14 @@ and propose the exact gap and revised budget before editing it.
 ## Fixed remote construction and intrinsic admission
 
 Add a distinct paired received-column construction recipe selected before any
-native acquisition. Proposed API direction: Streaming::prepare_retained_remote
+native acquisition. Proposed API direction: RetainedRemoteStreaming::prepare
 accepts the actual Arc<WorkerContext> and bounded valid worker count, creates an
-inert original owner, and an explicit start operation acquires its workers. Use
+inert wrapper privately owning the original concrete Streaming, and an explicit
+start(&mut self) operation acquires its workers. Partial startup failure remains
+in that same wrapper. Do not return the existing StreamingStartFailure with its
+public inner Streaming field. Existing construct starts threads.max(1) workers;
+it cannot serve as inert preparation unchanged. Install the remote mode and
+unresolved-owner fatal protection before the first spawn. Use
 a fixed internal remote provider; accept no caller-supplied generator, native
 storage owner, callbacks or general recovery executor. Refusal before acquisition
 returns supplied original inputs. Exact names and representation require source
@@ -63,14 +68,29 @@ Retire a slot only on an owned handoff or retain it in the closed owner. These
 counts are provisional profile policy, not a byte/global-memory or performance
 qualification. Later caller activation/backpressure remains separately reviewed.
 
+The opaque wrapper exposes ONLY checked received-column admission, light updates,
+settings needed by that fixed profile, try-only observation/reconciliation and
+close/Retry/completion. Checked owned-input refusal returns the original directly;
+borrowed-world operations preflight before mutation. No retained-refusal queue is
+needed. Resource reload/world replacement remain unsupported in this packet.
+There is no borrowed or owned inner Streaming escape: no getter (even immutable),
+Deref, AsRef, conversion, extractor or public startup-failure owner. In particular
+legacy insert_remote/reload_resources void APIs, blocking observe_native_work/
+pending/busy/stages, lod_source, save and native_write_fence_until are inaccessible.
+No opaque callback is accepted or invoked; no callback-capture retention promise
+is made. Later Game composition must adopt this wrapper or a separately reviewed
+enum representation; this packet promises no directly extractable Streaming.
+
 The private constructor-issued mode must intrinsically restrict work to received
 columns, their Light/Mesh work, fixed result collection and close. Mutable public
 legacy fields such as remote, mesh, forced areas or band settings cannot grant
 generation, decoration, finish or storage work. Every route that can enqueue an
 unsupported job, invoke a storage callback or enter a native save/fence operation
 must refuse BEFORE acquisition, callback execution, ownership loss or work
-admission. Include private scheduling helpers and existing save/poll/fence paths,
-not only the new public constructor. A refusal is explicit; it does not fabricate
+admission. Include private scheduling helpers and any shared save/poll/fence paths
+reachable internally, not only wrapper visibility or the new public constructor.
+Keep legacy/native public signatures and behavior unchanged. The wrapper never
+forwards unsupported calls to them. A refusal is explicit; it does not fabricate
 a successful empty generation/save receipt. Preserve original refused inputs.
 
 The fixed mode is never an upgrade of a legacy Streaming and never native-world
@@ -80,9 +100,9 @@ An unrelated native closure cannot close this remote owner, and its remote
 completion cannot satisfy native producer/writer acknowledgement. Do not relax
 the native predicate to accommodate a missing save allocation.
 
-Keep the existing Streaming concrete ownership usable by a later original Game
-initializer without exporting a mutable Game or accepting arbitrary native
-owners. The remote mode and lifecycle state remain private and permanent. This
+Keep original concrete Streaming ownership private within the wrapper for later
+original Game composition without exporting a mutable Game or accepting arbitrary
+native owners. The remote mode and lifecycle state remain private and permanent. This
 packet supplies no conversion back to legacy/native, callback setter, restart,
 active worker handle, mutable actor payload or broadly callable completion mint.
 
@@ -129,6 +149,8 @@ do not notify a Condvar without accounting for its predicate-lock race. Retain
 queued work explicitly unprocessed, or reconcile it through the fixed close
 disposition; do not schedule generation/storage to drain a remote close.
 
+The wrapper's try_observe remote census is the qualified observation surface;
+unavailable is represented explicitly. Legacy observations are not forwarded.
 UI-facing observation/close/Retry/poll must not wait on an actor payload lock
 held during real Light/Mesh execution or join an unfinished thread. Busy census
 is explicitly unavailable, never fabricated zero. An expired original deadline
@@ -145,6 +167,9 @@ It retains original unprocessed/failed jobs, late/stored outputs and checked
 failure outcomes for explicit caller disposition. It is not SealedStream,
 NativeWriterClosed, ClosedSession or a native save/whole-client completion witness.
 No native writer acknowledgement is needed or forged for work that owns no writer.
+Disarm the inner remote destructor only after its actual finished handles are
+checked and joined and its remaining original payloads have transferred to the
+closed owner; never trigger the inner legacy blocking Drop as a remote shortcut.
 
 Checked native panic or startup refusal can yield a visible FAILURE handoff after
 actual native quiescence; unfinished work stays owned and Blocked. Do not offer
@@ -178,8 +203,14 @@ Aim for a few grouped production-worker scenarios, not a broad old battery:
    result preserve original active/queued/published payloads; no job replay,
    replacement or discarded failed region is hidden by counts.
 5. Intrinsic profile refusal rejects generation/storage/native close operations
-   before callbacks or work, including attempts to alter legacy mutable flags.
+   before callbacks or work. Wrapper visibility prevents access to legacy mutable
+   flags; private inline tests also exercise internal fixed-mode guards.
    A native writer witness cannot substitute for remote closure or vice versa.
+
+Exercise all 64 slots across queued, active, stored and reconciling phases together,
+original-input capacity refusal, and retirement only on explicit owned handoff.
+Use deterministic actual-worker claim/fence and idle-wakeup controls. The wrapper
+must not turn slot saturation into silent world mutation or input/result loss.
 
 Fixed controls hold actual native actors; they cannot declare a worker finished
 or replace Mesher::mesh/light_chunk with an echo. Add separate actual unresolved

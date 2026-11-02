@@ -6,7 +6,8 @@ Latest retained remote decoder is FINAL ACCEPT at engine
 Fresh different decoder_final_review receipt a4502d26/publicprivacyCLEAR;
 normal-hook public codex/s1-retained-decoder pushed and remote verified exact.
 See docs/reference/S1_RETAINED_DECODER_RESULTS.md. Private results checkpoint
-is being prepared. No PR/merge/tag/release or ordinary caller activation.
+74d4767e95b7fdd100811793ab73ed4db50ed113 is synced.
+No PR/merge/tag/release or ordinary caller activation.
 
 Decoder one-path diff1050add0del preserves legacy constructor/algorithm/callers.
 Four checks46.20s/build47.10s; seven normal0.14s and two separate actual held-owner
@@ -28,14 +29,18 @@ retain exact mixed component/window pins. See S1_RETAINED_WINDOW_RESULTS.md.
 
 Read-only research found retained Streaming currently requires a real SaveDir and
 matching NativeWriterClosed; remote clients need received-column worker ownership
-without local storage. HELD S1_RETAINED_REMOTE_STREAMING_PROPOSAL.md abe620ad
-is ready for streaming.rs-only construction/closure, covering reachable Mesh/Light
+without local storage. HELD S1_RETAINED_REMOTE_STREAMING_PROPOSAL.md 9da1940b
+and assignment644c51df have fresh SolHigh DESIGN ACCEPT. Source awaits synced
+private design checkpoint and exact root gate. Initialabe620ad/f68e9ab3
+WITHHELD for legacy void-input/callback/blocking-observation compatibility;
+preserved .local/s1rw1-design-attempt1. Revised opaque wrapper exposes no inner
+Streaming, only checked refusals and try-only remote operations; no refusal queue.
+The one-path construction/closure covers reachable Mesh/Light
 work, original queued/active/context/result custody, distinct ClosedRemoteStreaming,
 no fakeSaveDir/writer/generation witness. Proposed1..8workers/64ownedjobs await
 fresh design review. Legacy/native factories stay unchanged. Draft819689f3 is
 preserved.local/s1rw1-design-attempt0.md.
-No source release. First finish/sync this private decoder evidence checkpoint,
-then fresh independent SolHigh DESIGN/assignment acceptance, private checkpoint
+No source release. Next fresh independent SolHigh DESIGN/assignment acceptance, private checkpoint
 and exact root gate. No formatter/compiler/runtime before exact SOURCE/tool CLEAR.
 Later RetainedSession(net.rs), original remote Game recipe, server startup/Hub and
 scopedcheckedserver joining are separate composition work. No G1/liveS2/default
