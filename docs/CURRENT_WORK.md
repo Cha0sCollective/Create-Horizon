@@ -1,8 +1,8 @@
 # Current work
 
 Coherent native close and C0e1a transport shutdown are component FINAL/publicly
-synced. S1/G1 remain OPEN. Active: fresh independent review of proposed C0e1b
-retained LAN ownership. No server source assignment is released yet. No ordinary activation, C1,
+synced. S1/G1 remain OPEN. Active: design ACCEPT for bounded C0e1b retained LAN
+ownership, private checkpoint then local source release. No ordinary activation, C1,
 connected G1, live S2, PR, merge, tag or release.
 
 The owner resumed development and authorized progress until a genuine blocker or
@@ -60,7 +60,7 @@ s1cl1 prefix. Do not replay whole predecessor batteries.
 
 ## Next bounded packet: C0e1b design review
 
-Proposal6da81085 and HELD assignment85c660d4 under fresh retained_lan_design_review.
+Fresh retained_lan_design_review ACCEPT of proposal6da81085/assignment85c660d4.
 See design/S1_RETAINED_LAN_PROPOSAL.md and S1_RETAINED_LAN_SOURCE_ASSIGNMENT.md.
 Exactly client lan/mod.rs, lan/conn.rs, lan/discovery.rs including inline tests.
 Actual native listener/local+TCP/writer/Pinger custody, stop/registration fencing,
@@ -68,7 +68,8 @@ checked finished-only reap and retained event/UUID/terminal outcomes. Typed offl
 modern profile avoids existing untracked online/resource-pack/Friends owners;
 pre-read capability avoids ordinary raw blocking legacy peek. Retained sender must
 bypass detached POST in all send/flush paths. No ordinary constructor activation.
-No source before exact design acceptance plus private checkpoint/local release.
+Source release follows this private checkpoint/local gate; no compiler/runtime
+before fresh exact SOURCE/tool CLEAR, different FINAL before consumption/push.
 C0e1c Session and later full application workers still need their own assignments.
 
 ## Later transport/application ownership
