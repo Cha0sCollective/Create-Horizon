@@ -1,16 +1,23 @@
 # Current work
 
-The retained LAN component is FINAL and publicly synced. Active: accepted bounded
-C0e1c client Session design; private checkpoint then one-path source release.
+Retained LAN and client Session are separately FINAL and publicly synced. Next:
+fresh bounded C0e2a LOD ownership design. No next source assignment released yet.
 S1/G1 remain OPEN. No ordinary activation, C1, live S2,
 PR, merge, tag or release. Owner resumed development until genuine blocker/input.
 
 ## Accepted baseline
 
-Engine909452923f9f6b83224714eefdc139e665c902ac,
-tree8f8a30586ee25d3f1703ad72ec18de95595f39f6, sole parent
-906f91b10683224532f8b300dd6a4a654acbe88a. Physical
-.local/worktrees/s1-retained-acquisition CLEAN on codex/s1-retained-lan.
+Enginec73abbef3f8175077abc5cd6e9e13e57c40cf401,
+tree16a38ec0c9a5504ad29f3ff88b1aa3af82041017, sole parent909452923f9f6b83224714eefdc139e665c902ac.
+Physical.local/worktrees/s1-retained-acquisition CLEAN on codex/s1-retained-client.
+Different retained_client_final ACCEPT/PUBLIC PRIVACY CLEAR33db8d13; frozen input
+5ba6535a(53files) all independently rehashed initially/finally. One raw net.rs matches
+commitblob1e1fed09. 24normalPASS0.48s +1fatalPASS0.07s,6staticPASS160.84s,build55.88s.
+Exact public remote c73abbe verified; normal commit/full-history hooks PASS.
+Results: [S1_RETAINED_CLIENT_RESULTS.md](reference/S1_RETAINED_CLIENT_RESULTS.md).
+Preserve all53 frozen inputs; s1tc1 qualifier modes RETIRED, do NOT rerun.
+
+Prior retained LAN9094529:
 Exactly4 paths: clientCargo.toml and src/lan/{mod.rs,conn.rs,discovery.rs}.
 Normal commit and full-history public push hooks PASS; remote branch verified at
 exact9094529. No PR/merge/tag/release.
@@ -82,12 +89,25 @@ S1_RETAINED_CLIENT_SOURCE_ASSIGNMENT.md. ONE net.rs path including inline tests.
 Private checkpoint/local gate releases source; no formatter/compiler/runtime before
 fresh exact SOURCE/tool CLEAR. New prefix.local/s1tc1, preserve one path/prefix
 before corrections. Ordinary constructors remain dormant to retained mode.
+Private81c2394e/localgate12c4ad6c RELEASED. Fresh independent
+retained_client_design_review SOURCE/tool CLEAR manifestA88fe9af/netDdfb80fc,
+tool8ea4213a/expectedE2b4d049. Exact formatter delta reviewed. Six fresh static
+checks41a79464 PASS160.84s; actualbuild4ac87807/87b38c2a PASS55.88s,
+24normal977ebe0f PASS0.48s +1fatalCB003da9 PASS0.07s. Different FINAL33db8d13.
+19 defining native client cases plus5 unchanged legacy. No prepared resources,
+Game or Java needed. Attempts0..3 preserve source/prefix. Initial SOURCE blocker
+actual-client fixture timeout corrected: no native client read/write backstops;
+peer/process timeouts fail. Backpressure claim custody+reap, not exclusive cause.
 Read-only prep.local/c0e1c-client-research-906f91b.md grants no source authority.
 Likely net.rs-only: actual late DNS/connect/reader/writer custody, async outbound,
 planned FIFO wire-phase vs actual acknowledgment receipts, no auth/Friends
 acquisition, old transfer/cookie owner retained. No mutable Session/Game escape.
 C0e2/3 still need window/control, Remote ChunkDecoder, LOD, Friends and actual
 integrated/dedicated worker ownership; reconcile original Box<Game>/NativeReady.
+Read-only next-scope audit.local/c0e2-window-research-9094529.md grants no source
+authority: LOD owns outer+up to3 sampling threads; control has detached native
+listener/client workers. Qualify retained primitives before window/control
+composition; actual Remote/preparation need additional honest paths/seam review.
 
 Remaining S1: ordinary close/composition; registered placement/generations/chunk
 cycles; failed Guest disposal; authorized intent/replay/reach/permissions/revisions/
