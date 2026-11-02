@@ -2,6 +2,22 @@
 
 Owner resumed development until a genuine blocker/input. S1/G1 remain OPEN.
 Current packet C0e2c: explicit Linux preloaded in-frame original window close.
+Implementation authored in eight of eleven paths; source47385401 previously
+checked/built, but realwindow close FAILED: Client execution role cannot prepare
+native close identities. Actualoriginalworld rendered+resized; same RPC reports
+Blocked authoritative-owner refusal. No completedwindowclose/G1. All3processes
+reaped; currentfailure preservedattempt22, prior failures19/20. Sourceunchanged.
+Fresh independent window_authority_design_review DESIGN ACCEPT supplement
+S1_WINDOW_NATIVE_CLOSE_AUTHORITY_AMENDMENT.md5caae76b: factory-only nonClone
+ColdPreparedWorld+NativeCloseAuthority, precisely THREE native-close gates,
+exact original inputs/currentmode, no general client/domain/server permission
+change or role relabel. Source HELD until its private checkpoint and separate
+.local/s1wc1-native-authority-parent-gate.json release. Base eleven-path gate stays.
+Old18normal50.68s+1fatal0.03s passed59297333; library identical450d8029. Evidence
+reuse at actualoldpin only; new capability/affectedserverclose and3windows required.
+Allsource/prefix attempts0..23 preserved. No private/public checkpoint of engine
+candidate yet. Historicalmetadata/scans unbounded; injectedGPUerror-route only;
+asyncLOD forwarding static+predecessor faults. S1/G1 remain OPEN.
 Fresh independent window_design_review DESIGN ACCEPT exact proposal bb7f5411,
 terminal amendment aca30066 and assignment ad7848d1; local review624bcdac.
 Held doc wording is overridden ONLY by the accepted private checkpoint plus
@@ -10,9 +26,9 @@ No ordinary activation, C1/live S2, PR, merge, tag or release.
 
 ## Physical checkout and bounded scope
 
-Active .local/worktrees/s1-native-close-composition CLEAN predecessor
+Active .local/worktrees/s1-native-close-composition DIRTY eight-path candidate, predecessor
 bd0647a6aef9efc2484629fb36a954167b738b30, tree471bbec26f30f863db77d6f1baf654fa5f7a29f7.
-Root creates codex/s1-window-close at that exact parent, same physical checkout
+Branch codex/s1-window-close at that exact parent, same physical checkout
 and dedicated warm Linux target /home/arbiter/.cache/create-horizon/target-s1nc1.
 Never copy/share targets across physical worktrees. Prefix.local/s1wc1.
 
