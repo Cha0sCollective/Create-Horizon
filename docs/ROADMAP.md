@@ -26,9 +26,14 @@ This closes the explicit fixed in-frame window component, not ordinary startup o
 G1. The one-path retained remote-chunk decoder is now FINAL at `9f64664`, reviewed
 public branch synced; see `docs/reference/S1_RETAINED_DECODER_RESULTS.md`. Its seven
 normal cases and two separate fatal controls use the actual production decoder,
-with no caller/default activation. Next is a held constructor design for received-
-column mesh/light workers without a local save writer. The component notes below
-retain historical point-in-time qualification and limitations.
+with no caller/default activation. Received-column Mesh/Light streaming is now
+FINAL at `e724758`, reviewed public branch synced; see
+`docs/reference/S1_RETAINED_REMOTE_STREAMING_RESULTS.md`. Its eight normal real-
+resource cases and two fatal controls qualify the opaque owner without a local
+save writer. Next is original remote Game ownership/dispatch composition with
+RetainedSession, retained decoder and retained streamer; no source assignment for
+that composition yet. G1 remains open. The component notes below retain historical
+point-in-time qualification and limitations.
 
 The native session checkpoint foundation has FINAL local acceptance at engine
 `872dac2`, after independent source and final result review. See
