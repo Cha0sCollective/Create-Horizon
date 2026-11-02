@@ -1,8 +1,8 @@
 # Current work
 
 Both native metadata packets are FINAL and their reviewed engine branches are
-synced. S1/G1 remain OPEN. Next is a fresh bounded design for coherent native/image
-close. Preliminary research grants no source authority. No live S2, ordinary
+synced. S1/G1 remain OPEN. The reviewed fourteen-path coherent native/image close
+packet is in source development; no C0d compiler/runtime has run. No live S2, ordinary
 paired activation, PR, merge, tag or release.
 
 ## Accepted predecessor
@@ -10,8 +10,8 @@ paired activation, PR, merge, tag or release.
 Commit485d4b1914c639d2a6cfc68f6fa7191ae5adbdaf,
 treeec926d221833e8c1279f7063e5cb43ff02dd940d, sole parent
 b7cdb4220029c7f5aff6afb18f3813fd13fdcc76. Physical worktree
-.local/worktrees/s1-retained-acquisition is clean on
-codex/s1-coherent-native-close at the same accepted P; reuse target-s1ra1 serially.
+.local/worktrees/s1-retained-acquisition is on codex/s1-coherent-native-close at
+the same accepted P with the bounded C0d source draft dirty; reuse target-s1ra1 serially.
 
 Seven Rust paths, all raw byte-exact commit blobs; source manifestd56b4852.
 Different s1_remaining_metadata_final ACCEPT831b56f5; input11a5b1ec indexes60.
@@ -51,13 +51,34 @@ checkpoint06d8dfd and core authored checkpointa014deb remain historical pins.
 Prior evidence stays attributed to actual revisions, without full-battery replay.
 Preparation's one CRLF distinction stays explicit; both metadata packets are raw exact.
 
-## Active packet: coherent native close, checkpoint before source
+## Active packet: coherent native close source draft
 
 Fresh s1_close_api_review accepted exact S1_COHERENT_CLOSE_PROPOSAL.md17c620a4
 at accepted485; design receipt513b5f95. The bounded SOURCE_ASSIGNMENT640adac3
-must be privately checkpointed before Root release. New clean branch
+was privately checkpointed/synced at37c90d3 before Root release. Branch
 codex/s1-coherent-native-close remains at P in the same physical worktree/target.
-ALL14/prefix baseline s1cl1-attempt0 preserved; no C0d source edits started.
+ALL14/prefix snapshots0..5 preserve the draft and early corrections. Root owns
+the close-owner wiring; bounded writer/world/image/Level authors remain text-only.
+No C0d compiler/runtime or whole SOURCE/tool clearance yet.
+
+Level retry amendment90c31ff6 received fresh independent design ACCEPT from
+level_retry_design_review and private checkpoint81c24f9 was synced before source
+release. Within existing save.rs, capture complete native unknown fields,
+conditional decisions, clocks and one LastPlayed before final writes; retry exact
+retained plan. Ordinary Level::write ordering remains unchanged. Existing game.rs/
+lan.rs binding preserves actual integrated-owner body fields and per-file effects.
+
+Early writer/image audits found forced-ticket partial-rotation retry loss and
+missing old-sidecar validation; both corrected and provisionally source-cleared.
+World audit found saved falling blocks omitted from entity coordinate selection;
+corrected with active/parked fixture helper, awaiting focused regression/review.
+Early audits do not establish whole-candidate SOURCE/tool or runtime acceptance.
+
+NativeWorld old-source reader needs a minimal reviewed structural/readability
+context: existing native readers tolerate malformed data, while the complete D
+reader requires a counter session/initial Overworld. Do not skip validation or
+apply D-only restrictions to arbitrary native entities. Read-only design research
+is underway within existing image paths; no new source release for that seam yet.
 
 Fourteen paths: original7(game/lan.rs, game.rs, paired_close.rs, levels.rs,
 levels/session_checkpoint.rs, NEW paired_close_tests.rs, session_checkpoint_tests.rs)
