@@ -43,8 +43,12 @@ construction and dispatch. Retained Session close alignment is now FINAL at
 `9d3ecdc`, reviewed public branch synced; see
 `docs/reference/S1_RETAINED_SESSION_CLOSE_ALIGNMENT_RESULTS.md`. It accepts exact
 parent deadlines and checked-attempt Retry without activating a Game. Fixed-
-profile streamer configuration/readiness/forget and actual client composition
-remain next. G1 remains open.
+profile streamer configuration/readiness/forget is now FINAL at `e52f0de`,
+reviewed public branch synced; see
+`docs/reference/S1_REMOTE_STREAM_CLIENT_INTERFACE_RESULTS.md`. Four actual-resource
+groups pass; no Game caller is activated. Original remote Game construction,
+dispatch and closure with real helper acquisition boundaries remain next.
+G1 remains open.
 The component notes below retain historical
 point-in-time qualification and limitations.
 

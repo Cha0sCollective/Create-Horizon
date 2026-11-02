@@ -52,7 +52,27 @@ activation assignment is released. Fresh independent DESIGN accepts
 (`abb629ad`): streaming.rs only, explicit pre-spawn profile, checked received
 column/light/forget operations and selective current-stamp retirement. Proposed
 branch `codex/s1-remote-stream-interface`, unique prefix `.local/s1rsapi1`.
-Private design sync and exact root release precede source. No execution release.
+Private design `ee0838e` is synced; root gate
+`.local/s1rsapi1-parent-gate.json` (`38d7c42c`) releases only streaming.rs native
+text authoring after attempt0 preservation. Candidate is qualified and CLEAN at
+`e52f0def9f4cfd297133c9c8d018e8061a7fe328`, tree `3efbc31c`, parent `9d3ecdc`;
+one streaming.rs file, 540 additions/35 deletions. Exact source manifest `6ea46d90`,
+tool `6e0f9255`, four resource groups `f234abb2`; successful checks 70.27s,
+lib build 57.64s and four first-runtime-attempt cases 21.31s. First check failed
+only test Clippy chunks_exact style (preserved verified=false in attempt7); no
+runtime used that source. Source review also corrected fixture light and bounded
+Busy/handoff waits before execution. Production logic needed no correction.
+Corrected 15 raw input pairs use source-inputs-r2/map `d1d71304`; original failed
+archive stays immutable. Qualifier retired by parent guard. Different FINAL/
+privacy receipt `6aff7e5d` accepts it; normal-hook public sync is exact
+(`e368b404`). See `docs/reference/S1_REMOTE_STREAM_CLIENT_INTERFACE_RESULTS.md`.
+No Game activation assignment is released. Next actual remote Game design must
+include helper acquisition boundaries: skin helpers are inert only until state()
+spawns detached fetches (players/skulls/items); server-pack download/reload also
+needs pre-acquisition handling. Fixed offline alone does not exclude these. Silent
+audio is a genuine no-acquisition boundary; use controller feature-off or explicit
+preflight, complete synchronous resources and no mods/extras/menu loaders. Required
+paired admission remains later C1 after C0 composite; do not relax guards.
 The abandoned new s1sc1 prefix collided with
 older unrelated history before source; its records and old files are preserved.
 Read `docs/design/S1_ORIGINAL_REMOTE_GAME_GAP_INVENTORY.md`
@@ -75,8 +95,8 @@ server joining remain separate; finish client LOD before shared server storage.
 
 ## Physical checkout and operating boundaries
 
-Active checkout `.local/worktrees/s1-native-close-composition` is CLEAN 9d3ecdc,
-branch `codex/s1-session-close-alignment`; only net.rs changed. Dedicated warm target
+Active checkout `.local/worktrees/s1-native-close-composition` is CLEAN e52f0de,
+branch `codex/s1-remote-stream-interface`; only streaming.rs changed. Dedicated warm target
 `/home/arbiter/.cache/create-horizon/target-s1nc1`. Never share/copy targets between
 physical checkouts. Historic `s1-retained-acquisition` remains CLEAN c73abbef.
 A future accepted packet may create a logical branch here. Preserve all historic
