@@ -1,7 +1,8 @@
 # Current work
 
-The retained LAN component is FINAL and publicly synced. Next: fresh bounded
-C0e1c client Session design. S1/G1 remain OPEN. No ordinary activation, C1, live S2,
+The retained LAN component is FINAL and publicly synced. Active: accepted bounded
+C0e1c client Session design; private checkpoint then one-path source release.
+S1/G1 remain OPEN. No ordinary activation, C1, live S2,
 PR, merge, tag or release. Owner resumed development until genuine blocker/input.
 
 ## Accepted baseline
@@ -75,8 +76,12 @@ Prior coherent native close114626f FINAL3b1c5723, inputfeec68ab(147files),
 source14d590a2; all dirty-parent qualifier modes RETIRED. See
 reference/S1_COHERENT_NATIVE_CLOSE_RESULTS.md. Preserve both frozen inputs.
 
-Next is fresh bounded C0e1c retained client Session design at accepted9094529.
-No next source assignment is released yet.
+Fresh retained_client_design_review ACCEPT proposal1874e912/assignment810bdbcf,
+at accepted9094529. See docs/design/S1_RETAINED_CLIENT_PROPOSAL.md and
+S1_RETAINED_CLIENT_SOURCE_ASSIGNMENT.md. ONE net.rs path including inline tests.
+Private checkpoint/local gate releases source; no formatter/compiler/runtime before
+fresh exact SOURCE/tool CLEAR. New prefix.local/s1tc1, preserve one path/prefix
+before corrections. Ordinary constructors remain dormant to retained mode.
 Read-only prep.local/c0e1c-client-research-906f91b.md grants no source authority.
 Likely net.rs-only: actual late DNS/connect/reader/writer custody, async outbound,
 planned FIFO wire-phase vs actual acknowledgment receipts, no auth/Friends
