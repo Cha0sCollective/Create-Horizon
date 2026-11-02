@@ -121,11 +121,12 @@ NO gearbox. R01 matches pinned Java full-output item loss.
 ## Execution and publication
 
 Immutable source layout refinement independently ACCEPTED by fresh Sol High
-source_freeze_layout_review, proposalC8e2967a/receipt68140621; adopted in
-docs/design/VALIDATION_WORKFLOW.md. Preserve current physical checkout and all
+source_freeze_layout_review, proposalC8e2967a/receipt68140621; adopted in separate
+docs/design/IMMUTABLE_SOURCE_FREEZE_LAYOUT_ADOPTION.md. Historical
+VALIDATION_WORKFLOW.md is restored to its exact frozen bytes. Preserve original physical checkout and all
 historical frozen live files. Prepare NEW stable active worktree
-.local/worktrees/s1-native-close-composition atc73 with dedicated EMPTY
-target-s1nc1, never share/copy targets. Future FINAL source/config/recipe inputs
+.local/worktrees/s1-native-close-composition atc73 with dedicated EMPTY Linux
+/home/arbiter/.cache/create-horizon/target-s1nc1, never share/copy targets. Future FINAL source/config/recipe inputs
 use immutable archives plus actual live/archive/commit and runtime proof. No old
 index rewriting, cleanup or deletion. Cfree239GiB/Gfree393GiB, oldtarget18GiB.
 

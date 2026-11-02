@@ -1,23 +1,5 @@
 # Validation workflow refinement, November 1
 
-## Immutable source input layout, November 2
-
-Adopted after fresh independent Sol High source_freeze_layout_review ACCEPT of
-IMMUTABLE_SOURCE_FREEZE_LAYOUT_PROPOSAL.md, exact SHA256c8e2967a. Keep original
-.local/worktrees/s1-retained-acquisition and its historical frozen live inputs
-unchanged. New ownership work uses one stable active checkout at acceptedc73abbe,
-with its own NEW target (no target sharing/copying between physical checkouts).
-
-Future FINAL indices freeze packet-owned copies of mutable source/config/recipe
-inputs with exact live/archive/SHA/Git-blob mappings. Actual guarded LIVE code is
-still compiled/executed; archive bytes are not execution evidence. Different FINAL
-compares qualified live/archive/commit bytes and actual Cargo/profile/binary/input
-evidence, and hashes immutable copies initially/finally. Later accepted packets may
-edit this new active checkout and reuse its own target; old archives/maps/receipts
-stay unchanged. Historical indices are never rewritten. Explicit normalization,
-SOURCE/tool, different FINAL, publication and stage gates remain unchanged. This
-adoption authorizes no cleanup or deletion. Exact proposal retains full details.
-
 Status: adopted after fresh independent Sol High review testing_strategy_review
 of proposal3865ae91, subject to exact final wording recheck. This changes test
 selection and retention, not S1/G1 behavior, R01, publication authority or results.
