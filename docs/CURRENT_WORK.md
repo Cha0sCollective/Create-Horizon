@@ -1,8 +1,8 @@
 # Current work
 
 Coherent native close and C0e1a transport shutdown are component FINAL/publicly
-synced. S1/G1 remain OPEN. Active: design ACCEPT for bounded C0e1b retained LAN
-ownership, private checkpoint then local source release. No ordinary activation, C1,
+synced. S1/G1 remain OPEN. Active: C0e1b three-path source FROZEN for independent
+SOURCE review; focused tool CLEAR, no compiler/runtime yet. No ordinary activation, C1,
 connected G1, live S2, PR, merge, tag or release.
 
 The owner resumed development and authorized progress until a genuine blocker or
@@ -13,8 +13,9 @@ needed input. Keep each source packet bounded and its review/publication gates e
 Engine906f91b10683224532f8b300dd6a4a654acbe88a,
 tree9a349b3dd986c9718cb8ac0f9b769b3136e32891, sole parent
 114626f09afb77a4da97325e5bd4ae9f13dbcb25. Physical worktree
-.local/worktrees/s1-retained-acquisition CLEAN on codex/s1-transport-shutdown,
-public origin/remote branch verified at exact906f91b;
+.local/worktrees/s1-retained-acquisition now on codex/s1-retained-lan at906f91b
+with exactly three draft lan paths modified. Accepted public branch
+codex/s1-transport-shutdown remote verified at exact906f91b;
 normal commit and full-history push hooks PASS. No public unfinished source.
 
 Transport FINAL866c4acf by different transport_shutdown_final; frozen input10e44f52,
@@ -58,7 +59,7 @@ six passing cases are individually hashed/attributed, not relabeled fresh.
 Preserve the147 frozen inputs and receipt files; new research stays outside the
 s1cl1 prefix. Do not replay whole predecessor batteries.
 
-## Next bounded packet: C0e1b design review
+## Active bounded packet: C0e1b SOURCE review
 
 Fresh retained_lan_design_review ACCEPT of proposal6da81085/assignment85c660d4.
 See design/S1_RETAINED_LAN_PROPOSAL.md and S1_RETAINED_LAN_SOURCE_ASSIGNMENT.md.
@@ -68,8 +69,15 @@ checked finished-only reap and retained event/UUID/terminal outcomes. Typed offl
 modern profile avoids existing untracked online/resource-pack/Friends owners;
 pre-read capability avoids ordinary raw blocking legacy peek. Retained sender must
 bypass detached POST in all send/flush paths. No ordinary constructor activation.
-Source release follows this private checkpoint/local gate; no compiler/runtime
-before fresh exact SOURCE/tool CLEAR, different FINAL before consumption/push.
+Private0dfa3625 and local s1tl1-parent-gate release source. Scoped authors finished
+native text only. Frozen manifest43b617f7: modc8a50f94, conn29f06700, discovery95d378f7.
+Independent retained_lan_design_review TOOL CLEAR a796240c/expected56162e1b; whole
+SOURCE review pending. Selected30normal(19new+11affected sender/staged regressions)
+and2separatefatal, no compiler/runtime/fmt yet. Root alone executes after exact
+SOURCE/tool CLEAR. Different FINAL required before consumption/public push.
+Attempts0..4 preserve ALL3/prefix. Sender post-latch/pre-seal gap corrected with
+permanent shared close latch and deterministic actual-owner gate; not yet tested.
+ClosedLan retains original registry/raw queued+active bodies and unconsumed events.
 C0e1c Session and later full application workers still need their own assignments.
 
 ## Later transport/application ownership
