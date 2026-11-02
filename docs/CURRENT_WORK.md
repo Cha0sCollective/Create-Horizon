@@ -1,13 +1,25 @@
 # Current work
 
 Owner resumed S1 development until a genuine blocker/input. S1/G1 remain OPEN.
-The retained remote streaming packet is qualified at clean engine
-`e72475864c13720fe066d5bd6335d652ce5cd2bf`, tree `4a5567d1`, parent `9f64664`,
-branch `codex/s1-retained-remote-stream`. DIFFERENT independent FINAL/public
-privacy receipt ce3dae78 accepts it; normal-hook public branch sync is exact.
-See docs/reference/S1_RETAINED_REMOTE_STREAMING_RESULTS.md.
+Active Game streaming owner representation is qualified at CLEAN engine
+`7d443a1bf41a83db6ff5b8426460a224a4bf612a`, treed37a5fae, parente724758,
+branch `codex/s1-game-streaming-owner`. DIFFERENT FINAL/privacy receiptcd4090f3
+accepts it; normal-hook public branch sync is exact. See
+docs/reference/S1_GAME_STREAMING_OWNER_RESULTS.md. All39 source paths
+(38 existing plus private owner module)
+are raw-exact committed after guarded live qualification: manifestea74c758,
+tool569d5c10/expected71892baf, map587f7096. Fourchecks60.70s/build90.16s/
+four normal cases46.70s passed FIRST attempt. Three new actual-resource owner
+groups plus actual cold-native authority/three-gate regression; no broad/fatal
+battery or further tests needed absent correction. Sources/recipe archived53pairs
+(39rawexact/10unchangedcanonical/4private), preformat snapshotattempt1.
+No new production remote Game factory, default activation or native provenance.
 
-## Active packet and evidence
+## Accepted remote streaming predecessor
+
+Retained remote streaming FINALe724758/tree4a5567d1/parent9f64664, receiptce3dae78,
+reviewed public codex/s1-retained-remote-stream synced. Private results0d5b1859
+synced; see docs/reference/S1_RETAINED_REMOTE_STREAMING_RESULTS.md.
 
 One engine source path: streaming.rs, 1,627 additions/28 deletions. Opaque fixed
 remote owner reuses original concrete pool/queue/handles and real Mesh/Light.
@@ -55,8 +67,13 @@ Next design is accepted: S1_GAME_STREAMING_OWNERSHIP_MIGRATION_PROPOSAL.md f871e
 assignment b3086d3c, proposed39paths0bbccca1, independent game_streaming_design_review.
 Selected factory-invariant minimum introduces explicit checked Existing/
 RetainedRemote owner storage and mechanical access, while ALL actual Game
-factories/replacements remain Existing. Source awaits synced private design
-checkpoint/root gate. No remotely running Game, common dispatch facade or native
+factories/replacements remain Existing. Private design9711c9bc synced; root gate
+.local/s1go1-parent-gate.json366c389e releases only the39-path bounded assignment.
+Initial source/prefix preserved .local/s1go1-attempt0; source candidate is qualified
+and cleancommitted, FINAL accepted/public synced; results accompany this checkpoint.
+Qualifier retired by
+original-parent guard; do not edit it for a future packet.
+No remotely running Game, common dispatch facade or native
 provenance follows. Preserve all incoming/slot owners and original swap/disposal
 order; no wrapper inner escape, fake pool or storage witness.
 Original remote Game adoption of RetainedSession(net.rs), retained decoder,
@@ -67,8 +84,9 @@ separate; client LOD must finish before sealing shared server storage.
 
 ## Physical checkout and operating boundaries
 
-Active .local/worktrees/s1-native-close-composition CLEANe724758 on the branch
-above; dedicated warm /home/arbiter/.cache/create-horizon/target-s1nc1. Never share
+Active .local/worktrees/s1-native-close-composition CLEAN7d443a1 on
+codex/s1-game-streaming-owner. Dedicated warm
+/home/arbiter/.cache/create-horizon/target-s1nc1. Never share
 or copy targets between physical checkouts. Historic s1-retained-acquisition stays
 CLEANc73abbef and untouched. Future accepted packet may create a logical branch
 here; all historic archives/maps/indices/receipts remain immutable.

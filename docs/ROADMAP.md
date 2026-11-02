@@ -33,8 +33,10 @@ resource cases and two fatal controls qualify the opaque owner without a local
 save writer. Next is original remote Game ownership/dispatch composition with
 RetainedSession, retained decoder and retained streamer; no source assignment for
 that activation yet. Its first representation-only Game streaming owner migration
-has accepted design, keeping every production Game factory on Existing; see
-`docs/design/S1_GAME_STREAMING_OWNERSHIP_MIGRATION_PROPOSAL.md`. G1 remains open.
+is FINAL at `7d443a1`, reviewed public branch synced, keeping every production
+Game factory on Existing; see `docs/reference/S1_GAME_STREAMING_OWNER_RESULTS.md`.
+Next are honest no-local-storage and client connection/decoder ownership before
+actual retained remote Game adoption. G1 remains open.
 The component notes below retain historical
 point-in-time qualification and limitations.
 
