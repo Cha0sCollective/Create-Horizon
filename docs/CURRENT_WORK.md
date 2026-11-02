@@ -73,6 +73,13 @@ needs pre-acquisition handling. Fixed offline alone does not exclude these. Sile
 audio is a genuine no-acquisition boundary; use controller feature-off or explicit
 preflight, complete synchronous resources and no mods/extras/menu loaders. Required
 paired admission remains later C1 after C0 composite; do not relax guards.
+Fresh independent DESIGN now accepts `S1_ORIGINAL_REMOTE_GAME_ADOPTION_PROPOSAL.md`
+(`180510d0`) and assignment (`ccfb0b50`), maximum 24 exact paths (22 existing/two
+new), proposed branch `codex/s1-original-remote-client`, prefix `.local/s1ogrc1`.
+Actual unpaired offline TCP Game factory/ordered dispatch/running original window
+and honest helper/close boundaries are one coherent packet. Native frozen App and
+storage completion remain native; no C1/default activation/G1. Private design sync
+and exact root release still precede source.
 The abandoned new s1sc1 prefix collided with
 older unrelated history before source; its records and old files are preserved.
 Read `docs/design/S1_ORIGINAL_REMOTE_GAME_GAP_INVENTORY.md`
