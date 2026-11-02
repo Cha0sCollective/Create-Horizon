@@ -1,8 +1,8 @@
 # Current work
 
 Retained LAN and client Session are separately FINAL and publicly synced. Next:
-C0e2a LOD full-family design revision; one-path proposal WITHHELD for hidden
-Far decoration worker and Persistent native read seam. No source assignment yet.
+C0e2a revised seven-path full-family design ACCEPT; private checkpoint/local
+release precedes source. No formatter/compiler/runtime or ordinary activation.
 S1/G1 remain OPEN. No ordinary activation, C1, live S2,
 PR, merge, tag or release. Owner resumed development until genuine blocker/input.
 
@@ -119,6 +119,14 @@ S3 exactly creative motor/shaft/small+large cogs/millstone cobble-to-gravel,
 NO gearbox. R01 matches pinned Java full-output item loss.
 
 ## Execution and publication
+
+Active C0e2a proposalA6a5c59b/assignmentAc86da24 independently ACCEPT.
+Actual seven client src paths: lod.rs, streaming.rs, vanillagen.rs,
+vanillagen/lod.rs, save.rs, flatgen.rs, testgen.rs. No mesh/Game/control/Cargo/lock
+edits. New work ONLY in s1-native-close-composition, prefix.local/s1ld1; preserve
+ALL7/prefix before corrections. Default-unsupported identity-bound capability,
+actual decoration/outer/sampling custody and strict saved-column failures; original
+Streaming/save-writer receipts remain independent. No fixture-only provider claim.
 
 Immutable source layout refinement independently ACCEPTED by fresh Sol High
 source_freeze_layout_review, proposalC8e2967a/receipt68140621; adopted in separate
