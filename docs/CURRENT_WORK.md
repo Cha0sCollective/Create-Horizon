@@ -1,8 +1,8 @@
 # Current work
 
 Owner resumed development until a genuine blocker/input. S1/G1 remain OPEN.
-C0e2a native LOD is FINAL and public/private synced. Current C0e2b is the accepted
-retained native-control design; private checkpoint/local release precede source.
+C0e2a native LOD and C0e2b native control are FINAL; reviewed public branches synced.
+Current work: honest window/in-frame close-composition research, no new source release.
 No ordinary activation, C1/live S2, PR, merge, tag or release.
 
 ## Accepted predecessor and physical workspace
@@ -18,7 +18,8 @@ hashed before/after runtime. No native runtime failed. Initial two test lints
 preserved/corrected/reviewed. Qualified dirty-parent97d8ed89 raw source equals clean
 commit; no fresh commit/config-normalization execution claim.
 
-Active stable .local/worktrees/s1-native-close-composition CLEAN at231 on new
+Active stable .local/worktrees/s1-native-close-composition CLEAN at candidate
+bd0647a6aef9efc2484629fb36a954167b738b30, parent231; FINALFd730d8a/public synced on
 codex/s1-retained-control. Its dedicated Linux target
 /home/arbiter/.cache/create-horizon/target-s1nc1 is warm; reuse this physical
 checkout serially. Never copy/share targets between physical worktrees.
@@ -31,12 +32,13 @@ execution proof. No old index replacement. See
 [immutable layout adoption](design/IMMUTABLE_SOURCE_FREEZE_LAYOUT_ADOPTION.md).
 Old guarded qualifier modes remain retired; never modify frozen tools to revive.
 
-## C0e2b scope and gates
+## Completed C0e2b and preserved gates
 
 Fresh independent control_design_review DESIGN ACCEPT exact proposalEa6048e7 and
 assignmentE4166814. Docs/design/S1_RETAINED_CONTROL_PROPOSAL.md and
-S1_RETAINED_CONTROL_SOURCE_ASSIGNMENT.md remain held drafts until root checkpoint
-and local gate release override their status. Prefix.local/s1ct1.
+S1_RETAINED_CONTROL_SOURCE_ASSIGNMENT.md held wording is overridden by private
+cc006f659f391eff66dd326080ed567ddc6c155a and.local/s1ct1-parent-gate.json RELEASED.
+Private accepted design synced. Prefix.local/s1ct1; initial one-file/prefix snapshot0.
 
 ONE path: crates/horizon-client/src/control.rs, inline tests. New dormant paired
 RetainedControl owns actual listener/client resources before native acquisition;
@@ -74,8 +76,18 @@ public-source check. Exact source/tool review decides final selection and featur
 No prepared game resources/Java/Game smoke needed. Pinned Rust1.99.1/offline--locked,
 LinuxUID1000/isolated paths/core0/actual Cargo artifact/binary hashes. Reuse valid
 predecessor evidence at its actual pin, no old LOD/network/save/Game battery replay.
-Thirty cases/10-15min warm is planning prompt, not cap. Current source/tool/runtime
-not yet released. Previous251GiB cleanup/VHD compaction complete; no new deletion.
+Exact SOURCE/tool/formatter/lint-delta review CLEAR manifest7d05dfd1/toolD7a898e3.
+Four fresh static checksF79e6991 PASS75.29s; buildC2f9d049 PASS57.84s/binary97531e63.
+18normalB84edd18 PASS0.98s and1fatal8c76560a PASS0.03s. No runtime failed.
+Initial twoP2 SOURCE findings fixed beforeexecution; one testlint preserved/corrected
+and reviewed, allfour checks passed fresh. Attempts0..8 preservedsource/prefix.
+Immutable15-input archive/map8f1ced22 andrawGit-equal candidate prepared; all552prior
+indexedentries unchanged. DifferentFINALFd730d8a ACCEPT/PUBLIC PRIVACY CLEAR,
+inputC1fddd55/174files; normalfull-historypublicsync verified exactbd0647a.
+Results: [retained control](reference/S1_RETAINED_CONTROL_RESULTS.md). Guardedmodesretired.
+Next originalBoxGame/window/in-frame/control-last-phase scope notyetaccepted.
+Thirty cases/10-15min warm is planning prompt, not cap. Prior251GiB cleanup/VHD
+compaction complete; no new deletion.
 
 ## Publication and remaining S1
 
