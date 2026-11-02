@@ -31,9 +31,13 @@ independent FINAL, reviewed public sync and private results in `docs/reference/`
 Use only accepted decoder index `s1dc1-final-review-input-r1.json`; the incomplete
 original draft remains preserved and is not accepted.
 
-Next is bounded client connection/decoder ownership and actual remote Game
-composition. Native read-only research is in progress; no source assignment for
-activation is released. Read `docs/design/S1_ORIGINAL_REMOTE_GAME_GAP_INVENTORY.md`
+Next bounded design is accepted: `S1_RETAINED_SESSION_CLOSE_ALIGNMENT_PROPOSAL.md`
+(`b4131d64`) and assignment (`981a111d`), net.rs only, proposed branch
+`codex/s1-session-close-alignment`, prefix `.local/s1sc1`. Independent fresh Sol
+High reviewer `session_close_design_review` accepts exact absolute close deadlines
+and checked-attempt Retry on the actual retained owner. Private design sync and
+root release precede source. No activation source assignment is released.
+Read `docs/design/S1_ORIGINAL_REMOTE_GAME_GAP_INVENTORY.md`
 as historical inventory at e724758: streaming/save representation gaps now have
 accepted prerequisites, but actual Game factories remain legacy. Retained Session
 lives in net.rs. Native socket IO occurs outside its State lock; that fact alone
