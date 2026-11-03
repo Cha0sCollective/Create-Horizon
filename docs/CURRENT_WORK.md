@@ -28,13 +28,18 @@ Completed and source releases CLOSED:
   623364687026f666da04d54084b60ed813756f12: different FINAL ACCEPT/privacy
   CLEAR, normal-hook public push and exact remote verified. Seven groups 97.68s;
   checks 74.17s/build 57.05s. See S1_PAIRED_CONFIGURATION_CORE_RESULTS.md.
+- Retained configured handoff ca9b3f49c97db6cd981246de99be35f7b53420ec, tree
+  40c0ed3724a1ccae8bf309e2e860b46cfdd48e55: different FINAL ACCEPT/privacy
+  CLEAR, normal-hook public push and exact remote verified. Nine focused groups
+  204.88s, checks58.98s/build57.57s; S1_PAIRED_CONFIGURED_HANDOFF_RESULTS.md.
 
 Physical engine checkout .local/worktrees/s1-native-close-composition is CLEAN
-on codex/s1-paired-config-core at 9bb5510c. Exactly three assigned library files
-changed from 21471ef. Source 6cb005c3/qualifier 87bc117e/selectors e753313c,
-actual lib binary 99ab5d76. Strict native configuration retains original unsplit
-scope/Live/deadline, concrete failure and private Dynamic. Existing B refusal and
-all ordinary activation guards remain closed. Earlier actual Game/Memory/window
+on codex/s1-paired-config-handoff at ca9b3f49. Exactly nine assigned existing files
+changed from 9bb5510c. Source4bfca08a/qualifier316a53b8/selectorsf009232d,
+actual lib binary842a567c. Strict configuration now transfers the ORIGINAL scope
+into existing actors; actual Session/Hub one-shot consumption precedes Dynamic/
+Guest authority. Original Live/runtime/deadline/counters and refusal custody remain.
+Existing B refusal and ordinary/native Game activation guards stay closed. Earlier Game/Memory/window
 and owner/Retry components remain accepted; no ordinary paired/C1/G1/S1 claim.
 
 Fresh independent read-only C0/input investigation accepted
@@ -44,16 +49,16 @@ defer transport-stop API polish. Ordinary paired C0 ownership is still required.
 Reuse existing creative/inventory/hotbar/placement handlers, but do not ship an
 input-only endpoint: current retained packet guards refuse those operations.
 
-Core source release is CLOSED. Fresh independent read-only design review ACCEPTS
-S1_PAIRED_CONFIGURED_HANDOFF_PROPOSAL.md (9b5b3f78). After this private assignment
-checkpoint and full baseline, coordinator may release exactly its seven production
-and two test paths on codex/s1-paired-config-handoff, prefix s1cfh1; see the paired
-SOURCE_ASSIGNMENT. Actual original-scope transfer and same-owner configured
-consumption precede registry/Guest authority. Preserve original Live/runtime/
-deadline/counters through real actors, refusal custody and finished-only joins.
-Ordinary activation remains closed. No source/tool execution until exact candidate
-review. Then compose ordinary startup/native authority/precise gameplay/departure/
-checkpoint callers. Broad redesign/profile/acceptance expansion returns to owner.
+Core and configured-handoff source releases are CLOSED. Next bounded READ-ONLY
+investigation maps ordinary selected-package preparation, native Game consumers
+and native-versus-domain checkpoint/close selection. Current ordinary run rejects
+selected pairs, retained cold factories forbid pairs and native authority only
+mints for fresh TestTerrain; CloseOwner rejects CoherentSession with retained_server.
+Connect actual existing services for adopted fresh bounded Overworld and our own
+reopen/recovery; no Boolean authority widening or arbitrary world import. Then
+compose precise normal controls/gameplay and departure custody. Filled machine
+ingress remains closed meanwhile. No new source path released. Broader redesign,
+supported profile or acceptance expansion returns to owner first.
 
 ## Evidence, execution and publication
 
@@ -67,7 +72,8 @@ no historical full batteries absent a concrete dependency/failure.
 Preserve affected sources/prefix before corrections. Frozen FINAL corrections
 require a new prefix. Step B freeze acfae974 has 516 inputs; binary supplement
 9d58dc57 has two. Configuration freeze 224e27c2 has 171 inputs including actual
-lib binary. Final source/context copies retain tested bytes. All older
+lib binary. Handoff freeze d978291d has 187 inputs including actual binary842a567c.
+Final source/context copies retain tested bytes. All older
 indices, failures and archives stay immutable. Authorized new source revisions
 supersede live source paths; do not claim all historical live paths still match.
 The older s1srv2r1 reconciliation records 5164 live matches plus ONE owner-adopted

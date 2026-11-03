@@ -6,7 +6,7 @@ namespace = "create_horizon"
 repository = "https://github.com/Cha0sCollective/Create-Horizon"
 visibility = "private"
 stage = "post-G0 foundations"
-active_packet = "S1 deliverable 1; native integrated owner5d9eaa1 FINAL/public synced; joint original Game/Memory/window lifetime design next; Open to LAN deferred; ask before expansion"
+active_packet = "S1 deliverable 1; configured handoffca9b3f49 FINAL/public synced; ordinary paired preparation/native checkpoint composition investigation next; Open to LAN deferred; ask before expansion"
 next_stage = "S1 host foundations and remaining P02; G1/G2/G3 open"
 
 [specification]
@@ -76,3 +76,20 @@ checks_seconds = 36.74
 build_seconds = 29.04
 result = "docs/reference/S1_FIRST_PLAYER_ADMISSION_RESULTS.md"
 limits = "Protocol clients only; no error-free normal stop/default integrated/in-frame/C0/C1/G1 claim. Historical instruction change explicitly reconciled to preserved original."
+
+[s1_paired_configured_handoff]
+status = "FINAL ACCEPT; privacy CLEAR; normal-hook public sync verified exact"
+candidate = "ca9b3f49c97db6cd981246de99be35f7b53420ec"
+tree = "40c0ed3724a1ccae8bf309e2e860b46cfdd48e55"
+parent = "9bb5510c966e43659aa5f9273c19c01c61939697"
+branch = "codex/s1-paired-config-handoff"
+source_sha256 = "4bfca08a16bbe508a29a25c239e94b504043dd58832967249e99e32ad2ccd4d9"
+qualifier_sha256 = "316a53b8f38300d49442feca166e284816ccf60b8adff568fe755f2b62d19c27"
+expected_sha256 = "f009232d425dba7b8633d3d2af8ccee58e5677c0e5891026a6acbd08d48eb30f"
+binary_sha256 = "842a567ca1aec283737d813da81be6f4c4e063a88f4656b359cc43ae896aaabd"
+focused_groups = 9
+runtime_seconds = 204.88
+checks_seconds = 58.98
+build_seconds = 57.57
+result = "docs/reference/S1_PAIRED_CONFIGURED_HANDOFF_RESULTS.md"
+limits = "Dormant real-actor handoff only. No ordinary/native Game activation, C0 composite, full adopted C1, G1/S1 or release claim. Open to LAN deferred."
