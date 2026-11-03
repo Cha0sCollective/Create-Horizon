@@ -1,24 +1,33 @@
 # Ordinary paired startup source assignment
 
 Coordinator adopts amended S1_ORDINARY_PAIRED_STARTUP_PROPOSAL.md SHA256
-8bb9b6b27fb2d0752abf1c37202c6876cfecf7a527a89c3c755368d0dff08588,
+ee275754de5098040c9dae8ccaf5bd203551b087b7ff5e839a48f592c2660a41,
 independently ACCEPTED by fresh read-only Sol High
 paired_config_handoff_design_review at accepted/public engine
 ca9b3f49c97db6cd981246de99be35f7b53420ec, tree
 40c0ed3724a1ccae8bf309e2e860b46cfdd48e55. Earlier title/frontend HOLD
 proposal874de6f8 remains preserved under .local/s1ord1/design-hold0.
+The accepted prior8bb9b6b2 proposal/assignment and original14-path source gate,
+baselines and three-file unqualified implementation are preserved under
+.local/s1ord1/design-amendment0. Independent ACCEPT of the exact amendment adds
+ONLY game/startup_menu.rs (raw baselinee7d70a91), replacing duplicate title handling
+with existing Loading + StartupMenu and fixed owner-dispatched close/finished-only
+loader handling. No feature/profile/acceptance or operating-rule expansion.
 
 Prefix s1ord1; branch codex/s1-ordinary-paired-startup; physical checkout
 .local/worktrees/s1-native-close-composition. After this private checkpoint
-and full fourteen-path baseline, root may release exactly the proposal's ten
+and full fifteen-path baseline, root may release exactly the proposal's eleven
 production and four existing test paths. Inline tests there may be extended.
 No library/protocol/data/renderer/item-codec/gameplay-handler source release;
 no game/levels.rs in-frame persistent-domain adapter in this packet.
 
 Connect actual ordinary CLI/title entry and selected packages to existing retained
-Game/Session/Hub/native owners. Add distinct no-world frontend recipe/ownership,
-reuse narrow existing title/input handlers and intercept actual PendingWorldEntry
-before legacy loading. No fabricated native world/save/completion for title, whole
+Game/Session/Hub/native owners. Reuse the actual no-world Loading + StartupMenu,
+retain real presentation/final Loaded/helper owners and intercept PendingWorldEntry
+before legacy Loading::finish/start_game. Route menu Quit/window close through a
+fixed owner request and poll original loader handles to actual completion. Fence
+unsupported title management before native effects. No fabricated native
+world/save/completion for title, whole
 Game::window_event delegation or prior-world authority reuse. Retain original
 presentation/resources/helpers through preparation/cancellation/actual completion.
 

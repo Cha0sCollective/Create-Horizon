@@ -33,9 +33,11 @@ Completed and source releases CLOSED:
   CLEAR, normal-hook public push and exact remote verified. Nine focused groups
   204.88s, checks58.98s/build57.57s; S1_PAIRED_CONFIGURED_HANDOFF_RESULTS.md.
 
-Physical engine checkout .local/worktrees/s1-native-close-composition is CLEAN
-on codex/s1-paired-config-handoff at ca9b3f49. Exactly nine assigned existing files
-changed from 9bb5510c. Source4bfca08a/qualifier316a53b8/selectorsf009232d,
+Physical engine checkout .local/worktrees/s1-native-close-composition is now on
+codex/s1-ordinary-paired-startup, parent ca9b3f49, with UNQUALIFIED implementation
+in the assigned fifteen-path budget. No new format/compiler/runtime run yet.
+Last accepted handoff changed nine existing files from9bb5510c:
+source4bfca08a/qualifier316a53b8/selectorsf009232d,
 actual lib binary842a567c. Strict configuration now transfers the ORIGINAL scope
 into existing actors; actual Session/Hub one-shot consumption precedes Dynamic/
 Guest authority. Original Live/runtime/deadline/counters and refusal custody remain.
@@ -50,10 +52,11 @@ Reuse existing creative/inventory/hotbar/placement handlers, but do not ship an
 input-only endpoint: current retained packet guards refuse those operations.
 
 Core and configured-handoff source releases are CLOSED. Fresh independent design
-ACCEPT8bb9b6b2 for S1_ORDINARY_PAIRED_STARTUP_PROPOSAL.md; source assignment names
-exactly ten production/four existing test paths. After private assignment checkpoint
+ACCEPTee275754 for S1_ORDINARY_PAIRED_STARTUP_PROPOSAL.md; bounded menu reuse
+amendment adds only startup_menu.rs, eleven production/four existing test paths.
+After private assignment checkpoint
 and full baseline, root may release those paths on codex/s1-ordinary-paired-startup,
-prefixs1ord1. Distinct no-world frontend and ordinary constructor-issued preparation
+prefixs1ord1. Existing Loading/StartupMenu no-world frontend and ordinary preparation
 connect real CLI/title entry, actual configured Game consumers, native stone controls
 and retained native-versus-domain close/recovery. Preserve Cold restrictions and
 actual presentation/resources/actor/participant custody. No fake title world/save/

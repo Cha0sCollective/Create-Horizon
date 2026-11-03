@@ -47,9 +47,30 @@ owning actual presentation/window, final startup resources/helpers and queued
 entry. No SaveDir, world identity or Construction authority is fabricated for a
 title. The legacy Game initial recipe acquires title Streaming and creates
 saves/.horizon-title; do not use it for an allegedly inert retained frontend.
-An internal frontend initial recipe/owner may reuse actual Game title rendering
-and narrowly factored existing title input/action handlers in the assigned paths.
-Do not delegate whole Game::window_event or its legacy save/entry/exit branches.
+Reuse actual Loading plus StartupMenu, which already own window/renderer/GUI,
+settings, queued entry and real resource-loader handles without a world or SaveDir.
+Do not duplicate Game title handlers or use Loading::finish/start_game/Game::new
+for selected paired entry; that path creates legacy title machinery. Intercept
+menu.pending.take() first. Keep actual final Loaded resources, positively finish
+loader/rest-loader owners, then freeze startup and transfer real presentation into
+retained preparation/Application. Keep the same menu for return after actual world
+completion; issue a fresh request/world association on re-entry.
+
+A bounded additional startup_menu.rs path reuses its existing input/options/draw
+behavior. Its two direct exits (title Quit and CloseRequested) call a fixed
+Loading::request_menu_close method in game.rs instead. Legacy behavior still exits;
+selected retained ownership records close intent until actual helpers finish.
+Route loading errors, stop and renderer failures through that same owner. Retain
+and poll original loader handles: a channel/result observation is not finished-only
+join evidence. Do not inherit poll_menu_resources/restart_menu_resources blocking
+joins on the selected path. A narrow menu reset may clear consumed entry/transient
+input and refresh Title::worlds_changed while preserving real presentation.
+
+Fence unsupported edit/backup/delete/import/folder management BEFORE invoking a
+title action with native effects. Title::click can itself start a detached backup
+worker, so checking returned Action is insufficient. Do not acquire that extra
+owner in this packet; do not edit library title.rs without a prior bounded amendment.
+No generic callback/executor or whole Game::window_event delegation is introduced.
 
 Intercept actual CLI/title PendingWorldEntry and resume_world_entry BEFORE legacy
 loading, transferring the real window/presentation and startup owners into a
@@ -144,7 +165,7 @@ Registered counter placement remains closed pending its real lifecycle bridge.
 
 ## Exact proposed source budget
 
-Ten existing production paths under crates/horizon-client/src:
+Eleven existing production paths under crates/horizon-client/src:
 
 - game.rs
 - game/mod_packages.rs
@@ -156,6 +177,8 @@ Ten existing production paths under crates/horizon-client/src:
 - game/lan.rs
 - game/paired_close.rs
 - game/levels/session_checkpoint.rs
+- game/startup_menu.rs, only the fixed owner-dispatched exit/reset/input fencing
+  and finished-only loader ownership needed for the existing frontend
 
 Four existing test paths:
 
@@ -188,6 +211,8 @@ one blocked native write with original-owner Retry using existing controls.
 Include actual-window title create/play, preparation cancellation/close before
 native acquisition, return to title and own-world reopen through ordinary entry.
 Assert the retained route did not accidentally start legacy title SaveDir/Streaming.
+Exercise actual title-button Quit and window close while the original loader is
+held: no premature event-loop exit, then release and verify actual completion.
 
 For real existing domain state, use the SAME ordinary preparation/server owner for
 coherent publication, interrupted publication recovery and checked final disposal.
