@@ -5,7 +5,7 @@ S1 work until input, a genuine blocker or scope expansion is needed. Paired Open
 to LAN is deferred. Ask BEFORE expanding scope. S1/G1 remain OPEN. Owner resolved
 the terrain choice: keep fixed TestTerrain for S1, explicitly require the existing
 --test-terrain option and defer normal Vanilla/flat support. No owner decision is
-pending. Resume after amended assignment review/checkpoint; follow the four
+pending. The amended assignment is checkpointed; follow the four
 deliverables and focused validation policy.
 
 ## Deliverable 1
@@ -36,35 +36,38 @@ Completed and source releases CLOSED:
   CLEAR, normal-hook public push and exact remote verified. Nine focused groups
   204.88s, checks58.98s/build57.57s; S1_PAIRED_CONFIGURED_HANDOFF_RESULTS.md.
 
-Physical engine checkout .local/worktrees/s1-native-close-composition is now on
-codex/s1-ordinary-paired-startup, parent ca9b3f49, with UNQUALIFIED implementation
-in the assigned budget. No new format/compiler/runtime run yet. The independently
-accepted dedicated-caller amendment adds only game/dedicated.rs (baselinecf7b2b07)
-for seventeen paths, to consume the existing captured Setup exactly once. Private
-checkpoint and baseline/gate extension precede editing that added file.
-The next minimal caller amendment adds screens.rs (baselinefa6aac52) for a fixed
-ordinary pause Return/Leave allowlist before unsupported native effects. No private
-geometry duplication or whole event-handler delegation; eighteen paths after
-independent exact amendment review, private checkpoint and baseline/gate extension.
-The final concrete recovery-candidate seam adds streaming_owner.rs (baseline2bb42be1)
-only for an honest no-world/no-worker Vacant state and one checked installation.
-Existing Streaming::new(0) still starts a worker; no title or remote placeholder is
-used for recovery. Nineteen paths after exact delta review/checkpoint/baseline.
-Read-only coordinator inspection and independent Sol High follow-up confirmed the
-current checked native provenance/capture/recovery route supports TestTerrain,
-not ordinary no-flag Vanilla/flat generation. The proposal did not resolve this
-provider choice. Do not silently enable test terrain or broaden provider authority.
-Preserved all sixteen sources and prefix inputs under .local/s1ord1/draft6;
-the owner has now chosen explicit fixed terrain; amend/review/checkpoint the source
-gate before resumption. No new engine commit/public
-push or S1 completion claim follows from these unqualified changes.
-Last accepted handoff changed nine existing files from9bb5510c:
-source4bfca08a/qualifier316a53b8/selectorsf009232d,
-actual lib binary842a567c. Strict configuration now transfers the ORIGINAL scope
-into existing actors; actual Session/Hub one-shot consumption precedes Dynamic/
-Guest authority. Original Live/runtime/deadline/counters and refusal custody remain.
-Existing B refusal and ordinary/native Game activation guards stay closed. Earlier Game/Memory/window
-and owner/Retry components remain accepted; no ordinary paired/C1/G1/S1 claim.
+Physical engine checkout .local/worktrees/s1-native-close-composition remains on
+codex/s1-ordinary-paired-startup, parent ca9b3f49, with WIP in the independently
+amended NINETEEN existing paths. Proposal a028aba2, assignment de519cc7 and private
+source-assignment checkpoint e23e51fa authorize that budget. Dedicated Setup,
+fixed pause Return/Leave and the no-worker Vacant seam amendments are complete.
+Owner's explicit fixed TestTerrain choice is adopted; no decision is pending.
+
+Ordinary CLI/title frontend/preparation, configured client/server consumers,
+native stone input, original presentation return, retained coherent census and
+typed managed recovery now have a compiler-checked draft. Native reopen uses a
+one-use actual completed-own-world claim; unbound existing roots remain refused.
+Same-process own-world reopen and typed coherent fixtures are this component's
+scope. Cross-process/unbound domain entry waits for the lifecycle bridge; no
+identity-file or empty-runtime inference classifies a world as native-only.
+
+Independent SOURCE/TOOL CLEAR was limited to formatting/static compilation.
+Current source map 4d8d328eb2709289e04a5f3fa506fcaaac3d303846e001697ad656a2e2bcdeb5,
+frozen source draft22 index de409850d7ebb992224065092aa045d21ee10a20d5edfb1515c8be764a231f49.
+Compile tool 7ce1916e, checks3 receipt698ecd7c: formatting1.38s, paired/mods/native-
+writer Clippy all-targets with warnings denied34.74s, feature-off check28.34s,
+paired-without-mod-runtime check42.50s. All exit0; the last configuration reports
+unused ordinary-adapter warnings and is not an activated supported profile.
+The six initial type errors and subsequent lint failures/corrections are preserved.
+Level::write already binds and persists the new native player UUID; the additional
+ordinary constructor ensure is idempotent, not a new recovery identity allocation.
+
+NO new test binary, focused tests or actual-window runtime has run. Next: actual
+registered-domain source/recovery fixture through the same ordinary worker,
+focused own-reopen/refusal/Retry/initial-player custody checks and ordinary window
+smokes in integrated, dedicated/two-client and in-frame modes. New tests/tooling
+need their exact source/tool review before execution. No engine commit/public
+push, C0/C1/G1/S1 completion or release follows from static checks.
 
 Fresh independent read-only C0/input investigation accepted
 S1_ORDINARY_PAIRED_STARTUP_MAP.md (d44f091a). Error-free/no-ack Quit is not an
