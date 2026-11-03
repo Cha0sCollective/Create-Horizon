@@ -18,12 +18,18 @@ and game/retained_server_tests.rs changed. Four fresh groups PASS67.45s, checks
 public sync exact47fc752f0695c3435488e4607185d7d0e7717418 verified.
 See S1_FIRST_PLAYER_ADMISSION_RESULTS.md. No further testing absent a finding.
 
+Active s1int1 Step A design is independently ACCEPTED and adopted by
+S1_INTEGRATED_OWNER_SOURCE_ASSIGNMENT.md. Exactly five existing paths; root serial
+implementation after private checkpoint. No Step B source release. Integrated
+native owner adapter and actual Memory/native readback are component evidence;
+rendered/joint application remains Step B and ordinary default/C1/G1 remain open.
+
 Next is bounded DESIGN/API work for actual integrated-owner admission/native save
 projection and joint window/server lifetime. Route map S1_DELIVERABLE1_ROUTE_MAP.md
 has independent read-only CLEAR. Reuse existing Memory/TCP, client Game and server;
 no new transport/renderer. Memory-to-Dedicated alone is not integrated acceptance.
 Inspect likely six existing seams and paired_close before fixing the next exact
-source budget; NO additional engine source release yet. Broad redesign/profile
+source budget for Step B. Broad redesign/profile
 expansion returns to the owner BEFORE implementation.
 
 Physical engine checkout .local/worktrees/s1-native-close-composition starts clean
