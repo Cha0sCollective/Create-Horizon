@@ -33,29 +33,44 @@ canonical comparisons,7private raw. Guarded dirty-parent execution then exact
 commit; qualifiers retired by parent guard. No archive/clean-commit execution
 claim. Fifteen accepted indices now contain4904immutable entries.
 
-## Next bounded packet
+## Active Hub checkpoint
 
-Proposal docs/design/S1_RETAINED_HUB_ADOPTION_PROPOSAL.md149ef6dc, prefix
-s1hro1, has fresh independent Sol High DESIGN ACCEPT. Coordinator adopts it via
-S1_RETAINED_HUB_SOURCE_ASSIGNMENT.md. Private client result e0897709 is synced.
-This adopted design/assignment checkpoint must sync before the exact root release.
-No source release yet. Use accepted11c640c as parent.
-Physical checkout .local/worktrees/s1-native-close-composition stays clean;
-warm target /home/arbiter/.cache/create-horizon/target-s1nc1. Historic
-s1-retained-acquisition stays CLEAN c73abbef and must not be edited.
+Retained Hub s1hro1 is FINAL/CLEAN
+e722bcf58ae236ebd0418e410ba15c9e9747c32f, tree3bb3a290, parent11c640c5,
+branch codex/s1-retained-hub. Different FINAL/privacy ff8c6f11 accepts frozen index
+f1c1ac72(261entries); normal-hook public sync3b95ca87 verifiedexact. Sourcef26be673/tool dc5df61b/expected
+a0dddf4f: checks64.27s, build107.31s, eight groups153.69s PASS first runtime attempt.
+Actual bin0b618404/lib3601249e/LANbote6568c52. First6groups1.51s, staged actual
+two-client3/5item restore/coherentclose109.27s, ordinary LANbot42.91s.
+See docs/reference/S1_RETAINED_HUB_RESULTS.md.
 
-Concrete next outcome is original Hub using original RetainedLan, actual offline
-MemoryPipe/TCP/Guest/terrain and checked closure while keeping original payloads.
-The actual retained outbound queue currently drops newly refused bodies; proposal
-includes owned refusal storage/visibility and Hub failure fence. Opaque concrete
-transport owner migrates legacy callers mechanically. Proposed14paths; exact
-assignment/accepted design/private sync/root release precede source. No paired
-guard relaxation or actual server Game/worker startup claim from this component.
-Original server startup/joining and later LOD-before-shared-storage remain next.
+Actual original Hub uses original RetainedLan; raw refused vectors/first failure,
+pending events, applying inputs and same guests/inboxes survive freeze/close/Retry.
+Actual MemoryPipe/TCP Login/encoded terrain/recipe-book processing pass. Retained
+terrain skips detached global warm pool and uses same synchronous native encoder;
+legacy/staged warming unchanged. No rendered-window or server Game/storage proof.
 
-s1ogrc1's disjoint text-authoring exception ENDED at first SOURCE freeze and is
-expired. All current/new source work stays SERIAL. No old author may resume.
-No compilers/tests/games/WSL/source writer is currently active.
+Accepted proposal149ef6dc/assignment9f88ca08 were synced privatee64fd1d7; root
+serial gatee33524b6 released14paths. All source authors stopped. Attempts0-5
+preserve all sources/prefixes. Both earlier Clippy failures remain false: missing
+test import/multiline staged accessor, then equivalent fixture style. No runtime
+used failed sources. SOURCE renewed before qualification.
+
+Map42066005 binds42rawpairs:14rawexactGit/21unchangedcanonicalbaseline copies
+afterqualification/7private. Qualifier retired by parentguard; no cleancommit or
+archive execution claim. All15accepted historical indices4904entries unchanged;
+differentFINAL rehashed261+4904initially/finally and42mapbindings withzero
+mismatches. Sixteen accepted indices now contain5165immutable entries.
+
+Read-only bounded helper is inventorying actual original server Game cold startup,
+retained Hub, native participant/storage close and worker/control lifetime. No
+successor proposal/source is released. C0 composite still precedes C1.
+
+Stable physical checkout .local/worktrees/s1-native-close-composition, warm target
+/home/arbiter/.cache/create-horizon/target-s1nc1. Historic s1-retained-acquisition
+stays CLEAN c73abbef and is untouched. s1ogrc1 disjoint author exception expired;
+all source remains SERIAL. No compiler/test/game/source writer is active.
+No user decision pending.
 
 ## Operating and publication boundaries
 
