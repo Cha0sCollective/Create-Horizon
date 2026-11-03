@@ -46,6 +46,10 @@ The next minimal caller amendment adds screens.rs (baselinefa6aac52) for a fixed
 ordinary pause Return/Leave allowlist before unsupported native effects. No private
 geometry duplication or whole event-handler delegation; eighteen paths after
 independent exact amendment review, private checkpoint and baseline/gate extension.
+The final concrete recovery-candidate seam adds streaming_owner.rs (baseline2bb42be1)
+only for an honest no-world/no-worker Vacant state and one checked installation.
+Existing Streaming::new(0) still starts a worker; no title or remote placeholder is
+used for recovery. Nineteen paths after exact delta review/checkpoint/baseline.
 Read-only coordinator inspection and independent Sol High follow-up confirmed the
 current checked native provenance/capture/recovery route supports TestTerrain,
 not ordinary no-flag Vanilla/flat generation. The proposal did not resolve this

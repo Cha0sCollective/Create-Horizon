@@ -1,5 +1,14 @@
 # Ordinary paired startup source assignment
 
+Bounded vacant-candidate amendment adds ONLY game/streaming_owner.rs to the
+eighteen-path budget, for nineteen total (fifteen production/four test paths).
+Independent investigation confirmed no inert native GameStreaming representation:
+even Streaming::new with zero threads starts one worker, while retained remote
+preparation owns a distinct armed lifecycle. The proposal specifies honest Vacant
+queries/refusals and one checked original incoming installation, without changing
+existing replacement semantics. Baseline2bb42be1, exact independent delta review,
+private checkpoint and gate extension precede editing the added file.
+
 Bounded native pause amendment adds ONLY game/screens.rs to the seventeen-path
 budget, for eighteen total (fourteen production/four test paths). Existing
 pause_click has no safe subset and its geometry is private. The fixed ordinary

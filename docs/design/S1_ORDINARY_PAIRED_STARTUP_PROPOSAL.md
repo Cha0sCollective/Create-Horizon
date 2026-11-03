@@ -196,7 +196,7 @@ Registered counter placement remains closed pending its real lifecycle bridge.
 
 ## Exact proposed source budget
 
-Fourteen existing production paths under crates/horizon-client/src:
+Fifteen existing production paths under crates/horizon-client/src:
 
 - game.rs
 - game/mod_packages.rs
@@ -229,6 +229,24 @@ Fourteen existing production paths under crates/horizon-client/src:
   tests may check actual native geometry in both link-row layouts and legacy
   behavior. Original baseline SHA256 is
   fa6aac52058e18787a1a351f9de66a41744f4e59e5a0a75e5e817cd1abc50888.
+- game/streaming_owner.rs, only an explicit feature-gated Vacant state for the
+  genuinely no-world headless recovery candidate, private constructor/query and
+  checked one-shot installation of the original incoming Streaming. Vacant has
+  no native/remote worker, save, identity, close authority or completion. Existing
+  queries/refusals remain honest; existing replace/swap semantics stay unchanged.
+  In particular Vacant remote queries return None, poll_remote_close returns false,
+  and retry refuses State. Do not manufacture a prior stream or remote completion.
+  Inline tests may bind exact original-source preservation on refusal/second
+  installation and one successful installation. Original baseline SHA256 is
+  2bb42be196bf10989bdde32bbd59488def8c61e14cfb90ca25f0e44aebb90451.
+
+Assigned game.rs provides a private preloaded headless recovery recipe with Vacant,
+empty in-memory World, no SaveDir/session/origin/native authority and empty root;
+it never enters the legacy title factory or starts a placeholder pool. Ordinary
+recovery preflight requires actual Vacant and save absence in addition to existing
+fresh-candidate checks. Checked installation precedes settings/tick/save/transport
+or rendering access, and any refusal keeps the complete original prepared owner.
+This is a concrete storage state, not a new provider, executor or world framework.
 
 The added pause path connects actual normal pause/leave without delegating whole
 Game::window_event or duplicating private native geometry. Assigned game.rs owns
