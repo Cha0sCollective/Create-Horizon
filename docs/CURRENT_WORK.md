@@ -35,9 +35,11 @@ claim. Fifteen accepted indices now contain4904immutable entries.
 
 ## Next bounded packet
 
-Held proposal docs/design/S1_RETAINED_HUB_ADOPTION_PROPOSAL.md149ef6dc, prefix
-s1hro1, is under fresh independent Sol High DESIGN review. No source release.
-Use accepted11c640c as parent only after this private result checkpoint sync.
+Proposal docs/design/S1_RETAINED_HUB_ADOPTION_PROPOSAL.md149ef6dc, prefix
+s1hro1, has fresh independent Sol High DESIGN ACCEPT. Coordinator adopts it via
+S1_RETAINED_HUB_SOURCE_ASSIGNMENT.md. Private client result e0897709 is synced.
+This adopted design/assignment checkpoint must sync before the exact root release.
+No source release yet. Use accepted11c640c as parent.
 Physical checkout .local/worktrees/s1-native-close-composition stays clean;
 warm target /home/arbiter/.cache/create-horizon/target-s1nc1. Historic
 s1-retained-acquisition stays CLEAN c73abbef and must not be edited.
