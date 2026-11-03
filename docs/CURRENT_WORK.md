@@ -62,9 +62,14 @@ archive execution claim. All15accepted historical indices4904entries unchanged;
 differentFINAL rehashed261+4904initially/finally and42mapbindings withzero
 mismatches. Sixteen accepted indices now contain5165immutable entries.
 
-Read-only bounded helper is inventorying actual original server Game cold startup,
-retained Hub, native participant/storage close and worker/control lifetime. No
-successor proposal/source is released. C0 composite still precedes C1.
+Next packet s1srv1 proposal S1_ORIGINAL_RETAINED_SERVER_PROPOSAL.md revision1
+9e14e7ec has fresh independent DESIGN ACCEPT; coordinator adopts via its
+SOURCE_ASSIGNMENT. Originalf80/HOLD preserved. Tenpaths include distinct cold
+server authority, realGame admission/ticks, checked native reads/firstbody,
+native-only population with pending ack/inbox, retained Hub/storage/worker/control
+closure. Preserve coherent predicates; no heap-address-only native identity.
+Private design checkpoint must sync before exactrootrelease; no source yet.
+See proposal for exact10paths/profile/tests. C0 composite still precedes C1.
 
 Stable physical checkout .local/worktrees/s1-native-close-composition, warm target
 /home/arbiter/.cache/create-horizon/target-s1nc1. Historic s1-retained-acquisition
