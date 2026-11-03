@@ -12,29 +12,39 @@ paired configuration/admission for integrated and dedicated two-client modes.
 Keep filled machine ingress closed until recovery and departure custody work.
 Open to LAN keeps its refusal/negative test; old full C1 topology is not completed.
 
-First correction s1srv2 releases ONLY game/lan.rs missing-player Overworld
-initialization and game/retained_server_tests.rs actual no-staged-file Memory/TCP
-login/play/native-close/readback regression. Map actual startup/save/close callers
-next. Other integration edits require a bounded reviewed assignment within this
-plan; broad redesign or supported-profile expansion returns to the owner first.
+First correction s1srv2 is COMPLETE and source release closed. Only game/lan.rs
+and game/retained_server_tests.rs changed. Four fresh groups PASS67.45s, checks
+36.74s and build29.04s PASS. Different FINAL ACCEPT/privacy CLEAR; normal-hook
+public sync exact47fc752f0695c3435488e4607185d7d0e7717418 verified.
+See S1_FIRST_PLAYER_ADMISSION_RESULTS.md. No further testing absent a finding.
+
+Next is bounded DESIGN/API work for actual integrated-owner admission/native save
+projection and joint window/server lifetime. Route map S1_DELIVERABLE1_ROUTE_MAP.md
+has independent read-only CLEAR. Reuse existing Memory/TCP, client Game and server;
+no new transport/renderer. Memory-to-Dedicated alone is not integrated acceptance.
+Inspect likely six existing seams and paired_close before fixing the next exact
+source budget; NO additional engine source release yet. Broad redesign/profile
+expansion returns to the owner BEFORE implementation.
 
 Physical engine checkout .local/worktrees/s1-native-close-composition starts clean
-at c2d098c727e7a8b6ed1d621174f3b2df2017d09e on
-codex/s1-original-retained-server. This candidate is FINAL HOLD, privacy CLEAR;
-DO NOT push the held candidate. The independent finding is empty Level.dimension
-on first-time native admission. Eight passing groups remain bounded evidence;
-their staged player files missed this case. Correction is within deliverable 1.
+at47fc752f0695c3435488e4607185d7d0e7717418 on
+codex/s1-original-retained-server, CLEAN/FINAL/public synced. Parentc2d098c7's HOLD
+is superseded by its reviewed two-path correction. Eight older c2groups remain
+bounded historical evidence; four current groups include missing native files.
 
 Frozen s1srv1 index4f0a7897 contains728entries, rehashed before correction with
 zero mismatches. s1srv2 baseline preserves both sources and mutable private state.
-All16 historical accepted indices/5165entries, old attempts/failures/archives and
-qualifiers remain immutable. Old qualifier is retired by parent guard. Native
+All16 historical accepted indices, old attempts/failures/archives and qualifiers
+remain immutable. Explicit supplement s1srv2r1 records5164live matches plus ONE
+owner-adopted live AGENTS.md change bound to its preserved original5232c380;
+do not claim all5165live paths unchanged. New frozen111 and old728 remain exact.
+Both old qualifiers are retired by parent guard. Native
 joins/readback stay separate from raw transport Err; no clean-stop claim.
 
 Accepted/public client11c640c and Hube722bcf are reusable. Login negotiation is
 already composed at1fa55c6 but remains login-only. H11 visual70fd6aa is on another
-branch and needs later integration. Private branch codex/h02-smoke-h03-notes starts
-at2dd4df20 with three prior dirty/untracked paths preserved before adoption.
+branch and needs later integration. Private adopted-plan checkpoint5a44f310 is
+synced on codex/h02-smoke-h03-notes; earlier dirty state was preserved before it.
 
 ## Operating and publication boundaries
 

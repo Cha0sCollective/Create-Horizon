@@ -6,7 +6,7 @@ namespace = "create_horizon"
 repository = "https://github.com/Cha0sCollective/Create-Horizon"
 visibility = "private"
 stage = "post-G0 foundations"
-active_packet = "Adopted S1 completion plan deliverable 1; paired Open to LAN deferred; s1srv2 correction of held c2d098c; ask owner before scope expansion"
+active_packet = "S1 deliverable 1; first-player47fc752 FINAL/public synced; next integrated-owner and joint window/server lifetime design; Open to LAN deferred; ask before expansion"
 next_stage = "S1 host foundations and remaining P02; G1/G2/G3 open"
 
 [specification]
@@ -45,7 +45,7 @@ artifact_lock = "docs/reference/artifacts.lock.json"
 configuration = "fresh generated defaults; archive and hash each run before accepting traces"
 
 [s1_original_retained_server_game]
-status = "FINAL HOLD: absent native player dimension; privacy clear; s1srv2 correction pending"
+status = "historical c2 FINAL HOLD superseded by accepted/public47fc752 correction; see s1_first_player_admission"
 branch = "codex/s1-original-retained-server"
 parent = "e722bcf58ae236ebd0418e410ba15c9e9747c32f"
 candidate = "c2d098c727e7a8b6ed1d621174f3b2df2017d09e"
@@ -61,3 +61,18 @@ focused_groups = 8
 runtime_seconds = 210.55
 result = "docs/reference/S1_ORIGINAL_RETAINED_SERVER_RESULTS.md"
 limits = "Original unpaired headless Game only. Raw outer Eof/Receive and observed Shutdown ENOTCONN remain application Err with unresolved cause; native completion/readback is separate. No clean-stop, C0 composite/default/Memory-client/C1/G1/S2 or release claim."
+
+[s1_first_player_admission]
+status = "FINAL ACCEPT; privacy CLEAR; normal-hook public sync verified exact"
+candidate = "47fc752f0695c3435488e4607185d7d0e7717418"
+tree = "20633d5bbb6535ecf71090d5899f29e1e1f1f706"
+parent = "c2d098c727e7a8b6ed1d621174f3b2df2017d09e"
+branch = "codex/s1-original-retained-server"
+source_sha256 = "b0990cfc397d24d7725de8ccf04192e334954a7013c42d93bbc094be0bed76d1"
+binary_sha256 = "77fd5529720dbe2d74f7ec68e864095cace1fbba28fc53fa0a98ac8c8d2db9c4"
+focused_groups = 4
+runtime_seconds = 67.45
+checks_seconds = 36.74
+build_seconds = 29.04
+result = "docs/reference/S1_FIRST_PLAYER_ADMISSION_RESULTS.md"
+limits = "Protocol clients only; no error-free normal stop/default integrated/in-frame/C0/C1/G1 claim. Historical instruction change explicitly reconciled to preserved original."

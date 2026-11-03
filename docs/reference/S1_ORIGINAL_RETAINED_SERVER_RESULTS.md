@@ -7,6 +7,9 @@ Level.dimension empty when the player file is absent, then rejects that profile.
 Privacy review is CLEAR; the candidate MUST NOT be pushed while held. Eight
 passing groups remain valid for their exercised paths, which staged player files.
 Correction/regression uses new prefix s1srv2; frozen s1srv1 is unchanged. S1/G1 open.
+This historical HOLD is superseded by accepted/public47fc752f; see
+S1_FIRST_PLAYER_ADMISSION_RESULTS.md for four fresh groups, exact correction,
+different FINAL/privacy acceptance and explicit historical instruction rebinding.
 
 ## Behavior
 
