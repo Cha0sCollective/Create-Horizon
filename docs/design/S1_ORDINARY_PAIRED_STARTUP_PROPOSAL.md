@@ -196,7 +196,54 @@ Registered counter placement remains closed pending its real lifecycle bridge.
 
 ## Exact proposed source budget
 
-Fifteen existing production paths under crates/horizon-client/src:
+### Bounded saved-column handoff amendment
+
+The ordinary registered-domain fixture first publishes a genuine checkpoint, but
+its original retained recovery stream waits until the original deadline: normal
+Streaming::update defers Done::RetainedLoad for checked close and never inserts
+saved centers. The existing registered legacy recovery passes both roles, using
+the older nonretained stream. The same gap would stall ordinary own-world reopen.
+This is an open-state native-load handoff gap, not a terrain-generation change.
+
+Add ONLY existing streaming.rs, unchanged baseline SHA256
+8124cba96771e03ccf180666c34e094eb2097e453effb36c68f6432b74ee3638,
+for twenty existing paths. Preserve the nineteen-path candidate and gate first;
+independent exact amendment acceptance, private checkpoint and baseline precede
+editing this additional file. No game/levels.rs release follows.
+
+Expose a narrow borrowed view and consuming ticket for an original retained saved
+load while its same Streaming allocation remains open. Retain the actual
+RetainedNativeLoad, raw storage evidence and native work lease while the caller
+checks them. Distinct open tickets bind allocation and serial, reject stale/replay
+or cross-use with close tickets, and cannot grant a close/reopen witness. Acceptance
+rechecks the actual SaveDir, coordinate, original work provenance, current evidence
+and absence of a resident collision before moving that original chunk through
+normal loaded-column insertion, including entities, lighting and residency.
+Reconcile the original generation accounting exactly once. Pending/refused reads
+keep their original payload and work owner for the existing checked close path;
+begin-close transfers an unconsumed open view into that same close custody.
+
+Use assigned Game/world-loading/checkpoint paths for validation and consumption
+both during ordinary live own-world loading and recovery. Reuse existing native
+record/column/item validation, actual source resources, native session and provider
+provenance. Recovery additionally compares every original arrived column with its
+selected, under-lock verified image before adoption. Drain all original saved reads
+needed by the existing fence, keeping original deadline, clocks/random, writer,
+PrepareOwner and stream. No decoded-image chunk substitution, legacy/remote stream
+replacement, begin-close/resume, weakened save guards or new generator/schema.
+
+Extend existing inline streaming tests with a real saved-column handoff, pending
+or invalid input retaining custody, allocation/serial/replay refusal and checked
+close of an outstanding view. First rerun the affected saved-load test and actual
+native-Memory recovery, then the other already planned ordinary cases. Reuse valid
+unchanged passes; no new matrix or framework. Runtime/source/tool and different
+FINAL/privacy gates remain unchanged. This amendment changes no supported profile,
+acceptance, Open to LAN, gameplay, persistent in-frame adapter or publication gate.
+
+Sixteen existing production paths under crates/horizon-client/src:
+
+- streaming.rs, only the open original retained saved-load handoff above and its
+  focused inline tests; preserve normal and existing retained-close behavior.
 
 - game.rs
 - game/mod_packages.rs

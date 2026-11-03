@@ -1,5 +1,18 @@
 # Ordinary paired startup source assignment
 
+Proposed bounded saved-column amendment adds ONLY existing streaming.rs to the
+nineteen-path budget, for twenty total (sixteen production/four test paths plus
+inline tests). Actual ordinary recovery publishes the source image but stalls
+because Streaming::update defers original retained saved loads; the affected
+legacy registered roundtrip passes both roles. The proposal specifies an open
+borrowed view and allocation/serial-bound consuming ticket, caller validation,
+normal native insertion/accounting and original refusal/close custody. It also
+connects actual ordinary own-world reads through the already assigned paths.
+Baseline8124cba9 and the nineteen-path candidate/gate are preserved under
+.local/s1ord1/saved-load-amendment0 and draft30. Independent exact amendment
+acceptance, private checkpoint and gate extension precede any streaming.rs edit.
+No game/levels.rs, new provider/schema/framework/profile or acceptance expansion.
+
 Bounded vacant-candidate amendment adds ONLY game/streaming_owner.rs to the
 eighteen-path budget, for nineteen total (fifteen production/four test paths).
 Independent investigation confirmed no inert native GameStreaming representation:

@@ -38,8 +38,11 @@ Completed and source releases CLOSED:
 
 Physical engine checkout .local/worktrees/s1-native-close-composition remains on
 codex/s1-ordinary-paired-startup, parent ca9b3f49, with WIP in the independently
-amended NINETEEN existing paths. Proposal a028aba2, assignment de519cc7 and private
-source-assignment checkpoint e23e51fa authorize that budget. Dedicated Setup,
+amended NINETEEN existing paths, with an accepted bounded TWENTIETH path awaiting
+this private checkpoint and serial gate extension. Proposal1e2d5fc2 and
+assignmentbe11e286 add ONLY streaming.rs, baseline8124cba9: an open saved-load
+view/consuming ticket retaining the original native work/evidence, connected in
+already assigned callers. Dedicated Setup,
 fixed pause Return/Leave and the no-worker Vacant seam amendments are complete.
 Owner's explicit fixed TestTerrain choice is adopted; no decision is pending.
 
@@ -52,7 +55,7 @@ scope. Cross-process/unbound domain entry waits for the lifecycle bridge; no
 identity-file or empty-runtime inference classifies a world as native-only.
 
 Independent SOURCE/TOOL CLEAR was limited to formatting/static compilation.
-Current source map 4d8d328eb2709289e04a5f3fa506fcaaac3d303846e001697ad656a2e2bcdeb5,
+First static-pass source map 4d8d328eb2709289e04a5f3fa506fcaaac3d303846e001697ad656a2e2bcdeb5,
 frozen source draft22 index de409850d7ebb992224065092aa045d21ee10a20d5edfb1515c8be764a231f49.
 Compile tool 7ce1916e, checks3 receipt698ecd7c: formatting1.38s, paired/mods/native-
 writer Clippy all-targets with warnings denied34.74s, feature-off check28.34s,
@@ -62,12 +65,35 @@ The six initial type errors and subsequent lint failures/corrections are preserv
 Level::write already binds and persists the new native player UUID; the additional
 ordinary constructor ensure is idempotent, not a new recovery identity allocation.
 
-NO new test binary, focused tests or actual-window runtime has run. Next: actual
-registered-domain source/recovery fixture through the same ordinary worker,
-focused own-reopen/refusal/Retry/initial-player custody checks and ordinary window
-smokes in integrated, dedicated/two-client and in-frame modes. New tests/tooling
-need their exact source/tool review before execution. No engine commit/public
-push, C0/C1/G1/S1 completion or release follows from static checks.
+Focused run2 passed six groups: real title geometry, native pause, both original
+loader completion cases, vacant original-stream installation and genuine native
+reopen claim/refused-preparation/adoption. The menu fixture's empty-list expectation
+was corrected to Horizon's direct Create behavior; no production menu change.
+Actual native-Memory source then exposed a first-publication input bug: native
+initial owner data is canonical inert metadata without Pos; pre-final sidecar scan
+treated it as a final saved player. The reviewed input-only repair binds exact
+canonical inert input to original ordinary integrated constructor/record and epoch1.
+Final image/recovery checks remain strict. New negatives passed, and actual source
+publication plus strict final-player readback passed before the next recovery hold.
+
+Source30 map932509aa, fullchecks6 all exit0, test build3 bin823cff91. Run3 actual
+recovery copied the selected image but timed out before admitting clients. The
+independent investigation found retained saved reads are always deferred by normal
+Streaming::update; only close has a consuming handoff. Existing registered native
+legacy roundtrip passed both roles62.06s (run4). The accepted twentieth-path
+amendment connects actual open-state saved-column custody for both recovery and
+ordinary own-world reopen, retaining the original stream/deadline. No substitute
+chunks, legacy stream replacement or close/resume. Failed worlds are now preserved
+privately before WSL /tmp disappears. Full failure logs/sources remain immutable.
+
+Draft31 additionally corrects the completed ordinary Leave path: late transport
+diagnostics must not upgrade Leave to Quit or discard returned presentation/claim.
+It preserves the raw error in the actual Error/Back menu and final app outcome,
+without changing incomplete cleanup or acknowledgment gates; source review pending.
+No actual-window smoke has run. Remaining: reviewed saved-load source/tool/targeted
+checks, four ordinary recovery cases and refusal/Retry/initial-player controls,
+then real integrated/two-rendered-client dedicated/in-frame native smokes and
+different FINAL/privacy. No engine commit/public push or C0/C1/G1/S1 completion.
 
 Fresh independent read-only C0/input investigation accepted
 S1_ORDINARY_PAIRED_STARTUP_MAP.md (d44f091a). Error-free/no-ack Quit is not an
