@@ -33,6 +33,11 @@ and all asset redistribution remain separate decisions.
 
 ## Orchestration
 
+Owner adopted docs/design/S1_COMPLETION_PLAN.md on November 3, 2026 and authorized
+deliverable 1. Paired Open to LAN is deferred. Ask before further scope expansion;
+follow the four deliverables and focused validation policy. Preserve original G1
+requirements and frozen evidence.
+
 The user-selected coordinator can implement directly; retain its model and effort.
 Delegate only a bounded task that benefits from another agent, with the relevant
 files, revision, permissions and expected output. No mandatory explorer or standing

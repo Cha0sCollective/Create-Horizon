@@ -6,7 +6,7 @@ namespace = "create_horizon"
 repository = "https://github.com/Cha0sCollective/Create-Horizon"
 visibility = "private"
 stage = "post-G0 foundations"
-active_packet = "Continue S1; client11c640c and Hube722bcf FINAL/public synced; original server s1srv1 revision3 DESIGN accepted, amended12path release next; C0 composite/C1/G1 open"
+active_packet = "Adopted S1 completion plan deliverable 1; paired Open to LAN deferred; s1srv2 correction of held c2d098c; ask owner before scope expansion"
 next_stage = "S1 host foundations and remaining P02; G1/G2/G3 open"
 
 [specification]
@@ -43,3 +43,21 @@ gradle = "8.14.3"
 wrapper_jar_sha256 = "7d3a4ac4de1c32b59bc6a4eb8ecb8e612ccd0cf1ae1e99f66902da64df296172"
 artifact_lock = "docs/reference/artifacts.lock.json"
 configuration = "fresh generated defaults; archive and hash each run before accepting traces"
+
+[s1_original_retained_server_game]
+status = "FINAL HOLD: absent native player dimension; privacy clear; s1srv2 correction pending"
+branch = "codex/s1-original-retained-server"
+parent = "e722bcf58ae236ebd0418e410ba15c9e9747c32f"
+candidate = "c2d098c727e7a8b6ed1d621174f3b2df2017d09e"
+tree = "ab695a66a1363145dadea5b24a99bfd9b0a05f97"
+source_sha256 = "0c881ec6c775109602cf5ba5b65461bb12521d492372869876312a2bc921b448"
+qualifier_sha256 = "5fe51e73359575ca8fc59bf2b4514a05f48ab05f04f3f6f598eb9dad9abd77d4"
+expected_sha256 = "a09ede5c5a4a370c140ea7abb60551765018d47cd398bfa7ead1fa1d84de6f28"
+binary_sha256 = "d91dbed947fbeb53dfad6796590aa8556ca0ee5c7581627463324649d4d60f3c"
+source_map_sha256 = "b2d518dafa35e166454fb8206578cea378c2510ec93857d55cb4a4639352972b"
+checks_seconds = 39.83
+build_seconds = 32.42
+focused_groups = 8
+runtime_seconds = 210.55
+result = "docs/reference/S1_ORIGINAL_RETAINED_SERVER_RESULTS.md"
+limits = "Original unpaired headless Game only. Raw outer Eof/Receive and observed Shutdown ENOTCONN remain application Err with unresolved cause; native completion/readback is separate. No clean-stop, C0 composite/default/Memory-client/C1/G1/S2 or release claim."

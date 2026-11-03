@@ -1,125 +1,60 @@
 # Current work
 
-Owner resumed S1 until a genuine blocker or required input. S1/G1 remain OPEN;
-no user decision is pending. Use coordinator directly with bounded useful helpers.
+Owner adopted docs/design/S1_COMPLETION_PLAN.md on November 3, 2026, deferred
+paired Open to LAN, and authorized deliverable 1. Ask BEFORE any further scope
+expansion. S1/G1 remain OPEN. No user decision is pending.
 
-## Accepted client checkpoint
+## Deliverable 1
 
-Original unpaired offline TCP client adoption s1ogrc1 is FINAL/CLEAN at
-11c640c55975f609cb172f5ffd373da29747e244, tree d6008569, parent e52f0def,
-branch codex/s1-original-remote-client. Normal-hook public push passed; exact remote
-HEAD verified. Different FINAL/privacy7413c2a9 rehashed960inputs and3944historical
-entries initially/finally with zero mismatches. Public sync7e449d0d.
-See docs/reference/S1_ORIGINAL_REMOTE_GAME_RESULTS.md.
+Connected usable paired world: reuse actual Game/server/client/transport/save
+components; finish integrated Memory/in-frame ownership and C0 closure, then exact
+paired configuration/admission for integrated and dedicated two-client modes.
+Keep filled machine ingress closed until recovery and departure custody work.
+Open to LAN keeps its refusal/negative test; old full C1 topology is not completed.
 
-Source0749e034, qualifier93969e15, expected ea887be9 and window8d478a23 bind
-successful checks39.92s, matching build37.20s, five fresh bin groups59.11s and
-two explicit older skin-library reuses at identical36efedcd bytes. Actual bin
-bec4b5bc drives three real isolated TCP/X11 cases: terrain/movement/pixels and
-deliberate leave32.61s; server kick32.13s; unexpected Receive31.94s. Original
-errors require genuine Return after control sealing; deliberate stop keeps its
-Receive diagnostic visible with unresolved cause. No retained-server/C0 composite
-claim. Intentional fixture-server SIGKILL is failure injection, not normal closure.
+First correction s1srv2 releases ONLY game/lan.rs missing-player Overworld
+initialization and game/retained_server_tests.rs actual no-staged-file Memory/TCP
+login/play/native-close/readback regression. Map actual startup/save/close callers
+next. Other integration edits require a bounded reviewed assignment within this
+plan; broad redesign or supported-profile expansion returns to the owner first.
 
-Attempts0-15 and every failed check/runtime/driver are immutable. Runtime /tmp
-config archival failed before copying; missing scratch/empty destination/failure
-receipt remain. Initial config literals are explicitly recipe-derived from the
-reviewed executed driver, not recovered snapshots or effective defaults. SOURCE
-and different FINAL accepted narrowed claims without replay.
+Physical engine checkout .local/worktrees/s1-native-close-composition starts clean
+at c2d098c727e7a8b6ed1d621174f3b2df2017d09e on
+codex/s1-original-retained-server. This candidate is FINAL HOLD, privacy CLEAR;
+DO NOT push the held candidate. The independent finding is empty Level.dimension
+on first-time native admission. Eight passing groups remain bounded evidence;
+their staged player files missed this case. Correction is within deliverable 1.
 
-Final index .local/s1ogrc1-final-review-input.json9ecfcd9c freezes960entries.
-Source map af674d87 binds50rawpairs:22changed raw-exact Git,21unchanged baseline
-canonical comparisons,7private raw. Guarded dirty-parent execution then exact
-commit; qualifiers retired by parent guard. No archive/clean-commit execution
-claim. Fifteen accepted indices now contain4904immutable entries.
+Frozen s1srv1 index4f0a7897 contains728entries, rehashed before correction with
+zero mismatches. s1srv2 baseline preserves both sources and mutable private state.
+All16 historical accepted indices/5165entries, old attempts/failures/archives and
+qualifiers remain immutable. Old qualifier is retired by parent guard. Native
+joins/readback stay separate from raw transport Err; no clean-stop claim.
 
-## Active Hub checkpoint
-
-Retained Hub s1hro1 is FINAL/CLEAN
-e722bcf58ae236ebd0418e410ba15c9e9747c32f, tree3bb3a290, parent11c640c5,
-branch codex/s1-retained-hub. Different FINAL/privacy ff8c6f11 accepts frozen index
-f1c1ac72(261entries); normal-hook public sync3b95ca87 verifiedexact. Sourcef26be673/tool dc5df61b/expected
-a0dddf4f: checks64.27s, build107.31s, eight groups153.69s PASS first runtime attempt.
-Actual bin0b618404/lib3601249e/LANbote6568c52. First6groups1.51s, staged actual
-two-client3/5item restore/coherentclose109.27s, ordinary LANbot42.91s.
-See docs/reference/S1_RETAINED_HUB_RESULTS.md.
-
-Actual original Hub uses original RetainedLan; raw refused vectors/first failure,
-pending events, applying inputs and same guests/inboxes survive freeze/close/Retry.
-Actual MemoryPipe/TCP Login/encoded terrain/recipe-book processing pass. Retained
-terrain skips detached global warm pool and uses same synchronous native encoder;
-legacy/staged warming unchanged. No rendered-window or server Game/storage proof.
-
-Accepted proposal149ef6dc/assignment9f88ca08 were synced privatee64fd1d7; root
-serial gatee33524b6 released14paths. All source authors stopped. Attempts0-5
-preserve all sources/prefixes. Both earlier Clippy failures remain false: missing
-test import/multiline staged accessor, then equivalent fixture style. No runtime
-used failed sources. SOURCE renewed before qualification.
-
-Map42066005 binds42rawpairs:14rawexactGit/21unchangedcanonicalbaseline copies
-afterqualification/7private. Qualifier retired by parentguard; no cleancommit or
-archive execution claim. All15accepted historical indices4904entries unchanged;
-differentFINAL rehashed261+4904initially/finally and42mapbindings withzero
-mismatches. Sixteen accepted indices now contain5165immutable entries.
-
-Next packet s1srv1 proposal S1_ORIGINAL_RETAINED_SERVER_PROPOSAL.md revision3
-949ef822 has fresh independent DESIGN ACCEPT; coordinator adopts via its
-SOURCE_ASSIGNMENT. Originalf80/HOLD preserved. Twelvepaths include distinct cold
-server authority, realGame admission/ticks, checked native reads/firstbody,
-native-only population with pending ack/inbox, retained Hub/storage/worker/control
-closure. Preserve coherent predicates; no heap-address-only native identity.
-Initial10path gate388 is superseded before source; engine remains CLEAN.
-Amended private checkpoint/sync and exact12path gate precede source.
-See proposal for exact12paths/profile/tests; conn predicate is identityonly and
-hub.rs only reexports the opaqueidentity. No engine source has changed yet. C0 composite still precedes C1.
-
-Stable physical checkout .local/worktrees/s1-native-close-composition, warm target
-/home/arbiter/.cache/create-horizon/target-s1nc1. Historic s1-retained-acquisition
-stays CLEAN c73abbef and is untouched. s1ogrc1 disjoint author exception expired;
-all source remains SERIAL. No compiler/test/game/source writer is active.
-No user decision pending.
+Accepted/public client11c640c and Hube722bcf are reusable. Login negotiation is
+already composed at1fa55c6 but remains login-only. H11 visual70fd6aa is on another
+branch and needs later integration. Private branch codex/h02-smoke-h03-notes starts
+at2dd4df20 with three prior dirty/untracked paths preserved before adoption.
 
 ## Operating and publication boundaries
 
-Root alone runs ALL serial formatter/Cargo/compiler/test/game/WSL/Git writes.
-Await running exec sessions before dependent operations or source/Git writes.
-Authors use native TEXT only in explicitly released paths; no scripts/imports,
-execution, WSL, network, Git writes, escalation or delegation. Reviewers are
-procedural native READ-ONLY under inherited workspace-write, not profile-enforced:
-reads/rg/hashing/JSON/Git reads only; no scripts/runtime/edits/WSL/network/Git writes.
-Fresh independent Sol High DESIGN/substantive SOURCE/tool; DIFFERENT fresh FINAL.
-No standing team or concurrent source/compiler/Git mutation.
+Coordinator alone runs SERIAL source/formatter/compiler/test/game/WSL/Git writes.
+Await running commands before dependent writes. Fresh independent Sol High review
+for substantive/source/tool changes; DIFFERENT final/privacy reviewer. Reviewers
+use native reads/rg/hashing/Git reads under inherited workspace-write; no edits,
+runtime/WSL/network/Git writes/delegation. No standing team.
 
-Preserve all packet paths and prefix artifacts before every correction/formatter.
-Frozen FINAL corrections require a new prefix. Exact guarded live source/recipe/
-profile/features/binary/resources/native observations bind execution; archives
-alone do not. Missing fixture/deadline/nonzero result fails. Native completion
-requires actual finished joins. Distinguish raw Git equality from explicit
-unchanged baseline CRLF canonical comparison. Reuse valid actual pins; no broad
-prior battery absent concrete changed dependency/failure. Thirty cases/10-15warm
-minutes is a planning prompt, not a cap. Do not modify immutable historical
-VALIDATION_WORKFLOW.md, freezes, source archives or accepted evidence.
+Preserve affected source and prefix artifacts before correction/formatter; use a
+new prefix after frozen FINAL. Run relevant checks/regressions and attribute valid
+unchanged reuse. No historical full battery absent changed dependency. Preserve
+upstream checks and immutable VALIDATION_WORKFLOW, freezes, failures and archives.
+Do not relax guards merely for a pass. Native completion needs actual joined owners.
 
-Every private push requires fresh GitHub PRIVATE metadata/exact origin
-https://github.com/Cha0sCollective/Create-Horizon.git. Public engine push requires
-different FINAL/privacy CLEAR, fresh PUBLIC metadata/exact origin
-https://github.com/Cha0sCollective/Horizon.git and normal hooks. No unfinished
-source/private docs/config/raw evidence/assets/resources enter public Git. No PR,
-merge, tag or release. Personal source-informed Create reference/no Create
-contribution is authorized; preserve snapshot/attribution. No clean-room claim.
-
-No memory/reference/playable/Prism/Java changes or further cleanup/deletion.
-Preserve active target/binaries/resources/evidence. Prior251GiBcleanup/VHD
-compaction complete. Last native free-space snapshot C214GiB/G387GiB.
-
-## Remaining S1
-
-C0 original server/client composition and ordinary lifecycle closure remain open;
-full paired configuration/admission C1 follows accepted C0 composite. No default
-or C1 guard relaxation. G1 still needs supported-machine lifecycle/recovery,
-placement/generations/chunk cycles, intents/replay/reach/permissions/revisions/
-retirement/departure, replication initial/delta/gap/resync/untrack/reconnect,
-committed animation, DEFAULT integrated MemoryPipe and dedicated TWO exact TCP
-clients plus in-frame behavior. Live S2 waits G1. S3 is exactly creative motor,
-shaft, small/large cogs and millstone cobblestone-to-gravel; NO gearbox. R01 matches
-pinned Java full-output item-loss behavior by explicit owner decision.
+Private pushes require fresh PRIVATE GitHub metadata/exact Create-Horizon origin.
+Public pushes require different FINAL/privacy CLEAR, fresh PUBLIC metadata/exact
+Horizon origin and normal hooks. No unfinished public source/private docs/config/
+raw evidence/assets/JARs/resources. No PR/merge/tag/release/force or hook bypass.
+No playable/reference/Prism/Java/memory changes or further cleanup/deletion.
+Preserve warm target-s1nc1, resources and binaries. Live S2 waits G1. S3 is motor,
+shaft, small/large cogs and millstone, NO gearbox; R01 pinned full-output item-loss
+behavior remains. No general framework or later-stage work is authorized here.

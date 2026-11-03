@@ -14,6 +14,11 @@ remain proposed until their corresponding gate accepts them.
 | S5 | One controlled moving assembly with collision and recovery | Separate feasibility decision |
 | S6 | Additional machinery, trains and logistics | Separate feature decisions |
 
+Owner adopted [S1_COMPLETION_PLAN.md](design/S1_COMPLETION_PLAN.md) on November 3,
+2026: four outcome deliverables; connected paired world is active; paired Open to
+LAN is deferred. Consult the owner before further scope expansion. This plan
+supersedes stale next-packet directions below; historical limits remain.
+
 The S3 component boundary excludes a gearbox. The earlier audit's suggested gearbox
 demonstration is superseded by the supplied five-component scope.
 
