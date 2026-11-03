@@ -2,9 +2,11 @@
 
 Owner adopted S1_COMPLETION_PLAN.md on November 3, 2026 and authorized continued
 S1 work until input, a genuine blocker or scope expansion is needed. Paired Open
-to LAN is deferred. Ask BEFORE expanding scope. S1/G1 remain OPEN. An owner terrain
-profile decision is now pending; see S1_ORDINARY_TERRAIN_SCOPE_DECISION.md. Dependent
-ordinary startup work is on HOLD. Follow the four deliverables and focused validation policy.
+to LAN is deferred. Ask BEFORE expanding scope. S1/G1 remain OPEN. Owner resolved
+the terrain choice: keep fixed TestTerrain for S1, explicitly require the existing
+--test-terrain option and defer normal Vanilla/flat support. No owner decision is
+pending. Resume after amended assignment review/checkpoint; follow the four
+deliverables and focused validation policy.
 
 ## Deliverable 1
 
@@ -42,7 +44,8 @@ current checked native provenance/capture/recovery route supports TestTerrain,
 not ordinary no-flag Vanilla/flat generation. The proposal did not resolve this
 provider choice. Do not silently enable test terrain or broaden provider authority.
 Preserved all sixteen sources and prefix inputs under .local/s1ord1/draft6;
-the source gate is held pending the owner's choice. No new engine commit/public
+the owner has now chosen explicit fixed terrain; amend/review/checkpoint the source
+gate before resumption. No new engine commit/public
 push or S1 completion claim follows from these unqualified changes.
 Last accepted handoff changed nine existing files from9bb5510c:
 source4bfca08a/qualifier316a53b8/selectorsf009232d,

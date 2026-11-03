@@ -5,7 +5,28 @@ ca9b3f49c97db6cd981246de99be35f7b53420ec, tree
 40c0ed3724a1ccae8bf309e2e860b46cfdd48e55; private checkpoint
 7578bd547ab3093a2e492b35dda5b7dc94a3de59. Prefix s1ord1; proposed branch
 codex/s1-ordinary-paired-startup in the existing physical checkout.
-DESIGN ONLY pending independent acceptance and private source assignment.
+Accepted bounded assignment, amended by the owner's explicit fixed-terrain choice
+on November 3, 2026; independent delta review precedes resumption.
+
+## Owner-selected terrain boundary
+
+Owner chose "Keep fixed test terrain for S1 (recommended)" after the confirmed
+native-provider gap. Require the existing --test-terrain option for ordinary
+selected-pair entry; do not silently override the requested provider. Retain
+the actual TestTerrain constructor witness and all existing native/coherent
+capture and recovery restrictions. Normal Vanilla/flat provider support is
+deferred. Local title create/play is real ordinary entry within this explicit
+fixed-terrain profile; no normal-generation claim follows.
+
+Fence flat/custom-flat and unsupported generator choices before native acquisition
+or world-gen writes, including a saved flat setting that takes precedence over
+test_terrain in the existing provider selection. The fixed title click path may
+refuse flat/customization, structures and bonus-chest controls before dispatch;
+the request factory also validates actual creation/saved generator settings.
+Keep ordinary legacy/unpaired title behavior unchanged. Use the actual folder,
+display name, seed, creative choice and identified world association; the fixed
+terrain itself is the explicitly selected test provider. No new flag, generator,
+world format, supported provider or source path is authorized by this amendment.
 
 ## Connected result
 

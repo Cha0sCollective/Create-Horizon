@@ -1,7 +1,9 @@
 # Ordinary startup terrain decision
 
-Pending owner decision, November 3, 2026. S1/G1 remain OPEN. This note accepts
-neither option and releases no new source, provider authority or acceptance claim.
+Owner chose option 1, November 3, 2026: "Keep fixed test terrain for S1
+(recommended)". S1/G1 remain OPEN. Ordinary selected-pair entry will explicitly
+require the existing --test-terrain option. Normal Vanilla/flat provider support
+is deferred. No provider authority or completion claim is added.
 
 The current source packet is s1ord1 on codex/s1-ordinary-paired-startup, parent
 ca9b3f49c97db6cd981246de99be35f7b53420ec. It has unfinished, unqualified work in
@@ -46,7 +48,7 @@ but did not resolve its no-flag provider semantics. The reviewer confirmed that
 this needs an explicit owner decision; adding another source file alone would
 not resolve the scope question.
 
-## Choices for the owner
+## Recorded choices
 
 1. **Keep S1 on the existing fixed TestTerrain provider (recommended).** Require
    the existing --test-terrain option for selected-pair entry, fence flat and
@@ -62,7 +64,7 @@ not resolve the scope question.
    Supporting default Vanilla generation is broader than a startup caller change
    and adds implementation and validation work. No duration estimate is established.
 
-After a choice, amend the bounded proposal/assignment accurately and obtain the
-required independent delta review before further dependent implementation. Preserve
+Apply option 1 to the bounded proposal/assignment and obtain the required
+independent delta review before further dependent implementation. Preserve
 the fixed Cold constructors and old qualified evidence in either case. No new
 general framework, Open to LAN, arbitrary imports or public release is implied.

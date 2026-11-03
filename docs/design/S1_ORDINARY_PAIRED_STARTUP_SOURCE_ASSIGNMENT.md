@@ -1,5 +1,14 @@
 # Ordinary paired startup source assignment
 
+Owner resolved the terrain HOLD on November 3, 2026 by choosing "Keep fixed test
+terrain for S1 (recommended)". Apply the proposal's explicit existing --test-terrain
+profile and pre-acquisition flat/unsupported-generation fences. Preserve actual
+TestTerrain provenance and all native/coherent capture/recovery restrictions.
+Vanilla/flat support remains deferred; no new source path, provider or completion
+claim. The previous proposal pin below is historical; the resumed source gate
+records the exact amended proposal and independent delta review after private
+checkpoint. All sixteen baseline paths and existing unqualified work remain.
+
 Coordinator adopts amended S1_ORDINARY_PAIRED_STARTUP_PROPOSAL.md SHA256
 57dfe26be25b3c4ec1da7a39f4ab7fcc34f4d325ef983c5e1ffcbfd79df0a4a0.
 Its substantive boundary atb52ae8b5 was independently ACCEPTED by fresh read-only Sol High
