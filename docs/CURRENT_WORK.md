@@ -42,6 +42,10 @@ in the assigned budget. No new format/compiler/runtime run yet. The independentl
 accepted dedicated-caller amendment adds only game/dedicated.rs (baselinecf7b2b07)
 for seventeen paths, to consume the existing captured Setup exactly once. Private
 checkpoint and baseline/gate extension precede editing that added file.
+The next minimal caller amendment adds screens.rs (baselinefa6aac52) for a fixed
+ordinary pause Return/Leave allowlist before unsupported native effects. No private
+geometry duplication or whole event-handler delegation; eighteen paths after
+independent exact amendment review, private checkpoint and baseline/gate extension.
 Read-only coordinator inspection and independent Sol High follow-up confirmed the
 current checked native provenance/capture/recovery route supports TestTerrain,
 not ordinary no-flag Vanilla/flat generation. The proposal did not resolve this
@@ -72,7 +76,7 @@ the original twelve production/four existing test paths. Only reviewer-requested
 changed afterward; final pin is in the source gate. Browser/discovery UI remains
 refused; standard matching --server entry is the planned external route.
 After private assignment checkpoint
-and full baseline, root may release the amended seventeen paths on codex/s1-ordinary-paired-startup,
+and full baseline, root may release the reviewed amended paths on codex/s1-ordinary-paired-startup,
 prefixs1ord1. Existing Loading/StartupMenu no-world frontend and ordinary preparation
 connect real CLI/title entry, actual configured Game consumers, native stone controls
 and retained native-versus-domain close/recovery. Preserve Cold restrictions and

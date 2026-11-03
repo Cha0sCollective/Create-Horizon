@@ -1,5 +1,13 @@
 # Ordinary paired startup source assignment
 
+Bounded native pause amendment adds ONLY game/screens.rs to the seventeen-path
+budget, for eighteen total (fourteen production/four test paths). Existing
+pause_click has no safe subset and its geometry is private. The fixed ordinary
+Return/Leave allowlist reuses it, fences unsupported screen/helpers before effects,
+and preserves legacy/diagnostic behavior. Original baseline fa6aac52 must be
+preserved; independent exact delta acceptance and private checkpoint precede edit.
+No source/profile/acceptance expansion beyond this one caller path.
+
 Bounded dedicated-caller amendment adds ONLY game/dedicated.rs to the existing
 sixteen-path budget, for seventeen total (thirteen production/four test paths).
 Independent investigation confirmed actual preflight Setup has no public consuming

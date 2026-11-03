@@ -196,7 +196,7 @@ Registered counter placement remains closed pending its real lifecycle bridge.
 
 ## Exact proposed source budget
 
-Thirteen existing production paths under crates/horizon-client/src:
+Fourteen existing production paths under crates/horizon-client/src:
 
 - game.rs
 - game/mod_packages.rs
@@ -220,6 +220,22 @@ Thirteen existing production paths under crates/horizon-client/src:
   with its detached console/profile helpers. Reuse one-shot Setup consumption for
   legacy callers unchanged. Original baseline SHA256 is
   cf7b2b0712fd8fc373b64f6fc6bf21c42ac73138dfb1e517d8bbf599a82c28ca.
+- game/screens.rs, only a fixed ordinary-startup pause allowlist sharing the
+  existing private native hit geometry: Return(0) and Leave(2). Apply it before
+  dispatch and to drawing/widget activity, including the separate friends icon.
+  Options/stats/advancements/WorldOptions/friends/links stay inactive on this
+  bounded ordinary input surface; legacy and fixed diagnostic paths are unchanged.
+  Do not expose geometry, change external_server or introduce callbacks. Inline
+  tests may check actual native geometry in both link-row layouts and legacy
+  behavior. Original baseline SHA256 is
+  fa6aac52058e18787a1a351f9de66a41744f4e59e5a0a75e5e817cd1abc50888.
+
+The added pause path connects actual normal pause/leave without delegating whole
+Game::window_event or duplicating private native geometry. Assigned game.rs owns
+cursor/focused click routing, clears held input and resets timing on Return, and
+records native ordinary leave before any legacy saving path. Test actual pause,
+blocked WorldOptions/friends, Return, resumed placement and owned Leave. This
+changes no supported terrain, topology, machine or G1 requirement.
 
 The added path only connects the existing dedicated caller within the same fixed
 terrain profile. Validate the actual captured offline creative/non-hardcore,
