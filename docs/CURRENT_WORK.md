@@ -44,16 +44,16 @@ defer transport-stop API polish. Ordinary paired C0 ownership is still required.
 Reuse existing creative/inventory/hotbar/placement handlers, but do not ship an
 input-only endpoint: current retained packet guards refuse those operations.
 
-Core source release is CLOSED. Next is bounded DESIGN/API investigation at 9bb5510c
-for actual original-scope transfer into retained Session/server connection/Hub and
-same-owner configured consumption before registry/Guest publication. Reuse actual
-connection counters/retained context identity, not a configured Boolean. Preserve
-Live invalidation through real actor stop/terminal and pre-admission deadline;
-established play lifetime begins only after one-shot consumption. No actor handoff
-or ordinary activation is authorized by the dormant wrapper alone. Then compose
-ordinary startup/native authority/precise gameplay/departure/checkpoint callers.
-No new source paths are released. Broad redesign/profile/acceptance expansion
-returns to the owner first.
+Core source release is CLOSED. Fresh independent read-only design review ACCEPTS
+S1_PAIRED_CONFIGURED_HANDOFF_PROPOSAL.md (9b5b3f78). After this private assignment
+checkpoint and full baseline, coordinator may release exactly its seven production
+and two test paths on codex/s1-paired-config-handoff, prefix s1cfh1; see the paired
+SOURCE_ASSIGNMENT. Actual original-scope transfer and same-owner configured
+consumption precede registry/Guest authority. Preserve original Live/runtime/
+deadline/counters through real actors, refusal custody and finished-only joins.
+Ordinary activation remains closed. No source/tool execution until exact candidate
+review. Then compose ordinary startup/native authority/precise gameplay/departure/
+checkpoint callers. Broad redesign/profile/acceptance expansion returns to owner.
 
 ## Evidence, execution and publication
 
