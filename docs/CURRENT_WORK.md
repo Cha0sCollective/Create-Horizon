@@ -18,11 +18,15 @@ and game/retained_server_tests.rs changed. Four fresh groups PASS67.45s, checks
 public sync exact47fc752f0695c3435488e4607185d7d0e7717418 verified.
 See S1_FIRST_PLAYER_ADMISSION_RESULTS.md. No further testing absent a finding.
 
-Active s1int1 Step A design is independently ACCEPTED and adopted by
-S1_INTEGRATED_OWNER_SOURCE_ASSIGNMENT.md. Exactly five existing paths; root serial
-implementation after private checkpoint. No Step B source release. Integrated
-native owner adapter and actual Memory/native readback are component evidence;
-rendered/joint application remains Step B and ordinary default/C1/G1 remain open.
+Step A s1int1 is COMPLETE at5d9eaa14a65d831301e9ae25fa8859193871848c,
+tree848f1889, parent47fc752f, branchcodex/s1-integrated-owner. Different FINAL ACCEPT/
+privacy CLEAR and normal-hook public sync verified exact. Eleven current groups
+PASS181.97s (7defining113.58+4affected68.39), checks51.94/build54.99 PASS. Frozen
+input70db6f30 has143inputs. Sourcefe6d487f/toolf69f2393/expected48a99cf4,
+actualbin09b341db. E0624 compile failure remains preserved; no runtime failures.
+See S1_INTEGRATED_OWNER_RESULTS.md. No more Step A tests absent a finding.
+Native owner adapter is component evidence; rendered/joint application, default
+integrated startup, C0/C1/G1 remain OPEN. Step A source release is closed.
 
 Next is bounded DESIGN/API work for actual integrated-owner admission/native save
 projection and joint window/server lifetime. Route map S1_DELIVERABLE1_ROUTE_MAP.md
@@ -32,9 +36,17 @@ Inspect likely six existing seams and paired_close before fixing the next exact
 source budget for Step B. Broad redesign/profile
 expansion returns to the owner BEFORE implementation.
 
-Physical engine checkout .local/worktrees/s1-native-close-composition starts clean
-at47fc752f0695c3435488e4607185d7d0e7717418 on
-codex/s1-original-retained-server, CLEAN/FINAL/public synced. Parentc2d098c7's HOLD
+Step B exact proposal79deb158 is now independently ACCEPTED and adopted by
+S1_INTEGRATED_WINDOW_SOURCE_ASSIGNMENT.md: five existing paths game.rs,
+integrated.rs, window_close.rs, retained_server.rs and window_close_tests.rs.
+Root serial implementation after private sync/baseline. Prefixs1iw1/branch
+codex/s1-integrated-window. Preparing UI before server, actual Memory attachment,
+joint supervisor/late Offer custody, pause/resume and independent Retry attempts.
+Control stays inert through presentation failure. No other source release.
+
+Physical engine checkout .local/worktrees/s1-native-close-composition is clean
+at5d9eaa14a65d831301e9ae25fa8859193871848c on
+codex/s1-integrated-owner, CLEAN/FINAL/public synced. Parentc2d098c7's HOLD
 is superseded by its reviewed two-path correction. Eight older c2groups remain
 bounded historical evidence; four current groups include missing native files.
 

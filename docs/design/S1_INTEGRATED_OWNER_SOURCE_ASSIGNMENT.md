@@ -26,3 +26,8 @@ FINAL/privacy before public sync. Preserve sources/prefix before corrections;
 new prefix after frozen FINAL. Existing evidence and failures remain immutable.
 Step A cannot establish rendered/default integrated, C0/C1/G1 or Step B acceptance.
 Open to LAN remains deferred; consult owner before broader scope changes.
+
+Accepted bounded DESIGN amendment reuses ordinary integrated startup's exact
+Some(empty) dedicated-option marker, bound through typed construction and close.
+This is the existing native no-local-player compatibility predicate, not a new
+dedicated topology or console. No stats/advancement counterpart edit is needed.
