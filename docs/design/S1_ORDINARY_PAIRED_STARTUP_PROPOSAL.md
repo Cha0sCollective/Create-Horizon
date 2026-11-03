@@ -69,7 +69,17 @@ input and refresh Title::worlds_changed while preserving real presentation.
 Fence unsupported edit/backup/delete/import/folder management BEFORE invoking a
 title action with native effects. Title::click can itself start a detached backup
 worker, so checking returned Action is insufficient. Do not acquire that extra
-owner in this packet; do not edit library title.rs without a prior bounded amendment.
+owner in this packet. The title's hit geometry/click_action are private, and Main
+the multiplayer click starts LAN discovery and status-ping helpers before returning
+Action::None. One
+additional title.rs path supplies a fixed click_local_world_entry method sharing
+the existing hit/click implementation. Apply a fixed mode/button allowlist BEFORE
+any effectful click branch; preserve unrestricted legacy click behavior. Keep
+geometry/IDs private and introduce no callback/general policy framework. Allow
+local create/select/play/back/quit and intended options; refuse multiplayer/friends,
+edit/delete/recreate and unsupported management. Fence corresponding keyboard/
+options effects in StartupMenu. Standard ordinary --server remains the external
+matching-client route; browser helper ownership and browser UI are not claimed.
 No generic callback/executor or whole Game::window_event delegation is introduced.
 
 Intercept actual CLI/title PendingWorldEntry and resume_world_entry BEFORE legacy
@@ -165,7 +175,7 @@ Registered counter placement remains closed pending its real lifecycle bridge.
 
 ## Exact proposed source budget
 
-Eleven existing production paths under crates/horizon-client/src:
+Twelve existing production paths under crates/horizon-client/src:
 
 - game.rs
 - game/mod_packages.rs
@@ -179,6 +189,8 @@ Eleven existing production paths under crates/horizon-client/src:
 - game/levels/session_checkpoint.rs
 - game/startup_menu.rs, only the fixed owner-dispatched exit/reset/input fencing
   and finished-only loader ownership needed for the existing frontend
+- title.rs, only the fixed pre-effect local-world click admission sharing private
+  existing geometry/click logic; focused inline tests there are permitted
 
 Four existing test paths:
 
@@ -213,6 +225,9 @@ native acquisition, return to title and own-world reopen through ordinary entry.
 Assert the retained route did not accidentally start legacy title SaveDir/Streaming.
 Exercise actual title-button Quit and window close while the original loader is
 held: no premature event-loop exit, then release and verify actual completion.
+Title inline tests use actual private button geometry: refused multiplayer/friends
+leave Main unchanged, refused management has no native effects, and local create/
+play/quit retain native behavior. No multiplayer/discovery implementation change.
 
 For real existing domain state, use the SAME ordinary preparation/server owner for
 coherent publication, interrupted publication recovery and checked final disposal.

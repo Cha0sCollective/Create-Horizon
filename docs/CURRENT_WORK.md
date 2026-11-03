@@ -35,7 +35,7 @@ Completed and source releases CLOSED:
 
 Physical engine checkout .local/worktrees/s1-native-close-composition is now on
 codex/s1-ordinary-paired-startup, parent ca9b3f49, with UNQUALIFIED implementation
-in the assigned fifteen-path budget. No new format/compiler/runtime run yet.
+in the assigned sixteen-path budget. No new format/compiler/runtime run yet.
 Last accepted handoff changed nine existing files from9bb5510c:
 source4bfca08a/qualifier316a53b8/selectorsf009232d,
 actual lib binary842a567c. Strict configuration now transfers the ORIGINAL scope
@@ -52,8 +52,11 @@ Reuse existing creative/inventory/hotbar/placement handlers, but do not ship an
 input-only endpoint: current retained packet guards refuse those operations.
 
 Core and configured-handoff source releases are CLOSED. Fresh independent design
-ACCEPTee275754 for S1_ORDINARY_PAIRED_STARTUP_PROPOSAL.md; bounded menu reuse
-amendment adds only startup_menu.rs, eleven production/four existing test paths.
+ACCEPTb52ae8b5 for the final bounded S1_ORDINARY_PAIRED_STARTUP_PROPOSAL.md amendment;
+menu reuse adds startup_menu.rs and fixed pre-effect click admission adds title.rs,
+twelve production/four existing test paths. Only reviewer-requested factual wording
+changed afterward; final pin is in the source gate. Browser/discovery UI remains
+refused; standard matching --server entry is the planned external route.
 After private assignment checkpoint
 and full baseline, root may release those paths on codex/s1-ordinary-paired-startup,
 prefixs1ord1. Existing Loading/StartupMenu no-world frontend and ordinary preparation
