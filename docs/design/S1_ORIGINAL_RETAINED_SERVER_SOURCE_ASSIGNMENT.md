@@ -1,6 +1,6 @@
 # Original retained server source assignment
 
-Coordinator adopts proposal revision1 `9e14e7ec` after fresh independent DESIGN
+Coordinator adopts proposal revision2 `3f230e2a` after fresh independent DESIGN
 ACCEPT by /root/original_server_design_review. Preserve its HELD proposal text
 and original f80d9d5f/HOLD history; this assignment records adoption. No source
 is released until the private checkpoint sync and exact coordinator gate.
@@ -11,7 +11,7 @@ synced exact. Private result checkpoint e0279995bea06163d1b49e6f8896499bd60a9bd3
 is synced. New prefix s1srv1 and proposed branch codex/s1-original-retained-server
 use the stable physical checkout and warm target. Coordinator authors SERIAL.
 
-Release exactly the10paths in the accepted proposal. Actual original cold server
+Release exactly the11paths in the accepted proposal. Actual original cold server
 Game, retained Hub, native participant/storage close and original worker/control
 lifetime must work together. No legacy title-worker replacement, normal dedicated
 console/shutdown reuse, new generic executor or paired/default admission.
@@ -24,12 +24,15 @@ flags; coherent checkpoint gates remain unchanged. Installation receipt binds
 original Game/world/Hub/connection and actual native succession. Heap address
 alone is insufficient: ordinary as_guest/leave_guest reboxes PlayerMotion.
 
-The only added counterpart scopes are save.rs's checked-reader delegation and
-game/stats.rs's shared pure decoder with unchanged legacy fallback/interpretation.
+The only added counterpart scopes are save.rs's checked-reader delegation,
+game/stats.rs's shared pure decoder with unchanged legacy fallback/interpretation,
+and lan/conn.rs's predicate comparing actual private retained outbound allocations.
+Capture original validated Joined senders once; never replace the captured records
+from current Guest fields. Non-retained or foreign queue comparisons must refuse.
 Fixtures stage outside the target root, then install at a fixed test-only startup
 seam under the new identity's original lock before admission. No arbitrary tasks.
 
-SOURCE/tool review precedes formatter/compiler/runtime. Preserve all10sources and
+SOURCE/tool review precedes formatter/compiler/runtime. Preserve all11sources and
 all prefix artifacts before every correction/formatter. Exact positive original
 server Game Memory/TCP/nonzero-native-player/storage/readback/checked-worker proofs
 and focused affected regressions are required; no broad old-matrix replay.

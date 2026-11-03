@@ -6,7 +6,8 @@ Parent is accepted/publicly synced engine
 `3bb3a290c91660c1f2315a3add1e107853ee9a9c`; private results `e0279995` synced.
 Prefix `s1srv1` was checked unused. S1/G1 remain open.
 
-Revision1 addresses independent DESIGN HOLD on the original f80d9d5f proposal,
+Revision2 retains accepted revision1 and adds only the scoped native-sender
+identity predicate below. Revision1 addresses independent DESIGN HOLD on f80d9d5f,
 preserved at .local/s1srv1-design-attempt0-proposal.md. This revision is still
 HELD and needs renewed review; no source follows from editing this document.
 
@@ -125,6 +126,16 @@ raw native handle or claims-only authority. Keep legacy identity checks exact.
 Reuse existing native participant row packing and checked writes; do not introduce
 a save format, journal or new inventory codec.
 
+Capture each original validated Joined sender in the private retained Hub owner
+before admitting its actual Guest. Keep that original sender through native close
+and ClosedHub. Add one narrow predicate in lan/conn.rs comparing the PRIVATE
+RetainedOutbound Arc of two retained PlayerSenders. Public tx/pending fields and
+heap addresses are not connection proof. Hub's opaque identity can then check
+the constructor-issued Hub origin, conn/UUID and actual current Guest sender
+against its captured original even after RetainedLan becomes ClosedLan. Expose
+only the predicate/result, not the queue/registry/Arc/worker. No change to native
+acquisition, IO, queue, default/staged sending or failure/close algorithms.
+
 Define a DISTINCT retained-server NativeWorld population/projection; do not call
 or relax preflight_session_checkpoint for it. Untouched admissions retain their
 original Guest/event without a native row or file overwrite. Fully native-installed
@@ -190,7 +201,7 @@ UI-latency or global memory/performance claim is introduced.
 
 ## Proposed maximum source scope
 
-Ten paths under crates/horizon-client/src:
+Eleven paths under crates/horizon-client/src:
 
 1. game.rs: early explicit route, direct cold factory/typed server owner and tick
    fence propagation; preserve ordinary entry and Game algorithms.
@@ -212,6 +223,8 @@ Ten paths under crates/horizon-client/src:
    read_dat_native codec/error policy; preserve all native writer/close algorithms.
 10. game/stats.rs: shared pure native JSON decoder/checked adapter support;
     preserve ordinary read fallback, interpretation and native write semantics.
+11. lan/conn.rs: ONLY the private-queue identity predicate for two actual retained
+    senders; no outbound/acquisition/IO/close behavior change.
 
 No ordinary integrated/dedicated startup/shutdown, new client Memory factory,
 protocol/Session/streamer library/native codec/control library/dependency/lock,
