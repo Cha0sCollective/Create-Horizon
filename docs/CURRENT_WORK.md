@@ -49,16 +49,18 @@ defer transport-stop API polish. Ordinary paired C0 ownership is still required.
 Reuse existing creative/inventory/hotbar/placement handlers, but do not ship an
 input-only endpoint: current retained packet guards refuse those operations.
 
-Core and configured-handoff source releases are CLOSED. Next bounded READ-ONLY
-investigation maps ordinary selected-package preparation, native Game consumers
-and native-versus-domain checkpoint/close selection. Current ordinary run rejects
-selected pairs, retained cold factories forbid pairs and native authority only
-mints for fresh TestTerrain; CloseOwner rejects CoherentSession with retained_server.
-Connect actual existing services for adopted fresh bounded Overworld and our own
-reopen/recovery; no Boolean authority widening or arbitrary world import. Then
-compose precise normal controls/gameplay and departure custody. Filled machine
-ingress remains closed meanwhile. No new source path released. Broader redesign,
-supported profile or acceptance expansion returns to owner first.
+Core and configured-handoff source releases are CLOSED. Fresh independent design
+ACCEPT8bb9b6b2 for S1_ORDINARY_PAIRED_STARTUP_PROPOSAL.md; source assignment names
+exactly ten production/four existing test paths. After private assignment checkpoint
+and full baseline, root may release those paths on codex/s1-ordinary-paired-startup,
+prefixs1ord1. Distinct no-world frontend and ordinary constructor-issued preparation
+connect real CLI/title entry, actual configured Game consumers, native stone controls
+and retained native-versus-domain close/recovery. Preserve Cold restrictions and
+actual presentation/resources/actor/participant custody. No fake title world/save/
+completion or role relabeling. In-frame native comparison is included; persistent
+local-player domain adapter follows separately. Keep counter placement/filled ingress
+and departure/replacement closed meanwhile. No other source path released. Broader
+redesign, supported profile or acceptance expansion returns to owner first.
 
 ## Evidence, execution and publication
 
