@@ -9,7 +9,7 @@ is pending. Follow the four deliverables and focused validation policy.
 
 Connected usable paired world: reuse actual Game/server/client/transport/save
 components. Connect ordinary integrated Memory and in-frame ownership, complete
-C0 closure and exact paired C1 configuration/admission for integrated and dedicated
+C0 ownership and exact paired C1 configuration/admission for integrated and dedicated
 two-client modes. Keep filled machine ingress closed until coherent recovery and
 departure custody are connected. Retain the Open to LAN refusal/negative test;
 the older full C1 topology is not completed.
@@ -34,12 +34,25 @@ All 19 window-test processes reaped. Native client 2/5 and server-only 2/2 setti
 clarification independently accepted. Raw EOF/Receive diagnostics remain truthful:
 no C0 clean-stop/default paired/C1/G1/S1 claim.
 
-Next is bounded DESIGN/API/caller work at clean accepted 21471ef for remaining
-C0 clean closure, ordinary selected-pair integrated/in-frame startup, exact C1
-configuration/admission and existing checkpoint routing. Refresh the route map;
-reuse retained/native/session/package services. Do not just remove guards or widen
-cold authority. No additional engine source paths are released. A broad redesign
-or supported-profile expansion returns to the owner first.
+Fresh independent read-only C0/input investigation accepted
+S1_ORDINARY_PAIRED_STARTUP_MAP.md (d44f091a). Error-free/no-ack Quit is not an
+adopted prerequisite: preserve actual native completion AND original diagnostics;
+defer transport-stop API polish. Ordinary paired C0 ownership is still required.
+Reuse existing creative/inventory/hotbar/placement handlers, but do not ship an
+input-only endpoint: current retained packet guards refuse those operations.
+
+Next is the bounded strict-configuration design in
+S1_PAIRED_CONFIGURATION_CORE_PROPOSAL.md, then ordinary startup/gameplay/custody
+composition. Fresh amended design accepted at8ddc06f2; requested mechanical
+three-source wording correction yields proposal95e0cefc. The exact three-path
+assignment is S1_PAIRED_CONFIGURATION_CORE_SOURCE_ASSIGNMENT.md: lan/
+login_negotiation.rs, login_negotiation_tests.rs and data.rs. Prefix s1cfg1,
+branch codex/s1-paired-config-core at21471ef, root serial implementation AFTER
+private assignment checkpoint and baseline/source release. Variable allocation
+accounting uses existing data.rs borrowed preflight/128 MiB admission policy.
+Existing B refusal and all ordinary paired guards stay closed; no dormant-core
+C1 claim or C0 composite waiver. No other source paths are released. Broad
+redesign or supported-profile/acceptance expansion returns to the owner first.
 
 ## Evidence, execution and publication
 
