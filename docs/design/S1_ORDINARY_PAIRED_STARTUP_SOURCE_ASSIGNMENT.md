@@ -1,5 +1,15 @@
 # Ordinary paired startup source assignment
 
+Bounded dedicated-caller amendment adds ONLY game/dedicated.rs to the existing
+sixteen-path budget, for seventeen total (thirteen production/four test paths).
+Independent investigation confirmed actual preflight Setup has no public consuming
+accessor; reparsing properties loses the captured snapshot and generated seed.
+The proposal specifies one-shot owned projection/refusal, pre-effect flag fences,
+unchanged legacy consumption and focused inline tests. No hosting/provider/profile
+expansion. Baseline cf7b2b07 is preserved before release; exact amended proposal,
+review and private checkpoint are recorded in the serial gate. No dedicated.rs
+edit is authorized until that amendment review/checkpoint/baseline is complete.
+
 Owner resolved the terrain HOLD on November 3, 2026 by choosing "Keep fixed test
 terrain for S1 (recommended)". Apply the proposal's explicit existing --test-terrain
 profile and pre-acquisition flat/unsupported-generation fences. Preserve actual

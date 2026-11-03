@@ -196,7 +196,7 @@ Registered counter placement remains closed pending its real lifecycle bridge.
 
 ## Exact proposed source budget
 
-Twelve existing production paths under crates/horizon-client/src:
+Thirteen existing production paths under crates/horizon-client/src:
 
 - game.rs
 - game/mod_packages.rs
@@ -212,6 +212,27 @@ Twelve existing production paths under crates/horizon-client/src:
   and finished-only loader ownership needed for the existing frontend
 - title.rs, only the fixed pre-effect local-world click admission sharing private
   existing geometry/click logic; focused inline tests there are permitted
+- game/dedicated.rs, only a fixed crate-private consuming projection of the ACTUAL
+  captured preflight Setup for selected retained startup, pre-effect rejection of
+  unsupported dedicated mutation flags, and focused inline tests. Keep the exact
+  parsed ServerProperties/world/seed/universe/port inputs and refusal custody;
+  do not reparse settings, silently override them or invoke legacy run_dedicated
+  with its detached console/profile helpers. Reuse one-shot Setup consumption for
+  legacy callers unchanged. Original baseline SHA256 is
+  cf7b2b0712fd8fc373b64f6fc6bf21c42ac73138dfb1e517d8bbf599a82c28ca.
+
+The added path only connects the existing dedicated caller within the same fixed
+terrain profile. Validate the actual captured offline creative/non-hardcore,
+two-player bounded settings, checked bind/port/compression and generator choices
+before native acquisition. Refuse unsupported access-list policy/content, packs,
+transfer/filter/link/query/RCON/JMX/management features instead of silently bypassing
+them or starting their helpers. Preserve supported native spawn-protection semantics;
+the focused smoke can explicitly configure zero protection. Announcements and
+console/world-mutation commands remain closed. Existing EULA/property preflight
+writes remain accurately attributed; no duplicate property parse/store. General
+options including --test-terrain precede --dedicated under its existing parser.
+Tests bind one-shot consumption, original seed/world/port override and exact refusal
+custody, including a changed properties file after the original preflight snapshot.
 
 Four existing test paths:
 

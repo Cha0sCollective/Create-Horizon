@@ -38,7 +38,10 @@ Completed and source releases CLOSED:
 
 Physical engine checkout .local/worktrees/s1-native-close-composition is now on
 codex/s1-ordinary-paired-startup, parent ca9b3f49, with UNQUALIFIED implementation
-in the assigned sixteen-path budget. No new format/compiler/runtime run yet.
+in the assigned budget. No new format/compiler/runtime run yet. The independently
+accepted dedicated-caller amendment adds only game/dedicated.rs (baselinecf7b2b07)
+for seventeen paths, to consume the existing captured Setup exactly once. Private
+checkpoint and baseline/gate extension precede editing that added file.
 Read-only coordinator inspection and independent Sol High follow-up confirmed the
 current checked native provenance/capture/recovery route supports TestTerrain,
 not ordinary no-flag Vanilla/flat generation. The proposal did not resolve this
@@ -65,11 +68,11 @@ input-only endpoint: current retained packet guards refuse those operations.
 Core and configured-handoff source releases are CLOSED. Fresh independent design
 ACCEPTb52ae8b5 for the final bounded S1_ORDINARY_PAIRED_STARTUP_PROPOSAL.md amendment;
 menu reuse adds startup_menu.rs and fixed pre-effect click admission adds title.rs,
-twelve production/four existing test paths. Only reviewer-requested factual wording
+the original twelve production/four existing test paths. Only reviewer-requested factual wording
 changed afterward; final pin is in the source gate. Browser/discovery UI remains
 refused; standard matching --server entry is the planned external route.
 After private assignment checkpoint
-and full baseline, root may release those paths on codex/s1-ordinary-paired-startup,
+and full baseline, root may release the amended seventeen paths on codex/s1-ordinary-paired-startup,
 prefixs1ord1. Existing Loading/StartupMenu no-world frontend and ordinary preparation
 connect real CLI/title entry, actual configured Game consumers, native stone controls
 and retained native-versus-domain close/recovery. Preserve Cold restrictions and
