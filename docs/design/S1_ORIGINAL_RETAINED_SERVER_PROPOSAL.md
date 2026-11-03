@@ -6,7 +6,8 @@ Parent is accepted/publicly synced engine
 `3bb3a290c91660c1f2315a3add1e107853ee9a9c`; private results `e0279995` synced.
 Prefix `s1srv1` was checked unused. S1/G1 remain open.
 
-Revision2 retains accepted revision1 and adds only the scoped native-sender
+Revision3 also includes hub.rs solely to re-export the new opaque identity type
+from its private retained module. Revision2 retains accepted revision1 and adds the native-sender
 identity predicate below. Revision1 addresses independent DESIGN HOLD on f80d9d5f,
 preserved at .local/s1srv1-design-attempt0-proposal.md. This revision is still
 HELD and needs renewed review; no source follows from editing this document.
@@ -201,7 +202,7 @@ UI-latency or global memory/performance claim is introduced.
 
 ## Proposed maximum source scope
 
-Eleven paths under crates/horizon-client/src:
+Twelve paths under crates/horizon-client/src:
 
 1. game.rs: early explicit route, direct cold factory/typed server owner and tick
    fence propagation; preserve ordinary entry and Game algorithms.
@@ -225,6 +226,8 @@ Eleven paths under crates/horizon-client/src:
     preserve ordinary read fallback, interpretation and native write semantics.
 11. lan/conn.rs: ONLY the private-queue identity predicate for two actual retained
     senders; no outbound/acquisition/IO/close behavior change.
+12. lan/hub.rs: ONLY public re-export of the new opaque identity type from its
+    existing private retained module. No Hub dispatch/constructor/close changes.
 
 No ordinary integrated/dedicated startup/shutdown, new client Memory factory,
 protocol/Session/streamer library/native codec/control library/dependency/lock,

@@ -62,15 +62,16 @@ archive execution claim. All15accepted historical indices4904entries unchanged;
 differentFINAL rehashed261+4904initially/finally and42mapbindings withzero
 mismatches. Sixteen accepted indices now contain5165immutable entries.
 
-Next packet s1srv1 proposal S1_ORIGINAL_RETAINED_SERVER_PROPOSAL.md revision2
-3f230e2a has fresh independent DESIGN ACCEPT; coordinator adopts via its
-SOURCE_ASSIGNMENT. Originalf80/HOLD preserved. Elevenpaths include distinct cold
+Next packet s1srv1 proposal S1_ORIGINAL_RETAINED_SERVER_PROPOSAL.md revision3
+949ef822 has fresh independent DESIGN ACCEPT; coordinator adopts via its
+SOURCE_ASSIGNMENT. Originalf80/HOLD preserved. Twelvepaths include distinct cold
 server authority, realGame admission/ticks, checked native reads/firstbody,
 native-only population with pending ack/inbox, retained Hub/storage/worker/control
 closure. Preserve coherent predicates; no heap-address-only native identity.
 Initial10path gate388 is superseded before source; engine remains CLEAN.
-Amended private checkpoint/sync and exact11path gate precede source.
-See proposal for exact11paths/profile/tests; addedconn predicate is identityonly. C0 composite still precedes C1.
+Amended private checkpoint/sync and exact12path gate precede source.
+See proposal for exact12paths/profile/tests; conn predicate is identityonly and
+hub.rs only reexports the opaqueidentity. No engine source has changed yet. C0 composite still precedes C1.
 
 Stable physical checkout .local/worktrees/s1-native-close-composition, warm target
 /home/arbiter/.cache/create-horizon/target-s1nc1. Historic s1-retained-acquisition
