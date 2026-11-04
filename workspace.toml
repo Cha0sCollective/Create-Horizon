@@ -5,9 +5,9 @@ id = "create_horizon"
 namespace = "create"
 repository = "https://github.com/Cha0sCollective/Create-Horizon"
 visibility = "private"
-stage = "S1 native playability adopted; open"
-active_packet = "Owner adopted native playability plan on November 4: import tested Create0.5 privately, fix selected milling parity and finish bounded integrated/dedicated normal play/save/reopen. Legacy Wasm route superseded, old dirty work frozen; native S1 open"
-next_stage = "Native S1 checklist, then reuse kinetic/milling implementation for S2/S3; no stage pass from adoption"
+stage = "Native S1 playability complete"
+active_packet = "Native S1 complete under the adopted profile after independent source and checklist reviews: selected Java parity, integrated and dedicated/two-client normal play/reopen/removal pass. No further active packet; legacy dirty work remains frozen and old G1 unpassed"
+next_stage = "Bounded S2 reference verification and native kinetic reuse; not started or accepted"
 
 [specification]
 version = "0.1"
@@ -159,7 +159,7 @@ runtime_namespace = "create"
 resource_create_version = "6.0.10"
 resource_jar_sha256 = "ef87fe5709f1ba1f5b8bb20a2925b5afb4669e178fd6d8bf10c167759eefe37a"
 plan = "docs/design/NATIVE_PLAYABILITY_PLAN.md"
-status = "adopted route; native S1 open; local patches tracked in private repository"
+status = "native S1 complete under adopted profile; selected milling patch76189de and results recorded; S2/S3 not accepted"
 
 [legacy_host]
 horizon_revision = "cf62fe270b243780f9aa86c49b456d9dd9078b42"

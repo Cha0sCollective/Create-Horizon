@@ -1,39 +1,31 @@
 # Native Create subset for Horizon
 
-Private development workspace for the owner's personal Rust mod. The first planned
-reliable release supports a creative motor, shaft, small and large cogwheels and a
-millstone that converts cobblestone to gravel. Gameplay is not implemented yet.
+Private development project for a personal Rust Create port. The active code is
+under `native/create/`, reusing the existing native Create implementation and
+Horizon's server, inventory, save and rendering services.
 
-S0's reference corpus passes repeatably and G0 accepts a bounded experimental
-direction. The pinned Horizon base runs; a first private Rust kernel calculates
-settled single-source speeds/stress and matches selected reference checkpoints
-both natively and inside Horizon's development Wasm sandbox.
-Live machinery and the complete host foundations remain pending; G1/G2/G3 are open.
+The supported target is a creative motor, shaft, small and large cogwheels, and a
+millstone converting cobblestone to gravel. The November 4 native plan replaces
+the old Wasm/in-frame route. Open to LAN and the custom cross-owner crash-recovery
+framework are deferred. Existing reference results and legacy work are preserved.
 
-- [Current work](docs/CURRENT_WORK.md) identifies the next bounded action.
-- [Product specification](docs/PRODUCT_SPECIFICATION.md) preserves the supplied
-  version 0.1 plan, including proposed decisions and acceptance requirements.
-- [Development](docs/DEVELOPMENT.md) covers checkouts, toolchains and commands.
-- [Roadmap](docs/ROADMAP.md) maps the staged scope and current gate status.
-- [Host contract](docs/design/HOST_CONTRACT.md) is the H01 experimental direction.
-- [G0 decision](docs/design/G0_DECISION.md) records scope, evidence and remaining risks.
-- [Reference environment](docs/reference/ENVIRONMENT.md) records P01 tooling and pins.
-- [Orchestration adoption](orchestration/ADOPTION.md) records the policy source and
-  effective local configuration.
-- `workspace.toml` pins the engine, Create reference and Rust compiler.
+- [Current work](docs/CURRENT_WORK.md) gives the active branch and next action.
+- [Adopted native plan](docs/design/NATIVE_PLAYABILITY_PLAN.md) defines S1 acceptance.
+- [Native S1 results](docs/reference/NATIVE_S1_PLAYABILITY_RESULTS.md) records the
+  source/build, integrated and two-client dedicated checks, and their limits.
+- [Native development](native/README.md) gives build and focused-check commands.
+- [Source provenance](native/UPSTREAM.md) identifies the imported MIT base and pins.
+- [Roadmap](docs/ROADMAP.md) separates the active native route from historical stages.
+- `workspace.toml` pins the compatible host, port, references and tools.
 
-`create-horizon-core` is independent of Horizon. Its narrow evidence and unsupported
-cases are in [P02 results](docs/reference/P02_RESULTS.md). Host and client/server
-adapters still require the S1 foundations; pure calculations do not establish
-live-game conformance. The [Wasm evidence](docs/reference/P02_WASM_RESULTS.md)
-records the exact sandbox scope. The [D0 baseline](docs/reference/BASELINE_D0.md)
-is software-rendered B0 context, with performance qualification still open.
-The local engine now checks experimental paired-package declarations and required
-client/server callback types without executing guest code; see
-[H02b results](docs/reference/H02_TYPED_RESULTS.md). Paired packages are not yet
-discovered or activated by the game loader.
-The [H02c snapshot evidence](docs/reference/H02_SNAPSHOT_RESULTS.md) records
-immutable package bytes, deterministic identity and resource-cache checks.
-The [arbitration observations](docs/reference/P02_ARBITRATION_RESULTS.md) add six
-repeated Java cases for competing sources, recovery and overspeed destruction;
-the native solver's multi-source behavior remains unimplemented.
+The Create behavior reference remains 6.0.11; the imported base and local art
+bootstrap are 6.0.10, with selected differences reconciled explicitly. Original
+art and Minecraft resources stay local. This is a bounded source-build prototype;
+full Create/modpack compatibility, existing-world import and release distribution
+have not been established.
+
+The root Cargo workspace, old [host contract](docs/design/HOST_CONTRACT.md),
+[reference corpus](docs/reference/ENVIRONMENT.md), [G0 decision](docs/design/G0_DECISION.md)
+and historical G1 work remain available for attribution and relevant reuse. They
+are not the current native build or evidence that old G1 passed. The original
+[product specification](docs/PRODUCT_SPECIFICATION.md) remains a planning baseline.

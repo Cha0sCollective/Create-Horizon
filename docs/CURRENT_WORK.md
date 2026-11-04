@@ -1,63 +1,62 @@
 # Current work
 
-Owner adopted the native playability plan on November 4, 2026 after the existing
-port evaluation. Continue until native S1 is complete, a genuine blocker or input
-is needed. Read `docs/design/NATIVE_PLAYABILITY_PLAN.md` and `workspace.toml`.
-The old Wasm/in-frame route is superseded, not passed. No owner decision pending
-for this adoption. Ask before further architecture/profile/framework/acceptance
-expansion. No public release, merge, cleanup or playable/Prism/Java changes.
+Native S1 is COMPLETE under the owner-adopted November 4 native playability plan.
+Fresh independent Sol High checklist review found no gaps in the bounded result.
+See `docs/reference/NATIVE_S1_PLAYABILITY_RESULTS.md` for evidence and limits.
+The requested work through S1 has reached its stop point; no game/compiler jobs
+remain. S2/S3 are not accepted by this milestone. No further active code packet.
 
-## Current packet
+## Current checkpoint
 
-Private branch `codex/native-create-playability`, beginning at
-`a19e237b3c8bf59bbbf599dbf31f005732202f33`. Native S1 OPEN.
-Import exact tested Create0.5 into `native/create/` with provenance and notices;
-retain upstream extras as unqualified existing content. Its own Cargo workspace
-is active; root Cargo and Wasm tools remain historical.
+Private branch `codex/native-create-playability`. Adoption `d8c7274`; exact upstream
+source import `e401338aa1bc1a921139a33145a70c730f6011d7`; reviewed parity fix
+`76189de63a6c31332d9e8dbc95fefca700497551`. Native code is `native/create/`, its
+own Cargo workspace; repository-root Cargo and old host tools remain historical.
 
 Pins: port16c5d454, official Horizonfc021038, Mixinsa1e13326, native API359,
-Rust1.99.1, Minecraft26.3. Java reference remains6.0.11/7ff2760e/NeoForge21.1.219;
-candidate/local art input remains6.0.10 until bounded differences are reconciled.
-Use original `create:` IDs; product repository identity remains Create-Horizon.
+Rust1.99.1, Minecraft26.3. Reference remains6.0.11/7ff2760e/NeoForge21.1.219;
+base/local art stays6.0.10, explicitly qualified for selected differences only.
+Runtime IDs are `create:`. No new engine service, API or save format was needed.
 
-First code correction: handler guard99 versus output insertion64. One full64
-slot must allow progress into a free slot; nine full64 slots must consume input
-and discard output to match the owner's explicit pinned-reference choice.
-Change portable milling guard, native duplicate guard and affected existing
-oracle/test expectations only. Reuse inventory/persistence; no new host API.
-Developer path overrides may reuse the clean exact host checkout, installed Rust
-and warm target. Check upstream before fixing an already-completed contribution.
+The source patch separates processing guard99 from insertion64; one full stack
+allows progress and nine full stacks consume input/discard output as selected.
+Six Rust tests,36 focused Java-AST cases, targeted Clippy/format/Python checks and
+both game modes PASS. Stable source map8ebf7d274fb56be9cda6539038751171bde7cedd3e5ac2d289a4003dd5d47a0e.
 
-Supported profile remains fixed mob-free Creative TestTerrain Overworld, default
-integrated and dedicated/two rendered matching clients. Open to LAN deferred.
-Custom interrupted cross-owner checkpoint and extra hardened replay framework
-are deferred; native callbacks are trusted. Normal restart is not crash coherence.
-Client rendering evidence is separate from authoritative server-query accounting.
+Integratedw9yly2cq: all5 ordinary placements, ratios/reverse, milling/collection,
+Timer208/input3/motor32/player2 cold retained and completion3; filled removal
+377world+201player=578. Dedicateduakyr03b:2 rendered clients, placement/collection,
+peer reconnect, cold server+bothclients, Timer212/input3/motor32/actor2/peer0 retained
+and completion3; removal347world+231actor=578. Both modes verify65gravel with
+onefull64slot and576 with ninefull64slots/inputconsumed. All8processes exit0.
+Actual original models inspected; both submitted matrix streams animate near-256RPM.
+Machine counts are authoritative server queries, not independent inventory replicas.
 
-Validate focused changed milling behavior, ordinary collection/removal, cold
-reopen and affected native client/server milestone. Reuse unchanged valid
-evidence with attribution; no historical full battery. Preserve earlier FALSE.
-One fresh read-only Sol High review for substantive code and operating rules;
-root alone serial writes/formatter/compiler/runtime/WSL/Git. No standing team.
-Private push: fresh PRIVATE metadata/exact origin/normal hooks. Public engine
-needs separate bounded assignment, different FINAL/privacy and public gates.
+## Boundaries and following work
 
-## Existing evidence and preserved work
+Supported profile: five types, fixed mob-free Creative TestTerrain Overworld,
+integrated and dedicated/two rendered matching clients. Open to LAN, custom
+cross-owner interrupted-crash framework and extra hardened replay guarantees
+remain deferred. Native code is trusted. No full Create/modpack compatibility,
+unqualified client resync, legacy G1 pass, Java/world import or release claim.
 
-See `docs/reference/S1_EXISTING_CREATE_PORT_EVALUATION_2026_11_04.md` for complete
-evaluation. Unchanged source built Linux4m22s. Integrated placement/ratios/reverse/
-milling/collection/cold reopen components passed; raw overall FALSE is retained
-for screenshot logging TypeError. Final dedicated11uw45uu passed: two real
-rendered clients, peer reconnect, cold server+both clients, Timer212/input3/motor32/
-actor2/peer0 preserved and completion3. All6processes exit0. Both actual render
-matrix streams animate near-32RPM. Server counts are not independent inventory
-replica inspection. Full-output mismatch was reproduced, not accepted as parity.
+Next proposed work is bounded S2 reference verification/reuse of the existing
+kinetic implementation and retained observations, not rebuilding a host framework.
+Read the adopted plan and check upstream before a new assignment. No such packet
+has started. Ask before further architecture/profile/schema/acceptance expansion.
 
-Legacy accepted public engine9f7d5ec remains intact. Active old worktree
-`.local/worktrees/s1-native-close-composition` remains frozen on
-`codex/s1-configured-operation`, same HEAD and five dirty assigned files; sixth
-lan/mod.rs unchanged. Original source map8c89696b and SOURCE HOLD invalid
-TransferOutcome import are preserved. Do not fix/format/build that old packet.
-Historical C0/C1/G1 results and failures are unchanged; no legacy G1 pass is implied.
-No game/compiler jobs were active at adoption. Raw trials and original images
-stay under the separate local evaluation and Linux run directories, outside Git.
+Root alone serial writes/compiler/runtime/WSL/Git; bounded read-only reviewers,
+no standing team. Private pushes require fresh PRIVATE/exact origin/normal hooks;
+public engine needs separate bounded assignment and different FINAL/privacy gates.
+No merge, release, cleanup or playable/Prism/Java/memory changes are authorized.
+
+## Preserved work
+
+Old engine worktree `.local/worktrees/s1-native-close-composition` stays frozen
+on `codex/s1-configured-operation` at accepted/public9f7d5ec with5dirtyfiles and
+unchanged lan/mod.rs. All6 original hashes match map8c89696b; its invalid
+TransferOutcome import SOURCE HOLD is unchanged. Do not fix/format/build it here.
+Legacy G1, historical FALSE/HOLD, reference snapshots, worlds and prior binaries
+remain intact. Original evaluation95f binaries were preserved before cache reuse.
+Native qualification drivers under `.local/native-adoption-01` are now historical;
+do not rerun them against another source/binary. Raw runs/images stay outside Git.
