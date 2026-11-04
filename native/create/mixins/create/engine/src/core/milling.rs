@@ -7,6 +7,9 @@
 pub const INPUT_SLOTS: usize = 1;
 pub const OUTPUT_SLOTS: usize = 9;
 pub const SLOT_LIMIT: u32 = 64;
+/// NeoForge 21.1.219 reports 99 for the handler; ordinary item insertion stays 64.
+/// The selected Create reference compares against this limit before processing.
+pub const HANDLER_SLOT_LIMIT: u32 = 99;
 
 /// This method returns one even at zero RPM; `tick` separately checks power.
 pub fn processing_speed(rpm: f32) -> i32 {
@@ -37,7 +40,7 @@ impl MillCycle {
         input_present: bool,
         duration: Option<i32>,
     ) -> Action {
-        if rpm == 0.0 || outputs.into_iter().any(|count| count == SLOT_LIMIT) {
+        if rpm == 0.0 || outputs.into_iter().any(|count| count == HANDLER_SLOT_LIMIT) {
             return Action::None;
         }
         if self.timer > 0 {
@@ -89,16 +92,29 @@ mod tests {
     }
 
     #[test]
-    fn full_output_and_missing_power_pause_without_resetting_progress() {
+    fn handler_limit_and_missing_power_pause_without_resetting_progress() {
         let mut cycle = MillCycle { timer: 53 };
         assert_eq!(cycle.tick(0.0, [1], true, Some(200)), Action::None);
-        assert_eq!(cycle.tick(256.0, [64], true, Some(200)), Action::None);
+        assert_eq!(cycle.tick(256.0, [99], true, Some(200)), Action::None);
         assert_eq!(cycle.timer, 53);
         assert_eq!(
-            cycle.tick(-256.0, [63], true, Some(200)),
+            cycle.tick(-256.0, [64], true, Some(200)),
             Action::Processing
         );
         assert_eq!(cycle.timer, 37);
+    }
+
+    #[test]
+    fn nine_full_ordinary_stacks_still_reach_processing() {
+        let mut cycle = MillCycle { timer: 1 };
+        assert_eq!(
+            cycle.tick(256.0, [64; OUTPUT_SLOTS], true, Some(250)),
+            Action::Process
+        );
+        assert_eq!(cycle.timer, -15);
+        // The host consumes the input and discards a result that cannot fit,
+        // matching the selected reference rather than introducing backpressure.
+        assert_eq!(SLOT_LIMIT, 64);
     }
 
     #[test]

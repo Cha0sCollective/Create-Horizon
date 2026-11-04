@@ -15,7 +15,8 @@ fn main() {
                 let mut input: u32 = v[3].parse().unwrap();
                 let valid = v[4] == "1";
                 let duration = v[5].parse().unwrap();
-                let mut output: u32 = v[6].parse().unwrap();
+                let mut outputs = [0u32; milling::OUTPUT_SLOTS];
+                outputs[0] = v[6].parse().unwrap();
                 let ticks: u32 = v[7].parse().unwrap();
                 let remove_at: i32 = v[8].parse().unwrap();
                 let mut processed = 0;
@@ -23,16 +24,24 @@ fn main() {
                     if tick as i32 == remove_at {
                         input = 0;
                     }
-                    if cycle.tick(rpm, [output], input > 0, valid.then_some(duration))
+                    if cycle.tick(rpm, outputs, input > 0, valid.then_some(duration))
                         == Action::Process
                         && input > 0
                         && valid
                     {
                         input -= 1;
-                        output = (output + 1).min(64);
+                        // Same nine-slot insertion context as the Java probe.
+                        // A normal full stack leaves later slots available.
+                        if let Some(slot) = outputs
+                            .iter_mut()
+                            .find(|count| **count < milling::SLOT_LIMIT)
+                        {
+                            *slot += 1;
+                        }
                         processed += 1;
                     }
                 }
+                let output: u32 = outputs.into_iter().sum();
                 println!("{} {input} {output} {processed}", cycle.timer);
             }
             "R" => {

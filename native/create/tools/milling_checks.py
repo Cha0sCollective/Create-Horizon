@@ -163,14 +163,12 @@ def run(call, graphics, log, scratch):
     assert timer > 0 and before == {'minecraft:sandstone': 4}, (timer, before)
     call('wait', 30)
     assert number('Timer') == timer and counts(slots()) == before
-    # A single full result slot pauses all progress, even when other slots are free.
+    # Ordinary 64-count stacks are below the selected handler guard of 99.
+    # A full stack leaves other output slots available throughout processing.
     call('command', f'data merge block {X} 65 0 {{OutputInventory:{{Size:9,Items:[{{Slot:8,id:"minecraft:sand",count:64}}]}}}}')
     drive(256)
-    call('wait', 25)
-    assert number('Timer') == timer and counts(slots()).get('minecraft:sandstone') == 4
-    call('command', f'data merge block {X} 65 0 {{OutputInventory:{{Size:9,Items:[]}}}}')
     call('wait', 150)
-    assert counts(slots()) == {'minecraft:sand': 4}, slots()
+    assert counts(slots()) == {'minecraft:sand': 68}, slots()
     if graphics:
         call('command', f'tp @s {X + 2.5} 66 3.5')
         call('look-at', X + .5, 65.5, .5)
@@ -178,7 +176,15 @@ def run(call, graphics, log, scratch):
         poses = [p for p in engineering_checks.poses(log, [X, 65, 0]) if p['model'].endswith('millstone/inner')]
         engineering_checks.source_rotation(poses,1,-256,22.5)
         call('screenshot', scratch / 'millstone.png')
-    print('Milling: RPM-dependent processing pauses without power/full buffer and resumes with input/output conservation', flush=True)
+    print('Milling: pauses without power; full ordinary stacks leave free output slots usable', flush=True)
+
+    reset()
+    full = ','.join(f'{{Slot:{slot},id:"minecraft:gravel",count:64}}' for slot in range(9))
+    call('command', f'data merge block {X} 65 0 {{InputInventory:{{Size:1,Items:[{{Slot:0,id:"minecraft:cobblestone",count:1}}]}},OutputInventory:{{Size:9,Items:[{full}]}}}}')
+    drive(256)
+    call('wait', 40)
+    assert counts(slots()) == {'minecraft:gravel': 576}, slots()
+    print('Milling: nine full ordinary stacks consume input and discard output, matching selected Java behavior', flush=True)
 
     # Original wheat milling rolls two independent bonus flour units and a seed.
     reset()

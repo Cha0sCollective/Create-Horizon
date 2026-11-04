@@ -1,4 +1,5 @@
 /target/
+/native/create/target
 /.local/
 /.horizon-cache/
 /.env

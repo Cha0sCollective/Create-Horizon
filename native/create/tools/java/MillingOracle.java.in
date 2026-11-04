@@ -21,7 +21,8 @@ public class MillingOracle {
         ItemStack[] stacks;
         ItemStackHandler(int size){stacks=new ItemStack[size];Arrays.setAll(stacks,i->new ItemStack(0));}
         int getSlots(){return stacks.length;}
-        int getSlotLimit(int slot){return 64;}
+        // Selected 6.0.11 / NeoForge 21.1.219 context; insertion below stays 64.
+        int getSlotLimit(int slot){return 99;}
         ItemStack getStackInSlot(int slot){return stacks[slot];}
         void setStackInSlot(int slot,ItemStack stack){stacks[slot]=stack;}
     }

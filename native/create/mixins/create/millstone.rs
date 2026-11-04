@@ -328,7 +328,7 @@ pub(super) fn tick(
         || entity.items[1..]
             .iter()
             .flatten()
-            .any(|s| s.count == milling::SLOT_LIMIT);
+            .any(|s| s.count == milling::HANDLER_SLOT_LIMIT);
     let matching = if cycle.timer <= 0 && !blocked {
         input.as_ref().and_then(|input| recipe(game, pos, input))
     } else {
@@ -479,7 +479,7 @@ pub(super) fn client_tick(game: &mut Game<'_>) {
                     Tag::List(items) => items
                         .iter()
                         .filter_map(horizon_items::item_nbt::item_from_nbt)
-                        .any(|s| s.count == milling::SLOT_LIMIT),
+                        .any(|s| s.count == milling::HANDLER_SLOT_LIMIT),
                     _ => false,
                 });
             if rpm == 0.0 || timer <= 0 || outputs_full {
