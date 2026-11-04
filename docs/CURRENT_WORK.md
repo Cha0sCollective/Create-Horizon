@@ -12,7 +12,7 @@ Private branch codex/h02-smoke-h03-notes; verify actual HEAD/dirty files on resu
 Pre-edit checkpoint22a09b5 synced before s1on1 source gate. Completed prior durable
 OWN core fbd4046 accepted/public; frozen S1_DURABLE_OWN_RESULTS.md bad0702867aaa03c9fcb6f7ffe2ea9e90601ec54b60d0a1d5fc254b07bf9fe3e.
 
-Engine .local/worktrees/s1-native-close-composition clean on
+Engine .local/worktrees/s1-native-close-composition now on
 codex/s1-ordinary-local-owned at accepted/public network parent (public component branch codex/s1-ordinary-owned-network)
 b87bff783dc75bdac0b112208794babe0ea18aa2,
 tree204acda07e448a01b2bb322d06e4f15263c7402a, parentfbd4046b932eef52de3977fd87691745d1afa231.
@@ -62,13 +62,22 @@ Earlier prefixes s1own1/s1loc1/s1plc1/s1ord1 also retired; see frozen reports.
 
 Following docs/design/S1_ORDINARY_LOCAL_OWN_PACKET.md
 SHAf7cd194ebb61c514ee481a86ce828daca5eb6795ef634eaf7b4be334ff664b78 has fresh
-s1_local_owned_design_review final pinned DESIGN ACCEPT, same seven existing paths.
-Coordinator adopts docs/design/S1_ORDINARY_LOCAL_OWN_SOURCE_ASSIGNMENT.md. Newengine
-branch codex/s1-ordinary-local-owned is clean at b87bff7; no LOCAL edits yet. This
-assignment/design's private checkpoint/sync, .local/s1lo1/baseline0 and exact serial
-.local/s1lo1-source-gate.json MUST precede source edits. Gate records actual new
-private checkpoint/hash; current document cannot predeclare its own commit hash.
-No old s1on1 tools may execute on this branch. Scope remains adopted deliverable1.
+s1_local_owned_design_review final pinned DESIGN ACCEPT. Original private pre-edit
+checkpointdc8a279c856e8c3068f6bf073d15cd60a71e8569 synced; sourcegatefd57d3fd8a98a56154cd35c4d738e660179b7c7b3ecb891e4efbd11454129fd8,
+baseline0 73fc815a/pathlist7 0cde9b89 preceded first edits. Engine branch
+codex/s1-ordinary-local-owned at b87bff7 currently2assigneddrafts ONLY:
+session_checkpoint.rs context-only native preparation helper with old sync wrapper,
+session_checkpoint_items.rs context-only arrival wrapper. Rawdraft1 a9e6468f;
+no formatter/compiler/runtime yet. No source/tool execution acceptance.
+
+Fresh exact DESIGN ACCEPT amendment
+S1_ORDINARY_LOCAL_OWN_FENCE_AMENDMENT.md SHA8d21761dbbe9f17e10dde539b2d765f107ccb29dcfc682024abab27aca792242
+adds ONLY streaming.rs current observation/test path. Existing public statuses omit
+private native-fence invariants; actual sync fence waits/saves. Amended assignment
+records8paths. New private checkpoint/sync, untouchedstreaming baseline and amended
+.local/s1lo1-source-gate2.json MUST precede eighthpath edit; streaming.rs untouched.
+No profile/schema/framework/acceptance expansion. Current parent-pinned s1on1 tools
+remain retired. Gate2 will hold actual amended checkpoint/hash after this commit.
 BOTH initial preparation and final activation native reads/scans/fences must stay
 responsive. Game/actual Guest evaluator stayUI; Loading retains renderer/window
 until fresh rendererNone seed validation/adoption. Concrete retained worker inputs

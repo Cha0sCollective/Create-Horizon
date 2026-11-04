@@ -12,7 +12,7 @@ tree204acda07e448a01b2bb322d06e4f15263c7402a. Previous s1on1 private accepted ch
 46ba785c491b2deb9723dcf7abfb323354dd56ee synced; its tools/report are FROZEN/RETIRED.
 New assignment's private before-edit checkpoint belongs in .local/s1lo1-source-gate.json.
 
-Root coordinator directly implements; EXACT permitted existing paths under
+Root coordinator directly implements. Accepted eighth-path amendment S1_ORDINARY_LOCAL_OWN_FENCE_AMENDMENT.md SHA8d21761dbbe9f17e10dde539b2d765f107ccb29dcfc682024abab27aca792242 augments the original seven-path gate. EXACT permitted existing paths under
 crates/horizon-client/src:
 
 1. game/world_loading.rs
@@ -22,6 +22,7 @@ crates/horizon-client/src:
 5. game.rs
 6. game/window_close_tests.rs
 7. game/levels/session_checkpoint_registered_tests.rs
+8. streaming.rs (only accepted current native-fence observation and focused tests)
 
 Use only needed paths. All other tracked sources/inputs remain frozen. No new file,
 lan.rs, paired_close.rs, session_authority.rs, retained_server.rs, counter_control,
@@ -57,3 +58,21 @@ Fresh independent source/tool review before execution; different FINAL/privacy a
 fresh metadata/exact origins/normal hooks before reviewed public branch sync.
 Keep raw failures/native worlds/resources/artifacts/warm targets. No PR/merge/
 release/cleanup, playable/reference/Prism/Java/memory changes. S1/G1 remain OPEN.
+
+## Eighth-path activation condition
+
+Fresh s1_local_owned_design_review DESIGN ACCEPT exact amendment8d21761d. Original
+source gatefd57d3fd/privatecheckpointdc8a279 remains valid for its first two allowed
+context-only drafts, preserved raw draft1a9e6468f. BEFORE streaming.rs edit: privately
+checkpoint/sync this amended assignment plus amendment, capture untouched streaming.rs
+baseline, record .local/s1lo1-source-gate2.json with original gate linkage and active
+eight-path list. No eighth-path edit follows from this text alone.
+
+The sole new method observes retained-sealed rejection, EXISTING private native
+producer predicate and written.is_empty with no mutation/IO/wait/submission/admission.
+It is momentary, not a transferable fence/storage/grant/future-health promise.
+Caller preserves actual frozen Game/entry/native chunk/player/item/clock correlation,
+polls all real participating SaveDirs then fresh original Streaming under the same
+exclusive Game borrow. False/error retains owners and refuses; originalclose/Retry
+or retained validation stage only, no scheduling then reuse. Same profile/schema/
+acceptance and all original design constraints. No other extra path justified.
