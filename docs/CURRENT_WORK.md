@@ -1,166 +1,119 @@
 # Current work
 
-Owner adopted S1_COMPLETION_PLAN.md on November 3, 2026 and authorized continued
-S1 work until input, a genuine blocker or scope expansion is needed. Paired Open
-to LAN is deferred. Ask BEFORE expanding scope. S1/G1 remain OPEN. Owner resolved
-the terrain choice: keep fixed TestTerrain for S1, explicitly require the existing
---test-terrain option and defer normal Vanilla/flat support. Owner adopted the mob-free S1 profile:
-persist native spawn_mobs=false before fresh simulation, preserve it on own
-reopen/recovery, and refuse conflicting existing data. No decision is pending. The amended assignment is checkpointed; follow the four
-deliverables and focused validation policy.
+PAUSED at the owner's request. Do not start further implementation, builds or tests
+until the owner resumes. All active smoke/build/test processes were reaped and all
+bounded reviewers have finished. S1/G1 remain OPEN; no release authority.
 
-## Deliverable 1
+Owner adopted S1_COMPLETION_PLAN.md and the four deliverables. Open to LAN is
+explicitly deferred. Keep fixed TestTerrain, require --test-terrain and ask BEFORE
+expanding scope. Owner also adopted S1_AMBIENT_MOBS_SCOPE_DECISION.md: use existing
+spawn_mobs=false for paired S1 worlds before initial publication/simulation;
+preserve/verify it on own reopen/recovery. Conflicting existing rules/living records
+remain refused, never converted/deleted. No owner decision is pending.
 
-Connected usable paired world: reuse actual Game/server/client/transport/save
-components. Connect ordinary integrated Memory and in-frame ownership, complete
-C0 ownership and exact paired C1 configuration/admission for integrated and dedicated
-two-client modes. Keep filled machine ingress closed until coherent recovery and
-departure custody are connected. Retain the Open to LAN refusal/negative test;
-the older full C1 topology is not completed.
+## Active deliverable 1
 
-Completed and source releases CLOSED:
+Connected ordinary integrated Memory, dedicated TWO real clients and in-frame
+native ownership/configuration/admission/close. Counter placement, filled machine
+ingress, general departure/replacement/rejoin remain closed until their lifecycle,
+checkpoint and custody adapters. In-frame persistent/local-player domain support
+is the following explicit packet. No unsupported topology or world import.
 
-- First-player correction 47fc752f: FINAL/public synced; four groups 67.45s.
-  See S1_FIRST_PLAYER_ADMISSION_RESULTS.md. No more tests absent a finding.
-- Native owner Step A 5d9eaa14: FINAL/public synced; eleven groups 181.97s.
-  See S1_INTEGRATED_OWNER_RESULTS.md. Native mapping/save component only.
-- Joint window Step B 21471ef835da8a3d462186de29be20a5d916b9fd, tree
-  7b5d86c3a6580a02db75e882f110a155285765dd: different FINAL ACCEPT/privacy
-  CLEAR, normal-hook public push and exact remote verification. Ten focused
-  groups 176.06s; checks 33.21s, build 31.02s. See S1_INTEGRATED_WINDOW_RESULTS.md.
-- Dormant configuration core 9bb5510c966e43659aa5f9273c19c01c61939697, tree
-  623364687026f666da04d54084b60ed813756f12: different FINAL ACCEPT/privacy
-  CLEAR, normal-hook public push and exact remote verified. Seven groups 97.68s;
-  checks 74.17s/build 57.05s. See S1_PAIRED_CONFIGURATION_CORE_RESULTS.md.
-- Retained configured handoff ca9b3f49c97db6cd981246de99be35f7b53420ec, tree
-  40c0ed3724a1ccae8bf309e2e860b46cfdd48e55: different FINAL ACCEPT/privacy
-  CLEAR, normal-hook public push and exact remote verified. Nine focused groups
-  204.88s, checks58.98s/build57.57s; S1_PAIRED_CONFIGURED_HANDOFF_RESULTS.md.
+Engine physical checkout: .local/worktrees/s1-native-close-composition.
+Branch codex/s1-ordinary-paired-startup, parent ca9b3f49c97db6cd981246de99be35f7b53420ec.
+NINETEEN dirty paths remain inside TWENTY released existing paths. Frozen source39
+and current map036bcfdd92f03d5d5f9464700289f8857cc2af0ec9d4d208daa695fb09f2e4cc
+match live files. No engine commit/public push for this component.
 
-Physical engine checkout .local/worktrees/s1-native-close-composition remains on
-codex/s1-ordinary-paired-startup, parent ca9b3f49, with WIP in NINETEEN of the
-TWENTY released existing paths. The accepted streaming.rs amendment is privately
-checkpointed at 6c873080 and its serial source gate is extended. Proposal1e2d5fc2,
-assignmentbe11e286 and baseline8124cba9 remain pinned. No further paths released.
-Owner adopted fixed TestTerrain and the mob-free S1 rule. Independent design
-ACCEPT3f38b33b/ab744c9a covers the existing twenty paths; no path was added.
+Owner-adopted mob-free amendment: independent design ACCEPT proposal3f38b33b /
+assignmentab744c9a / decision3bee75ff; private cb403155 exact remote synced before
+source edit. Serial gateb2efa618. Same20 paths, no additional schema/provider/API.
+Original source35 and prior gates/definitions are preserved under
+.local/s1ord1/mob-free-amendment0 and draft35. Do not alter frozen older evidence.
 
-Current source draft35/mapa23cf48e connects the ordinary CLI/title frontend,
-configured client/server consumers, native stone input, original presentation
-return, one-use actual completed-own-world reopen claim, retained coherent census
-and typed recovery through the SAME ordinary worker. Unbound/cross-process roots
-remain refused. Original saved-load ownership now has an open-state borrowed view
-and consuming ticket; actual chunks/evidence/lease remain with the original stream.
-Incomplete loads transfer to its existing close owner. No substitute world/stream.
+Source39 implements ordinary-only preparation with a private marker defaulting
+false. Fresh Level.game_rules gets spawn_mobs=0 after creation rules and before
+native Level/rule publication. Existing rules must already be false; actual native
+GameRules::load verifies the result. Cold/legacy routes retain their current rules.
+Independent SOURCE CLEAR36/38 carried through mechanical formatting into39.
 
-Independent SOURCE/TOOL CLEAR covers these deltas. Full checks8: formatting1.66s,
-paired/mods/native-writer all-target Clippy with warnings denied62.05s, feature-off
-check24.92s and paired-without-mod-runtime check39.09s all exit0. The last reports
-17 known unused warnings and is not an activated supported profile. Test build4
-passed88.25s. Focused tests6: saved-load payload/ticket/close-custody5.33s and all
-four ordinary Native/Guest Memory/TCP2 coherent recovery cases122.21s PASS.
-Resources, prebuilt pair, source and actual binaries are checked before/after.
+Source39 validation:
 
-Reuse the six passing run2 title/pause/loader/vacant/native-claim groups and run3
-initial-publication negatives. Actual source publication and strict final-player
-readback now pass. The initial canonical inert no-Pos allowance is restricted to
-original ordinary integrated input/record/epoch1; final images stay strict. The
-late-diagnostic Leave correction is reviewed/compiled and real menu return is now
-observed; the own-reopen check remains incomplete as described below. Legacy registered native both-role
-roundtrip passed62.06s (run4). Earlier failures and sources remain preserved.
+- checks11 PASS: fmt1.53s, all-target paired/mods/native-writer Clippy with warnings
+  denied24.29s, feature-off17.12s, paired-without-mod-runtime18.05s. The last has
+  known unused warnings and is not an activated supported profile.
+- Test build5 PASS33.48s. Tests7 PASS: actual native completion-claim/fresh-rule/
+  conflicting-or-missing-rule refusal/unchanged bytes/checked-close/reopen group
+  42.20s; four Native/Guest Memory/TCP2 coherent recovery cases125.33s, including
+  preserved false rule through source and continuation. Exact selector534ba1b1.
+- Normal main build2 PASS27.16s. Actual non-test ELFd291c4283e13a77e95db5494be681fc2be4cfdbbabaa12bf2afc91f85168b26b
+  at /home/arbiter/.cache/create-horizon/bin/s1ord1-game-3_mi9z5q/horizon-client.
+- Unchanged library saved-load test ELF48d05079 matches build4/5 exactly; reuse its
+  source35 payload/ticket/close-custody PASS5.33s. Reuse unrelated prior title/pause/
+  loader/vacant, initial-publication negatives and legacy-native results explicitly.
+- Different reviewer preliminary source/privacy CLEAR39, not FINAL approval.
 
-Main game build1 passed80.79s; actual non-test ELF2c1874ca corresponds to source35.
-Actual ordinary integrated windows now demonstrate rendering/movement, native stone
-hover/pickup, authoritative saved Slot0/count1/stone, checked Leave and returned
-Error/Back/Main/named-world selection. Outer EOF remains a separate raw diagnostic.
-No completed stone-placement/own-reopen or component pass is claimed.
+Actual ordinary integrated windows demonstrate rendering/movement, native stone
+hover/pickup, saved Slot0/count1/stone, checked Leave and real Error/Back/Main/
+named-world selection. New mob-free saved rule and empty native entity records
+were checked. Run8 additionally completed the FIRST actual own-title reopen:
+rendered terrain/HUD/stone and matching saved pose were observed and visually
+reviewed. This resolves the prior living-mob reopen refusal for this fresh profile.
 
-Full run6 is NOT verified (161.44s, receiptacf94f6b). First own-title reopen reached
-actual terminal refusal: session checkpoint NotPublished (0 item identities
-assigned): unknown raw native entity field/wrapper; Endpoint Released; Server1None.
-Read-only native entity regions from preserved run4 contain a donkey, seven pigs
-and a chicken. They are genuine living entities generated by Horizon, correctly
-outside the current native ItemEntity-only checked projection. No schema relaxation,
-record deletion or engine fix has been applied. Source35 remains unchanged.
+Whole window run8 is NOT verified (98.93s, receipt224a8947). Its adaptive target
+selector found no supported unambiguous cube face in the closed native observation
+snapshot, so it stopped BEFORE placement. Snapshot is observation-only, outside
+saves, byte-identical to the closed baseline and never supplied to Game as authority.
+Original Game always uses its original root/claim. Failure cleanup requested the
+owned WM Close, then required TERM/KILL; all processes reaped. This does not qualify
+clean shutdown or the complete placement/second-reopen scenario. Preserve raw
+.local/s1ord1-main-8* and its baseline-observation tree unchanged.
 
-Owner adopted the independently reviewed narrow profile:
-existing spawn_mobs=false already blocks both initial creature seeding and later
-natural/custom spawning. Applying it before fresh rule publication/load/ticks and
-preserving/verifying it on own reopen/recovery can stay inside the twenty paths.
-The owner explicitly accepted this S1 profile restriction.
-Existing living records stay refused and preserved; normal unpaired rules stay
-unchanged. Alternative living-entity custody support is a broader scope amendment.
-See S1_AMBIENT_MOBS_SCOPE_DECISION.md; adopted decision3bee75ff. Root may resume
-the reviewed amendment after this private checkpoint and source-gate update.
+On resume, first inspect exact observer target-refusal reasons using that preserved
+snapshot and the actual failure image; improve bounded real-input selection and
+cleanup without weakening ray/body/edge/native-ownership checks or enlarging the
+supported gameplay profile. R9 tool3badf8af is current failed driver; R8 run7 also
+correctly refused an edge hit (63.63s, natural owned exit1). All sources/binaries/
+receipts remain pinned; no source rebuild is needed for a driver-only correction.
 
-Failure/tool history remains immutable: run2 repeated-ack exit race; run3 correctly
-refused a body-intersecting proposed placement; run4 first own-Play timeout; run5
-status-query EOF during control seal. The driver now handles that expected EOF and
-captures pending/failure screens. Native observer8413d296 matches actual 26.3 mixed-
-list wrappers and passed read-only palette/target/refusal checks on saved worlds.
-After run6 failure-only forced X-window destruction, a secondary wgpu surface
-panic occurred (code101), AFTER the original entity refusal was captured. All owned processes
-were reaped; it is not a clean-exit or memory/performance qualification. Retire that
-destructive failure cleanup; use a confirmed native application-close route in
-any next driver. Source review and appropriate checks precede the next game.
+Remaining: finish integrated native placement/Leave/two-own-reopen/final readback;
+actual title Create; dedicated TWO rendered-client and in-frame comparison; three
+ordinary adapter error groups; different FINAL/privacy, then authorized reviewed
+public engine sync. No C0/C1/G1/S1 or release completion claim.
 
-Remaining: implement the adopted bounded profile amendment, focused fresh-rule/
-entity-absence check, integrated title create/stone/Leave/own-reopen readback,
-dedicated TWO rendered clients, in-frame comparison, three ordinary adapter error
-groups (recovery refusal/cancellation; blocked cleanup/exact Retry; initial pending/
-untouched owner close), then different FINAL/privacy. Reuse valid older evidence;
-no broad historical fault matrix. No engine commit/public push, C0/C1/G1/S1 or
-release completion. Existing warm caches, worlds and raw failures stay intact.
+The bounded read-only error-group design is ready: recovery cancellation/partial
+wrong TCP participant using existing ordinary fixture; real original SaveDir writer
+operation held with existing NativeWriterTestControl, blocked cleanup/stale+exact
+Retry and unchanged error; fresh pending/untouched initial-owner close using existing
+stop_on_untouched_join. Minimum additions are a refusal-aware finishing helper,
+one test-only writer holder and one cfg(test) worker hook in already assigned
+retained_server.rs/tests. No implementation yet; review exact source before running.
 
-Fresh independent read-only C0/input investigation accepted
-S1_ORDINARY_PAIRED_STARTUP_MAP.md (d44f091a). Error-free/no-ack Quit is not an
-adopted prerequisite: preserve actual native completion AND original diagnostics;
-defer transport-stop API polish. Ordinary paired C0 ownership is still required.
-Reuse existing creative/inventory/hotbar/placement handlers, but do not ship an
-input-only endpoint: current retained packet guards refuse those operations.
+## Completed components and evidence policy
 
-Core and configured-handoff source releases are CLOSED. Fresh independent design
-ACCEPTb52ae8b5 for the final bounded S1_ORDINARY_PAIRED_STARTUP_PROPOSAL.md amendment;
-menu reuse adds startup_menu.rs and fixed pre-effect click admission adds title.rs,
-the original twelve production/four existing test paths. Only reviewer-requested factual wording
-changed afterward; final pin is in the source gate. Browser/discovery UI remains
-refused; standard matching --server entry is the planned external route.
-After private assignment checkpoint
-and full baseline, root may release the reviewed amended paths on codex/s1-ordinary-paired-startup,
-prefixs1ord1. Existing Loading/StartupMenu no-world frontend and ordinary preparation
-connect real CLI/title entry, actual configured Game consumers, native stone controls
-and retained native-versus-domain close/recovery. Preserve Cold restrictions and
-actual presentation/resources/actor/participant custody. No fake title world/save/
-completion or role relabeling. In-frame native comparison is included; persistent
-local-player domain adapter follows separately. Keep counter placement/filled ingress
-and departure/replacement closed meanwhile. No other source path released. Broader
-redesign, supported profile or acceptance expansion returns to owner first.
+Completed/public, source releases CLOSED: first-player47fc752f; native owner5d9eaa14;
+joint window21471ef8; dormant configuration9bb5510c; configured handoffca9b3f49.
+Their authored results are under docs/reference/S1_*_RESULTS.md. No historical full
+battery absent a concrete dependency/failure. Full four-case runtime is current;
+compile scaffolds or diagnostic visuals do not establish Create conformance.
 
-## Evidence, execution and publication
+Preserve historical mob-negative main4/main6 worlds, source35 and all prior failures.
+Run6's destructive X-window cleanup produced a secondary renderer panic after its
+original entity refusal; that cleanup is retired. R8/R9 use a confirmed owned
+Openbox A-F4 Close binding. Raw outer EOF/Receive/ENOTCONN remain separate from actual
+native completion. Error-free/no-ack Quit is not an adopted prerequisite.
 
-Coordinator alone runs serial source/formatter/compiler/test/game/WSL/Git writes;
-await active commands before dependent writes. No standing team. Fresh read-only
-independent Sol High substantive/source/tool review; DIFFERENT FINAL/privacy.
-Reviewers use native reads/rg/hashing/Git reads under inherited workspace-write;
-no edits, runtime/WSL/network/Git writes/delegation. Reuse valid unchanged evidence;
-no historical full batteries absent a concrete dependency/failure.
+Root alone runs serial source/formatter/compiler/runtime/WSL/Git writes; await active
+commands before dependent mutations. Reviewers use native reads/rg/hash/Git reads
+only, no edits/scripts/imports/runtime/WSL/network/Git writes/delegation. Fresh
+read-only independent Sol High substantive/source/tool review; different FINAL and
+privacy before public publishing. Routine documentation needs coordinator checks.
+Frozen FINAL corrections require a new prefix. Preserve all raw failures locally;
+no worlds, prepared resources, JARs/assets or raw run evidence in Git.
 
-Preserve affected sources/prefix before corrections. Frozen FINAL corrections
-require a new prefix. Step B freeze acfae974 has 516 inputs; binary supplement
-9d58dc57 has two. Configuration freeze 224e27c2 has 171 inputs including actual
-lib binary. Handoff freeze d978291d has 187 inputs including actual binary842a567c.
-Final source/context copies retain tested bytes. All older
-indices, failures and archives stay immutable. Authorized new source revisions
-supersede live source paths; do not claim all historical live paths still match.
-The older s1srv2r1 reconciliation records 5164 live matches plus ONE owner-adopted
-AGENTS change bound to its preserved original. Old qualifiers are retired.
-
-Native joins/readback remain separate from raw transport errors. Private pushes
-require fresh PRIVATE metadata/exact Create-Horizon origin. Public pushes require
-different FINAL/privacy CLEAR, fresh PUBLIC metadata/exact Horizon origin and
-normal .githooks. No unfinished/private material, assets/JARs/resources/raw
-evidence in public source; no PR/merge/tag/release/force/hook bypass.
-
-No playable/reference/Prism/Java/memory changes or further cleanup/deletion.
-Preserve warm target/resources/binaries. Live S2 waits G1. S3 is motor, shaft,
-small/large cogs and millstone, NO gearbox; pinned full-output item loss remains.
+Private pushes require fresh PRIVATE metadata/exact Create-Horizon origin. Public
+pushes require different FINAL/privacy CLEAR, fresh PUBLIC metadata/exact Horizon
+origin and normal .githooks. No unfinished/private material or PR/merge/tag/release/
+force/hook bypass. No playable/reference/Prism/Java/memory changes or cleanup.
+Preserve warm caches/resources/binaries. Live S2 waits G1; S3 is motor, shaft, small/
+large cog and millstone, NO gearbox. Pinned full-output item loss remains intentional.
