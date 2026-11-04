@@ -1,5 +1,31 @@
 # Development stages
 
+The owner adopted [NATIVE_PLAYABILITY_PLAN.md](design/NATIVE_PLAYABILITY_PLAN.md)
+on November 4, 2026 after a local existing-port evaluation. It is the active route.
+The original specification, prior S1 plan and historical records below remain
+preserved; their old G1 is not marked passed by this decision.
+
+| Active stage | Outcome | Current state |
+| --- | --- | --- |
+| S0 | Pinned Java reference and bounded observations | Retained; selected 6.0.11 behavior remains authoritative |
+| Native S1 | Five-type integration, ordinary server-authoritative play, integrated/dedicated two-client normal save/reopen | OPEN; unchanged port demonstrated these components; native import and selected parity corrections remain |
+| S2 | Verified motor/shaft/cog behavior | Reuse existing native core and relevant references; no stage completion from adoption |
+| S3 | Reference-matching five-component milling MVP | Reuse existing bindings; bounded full-output correction and affected integration remain |
+| S4–S6 | Survival, moving assemblies and broader machinery | Future owner-scoped work |
+
+In-frame/Wasm requirements are replaced on the native route; the custom crash-
+consistent cross-owner framework and extra hardened replay framework are deferred.
+Open to LAN remains deferred. No Java-client compatibility, world import, public
+release or full modpack compatibility follows. Consult CURRENT_WORK for the bounded
+packet and ask before further scope expansion. Check upstream before new host work.
+
+## Historical pre-adoption roadmap
+
+The following text records the previous route and point-in-time limits. Its old
+next-packet directions do not assign work on the native branch.
+
+
+
 The supplied specification is the planning baseline for this setup. It does not
 authorize starting all stages at once. Proposed interfaces, budgets and decisions
 remain proposed until their corresponding gate accepts them.
@@ -231,3 +257,4 @@ completed arbitration and horizontal observations are in
 `docs/reference/P02_ARBITRATION_RESULTS.md` and
 `docs/reference/P02_HORIZONTAL_RESULTS.md`.
 G1/G2/G3 remain open.
+

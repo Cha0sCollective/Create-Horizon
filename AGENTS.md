@@ -1,90 +1,97 @@
 # Working on Create Horizon
 
-This is the private development repository for the owner's personal native Create
-port. Read this file and `docs/CURRENT_WORK.md`, then verify branch, revision, dirty
-files and the relevant source pins in `workspace.toml`. Read the applicable part
-of the specification and roadmap for the current packet, not the whole project.
+This private repository holds the owner's personal native Create port, reference
+observations and historical host experiments. Read `docs/CURRENT_WORK.md`,
+`docs/design/NATIVE_PLAYABILITY_PLAN.md` and active pins in `workspace.toml`.
+Verify actual branches, revisions and dirty files before work.
 
-## Scope and authority
+## Active scope and authority
 
-The owner authorizes this run to progress through the development plan until
-7 p.m. Central on October 27, 2026, including beyond S0 when its gate is supported
-by evidence and a recorded decision. Further work after that cutoff needs a new
-owner instruction. Each packet
-needs a bounded objective, validation and stop condition. Importing the specification
-alone does not accept its proposals or authorize public releases. Preserve proposed
-decisions and gate status accurately; publication and promotion gates still apply.
+On November 4, 2026 the owner explicitly adopted the native playability plan after
+the existing-port evaluation: reuse Delete228/create-horizon and official native
+Horizon services, fix selected Java-reference differences, and finish S1 around
+integrated/dedicated play and normal save/reopen. This replaces the old active
+Wasm/in-frame requirements and defers the custom cross-owner crash-recovery
+framework and additional hardened stale/replay framework. It does not turn the
+old G1/S1 records into passes. Preserve historical plans, results and failures.
 
-The eventual S3 subset contains exactly a creative motor, shaft, small cogwheel,
-large cogwheel and millstone, with cobblestone-to-gravel milling. The namespace is
-provisionally `create_horizon`. Do not silently add gearbox, survival progression,
-fluids, contraptions, Java-client compatibility or existing-world import.
+The supported target remains creative motor, shaft, small cogwheel, large cogwheel
+and millstone with cobblestone-to-gravel milling, in fixed mob-free Creative
+TestTerrain Overworld. Open to LAN stays deferred. The upstream package includes
+additional content; retaining that dependency intact is not qualification of its
+other machines or authorization to develop them. No survival progression, fluids,
+contraptions, Java-client compatibility or existing-world import is added.
 
-Keep domain rules in this repository and reusable engine services in the Horizon
-fork. Use `codex/` branches for subsequent work. Preserve unrelated work. No merge,
-promotion or release is implied by a review pass. Public engine pushes must contain
-only an explicitly reviewed, authorized public change.
+Native code lives under `native/create/`, with original Create IDs (`create:`),
+its own Cargo workspace, MIT notices and explicit source provenance. The root
+Rust workspace and old host tools are historical; do not run retired runners or
+apply old Wasm acceptance to the new branch. The 6.0.11 Java reference and selected
+full-output item-loss behavior remain authoritative for our supported subset.
+The imported port and local art input remain separately pinned at 6.0.10 until
+their bounded differences are reconciled; never claim full-version equivalence.
 
-The owner authorizes engagement with the pinned Create reference for this personal
-port despite its upstream AI policy; no contributions to Create are planned. Keep
-the source snapshot unchanged and preserve attribution. This work is source-informed,
-not an independently established clean-room process. Upstream Horizon submissions
-and all asset redistribution remain separate decisions.
+Use `codex/` branches. Keep domain changes private; change the public engine only
+for a verified upstream gap under a bounded assignment. Before new host work or
+parity repair, check current upstream and the port for an existing implementation.
+Use exact compatible pins rather than automatically upgrading a working build.
+Ask before further architecture, profile, schema, framework or acceptance changes.
+Continue authorized work until native S1 is complete, a genuine blocker or input
+is needed. No merge, release or upstream contact is authorized.
 
 ## Orchestration
 
-Owner adopted docs/design/S1_COMPLETION_PLAN.md on November 3, 2026 and authorized
-deliverable 1. Paired Open to LAN is deferred. Ask before further scope expansion;
-follow the four deliverables and focused validation policy. Preserve original G1
-requirements and frozen evidence.
+The coordinator implements directly and retains its model/effort. Delegate only a
+bounded task that benefits from another agent. No standing team, mandatory
+explorer, custom workers or permission increase follows from a role label. Ultra
+requires explicit owner approval.
 
-The user-selected coordinator can implement directly; retain its model and effort.
-Delegate only a bounded task that benefits from another agent, with the relevant
-files, revision, permissions and expected output. No mandatory explorer or standing
-team. Ultra requires explicit owner approval; custom local/OpenRouter workers are
-outside normal routing unless requested.
+Require one fresh read-only independent Sol High review for substantive behavior,
+security-sensitive changes and operating rules. Routine documentation/mechanical
+edits need focused coordinator checks. Supply exact stable inputs/diff; follow-up
+reviews cover the delta and effects. A reviewer never edits or approves its own
+production work. Verify actual permissions: the parent's runtime overrides the
+profile default. Restrict reviewers to native reads/Git reads unless a bounded
+task explicitly authorizes other validation within the existing permission scope.
+Root alone performs serial source, formatter, compiler, runtime, WSL and Git writes.
 
-Require one fresh, read-only independent Sol High review for substantive behavior,
-security-sensitive changes and operating rules. Routine documentation and mechanical
-edits need focused coordinator checks. Supply the exact candidate or stable diff;
-review follow-ups cover the delta and its effects. The reviewer does not edit or
-approve its own production work. Verify actual permissions: the profile's read-only
-setting does not override a parent runtime's permissions.
-
-The effective reviewer profile is `.codex/agents/independent-reviewer.toml`.
-Detailed rules are local under `orchestration/standards/`; adoption provenance and
-the deliberate current-model adaptation are in `orchestration/ADOPTION.md`.
-Instruction distribution is manual, with no dependency on a sibling policy checkout.
+The effective profile is `.codex/agents/independent-reviewer.toml`; routing and
+adoption provenance remain in `orchestration/ADOPTION.md` and local standards.
 
 ## Development and evidence
 
-Use the pinned Rust toolchain. Run appropriate formatting, compile and regression
-checks for the changed code. Changes to Horizon also follow its upstream development
-guidance and applicable parity checks. Use fresh isolated worlds and explicit data
-directories; never operate on a live server or the owner's playable saves as a test.
+Use pinned Rust. Run appropriate formatting, compile/lint and focused regression
+checks for changed code. Use one focused real-game milestone for changed native
+bindings; reuse unchanged evidence with attribution. Do not replay historical
+batteries for documentation, wrappers or mechanical edits. No general experiment
+framework or portable format without a concrete need and reviewed cost.
 
-Keep simulation server-authoritative. Preserve item accounting, object generations,
-dimension identity, transaction failure semantics and save compatibility. New host
-APIs and schema versions remain proposals until their packet accepts them.
+Simulation remains server-authoritative. Preserve ordinary item accounting and
+native save behavior, apart from the explicitly selected reference output loss.
+Do not imply native callbacks provide Wasm isolation, trap/fuel rollback or
+coherent interrupted multi-owner publication. Ordinary restart is a distinct claim.
+Distinguish server-query results from actual client replica observations. A render
+or compiled scaffold does not prove full Create conformance or legacy G1.
 
-Reference fixtures must identify exact inputs, configuration, event/tick order,
-units and expected observations. Missing or invalid data does not pass. A compiled
-scaffold or a rotating visual does not establish Create conformance or a G0/G1 pass.
-Use ordinary software/game checks for their own claims; build no general experiment
-framework or portable format before a concrete need and its maintenance cost are
-reviewed.
+Identify exact inputs, configuration, event/tick order, units and observations.
+Missing data does not pass. Preserve original FALSE/HOLD and raw evidence. Keep
+tests in disposable worlds with explicit isolated game/launcher/config paths;
+never use playable saves or change Prism/Java settings. Preserve source references,
+accepted branches, dirty legacy work, caches and existing worlds; no cleanup here.
 
 ## Durable state and publication
 
-Git holds project state; chats are working context. Maintain accepted decisions,
-source provenance, code and evidence where they belong. Keep `docs/CURRENT_WORK.md`
-short and remove stale assignments. Do not duplicate Git/CI history or turn casual
-ideas into requirements.
+Git holds state; chats are context. Keep CURRENT_WORK short with the active packet,
+validation and stop condition. The original specification is a historical baseline;
+its unadopted proposals are not instructions. The owner authorized Create source
+engagement for this personal port with no Create contributions planned. Preserve
+attribution and accurate source-informed provenance, without a clean-room claim.
 
-The original specification and internal orchestration are private development
-material. The public Horizon fork is a separate publication boundary. Never copy
-this repository, its source documents or local agent configuration into it by
-default. No secrets, account data, game JARs, prepared Minecraft resources, runtime
-worlds or raw generated run evidence enter Git. Reviewed dependency locks and small
-authored result summaries are durable project state. Preserve explicit owner gates and existing
-authorization without asking for the same permission repeatedly.
+Private pushes require fresh PRIVATE metadata and exact origin. Public engine
+publishing requires a different FINAL/privacy review, fresh PUBLIC metadata/exact
+origin and normal full-history hooks. No PR, merge, promotion or release follows
+from a review pass. No messages to maintainers or others without authorization.
+
+Never put private specifications, prompts, orchestration or configuration in the
+public engine. No secrets, account data, game JARs, imported original art, prepared
+resources, worlds, binaries, caches or raw generated runs enter Git. Reviewed locks,
+authored source/provenance and small result summaries are durable project state.

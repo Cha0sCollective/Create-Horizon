@@ -2,12 +2,12 @@ schema_version = 1
 
 [product]
 id = "create_horizon"
-namespace = "create_horizon"
+namespace = "create"
 repository = "https://github.com/Cha0sCollective/Create-Horizon"
 visibility = "private"
-stage = "post-G0 foundations"
-active_packet = "Existing Create0.5 evaluation complete: unchanged native build, integrated gameplay components and dedicated two-client restart/reconnect verified; full-output reference mismatch confirmed. Await owner architecture/acceptance decision before migration or more custom engine work. Old operation source1 frozen SOURCE HOLD; G1/S1 open"
-next_stage = "S1 host foundations and remaining P02; G1/G2/G3 open"
+stage = "S1 native playability adopted; open"
+active_packet = "Owner adopted native playability plan on November 4: import tested Create0.5 privately, fix selected milling parity and finish bounded integrated/dedicated normal play/save/reopen. Legacy Wasm route superseded, old dirty work frozen; native S1 open"
+next_stage = "Native S1 checklist, then reuse kinetic/milling implementation for S2/S3; no stage pass from adoption"
 
 [specification]
 version = "0.1"
@@ -18,7 +18,7 @@ sha256 = "4d32767eae66bbd209c83e40618d31a02052181adcc1b0c3b9466154438ee781"
 [horizon]
 upstream = "https://github.com/horizon-rust/horizon.git"
 fork = "https://github.com/Cha0sCollective/Horizon.git"
-revision = "cf62fe270b243780f9aa86c49b456d9dd9078b42"
+revision = "fc02103818c212920fd24aa34a2b2f91ba49e56f"
 minecraft = "26.3"
 protocol = 777
 
@@ -147,3 +147,21 @@ final_receipt_sha256 = "09442b5f6f700c7fd55276cd1f28a00559ee52f77b6d0899fad61b91
 public_sync_sha256 = "52c6b92c5ed79d553123e068deff28822b879e79bc18d16b97c0aae26b784079"
 binary_sha256 = "c966f8117bcdeefecb5d4c611fc60cc947534e6367e6175ac42ff712843bd592"
 limits = "Ordinary native Creative/hotbar BlockItem, empty-slot persistent Guest/Wasm and coherent OWN restart component in in-frame, default Memory and dedicated/two rendered clients. Earlier CPU13 attributed, current model/static/all3rendered checks. Raw EOF/Receive/ENOTCONN close errors/exit1 preserved, not clean-stop/C0. Filled ingress/departure/removal/replication/H11/deliverable1/C1/G1/S1 remain open. No merge/release."
+
+[native_port]
+repository = "https://github.com/Delete228/create-horizon.git"
+revision = "16c5d454b1b9860da01b78474ea5206f0664d384"
+version = "0.5.0"
+path = "native/create"
+horizon_mixins_revision = "a1e13326306c6bc074b11e6a4926deb551c4083e"
+native_hooks_api = 359
+runtime_namespace = "create"
+resource_create_version = "6.0.10"
+resource_jar_sha256 = "ef87fe5709f1ba1f5b8bb20a2925b5afb4669e178fd6d8bf10c167759eefe37a"
+plan = "docs/design/NATIVE_PLAYABILITY_PLAN.md"
+status = "adopted route; native S1 open; local patches tracked in private repository"
+
+[legacy_host]
+horizon_revision = "cf62fe270b243780f9aa86c49b456d9dd9078b42"
+accepted_engine = "9f7d5ecb7abee68b0f3af6363fbdb3e6b0547219"
+status = "superseded active route; preserve original G1 requirements/results, no historical pass implied"
