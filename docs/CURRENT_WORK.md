@@ -69,17 +69,25 @@ All s1lo1 parent-pinned execution runners now FROZEN/RETIRED after commit; do NO
 run them on this HEAD. s1on1/s1own1/s1loc1/s1plc1/s1ord1 also retired. A post-FINAL
 correction requires new packet/prefix, not rewriting frozen reports or old outcomes.
 
-## Next bounded work
+## Current following empty-counter packet (s1ec1)
 
-Continue accepted S1 plan with captured EMPTY-counter arming and BlockItem through
-actual ordinary startup/settled-player predicates. Read existing
-S1_ORDINARY_OWN_DISPATCH_MAP.md and current actual callers; reuse existing registered
-Guest placement/Wasm/native checkpoint services. Draft the smallest exact next
-packet/source budget at accepted bbf1029; fresh read-only SolHigh design review,
-private checkpoint/sync, raw baseline and serial source gate BEFORE editing. Ask
-owner only for actual scope expansion or genuine missing decision. No new source
-assignment presently released for this following packet.
-
+Engine now CLEAN on codex/s1-ordinary-empty-counter at accepted/publicbbf1029;
+no source edit. Private acceptedLOCALcheckpoint4f6ac03e33da26ed8d724fffec8283d0b7ec7780
+synced. Fresh s1_empty_counter_design_review DESIGN ACCEPT exact
+S1_ORDINARY_EMPTY_COUNTER_PACKET.md SHAad3c2ef082c1bd2841c7b1f96c058ad7ed27e2fddbe578d365c65135d218536b.
+Original9451705d HOLD preserved .local/s1ec1/design1.md/review: nativeCreativecatalog
+missingcounter and nonsearchnumberkeysfiltered. Accepted minimumfifthpath pre-acq
+window_closeCPUhelper call; datahelperGame.rs appendsonecheckedcaptureditemtonative
+tab beforeitems/cache use. ExplicitzeroCarried/hotbar36..44/noCounterOverwrite and
+separatereadonlyView/no mutatingStartup.ordinary tests. No profile/framework/schema/
+acceptance expansion/ownerinput. Exact source assignment
+S1_ORDINARY_EMPTY_COUNTER_SOURCE_ASSIGNMENT.md names fiveexisting paths:
+retained_server.rs, game.rs, retained_server_tests.rs,
+levels/session_checkpoint_registered_tests.rs, window_close.rs.
+PRIVATEcheckpoint/sync, untouchedrawbaseline and .local/s1ec1-source-gate.json MUST
+precede edits. No compiler/game active. Root next records that gate, then implements
+actualOWNready/arming/capturedBlockItem/nativehotbarswap ingress/emptyCounterWasm/
+coherentClaimed reentry. No extra source path presently authorized.
 Then actual one-slot transfer/departure/fault custody, replication/resync, existing
 H11 integration and combined G1. Reuse Guest74cafefc/retirementab239890/H06d62756231/
 H11component70fd6aa; no reimplementation/historical full battery. Automatic paused
