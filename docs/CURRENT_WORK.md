@@ -1,99 +1,94 @@
 # Current work
 
-Owner resumed through S1 completion or genuine blocker. Deliverable1/C0/C1/G1/S1
+Owner resumed through S1 completion or genuine blocker. Deliverable1/C0/fullC1/G1/S1
 remain OPEN; no release authority. Follow docs/design/S1_COMPLETION_PLAN.md.
 Ask BEFORE scope expansion. Fixed TestTerrain/--test-terrain, paired mob-free
 worlds and deferred Open to LAN remain adopted. No owner decision pending.
 
-Read docs/reference/S1_ORDINARY_STARTUP_PROGRESS.md for current qualified checks,
-preserved failures and receipts. This file records the next work.
+## Immediate checkpoint
 
-## Source and immediate next step
+All currently owned tests finished and all children reaped. No compiler/game running.
+Ordinary startup component received DIFFERENT FINAL ACCEPT/privacy CLEAR and its
+normal-hook public engine branch sync is verified exact. Frozen review input:
+docs/reference/S1_ORDINARY_STARTUP_RESULTS.md. Preserved development failures and
+attributed earlier checks: docs/reference/S1_ORDINARY_STARTUP_PROGRESS.md.
 
 Engine physical checkout .local/worktrees/s1-native-close-composition, branch
 codex/s1-ordinary-paired-startup, parentca9b3f49c97db6cd981246de99be35f7b53420ec.
-NINETEEN dirty paths inside TWENTY released existing paths; window_close_tests.rs
-unchanged. No engine commit/public push for this ordinary component.
+Clean local candidate89dff650f1b43095c79806da8d9a81d63229073d, tree
+67460e587daaf1da3a18ff7ad6a15f43ced46f99. NINETEEN canonical Git path changes
+inside released20; all20 raw hashes still frozen50 (preparation test normalization
+has unchanged Git blob). Normal public-tree commit and full-history pre-push hooks
+PASS. Exact public origin branch resolves to89dff650. Different reviewer
+/root/ordinary_startup_final_review accepted the exact commit/tree/report
+d2eb7f32a8507405765c3ec4f457627b7cba53e6805dba5614c7b3a46ede0799.
+Local FINAL receipt84283a15cdec37e479cff33c9dcc25746b3fb270a7402fa522d7ba09a92ffa12.
+The frozen report records its pre-FINAL review state; this checkpoint records the
+subsequent decision. No PR, merge or release created.
+Source50 map6bd47f914befda8ebe6390352e529922bc5898c357e3e1508d792dc1f8cfe045.
+Fresh SOURCE CLEAR49 plus mechanical format13; static16/build10/MAIN4 PASS.
+Test-only loader delta from47 preserves prior production evidence. Test ELF3c357bba;
+MAIN ELF5d4d7980. Existing expected selectors/gates retain old attributed checks;
+no automatic rerun after committing the parent-pinned component.
 
-Frozen source41/current map:
-213f299c823ea8cefee3a1f4c65088ebd003536d59675de192dc8dc2f4ebf6c6.
-Fresh independent SOURCE CLEAR40 plus mechanical format10 (two assertion wraps).
-Static12 PASS fmt1.52s/Clippy29.67s; build6 and exact native-claim test8 PASS42.33s.
-Actual native properties parser/captured Setup regression accepts blank CSV and
-refuses named disabled packs without world acquisition. Production fix changes
-only the dedicated fence's empty-list representation; no profile/parser change.
-Source39/old gates/reviews/selector preserved dedicated-empty-packs-fix0.
+Latest focused observations all PASS:
+- tests12/source47: initial pending/untouched39.10s, recovery cancellation/wrong
+  peer/original actual writer deadline/stale+exact Retry88.59s; receiptb68ee7ee.
+- loader1/source50: actual ordinary production frontend via two instrumented test
+  children, title Quit and WM close while original actual rest worker held;
+  no premature exit, release/original completion/no world, natural0;72.34s,
+  receipta41dae2c. Coordinator title/pending image QA completed.
+- dedicated4/source50 normal MAIN: actual pause/refused WorldOptions/friends/Return,
+  resumed native camera+Creative stone placement/use1; TWO actual matching TCP
+  clients see SAME stone[4,70,-1], B captured first-hit5.27982 blocks; server-first
+  close with both installed, native A/B readback/rule0/empty entities;146.65s,
+  receiptc8b414c7. Coordinator both same-block and pause image QA completed.
 
-Normal MAIN build3 PASS27.90s, non-test ELFd788d4d20d62f544236e0a5c179d9174ae826373e633b50097bca59ebf25069e
-at /home/arbiter/.cache/create-horizon/bin/s1ord1-game-tqacosgr/horizon-client.
-Receipt81086c340cd3a062f8c054d71f18c61cdb792230a8e8454e3f61911657520d7a.
+Source39 CLI integrated/menu Create/in-frame native placement/Leave/own-title reopens
+and source39 four Native/Guest Memory/TCP2 ordinary coherent worker cases remain
+attributed reused passes. Source41 native actual properties/Setup blankCSV regression
+passed; named entries still refuse. Tests12 and new cfg(test) loader controls change
+no player-facing behavior. No historical full battery repeated.
 
-Create exact R5 launch review receipt, then run dedicated attempt3 with
-.local/s1ord1-dedicated-window-r5.py, hash
-f25fdf7266a5721602a041beee15d53f7937ecc5601cf4f841db3e22b5168e0d.
-Independent placement_driver_review TOOL CLEAR + SOURCE ENTRY CLEAR41 received.
-Bind map213, MAIN build3, static12, tests8 and binaryd788. No engine source
-mutation while original driver/children are active.
+Raw original EOF/Receive diagnostics remain Err. Integrated/dedicated natural exit1
+with terminal acknowledgement, no TERM/KILL/panic; no error-free/no-ack claim.
+Own reopen is within the original process/native claim for integrated/title/inframe.
+Dedicated native save/readback is proved; dedicated cross-process reopen is NOT.
+Durable restart admission remains required for the persistent playable outcome.
+Local OnGround/Motion caches are not live physics evidence. No dedicated exact
+placement air-preimage/support-unchanged claim. Preserve every old failure/world,
+source/gate snapshot, binary, resource and warm cache; no cleanup.
 
-R5 uses actual ordinary dedicated MAIN and TWO actual rendered matching clients,
-fresh per-process roots and loopback. Server closes FIRST with both players still
-installed; natural original parent completion precedes native readback. Exact
-name-derived A/B UUIDs bind records: A stoneSlot0/use1, B empty/use0. Postclose
-first-hit stone is corroboration, NOT exact air preimage/support-unchanged or
-cross-process dedicated reopen. Every client exit/log checked, even already exited.
-Strict known raw code1 qualifier may refuse unfamiliar TCP suffix: preserve and
-inspect actual error/native ownership before choosing smallest correction.
-Actual image QA required. No fabricated world/pose or fixture RPC.
+## Following adopted work
 
-Dedicated1 failed before server spawn at aliased mkdir (mechanically fixed R4).
-Dedicated2 failed before Game at the native blank-CSV fence now fixed in41.
-All their processes reaped; connected dedicated acceptance still pending.
-
-## Qualified windows and next source work
-
-Source39/MAINd291: CLI integrated main9 PASS96.26s, menu Create integrated title2
-PASS98.76s, menu Create inframe3 PASS110.77s. Actual movement, native stone,
-committed placement/use1, checked Leave/own-title reopens/final native readback,
-rule0 and empty entity records; coordinator actual-image QA complete. Integrated
-natural exit1 preserves/acknowledges raw EOF without TERM/KILL/panic; no error-free
-or no-ack Quit claim. In-frame natural exit0, nine original starter cells retained,
-stoneSlot1 and unchanged native pose through no-motion reentry/placement. Native
-local OnGround/Motion caches are not live evidence; no physics-field qualification.
-These and four source39 Native/Guest Memory/TCP2 coherent worker cases bypass
-changed dedicated preflight and are explicitly reused for unchanged services.
-
-After dedicated evidence, implement three already bounded adapter error groups
-inside released retained_server.rs/tests: recovery cancellation/partial wrong TCP
-participant; original SaveDir writer operation held by NativeWriterTestControl,
-blocked cleanup/stale+exact Retry/preserved error; fresh pending/untouched owner
-using stop_on_untouched_join. Minimum refusal-aware finish helper, one test-only
-writer holder and one cfg(test) worker hook. Not implemented. Review exact source
-before execution; reuse unrelated positive coverage, no historical full battery.
-
-Then different FINAL/privacy and authorized reviewed public engine branch sync.
-Following adopted deliverables connect ordinary counter placement/local-owner/
-lifecycle, authorized slot transfer/departure custody, committed replication and
-existing H11 visual, then combined G1. Guest74cafefc, retirementab239890 and
-H06d62756231 already ancestors. H11 exact component on
-codex/h11a-retained-diagnostic70fd6aa: integrate, do not reimplement.
+Next prepare the smallest fresh bounded packet connecting ordinary counter
+placement/local-owner/lifecycle and actual persistent Wasm to
+existing services; authorized one-slot transfer/departure custody; committed
+replication/resync and H11; combined G1. Current counter/filled ingress/departure/
+replacement/rejoin refusals stay until their actual adapters. Refresh old PROPOSED
+research against the accepted successor; don't adopt obsolete prerequisites or
+broader command/survival/framework work. Guest74cafefc, retirementab239890 and
+H06d62756231 are ancestors. Exact H11 component on
+codex/h11a-retained-diagnostic70fd6aa must be integrated, not reimplemented.
 
 ## Boundaries
 
-Ordinary fresh spawn_mobs=false before publication/ticks; own reopen/recovery
-require existing false rule. Conflicting rules/living records refused/preserved;
-Cold/legacy/unpaired unchanged. Source gateb2efa618/same20 paths, no new provider/
-schema/profile/API. Counter/filled ingress/departure/replacement/rejoin stay closed
-until adapters. In-frame persistent/local-player domain follows native-only packet.
+Paired fresh false spawn rule precedes publication/ticks. Own reopen/recovery
+requires existing false rule. Conflicting rules/living records refused/preserved;
+Cold/legacy/unpaired unchanged. No new provider/schema/profile/API in this component.
+In-frame persistent/local-player adapter is still required, not waived.
 
-Root alone serial source/formatter/compiler/runtime/WSL/Git writes; await active
-commands before dependent changes. Reviewers native reads/rg/hash/Git reads ONLY,
-no edits/scripts/imports/compiler/runtime/WSL/network/Git writes/delegation. Fresh
-read-only independent Sol High substantive/source/tool review; different FINAL/
-privacy before public push. No standing team. Frozen FINAL fixes need new prefix.
+Root alone serial source/formatter/compiler/runtime/WSL/Git writes. Reviewers native
+reads/rg/hash/Git reads ONLY: no edits/scripts/imports/compiler/runtime/WSL/network/
+Git writes/delegation. Fresh read-only independent Sol High substantive/source/tool
+review; different FINAL/privacy before public push. No standing team. Frozen FINAL
+corrections need new prefix. Prefix s1ord1 is now FROZEN/RETIRED; its parent-pinned
+qualifiers must not be reused for a new candidate. New source packet/design review,
+private checkpoint and fresh prefix precede the next bounded source edits.
 
-Private pushes need fresh PRIVATE metadata/exact Create-Horizon origin; public
-needs different FINAL/privacy CLEAR, fresh PUBLIC/exact Horizon origin and normal
-.githooks. No unfinished/private material, assets/worlds/JARs/raw evidence, PR/
-merge/tag/release/force/hook bypass. No playable/reference/Prism/Java/memory changes
-or cleanup. Preserve caches/resources/binaries/failed prefixes. Live S2 waits G1;
-S3 exactly motor/shaft/small+large cog/millstone, NO gearbox; reference item loss matched.
+Private pushes need fresh PRIVATE metadata/exact Create-Horizon origin; public needs
+different FINAL/privacy CLEAR, fresh PUBLIC/exact Horizon origin and normal.githooks.
+No unfinished/private material, assets/worlds/JARs/raw evidence, PR/merge/tag/release/
+force/hook bypass. No playable/reference/Prism/Java/memory changes or cleanup.
+Live S2 waits G1; S3 exactly motor/shaft/small+large cog/millstone, NO gearbox;
+pinned Java full-output item-loss behavior remains matched by owner decision.

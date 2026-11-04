@@ -1,12 +1,16 @@
 # Ordinary paired startup progress
 
-Partial development checkpoint: deliverable1/C0/C1/G1/S1 remain OPEN. No FINAL,
-public engine publication or release approval. Owner resumed through S1 completion
+Ordinary component FINAL ACCEPT/privacy CLEAR; public branch synced exact89dff650,
+tree67460e58 through normal hooks. Deliverable1/C0/fullC1/G1/S1 remain OPEN; no
+release approval. Owner resumed through S1 completion
 or genuine blocker. Fixed TestTerrain, mob-free paired worlds and deferred Open to
 LAN remain the adopted profile.
 
 Engine branch codex/s1-ordinary-paired-startup, parentca9b3f49. Twenty existing
-paths released, nineteen dirty. No engine commit/public push for this component.
+paths released, nineteen canonical Git changes committed locally89dff650/tree67460e58;
+twenty raw sources still match frozen50. Public origin branch verified89dff650.
+S1_ORDINARY_STARTUP_RESULTS.md is the current bounded final-review report; older
+sections below preserve development history and its then-current qualifications.
 
 ## Actual ordinary windows on source39
 
@@ -55,7 +59,7 @@ change or full physics-field qualification follows.
 Dedicated1 stopped before server spawn at duplicate aliased directory creation;
 R4 mechanically permits same fresh directory aliases. Dedicated2 reached actual
 MAIN preflight but refused before Game at the production issue below. All owned
-processes reaped. No connected dedicated pass yet. Preserve all old candidates,
+processes reaped. No connected dedicated pass existed at that checkpoint. Preserve all old candidates,
 worlds/logs/images/receipts and failed prefixes; raw evidence/assets stay out of Git.
 
 ## Dedicated native-parser correction
@@ -84,11 +88,59 @@ Source39 integrated/title/in-frame and four coherent worker checks bypass this
 dedicated preflight and are reused for unchanged services. Prior feature-off/
 paired-without-mod-runtime static checks are attributed reuse. Source41 dedicated
 R5 has independent TOOL/SOURCE ENTRY CLEAR for the same fresh two-rendered-client
-case; execution is pending at this checkpoint.
+case. Dedicated3 completed actual matching two-client render/movement, real stone
+input/placement, server-first close with both players installed, and natural
+server/client exits1 without TERM/KILL/panic. Original R5 receipt remains false
+(7c1607adaadc0a698c38c26bafa860644b94675fe3895ee7d5db3661f283c5e9):
+its strict log qualifier did not recognize the exact client diagnostic
+Receive("Connection closed by the server"). connection.rs emits this literal on
+a zero-byte socket read. Server retained the original Outer/Eof diagnostic.
 
-## Remaining
+Independently reviewed read-only followup completed validation without another
+Game. It verified exact source/artifact/log/image pins, original matched roster
+and server-close census, every original process outcome, exact A stoneSlot0/use1
+and B empty/use0 native records, seed17/rule0/empty entities, actual first-hit stone
+at[-4,71,11] (1.92235 blocks), unchanged native bytes and resources/pair/helpers.
+Followup PASS receipt0a8f6845ae2c8248b0517a2ffb0370aeb2c3daea5bb27deb40e8fbe76ef7ee57.
+Coordinator visually checked both actual rendered clients and A's placed stone.
+This is combined native evidence from the original120.35s run plus readback, not
+rewriting the original failed receipt or claiming an error-free shutdown. No exact
+air preimage/unchanged support, dedicated own-reopen or machine-domain claim.
 
-Finish actual dedicated/two-rendered-client native close/readback, three bounded
-ordinary error groups, different FINAL/privacy and authorized public engine branch
-sync. Counter placement/filled ingress/departure stay closed until their following
-adapters. Deliverables2–4/G1 remain; Open to LAN deferred and live S2 waits G1.
+## Focused failure groups
+
+Three bounded ordinary error groups now pass on source47:
+bc9153ceb3a795b44ceead1cc5c208efa280545f5c0efba354fa00438196950b.
+Only retained_server.rs/tests changed from41: an optional cfg(test) original
+recovery-writer holder/hook and focused failure tests. Independent SOURCE CLEAR46;
+format12 changed zero source hashes; static15 PASSfmt1.46s/Clippy24.87s; build9
+PASS34.37s. Tests12 PASS: initial pending/untouched39.10s and recovery88.59s,
+receiptb68ee7eec1131882d0b334f812cfd992c332020ad18e3538350e28c9a91fce9e.
+
+Actual partial cancellation/wrong UUID retained the original error and never
+published Login/terrain/domain continuation/completion. Source/archive bytes
+unchanged and authority released. An actual original destination SaveDir batch
+was held past the native close deadline; stale Retry was consumed without change,
+then the same operation was released and exact Retry completed the same original
+worker. Weak original ownership and authority held/released assertions passed.
+Initial pending/untouched configured Memory owners kept exact original NoPos
+player bytes, zero installations and no gameplay/coherent publication.
+
+Preserved test9/11 failures were fixture expectation/lifetime issues: original
+wrong-UUID error included its full checkpoint prefix; a queued paired callback
+could become Closed during deliberate refusal. Reviewed corrections retain exact
+error matching and the original refused envelope through native teardown, without
+creating admission or suppressing late gameplay observations. Root writer-release
+cleanup also tolerates poisoned mutexes. No player-facing behavior changed.
+
+The fresh completion audit found three observations missing from prior evidence:
+dedicated B seeing the SAME placed block; actual pause/refused buttons/Return;
+actual title Quit/WM close while the original real resource worker was held.
+All three now pass in loader1/dedicated4; source50 adds only cfg(test) hooks in
+game.rs/window_close.rs/window_close_tests.rs. Fresh independent source/tool reviews,
+static16/build10/MAIN4 and actual image QA completed. Exact pins/results/limits are
+in frozen S1_ORDINARY_STARTUP_RESULTS.md, the pre-FINAL review input. Different
+ordinary_startup_final_review FINAL ACCEPT/privacy CLEAR and normal-hook public
+engine sync completed for89dff650/tree67460e58. Counter placement/filled ingress/departure stay closed
+until their following adapters. Durable restart admission, local persistent owner,
+deliverables2–4/G1 remain; Open to LAN deferred and live S2 waits G1.
