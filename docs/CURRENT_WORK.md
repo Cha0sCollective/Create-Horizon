@@ -65,19 +65,39 @@ SHAf7cd194ebb61c514ee481a86ce828daca5eb6795ef634eaf7b4be334ff664b78 has fresh
 s1_local_owned_design_review final pinned DESIGN ACCEPT. Original private pre-edit
 checkpointdc8a279c856e8c3068f6bf073d15cd60a71e8569 synced; sourcegatefd57d3fd8a98a56154cd35c4d738e660179b7c7b3ecb891e4efbd11454129fd8,
 baseline0 73fc815a/pathlist7 0cde9b89 preceded first edits. Engine branch
-codex/s1-ordinary-local-owned at b87bff7 currently2assigneddrafts ONLY:
-session_checkpoint.rs context-only native preparation helper with old sync wrapper,
-session_checkpoint_items.rs context-only arrival wrapper. Rawdraft1 a9e6468f;
-no formatter/compiler/runtime yet. No source/tool execution acceptance.
-
-Fresh exact DESIGN ACCEPT amendment
-S1_ORDINARY_LOCAL_OWN_FENCE_AMENDMENT.md SHA8d21761dbbe9f17e10dde539b2d765f107ccb29dcfc682024abab27aca792242
-adds ONLY streaming.rs current observation/test path. Existing public statuses omit
-private native-fence invariants; actual sync fence waits/saves. Amended assignment
-records8paths. New private checkpoint/sync, untouchedstreaming baseline and amended
-.local/s1lo1-source-gate2.json MUST precede eighthpath edit; streaming.rs untouched.
-No profile/schema/framework/acceptance expansion. Current parent-pinned s1on1 tools
-remain retired. Gate2 will hold actual amended checkpoint/hash after this commit.
+codex/s1-ordinary-local-owned at b87bff7 now7 assigned changed paths; game.rs stays
+unchanged. Concrete retained LOCAL selection/preparation/finalvalidation with actual
+Game/Guest onUI; actual ordinary NEW/OWN/legacy routing, original constructor-stamp
+transfer and bound coherent close. Draft2 7b51272f HOLD (old typename restored);
+fresh SolHigh s1_lo_source_review draft3 380acbc1 SOURCE CLEAR, actual8snapshot
+7fead7f6, then ONLY reviewed formatter1 ->active source map93914cfedb40a50ca21b6eb8f6729956f85b3af3d57fa1651ac893f19bf72aa7.
+Static1 ALLPASS1e7cf811 (fmt1s/Clippy48.2/off26.34/mods26.01/paired-noMods34.66),
+testbuild1 PASS68.44s/22b4454f; exact bin700e616b/lib337856d0. Focusedtests1
+ALLPASS672b8bd0: currentfence5.44s, actualLOCAL freshA/B Unplaced+Claimed152.78s
+includingheldprep cancellation/expiredclose/Retry poll_us3, affectedNETWORKMemory/
+TCP218.28s. Nativeevidencepreserved .local/s1lo1/failed-worlds-1. NormalfastMAIN1
+PASS224.29s/ac049253, actualELF5cd85d49. Inframewindow1 FALSE89.72s/bd436b2085cfa4946d5c0097f2c9764a2763ca2f5139043a527a8cc98d034e97:
+actualtitleCreate/starterbody/disabledWorldOptionsLANroute/coherentUnplacedLeave/
+repeatedoriginalanchorOWNreentry worked, stoneuse0 failed. Root visuallyinspected
+pauseddisabledroute+Creative/recoveredterrain/unchangedstoneclick; allnative/logs/
+images/4epochs preserved .local/s1lo1-inframe-1-native; game naturalexit0/reaped,
+onlyowneddisplayhelpersTERM/reaped. No activecompiler/game. No sourcechanged.
+Definitecallertrace: Game::use_item -> ordinary_stone_use_admitted in currently
+UNTOUCHED retained_server.rs rejects every OWN+retained_serverNone (actualLOCAL).
+Smallest ninthpath amendment S1_ORDINARY_LOCAL_OWN_STONE_AMENDMENT.md SHA6a786039316c1f54b9d3a66a4ad3e12db91c41138df4dfe22c0d740268004103
+has originaldesignreviewer exactDESIGN ACCEPT; privateamendedassignment/checkpoint/
+PRIVATEsync/untouchedbaseline/gate3 BEFORE ninthpath edit. Repairs existingaccepted
+plainstoneLOCALcaller, noprofile/framework/schema/acceptanceexpansion or ownerinput
+presentlyneeded. Keepnetworkroster/allplainstone target/reach checks; actualLOCAL
+publishedconstructorsource+settledbody, no closepermissionreuse or syntheticroster.
+No driver-only mousecapture retry substitutes for this definite source refusal.
+Accepted eighth-path amendment S1_ORDINARY_LOCAL_OWN_FENCE_AMENDMENT.md
+SHA8d21761dbbe9f17e10dde539b2d765f107ccb29dcfc682024abab27aca792242,
+amended assignment87c57dee/private checkpoint3f8d94704ec79bb66b4615e7725bf10185fe8d8a
+synced BEFORE untouchedstreaming baseline/fencebaseline9311bfc7/pathlist8 2965c2be/
+sourcegate2 b1eaf304883bbefd5c40566d9a61072d3c6ce5a7b2331a1db0a8dd1f20f5bb11
+and eighthpath edit. Original gate/baseline/draft1 preserved. No new owner decision
+or supported profile/schema/framework/acceptance expansion. s1on1 tools stay retired.
 BOTH initial preparation and final activation native reads/scans/fences must stay
 responsive. Game/actual Guest evaluator stayUI; Loading retains renderer/window
 until fresh rendererNone seed validation/adoption. Concrete retained worker inputs

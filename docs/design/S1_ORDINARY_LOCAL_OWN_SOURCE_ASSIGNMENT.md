@@ -23,7 +23,21 @@ crates/horizon-client/src:
 6. game/window_close_tests.rs
 7. game/levels/session_checkpoint_registered_tests.rs
 8. streaming.rs (only accepted current native-fence observation and focused tests)
+9. game/retained_server.rs (ONLY actual LOCAL versus network ownership in existing plain-stone use predicate)
 
+Coordinator adopts exact ninth-path S1_ORDINARY_LOCAL_OWN_STONE_AMENDMENT.md
+SHA6a786039316c1f54b9d3a66a4ad3e12db91c41138df4dfe22c0d740268004103,
+DESIGN ACCEPT by original independent s1_local_owned_design_review. Actual smoke1
+bd436b20 remains FALSE, actual Game::use_item calls a network-only OWN roster gate
+which rejects LOCAL. No owner scope expansion needed: repair the already accepted
+LOCAL plain-stone caller. Network checkpoint_roster and all existing item/Creative/
+hand/components/count/native ray/reach/target checks stay intact. LOCAL requires
+actual original published constructor retains_ordinary_source, local_checkpoint_owner,
+settled existing non-server-copy native body and non-closing entry; no new readiness
+flag/roster/close-permission reuse. Listed source-level negatives and at least one
+actual normal use_item placement require focused validation, not direct use_hand.
+New private checkpoint/sync, untouched ninth-path baseline and amended sourcegate3
+MUST precede ninth-path editing. Preserve source4/earlier gates/raw PASS+FALSE data.
 Use only needed paths. All other tracked sources/inputs remain frozen. No new file,
 lan.rs, paired_close.rs, session_authority.rs, retained_server.rs, counter_control,
 startup/remote/research application edit is presently justified. Review smallest
