@@ -18,6 +18,10 @@ From this directory's `create/` subdirectory:
 # Use a clean checkout at the exact compatible host revision.
 HORIZON_SOURCE="/path/to/pinned/horizon" python3 tools/stage.py build
 
+# Optional owned Linux output avoids the slower Windows-mounted staging path.
+# Use a new/empty directory; other nonempty external folders are refused.
+HORIZON_SOURCE="/path/to/pinned/horizon" ../../tools/dev.sh python3 tools/stage.py build --work-dir "$HOME/.cache/create-horizon/native-stage"
+
 # Focused changed behavior, using this package's own Rust workspace.
 python3 tools/cargo.py test --locked --lib milling::tests
 CREATE_SOURCE="/path/to/pinned/Create-reference" python3 tools/milling_oracle.py --focused

@@ -1,11 +1,13 @@
 # Current work
 
-Native S1 is COMPLETE under the owner-adopted November 4 native playability plan.
-Fresh independent Sol High checklist review found no gaps in the bounded result.
-See `docs/reference/NATIVE_S1_PLAYABILITY_RESULTS.md` for evidence and limits.
+Native S1 and S2 are COMPLETE under the owner-adopted November 4 native route.
+Fresh independent Sol High source/driver/completion reviews cleared bounded S2.
+See `docs/reference/NATIVE_S1_PLAYABILITY_RESULTS.md` and
+`docs/reference/NATIVE_S2_KINETICS_RESULTS.md` for evidence and limits.
 The owner now authorizes continuing through S6 until the next requested break.
-Active packet: S2 kinetic reference-gap audit and bounded repair under
-`docs/design/STAGE_PROGRESSION_PLAN.md`. S2/S3 are not yet accepted.
+Next packet: define S3's remaining player controls/private install checklist from
+existing native services under `docs/design/STAGE_PROGRESSION_PLAN.md` before
+source changes. S3 is not yet accepted.
 
 ## Current checkpoint
 
@@ -33,6 +35,18 @@ onefull64slot and576 with ninefull64slots/inputconsumed. All8processes exit0.
 Actual original models inspected; both submitted matrix streams animate near-256RPM.
 Machine counts are authoritative server queries, not independent inventory replicas.
 
+S2 follows the retained Java source transitions in the private mod. All six actual
+programs pass in integratedl33x_f4p and dedicatedafog32t5, including correct block
+destruction/drops, source parents, speeds/capacity/stress. Five-type chain removal/
+replacement, reversal, milling, cold reopen and bounded loaded-condition return
+pass; eight main processes exit0. Three actual client matrix streams animate near
+-64RPM. Separate capture-only reopen shows the chain on all three clients, four
+more processes exit0; initial black images stay unqualified. Input mapc59757dc.
+No new engine service or save format. Seven propagation/17 connection-stress tests
+and focused Clippy pass. Linux generated staging takes93.6s, final compile45.91s;
+old outputs and S1 binaries remain preserved. First attempt's setup-feedback FALSE
+and exact driver/input snapshot remain local; no historical evidence relabeled.
+
 ## Boundaries and following work
 
 Supported profile: five types, fixed mob-free Creative TestTerrain Overworld,
@@ -41,8 +55,8 @@ cross-owner interrupted-crash framework and extra hardened replay guarantees
 remain deferred. Native code is trusted. No full Create/modpack compatibility,
 unqualified client resync, legacy G1 pass, Java/world import or release claim.
 
-Current work is bounded S2 reference verification/reuse of the existing
-kinetic implementation and retained observations, not rebuilding a host framework.
+Current work is S3 reuse/gap assessment of motor controls, ordinary player drops,
+collection, existing mod compatibility exchange and a private Linux play route.
 Read the stage progression plan; identify the concrete failing behavior and reuse
 upstream before changes. Ask before going beyond authorized stage outcomes or
 adopted architecture/schema/framework/acceptance boundaries.
@@ -62,3 +76,5 @@ Legacy G1, historical FALSE/HOLD, reference snapshots, worlds and prior binaries
 remain intact. Original evaluation95f binaries were preserved before cache reuse.
 Native qualification drivers under `.local/native-adoption-01` are now historical;
 do not rerun them against another source/binary. Raw runs/images stay outside Git.
+S2 drivers/evidence under `.local/native-s2-01` are likewise pinned to their exact
+source/binaries. Preserve them; new stage work uses a fresh bounded packet.

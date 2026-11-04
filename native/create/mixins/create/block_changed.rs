@@ -11,5 +11,5 @@ fn create_changed(
     crate::game::create_port_millstone::forget(pos);
     crate::game::create_port_fan::changed(dimension, pos);
     crate::game::create_port_drill::changed(dimension, pos);
-    crate::game::create_port_kinetic_runtime::invalidate();
+    crate::game::create_port_kinetic_runtime::changed(dimension, pos);
 }

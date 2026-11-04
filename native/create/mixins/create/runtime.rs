@@ -710,6 +710,20 @@ pub(super) fn tick(game: &mut Game<'_>, pos: [i32; 3], entity: &mut ModBlockEnti
     }
 
     let old_rpm = number(&entity.nbt, "Speed");
+    let old_capacity = number(&entity.nbt, "Capacity");
+    let old_stress = number(&entity.nbt, "Stress");
+    let old_status = entity.nbt.get(&"NetworkStatus".into()).cloned();
+    let old_source = entity.nbt.get(&"create_horizon:kinetic".into()).cloned();
+    if game.serving.is_some() || game.options.dedicated.is_some() {
+        if let Some(diagnostics) = crate::game::create_port_kinetic_runtime::diagnostics(game, pos)
+        {
+            entity
+                .nbt
+                .insert("create_horizon:kinetic".into(), Tag::Compound(diagnostics));
+        } else {
+            entity.nbt.remove(&"create_horizon:kinetic".into());
+        }
+    }
     entity.nbt.insert("Speed".into(), Tag::Float(rpm.to_bits()));
     entity
         .nbt
@@ -721,7 +735,11 @@ pub(super) fn tick(game: &mut Game<'_>, pos: [i32; 3], entity: &mut ModBlockEnti
         "NetworkStatus".into(),
         Tag::String(format!("{:?}", network.status).as_str().into()),
     );
-    let mut sync = old_rpm != rpm;
+    let mut sync = old_rpm != rpm
+        || old_capacity != network.capacity
+        || old_stress != network.stress
+        || old_status.as_ref() != entity.nbt.get(&"NetworkStatus".into())
+        || old_source.as_ref() != entity.nbt.get(&"create_horizon:kinetic".into());
     if block == "create:millstone" {
         sync |= crate::game::create_port_millstone::tick(game, pos, entity, rpm);
     }

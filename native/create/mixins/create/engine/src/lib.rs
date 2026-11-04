@@ -5,6 +5,8 @@ pub mod kinetics;
 pub mod placement;
 #[path = "core/pressing.rs"]
 pub mod pressing;
+#[path = "core/propagation.rs"]
+pub mod propagation;
 
 #[path = "core/depot.rs"]
 pub mod depot;

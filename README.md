@@ -13,6 +13,9 @@ framework are deferred. Existing reference results and legacy work are preserved
 - [Adopted native plan](docs/design/NATIVE_PLAYABILITY_PLAN.md) defines S1 acceptance.
 - [Native S1 results](docs/reference/NATIVE_S1_PLAYABILITY_RESULTS.md) records the
   source/build, integrated and two-client dedicated checks, and their limits.
+- [Native S2 results](docs/reference/NATIVE_S2_KINETICS_RESULTS.md) records source
+  arbitration, reference block/drop outcomes, topology and normal restart checks.
+- [Authorized stages](docs/design/STAGE_PROGRESSION_PLAN.md) defines the S2–S6 route.
 - [Native development](native/README.md) gives build and focused-check commands.
 - [Source provenance](native/UPSTREAM.md) identifies the imported MIT base and pins.
 - [Roadmap](docs/ROADMAP.md) separates the active native route from historical stages.

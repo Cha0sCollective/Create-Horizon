@@ -14,19 +14,40 @@ import setup_mixins
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("action", choices=["stage", "check", "build"])
+    parser.add_argument("--work-dir", type=Path, default=ROOT / ".local",
+                        help="Owned generated build directory (Linux storage is faster under WSL)")
     args = parser.parse_args()
+    work = args.work_dir.resolve()
+    if work in [ROOT.resolve(), HORIZON.resolve(), Path(work.anchor)]:
+        raise SystemExit("Build directory must be a separate generated-output folder")
+    ownership = work / ".create-horizon-stage-root"
+    owner = str(ROOT.resolve()) + "\n"
+    if ownership.is_symlink():
+        raise SystemExit("Refusing redirected build ownership marker")
+    if work.exists() and not ownership.exists() and work != (ROOT / ".local").resolve() and any(work.iterdir()):
+        raise SystemExit("Refusing a nonempty external build directory without this project's ownership marker")
+    work.mkdir(parents=True, exist_ok=True)
+    if ownership.exists() and ownership.read_text() != owner:
+        raise SystemExit("Build directory belongs to another source checkout")
+    for name in ["horizon-source", "stage", "mixin-input", "horizon-source.tar", "stage-key.txt", "plan.json"]:
+        path = work / name
+        if path.is_symlink() or not path.resolve().is_relative_to(work):
+            raise SystemExit("Refusing redirected generated path: " + str(path))
+    ownership.write_text(owner)
     check_horizon()
     setup_mixins.main()
-    source = ROOT / ".local" / "horizon-source"
+    source = work / "horizon-source"
     if not source.exists():
         source.mkdir(parents=True)
-        archive = ROOT / ".local" / "horizon-source.tar"
+        archive = work / "horizon-source.tar"
         with archive.open("wb") as output:
             subprocess.run(["git", "archive", PINS["horizon_revision"]], cwd=HORIZON, stdout=output, check=True)
         with tarfile.open(archive) as package:
             package.extractall(source, members=[m for m in package.getmembers() if not m.issym() and not m.islnk()])
         archive.unlink()
         (source / ".horizon-revision").write_text(PINS["horizon_revision"])
+    if (source / ".horizon-revision").read_text().strip() != PINS["horizon_revision"]:
+        raise SystemExit("Generated host source has a different pin; use a fresh build directory")
     # The upstream CLAUDE.md is a documentation alias; Mixins rejects symlinks.
     for path in source.rglob("*"):
         if path.is_symlink():
@@ -36,25 +57,25 @@ def main():
     mixins = ROOT / "target" / "debug" / "horizon-mixins"
     if not mixins.exists():
         cargo("build", "--locked", "--manifest-path", ROOT / ".tools/horizon-mixins/Cargo.toml", "-p", "horizon-mixins-cli")
-    stage = ROOT / ".local" / "stage"
+    stage = work / "stage"
     digest = hashlib.sha256(str(PINS).encode())
     for path in sorted(NATIVE.rglob("*")):
         if path.is_file():
             digest.update(path.relative_to(NATIVE).as_posix().encode())
             digest.update(path.read_bytes())
-    marker = ROOT / ".local" / "stage-key.txt"
+    marker = work / "stage-key.txt"
     key = digest.hexdigest()
     if not marker.exists() or marker.read_text() != key or not stage.exists():
-        mods = ROOT / ".local" / "mixin-input"
+        mods = work / "mixin-input"
         if mods.exists():
             shutil.rmtree(mods)
         shutil.copytree(NATIVE, mods / "create")
         subprocess.run([str(mixins), "plan", "--workspace", str(source), "--mods", str(mods),
-                        "--out", str(ROOT / ".local/plan.json")], env=environment(), check=True)
+                        "--out", str(work / "plan.json")], env=environment(), check=True)
         # Mixins' atomic replacement works on Linux only. Like Horizon's launcher,
         # apply to a fresh output and synchronize changed files to a stable Cargo
         # workspace. Unchanged source paths/mtimes keep incremental builds useful.
-        with tempfile.TemporaryDirectory(prefix="mixin-stage-", dir=ROOT / ".local") as temporary:
+        with tempfile.TemporaryDirectory(prefix="mixin-stage-", dir=work) as temporary:
             fresh = Path(temporary) / "game"
             subprocess.run([str(mixins), "apply", "--workspace", str(source), "--mods", str(mods),
                             "--out", str(fresh)], env=environment(), check=True)

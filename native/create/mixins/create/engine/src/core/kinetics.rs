@@ -571,4 +571,76 @@ mod tests {
         assert_eq!(n.status, Status::TooLarge);
         assert_eq!(n.theoretical.len(), MAX_NODES);
     }
+
+    #[test]
+    fn supported_gear_ratios_cover_each_axis_and_signed_quadrant() {
+        for axis in [Axis::X, Axis::Y, Axis::Z] {
+            let plane: Vec<_> = (0..3).filter(|i| *i != axis.index()).collect();
+            let small = Node {
+                pos: [0; 3],
+                axis,
+                kind: Kind::Cog { large: false },
+            };
+            for side in [-1, 1] {
+                for &coordinate in &plane {
+                    let mut neighbor = small;
+                    neighbor.pos[coordinate] = side;
+                    assert_eq!(ratio(small, neighbor), Some(-1.0));
+                    assert_eq!(ratio(neighbor, small), Some(-1.0));
+                }
+                for other in [-1, 1] {
+                    let mut large = Node {
+                        kind: Kind::Cog { large: true },
+                        ..small
+                    };
+                    large.pos[plane[0]] = side;
+                    large.pos[plane[1]] = other;
+                    assert_eq!(ratio(large, small), Some(-2.0));
+                    assert_eq!(ratio(small, large), Some(-0.5));
+                }
+            }
+        }
+    }
+
+    #[test]
+    fn millstone_stress_boundary_stops_and_recovers_without_losing_theoretical_speed() {
+        // Declared finite-capacity fixture, not a claim that the actual creative
+        // motor's 16384 SU/RPM can overload this three-node arrangement.
+        let mut nodes = [
+            Node {
+                pos: [0, 0, 0],
+                axis: Axis::Y,
+                kind: Kind::Motor {
+                    facing: [0, 1, 0],
+                    rpm: -16.0,
+                    capacity: 4.0,
+                },
+            },
+            Node {
+                pos: [0, 1, 0],
+                axis: Axis::Y,
+                kind: Kind::Shaft,
+            },
+            Node {
+                pos: [0, 2, 0],
+                axis: Axis::Y,
+                kind: Kind::Millstone,
+            },
+        ];
+        let at_limit = network(&nodes);
+        assert_eq!((at_limit.capacity, at_limit.stress), (64.0, 64.0));
+        assert_eq!(at_limit.speed(nodes[2].pos), -16.0);
+        if let Kind::Motor { capacity, .. } = &mut nodes[0].kind {
+            *capacity = 3.0;
+        }
+        let overloaded = network(&nodes);
+        assert_eq!(overloaded.status, Status::Overstressed);
+        assert_eq!((overloaded.capacity, overloaded.stress), (48.0, 64.0));
+        assert_eq!(overloaded.speed(nodes[2].pos), 0.0);
+        assert_eq!(overloaded.theoretical[&nodes[2].pos], -16.0);
+        let recovered = network(&nodes[..2]);
+        assert_eq!(recovered.status, Status::Running);
+        assert_eq!((recovered.capacity, recovered.stress), (48.0, 0.0));
+        assert_eq!(recovered.speed(nodes[1].pos), -16.0);
+    }
 }
