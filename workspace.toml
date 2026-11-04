@@ -6,7 +6,7 @@ namespace = "create_horizon"
 repository = "https://github.com/Cha0sCollective/Create-Horizon"
 visibility = "private"
 stage = "post-G0 foundations"
-active_packet = "Owner selected evaluation of existing Delete228/Create-Horizon0.5 after upstream reuse audit. Current S1 operation source1 frozen SOURCE HOLD, no compiler/runtime; no architecture adoption or acceptance revision yet. G1/S1 open"
+active_packet = "Existing Create0.5 evaluation complete: unchanged native build, integrated gameplay components and dedicated two-client restart/reconnect verified; full-output reference mismatch confirmed. Await owner architecture/acceptance decision before migration or more custom engine work. Old operation source1 frozen SOURCE HOLD; G1/S1 open"
 next_stage = "S1 host foundations and remaining P02; G1/G2/G3 open"
 
 [specification]

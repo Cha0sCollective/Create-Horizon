@@ -1,7 +1,9 @@
 # Current work
 
-Owner authorizes continuation until S1 complete or genuine blocker. No owner input
-pending. Adopted S1_COMPLETION_PLAN: fixed mob-free Creative TestTerrain Overworld,
+Owner authorizes continuation until S1 complete or genuine blocker. Existing-port
+evaluation is complete; owner architecture/acceptance decision is now pending
+before migration or more custom engine authoring. Adopted S1_COMPLETION_PLAN:
+fixed mob-free Creative TestTerrain Overworld,
 explicit --test-terrain; paired Open to LAN deferred/refused. Ask BEFORE profile/
 framework/schema/acceptance expansion. Deliverable1/C0/fullC1/G1/S1 OPEN; live S2
 waits G1. No PR/merge/release/cleanup or playable/reference/Prism/Java/memory changes.
@@ -9,8 +11,11 @@ waits G1. No PR/merge/release/cleanup or playable/reference/Prism/Java/memory ch
 ## Current accepted checkpoint
 
 Verify actual branches/HEAD/dirty files on resume. Private create-horizon branch
-codex/h02-smoke-h03-notes. Engine .local/worktrees/s1-native-close-composition CLEAN
-codex/s1-ordinary-empty-counter at9f7d5ecb7abee68b0f3af6363fbdb3e6b0547219,
+codex/h02-smoke-h03-notes. Accepted engine checkpoint on public branch
+codex/s1-ordinary-empty-counter is9f7d5ecb7abee68b0f3af6363fbdb3e6b0547219.
+Active .local/worktrees/s1-native-close-composition is instead on
+codex/s1-configured-operation at that HEAD with five frozen dirty files (details
+below), no formatting/compiler/runtime for that packet. Accepted checkpoint
 treeb9386e81c795c9bf0273acf4a97d56c4b24a4b39, parentbbf10296491592863d95359c8e97daff4bbe4c7f.
 Seven existing Rust paths1366+/43-, normal public-tree commit/full-history push
 hooks PASS. Different fresh s1_ec_final_review FINAL ACCEPT/privacy CLEAR; receipt
@@ -139,7 +144,8 @@ Read docs/reference/S1_UPSTREAM_REUSE_AUDIT_2026_11_04.md for exact facts/source
 fit questions and bounded evaluation steps. Official upstream63eccfc contains
 native mod block entities/ticks/persistence/slots/menu/sync/render services; it
 removed Wasm in late October. Existing port's documented subset includes our S3
-five blocks; claims unverified locally, Create6.0.10 vs our6.0.11 matters.
+five blocks. Local evaluation now verifies ordinary playability of the subset;
+Create6.0.10 vs our6.0.11 and the full-output mismatch still matter.
 Current new engine branchcodex/s1-configured-operation remains at9f7d5ec with five
 assigned dirty paths (lan/mod.rs unchanged), source1map8c89696b08028d9077aa4645008b6f7a4d3096d3dc07b6c3b20d1f3130b6c108.
 SOURCE HOLD by s1_op_source_review: invalid world_slot_trial::TransferOutcome
@@ -152,3 +158,22 @@ All accepted work remains preserved/public/private synced as recorded above.
 Evaluation may inspect the third-party port under owner's explicit direction;
 keep it isolated and do not copy it into the public engine. No upstream merge or
 rebase. Original G1/S1/profile/asset/Prism/save/publication boundaries remain.
+
+Evaluation complete: see reference/S1_EXISTING_CREATE_PORT_EVALUATION_2026_11_04.md.
+Unchanged port16c5d454 + officialHorizonfc021 + Mixinsa1e13326 built Linux fast4m22s.
+Integrated components pass: five ordinary held-item placements, diagnostic ratios/
+reverse, falling cobble2→gravel2 collected, stoppedTimer208/input3/motor32/player2
+cold reopen and completion3. Overall raw runFALSE preserved due screenshot Path
+logging TypeError after those checks; initial wrong-ICD FALSE also preserved.
+Dedicated finalrun11uw45uu PASS: two real rendered clients, ordinary millstone
+placement, server milling/collection, peer reconnect, cold server+two freshclients,
+Timer212/input3/motor32/actor2/peer0 retained and completion3. All6processes exit0.
+Both images inspected, both actual matrix traces animate near-32RPM. Counts are
+correlated authoritative server queries, NOT independent client inventory replicas.
+Known full-output mismatch reproduced: input1+gravel576 retained, unlike selected
+Java loss. Earlier whitelist/default and obsolete-tab failed runs preserved.
+No architecture adoption, changed acceptance, migration or G1/S1 pass. Recommend
+native reuse + bounded parity fixes; explicit owner decision needed on removed
+in-frame/Wasm requirements and deferred crash-consistent cross-owner framework.
+No more custom engine authoring or source changes before that decision. Preserve
+current5dirtyfiles/SOURCE HOLD and all accepted work. No active test jobs remain.
