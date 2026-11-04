@@ -71,9 +71,11 @@ correction requires new packet/prefix, not rewriting frozen reports or old outco
 
 ## Current following empty-counter packet (s1ec1)
 
-Engine now CLEAN on codex/s1-ordinary-empty-counter at accepted/publicbbf1029;
-no source edit. Private acceptedLOCALcheckpoint4f6ac03e33da26ed8d724fffec8283d0b7ec7780
-synced. Fresh s1_empty_counter_design_review DESIGN ACCEPT exact
+Engine codex/s1-ordinary-empty-counter at accepted/publicbbf1029, exactly five
+assigned existing Rust files dirty. Accepted LOCAL private checkpoint4f6ac03 synced;
+empty-counter design/assignment checkpoint62697b94d317d8b058012947055b23e6b3fe6368
+privately synced BEFORE untouched baseline and serial gateec0a51066930be9274fb04aa12bcce348088ef111d942c76349cbbc87096952a.
+Fresh s1_empty_counter_design_review DESIGN ACCEPT exact
 S1_ORDINARY_EMPTY_COUNTER_PACKET.md SHAad3c2ef082c1bd2841c7b1f96c058ad7ed27e2fddbe578d365c65135d218536b.
 Original9451705d HOLD preserved .local/s1ec1/design1.md/review: nativeCreativecatalog
 missingcounter and nonsearchnumberkeysfiltered. Accepted minimumfifthpath pre-acq
@@ -84,10 +86,62 @@ acceptance expansion/ownerinput. Exact source assignment
 S1_ORDINARY_EMPTY_COUNTER_SOURCE_ASSIGNMENT.md names fiveexisting paths:
 retained_server.rs, game.rs, retained_server_tests.rs,
 levels/session_checkpoint_registered_tests.rs, window_close.rs.
-PRIVATEcheckpoint/sync, untouchedrawbaseline and .local/s1ec1-source-gate.json MUST
-precede edits. No compiler/game active. Root next records that gate, then implements
-actualOWNready/arming/capturedBlockItem/nativehotbarswap ingress/emptyCounterWasm/
-coherentClaimed reentry. No extra source path presently authorized.
+Source/assignment gate satisfied; five paths only. Actual OWN ready/arming, fresh
+Creative palette, native hotbar-only counter ingress and protected stacks are
+implemented. No production behavior change since source6; later deltas are tests.
+Current source13 map0483cb7a92d750024375c29c3cb79bd5b56027de3a23486906e786834ca5da80:
+source12 1f2343de independently CLEAR then pinned formatter5. Test-checks6 PASS
+(fmt0.72/clippy24.41 seconds); source6 fullfeature checks3 remain attributed unchanged
+evidence. All source snapshots/holds/failed checks and compiled binaries preserved.
+Compile0fa76fac/qualifierc0b3e791/fastbuild8157ecf8 tools independently CLEAR.
+
+Original focused runs remain FALSE: test1 actor-index assumption; test2 canopy spawn
+without reachable permitted floor; test3 inappropriate cold residency fixture after
+LOCAL recovery (log7713e6e6, receipt874c210b, unresolved Streaming-drop warning).
+Test3 A baselines all PASS and actual B Memory/TCP placement/real Wasm advancement/
+Claimed coherent close PASS, including permitted native Creative flight. Native
+worlds1/2/3 retained, all jobs naturally reaped/group-quiescent, no kills. Reviewed
+readonly inspector20355231/output344f9be7 established the real oak canopy/reachable
+floor issue without changing native bytes. Test-only UUID lookup, bounded resident
+approach observation/native movement and actual LOCAL loading-read handoff fix the
+callers; no terrain/body/grant/counter injection. LOCAL runs first in each phase.
+
+CPU4 ALLMODES PASS381.03/99e2c4cd on source13: six distinct same-executable children,
+NEW/Unplaced -> fresh Unplaced/native placement/actual Wasm/Claimed -> fresh Claimed
+resume/second-target refusal. Original OWN/archive/native players/items and empty
+slot preserved. Build4 PASS28.70/c3b6e41f, binecc2cdb1; native-worlds-4 retained.
+Normalfast1 PASS96.41/9ff3df12, ELF996943cb. Actual normal inframe1 RUNNER PASS70.03/
+7fc744eb, four coherent epochs/counter27->166/empty slot, natural gameexit0, only
+owned display helpers TERM/reaped. Root viewed actual hover/hotbar/placed/reopened
+images. VISUAL HOLD: counter item icons are blank despite tooltip/count64; physical
+iron-template cube renders. Preserve original result and visual-HOLD receipt.
+
+No active jobs. Source13 still frozen/only five assigned dirty paths. Read-only
+inspection: materializer renames BlockItem prototype item_model but supplies only
+blockstate fallback, missing client item definition. DESIGN ACCEPT amendment
+S1_ORDINARY_EMPTY_COUNTER_ITEM_PRESENTATION_AMENDMENT.md79893a24, exact assignment
+S1_ORDINARY_EMPTY_COUNTER_ITEM_PRESENTATION_SOURCE_ASSIGNMENT.md4ef1e8ff. Seven
+EXISTING paths max: original five +mod_content.rs +mod_content_tests.rs. No owner
+profile/framework/schema expansion required. Existing renderer resolves these
+client definitions; no renderer/H11 edit. Follow actual Plan template item and
+prototype model ref, preserve explicit own assets/native references, independent
+blockstate/item fallback, focused materializer/resolver regression.
+New prefix s1ec1m. PRIVATE checkpoint/sync +raw baseline +serial amendment gate
+MUST precede edits, including both untouched library paths. Retire source13's
+five-path runners when amended edits start. Reuse unchanged CPU13 gameplay evidence
+with attribution; affected library/feature/lint +actual normal rendered all3modes.
+No normal integrated/dedicated counter run yet. Draft window tools remain private,
+not entry-cleared for amended sources: inframe-r2 657469a7/MAIN-r2 5d6c2a08 were
+cleared for source13 (inframe executed); dedicated-r1 draftd98976e5 includes third
+claimed server/two fresh rendered clients but is NOT reviewed/executed. Refresh
+seven-path/source/receipt guards before amended execution. MAIN final-quit suffix
+classification requires actual completed terminal ack; old HOLD snapshot preserved.
+
+Single three-phase same-executable scenario spans Memory, TCP2 and LOCAL:
+NEW/Unplaced -> fresh Unplaced/place/actual Game Wasm advance/Claimed -> fresh
+Claimed/resumed advance/second-target refusal, same OWN/archive/empty slot. Separate
+read-only View only, no mutating Startup.ordinary. Then optimized normal rendered
+milestone checks; no historical full battery. Current source map frozen during compiler/tests.
 Then actual one-slot transfer/departure/fault custody, replication/resync, existing
 H11 integration and combined G1. Reuse Guest74cafefc/retirementab239890/H06d62756231/
 H11component70fd6aa; no reimplementation/historical full battery. Automatic paused
