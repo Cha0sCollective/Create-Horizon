@@ -1,128 +1,95 @@
 # Current work
 
-Owner authorizes continued work through S1 completion or genuine blocker. Adopted
-S1_COMPLETION_PLAN: fixed mob-free Creative TestTerrain Overworld/--test-terrain;
-Open to LAN deferred. Ask BEFORE profile/framework/schema/acceptance expansion.
-No owner input pending. Deliverable1/C0/fullC1/G1/S1 OPEN; live S2 waits G1.
-No PR/merge/release/cleanup or playable/reference/Prism/Java/memory changes.
+Owner authorizes continuation until S1 complete or genuine blocker. No owner input
+pending. Adopted S1_COMPLETION_PLAN: fixed mob-free Creative TestTerrain Overworld,
+explicit --test-terrain; paired Open to LAN deferred/refused. Ask BEFORE profile/
+framework/schema/acceptance expansion. Deliverable1/C0/fullC1/G1/S1 OPEN; live S2
+waits G1. No PR/merge/release/cleanup or playable/reference/Prism/Java/memory changes.
 
-## Accepted current component and verified state
+## Verified accepted component
 
-Private branch codex/h02-smoke-h03-notes; verify actual HEAD/dirty files on resume.
-Pre-edit checkpoint22a09b5 synced before s1on1 source gate. Completed prior durable
-OWN core fbd4046 accepted/public; frozen S1_DURABLE_OWN_RESULTS.md bad0702867aaa03c9fcb6f7ffe2ea9e90601ec54b60d0a1d5fc254b07bf9fe3e.
+Verify actual branches/HEAD/dirty files on resume. Private create-horizon branch
+codex/h02-smoke-h03-notes. Gate3 pre-edit private checkpoint34f6b6b88761310df8808af2e7478ac7b6169229
+was privately synced before ninth-path baseline/gate/edit. This accepted component
+checkpoint also records the frozen report and progress; verify its actual Git ID.
 
-Engine .local/worktrees/s1-native-close-composition now on
-codex/s1-ordinary-local-owned at accepted/public network parent (public component branch codex/s1-ordinary-owned-network)
-b87bff783dc75bdac0b112208794babe0ea18aa2,
-tree204acda07e448a01b2bb322d06e4f15263c7402a, parentfbd4046b932eef52de3977fd87691745d1afa231.
-Different s1_on_final_review FINAL ACCEPT/privacy CLEAR receipt
-.local/s1on1-final-review.json SHA1608eaf2bd045c256e6acca2e150c579ec50e5ddec68ada7a5454280bb375b7f.
-Fresh PUBLIC/exact origin, normal commit/full-history push hooks PASS, exact public
-branch tip verified. No PR/merge/release. Private accepted component checkpoint46ba785c491b2deb9723dcf7abfb323354dd56ee synced.
+Engine .local/worktrees/s1-native-close-composition CLEAN on
+codex/s1-ordinary-local-owned at bbf10296491592863d95359c8e97daff4bbe4c7f,
+tree3899a4442c8dba862436aed8eefcada627e12b99, parentb87bff783dc75bdac0b112208794babe0ea18aa2.
+Different fresh s1_lo_final_review FINAL ACCEPT/privacy CLEAR, receipt
+.local/s1lo1-final-review.json SHAbb717a9668a3ca74ef445792bedabcab741cfcf95a7d7fbfbcab6a56cf5810f4.
+Fresh PUBLIC/exact Horizon origin, normal commit/full-history push hooks PASS;
+exact public branch tip verified. Public sync receipt59d877d5ff386ea68e87e5293d70c7354043ec3f7de7fed603759a4c8aaa018d.
+No PR/merge/tag/release. Preceding network b87bff7 also accepted/public; frozen
+S1_ORDINARY_OWN_NETWORK_RESULTS.md c78a7a19 remains unchanged.
 
-FROZEN docs/reference/S1_ORDINARY_OWN_NETWORK_RESULTS.md
-SHAc78a7a19717e672fadfdfb748adaec9cab47ad77387f570a44ca6a5e16fdb308.
-Exactly6 existing assigned source paths1001add/23remove, source3 mapfb779264fd548d70ddc8fd8d43ecd23242d73ae079408b2c53b8d41039ba7975.
-All6rawSHA==committedblobs comparison1964e928. Accepted design1ed4c331/private
-checkpoint22a09b5/baseline0ecfd35fb/pathlist287c7e9f/sourcegate67318373 preceded edits.
-Fresh source2 SOURCE CLEAR plus pinned format-only3; source1 HOLD preserved.
+FROZEN docs/reference/S1_ORDINARY_LOCAL_OWN_RESULTS.md
+SHAdb51275565d21a66f81d5cac9f53a6c8a7bc3c9d38c0e65929ce56a736341c5e.
+Exactly8existing changedRustpaths2163add/508remove, nineallowed/game.rs unchanged.
+All9rawSHA==compiledsource6==committedblobs, comparison7e649f1a. Currentmap
+.local/s1lo1-source-sha256.json 2962421c479741e51f14b82457c1a782dbe48c1b5f7af16a87f731b231e00b6a.
+Accepted basef7cd194e/fenceamend8d21761d/stoneamend6a786039; assignmentdf4f82d9,
+privatecheckpoint34f6b6b/baseline44589de5/path94f771979/gate3 3df977cc precededninth
+retained_server.rs edit. Original gates1/2/rawsnapshots preserved; see frozen report.
 
-Actual ordinary NEW/OWN/legacy Memory/TCP dispatch now uses constructor-owned
-identity/lease/strict OWN, original anchor and bound archive, original worker/native
-body restoration. Full configured/native-installed/placed/loaded/settled roster
-publishes editability once; genuine original-new unused custody alone permits early
-native cancellation, recovered/published body always coherent even before placement.
-In-frame remains unchanged; no counter/BlockItem/slot/menu/drop ingress enabled.
+Actual ordinary LOCAL NEW/OWN/legacy routing now uses original constructor/native
+source/namespace exclusion and immutable bound coherent archive. Concrete retained
+selection/preparation/finalvalidation workers preserve original custody on error/
+cancel/Retry; Game/Guest stay owning UI/unpublished/frozen and Loading retains
+presentation. Complete native/player/item/Guest comparison precedes publication;
+actual writer poll precedes fresh original Streaming predicate. Published settled
+LOCAL body/constructor-source may use plainstone, network complete-roster and all
+existing stone/component/count/reach/target checks unchanged. No close-permission
+reuse, synthetic roster/flag, counter/BlockItem/slot/menu/drop positive ingress.
 
-Static1 ALLPASS872505d0; testbuild1 PASS50.09/78c77b79, focused tests1 PASS188.78/
-66d16c47 actual same-ELF fresh A/B Memory/TCP2 plus partialcancel/malformedlinked/
-zeroepoch/preplacementclose. Rendered integratedMAIN2 PASS118.42/83ac287b, actual
-title reentry/stone placed+restored/epochs1/2/3, rootQA5c00e209. Optimized normal
-fastMAIN1 PASS592.97/daa60765, ELF65143e55 (same source3). Actual dedicated7
-PASS87.26/669c3985, newserver+2newrealrenderedclients restore player/items and
-place/view same stone(-7,65,-1), immutableOWN/archiveepochs1/2 with90columns,
-usageA1/B0/inventories/support preserved; rootQA20805a59. All6actualprocesses
-naturalexit1/noTERM-KILL; exact transport EOF/errno107 diagnostics remain errors.
+## Evidence and retirement
 
-All original MAIN1/dedicated1..6 false receipts/native worlds/logs/images remain
-FALSE/preserved; see frozen report. Debug90-column reclose10sdeadline unqualified;
-postmanifest bounded8.8Mcellscan/reencode cost inference supported by optimized90
-success, not a benchmark. No source/deadline changed during driver-only fixes.
-No dedicated rendered re-reopen of already placed stone (placement after fresh
-recovery); integrated separately proves placed-block reentry, CPU fresh image.
-No error-free transport/general performance/arbitrary worlds or G1 claim.
+Source6 static2 ALLPASSb2038918; testbuild2 PASS48.52/967770a2, bin c81dcb7d.
+AffectedLOCAL A/B/control2 PASS183.98/1c180b67: actual normaluse_item NEW/recovered
+Unplaced+Claimed; missing/unpublished/servercopy/restoring/closing refusals; original
+heldprep cancel/expiredclose/Retry; sameOWN/archiveepochs1/2. Source4 unchanged
+fence/common NETWORK tests1 PASS672b8bd0 are attributed earlier evidence.
+Normalfast2 PASS122.8/048dae9c, actual ELF65ee0b42. Actual rendered NORMAL inframe3
+PASS85.88/fb66bd23198ee95f42bfd8f4b654181fc2c98de4a64f4206f0f58dd57fa9d55c,
+rootvisualQAfa40fedb17a340d83b998fbd1064c29dc382ec0e6bcfe0230b69ea3b91a6145b:
+titleCreate/starterinventory/movement/oneStone(-2,73,14)/coherentLeave/originalanchor
+OWN title reentry/placedStonevisible/finalquit;4epochs, naturalgameexit0/reaped.
+Only owned displayhelpersTERM/reaped. Actual disabledWorldOptionsLANroute refused;
+NOT a LANpublication attempt. Sameprocessrender, freshprocessCPU separately.
 
-s1on1 including fast tools FROZEN/RETIRED: old parent-pinned scripts must not run
-on committed/following HEAD. Preserve raw sources/failed pending images/native files,
-resources/binaries and warm debug/fast targets. No active compiler/game process.
-Earlier prefixes s1own1/s1loc1/s1plc1/s1ord1 also retired; see frozen reports.
+Original UI1 FALSEbd436b20 (missingLOCALstonegate) and UI2 FALSEb026789e
+(stoneusage1, grass->dirt failed support-stability assertion) remainFALSE/preserved.
+Reviewed readonlyinspectorbd73d334 confirms actualsupport/destination before/after;
+existing nativegrassrule justifies narrow tool-onlyr3 allowance, no extraengineedit
+or broaderparityclaim. Native worlds/logs/images/receipts retained under s1lo1
+failed-worlds-1/2 and inframe-1/2/3-native; all raw sources/binaries/resources/warm
+build targets preserved. No active compiler/game/helper job.
 
-## Next bounded LOCAL bridge
+All s1lo1 parent-pinned execution runners now FROZEN/RETIRED after commit; do NOT
+run them on this HEAD. s1on1/s1own1/s1loc1/s1plc1/s1ord1 also retired. A post-FINAL
+correction requires new packet/prefix, not rewriting frozen reports or old outcomes.
 
-Following docs/design/S1_ORDINARY_LOCAL_OWN_PACKET.md
-SHAf7cd194ebb61c514ee481a86ce828daca5eb6795ef634eaf7b4be334ff664b78 has fresh
-s1_local_owned_design_review final pinned DESIGN ACCEPT. Original private pre-edit
-checkpointdc8a279c856e8c3068f6bf073d15cd60a71e8569 synced; sourcegatefd57d3fd8a98a56154cd35c4d738e660179b7c7b3ecb891e4efbd11454129fd8,
-baseline0 73fc815a/pathlist7 0cde9b89 preceded first edits. Engine branch
-codex/s1-ordinary-local-owned at b87bff7 now7 assigned changed paths; game.rs stays
-unchanged. Concrete retained LOCAL selection/preparation/finalvalidation with actual
-Game/Guest onUI; actual ordinary NEW/OWN/legacy routing, original constructor-stamp
-transfer and bound coherent close. Draft2 7b51272f HOLD (old typename restored);
-fresh SolHigh s1_lo_source_review draft3 380acbc1 SOURCE CLEAR, actual8snapshot
-7fead7f6, then ONLY reviewed formatter1 ->active source map93914cfedb40a50ca21b6eb8f6729956f85b3af3d57fa1651ac893f19bf72aa7.
-Static1 ALLPASS1e7cf811 (fmt1s/Clippy48.2/off26.34/mods26.01/paired-noMods34.66),
-testbuild1 PASS68.44s/22b4454f; exact bin700e616b/lib337856d0. Focusedtests1
-ALLPASS672b8bd0: currentfence5.44s, actualLOCAL freshA/B Unplaced+Claimed152.78s
-includingheldprep cancellation/expiredclose/Retry poll_us3, affectedNETWORKMemory/
-TCP218.28s. Nativeevidencepreserved .local/s1lo1/failed-worlds-1. NormalfastMAIN1
-PASS224.29s/ac049253, actualELF5cd85d49. Inframewindow1 FALSE89.72s/bd436b2085cfa4946d5c0097f2c9764a2763ca2f5139043a527a8cc98d034e97:
-actualtitleCreate/starterbody/disabledWorldOptionsLANroute/coherentUnplacedLeave/
-repeatedoriginalanchorOWNreentry worked, stoneuse0 failed. Root visuallyinspected
-pauseddisabledroute+Creative/recoveredterrain/unchangedstoneclick; allnative/logs/
-images/4epochs preserved .local/s1lo1-inframe-1-native; game naturalexit0/reaped,
-onlyowneddisplayhelpersTERM/reaped. No activecompiler/game. No sourcechanged.
-Definitecallertrace: Game::use_item -> ordinary_stone_use_admitted in currently
-UNTOUCHED retained_server.rs rejects every OWN+retained_serverNone (actualLOCAL).
-Smallest ninthpath amendment S1_ORDINARY_LOCAL_OWN_STONE_AMENDMENT.md SHA6a786039316c1f54b9d3a66a4ad3e12db91c41138df4dfe22c0d740268004103
-has originaldesignreviewer exactDESIGN ACCEPT; privateamendedassignment/checkpoint/
-PRIVATEsync/untouchedbaseline/gate3 BEFORE ninthpath edit. Repairs existingaccepted
-plainstoneLOCALcaller, noprofile/framework/schema/acceptanceexpansion or ownerinput
-presentlyneeded. Keepnetworkroster/allplainstone target/reach checks; actualLOCAL
-publishedconstructorsource+settledbody, no closepermissionreuse or syntheticroster.
-No driver-only mousecapture retry substitutes for this definite source refusal.
-Accepted eighth-path amendment S1_ORDINARY_LOCAL_OWN_FENCE_AMENDMENT.md
-SHA8d21761dbbe9f17e10dde539b2d765f107ccb29dcfc682024abab27aca792242,
-amended assignment87c57dee/private checkpoint3f8d94704ec79bb66b4615e7725bf10185fe8d8a
-synced BEFORE untouchedstreaming baseline/fencebaseline9311bfc7/pathlist8 2965c2be/
-sourcegate2 b1eaf304883bbefd5c40566d9a61072d3c6ce5a7b2331a1db0a8dd1f20f5bb11
-and eighthpath edit. Original gate/baseline/draft1 preserved. No new owner decision
-or supported profile/schema/framework/acceptance expansion. s1on1 tools stay retired.
-BOTH initial preparation and final activation native reads/scans/fences must stay
-responsive. Game/actual Guest evaluator stayUI; Loading retains renderer/window
-until fresh rendererNone seed validation/adoption. Concrete retained worker inputs
-use actual captured contexts; preserve original preparation/WorldAuthority/native
-constructor/error custody through cancel/Retry, actual frozen-attempt full comparison
-before admission. Do not call existing try_activate unchanged on UI, send Game,
-substitute partial validation or introduce a general executor/stand-in Game.
-No lan.rs/extra path presently justified; smallest amendment BEFORE any extra edit.
+## Next bounded work
 
-Then captured empty-counter arming/BlockItem, actual one-slot transfer/departure/fault
-custody, replication/resync, existing H11 integration and combined G1. Reuse
-Guest74cafefc/retirementab239890/H06d62756231/H11component70fd6aa; no reimplementation
-or historical full battery. Automatic paused lifecycle unproved; explicit paused
-service only. Filled ingress shut. S3 motor/shaft/small+large cog/millstone only,
-NOgearbox; pinned Java full-output item loss matched.
+Continue accepted S1 plan with captured EMPTY-counter arming and BlockItem through
+actual ordinary startup/settled-player predicates. Read existing
+S1_ORDINARY_OWN_DISPATCH_MAP.md and current actual callers; reuse existing registered
+Guest placement/Wasm/native checkpoint services. Draft the smallest exact next
+packet/source budget at accepted bbf1029; fresh read-only SolHigh design review,
+private checkpoint/sync, raw baseline and serial source gate BEFORE editing. Ask
+owner only for actual scope expansion or genuine missing decision. No new source
+assignment presently released for this following packet.
 
-## Execution/publication boundaries
+Then actual one-slot transfer/departure/fault custody, replication/resync, existing
+H11 integration and combined G1. Reuse Guest74cafefc/retirementab239890/H06d62756231/
+H11component70fd6aa; no reimplementation/historical full battery. Automatic paused
+lifecycle unproved; explicit paused service only. Filled ingress shut. S3 exactly
+motor/shaft/small+large cog/millstone, NOgearbox; pinned Java full-output item loss
+matched. Missing/conflicting mobrules or livingrecords refuse/preserve; unpaired
+unchanged. No epoch0/partial image, initializer, migration or world import.
 
-Root alone serial engine source/formatter/compiler/runtime/WSL/Git mutations.
-Bounded useful reviewers only; fresh native-read-only SolHigh substantive/source/tool
-review and different FINAL/privacy before public sync. Reviewers no edits/scripts/
-imports/compiler/runtime/WSL/network/Gitwrites/delegation. No standing team/rule or
-permission expansion. Preserve all raw failures/native evidence and warm targets.
-Private push fresh PRIVATE/exact Create-Horizon origin; public reviewed engine push
-fresh PUBLIC/exact Horizon origin and normal .githooks. No private docs/prompts/
-agentconfig/assets/JARs/resources/worlds/raw evidence in public Git; no PR/merge/tag/
-release/force/hook bypass. Mobrule conflict/missing/living records refuse/preserve.
-No epoch0/partial complete image, implicit initializer, migration or world import.
+Root alone serial source/formatter/compiler/runtime/WSL/Git writes. Bounded native-
+read-only SolHigh reviewers only; no standing team/permission expansion. Public
+push requires differentFINAL/privacy, freshPUBLIC/exact Horizon origin and normal
+hooks; private push freshPRIVATE/exact Create-Horizon origin. No private docs/
+prompts/config/secrets/assets/JARs/resources/worlds/raw evidence in public Git.

@@ -6,7 +6,7 @@ namespace = "create_horizon"
 repository = "https://github.com/Cha0sCollective/Create-Horizon"
 visibility = "private"
 stage = "post-G0 foundations"
-active_packet = "S1 durable OWN/Unplaced core s1own1 design accepted, exact8-path baseline/source assignment; private checkpoint then serial source gate. LOCAL0db9427 accepted/public. Ordinary activation/ingress closed; fixed mob-free TestTerrain, Open to LAN deferred"
+active_packet = "S1 ordinary LOCAL OWN bbf1029 accepted/public, source6/frozen results, original failures preserved. Next bounded empty-counter activation design; no new source assignment. Fixed mob-free Creative TestTerrain, Open to LAN deferred; G1/S1 open"
 next_stage = "S1 host foundations and remaining P02; G1/G2/G3 open"
 
 [specification]
