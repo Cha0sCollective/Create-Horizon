@@ -14,7 +14,8 @@ docs/reference/S1_ORDINARY_STARTUP_RESULTS.md. Preserved development failures an
 attributed earlier checks: docs/reference/S1_ORDINARY_STARTUP_PROGRESS.md.
 
 Engine physical checkout .local/worktrees/s1-native-close-composition, branch
-codex/s1-ordinary-paired-startup, parentca9b3f49c97db6cd981246de99be35f7b53420ec.
+codex/s1-counter-placement at accepted89dff650 (new clean branch from the published
+ordinary component; historical component parentca9b3f49).
 Clean local candidate89dff650f1b43095c79806da8d9a81d63229073d, tree
 67460e587daaf1da3a18ff7ad6a15f43ced46f99. NINETEEN canonical Git path changes
 inside released20; all20 raw hashes still frozen50 (preparation test normalization
@@ -60,6 +61,14 @@ placement air-preimage/support-unchanged claim. Preserve every old failure/world
 source/gate snapshot, binary, resource and warm cache; no cleanup.
 
 ## Following adopted work
+
+Current docs/design/S1_COUNTER_PLACEMENT_PACKET.md (5e3d04ad) received fresh
+independent s1_placement_design_review ACCEPT. Exactly7 existing paths in
+S1_COUNTER_PLACEMENT_SOURCE_ASSIGNMENT.md; baseline0 index8ae6508a/pathlist55a28af6
+is complete. This private checkpoint precedes the serial release gate/source edits.
+It adapts
+only captured RegisteredCube Guest atomic placement/lifecycle and leaves ordinary
+activation closed until local/durable ownership is connected. No new owner input.
 
 Next prepare the smallest fresh bounded packet connecting ordinary counter
 placement/local-owner/lifecycle and actual persistent Wasm to
