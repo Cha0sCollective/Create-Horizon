@@ -47,3 +47,14 @@ archive child + synchronization and strict read/recheck, SAMEtwo fixture worlds
 before first close/shared parent, focused actual owned refusal/admission controls.
 No compiler/runtime has executed for s1own1. Source1 HOLD and tool-only CLEAR are
 recorded separately; neither implies execution or S1/G1 acceptance.
+
+Coordinator accepts same-packet route-nesting amendment
+S1_DURABLE_OWN_ROUTE_AMENDMENT.md SHA256
+97ffccf0eead6e92fe7afe11adde9eab48a9a144476b369242f049182a0eefd7,
+independent s1_own_source_review DESIGN ACCEPT. Source2 map8277fc5b/rawsource2
+remain held before this correction. Exact8 paths/parent/branch unchanged. Canonical
+OWN configuration routes exclude UUID components; only constructor archive child
+and namespace internal keys add UUID components. SAMEtwo actual fixture worlds
+exercise nested-parent/root refusal before effects, then valid shared parent.
+No broader registry or owner profile/framework/acceptance expansion. Private
+checkpoint and serial correction gate precede source edits. No s1own1 execution.

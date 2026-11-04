@@ -18,6 +18,11 @@ LOCAL child fixture drafts Unplaced+Claimed restore, interrupted/newer working
 state preservation and same stable archive successor + stale-key checks. Existing
 LOCAL coherent Retry/recovery/cancel is the only planned repeated regression.
 Source1 HOLD(shared-empty-archive collision + narrow coverage gaps), tools1 TOOL CLEAR.
+Source2 map8277fc5b/rawsource2: equalitycollision/actualrefusalcontrols corrected
+after accepted amendment/privatecheckpointde498e7/gate1b4fbadf. Follow-up HOLD found
+nested archive-parent configuration; conservative same-packet route amendment
+97ffccf0 DESIGN ACCEPT by s1_own_source_review; privatecheckpoint/serialgate
+precede correction. No source3 edits yet.
 Archive amendmentb6f8c919 DESIGN ACCEPT by s1_own_design_review: canonical parent
 plus actualUUID child, same2 constructor worlds before first close, actual negative
 recovery/admission controls; exact8paths/scope unchanged. Private checkpoint/serial
