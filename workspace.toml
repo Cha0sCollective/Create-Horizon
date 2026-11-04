@@ -6,7 +6,7 @@ namespace = "create_horizon"
 repository = "https://github.com/Cha0sCollective/Create-Horizon"
 visibility = "private"
 stage = "post-G0 foundations"
-active_packet = "PAUSED by owner; source39 mob-free profile static/focused recovery PASS; first real own-title reopen observed; full placement smoke incomplete due driver target selection/cleanup; resume from CURRENT_WORK; fixed TestTerrain, Open to LAN deferred"
+active_packet = "S1 deliverable1: source41 native dedicated CSV fix static/native-claim PASS; integrated/menu/in-frame windows PASS on unchanged source39 services; next actual dedicated two-client check then three error groups; fixed TestTerrain mob-free, Open to LAN deferred"
 next_stage = "S1 host foundations and remaining P02; G1/G2/G3 open"
 
 [specification]
