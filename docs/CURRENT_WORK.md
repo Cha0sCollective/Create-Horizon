@@ -8,8 +8,7 @@ No PR/merge/release/cleanup authority.
 
 ## Completed current component
 
-s1own1 LOCAL durable OWN/Unplaced core accepted/public. Engine physical
-.local/worktrees/s1-native-close-composition clean on codex/s1-durable-owned-history:
+s1own1 LOCAL durable OWN/Unplaced core accepted/public. Accepted engine branch codex/s1-durable-owned-history (physical checkout now on next branch):
 fbd4046b932eef52de3977fd87691745d1afa231,
 tree bd3a439ad6c0fc1810e5dc5ce20222fd5f769fe3, parent0db9427b37d34fb6277e794136cf11a4265ab1c4.
 Different s1_own_final_review FINAL ACCEPT/privacy CLEAR, receipt
@@ -40,7 +39,19 @@ raw failed-worlds-1/receipts/logs. Source6 fixed ONLY Guest-aware fixture encode
 production unchanged4. Report holds exact pins/limits/failures. s1own1 FROZEN/RETIRED:
 do not run parent-pinned tools on this HEAD.
 
-## Next bounded work
+## Active following packet
+
+s1on1 ordinary NETWORK OWN/Unplaced dispatch adopted; docs/design/S1_ORDINARY_OWN_NETWORK_PACKET.md
+SHA1ed4c331 DESIGN ACCEPT by fresh s1_on_design_review, SOURCE_ASSIGNMENT exact6paths.
+Engine now clean on codex/s1-ordinary-owned-network at same accepted/public fbd4046.
+Before-edit baseline0 ecfd35fb/pathlist287c7e9f; private checkpoint/serial source gate
+precede edits. NO s1on1 source/compiler/runtime execution yet. In-frame unchanged,
+no counter activation/positive ingress/partial complete roster/new profile/framework.
+Actual NEW constructor/unused grant plus monotonic full-native-roster publication
+govern narrow native cancellation; never fallback after editable/recovered ownership.
+Test new dispatcher malformed/linked OWN vs oldclaim boundary; preserve old literalroot.
+
+## Following map and remaining work
 
 Read docs/design/S1_ORDINARY_OWN_DISPATCH_MAP.md SHA81e7282128be05632ddb6d6963374570284360c7d29eb90cb7850380364792c1.
 Read-only caller map is a PROPOSAL, not source authority. Current NEW callers lack
@@ -61,7 +72,8 @@ Pre-editability close before full roster needs honest original cancellation/nati
 closure and existing zero-epoch refusal; do not invent zero/partial editable roster.
 Any new profile/framework/schema/acceptance requires owner decision. Exact accepted
 design/private checkpoint/raw baseline/serial source gate precede new source edits;
-smallest reviewed amendment precedes an extra path. No next source release yet.
+smallest reviewed amendment precedes an extra path. Current source release is only the accepted six-path s1on1 assignment above; later
+LOCAL adapter/activation still require their own bounded acceptance/checkpoint/gate.
 
 Then authorized one-slot transfer/departure/fault custody, replication/resync and
 existing H11 integration, combined G1. Reuse Guest74cafefc, retirementab239890,
