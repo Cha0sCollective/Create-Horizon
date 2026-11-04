@@ -9,14 +9,24 @@ No PR/merge/release/cleanup authority.
 ## Completed current component
 
 Next active packet s1own1: accepted S1_DURABLE_OWN_PACKET.md fbf5ca4f and its
-SOURCE_ASSIGNMENT (fresh s1_own_design_review ACCEPT). Engine now clean on new
-codex/s1-durable-owned-history at same accepted0db9427. Exact8-path baseline0
-6bba16ff/pathlist6ff93361 before edits; private checkpoint then serial source gate.
-No OWN production edits yet. See Next bounded work below; proposal now adopted
-only to that exact packet, not general restart/import/initial live autosave.
+SOURCE_ASSIGNMENT (fresh s1_own_design_review ACCEPT). Engine codex/s1-durable-owned-history at accepted0db9427 has6 dirty assigned paths;
+8-path source1 map123254bb385b8db15d8714afaf9fd798a1ea7b7fd184ad5d97f44463abdda6b2
+and raw .local/s1own1/source1 frozen. Constructor-owned immutable record/namespace
+custody, complete Unplaced envelope/common native projection, durable original
+recovery branch and actual World/session admission drafted. Two serial sameELF
+LOCAL child fixture drafts Unplaced+Claimed restore, interrupted/newer working
+state preservation and same stable archive successor + stale-key checks. Existing
+LOCAL coherent Retry/recovery/cancel is the only planned repeated regression.
+Source1 HOLD(shared-empty-archive collision + narrow coverage gaps), tools1 TOOL CLEAR.
+Archive amendmentb6f8c919 DESIGN ACCEPT by s1_own_design_review: canonical parent
+plus actualUUID child, same2 constructor worlds before first close, actual negative
+recovery/admission controls; exact8paths/scope unchanged. Private checkpoint/serial
+correction gate precede source2 edits. NO s1own1
+format/compiler/runtime run yet. Tools e0ea6321(compile)/93eb6b56(qualify), expected
+16c8ff39. Baseline6bba16ff, paths6ff93361, before-edit private checkpoint455f9719
+synced, source gate3e256677. No new dispatch/ingress or profile/framework scope.
 
-Engine physical .local/worktrees/s1-native-close-composition is clean on
-the new branch above; completed codex/s1-local-coherent-owner accepted/public
+Completed codex/s1-local-coherent-owner accepted/public
 0db9427b37d34fb6277e794136cf11a4265ab1c4,
 tree921a729756a27037db7a664e0467caafc83bc6b0, parent616eb12734da14164d2d65033897f717ee276771.
 Different s1_local_final_review FINAL ACCEPT/privacy CLEAR exact commit/tree/report.
@@ -62,7 +72,7 @@ first click-selected target. No complete epoch refuses/preserves; initial live
 publication is not automatically supported by terminalizing CloseOwner.
 
 OWN design now adopted as the exact8-path s1own1 packet/source assignment above;
-baseline complete, private checkpoint/source gate pending. Mapping alone is not
+baseline/private checkpoint/source gate complete. Mapping alone is not
 source authority. Explicit ordinary frontend callers remain following integration.
 This remains adopted S1 persistence, not arbitrary
 world import/general journal/entity/command/survival framework or new game profile.

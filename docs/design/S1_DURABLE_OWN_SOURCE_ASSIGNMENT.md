@@ -36,3 +36,14 @@ Extra helper path needs smallest reviewed amendment BEFORE edit. Supported-profi
 framework/acceptance expansion needs owner input. No generic save/journal/gameplay
 framework, migration, new entity/profile, positive item ingress, S1/G1 completion,
 PR/merge/release/cleanup or operating-rule/permission change.
+
+Coordinator accepts archive uniqueness amendment
+S1_DURABLE_OWN_ARCHIVE_AMENDMENT.md SHA256
+b6f8c919af28c13aacac58f4a97d7b236d7754098173c3977a87d57ae91f919b,
+independent s1_own_design_review DESIGN ACCEPT. Original exact8-path budget and
+parent/branch unchanged. Held source1 map123254bb/raw source1 retained. Only source
+correction after this private checkpoint/serial gate: actual constructor-UUID
+archive child + synchronization and strict read/recheck, SAMEtwo fixture worlds
+before first close/shared parent, focused actual owned refusal/admission controls.
+No compiler/runtime has executed for s1own1. Source1 HOLD and tool-only CLEAR are
+recorded separately; neither implies execution or S1/G1 acceptance.
