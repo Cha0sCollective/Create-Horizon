@@ -128,3 +128,27 @@ is not ordinary placement evidence. Preserve actual save refusals and GuestSwap
 panic limits. Source/qualification/FINAL still required. This private checkpoint
 must sync before six untouched raw baselines and serial edit gate. Root alone
 creates branch/gate/edits; no source edits authorized before all are recorded.
+
+## Owner steering: evaluate existing Create port
+
+Owner questioned upstream duplication, then explicitly selected Evaluate the
+existing Create port on November4. Active work is now isolated evaluation of
+Delete228/create-horizon0.5 before any more custom S1 engine authoring. No adoption
+of architecture/version/acceptance or migration is approved by that selection.
+Read docs/reference/S1_UPSTREAM_REUSE_AUDIT_2026_11_04.md for exact facts/sources,
+fit questions and bounded evaluation steps. Official upstream63eccfc contains
+native mod block entities/ticks/persistence/slots/menu/sync/render services; it
+removed Wasm in late October. Existing port's documented subset includes our S3
+five blocks; claims unverified locally, Create6.0.10 vs our6.0.11 matters.
+Current new engine branchcodex/s1-configured-operation remains at9f7d5ec with five
+assigned dirty paths (lan/mod.rs unchanged), source1map8c89696b08028d9077aa4645008b6f7a4d3096d3dc07b6c3b20d1f3130b6c108.
+SOURCE HOLD by s1_op_source_review: invalid world_slot_trial::TransferOutcome
+import; correct enum lives in game::slot_player. Receipt.local/s1op1/source1-review.json.
+No formatting/compiler/runtime for this packet, no execution tools written.
+Source1 snapshots/hold unchanged; do not fix or compile during this evaluation.
+Private design checkpointa5dda398 was synced before six baselines/gate
+2bda46cd5c42f70e2a778f39c2ee39686dd00ea2396749d2352ddeaea398b4dc and edits.
+All accepted work remains preserved/public/private synced as recorded above.
+Evaluation may inspect the third-party port under owner's explicit direction;
+keep it isolated and do not copy it into the public engine. No upstream merge or
+rebase. Original G1/S1/profile/asset/Prism/save/publication boundaries remain.
