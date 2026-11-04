@@ -1,103 +1,97 @@
 # Current work
 
-Owner resumed through S1 completion or genuine blocker. Deliverable1/C0/fullC1/G1/S1
-remain OPEN; no release authority. Follow docs/design/S1_COMPLETION_PLAN.md.
-Ask BEFORE scope expansion. Fixed TestTerrain/--test-terrain, paired mob-free
-worlds and deferred Open to LAN remain adopted. No owner decision pending.
+Owner resumed through S1 completion or genuine blocker. Follow adopted
+S1_COMPLETION_PLAN.md: fixed mob-free TestTerrain/--test-terrain, Open to LAN deferred.
+Ask before supported-profile/framework/acceptance expansion. No owner input pending.
+Deliverable1/C0/fullC1/G1/S1 remain OPEN; live S2 waits G1. No release authority.
 
 ## Immediate checkpoint
 
-All currently owned tests finished and all children reaped. No compiler/game running.
-Ordinary startup component received DIFFERENT FINAL ACCEPT/privacy CLEAR and its
-normal-hook public engine branch sync is verified exact. Frozen review input:
-docs/reference/S1_ORDINARY_STARTUP_RESULTS.md. Preserved development failures and
-attributed earlier checks: docs/reference/S1_ORDINARY_STARTUP_PROGRESS.md.
+All owned compiler/test processes finished/reaped. No runtime active.
+Current s1plc1 component received DIFFERENT FINAL ACCEPT/privacy CLEAR and exact
+normal-hook public branch sync is verified616eb127. Frozen review report:
+docs/reference/S1_COUNTER_PLACEMENT_RESULTS.md SHA256
+f0b531ff18727bd206b6d815b63a728ebb819660559d95a6cd5823708ca68a34.
+Different reviewer s1_placement_final_review accepted exact commit/tree/report; final
+receipt1c0082757ea660dbb8da2f9dfa8afa84f474a1e91abba243e4ffdc514e149f6c.
+Frozen report records pre-FINAL input; this checkpoint records the later decision.
 
-Engine physical checkout .local/worktrees/s1-native-close-composition, branch
-codex/s1-counter-placement at accepted89dff650 (new clean branch from the published
-ordinary component; historical component parentca9b3f49).
-Clean local candidate89dff650f1b43095c79806da8d9a81d63229073d, tree
-67460e587daaf1da3a18ff7ad6a15f43ced46f99. NINETEEN canonical Git path changes
-inside released20; all20 raw hashes still frozen50 (preparation test normalization
-has unchanged Git blob). Normal public-tree commit and full-history pre-push hooks
-PASS. Exact public origin branch resolves to89dff650. Different reviewer
-/root/ordinary_startup_final_review accepted the exact commit/tree/report
-d2eb7f32a8507405765c3ec4f457627b7cba53e6805dba5614c7b3a46ede0799.
-Local FINAL receipt84283a15cdec37e479cff33c9dcc25746b3fb270a7402fa522d7ba09a92ffa12.
-The frozen report records its pre-FINAL review state; this checkpoint records the
-subsequent decision. No PR, merge or release created.
-Source50 map6bd47f914befda8ebe6390352e529922bc5898c357e3e1508d792dc1f8cfe045.
-Fresh SOURCE CLEAR49 plus mechanical format13; static16/build10/MAIN4 PASS.
-Test-only loader delta from47 preserves prior production evidence. Test ELF3c357bba;
-MAIN ELF5d4d7980. Existing expected selectors/gates retain old attributed checks;
-no automatic rerun after committing the parent-pinned component.
+Clean engine .local/worktrees/s1-native-close-composition on codex/s1-counter-placement:
+candidate616eb12734da14164d2d65033897f717ee276771,
+tree0ab13928f23a24d19c4d2939052ecc5592dc4961,
+parent89dff650f1b43095c79806da8d9a81d63229073d. Normal.githooks commit PASS.
+Exactly7 assigned existing Rust paths,999add/16remove. All raw files match frozen8
+map1612dd1cb00ff65fb62ff53ffec266404daef5d18456660cf68f672b15e47955.
+PUBLIC Horizon/codex/s1-counter-placement verified616eb127; normal full-history
+pre-push hook PASS, no PR/merge/release. Design5e3d04ad/sourceassignment synced66f9259
+preceded7-path baseline0 and source release47c92927; no scope expansion.
 
-Latest focused observations all PASS:
-- tests12/source47: initial pending/untouched39.10s, recovery cancellation/wrong
-  peer/original actual writer deadline/stale+exact Retry88.59s; receiptb68ee7ee.
-- loader1/source50: actual ordinary production frontend via two instrumented test
-  children, title Quit and WM close while original actual rest worker held;
-  no premature exit, release/original completion/no world, natural0;72.34s,
-  receipta41dae2c. Coordinator title/pending image QA completed.
-- dedicated4/source50 normal MAIN: actual pause/refused WorldOptions/friends/Return,
-  resumed native camera+Creative stone placement/use1; TWO actual matching TCP
-  clients see SAME stone[4,70,-1], B captured first-hit5.27982 blocks; server-first
-  close with both installed, native A/B readback/rule0/empty entities;146.65s,
-  receiptc8b414c7. Coordinator both same-block and pause image QA completed.
+Optional captured RegisteredCube Guest policy now stages real BlockItem physical
+alias, counter, slot, heads and original grant spending together; original native
+Session/world ID borrowed through GameLevel. Original retirement custody and paired
+readmission; unarmed/Native/Legacy unchanged. Ordinary activation/positive ingress
+stay CLOSED pending local persistent ownership and durable OWN restart.
 
-Source39 CLI integrated/menu Create/in-frame native placement/Leave/own-title reopens
-and source39 four Native/Guest Memory/TCP2 ordinary coherent worker cases remain
-attributed reused passes. Source41 native actual properties/Setup blankCSV regression
-passed; named entries still refuse. Tests12 and new cfg(test) loader controls change
-no player-facing behavior. No historical full battery repeated.
+Source7 only supported rich fixture-helper substitution; format4 changed ZEROfile
+hashes into8. Fresh independent SOURCE CLEAR7 and R2 TOOL CLEAR. Static3 supported
+fmt/Clippy PASS0.70/24.70s; source6 other-feature static2 attributed PASS. Build2
+PASS29.33s. Corrected R2 tests2 ALL3resource selectors PASS43.53/52.50/48.56s,
+receipt4044e29f55453a38669d4ed81f49c6e21363971444a2bd7a0cf5f15d88314e50.
+Both native fixture server roles prove actual BlockItem placement/refusal, native
+count/stat outcomes, real Guest callback, Pending refusal/original rich ItemEntity
+delivery once, both heads/stale keys, unload/reload and coherent publication. Other
+2selectors verify existing Guest normal/native recovery and native bootstrap.
+Six source6 pure rows PASS from overallFALSEtests1 (not a batch pass); production/
+pure sources unchanged and library ELF68e7b3ab identicalbuild1/2, so explicitly reused.
+No repeated historical full battery or ordinary game/window run for dormant patch.
 
-Raw original EOF/Receive diagnostics remain Err. Integrated/dedicated natural exit1
-with terminal acknowledgement, no TERM/KILL/panic; no error-free/no-ack claim.
-Own reopen is within the original process/native claim for integrated/title/inframe.
-Dedicated native save/readback is proved; dedicated cross-process reopen is NOT.
-Durable restart admission remains required for the persistent playable outcome.
-Local OnGround/Motion caches are not live physics evidence. No dedicated exact
-placement air-preimage/support-unchanged claim. Preserve every old failure/world,
-source/gate snapshot, binary, resource and warm cache; no cleanup.
+Preserve format1 syntaxfailure/partial2/corrected3, static1unwrap/frozen4/match5,
+format3/frozen6 and source7/8, source/toolreviews and receipts. tests1 correctly
+refused test runtime bundle selection; source/log/receipt0aeb5f8d remain. BUT that
+failed native temporary world was NOT retained: resource links tripped failure-copy
+no-link guard, then Linux/tmpcase was unavailable. Owner informed; no original
+failed-world bytes/preservation claim. Reviewed R2 excludes linked resource siblings
+and selects native world/archive directories; corrected resource cases pass, but
+R2 failure-only branch has no new execution-test claim. See frozen result limits.
 
 ## Following adopted work
 
-Current docs/design/S1_COUNTER_PLACEMENT_PACKET.md (5e3d04ad) received fresh
-independent s1_placement_design_review ACCEPT. Exactly7 existing paths in
-S1_COUNTER_PLACEMENT_SOURCE_ASSIGNMENT.md; baseline0 index8ae6508a/pathlist55a28af6
-is complete. This private checkpoint precedes the serial release gate/source edits.
-It adapts
-only captured RegisteredCube Guest atomic placement/lifecycle and leaves ordinary
-activation closed until local/durable ownership is connected. No new owner input.
+s1plc1 is FROZEN/RETIRED after FINAL and public sync; never execute its parent-pinned qualifiers.
+Next bounded packet: actual LOCAL coherent participant/projection/body installer,
+selected coherent local close/recovery and continuation route. S1_LOCAL_RESTART_ADAPTER_MAP.md
+records independent read-only mapping at accepted89dff650. Existing native local
+inventory restore/body APIs and original NativeCloseAuthority are reusable; actual
+motion/ground/food fields need projection/installation, not cached Level substitution.
+No dummy network Guest or fabricated authority. Durable OWN association/restart and
+never-placed unused/claimed history remain subsequent concrete adapters. Keep first
+click-selected target; fixed preselected target is not adopted.
 
-Next prepare the smallest fresh bounded packet connecting ordinary counter
-placement/local-owner/lifecycle and actual persistent Wasm to
-existing services; authorized one-slot transfer/departure custody; committed
-replication/resync and H11; combined G1. Current counter/filled ingress/departure/
-replacement/rejoin refusals stay until their actual adapters. Refresh old PROPOSED
-research against the accepted successor; don't adopt obsolete prerequisites or
-broader command/survival/framework work. Guest74cafefc, retirementab239890 and
-H06d62756231 are ancestors. Exact H11 component on
-codex/h11a-retained-diagnostic70fd6aa must be integrated, not reimplemented.
+Then ordinary counter activation, authorized one-slot transfer/departure custody,
+faulted Guest disposal, committed replication/resync, exact H11 integration and
+combined G1. Reuse Guest74cafefc, retirementab239890, H06d62756231 and H11component70fd6aa.
+Old broad proposed research is not adopted wholesale; no general command/survival
+framework or new prerequisite matrix. Explicit paused lifecycle service only;
+automatic levels.rs paused-server servicing is not established by this component.
 
-## Boundaries
+## Completed predecessor and boundaries
 
-Paired fresh false spawn rule precedes publication/ticks. Own reopen/recovery
-requires existing false rule. Conflicting rules/living records refused/preserved;
-Cold/legacy/unpaired unchanged. No new provider/schema/profile/API in this component.
-In-frame persistent/local-player adapter is still required, not waived.
+Ordinary89dff650/tree67460e58 DIFFERENT FINAL ACCEPT/privacy CLEAR and exact public
+normal-hook sync verified; frozen S1_ORDINARY_STARTUP_RESULTS.md. Source50 and all
+39/41/47 evidence/failures retained. Prefixs1ord1 FROZEN/RETIRED. Native CLI/menu/
+inframe own reentry, dedicated2rendered same block, pause/Return and held-loader
+Quit/WM evidence PASS. Raw EOF/Receive/exit1 accurately retained. Dedicated native
+save/readback, not cross-process reopen; original-process own-claim reentry only.
 
 Root alone serial source/formatter/compiler/runtime/WSL/Git writes. Reviewers native
-reads/rg/hash/Git reads ONLY: no edits/scripts/imports/compiler/runtime/WSL/network/
-Git writes/delegation. Fresh read-only independent Sol High substantive/source/tool
-review; different FINAL/privacy before public push. No standing team. Frozen FINAL
-corrections need new prefix. Prefix s1ord1 is now FROZEN/RETIRED; its parent-pinned
-qualifiers must not be reused for a new candidate. New source packet/design review,
-private checkpoint and fresh prefix precede the next bounded source edits.
+reads/rg/hash/Git reads ONLY; no edits/scripts/imports/compiler/runtime/WSL/network/
+Git writes/delegation. Fresh independent read-only Sol High source/tool review;
+different FINAL/privacy before public sync. No standing team; frozenFINAL fixes
+need newprefix; extra sourcepaths need smallest reviewed amendment before edits.
 
-Private pushes need fresh PRIVATE metadata/exact Create-Horizon origin; public needs
-different FINAL/privacy CLEAR, fresh PUBLIC/exact Horizon origin and normal.githooks.
-No unfinished/private material, assets/worlds/JARs/raw evidence, PR/merge/tag/release/
-force/hook bypass. No playable/reference/Prism/Java/memory changes or cleanup.
-Live S2 waits G1; S3 exactly motor/shaft/small+large cog/millstone, NO gearbox;
-pinned Java full-output item-loss behavior remains matched by owner decision.
+Private pushes need fresh PRIVATE metadata/exact Create-Horizon origin. Public
+pushes need exact different FINAL/privacy CLEAR, fresh PUBLIC metadata/exact Horizon
+origin and normal.githooks. No private docs/assets/worlds/JARs/raw evidence, PR/merge/
+tag/release/force/hook bypass. No playable/reference/Prism/Java/memory changes or
+cleanup. Preserve remaining raw worlds, sources, resources, binaries/warm target.
+Mob-rule conflicts/living records refused/preserved. S3 exactly motor/shaft/small+
+large cog/millstone, NOgearbox; pinned Java full-output item-loss behavior matched.
