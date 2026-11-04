@@ -13,13 +13,13 @@ Pre-edit checkpoint22a09b5 synced before s1on1 source gate. Completed prior dura
 OWN core fbd4046 accepted/public; frozen S1_DURABLE_OWN_RESULTS.md bad0702867aaa03c9fcb6f7ffe2ea9e90601ec54b60d0a1d5fc254b07bf9fe3e.
 
 Engine .local/worktrees/s1-native-close-composition clean on
-codex/s1-ordinary-owned-network accepted/public
+codex/s1-ordinary-local-owned at accepted/public network parent (public component branch codex/s1-ordinary-owned-network)
 b87bff783dc75bdac0b112208794babe0ea18aa2,
 tree204acda07e448a01b2bb322d06e4f15263c7402a, parentfbd4046b932eef52de3977fd87691745d1afa231.
 Different s1_on_final_review FINAL ACCEPT/privacy CLEAR receipt
 .local/s1on1-final-review.json SHA1608eaf2bd045c256e6acca2e150c579ec50e5ddec68ada7a5454280bb375b7f.
 Fresh PUBLIC/exact origin, normal commit/full-history push hooks PASS, exact public
-branch tip verified. No PR/merge/release. Private accepted component checkpoint next.
+branch tip verified. No PR/merge/release. Private accepted component checkpoint46ba785c491b2deb9723dcf7abfb323354dd56ee synced.
 
 FROZEN docs/reference/S1_ORDINARY_OWN_NETWORK_RESULTS.md
 SHAc78a7a19717e672fadfdfb748adaec9cab47ad77387f570a44ca6a5e16fdb308.
@@ -61,12 +61,14 @@ Earlier prefixes s1own1/s1loc1/s1plc1/s1ord1 also retired; see frozen reports.
 ## Next bounded LOCAL bridge
 
 Following docs/design/S1_ORDINARY_LOCAL_OWN_PACKET.md
-SHAeefdf4731cc3d2001e22eb6841ba4adb688c8d42bb79328248f688a9122836b2 has fresh
-s1_local_owned_design_review CONDITIONAL DESIGN ACCEPT, seven proposed existing
-paths. NO LOCAL source release/edits yet. Record exact accepted b87bff7 parent/new
-branch/final adopted design/private checkpoint/raw baseline/serial source gate
-BEFORE implementation. Metadata pin update must preserve accepted behavior/constraints.
-
+SHAf7cd194ebb61c514ee481a86ce828daca5eb6795ef634eaf7b4be334ff664b78 has fresh
+s1_local_owned_design_review final pinned DESIGN ACCEPT, same seven existing paths.
+Coordinator adopts docs/design/S1_ORDINARY_LOCAL_OWN_SOURCE_ASSIGNMENT.md. Newengine
+branch codex/s1-ordinary-local-owned is clean at b87bff7; no LOCAL edits yet. This
+assignment/design's private checkpoint/sync, .local/s1lo1/baseline0 and exact serial
+.local/s1lo1-source-gate.json MUST precede source edits. Gate records actual new
+private checkpoint/hash; current document cannot predeclare its own commit hash.
+No old s1on1 tools may execute on this branch. Scope remains adopted deliverable1.
 BOTH initial preparation and final activation native reads/scans/fences must stay
 responsive. Game/actual Guest evaluator stayUI; Loading retains renderer/window
 until fresh rendererNone seed validation/adoption. Concrete retained worker inputs

@@ -1,12 +1,21 @@
 # Ordinary in-frame owned-world bridge
 
-PROPOSAL s1lo1, November4. Read-only feasibility/design review only. The preceding
-s1on1 source3 candidate fb779264 above public fbd4046 is still under rendered
-acceptance; optimized normal MAIN build is running after preserved debug deadline
-failure. This proposal releases NO edits. Final parent/branch, exact accepted design,
-private checkpoint, raw baseline and source gate must be recorded AFTER s1on1 is
-accepted/checkpointed and BEFORE implementation. Never use retired parent tools.
+PROPOSED final pinned packet s1lo1, November4. Parent s1on1 is now accepted/public
+b87bff783dc75bdac0b112208794babe0ea18aa2,
+tree204acda07e448a01b2bb322d06e4f15263c7402a. Engine physical
+.local/worktrees/s1-native-close-composition is clean on
+codex/s1-ordinary-local-owned at that exact parent. Preceding private accepted
+component checkpoint46ba785c491b2deb9723dcf7abfb323354dd56ee is synced.
 
+Fresh independent design accepted the behavior/constraints at eefdf473; this
+metadata-only pin update awaits its exact review. Source3 fb779264 equals all six
+committed parent blobs (comparison1964e928). Network FINAL/privacy1608eaf2 and
+frozen reportc78a7a19, normal-hook public exact tip verified; current ordinary
+Memory/TCP component accepted, G1/S1 remain OPEN.
+
+No source edit is released by this proposal alone. Exact final accepted design,
+source assignment/private checkpoint/raw baseline/serial source gate must precede
+implementation. Do not run retired s1on1/s1own1 parent-pinned tools on this HEAD.
 ## Missing S1 caller and bounded outcome
 
 Deliverable1 requires adopted in-frame comparison. Existing ordinary LOCAL NEW
