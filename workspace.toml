@@ -6,7 +6,7 @@ namespace = "create_horizon"
 repository = "https://github.com/Cha0sCollective/Create-Horizon"
 visibility = "private"
 stage = "post-G0 foundations"
-active_packet = "S1 counter placement/lifecycle616eb127 FINAL ACCEPT/privacy CLEAR, exact public sync; next actual local coherent owner and durable restart adapters; ordinary activation/positive ingress closed; fixed mob-free TestTerrain, Open to LAN deferred"
+active_packet = "S1 actual LOCAL coherent owner/recovery0db9427 FINAL ACCEPT/privacy CLEAR, exact public sync; next durable OWN restart/never-placed history design; ordinary activation/positive ingress closed; fixed mob-free TestTerrain, Open to LAN deferred"
 next_stage = "S1 host foundations and remaining P02; G1/G2/G3 open"
 
 [specification]
@@ -118,3 +118,18 @@ report_sha256 = "f0b531ff18727bd206b6d815b63a728ebb819660559d95a6cd5823708ca68a3
 final_receipt_sha256 = "1c0082757ea660dbb8da2f9dfa8afa84f474a1e91abba243e4ffdc514e149f6c"
 resource_receipt_sha256 = "4044e29f55453a38669d4ed81f49c6e21363971444a2bd7a0cf5f15d88314e50"
 limits = "Opt-in dormant native BlockItem/Guest placement and lifecycle only. Three actual-resource cases pass plus six unchanged pure passes attributed from failed earlier batch. Original failed-world bytes not retained; exact log/source/receipt and limitation preserved. Ordinary activation, local persistent owner, durable restart, intents/departure/faulted disposal/replication/C0/C1/G1/S1 remain open. No release."
+
+[s1_local_coherent_owner]
+status = "Different FINAL ACCEPT; privacy CLEAR; normal-hook public branch sync verified exact"
+branch = "codex/s1-local-coherent-owner"
+candidate = "0db9427b37d34fb6277e794136cf11a4265ab1c4"
+tree = "921a729756a27037db7a664e0467caafc83bc6b0"
+parent = "616eb12734da14164d2d65033897f717ee276771"
+source_sha256 = "ce27063fb5471ef834ae74d0ddedc5f08d85799ae10ef50d683cf03a138951a2"
+report = "docs/reference/S1_LOCAL_COHERENT_RESULTS.md"
+report_sha256 = "d9cec4fef0bf9e447d482cd334cb866afd7ec38bad9f84cfba564653280359ae"
+final_receipt_sha256 = "52d2415ab443e1c016b5fef0af3519dab3707a5421871ce5572c54f9dc2f08c1"
+binary_sha256 = "05b78ffc69cee83333360d24d08f3548247f632cafa4122e31cea7d8cacf9014"
+focused_groups = 2
+runtime_seconds = 176.03
+limits = "Actual materialized ordinary LOCAL player/body coherent close/Retry/recovery/cancel/continuation, existing original network recovery regression. Not frontend/counter activation, positive ingress or cross-process restart. Durable OWN and never-placed history next; deliverable1/C0/fullC1/G1/S1 open. No merge or release."
