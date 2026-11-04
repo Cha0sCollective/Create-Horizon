@@ -3,12 +3,13 @@
 Native S1 is COMPLETE under the owner-adopted November 4 native playability plan.
 Fresh independent Sol High checklist review found no gaps in the bounded result.
 See `docs/reference/NATIVE_S1_PLAYABILITY_RESULTS.md` for evidence and limits.
-The requested work through S1 has reached its stop point; no game/compiler jobs
-remain. S2/S3 are not accepted by this milestone. No further active code packet.
+The owner now authorizes continuing through S6 until the next requested break.
+Active packet: S2 kinetic reference-gap audit and bounded repair under
+`docs/design/STAGE_PROGRESSION_PLAN.md`. S2/S3 are not yet accepted.
 
 ## Current checkpoint
 
-Private branch `codex/native-create-playability`. Adoption `d8c7274`; exact upstream
+Private branch `codex/native-s2-kinetics`; accepted S1 remains on `codex/native-create-playability`. Adoption `d8c7274`; exact upstream
 source import `e401338aa1bc1a921139a33145a70c730f6011d7`; reviewed parity fix
 `76189de63a6c31332d9e8dbc95fefca700497551`. Native code is `native/create/`, its
 own Cargo workspace; repository-root Cargo and old host tools remain historical.
@@ -40,10 +41,11 @@ cross-owner interrupted-crash framework and extra hardened replay guarantees
 remain deferred. Native code is trusted. No full Create/modpack compatibility,
 unqualified client resync, legacy G1 pass, Java/world import or release claim.
 
-Next proposed work is bounded S2 reference verification/reuse of the existing
+Current work is bounded S2 reference verification/reuse of the existing
 kinetic implementation and retained observations, not rebuilding a host framework.
-Read the adopted plan and check upstream before a new assignment. No such packet
-has started. Ask before further architecture/profile/schema/acceptance expansion.
+Read the stage progression plan; identify the concrete failing behavior and reuse
+upstream before changes. Ask before going beyond authorized stage outcomes or
+adopted architecture/schema/framework/acceptance boundaries.
 
 Root alone serial writes/compiler/runtime/WSL/Git; bounded read-only reviewers,
 no standing team. Private pushes require fresh PRIVATE/exact origin/normal hooks;

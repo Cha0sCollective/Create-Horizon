@@ -15,12 +15,12 @@ Wasm/in-frame requirements and defers the custom cross-owner crash-recovery
 framework and additional hardened stale/replay framework. It does not turn the
 old G1/S1 records into passes. Preserve historical plans, results and failures.
 
-The supported target remains creative motor, shaft, small cogwheel, large cogwheel
+For S2/S3 the supported target remains creative motor, shaft, small cogwheel, large cogwheel
 and millstone with cobblestone-to-gravel milling, in fixed mob-free Creative
 TestTerrain Overworld. Open to LAN stays deferred. The upstream package includes
 additional content; retaining that dependency intact is not qualification of its
-other machines or authorization to develop them. No survival progression, fluids,
-contraptions, Java-client compatibility or existing-world import is added.
+other machines. Survival progression, fluids,
+contraptions and broader machinery are later scoped stage work; Java-client or existing-world import remains outside scope.
 
 Native code lives under `native/create/`, with original Create IDs (`create:`),
 its own Cargo workspace, MIT notices and explicit source provenance. The root
@@ -34,9 +34,11 @@ Use `codex/` branches. Keep domain changes private; change the public engine onl
 for a verified upstream gap under a bounded assignment. Before new host work or
 parity repair, check current upstream and the port for an existing implementation.
 Use exact compatible pins rather than automatically upgrading a working build.
-Ask before further architecture, profile, schema, framework or acceptance changes.
-Continue authorized work until native S1 is complete, a genuine blocker or input
-is needed. No merge, release or upstream contact is authorized.
+Ask before changes beyond authorized stage outcomes or the adopted architecture,
+schema, framework and acceptance boundaries. On November 4 the owner authorized
+continued work through S6 until the next requested break; follow
+`docs/design/STAGE_PROGRESSION_PLAN.md` stage by stage. Stop for a genuine blocker
+or required input. No merge, release or upstream contact is authorized.
 
 ## Orchestration
 
