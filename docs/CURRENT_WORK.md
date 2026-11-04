@@ -8,8 +8,16 @@ No PR/merge/release/cleanup authority.
 
 ## Completed current component
 
+Next active packet s1own1: accepted S1_DURABLE_OWN_PACKET.md fbf5ca4f and its
+SOURCE_ASSIGNMENT (fresh s1_own_design_review ACCEPT). Engine now clean on new
+codex/s1-durable-owned-history at same accepted0db9427. Exact8-path baseline0
+6bba16ff/pathlist6ff93361 before edits; private checkpoint then serial source gate.
+No OWN production edits yet. See Next bounded work below; proposal now adopted
+only to that exact packet, not general restart/import/initial live autosave.
+
 Engine physical .local/worktrees/s1-native-close-composition is clean on
-codex/s1-local-coherent-owner, accepted/public0db9427b37d34fb6277e794136cf11a4265ab1c4,
+the new branch above; completed codex/s1-local-coherent-owner accepted/public
+0db9427b37d34fb6277e794136cf11a4265ab1c4,
 tree921a729756a27037db7a664e0467caafc83bc6b0, parent616eb12734da14164d2d65033897f717ee276771.
 Different s1_local_final_review FINAL ACCEPT/privacy CLEAR exact commit/tree/report.
 Report docs/reference/S1_LOCAL_COHERENT_RESULTS.md SHA256
@@ -53,9 +61,10 @@ image; no second bootstrap from stale unused marker plus newer native files. Kee
 first click-selected target. No complete epoch refuses/preserves; initial live
 publication is not automatically supported by terminalizing CloseOwner.
 
-No new OWN packet/design acceptance/source budget/gate/branch yet. Mapping is input,
-not source authority. Candidate8 core paths plus explicit ordinary frontend callers
-must be reviewed before release. This remains adopted S1 persistence, not arbitrary
+OWN design now adopted as the exact8-path s1own1 packet/source assignment above;
+baseline complete, private checkpoint/source gate pending. Mapping alone is not
+source authority. Explicit ordinary frontend callers remain following integration.
+This remains adopted S1 persistence, not arbitrary
 world import/general journal/entity/command/survival framework or new game profile.
 
 Then actual ordinary counter activation, authorized one-slot transfer/departure
