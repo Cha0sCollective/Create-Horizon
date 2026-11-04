@@ -86,7 +86,7 @@ the matching durable record. Continue adopted S1:
 actual one-slot intent/transfer with retained departure/removal/fault custody,
 replication/resync, integration of existing H11 and combined G1. Reuse accepted
 Guest74cafefc/retirementab239890/H06d62756231/H11component70fd6aa; no reimplementation
-or historical full battery. No subsequent source assignment is released yet.
+or historical full battery. Following operation-boundary source assignment is accepted; checkpoint/baseline gate below controls edits.
 
 Read-only next-slot reconnaissance at current source2: H06d synchronous real-cell
 transfer and persistent retirement sink already exist; retained Hub currently
@@ -108,3 +108,23 @@ read-only SolHigh reviewers only; no standing team/permission expansion. Public
 push requires differentFINAL/privacy, freshPUBLIC/exact Horizon origin and normal
 hooks; private push freshPRIVATE/exact Create-Horizon origin. No private docs/
 prompts/config/secrets/assets/JARs/resources/worlds/raw evidence in public Git.
+
+## Following configured operation packet (s1op1)
+
+Fresh s1_op_design_review DESIGN ACCEPT exact packet
+S1_CONFIGURED_OPERATION_BOUNDARY_PACKET.md a83abe192b49c9198e2b8640d84ecf758b5fcd3a4c21b69ccf62e05737be59f1
+and assignmente55c862aef4962dcc2a2b63a02c41693037a0d4d9884ffa6837a054ecbdd2a0b.
+Review receipt ef67fc11d1fd5c42d2947631dbae8f25a617fe4c37228c9dd0ac766e9154a66f. No owner profile/framework/schema/acceptance expansion.
+New planned branchcodex/s1-configured-operation at accepted/public9f7d5ecb;
+exact six existing paths in assignment. Original Live finite held/closed atomic
+permit, runtime postcheck/common SeqCst, actual configured Hub allocation binding.
+No lock/harvest in entry, no fake authority, no ordinary filled ingress/replay/
+departure or gate promotion. Crate-private lower constructor rejects client role;
+public opaque ConfiguredOperation uses existing login module, no seventh export.
+Synchronous test-local Game retains original native Memory/TCP2 players; existing
+Guest diagnostic bootstrap ONLY before real grant/policy used, then genuine roster
+publication/held real H06d/result retention/frozen coherent close. Diagnostic setup
+is not ordinary placement evidence. Preserve actual save refusals and GuestSwap
+panic limits. Source/qualification/FINAL still required. This private checkpoint
+must sync before six untouched raw baselines and serial edit gate. Root alone
+creates branch/gate/edits; no source edits authorized before all are recorded.
