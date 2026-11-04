@@ -37,63 +37,49 @@ Completed and source releases CLOSED:
   204.88s, checks58.98s/build57.57s; S1_PAIRED_CONFIGURED_HANDOFF_RESULTS.md.
 
 Physical engine checkout .local/worktrees/s1-native-close-composition remains on
-codex/s1-ordinary-paired-startup, parent ca9b3f49, with WIP in the independently
-amended NINETEEN existing paths, with an accepted bounded TWENTIETH path awaiting
-this private checkpoint and serial gate extension. Proposal1e2d5fc2 and
-assignmentbe11e286 add ONLY streaming.rs, baseline8124cba9: an open saved-load
-view/consuming ticket retaining the original native work/evidence, connected in
-already assigned callers. Dedicated Setup,
-fixed pause Return/Leave and the no-worker Vacant seam amendments are complete.
+codex/s1-ordinary-paired-startup, parent ca9b3f49, with WIP in NINETEEN of the
+TWENTY released existing paths. The accepted streaming.rs amendment is privately
+checkpointed at 6c873080 and its serial source gate is extended. Proposal1e2d5fc2,
+assignmentbe11e286 and baseline8124cba9 remain pinned. No further paths released.
 Owner's explicit fixed TestTerrain choice is adopted; no decision is pending.
 
-Ordinary CLI/title frontend/preparation, configured client/server consumers,
-native stone input, original presentation return, retained coherent census and
-typed managed recovery now have a compiler-checked draft. Native reopen uses a
-one-use actual completed-own-world claim; unbound existing roots remain refused.
-Same-process own-world reopen and typed coherent fixtures are this component's
-scope. Cross-process/unbound domain entry waits for the lifecycle bridge; no
-identity-file or empty-runtime inference classifies a world as native-only.
+Current source draft35/mapa23cf48e connects the ordinary CLI/title frontend,
+configured client/server consumers, native stone input, original presentation
+return, one-use actual completed-own-world reopen claim, retained coherent census
+and typed recovery through the SAME ordinary worker. Unbound/cross-process roots
+remain refused. Original saved-load ownership now has an open-state borrowed view
+and consuming ticket; actual chunks/evidence/lease remain with the original stream.
+Incomplete loads transfer to its existing close owner. No substitute world/stream.
 
-Independent SOURCE/TOOL CLEAR was limited to formatting/static compilation.
-First static-pass source map 4d8d328eb2709289e04a5f3fa506fcaaac3d303846e001697ad656a2e2bcdeb5,
-frozen source draft22 index de409850d7ebb992224065092aa045d21ee10a20d5edfb1515c8be764a231f49.
-Compile tool 7ce1916e, checks3 receipt698ecd7c: formatting1.38s, paired/mods/native-
-writer Clippy all-targets with warnings denied34.74s, feature-off check28.34s,
-paired-without-mod-runtime check42.50s. All exit0; the last configuration reports
-unused ordinary-adapter warnings and is not an activated supported profile.
-The six initial type errors and subsequent lint failures/corrections are preserved.
-Level::write already binds and persists the new native player UUID; the additional
-ordinary constructor ensure is idempotent, not a new recovery identity allocation.
+Independent SOURCE/TOOL CLEAR covers these deltas. Full checks8: formatting1.66s,
+paired/mods/native-writer all-target Clippy with warnings denied62.05s, feature-off
+check24.92s and paired-without-mod-runtime check39.09s all exit0. The last reports
+17 known unused warnings and is not an activated supported profile. Test build4
+passed88.25s. Focused tests6: saved-load payload/ticket/close-custody5.33s and all
+four ordinary Native/Guest Memory/TCP2 coherent recovery cases122.21s PASS.
+Resources, prebuilt pair, source and actual binaries are checked before/after.
 
-Focused run2 passed six groups: real title geometry, native pause, both original
-loader completion cases, vacant original-stream installation and genuine native
-reopen claim/refused-preparation/adoption. The menu fixture's empty-list expectation
-was corrected to Horizon's direct Create behavior; no production menu change.
-Actual native-Memory source then exposed a first-publication input bug: native
-initial owner data is canonical inert metadata without Pos; pre-final sidecar scan
-treated it as a final saved player. The reviewed input-only repair binds exact
-canonical inert input to original ordinary integrated constructor/record and epoch1.
-Final image/recovery checks remain strict. New negatives passed, and actual source
-publication plus strict final-player readback passed before the next recovery hold.
+Reuse the six passing run2 title/pause/loader/vacant/native-claim groups and run3
+initial-publication negatives. Actual source publication and strict final-player
+readback now pass. The initial canonical inert no-Pos allowance is restricted to
+original ordinary integrated input/record/epoch1; final images stay strict. The
+late-diagnostic Leave correction is independently reviewed and compiled; its real
+menu return/reopen check remains pending. Legacy registered native both-role
+roundtrip passed62.06s (run4). Earlier failures and sources remain preserved.
 
-Source30 map932509aa, fullchecks6 all exit0, test build3 bin823cff91. Run3 actual
-recovery copied the selected image but timed out before admitting clients. The
-independent investigation found retained saved reads are always deferred by normal
-Streaming::update; only close has a consuming handoff. Existing registered native
-legacy roundtrip passed both roles62.06s (run4). The accepted twentieth-path
-amendment connects actual open-state saved-column custody for both recovery and
-ordinary own-world reopen, retaining the original stream/deadline. No substitute
-chunks, legacy stream replacement or close/resume. Failed worlds are now preserved
-privately before WSL /tmp disappears. Full failure logs/sources remain immutable.
-
-Draft31 additionally corrects the completed ordinary Leave path: late transport
-diagnostics must not upgrade Leave to Quit or discard returned presentation/claim.
-It preserves the raw error in the actual Error/Back menu and final app outcome,
-without changing incomplete cleanup or acknowledgment gates; source review pending.
-No actual-window smoke has run. Remaining: reviewed saved-load source/tool/targeted
-checks, four ordinary recovery cases and refusal/Retry/initial-player controls,
-then real integrated/two-rendered-client dedicated/in-frame native smokes and
-different FINAL/privacy. No engine commit/public push or C0/C1/G1/S1 completion.
+Main game build1 passed80.79s; actual non-test ELF2c1874ca corresponds to source35.
+Real-window run1 passed ordinary integrated rendering, movement, native inventory
+presentation and natural owned shutdown. Original outer EOF remains reported and
+acknowledged; native completion is separate. No stone placement claim: screenshots
+and read-only native readback show empty inventory/no stone use. Diagnostic run2
+captured the incorrect wheel-selected Prismarine Slab; the stone-only guard refused
+it. That run is NOT verified: a repeated terminal acknowledgment raced the game's
+natural exit in the driver. Both runs, screenshots, saved worlds and logs survive.
+Next: deterministic native scrollbar selection and one-shot acknowledgment, then
+real title create/Leave/own reopen, stone/native readback, dedicated TWO rendered
+clients and in-frame comparison. Focused ordinary recovery refusal/Retry/initial-
+player controls and different FINAL/privacy remain. No engine commit/public push,
+C0/C1/G1/S1 completion or release claim.
 
 Fresh independent read-only C0/input investigation accepted
 S1_ORDINARY_PAIRED_STARTUP_MAP.md (d44f091a). Error-free/no-ack Quit is not an

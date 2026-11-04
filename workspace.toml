@@ -6,7 +6,7 @@ namespace = "create_horizon"
 repository = "https://github.com/Cha0sCollective/Create-Horizon"
 visibility = "private"
 stage = "post-G0 foundations"
-active_packet = "S1 deliverable1; parentca9b3f49 ordinary paired startup; bounded20th streaming.rs saved-load handoff accepted awaiting gate; native claim and first coherent publication checked, recovery open-load gap pending; fixed TestTerrain, Open to LAN deferred; ask before scope expansion"
+active_packet = "S1 deliverable1; parentca9b3f49 ordinary paired startup source35 compiler/focused recovery PASS; actual main integrated movement/render/ownedexit checked, native stone/title reopen/dedicated/inframe pending; fixed TestTerrain, Open to LAN deferred; ask before scope expansion"
 next_stage = "S1 host foundations and remaining P02; G1/G2/G3 open"
 
 [specification]
