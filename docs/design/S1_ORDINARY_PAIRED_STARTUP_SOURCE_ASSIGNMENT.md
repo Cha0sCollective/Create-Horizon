@@ -112,3 +112,35 @@ before public push. Preserve all affected sources/prefix before corrections; fro
 FINAL corrections require new prefix. No G1/S1 or OpenLAN/release claim. A smallest
 extra-path amendment comes before editing; broader profile/framework/acceptance
 expansion requires owner input.
+
+## Owner-adopted mob-free S1 amendment
+
+The owner chose "Keep S1 test worlds mob-free" on November 3, 2026, adopting
+S1_AMBIENT_MOBS_SCOPE_DECISION.md. Its proposed boundary received independent
+read-only Sol High ACCEPT5ed96e74 before that choice. This changes the selected
+paired S1 fixed-TestTerrain profile to the existing native spawn_mobs=false rule.
+No additional source path, entity schema or mob subsystem is authorized.
+
+Within existing game/world_loading.rs, bind this profile only to the original
+OrdinaryPreparation/PrepareOwner route. For a fresh world, set the rule before
+initial native rule-file publication and before any Game loads rules or ticks.
+Preserve other creation rules. For own reopen/ordinary managed recovery, require
+the saved false rule and verify using the same native rule reader as Game; never
+rewrite recovery inputs or convert existing true/missing-rule worlds. Keep failed
+native acquisitions in their original checked preparation/close/Retry custody.
+Cold, retained diagnostic and legacy/unpaired preparation keep their existing rules.
+
+Focused coverage may extend existing game/retained_server_tests.rs: actual native
+fresh-rule readback, own reopen preservation, and conflicting-rule refusal without
+rule-file mutation or lost claim. Existing actual-game stone/Leave/own-title reopen
+must additionally verify persisted false rule and no generated living entities.
+Use that connected run for the producer-absence claim; no general mob test matrix.
+Existing four ordinary coherent recovery cases are affected by this constructor
+change and must pass for the new source. Reuse unrelated historical evidence.
+
+The original twenty-path assignment and gates otherwise remain effective. Preserve
+source35 and all affected gate/review/definition files before updating pins. Source/
+tool review still precedes execution and different FINAL/privacy precedes public
+engine publication. Living-entity support stays deferred; old living records stay
+refused and preserved. The failure-only destructive X-window cleanup is retired;
+any next smoke driver must use a confirmed application-close operation.

@@ -1,7 +1,8 @@
 # S1 ambient mob scope decision
 
-Status: PROPOSED, awaiting owner decision. This file does not authorize source
-changes, amend the supported profile or close S1/G1. November 3, 2026.
+Status: ADOPTED by the owner on November 3, 2026: keep S1 test worlds mob-free.
+Apply the existing native rule through the bounded reviewed assignment. S1/G1
+remain open; no release authority.
 
 ## Concrete failure
 
@@ -19,7 +20,7 @@ entity projection intentionally accepts native ItemEntity records only; it rejec
 these living records. No save record has been deleted, normalized into an item or
 accepted by weakening validation. Raw runs and native worlds remain ignored/local.
 
-## Recommended bounded option
+## Adopted bounded profile
 
 Keep the selected paired fixed-TestTerrain S1 profile free of ambient living mobs.
 Prevent both initial chunk-generation creature seeding and later natural/custom
@@ -34,7 +35,7 @@ The existing native `spawn_mobs=false` rule already blocks both producers.
 and custom spawn passes read the same rule. No mob gameplay or codec rewrite is
 needed, and no additional source path is currently indicated.
 
-After owner acceptance, prepare the smallest independently reviewed amendment
+Use the smallest independently reviewed amendment
 within the existing twenty paths: apply this explicit fixed-profile rule to fresh
 ordinary worlds before native rule-file publication and before load_world_state
 or any simulation tick. Updating only Level.game_rules after construction would
@@ -54,7 +55,7 @@ stone/Leave/own-reopen smoke. Reuse passing compilation/recovery evidence where
 unchanged; do not add a general mob or save framework. Then continue the dedicated
 two-rendered-client and in-frame checks and remaining three ordinary error groups.
 
-## Alternative
+## Deferred alternative
 
 Retain normal living-mob simulation in S1. This expands the checked projection and
 custody boundary beyond ItemEntity: native living state, UUIDs, equipment and other
