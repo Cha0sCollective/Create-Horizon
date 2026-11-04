@@ -6,7 +6,7 @@ namespace = "create_horizon"
 repository = "https://github.com/Cha0sCollective/Create-Horizon"
 visibility = "private"
 stage = "post-G0 foundations"
-active_packet = "S1 ordinary LOCAL OWN bbf1029 accepted/public, source6/frozen results, original failures preserved. Next bounded empty-counter activation design; no new source assignment. Fixed mob-free Creative TestTerrain, Open to LAN deferred; G1/S1 open"
+active_packet = "S1 ordinary empty counter 9f7d5ec accepted/public; current source2 and frozen results, original failures preserved. Next bounded operation/departure design, no new source assignment. Fixed mob-free Creative TestTerrain, Open to LAN deferred; G1/S1 open"
 next_stage = "S1 host foundations and remaining P02; G1/G2/G3 open"
 
 [specification]
@@ -133,3 +133,17 @@ binary_sha256 = "05b78ffc69cee83333360d24d08f3548247f632cafa4122e31cea7d8cacf901
 focused_groups = 2
 runtime_seconds = 176.03
 limits = "Actual materialized ordinary LOCAL player/body coherent close/Retry/recovery/cancel/continuation, existing original network recovery regression. Not frontend/counter activation, positive ingress or cross-process restart. Durable OWN and never-placed history next; deliverable1/C0/fullC1/G1/S1 open. No merge or release."
+
+[s1_ordinary_empty_counter]
+status = "Different FINAL ACCEPT; privacy CLEAR; normal-hook public branch sync verified exact"
+branch = "codex/s1-ordinary-empty-counter"
+candidate = "9f7d5ecb7abee68b0f3af6363fbdb3e6b0547219"
+tree = "b9386e81c795c9bf0273acf4a97d56c4b24a4b39"
+parent = "bbf10296491592863d95359c8e97daff4bbe4c7f"
+source_sha256 = "6485c2b775ebce8541a099d22d763cfd6e782ef93c1433f43391e7a251b42216"
+report = "docs/reference/S1_ORDINARY_EMPTY_COUNTER_RESULTS.md"
+report_sha256 = "4962be732b695ec76e0fc00cb14835a6f75ad995eef2d0de5ce1bae0762942c4"
+final_receipt_sha256 = "09442b5f6f700c7fd55276cd1f28a00559ee52f77b6d0899fad61b9197a5bd28"
+public_sync_sha256 = "52c6b92c5ed79d553123e068deff28822b879e79bc18d16b97c0aae26b784079"
+binary_sha256 = "c966f8117bcdeefecb5d4c611fc60cc947534e6367e6175ac42ff712843bd592"
+limits = "Ordinary native Creative/hotbar BlockItem, empty-slot persistent Guest/Wasm and coherent OWN restart component in in-frame, default Memory and dedicated/two rendered clients. Earlier CPU13 attributed, current model/static/all3rendered checks. Raw EOF/Receive/ENOTCONN close errors/exit1 preserved, not clean-stop/C0. Filled ingress/departure/removal/replication/H11/deliverable1/C1/G1/S1 remain open. No merge/release."
