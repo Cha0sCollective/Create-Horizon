@@ -297,7 +297,7 @@ fn level_axis(game: &GameLevel<'_>, p: [i32; 3]) -> Axis {
         .into_iter()
         .find(|d| d.name() == prop("facing"))
         .unwrap_or(Direction::Up);
-    if state.name.ends_with("ometer") {
+    if state.name.ends_with("ometer") || state.name == "create:mechanical_piston" {
         return placement::gauge_axis(facing, prop("axis_along_first") == "true");
     }
     match prop("axis") {
@@ -317,7 +317,10 @@ fn level_ports(game: &GameLevel<'_>, pos: [i32; 3]) -> [bool; 6] {
             .unwrap();
         let name = state.name.as_ref();
         if !super::create_port::owns(name)
-            || matches!(name, "create:depot" | "create:water_wheel_structure")
+            || matches!(
+                name,
+                "create:depot" | "create:water_wheel_structure" | "create:piston_extension_pole"
+            )
         {
             return false;
         }

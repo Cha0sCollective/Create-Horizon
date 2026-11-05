@@ -1,6 +1,6 @@
 [mod]
 id = "create"
-version = "0.5.0-ch4os.2"
+version = "0.5.0-ch4os.3"
 
 [compatibility]
 horizon_revision = "fc02103818c212920fd24aa34a2b2f91ba49e56f"
@@ -10,6 +10,12 @@ id = "s5-carrier"
 file = "crates/horizon-client/src/game.rs"
 name = "create_s5_carrier"
 source = "s5_carrier.rs"
+
+[[module]]
+id = "s5-piston"
+file = "crates/horizon-client/src/game.rs"
+name = "create_s5_piston"
+source = "s5_piston.rs"
 
 [[module]]
 id = "s5-clearance"

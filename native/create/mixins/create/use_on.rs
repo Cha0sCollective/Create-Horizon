@@ -5,7 +5,9 @@ fn create_use_on(
     face: [i32; 3],
     claimed: &mut bool,
 ) {
-    if crate::game::create_s5_carrier::guard_wrench(game, &stack.item, pos) {
+    if crate::game::create_s5_carrier::guard_wrench(game, &stack.item, pos)
+        || crate::game::create_s5_piston::guard_wrench(game, &stack.item, pos)
+    {
         *claimed = true;
         return;
     }

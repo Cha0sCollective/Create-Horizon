@@ -5,4 +5,5 @@ fn create_on_tick(
 ) {
     crate::game::create_port::tick(game, pos, entity);
     crate::game::create_s5_carrier::tick(game, pos, entity);
+    crate::game::create_s5_piston::tick(game, pos, entity);
 }

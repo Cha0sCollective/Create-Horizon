@@ -26,6 +26,8 @@
     "create:millstone",
     "create:encased_fan",
     "create:mechanical_drill",
+    "create:mechanical_piston",
+    "create:piston_extension_pole",
     "create:iron_sheet",
     "create:golden_sheet",
     "create:copper_sheet",

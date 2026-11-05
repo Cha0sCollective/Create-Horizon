@@ -160,6 +160,17 @@ fn set(game: &mut Game<'_>, pos: [i32; 3], name: &str) -> bool {
 /// Inspect native collision boxes in the one-block halo as well: a fence below
 /// the path, for example, can extend above its own cell into the swept cube.
 fn static_path_clear(game: &Game<'_>, trial: &Trial, from: f32, to: f32) -> bool {
+    static_path_clear_cells(game, trial.source, &trial.cells(), from, to)
+}
+
+/// Shared finite sweep for the trial stone and the real actuator's head/stone.
+pub(super) fn static_path_clear_cells(
+    game: &Game<'_>,
+    source: [i32; 3],
+    reserved: &[[i32; 3]],
+    from: f32,
+    to: f32,
+) -> bool {
     if !from.is_finite()
         || !to.is_finite()
         || !(0.0..=1.0).contains(&from)
@@ -167,7 +178,7 @@ fn static_path_clear(game: &Game<'_>, trial: &Trial, from: f32, to: f32) -> bool
     {
         return false;
     }
-    let [sx, sy, sz] = trial.source;
+    let [sx, sy, sz] = source;
     let (Some(x0), Some(x1), Some(y0), Some(y1), Some(z0), Some(z1)) = (
         sx.checked_sub(1),
         sx.checked_add(2),
@@ -190,7 +201,6 @@ fn static_path_clear(game: &Game<'_>, trial: &Trial, from: f32, to: f32) -> bool
             f64::from(sz) + 1.0,
         ),
     );
-    let cells = trial.cells();
     for x in x0..=x1 {
         for z in z0..=z1 {
             if !game.world.loaded(x, z) {
@@ -198,7 +208,7 @@ fn static_path_clear(game: &Game<'_>, trial: &Trial, from: f32, to: f32) -> bool
             }
             for y in y0..=y1 {
                 let pos = [x, y, z];
-                if cells.contains(&pos) {
+                if reserved.contains(&pos) {
                     continue;
                 }
                 for shape in game.native_block_collision(pos) {

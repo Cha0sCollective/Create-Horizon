@@ -127,6 +127,8 @@ pub(super) fn owns(block: &str) -> bool {
             | "create:millstone"
             | "create:encased_fan"
             | "create:mechanical_drill"
+            | "create:mechanical_piston"
+            | "create:piston_extension_pole"
     )
 }
 
@@ -268,10 +270,44 @@ pub(super) fn placed(game: &mut Game<'_>, stack: &ItemStack, pos: [i32; 3]) {
                     Direction::West,
                 ][((f64::from(game.yaw) / 90.0 + 0.5).floor() as i64 & 3) as usize],
             ),
+            "create:mechanical_piston" => Some(if sneaking { look } else { look.opposite() }),
+            "create:piston_extension_pole" => Some(face.opposite()),
             _ => None,
         };
         if let Some(facing) = facing {
             game.native_set_block_property(pos, "facing", facing.name());
+            if stack.item.as_ref() == "create:mechanical_piston" {
+                // DirectionalAxisKineticBlock: the shaft axis is perpendicular
+                // to the piston face, preferring an existing vertical shaft.
+                let vertical = Direction::ALL
+                    .into_iter()
+                    .zip(ports)
+                    .any(|(d, connected)| connected && d.axis() == Axis::Y);
+                let first = match facing.axis() {
+                    Axis::X => vertical,
+                    Axis::Z => !vertical,
+                    Axis::Y => {
+                        let x = Direction::ALL
+                            .into_iter()
+                            .zip(ports)
+                            .any(|(d, connected)| connected && d.axis() == Axis::X);
+                        let z = Direction::ALL
+                            .into_iter()
+                            .zip(ports)
+                            .any(|(d, connected)| connected && d.axis() == Axis::Z);
+                        match (x, z) {
+                            (true, false) => true,
+                            (false, true) => false,
+                            _ => nearest(game.yaw, 0.0).axis() == Axis::X,
+                        }
+                    }
+                };
+                game.native_set_block_property(
+                    pos,
+                    "axis_along_first",
+                    if first { "true" } else { "false" },
+                );
+            }
         }
     }
 }
@@ -438,7 +474,10 @@ pub(super) fn node(game: &Game<'_>, pos: [i32; 3]) -> Option<Node> {
         _ if direction[1] != 0 => Axis::Y,
         _ => Axis::Z,
     };
-    if matches!(block.as_str(), "create:speedometer" | "create:stressometer") {
+    if matches!(
+        block.as_str(),
+        "create:speedometer" | "create:stressometer" | "create:mechanical_piston"
+    ) {
         let first = game
             .native_block_property(pos, "axis_along_first")
             .as_deref()
@@ -472,6 +511,7 @@ pub(super) fn node(game: &Game<'_>, pos: [i32; 3]) -> Option<Node> {
     }
     let kind = match block.as_str() {
         "create:millstone" => Kind::Millstone,
+        "create:mechanical_piston" => Kind::MechanicalPiston,
         "create:encased_fan" | "create:mechanical_drill" => Kind::Consumer {
             facing: direction.map(|v| -v),
             impact: if block == "create:mechanical_drill" {
@@ -1060,7 +1100,7 @@ pub(super) fn draw(
     }
     if matches!(
         node.kind,
-        Kind::Gearbox | Kind::Clutch { .. } | Kind::Gearshift { .. }
+        Kind::Gearbox | Kind::Clutch { .. } | Kind::Gearshift { .. } | Kind::MechanicalPiston
     ) {
         for direction in Direction::ALL {
             if !node.shaft_port(direction.vector()) {

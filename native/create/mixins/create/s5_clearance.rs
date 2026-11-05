@@ -10,6 +10,22 @@ pub(crate) struct S5PushPlan {
 }
 
 impl Game<'_> {
+    /// A pending failed-write recovery may need to put a solid block back in
+    /// its original cell. Refuse that retry while any authoritative body is
+    /// inside the full cube; the owner retains the item and retries later.
+    pub(crate) fn create_s5_body_clear(&mut self, pos: BlockPos, bounds: Aabb) -> bool {
+        let steps = self.push_step_heights();
+        for target in self.push_targets() {
+            if self
+                .push_body(target, pos, &steps)
+                .is_some_and(|body| bounds.intersects(body.bounds))
+            {
+                return false;
+            }
+        }
+        true
+    }
+
     /// Plan every body's movement before changing any body. A blocked escape
     /// rejects the carrier advance and leaves body positions/budgets unchanged.
     /// Only the packet's inert full-cube, horizontal one-cell carrier calls this.
@@ -20,11 +36,28 @@ impl Game<'_> {
         progress: f32,
         final_bounds: Aabb,
     ) -> Option<S5PushPlan> {
+        let cube = Aabb::new(Vec3::new(0.0, 0.0, 0.0), Vec3::new(1.0, 1.0, 1.0));
+        self.create_s5_plan_push_shapes(pos, piston, progress, &[cube], &[final_bounds])
+    }
+
+    /// The finite real actuator moves its head and at most one stone together.
+    /// Plan both solid boxes against each body with one movement budget/commit.
+    pub(crate) fn create_s5_plan_push_shapes(
+        &mut self,
+        pos: BlockPos,
+        piston: MovingPiston,
+        progress: f32,
+        boxes: &[Aabb],
+        final_bounds: &[Aabb],
+    ) -> Option<S5PushPlan> {
+        if boxes.is_empty() || final_bounds.is_empty() || boxes.len() > 2 || final_bounds.len() > 3
+        {
+            return None;
+        }
         let delta = progress - piston.progress;
         if delta < 0.0 || !delta.is_finite() {
             return None;
         }
-        let cube = Aabb::new(Vec3::new(0.0, 0.0, 0.0), Vec3::new(1.0, 1.0, 1.0));
         let direction = piston.movement_direction();
         let steps = self.push_step_heights();
         let mut plans = Vec::new();
@@ -34,7 +67,7 @@ impl Game<'_> {
             };
             let amount = if delta > 0.0 {
                 piston_push::collided_amount(
-                    &[cube],
+                    boxes,
                     pos,
                     piston.shape_state(),
                     progress,
@@ -45,7 +78,10 @@ impl Game<'_> {
                 0.0
             };
             if amount <= 0.0 {
-                if final_bounds.intersects(body.bounds) {
+                if final_bounds
+                    .iter()
+                    .any(|bound| bound.intersects(body.bounds))
+                {
                     return None;
                 }
                 continue;
@@ -91,7 +127,10 @@ impl Game<'_> {
             let Ok(resolved) = resolved else {
                 return None;
             };
-            if final_bounds.intersects(body.bounds.move_by(resolved)) {
+            if final_bounds
+                .iter()
+                .any(|bound| bound.intersects(body.bounds.move_by(resolved)))
+            {
                 return None;
             }
             plans.push((target, requested, limited, resolved));

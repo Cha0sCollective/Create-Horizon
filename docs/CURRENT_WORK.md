@@ -1,18 +1,18 @@
 # Current work
 
-Native S1 through S4 are COMPLETE under the owner-adopted November 4 native route.
+Native S1 through S5 are COMPLETE under the owner-adopted November 4 native route.
 Fresh independent Sol High source/driver/completion reviews cleared bounded stages.
 See `docs/reference/NATIVE_S1_PLAYABILITY_RESULTS.md` and
 `docs/reference/NATIVE_S2_KINETICS_RESULTS.md`, `NATIVE_S3_MVP_RESULTS.md` and
 `NATIVE_S4_FACTORY_RESULTS.md` for
 evidence and limits.
-The owner now authorizes continuing through S6 until the next requested break.
+The owner authorizes continuing through S6 until the next requested break.
 Completed packet: `docs/design/NATIVE_S4_FACTORY_PACKET.md`, fresh independent Sol
 High packet and completion reviews CLEAR. Survival/normal-terrain recipe chain
 from vanilla fixtures, one finite water-wheel/hopper milling factory and ordinary
 save/rejoin. Adaptive existing-control sessions retain valid checkpoints rather
 than replaying all crafting after a later camera/driver error. S4 is accepted.
-Active S5 audit/packet: `docs/design/NATIVE_S5_FEASIBILITY_AUDIT.md` and
+Completed S5 audit/packet: `docs/design/NATIVE_S5_FEASIBILITY_AUDIT.md` and
 `NATIVE_S5_ADAPTER_SPIKE_PACKET.md`, fresh independent Sol High reviews CLEAR.
 One-cell eastward stone-carrier spike uses a deliberately configured trial motor;
 it is not an actual mechanical-piston binding or S5 completion. Selected pure
@@ -31,14 +31,28 @@ run (server and two clients exit0). Final independent feasibility-result review
 CLEAR: the one-cell private adapter route is plausible. The actual normal
 mechanical piston has different stop/retraction and one-pole/head ownership
 rules; its reviewed binding packet is
-`docs/design/NATIVE_S5_ACTUATOR_BINDING_PACKET.md`. The probe is not S5
-acceptance. S5 remains OPEN until that actual actuator is bound and qualified.
+`docs/design/NATIVE_S5_ACTUATOR_BINDING_PACKET.md`. The probe alone was not
+S5 acceptance. The actual selected east-facing, one-pole mechanical piston is
+now bound on private branch `codex/native-s5-mechanical-piston`, version
+`0.5.0-ch4os.3`. Its exact pinned build, real powered shaft/stress, normal
+player placement, stone/head/pole custody, nonsticky return, stop/reversal,
+peer collision/replica, fence refusal, blocked removal retry, active-motion
+cold reopen, rendered peer poses and one vanilla-piston regression passed in a
+bounded dedicated/two-client milestone. Both sessions' six processes exited0.
+Focused kinetic test, format, compile and Clippy passed (25 nonfatal Clippy
+warnings); independent Sol High source, delta and completion reviews CLEAR.
+See `docs/reference/NATIVE_S5_ACTUATOR_RESULTS.md` and the local raw packet
+`.local/native-s5-actuator-01`. Exact build input map is
+`58adc2a9f85ce9870828dafa630e51d20f5a9ec14f50e00b969efe18fedef860`.
+This accepts only the finite profile. S6 begins with one bounded additional
+processing family packet, checking existing native code and Java behavior first.
 Ask before broad host/API/architecture expansion; absence of a named hook alone
 does not prove a blocker. No game/test process is currently running.
 
 ## Current checkpoint
 
-Private branch `codex/native-s5-feasibility`, based on accepted/private-synced S4
+Private branch `codex/native-s5-mechanical-piston`, based on accepted/private-synced
+S5 feasibility `a6668abf815b31bedcde8d28e435fcdecddcee88`, itself based on S4
 `b88eb47bbb83138e9fe62684f2fcf2f1969e3702` on `codex/native-s4-factory`, exact
 GitHub remote verified. Accepted/private-synced S3 is
 `67566136634139309a04bb12b8aaacbec518d743` on `codex/native-s3-mvp`, clean before

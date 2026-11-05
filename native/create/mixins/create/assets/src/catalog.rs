@@ -24,6 +24,8 @@ pub const BLOCKS: &[&str] = &[
     "millstone",
     "encased_fan",
     "mechanical_drill",
+    "mechanical_piston",
+    "piston_extension_pole",
 ];
 pub const ITEMS: &[&str] = &[
     "iron_sheet",

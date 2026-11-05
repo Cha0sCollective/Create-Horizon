@@ -25,6 +25,63 @@ def model(name, boxes, texture="minecraft:block/iron_block"):
         "elements": [{"from": a, "to": b, "faces": faces} for a, b in boxes],
     })
 
+def mechanical_piston_content():
+    # Finite normal piston profile. These are our fallback geometry and vanilla
+    # textures; the player's 6.0.10 JAR supplies original Create visuals.
+    piston = {
+        "template": "minecraft:glass", "item": True,
+        "properties": {"hardness": 1.5, "explosion_resistance": 6,
+                       "requires_tool": True, "render_shape": "MODEL",
+                       "sounds": "minecraft:andesite"},
+        "state_properties": {
+            "facing": {"type": "enum", "values": ["down", "up", "north", "south", "west", "east"]},
+            "axis_along_first": {"type": "boolean"},
+            "state": {"type": "enum", "values": ["retracted", "moving", "extended"]},
+        },
+        "default_state": {"facing": "east", "axis_along_first": "false", "state": "retracted"},
+        "collision_shapes": {"default": [[0, 0, 0, 1, 1, 1]]},
+    }
+    pole = {
+        "template": "minecraft:glass", "item": True,
+        "properties": {"hardness": 1.5, "render_shape": "MODEL", "sounds": "minecraft:scaffolding"},
+        "state_properties": {"facing": {"type": "enum", "values": ["down", "up", "north", "south", "west", "east"]},
+                             "waterlogged": {"type": "boolean"}},
+        "default_state": {"facing": "east", "waterlogged": "false"},
+        "shapes": {"default": [[0, .375, .375, 1, .625, .625]]},
+        "collision_shapes": {"default": [[0, .375, .375, 1, .625, .625]]},
+    }
+    head = {
+        "template": "minecraft:glass", "item": False,
+        "properties": {"hardness": 1.5, "render_shape": "MODEL", "sounds": "minecraft:scaffolding"},
+        "state_properties": {"facing": {"type": "enum", "values": ["down", "up", "north", "south", "west", "east"]},
+                             "type": {"type": "enum", "values": ["normal", "sticky"]},
+                             "waterlogged": {"type": "boolean"}},
+        "default_state": {"facing": "east", "type": "normal", "waterlogged": "false"},
+        "shapes": {"default": [[0, .375, .375, .75, .625, .625], [.75, 0, 0, 1, 1, 1]]},
+        "collision_shapes": {"default": [[0, .375, .375, .75, .625, .625], [.75, 0, 0, 1, 1, 1]]},
+    }
+    for name, declaration in [("mechanical_piston", piston),
+                              ("piston_extension_pole", pole),
+                              ("mechanical_piston_head", head)]:
+        write("data/create/horizon/block/" + name + ".json", declaration)
+    model("mechanical_piston/normal/block", [([0, 0, 0], [16, 16, 16])], "minecraft:block/andesite")
+    model("piston_extension_pole", [([0, 6, 6], [16, 10, 10])], "minecraft:block/iron_block")
+    model("mechanical_piston/normal/head", [([0, 6, 6], [12, 10, 10]),
+                                            ([12, 0, 0], [16, 16, 16])], "minecraft:block/andesite")
+    for name, part in [("mechanical_piston", "mechanical_piston/normal/block"),
+                       ("piston_extension_pole", "piston_extension_pole"),
+                       ("mechanical_piston_head", "mechanical_piston/normal/head")]:
+        write("assets/create/blockstates/" + name + ".json",
+              {"variants": {"": {"model": "create:block/" + part}}})
+        if name != "mechanical_piston_head":
+            write("assets/create/models/item/" + name + ".json", {"parent": "create:block/" + part})
+            write("assets/create/items/" + name + ".json",
+                  {"model": {"type": "minecraft:model", "model": "create:item/" + name}})
+        write("data/create/loot_table/blocks/" + name + ".json",
+              {"type": "minecraft:block", "pools": [{"rolls": 1, "entries": [
+                  {"type": "minecraft:item", "name": "create:" +
+                   ("piston_extension_pole" if name == "mechanical_piston_head" else name)}]}]})
+
 
 def processors():
     # State and collision definitions translated from MIT MillstoneBlock,
@@ -168,7 +225,7 @@ def foundation():
     for path, value in reference["tags"].items(): write("data/" + path, value)
     write("data/create/horizon/creative_tab/kinetics.json", {"title": "itemGroup.create.base", "icon": "create:cogwheel", "items": ["create:" + name for name in all_blocks + ITEMS]})
     # These fallback labels are ours; the JAR replaces them with all upstream locales.
-    extra_blocks = {"gearbox":"Gearbox","clutch":"Clutch","gearshift":"Gearshift","hand_crank":"Hand Crank","andesite_encased_shaft":"Andesite Encased Shaft","brass_encased_shaft":"Brass Encased Shaft","andesite_casing":"Andesite Casing","brass_casing":"Brass Casing","andesite_alloy_block":"Block of Andesite Alloy","brass_block":"Block of Brass","zinc_block":"Block of Zinc","speedometer":"Speedometer","stressometer":"Stressometer","water_wheel":"Water Wheel","large_water_wheel":"Large Water Wheel","millstone":"Millstone","encased_fan":"Encased Fan","mechanical_drill":"Mechanical Drill"}
+    extra_blocks = {"gearbox":"Gearbox","clutch":"Clutch","gearshift":"Gearshift","hand_crank":"Hand Crank","andesite_encased_shaft":"Andesite Encased Shaft","brass_encased_shaft":"Brass Encased Shaft","andesite_casing":"Andesite Casing","brass_casing":"Brass Casing","andesite_alloy_block":"Block of Andesite Alloy","brass_block":"Block of Brass","zinc_block":"Block of Zinc","speedometer":"Speedometer","stressometer":"Stressometer","water_wheel":"Water Wheel","large_water_wheel":"Large Water Wheel","millstone":"Millstone","encased_fan":"Encased Fan","mechanical_drill":"Mechanical Drill","mechanical_piston":"Mechanical Piston","piston_extension_pole":"Piston Extension Pole","mechanical_piston_head":"Mechanical Piston Head"}
     extra_items = {"andesite_alloy":"Andesite Alloy","brass_ingot":"Brass Ingot","brass_nugget":"Brass Nugget","zinc_ingot":"Zinc Ingot","zinc_nugget":"Zinc Nugget","wrench":"Wrench","brass_sheet":"Brass Sheet","vertical_gearbox":"Vertical Gearbox","goggles":"Engineer’s Goggles","propeller":"Propeller","wheat_flour":"Wheat Flour","dough":"Dough"}
     for locale in ["en_us","ru_ru"]:
         path=CONTENT / ("assets/create/lang/"+locale+".json")
@@ -193,8 +250,8 @@ def main():
     CONTENT.mkdir(exist_ok=True)
     (CONTENT / "horizon-mod.toml").write_text('''id = "create"
 name = "Create for Horizon — prototype"
-version = "0.5.0"
-description = "Experimental kinetic foundation with milling, bulk fan processing, stationary drilling, pressing, depots and crafting."
+version = "0.5.0-ch4os.3"
+description = "Experimental kinetic foundation with milling, bulk fan processing, stationary drilling, pressing, depots, crafting and a bounded one-pole mechanical piston."
 authors = ["create-horizon contributors"]
 api = "0.2"
 side = "both"
@@ -271,6 +328,7 @@ capabilities = ["registries"]
                     ["Iron Sheet", "Golden Sheet", "Copper Sheet"] if language == "en_us" else ["Железная пластина", "Золотая пластина", "Медная пластина"])})
         write("assets/create/lang/" + language + ".json", lang)
     foundation()
+    mechanical_piston_content()
     # Source installs carry only the native bundle. Its documented data folder
     # therefore contains the complete public content, with no player-side Python.
     files = {path.relative_to(CONTENT).as_posix(): path.read_text()

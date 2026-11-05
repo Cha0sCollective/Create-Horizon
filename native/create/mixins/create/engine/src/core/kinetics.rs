@@ -38,6 +38,7 @@ pub enum Kind {
     },
     Press,
     Millstone,
+    MechanicalPiston,
     Consumer {
         facing: Pos,
         impact: f32,
@@ -95,6 +96,7 @@ impl Node {
         match self.kind {
             Kind::Press => 8.0,
             Kind::Millstone => 4.0,
+            Kind::MechanicalPiston => 4.0,
             Kind::Consumer { impact, .. } => impact,
             _ => 0.0,
         }
@@ -432,6 +434,37 @@ mod tests {
         assert_eq!(n.status, Status::Running);
         assert_eq!(n.speed([2, 0, 0]), -32.0);
         assert_eq!((n.capacity, n.stress), (512.0, 256.0));
+    }
+
+    #[test]
+    fn mechanical_piston_uses_two_perpendicular_shaft_faces_and_four_impact() {
+        let source = Node {
+            pos: [1, 0, -1],
+            axis: Axis::Z,
+            kind: Kind::Motor {
+                facing: [0, 0, 1],
+                rpm: -64.0,
+                capacity: 10.0,
+            },
+        };
+        let piston = Node {
+            pos: [1, 0, 0],
+            axis: Axis::Z,
+            kind: Kind::MechanicalPiston,
+        };
+        let output = Node {
+            pos: [1, 0, 1],
+            axis: Axis::Z,
+            kind: Kind::Shaft,
+        };
+        assert!(piston.shaft_port([0, 0, -1]));
+        assert!(piston.shaft_port([0, 0, 1]));
+        assert!(!piston.shaft_port([1, 0, 0]));
+        let n = network(&[source, piston, output]);
+        assert_eq!(n.status, Status::Running);
+        assert_eq!(n.speed(piston.pos), -64.0);
+        assert_eq!(n.speed(output.pos), -64.0);
+        assert_eq!((n.capacity, n.stress), (640.0, 256.0));
     }
 
     #[test]
