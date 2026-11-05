@@ -37,7 +37,8 @@ track foundation, not a rail graph, train, schematic or S6 completion claim.
    exact local JAR, import only original X/Z straight models and track item art
    into the private instance cache. The original wider selection outline is
    not yet implemented or qualified. One authored loot table returns one
-   `create:track`; Survival crafting remains outside this profile.
+   `create:track`; a narrow `minecraft:mineable/pickaxe` tag supplies the
+   source tool requirement. Survival crafting remains outside this profile.
 4. Do not create a track block entity, global rail graph, owner tick, station,
    curve, junction, portal, schedule, train, water placement, Wrench behavior,
    or new save format. `turn=true` and `waterlogged=true` remain registry

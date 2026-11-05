@@ -51,7 +51,8 @@ pub fn bundled_content(game_dir: &Path, bytes: &[u8]) -> io::Result<PathBuf> {
                 || !(name == "horizon-mod.toml"
                     || name.starts_with("assets/create/")
                     || name.starts_with("data/create/")
-                    || name.starts_with("data/c/tags/item/"))
+                    || name.starts_with("data/c/tags/item/")
+                    || name == "data/minecraft/tags/block/mineable/pickaxe.json")
                 || value.len() > MAX_FILE as usize
         })
     {
