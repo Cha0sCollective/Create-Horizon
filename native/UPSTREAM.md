@@ -51,7 +51,7 @@ Upstream reports remain attributed reference evidence, not private gameplay pass
 Details: `docs/design/NATIVE_S6_BASIN_REUSE_AUDIT.md` and
 `NATIVE_S6_DRY_MIXING_PACKET.md`; raw source hashes are local outside Git.
 
-## Coal-heating candidate selections
+## Accepted coal-heating selections
 
 On `codex/native-s6-coal-heating`, `.7` selects MIT upstream
 236c87a889cd76f7e663d1d182c28dc1145f7b14 burner simulation, visual core,
@@ -69,8 +69,10 @@ ordinary burner parts and scroll sprites from the player's pinned6.0.10 JAR.
 Committed fallback models are authored cuboids referencing vanilla texture IDs.
 No original art bytes are bundled. Empty cage is an item/factory/loot boundary;
 capture, ignition, special/creative fuels, hats/goggles and fluids are deferred.
-Packet `docs/design/NATIVE_S6_COAL_HEATING_PACKET.md` records pending fuel-cap
-policy and qualification. A source-review pass is not a heating-gameplay pass.
+The owner selected Java's full-cap coal consumption. Packet
+`docs/design/NATIVE_S6_COAL_HEATING_PACKET.md` and accepted result
+`docs/reference/NATIVE_S6_COAL_HEATING_RESULTS.md` record its finite integrated/
+dedicated qualification, actual client observations and independent review.
 
 ## Accepted bounded host refresh
 

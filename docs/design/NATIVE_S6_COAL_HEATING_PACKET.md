@@ -33,11 +33,10 @@ progression are outside this packet. Passive burner must not become a kinetic
 node. Save original `create:blaze_heater`, fuelLevel/burnTimeRemaining/isCreative
 fields; no replacement persistence schema.
 
-The source accepts normal fuel at its10,000-tick cap and consumes the item while
-adding no time. Owner choice is pending between retaining Java behavior and
-refusing ineffective fuel. Do not finalize this policy or silently generalize
-the earlier millstone-loss choice. Independent implementation work and the
-one-coal-unfueled case do not depend on that choice.
+The owner explicitly selected matching Java's coal consumption at the10,000-tick
+cap, adding no time. Retain the existing reviewed source algorithm; this is a
+separate decision from the earlier millstone-loss choice. Include a labelled
+full-buffer fixture and ordinary coal interaction in the live milestone.
 
 ## Focused verification
 

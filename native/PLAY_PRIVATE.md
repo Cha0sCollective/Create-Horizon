@@ -1,15 +1,15 @@
 # Private Linux prototype
 
-This is the personal five-type Creative prototype. Native S1/S2/S3 are complete
-within their recorded scopes, including the player workflow and Linux play route.
-The private package
-version is `0.5.0-ch4os.1`, based on upstream0.5.0. Use the same private build on
+This launch example uses the personal five-type Creative profile. Later bounded
+Survival/machine profiles are recorded in the native S4-S6 results; they do not
+qualify every included block. The current private package
+version is `0.5.0-ch4os.7`, based on upstream0.5.0 with selected later reuse. Use the same private build on
 the server and clients. Original Create IDs remain `create:`.
 
 ## Build
 
 Use Rust1.99.1 and a clean official Horizon checkout at
-`fc02103818c212920fd24aa34a2b2f91ba49e56f`. The pinned Mixins revision/API359 is
+`9c7f9b2215dfed497aba5522c44f38926628648d`. The pinned Mixins revision/API359 is
 selected by `compatibility.json`. This workspace already has the Linux tools and
 prepared Minecraft26.3 resources from the owner's launcher installation. Fresh
 setups follow the pinned host's resource-preparation instructions using their own
@@ -24,7 +24,7 @@ HORIZON_SOURCE="/path/to/pinned/horizon" ../../tools/dev.sh python3 tools/stage.
 This builds the game and matching local control tool. Use a new/empty generated
 output directory on Linux storage. Builds refuse a different host pin or an
 unowned nonempty external output. The current workspace's compatible host lives
-at `/mnt/g/Create Rusty/.local/evaluations/create-horizon-05/horizon`.
+at `/mnt/g/Create Rusty/.local/evaluations/horizon-heating-refresh/source`.
 
 ## Start a separate instance
 
@@ -40,7 +40,7 @@ On first entry, open chat and run `/gamerule minecraft:spawn_mobs false` to use
 the qualified test profile. In this new empty world, run
 `/kill @e[type=!minecraft:player]` before building to remove any initially generated
 animals. The world is Creative and uses fixed test
-terrain. Ordinary generated worlds/survival enter the later S4 packet.
+terrain. S4-S6 separately qualify their finite normal-world Survival profiles.
 
 The supplied Create6.0.10 JAR is a local resource input. The mod checks the exact
 JAR and imports art automatically; it never runs the Java mod. Keep that JAR,
@@ -64,6 +64,23 @@ Choose a speed on the positive or negative row, then Done. Drop cobblestone into
 the millstone from above with the normal drop key. With empty hands, right-click
 the millstone to collect gravel. Existing source/speed diagnostics and normal
 saves are used; no special host checkpoint system is involved.
+
+## Coal and brass subset
+
+In a separate supplied-materials Survival profile, place an occupied Blaze
+Burner, a Basin directly above it and a Mechanical Mixer two blocks above the
+Basin. Supply copper ingot1 and zinc ingot1 through a vanilla hopper and power
+the Mixer at32RPM or more within the accepted network limits. Right-click the
+occupied burner with plain coal; the heated recipe gives exactly two brass.
+Collect Basin output with an empty hand. Empty cages cannot be fueled; blaze
+capture/acquisition, other fuels and fluids are deferred.
+
+Fuel at the full10,000-tick buffer is consumed without adding time, matching the
+owner-selected Java behavior. Sneak-wrench pickup gives a fresh occupied item
+without retained fuel. Ordinary save/reopen preserves the placed burner's fuel,
+which resumes ticking normally. See the exact
+[heating result](../docs/reference/NATIVE_S6_COAL_HEATING_RESULTS.md) for fixtures,
+limits and the separately counted additional presentation runs.
 
 Dedicated play uses the same built game through Horizon's existing `--dedicated`
 route, with server/clients in separate instance homes. Existing mod negotiation

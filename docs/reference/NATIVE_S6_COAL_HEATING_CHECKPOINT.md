@@ -1,5 +1,10 @@
 # Native S6 — coal-heating source checkpoint
 
+Historical source/build checkpoint at5ac874f. The owner subsequently selected
+Java's full-cap coal consumption, and gameplay completion review CLEAR is
+recorded in `NATIVE_S6_COAL_HEATING_RESULTS.md`. The pending state below describes
+this earlier checkpoint, not the current accepted increment.
+
 Candidate only; heating gameplay and S6 remain OPEN. Branch
 `codex/native-s6-coal-heating`, base accepted/private-synced host refresh
 `792d7a7867b474935440d2129f705127539fa8bd`. Native/content `.7`, asset schema11,
