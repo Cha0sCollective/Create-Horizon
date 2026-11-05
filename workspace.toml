@@ -5,9 +5,9 @@ id = "create_horizon"
 namespace = "create"
 repository = "https://github.com/Cha0sCollective/Create-Horizon"
 visibility = "private"
-stage = "Native S1 playability complete"
-active_packet = "Native S1 complete under the adopted profile after independent source and checklist reviews: selected Java parity, integrated and dedicated/two-client normal play/reopen/removal pass. No further active packet; legacy dirty work remains frozen and old G1 unpassed"
-next_stage = "Bounded S2 reference verification and native kinetic reuse; not started or accepted"
+stage = "Native S1 through S5 complete; S6 feature families open"
+active_packet = "Reviewed dry Basin/Mixer reuse on tested host pins; see docs/design/NATIVE_S6_DRY_MIXING_PACKET.md and docs/CURRENT_WORK.md. No gameplay acceptance yet; old G1 remains historical and unpassed"
+next_stage = "Separate bounded heating assessment after dry mixing; no full fluids, general contraptions, upgrade or release implied"
 
 [specification]
 version = "0.1"

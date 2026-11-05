@@ -5,6 +5,22 @@ route. S6 is OPEN. The owner authorizes progress through S6 until the next
 requested break, genuine blocker, required input or scope boundary. Read
 `docs/design/STAGE_PROGRESSION_PLAN.md` and `NATIVE_PLAYABILITY_PLAN.md`.
 
+## Active dry-mixing packet
+
+Branch `codex/native-s6-basin-mixer` starts from accepted/private-synced `6defc66`.
+Fresh upstream236c87a8 and official main85d8e283 were read before work. The
+upstream Basin/Mixer/heating code is reusable, but full0.7 import is HOLD for
+host/type/schema/shared-behavior differences. Independent Sol High reuse and
+audit/packet review CLEAR for `docs/design/NATIVE_S6_BASIN_REUSE_AUDIT.md` and
+`NATIVE_S6_DRY_MIXING_PACKET.md`. Implementation is starting; no new gameplay
+profile is accepted. Retain tested host/Mixins pins. Only dry plain andesite +
+iron nugget -> alloy is admitted; heat/full fluids are subsequent decisions.
+Source/effects review is required before live use. Root alone writes/builds/runs.
+
+Next: narrow Basin/Mixer/codec/cache import, private entity-identity comparator,
+selected content and Mixer-only kinetic cases; then focused checks and review.
+Stop before a broad host/API/schema/lifecycle framework or changed acceptance.
+
 ## Accepted portable-interface packet
 
 Private branch `codex/native-s6-portable-interface`; reviewed source checkpoint
@@ -33,10 +49,9 @@ motion, insufficient319/320 initial fill, unqualified socket restart and camera
 attempts. The result distinguishes failed recipes from passed game observations.
 Do not rerun old drivers against newer sources or relabel their evidence.
 
-Next: privately sync this accepted result, then audit the next existing S6 family
-before proposing another bounded packet. Fresh upstream source at236c87a8 already
-contains bounded Basin/Mixer, heating and water/lava Basin handling; assess reuse
-before implementing those systems. No import/upgrade is decided by that read.
+Accepted result and source are privately synced at `6defc66`. Fresh upstream
+source at236c87a8 contains Basin/Mixer, heating and water/lava Basin handling;
+the bounded dry packet above selects reuse without a host upgrade.
 Ask before broad host/API/schema or general contraption architecture changes,
 changed acceptance outcomes, or other scope expansion. This packet does not
 complete S6, broad Create, the modpack, crafting progression or crash atomicity.
