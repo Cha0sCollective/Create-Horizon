@@ -29,7 +29,7 @@ pub(super) fn read(nbt: &Compound) -> Result<Tank, Unsupported> {
     if nbt.keys().any(|key| {
         !matches!(
             key.to_string_lossy().as_str(),
-            "Window" | "Size" | "Height" | "TankContent" | "Boiler" | "Luminosity"
+            "Window" | "Size" | "Height" | "TankContent" | "Boiler" | "Luminosity" | "components"
         )
     }) {
         return Err(Unsupported("unsupported tank controller or foreign field"));
@@ -52,6 +52,14 @@ pub(super) fn read(nbt: &Compound) -> Result<Tank, Unsupported> {
             .is_some_and(|tag| !matches!(tag, Tag::Int(0)))
     {
         return Err(Unsupported("unsupported tank boiler or luminosity"));
+    }
+    // A normally placed item supplies an empty native block-entity component
+    // envelope. Keep it, but never reinterpret a patched item as a plain tank.
+    if nbt
+        .get(&"components".into())
+        .is_some_and(|tag| !matches!(tag, Tag::Compound(c) if c.is_empty()))
+    {
+        return Err(Unsupported("unsupported block entity components"));
     }
     let Some(Tag::Compound(content)) = nbt.get(&"TankContent".into()) else {
         return Err(Unsupported("missing tank content"));
@@ -136,6 +144,44 @@ mod tests {
         let before = nbt.clone();
         assert!(set_amount(&mut nbt, 1_000).is_err());
         assert_eq!(nbt, before);
+    }
+
+    #[test]
+    fn ordinary_placed_item_envelope_keeps_empty_components_but_refuses_payloads() {
+        // Horizon's BlockItem.applyComponentsFromItemStack inserts this key
+        // even when the placed tank item carries no component patch.
+        let mut nbt = initial();
+        nbt.insert("components".into(), Tag::Compound(Compound::new()));
+        assert_eq!(read(&nbt).unwrap().amount, 0);
+        assert!(set_amount(&mut nbt, 1_000).unwrap());
+        assert!(toggle_window(&mut nbt).unwrap());
+        assert_eq!(
+            read(&nbt).unwrap(),
+            Tank {
+                amount: 1_000,
+                window: false
+            }
+        );
+        assert!(matches!(nbt.get(&"components".into()), Some(Tag::Compound(c)) if c.is_empty()));
+        assert!(set_amount(&mut nbt, 0).unwrap());
+        assert!(matches!(nbt.get(&"TankContent".into()), Some(Tag::Compound(c)) if c.is_empty()));
+        assert!(set_amount(&mut nbt, 1_000).unwrap());
+
+        nbt.insert(
+            "components".into(),
+            Tag::Compound(Compound::from([(
+                "minecraft:custom_name".into(),
+                Tag::String("foreign".into()),
+            )])),
+        );
+        let before = nbt.clone();
+        assert!(read(&nbt).is_err());
+        assert!(set_amount(&mut nbt, 2_000).is_err());
+        assert!(toggle_window(&mut nbt).is_err());
+        assert_eq!(nbt, before);
+
+        nbt.insert("components".into(), Tag::Byte(0));
+        assert!(read(&nbt).is_err());
     }
 
     #[test]
