@@ -8,7 +8,8 @@ dropped `create:andesite_alloy` while powered and returning exactly six
 ## Exact source and provenance
 
 - Lane: `codex/team-machinery`, base `1dd69f988b6c1c3edd9cc98289d4f724dd238183`,
-  head `5f557a7d7d73e87a01c7f5f8bf4a727a4134a78d`; worktree clean at handoff.
+  reviewed implementation head `5f557a7d7d73e87a01c7f5f8bf4a727a4134a78d`.
+  Later commits are documentation-only handoff and motor-fixture guidance.
 - Pinned private reference: Create 6.0.11 `7ff2760e4924d35d4bc2e22c4b19923f0178cd16`.
   The generated source recipe has one andesite alloy, six shafts and
   `processing_time: 200`; the saved processing layout, speed scaling and
