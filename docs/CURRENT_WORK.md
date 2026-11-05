@@ -5,43 +5,37 @@ route. S6 is OPEN. The owner authorizes progress through S6 until the next
 requested break, genuine blocker, required input or scope boundary. Read
 `docs/design/STAGE_PROGRESSION_PLAN.md` and `NATIVE_PLAYABILITY_PLAN.md`.
 
-## Active owner-approved host refresh
+## Accepted bounded host refresh; heating packet next
 
-The owner selected the bounded upstream host-refresh route. Candidate branch
-`codex/native-s6-heating-host-refresh` starts at preserved `b746b30`. Active packet
-`docs/design/NATIVE_S6_HOST_REFRESH_PACKET.md`; candidate `.6` pins exact
-Horizon9c7f9b22/Mixinse8cd0aa3 in a separate owned generated build directory.
-The original reference checkout, qualified `.5` branch/maps/binaries/worlds and
-warm caches remain. Initial delta is matching manifests/pins and removing the
-private identity shim now provided upstream. Fresh independent source/effects
-review CLEAR: save/identity/ownership paths retain the supported behavior; add one
-dropped-ingot Depot observation for the changed item-contact path. Actual Mixins
-plan/apply resolves45 injections/23 modules. Compatibility and final locked builds
-PASS, final game1ed0d734/ctl1c91ecdf. Four manifests agree on `.6`; only the
-embedded version entry changed,405 content-map entries unchanged. Preserve the
-first compile-only binary8462b697 and Windows/WSL clean-check preflight failure;
-the latter was resolved with per-command CRLF normalization, no source/global
-config edit. Raw packet `.local/native-s6-host-refresh-01`. Reviewed source
-checkpoint `d939036`; focused lint PASS34warnings and all six actual host/
-serializer tests PASS. Frozen map
-`e003ce71f02f50174bec94033a973cd45b73eb87474d6229c0f28e1bdc022291`,567 native
-files. No new gameplay or migration pass is claimed. First composition in isolated
-`s6-refresh-integrated-runs/integrated-p5bv96ne` passed dropped-ingot Depot catch/
-collection and dry input, but piston assembly refused the new host's ordinary
-`components:{}` metadata. It is FALSE for the composed gate; normal exit0, raw
-transcript, failed world and full chunk decode remain in packet01. No game runs.
+Owner-approved branch `codex/native-s6-heating-host-refresh`, reviewed repaired
+source `90f0c05079d2e2d07e1e3863bef9d359e6436b53`. Fresh independent read-only
+Sol High completion review CLEAR. Result
+`docs/reference/NATIVE_S6_HOST_REFRESH_RESULTS.md`; packet
+`docs/design/NATIVE_S6_HOST_REFRESH_PACKET.md`. Version `.6`, active exact host
+9c7f9b22/Mixinse8cd0aa3. Qualified `.5` branch/maps/binaries/worlds remain.
 
-Bounded repair is in `s5_piston.rs`: admit only absent/exact empty-compound block
-components at the four cargo/interface/restoration guards; retain nonempty,
-malformed and foreign refusal. No host/schema/global stripping. Independent
-read-only delta/effects review CLEAR; its actual checks now PASS. One new test
-uses the actual host placement/decoder and the capture/refusal predicates (its
-slot sizing is explicit test setup). All five affected tests, Clippy34warnings and
-locked build PASS under `.local/native-s6-host-refresh-02`; unchanged six host
-invariants are reused from01. Repaired game062d52ea/ctl1c91ecdf. No game runs yet.
-Next: freeze repaired inputs, composition in both modes and completion review.
-No playable data/launcher setting changed. Stop for
-an actual broader redesign or changed acceptance; no wholesale0.7 import.
+All45 injections/23 modules, four manifests, locked build, Clippy34warnings and
+five affected S5 tests PASS. Six unchanged actual host/serializer invariants are
+attributed to packet01. Private identity shim is replaced by upstream's method.
+Four S5 guards now admit only absent/exact empty-compound block components;
+nonempty/malformed/foreign refusal remains. No host/schema rewrite.
+
+Integrated and dedicated/two rendered clients pass the bounded retained mixing,
+Depot drop/catch/collection, piston/portable transfer/restoration and normal cold
+reopen composition. Dedicated saved Phase1/Offset0.15234375 and one canonical
+ingot; integrated saved a settled Depot ingot and stopped recipe pair. Reopened
+carriers naturally settled before observation; no frozen-connection claim. Both
+modes explicitly reset two empty geometry fixtures before the final same-ingot
+transfer. Final actor alloy1/ingot1, peer/containers/owners empty. All eight
+qualification exits0; no game running. Initial packet01 live refusal remains
+FALSE with its exit0/world/decode and pre-fix map/binary preserved.
+
+Raw `.local/native-s6-host-refresh-02`, native-read `evidence-complete/`;
+map e379cea5bb2e5940fcf98de594e98c107946784d1ddd76e67969fe96980bf676,
+game062d52ea/ctl1c91ecdf,567 unchanged frozen native files. Next: separate bounded
+upstream coal/heated-brass packet on these pins. No heating/full-fluid acceptance,
+wholesale0.7 import, public publishing, cleanup or playable/launcher edit follows.
+Stop for broader redesign, changed acceptance, genuine blocker or required input.
 
 ## Accepted dry-mixing increment; heating assessment next
 
@@ -131,7 +125,8 @@ Earlier S6 families: pressing `f6e3d74`/`NATIVE_S6_PRESSING_RESULTS.md`, mounted
 depot `a77af67`/`NATIVE_S6_MOUNTED_DEPOT_RESULTS.md`. These checkpoints are
 privately synced; their exact claims/failed attempts remain in their results.
 
-Pins: port16c5d454, official Horizonfc021038, Mixinsa1e13326, native API359,
+Initial-family baseline pins: port16c5d454, Horizonfc021038, Mixinsa1e13326; current
+accepted refresh uses9c7f9b22/e8cd0aa3 as above. Both native API359,
 Rust1.99.1, Minecraft26.3. Java reference6.0.11/7ff2760e/NeoForge21.1.219;
 base/local art6.0.10 with selected differences explicitly qualified. IDs are
 `create:`. `native/create/` has its own Cargo workspace; root Cargo and old

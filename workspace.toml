@@ -6,8 +6,8 @@ namespace = "create"
 repository = "https://github.com/Cha0sCollective/Create-Horizon"
 visibility = "private"
 stage = "Native S1 through S5 complete; S6 feature families open"
-active_packet = "Owner-approved bounded host refresh for heating reuse; candidate pins are unqualified until docs/design/NATIVE_S6_HOST_REFRESH_PACKET.md passes. Dry mixing remains accepted on the preserved baseline; old G1 remains historical and unpassed"
-next_stage = "Qualify retained behavior on the exact candidate host pair, then scope coal/heated brass; no full fluids, general contraptions or release implied"
+active_packet = "Bounded host refresh accepted; see docs/reference/NATIVE_S6_HOST_REFRESH_RESULTS.md. Next scoped coal/heated-brass reuse; old G1 remains historical and unpassed"
+next_stage = "Reuse existing upstream coal/burner/heated-brass code in a separate bounded packet; no full fluids, general contraptions or release implied"
 
 [specification]
 version = "0.1"
@@ -159,7 +159,7 @@ runtime_namespace = "create"
 resource_create_version = "6.0.10"
 resource_jar_sha256 = "ef87fe5709f1ba1f5b8bb20a2925b5afb4669e178fd6d8bf10c167759eefe37a"
 plan = "docs/design/NATIVE_PLAYABILITY_PLAN.md"
-status = "Native S1-S5 complete and selected S6 families accepted on baseline fc021038; 9c7f9b22/e8cd0aa3 refresh is a candidate requiring focused qualification"
+status = "Native S1-S5 and selected S6 families accepted on baseline fc021038; bounded retained composition accepted on 9c7f9b22/e8cd0aa3 with separately attributed baseline evidence"
 
 [legacy_host]
 horizon_revision = "cf62fe270b243780f9aa86c49b456d9dd9078b42"
