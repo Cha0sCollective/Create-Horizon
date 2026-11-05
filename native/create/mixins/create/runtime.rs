@@ -133,6 +133,7 @@ pub(super) fn owns(block: &str) -> bool {
             | "create:basin"
             | "create:blaze_burner"
             | "create:mechanical_mixer"
+            | "create:belt"
     )
 }
 
@@ -176,6 +177,9 @@ pub(super) fn inventory_supported(entity: &ModBlockEntity) -> bool {
         || horizon_client::save::create_basin_inventory_codec::supported(entity)
 }
 pub(super) fn inventory_blocked(game: &Game<'_>, pos: [i32; 3]) -> bool {
+    if super::create_port_belt::inventory_blocked(game, pos) {
+        return true;
+    }
     matches!(game.world.block_entities.get(&(pos[0],pos[1],pos[2])), Some(BlockEntity::Mod(entity)) if !inventory_supported(entity))
 }
 pub(super) fn stack_maximum_override(stack: &ItemStack) -> Option<u32> {
@@ -387,6 +391,11 @@ pub(super) fn depot_reacts(game: &Game<'_>, pos: [i32; 3], face: [i32; 3]) -> bo
 }
 
 pub(super) fn right_click(game: &mut Game<'_>, pos: [i32; 3], face: [i32; 3], canceled: &mut bool) {
+    if super::create_port_belt::right_click(game, pos, face) {
+        *canceled = true;
+        game.swing_arm();
+        return;
+    }
     if super::create_port_burner::right_click(game, pos) {
         *canceled = true;
         game.swing_arm();
@@ -444,8 +453,14 @@ pub(super) fn right_click(game: &mut Game<'_>, pos: [i32; 3], face: [i32; 3], ca
     if put {
         crate::game::create_port_sounds::depot(game, pos);
         let incoming = game.held_mut().take();
+        let record = incoming
+            .as_ref()
+            .map(|stack| super::create_port_belt::depot_item(game, stack, 0.25, Direction::Up));
         game.native_with_mod_block_entity(pos, |e| {
             e.items[0] = incoming;
+            if let Some(record) = record {
+                e.nbt.insert("HeldItem".into(), record);
+            }
         });
     }
     game.native_with_mod_block_entity(pos, |e| {
@@ -574,7 +589,28 @@ pub(super) fn node(game: &Game<'_>, pos: [i32; 3]) -> Option<Node> {
     ) {
         axis = Axis::Y;
     }
+    if block == "create:belt" {
+        axis = if game.native_block_property(pos, "slope").as_deref() == Some("sideways") {
+            Axis::Y
+        } else if direction[0] != 0 {
+            Axis::Z
+        } else {
+            Axis::X
+        };
+    }
     let kind = match block.as_str() {
+        "create:belt" => {
+            let (controller, index) = super::create_port_belt::node_data(game, pos)?;
+            Kind::Belt {
+                controller,
+                index,
+                pulley: game.native_block_property(pos, "part").as_deref() != Some("middle"),
+                diagonal: matches!(
+                    game.native_block_property(pos, "slope").as_deref(),
+                    Some("upward" | "downward")
+                ),
+            }
+        }
         "create:millstone" => Kind::Millstone,
         "create:mechanical_mixer" => Kind::Mixer,
         "create:mechanical_piston" => Kind::MechanicalPiston,
@@ -729,6 +765,9 @@ pub(super) fn tick(game: &mut Game<'_>, pos: [i32; 3], entity: &mut ModBlockEnti
         super::create_port_burner::tick(game, pos, entity);
         return;
     }
+    if block == "create:belt" && !super::create_port_belt::prepare(game, pos, entity) {
+        return;
+    }
     if block == "create:basin" {
         if crate::game::create_port_basin::tick(game, pos, entity) {
             game.native_block_entity_sync(pos);
@@ -737,7 +776,8 @@ pub(super) fn tick(game: &mut Game<'_>, pos: [i32; 3], entity: &mut ModBlockEnti
     }
     if block == "create:depot" {
         crate::game::create_port_world_items::catch(game, pos, entity);
-        if depot_data(entity) {
+        let changed = depot_data(entity);
+        if slide_depot(game, pos, entity) || changed {
             game.native_block_entity_sync(pos);
         }
         return;
@@ -851,7 +891,9 @@ pub(super) fn tick(game: &mut Game<'_>, pos: [i32; 3], entity: &mut ModBlockEnti
         "NetworkStatus".into(),
         Tag::String(format!("{:?}", network.status).as_str().into()),
     );
-    let mut sync = old_rpm != rpm
+    let belt_changed = super::create_port_belt::tick(game, pos, entity, rpm);
+    let mut sync = belt_changed
+        || old_rpm != rpm
         || old_capacity != network.capacity
         || old_stress != network.stress
         || old_status.as_ref() != entity.nbt.get(&"NetworkStatus".into())
@@ -1056,6 +1098,7 @@ pub(super) fn container(block: &str, container: &mut Option<ModContainer>) {
 
 pub(super) fn models(models: &mut Vec<String>) {
     crate::game::create_port_mixer::models(models);
+    super::create_port_belt::models(models);
     models.push("create:block/port_hint".into());
     for part in create_assets::WHEEL_PARTS {
         for wood in create_assets::WOODS {
@@ -1126,6 +1169,9 @@ pub(super) fn draw(
     }
     if block == "create:blaze_burner" {
         super::create_port_burner_presentation::draw(game, pos, _state, entity, draw);
+        return;
+    }
+    if super::create_port_belt::draw(game, pos, entity, draw) {
         return;
     }
     if crate::game::create_port_basin::draw(game, pos, entity, draw)
@@ -1330,4 +1376,33 @@ pub(super) fn draw(
     };
     game.native_draw_model(draw, model, 0xFFFFFF);
     draw.pop();
+}
+
+fn depot_field(fields: &mut Compound, key: &str, value: Tag) -> bool {
+    if fields.get(&key.into()) == Some(&value) {
+        false
+    } else {
+        fields.insert(key.into(), value);
+        true
+    }
+}
+fn slide_depot(game: &mut Game<'_>, pos: [i32; 3], entity: &mut ModBlockEntity) -> bool {
+    let Some(stack) = entity.items.first().and_then(Option::as_ref) else {
+        return false;
+    };
+    let upright = super::create_port_belt::upright(game, stack);
+    let Some(tag) = entity.nbt.get_mut(&"HeldItem".into()) else {
+        return false;
+    };
+    let Tag::Compound(held) = tag else {
+        return false;
+    };
+    let old = number(held, "Pos");
+    let side = number(held, "Offset");
+    let (next, angle, _ready) = create_engine::depot::slide(old, integer(held, "Angle"), upright);
+    let changed = depot_field(held, "PrevPos", Tag::Float(old.to_bits()))
+        | depot_field(held, "Pos", Tag::Float(next.to_bits()))
+        | depot_field(held, "PrevOffset", Tag::Float(side.to_bits()))
+        | depot_field(held, "Angle", Tag::Int(angle));
+    changed
 }

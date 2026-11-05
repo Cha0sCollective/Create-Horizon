@@ -236,12 +236,28 @@ fn stack(game: &Game<'_>, draw: &mut BlockEntityDraw, item: &ItemStack, angle: f
 pub(super) fn depot(game: &Game<'_>, _: Pos, entity: &ModBlockEntity, draw: &mut BlockEntityDraw) {
     draw.push();
     draw.translate([0.5, 15.0 / 16.0, 0.5]);
-    if let Some(Tag::Compound(held)) = entity.nbt.get(&"HeldItem".into()) {
-        if let Some(item) = saved_stack(held) {
-            draw.push();
-            stack(game, draw, &item, integer(held, "Angle") as f32);
-            draw.pop();
+    if let Some(Tag::Compound(held)) = entity.nbt.get(&"HeldItem".into())
+        && let Some(item) = saved_stack(held)
+    {
+        draw.push();
+        let from = Direction::ALL[integer(held, "InDirection").rem_euclid(6) as usize];
+        if from.axis() != Axis::Y {
+            let offset = number(held, "PrevPos");
+            let offset = offset + (number(held, "Pos") - offset) * draw.partial;
+            let side = number(held, "PrevOffset");
+            let side = side + (number(held, "Offset") - side) * draw.partial;
+            let direction = from.opposite().vector();
+            let toward_centre = 0.5 - offset;
+            draw.translate([
+                direction[0] as f32 * toward_centre
+                    + if from.axis() == Axis::Z { side } else { 0.0 },
+                0.0,
+                direction[2] as f32 * toward_centre
+                    - if from.axis() == Axis::X { side } else { 0.0 },
+            ]);
         }
+        stack(game, draw, &item, integer(held, "Angle") as f32);
+        draw.pop();
     }
     if let Some(Tag::List(items)) = entity
         .nbt

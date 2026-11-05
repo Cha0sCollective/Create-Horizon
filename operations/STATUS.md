@@ -4,17 +4,17 @@ Operations/integration: primary chat01a1747a-eb1f-7183-b3f6-63f0ccc37f13.
 Six owner-requested chats have started in clean isolated lanes. Actual IDs and state are
 in team-registry.json; measured reports live locally under `.local/team-operations`.
 
-Accepted native baseline: water02d029f3 (`.8`). Held Transport baseline:
-checkpoint2adc50a9/native43cef7dd (`.9`), stale dedicated peer Depot gold after
-hopper extraction. All nine test processes exited normally; completion remains
-HOLD. Other teams begin from accepted capability. No game is currently running.
+Accepted primary native baseline now includes water02d029f3 and bounded bare
+horizontal belt plus Depot peer repair0df826c/handoff214c1d4 (`.9`). Historical
+checkpoint2adc50a9/native43cef7dd HOLD and its failing image remain unchanged.
+Independent integration review CLEAR supports composed acceptance; see the new
+NATIVE_S6_BELT_TRANSPORT_RESULTS. Other team native candidates remain isolated.
 
-Heavy build/runtime resource: reserved exclusively for `transport-001`, conditional
-on source review CLEAR and frozen inputs before gameplay. Scope is affected
-compile/lint and a dedicated peer occupied-to-empty hopper/manual regression.
-Reuse installed tool/dependency caches under the lease; use a new owned stage and
-new maps/drivers/worlds. No historical battery replay. Other discovery proceeds
-without the reservation. Transport must return it after normal exits or a blocker.
+Heavy build/runtime resource: Transport returned its slot after3 normal exits0.
+Machinery now has the exclusive `machinery-001` reservation for bounded fan washing
+integrated/dedicated/cold reopen, reusing unchanged verified accepted binaries
+when possible. Use new lane maps/drivers and Linux-local sockets. Other teams may
+implement and review source but cannot build or run games without a root grant.
 
 | Team | First packet | Initial lane head |
 | --- | --- | --- |

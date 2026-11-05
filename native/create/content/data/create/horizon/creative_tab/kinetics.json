@@ -31,6 +31,7 @@
     "create:portable_storage_interface",
     "create:basin",
     "create:mechanical_mixer",
+    "create:blaze_burner",
     "create:iron_sheet",
     "create:golden_sheet",
     "create:copper_sheet",
@@ -46,7 +47,7 @@
     "create:propeller",
     "create:wheat_flour",
     "create:dough",
-    "create:blaze_burner",
-    "create:empty_blaze_burner"
+    "create:empty_blaze_burner",
+    "create:belt_connector"
   ]
 }

@@ -33,6 +33,14 @@ pub enum Kind {
         capacity: f32,
     },
     Shaft,
+    /// BeltBlockEntity propagates unchanged RPM between segments sharing a
+    /// controller. Only pulley segments expose the ordinary shaft axis.
+    Belt {
+        controller: Pos,
+        index: i32,
+        pulley: bool,
+        diagonal: bool,
+    },
     Cog {
         large: bool,
     },
@@ -69,6 +77,7 @@ impl Node {
             Kind::Consumer { facing, .. } => delta == facing,
             Kind::Millstone => delta == [0, -1, 0],
             Kind::Mixer => false,
+            Kind::Belt { pulley: false, .. } => false,
             Kind::Gearbox => delta[self.axis.index()] == 0,
             _ => delta[self.axis.index()].abs() == 1,
         }
@@ -119,6 +128,21 @@ pub fn ratio(from: Node, to: Node) -> Option<f32> {
     let distance: i32 = delta.iter().map(|n| n.abs()).sum();
     if distance == 1 && from.shaft_port(delta) && to.shaft_port(delta.map(|v| -v)) {
         return Some(from.port_modifier(delta) / to.port_modifier(delta.map(|v| -v)));
+    }
+    // BeltBlockEntity.propagateRotationTo: custom, non-axis links carry 1:1
+    // rotation, including sloped neighbors. There is no slope sign inversion.
+    if let (
+        Kind::Belt {
+            controller: a,
+            diagonal,
+            ..
+        },
+        Kind::Belt { controller: b, .. },
+    ) = (from.kind, to.kind)
+        && a == b
+        && (distance == 1 || diagonal && distance == 2)
+    {
+        return Some(1.0);
     }
     if from.kind == (Kind::Cog { large: true })
         && to.kind == (Kind::Cog { large: true })
@@ -737,5 +761,65 @@ mod imported_mixer_connection {
         };
         assert_eq!(ratio(large, mixer), Some(-2.0));
         assert_eq!(ratio(mixer, large), Some(-0.5));
+    }
+}
+
+#[cfg(test)]
+mod belt_tests {
+    use super::*;
+    #[test]
+    fn sloped_controller_chain_carries_rpm_without_inversion_and_only_pulleys_have_ports() {
+        for (axis, chain_step, motor_offset) in [
+            (Axis::X, [0, 0, 1], [1, 0, 0]),
+            (Axis::X, [0, 1, 1], [1, 0, 0]),
+            (Axis::X, [0, -1, 1], [1, 0, 0]),
+            (Axis::Z, [1, 1, 0], [0, 0, 1]),
+            (Axis::Z, [1, -1, 0], [0, 0, 1]),
+            (Axis::Y, [1, 0, 0], [0, 1, 0]),
+            (Axis::X, [0, 1, 0], [1, 0, 0]),
+        ] {
+            let controller = [0; 3];
+            let belt = |index, pulley| Node {
+                pos: chain_step.map(|v| v * index),
+                axis,
+                kind: Kind::Belt {
+                    controller,
+                    index,
+                    pulley,
+                    diagonal: chain_step[1] != 0,
+                },
+            };
+            let first = belt(0, true);
+            let middle = belt(1, false);
+            let end = belt(2, true);
+            assert!(first.shaft_port(motor_offset));
+            assert!(!middle.shaft_port(motor_offset));
+            assert_eq!(ratio(first, middle), Some(1.0));
+            assert_eq!(ratio(middle, end), Some(1.0));
+            let motor = Node {
+                pos: motor_offset,
+                axis,
+                kind: Kind::Motor {
+                    facing: motor_offset.map(|v| -v),
+                    rpm: -128.0,
+                    capacity: 16.0,
+                },
+            };
+            let nodes = [first, middle, end, motor];
+            let network = solve(first, |p| nodes.iter().find(|n| n.pos == p).copied());
+            for node in [first, middle, end] {
+                assert_eq!(network.speed(node.pos), -128.0);
+            }
+            let stranger = Node {
+                kind: Kind::Belt {
+                    controller: [10; 3],
+                    index: 1,
+                    pulley: false,
+                    diagonal: true,
+                },
+                ..middle
+            };
+            assert_eq!(ratio(first, stranger), None);
+        }
     }
 }

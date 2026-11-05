@@ -48,6 +48,7 @@ pub const ITEMS: &[&str] = &[
     "wheat_flour",
     "dough",
     "empty_blaze_burner",
+    "belt_connector",
 ];
 pub const PARTS: &[&str] = &[
     "shaft",
@@ -87,4 +88,15 @@ pub const PARTS: &[&str] = &[
     "blaze_burner/rods_small",
     "blaze_burner/rods_large",
     "blaze_burner/flame",
+    "belt_pulley",
+    "belt/particle",
+    "belt/start",
+    "belt/middle",
+    "belt/end",
+    "belt/start_bottom",
+    "belt/middle_bottom",
+    "belt/end_bottom",
+    "belt/diagonal_start",
+    "belt/diagonal_middle",
+    "belt/diagonal_end",
 ];

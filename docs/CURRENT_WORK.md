@@ -7,7 +7,8 @@ requested break, genuine blocker, required input or scope boundary. Read
 
 ## Operations and team activation — November 5
 
-Primary branch `codex/create-team-operations` retains accepted water02d029f3.
+Primary branch `codex/create-team-operations` composes the accepted water baseline
+with bounded bare-belt/Depot repair; the other team worktrees remain isolated.
 Owner-requested six team chats and isolated lanes are launched under reviewed
 `orchestration/PROJECT_TEAMS.md`; actual IDs/branches/bases are in
 `operations/team-registry.json`, current assignments in `operations/STATUS.md`.
@@ -15,12 +16,10 @@ Operations owns integration, remote pushes, host pins and one heavy build/runtim
 reservation. Per-team actual token counters and phase intervals are collected
 locally; unknown counters remain unknown. No raw transcripts enter Git.
 
-Transport alone starts from held checkpoint2adc50a9/native43cef7dd (`.9`), plus
-operations adoption. Its final dedicated peer still draws Depot gold after hopper
-extraction despite correct authoritative/save counts. First writable packet is
-the narrow replica repair and focused requalification. Belt is not accepted.
-Transport returned reviewed repair214c1d4 and its heavy lease; root is reviewing
-the original belt evidence plus narrow eventual peer-clear repair before acceptance.
+Transport's historical held checkpoint2adc50a9/native43cef7dd (`.9`) is preserved.
+Repair0df826c/handoff214c1d4 closes the stale Depot peer component. Fresh independent
+Sol High integration review CLEAR supports bounded bare-belt acceptance by composed
+evidence; see `docs/reference/NATIVE_S6_BELT_TRANSPORT_RESULTS.md`. No fullS6 claim.
 Machinery now owns the sole lease for its fan/water-catalyst/Depot flour-to-dough
 packet, using unchanged compatible binaries when verifiable. Other teams have
 bounded isolated allocations: active millstone audio, straight stationary track,

@@ -38,7 +38,14 @@ pub(super) fn catch(game: &mut Game<'_>, pos: [i32; 3], entity: &mut ModBlockEnt
         let mut rest = dropped.stack;
         rest.count -= accepted.count;
         if game.native_set_item_entity(&dim, dropped.id, rest) {
+            let record = super::create_port_belt::depot_item(
+                game,
+                &accepted,
+                0.5,
+                create_engine::placement::Direction::Down,
+            );
             entity.items[0] = Some(accepted);
+            entity.nbt.insert("HeldItem".into(), record);
             crate::game::create_port_sounds::land(game, pos);
             break;
         }

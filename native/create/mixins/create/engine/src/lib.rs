@@ -45,3 +45,6 @@ pub mod burner;
 pub mod burner_visual;
 #[path = "core/particles.rs"]
 pub mod particles;
+
+#[path = "core/transport.rs"]
+pub mod transport;

@@ -1,6 +1,6 @@
 [mod]
 id = "create"
-version = "0.5.0-ch4os.8"
+version = "0.5.0-ch4os.9"
 
 [compatibility]
 horizon_revision = "9c7f9b2215dfed497aba5522c44f38926628648d"
@@ -661,6 +661,9 @@ hook_version = 1
 kind = "HEAD"
 helper = "render_bounds.rs"
 bindings = [
+ {name="game",ty="&crate::game::Game<'_>",value="self"},
+ {name="pos",ty="[i32;3]",value="pos"},
+ {name="entity",ty="&crate::containers::ModBlockEntity",value="entity"},
  {name="block",ty="&str",value="block"},
  {name="bounds",ty="&mut [f32;6]",value="&mut *bounds"},
 ]
@@ -915,3 +918,17 @@ bindings = [
  {name="action",ty="crate::mod_api::NativeFluidAction",value="action"},
  {name="out",ty="&mut Option<crate::mod_api::NativeFluidStack>",value="&mut *out"},
 ]
+
+[[module]]
+id="belt"
+file="crates/horizon-client/src/game.rs"
+name="create_port_belt"
+source="belt.rs"
+
+[[injection]]
+id="belt-component-types"
+hook="component_types"
+hook_version=1
+kind="HEAD"
+helper="belt_components.rs"
+bindings=[{name="types",ty="&mut Vec<String>",value="&mut *types"}]

@@ -255,3 +255,13 @@ pub(super) fn network(game: &Game<'_>, start: Node, half: u8) -> Rc<Network> {
         network
     })
 }
+
+// Compatible with the accepted five-type diagnostics and conservative mixed solver.
+pub(super) fn theoretical(entity: &crate::containers::ModBlockEntity) -> f32 {
+    if let Some(Tag::Compound(fields)) = entity.nbt.get(&"create_horizon:kinetic".into()) {
+        if fields.contains_key(&"TheoreticalSpeed".into()) {
+            return super::create_port::number(fields, "TheoreticalSpeed");
+        }
+    }
+    super::create_port::number(&entity.nbt, "Speed")
+}

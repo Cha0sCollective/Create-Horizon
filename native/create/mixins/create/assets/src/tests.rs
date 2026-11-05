@@ -48,6 +48,8 @@ fn fixture(change: impl FnOnce(&mut BTreeMap<String, Vec<u8>>)) -> Vec<u8> {
     for name in [
         "blaze_burner_flame_scroll",
         "blaze_burner_flame_superheated_scroll",
+        "belt_scroll",
+        "belt_diagonal_scroll",
     ] {
         files.insert(
             format!("assets/create/textures/block/{name}.png"),
@@ -437,6 +439,8 @@ fn imports_dependencies_metadata_and_notice_without_code_or_unused_assets() {
         "assets/create/models/block/shared.json",
         "assets/create/textures/block/test.png",
         "assets/create/textures/block/test.png.mcmeta",
+        "assets/create/textures/block/belt_scroll.png",
+        "assets/create/textures/block/belt_diagonal_scroll.png",
         "assets/create/sounds.json",
         "assets/create/sounds/fixture.ogg",
         "CREATE-LICENSE.md",
