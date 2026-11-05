@@ -9,6 +9,28 @@ fn fixture(change: impl FnOnce(&mut BTreeMap<String, Vec<u8>>)) -> Vec<u8> {
         files.insert(name, serde_json::to_vec(&value).unwrap());
     };
     for block in BLOCKS.iter().copied().chain(["mechanical_piston_head"]) {
+        if block == "track" {
+            let mut variants = serde_json::Map::new();
+            for shape in ["xo", "zo"] {
+                for turn in ["false", "true"] {
+                    for water in ["false", "true"] {
+                        variants.insert(
+                            format!("shape={shape},turn={turn},waterlogged={water}"),
+                            json!({"model":format!("create:block/track/{}_ortho", &shape[..1])}),
+                        );
+                    }
+                }
+            }
+            variants.insert(
+                "shape=ae,turn=false,waterlogged=false".into(),
+                json!({"model":"create:block/track/ascending"}),
+            );
+            json_file(
+                "assets/create/blockstates/track.json".into(),
+                json!({"variants":variants}),
+            );
+            continue;
+        }
         json_file(
             format!("assets/create/blockstates/{block}.json"),
             json!({"variants": {"": {"model": "create:block/shared"}}}),
@@ -33,6 +55,12 @@ fn fixture(change: impl FnOnce(&mut BTreeMap<String, Vec<u8>>)) -> Vec<u8> {
             "elements": [{"from": [0, 0, 0], "to": [16, 16, 16], "faces": {"north": {"texture": "#all"}}}]
         }),
     );
+    for axis in ["x", "z"] {
+        json_file(
+            format!("assets/create/models/block/track/{axis}_ortho.json"),
+            json!({"parent":"create:block/shared"}),
+        );
+    }
     json_file(
         "assets/create/lang/en_us.json".into(),
         json!({"block.create.shaft":"Fixture Shaft"}),
@@ -124,6 +152,34 @@ fn imports_every_locale_byte_for_byte() {
             .unwrap();
         assert_eq!(files[&path], expected);
     }
+}
+
+#[test]
+fn track_import_keeps_only_straight_models_and_refuses_missing_source_state() {
+    let files = collect(fixture(|_| {})).unwrap();
+    let track: Value =
+        serde_json::from_slice(&files["assets/create/blockstates/track.json"]).unwrap();
+    let variants = track["variants"].as_object().unwrap();
+    assert_eq!(variants.len(), 8);
+    assert!(
+        variants
+            .keys()
+            .all(|name| name.starts_with("shape=xo,") || name.starts_with("shape=zo,"))
+    );
+    assert!(files.contains_key("assets/create/models/block/track/x_ortho.json"));
+    assert!(files.contains_key("assets/create/models/block/track/z_ortho.json"));
+    assert!(!files.contains_key("assets/create/models/block/track/ascending.json"));
+
+    let missing = fixture(|files| {
+        let path = "assets/create/blockstates/track.json";
+        let mut state: Value = serde_json::from_slice(&files[path]).unwrap();
+        state["variants"]
+            .as_object_mut()
+            .unwrap()
+            .remove("shape=zo,turn=false,waterlogged=false");
+        files.insert(path.into(), serde_json::to_vec(&state).unwrap());
+    });
+    assert!(collect(missing).is_err());
 }
 
 #[test]

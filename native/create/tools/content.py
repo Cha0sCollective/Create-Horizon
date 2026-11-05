@@ -125,6 +125,47 @@ def portable_interface_content():
         path.write_text(json.dumps(lang, ensure_ascii=False, indent=2) + "\n")
 
 
+def straight_track_content():
+    # Selected stationary Create TrackBlock state. Graphs, curves, turns and
+    # water placement are not implemented. Original art is JAR-only.
+    write("data/create/horizon/block/track.json", {
+        "template": "minecraft:glass", "item": True,
+        "properties": {"hardness": 0.8, "explosion_resistance": 0.8,
+                       "requires_tool": True, "render_shape": "MODEL",
+                       "sounds": "minecraft:iron_block"},
+        "state_properties": {
+            "shape": {"type": "enum", "values": ["xo", "zo"]},
+            "turn": {"type": "boolean"},
+            "waterlogged": {"type": "boolean"},
+        },
+        "default_state": {"shape": "zo", "turn": "false", "waterlogged": "false"},
+        # Source collision is a flat 16x2x16 plate. The provisional outline
+        # remains inside one cell; source selection extends into neighbors.
+        "shapes": {"default": [[0, 0, 0, 1, 0.125, 1]]},
+        "collision_shapes": {"default": [[0, 0, 0, 1, 0.125, 1]]},
+    })
+    model("track/x_ortho", [([0, 0, 2], [16, 2, 4]),
+                            ([0, 0, 12], [16, 2, 14])], "minecraft:block/iron_block")
+    model("track/z_ortho", [([2, 0, 0], [4, 2, 16]),
+                            ([12, 0, 0], [14, 2, 16])], "minecraft:block/iron_block")
+    write("assets/create/blockstates/track.json", {"variants": {
+        f"shape={shape},turn={turn},waterlogged={water}": {
+            "model": f"create:block/track/{'x' if shape == 'xo' else 'z'}_ortho"
+        }
+        for shape in ("xo", "zo") for turn in ("false", "true")
+        for water in ("false", "true")
+    }})
+    write("assets/create/models/item/track.json", {
+        "parent": "minecraft:item/generated",
+        "textures": {"layer0": "minecraft:item/iron_nugget"},
+    })
+    write("assets/create/items/track.json", {"model": {
+        "type": "minecraft:model", "model": "create:item/track"}})
+    write("data/create/loot_table/blocks/track.json", {
+        "type": "minecraft:block", "pools": [{"rolls": 1, "entries": [
+            {"type": "minecraft:item", "name": "create:track"}]}]})
+
+
 def dry_mixing_content():
     # MIT declarations adapted from upstream236c87a8. Contextual shapes/contact
     # are intentionally absent on the pinned host; this profile is hopper-fed.
@@ -293,7 +334,7 @@ def foundation():
     for path, value in reference["tags"].items(): write("data/" + path, value)
     write("data/create/horizon/creative_tab/kinetics.json", {"title": "itemGroup.create.base", "icon": "create:cogwheel", "items": ["create:" + name for name in all_blocks + ITEMS]})
     # These fallback labels are ours; the JAR replaces them with all upstream locales.
-    extra_blocks = {"gearbox":"Gearbox","clutch":"Clutch","gearshift":"Gearshift","hand_crank":"Hand Crank","andesite_encased_shaft":"Andesite Encased Shaft","brass_encased_shaft":"Brass Encased Shaft","andesite_casing":"Andesite Casing","brass_casing":"Brass Casing","andesite_alloy_block":"Block of Andesite Alloy","brass_block":"Block of Brass","zinc_block":"Block of Zinc","speedometer":"Speedometer","stressometer":"Stressometer","water_wheel":"Water Wheel","large_water_wheel":"Large Water Wheel","millstone":"Millstone","encased_fan":"Encased Fan","mechanical_drill":"Mechanical Drill","mechanical_piston":"Mechanical Piston","piston_extension_pole":"Piston Extension Pole","mechanical_piston_head":"Mechanical Piston Head"}
+    extra_blocks = {"gearbox":"Gearbox","clutch":"Clutch","gearshift":"Gearshift","hand_crank":"Hand Crank","andesite_encased_shaft":"Andesite Encased Shaft","brass_encased_shaft":"Brass Encased Shaft","andesite_casing":"Andesite Casing","brass_casing":"Brass Casing","andesite_alloy_block":"Block of Andesite Alloy","brass_block":"Block of Brass","zinc_block":"Block of Zinc","speedometer":"Speedometer","stressometer":"Stressometer","water_wheel":"Water Wheel","large_water_wheel":"Large Water Wheel","millstone":"Millstone","encased_fan":"Encased Fan","mechanical_drill":"Mechanical Drill","mechanical_piston":"Mechanical Piston","piston_extension_pole":"Piston Extension Pole","mechanical_piston_head":"Mechanical Piston Head","track":"Train Track"}
     extra_items = {"andesite_alloy":"Andesite Alloy","brass_ingot":"Brass Ingot","brass_nugget":"Brass Nugget","zinc_ingot":"Zinc Ingot","zinc_nugget":"Zinc Nugget","wrench":"Wrench","brass_sheet":"Brass Sheet","vertical_gearbox":"Vertical Gearbox","goggles":"Engineer’s Goggles","propeller":"Propeller","wheat_flour":"Wheat Flour","dough":"Dough"}
     for locale in ["en_us","ru_ru"]:
         path=CONTENT / ("assets/create/lang/"+locale+".json")
@@ -478,6 +519,7 @@ capabilities = ["registries"]
     coal_heating_content()
     belt_content()
     fluid_tank_content()
+    straight_track_content()
     write("data/create/recipe/mixing/dough_by_mixing.json", {'type': 'create:mixing', 'ingredients': ['#c:flours/wheat', {'type': 'neoforge:single', 'amount': 1000, 'fluid': 'minecraft:water'}], 'results': [{'id': 'create:dough'}]})
     # Source installs carry only the native bundle. Its documented data folder
     # therefore contains the complete public content, with no player-side Python.

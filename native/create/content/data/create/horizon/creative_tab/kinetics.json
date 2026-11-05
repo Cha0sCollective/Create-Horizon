@@ -32,6 +32,7 @@
     "create:basin",
     "create:mechanical_mixer",
     "create:fluid_tank",
+    "create:track",
     "create:blaze_burner",
     "create:iron_sheet",
     "create:golden_sheet",
