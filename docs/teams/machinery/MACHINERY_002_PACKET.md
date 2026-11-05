@@ -67,6 +67,10 @@ milestone should show ordinary input, exact six-shaft output and collection,
 unsupported return, mid-cut stop and normal cold reopen, actual peer-visible
 blade/input/product/empty state and normal exits. Preserve raw failures and
 separate server authority from client appearance.
+An existing motor may be a labelled power fixture: verify its actual source,
+network and saw RPM, then reuse accepted motor GUI/control evidence. Use
+ordinary interactions for the new saw behavior; do not write saw Speed, input
+or progress fields to manufacture a processing pass.
 
 Stop for a host/API or global-schema gap, broader machine framework,
 changed acceptance, or another team's shared contract. No tree felling,

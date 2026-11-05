@@ -68,5 +68,11 @@ uses grounded-item top-contact polling, so this packet claims an item landing
 while already powered; it does not claim Java fall-callback equivalence for a
 previously resting item.
 
+The accepted motor GUI and power controls may be reused as a labelled fixture.
+Verify actual motor source, network and saw RPM; a new camera/GUI battery for
+that unchanged control is unnecessary. Use ordinary interactions for new saw
+behavior, and do not write saw Speed, input or progress fields to manufacture
+processing evidence.
+
 Phase intervals are tracked in the local team-operations ledger. Token usage
 is not recorded in a verified local counter and remains unknown.
