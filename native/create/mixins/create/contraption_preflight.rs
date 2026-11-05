@@ -1,8 +1,8 @@
 // Copyright (c) The Create Team / The Creators of Create
 // Copyright (c) 2026 Create Horizon contributors
 // SPDX-License-Identifier: MIT
-//! Read-only native bridge to the staged portable contraption core.
-//! It plans no world edit and creates no moving owner or proxy.
+// Read-only native bridge to the staged portable contraption core.
+// It plans no world edit and creates no moving owner or proxy.
 
 use super::Game;
 use create_engine::{
