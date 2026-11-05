@@ -1,55 +1,33 @@
 # Create team status
 
 Operations/integration: primary chat01a1747a-eb1f-7183-b3f6-63f0ccc37f13.
-Six owner-requested chats have started in clean isolated lanes. Actual IDs and state are
-in team-registry.json; measured reports live locally under `.local/team-operations`.
+Source of current chat IDs, lane paths and queue: operations/team-registry.json.
+Actual usage/time reports: G:\Create Rusty\.local\team-operations (outside Git).
 
-Accepted primary native baseline now includes water02d029f3 and bounded bare
-horizontal belt plus Depot peer repair0df826c/handoff214c1d4 (`.9`). Historical
-checkpoint2adc50a9/native43cef7dd HOLD and its failing image remain unchanged.
-Independent integration review CLEAR supports composed acceptance; see the new
-NATIVE_S6_BELT_TRANSPORT_RESULTS. Other team native candidates remain isolated.
+Accepted primary native baseline: water02d029f3 plus bare horizontal belt and
+Depot peer repair0df826c/handoff214c1d4, integrated1ac2940. Fresh independent
+integration review CLEAR. Original43cef7dd HOLD/image remains preserved;
+see docs/reference/NATIVE_S6_BELT_TRANSPORT_RESULTS.md. S6 remains OPEN.
 
-Heavy build/runtime resource: Transport returned its slot after3 normal exits0.
-Machinery now has the exclusive `machinery-001` reservation for bounded fan washing
-integrated/dedicated/cold reopen, reusing unchanged verified accepted binaries
-when possible. Use new lane maps/drivers and Linux-local sockets. Other teams may
-implement and review source but cannot build or run games without a root grant.
+| Team | Current bounded packet |
+| --- | --- |
+| Machinery | Fan washing: unchanged .8 binaries/source verified; integrated complete, dedicated/cold-reopen/peer checks in progress. Sole heavy reservation. |
+| Transport | Bare-belt fix accepted; transport-002 two-controller handoff drivers/maps preparing, next in runtime queue. No new build planned. |
+| Fluids and power | One stationary water tank through existing generic ModBlockEntity/fluid services; Java TankContent codec, no host/global-schema change. |
+| Contraptions | Selective staged affd76f core plus read-only native preflight; no custody/save/motion framework. |
+| Trains and schematics | Source-aligned straight stationary track X/Z, existing placement/save services. No graph/train/import claim. |
+| Experience and parity | Reviewed millstone Ambient audio candidate6e0cb78 ready; focused runtime preparation, awaiting shared validation. |
 
-| Team | First packet | Initial lane head |
-| --- | --- | --- |
-| Machinery | Upstream/Java processing reuse and smallest next machine | 76dfaf7 |
-| Transport | transport-001: stale peer Depot after hopper extraction | f00d04a |
-| Fluids and power | Existing-service water transfer/tank or rotation source | 76dfaf7 |
-| Contraptions | Portable-core/native contract and bounded adapter proposal | 76dfaf7 |
-| Trains and schematics | Separate train dependencies and schematic reuse | 76dfaf7 |
-| Experience and parity | Source-backed coverage and smallest progression/UI packet | 76dfaf7 |
+Primary has three proposal/packet docs integrated. New production candidates
+remain in isolated lanes. Root-owned integration branch
+codex/create-team-integration-001 at .local/integration/create-teams-001 starts
+with reviewed audio9e9a779; it is NOT accepted or a playable release. Add only
+stable reviewed handoffs, reconcile shared wiring serially, and compile compatible
+ready candidates together once the host-wide slot is free. Reuse shared installed
+tooling/dependency caches under that exclusive lease; no duplicate historical
+batteries or per-team copies of large targets. Validation claims remain separate.
 
-All six were observed active after dispatch at 20:55–20:56 UTC. Initial source
-discovery is read-only apart from assigned timing metadata; Transport alone has
-the bounded repair allocation. Fluids and Contraptions may now write only their
-scoped proposal documents in their own lanes. Selected
-models/effort and actual permission limits are unchanged. Fresh independent
-Sol High activation review CLEAR, including missing-telemetry collector repair.
-Collector smoke checks pass with unknown usage preserved; initial live team
-lead counters are appearing. Descendant usage is included only when measurable,
-with incomplete team totals explicitly unknown. No cost estimate is implied.
-
-Live accounting identified full-context child logs embedding parent metadata;
-collector now retains the owning first header. Native smoke observed each team's
-lead plus two specialists once; fresh read-only Sol High repair review CLEAR.
-Missing telemetry remains unknown. No raw transcript content was copied.
-
-Next queued resource packet: `machinery-001`, one fan/water-catalyst/Depot-held
-flour-to-dough path. Machinery may commit its packet document now; it has no
-active heavy reservation until Transport returns the resource and root grants it.
-No planned source edit or unchanged build is needed; defects require a named
-fan-owned repair. Accepted generic power/Depot/Basin evidence is reused.
-
-Initial coordination decisions: Machinery must distinguish fan washing from
-accepted S4 milling and S6 Basin dough; Experience must identify a concrete
-improvement beyond imported goggles/HUD. Fluid tank persistence and general
-contraption ownership are proposals, not approved new schemas. Contraptions must
-assess staged core `affd76f1301b61b264c08072f9a7aa8d3be0343c`, not only public main,
-before proposing another fixture-specific owner profile. Root resolves shared
-Depot/manifest/callback ownership serially and takes real scope changes to owner.
+Existing architecture/owner/schema/import/acceptance gates remain. Tank allocation
+is limited to a new block-local Java codec using unchanged generic storage; stop
+if this premise fails. Live general contraption ownership remains gated. No
+playable saves, Prism settings, public engine or other mods are changed.
