@@ -5,32 +5,39 @@ route. S6 is OPEN. The owner authorizes progress through S6 until the next
 requested break, genuine blocker, required input or scope boundary. Read
 `docs/design/STAGE_PROGRESSION_PLAN.md` and `NATIVE_PLAYABILITY_PLAN.md`.
 
-## Active dry-mixing packet
+## Accepted dry-mixing increment; heating assessment next
 
-Branch `codex/native-s6-basin-mixer` starts from accepted/private-synced `6defc66`.
-Fresh upstream236c87a8 and official main85d8e283 were read before work. The
-upstream Basin/Mixer/heating code is reusable, but full0.7 import is HOLD for
-host/type/schema/shared-behavior differences. Independent Sol High reuse and
-audit/packet review CLEAR for `docs/design/NATIVE_S6_BASIN_REUSE_AUDIT.md` and
-`NATIVE_S6_DRY_MIXING_PACKET.md`. Implementation is starting; no new gameplay
-profile is accepted. Retain tested host/Mixins pins. Only dry plain andesite +
-iron nugget -> alloy is admitted; heat/full fluids are subsequent decisions.
-Source/effects review cleared the finite implementation after fixing destruction,
-head bounds and placement hookups, conditional on actual final checks. Root alone
-writes/builds/runs. Eighteen imported core tests and the actual serializer-library
-immediate-save/identity/opaque invariant PASS; Clippy PASS34warnings and stage5
-passes. An earlier game-crate filter ran0tests and supplies no invariant evidence.
-Pinned-tool RETURN/alias/helper-shape rejections are preserved in indexed logs.
-The final no-shaft correction and imported Mixer connection test PASS; locked
-build PASS at game36e13c3f/ctl32f37332. Final source/effects Sol High review CLEAR
-for live tests. No new gameplay profile is accepted yet. Prior checks are reused
-for unchanged paths; source and current resource/binary maps will be frozen.
+Branch `codex/native-s6-basin-mixer`, reviewed/private-synced source `e52dc33`,
+based on accepted `6defc66`. Fresh independent read-only Sol High completion
+review CLEAR. Result: `docs/reference/NATIVE_S6_DRY_MIXING_RESULTS.md`;
+audit/packet `docs/design/NATIVE_S6_BASIN_REUSE_AUDIT.md` and
+`NATIVE_S6_DRY_MIXING_PACKET.md`. Version `0.5.0-ch4os.5`, asset schema10.
 
-Raw packet `.local/native-s6-dry-mixing-01`; content generation changed only
-three existing language/tab files, added16 selected files and preserved387 others
-(version edits recorded separately). Version `.5`, asset schema10. No game is
-running. Next: final locked build, freeze source/binary maps, integrated then
-dedicated/two-client smoke/cold-reopen checks, independent completion review.
+Ordinary Basin/Mixer/hopper placement and menu input, exact dry andesite/nugget
+mixing, below30RPM/full-output/unsupported-filter refusal, ordinary clear/reinsert
+recovery, empty-hand collection and Depot regression passed. Integrated and
+dedicated/two rendered clients passed stopped/unprocessed normal cold reopen;
+actual peer images show head motion and product-to-empty presentation. Eight
+actual processes exited0. No game is running. Final integrated actor578 alloys
+comprise575 remaining supplied output-fixture alloys plus three recipe products;
+regression iron1 ends on Depot. Dedicated ends actor1 alloy/peer0, Basin/hopper0.
+Canonical/native and stock integrated local-owner save-file mirrors are not extra
+owners. A150-tick raw-data probe without a notification is inconclusive; no claim
+of automatic recovery or active transient-timer restart follows.
+
+Eighteen core tests, one actual serializer-library invariant and one imported
+Mixer connection test PASS. Formatting/versions/stage5/Clippy34warnings and locked
+build PASS. Source/effects and completion review CLEAR; zero-test/failed setup and
+helper attempts remain excluded/preserved. Raw packet
+`.local/native-s6-dry-mixing-01`, completed native-read mirror `evidence-complete/`.
+Map `cd8228d648b4e0fde510b71085724e4f9e5fbcafcc7e7fb0e83a87a1e4a5f0a6`;
+game36e13c3f/ctl32f37332. Existing content387 unchanged, three language/tab files
+changed,16 selected additions plus separately recorded version edits.
+
+Next: read-only assessment of the upstream burner's state-aware entity creation,
+fuel/heat and client presentation on retained pins. Upstream236c87a8 already
+implements these; full0.7 import remains HOLD for absent newer host/type/schema
+interfaces. No heating, full fluid support or dependency upgrade is accepted.
 Stop before a broad host/API/schema/lifecycle framework or changed acceptance.
 
 ## Accepted portable-interface packet
