@@ -1,6 +1,6 @@
 [mod]
 id = "create"
-version = "0.5.0"
+version = "0.5.0-ch4os.1"
 
 [compatibility]
 horizon_revision = "fc02103818c212920fd24aa34a2b2f91ba49e56f"

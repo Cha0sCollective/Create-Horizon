@@ -15,6 +15,9 @@ framework are deferred. Existing reference results and legacy work are preserved
   source/build, integrated and two-client dedicated checks, and their limits.
 - [Native S2 results](docs/reference/NATIVE_S2_KINETICS_RESULTS.md) records source
   arbitration, reference block/drop outcomes, topology and normal restart checks.
+- [Native S3 results](docs/reference/NATIVE_S3_MVP_RESULTS.md) records ordinary
+  player build/control/drop/collection and existing package compatibility checks.
+- [Private Linux play](native/PLAY_PRIVATE.md) gives the qualified source-build route.
 - [Authorized stages](docs/design/STAGE_PROGRESSION_PLAN.md) defines the S2–S6 route.
 - [Native development](native/README.md) gives build and focused-check commands.
 - [Source provenance](native/UPSTREAM.md) identifies the imported MIT base and pins.

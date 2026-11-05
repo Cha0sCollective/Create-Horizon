@@ -97,7 +97,7 @@ def main():
     if args.action != "stage":
         command = [args.action, "--locked", "--manifest-path", stage / "Cargo.toml", "-p", "horizon-client", "--bin", "horizon-client", "--no-default-features", "--jobs", "4"]
         if args.action == "build":
-            command += ["--profile", "fast", "--config", "profile.fast.package.horizon-client.opt-level=0"]
+            command += ["-p", "horizon-client-lib", "--bin", "horizon-ctl", "--profile", "fast", "--config", "profile.fast.package.horizon-client.opt-level=0"]
         cargo(*command)
 
 

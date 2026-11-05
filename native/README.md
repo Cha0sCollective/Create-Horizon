@@ -4,6 +4,7 @@ The active source is `create/`, imported from the tested MIT Create port. It is 
 separate Cargo workspace; repository-root Cargo commands exercise historical work.
 Read [source provenance](UPSTREAM.md), the [adopted plan](../docs/design/NATIVE_PLAYABILITY_PLAN.md)
 and [current work](../docs/CURRENT_WORK.md) for support and acceptance status.
+The [private Linux guide](PLAY_PRIVATE.md) covers the qualified S3 play route.
 
 The compatible host is official Horizon `fc02103818c212920fd24aa34a2b2f91ba49e56f`,
 Mixins `a1e13326306c6bc074b11e6a4926deb551c4083e`, Rust1.99.1 and native API359.

@@ -4,14 +4,17 @@ The owner adopted [NATIVE_PLAYABILITY_PLAN.md](design/NATIVE_PLAYABILITY_PLAN.md
 on November 4, 2026 after a local existing-port evaluation. It is the active route.
 The original specification, prior S1 plan and historical records below remain
 preserved; their old G1 is not marked passed by this decision.
+The owner subsequently authorized continued work through S6 until the next break;
+[authorized native stages](design/STAGE_PROGRESSION_PLAN.md) defines that route.
 
 | Active stage | Outcome | Current state |
 | --- | --- | --- |
 | S0 | Pinned Java reference and bounded observations | Retained; selected 6.0.11 behavior remains authoritative |
 | Native S1 | Five-type integration, ordinary server-authoritative play, integrated/dedicated two-client normal save/reopen | COMPLETE under the adopted profile; independently reviewed native import, selected parity fix and both real-game modes pass; see [results](reference/NATIVE_S1_PLAYABILITY_RESULTS.md) |
-| S2 | Verified motor/shaft/cog behavior | Reuse existing native core and relevant references; no stage completion from adoption |
-| S3 | Reference-matching five-component milling MVP | Not accepted; existing bindings and selected full-output correction/integration are evidenced under native S1; broader reference conformance remains a later scoped task |
-| S4–S6 | Survival, moving assemblies and broader machinery | Future owner-scoped work |
+| Native S2 | Declared kinetic reference behavior, source arbitration, topology and normal reopen | COMPLETE within the five-type profile; see [results](reference/NATIVE_S2_KINETICS_RESULTS.md) |
+| Native S3 | Ordinary five-type milling workflow and private Linux play route | COMPLETE within the adopted profile; ordinary placements/controls/Q-drop/collection, existing package refusals and helper reopen pass; see [results](reference/NATIVE_S3_MVP_RESULTS.md) |
+| S4 | Obtainable survival power and a useful factory in ordinary terrain | Authorized; define bounded reuse/recipe/production packet next |
+| S5–S6 | One moving assembly, then coherent feature families | Authorized stage progression; feasibility and individual scope/architecture boundaries remain in force |
 
 In-frame/Wasm requirements are replaced on the native route; the custom crash-
 consistent cross-owner framework and extra hardened replay framework are deferred.
