@@ -1,7 +1,7 @@
 # Transport-002 packet — distinct belt-controller handoff
 
-Status: fixture and harness prepared November 5, 2026; dedicated run pending
-the project lead's host-wide heavy lease. This packet was allocated by the
+Status: fixture executed November 5, 2026; bounded result and independent
+review are recorded in `transport-002-results.md`. This packet was allocated by the
 lead after the read-only proposal in `transport-002-proposal.md`. The frozen
 source baseline is `4e5faacad66851ba4dfae5f69502dd049a626053`, a descendant
 of accepted private integration `1ac294026cf7f660a4d2901602081f77686f1a46`.
