@@ -6,6 +6,12 @@ version = "0.5.0-ch4os.9"
 horizon_revision = "9c7f9b2215dfed497aba5522c44f38926628648d"
 
 [[module]]
+id = "contraption-preflight"
+file = "crates/horizon-client/src/game.rs"
+name = "create_contraption_preflight"
+source = "contraption_preflight.rs"
+
+[[module]]
 id = "basin"
 file = "crates/horizon-client/src/game.rs"
 name = "create_port_basin"

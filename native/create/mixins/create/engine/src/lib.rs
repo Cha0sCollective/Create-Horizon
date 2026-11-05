@@ -1,4 +1,6 @@
 //! Game-independent parts, also compiled as the native bundle's engine crate.
+#[path = "core/contraption/mod.rs"]
+pub mod contraption;
 #[path = "core/basin.rs"]
 pub mod basin;
 #[path = "core/kinetics.rs"]
