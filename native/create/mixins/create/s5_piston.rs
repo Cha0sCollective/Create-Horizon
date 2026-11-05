@@ -4,7 +4,10 @@
 // travel. The piston machine owns absent stone/pole payloads; a moving head is
 // derived geometry, never a separately saved vanilla moving-piston owner.
 use super::Game;
-use crate::containers::{BlockEntity, ModBlockEntity};
+use crate::{
+    containers::{BlockEntity, ModBlockEntity},
+    items::ItemStack,
+};
 use create_engine::linear_carrier::{carrier_step, eastward_delta, reversal_offset};
 use horizon_core::{
     geometry::{Aabb, Direction, Vec3},
@@ -12,7 +15,7 @@ use horizon_core::{
 };
 use horizon_world::{
     level::pistons::MovingPiston,
-    nbt::{Compound, Tag},
+    nbt::{Compound, JavaString, Tag},
 };
 
 const KEY: &str = "create_horizon:s5_piston";
@@ -20,6 +23,8 @@ const BASE: &str = "create:mechanical_piston";
 const POLE: &str = "create:piston_extension_pole";
 const HEAD: &str = "create:mechanical_piston_head";
 const STONE: &str = "minecraft:stone";
+const DEPOT: &str = "create:depot";
+const INGOT: &str = "minecraft:iron_ingot";
 const PROXY: &str = "minecraft:moving_piston";
 
 fn integer(data: &Compound, key: &str) -> i32 {
@@ -43,6 +48,67 @@ enum Phase {
     Extending = 1,
     Extended = 2,
     Retracting = 3,
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+enum Cargo {
+    Stone,
+    Depot,
+}
+
+impl Cargo {
+    fn block(self) -> &'static str {
+        match self {
+            Self::Stone => STONE,
+            Self::Depot => DEPOT,
+        }
+    }
+}
+
+fn depot_item(data: &Compound) -> Option<ItemStack> {
+    let item = horizon_items::item_nbt::item_from_nbt(data.get(&"DepotItem".into())?)?;
+    (item.item.as_ref() == INGOT && item.count == 1 && item.damage == 0 && item.extra.is_none())
+        .then_some(item)
+}
+
+fn depot_held(entity: &ModBlockEntity) -> Option<ItemStack> {
+    if entity.id != DEPOT
+        || entity.items.len() != 9
+        || entity.items[1..].iter().any(Option::is_some)
+    {
+        return None;
+    }
+    let item = entity.items[0].as_ref()?;
+    if item.item.as_ref() != INGOT || item.count != 1 || item.damage != 0 || item.extra.is_some() {
+        return None;
+    }
+    // Only the ordinary held-stack presentation and empty processing buffer
+    // belong to this profile. An active or unknown depot payload is refused.
+    if entity
+        .nbt
+        .keys()
+        .any(|key| key != &JavaString::from("HeldItem") && key != &JavaString::from("OutputBuffer"))
+    {
+        return None;
+    }
+    let Some(Tag::Compound(held)) = entity.nbt.get(&"HeldItem".into()) else {
+        return None;
+    };
+    let shown = horizon_items::item_nbt::item_from_nbt(held.get(&"Item".into())?)?;
+    if shown != *item
+        || held.contains_key(&"FanProcessingType".into())
+        || held.contains_key(&"FanProcessingTime".into())
+    {
+        return None;
+    }
+    match entity.nbt.get(&"OutputBuffer".into()) {
+        None => {}
+        Some(Tag::Compound(output))
+            if output.get(&"Size".into()) == Some(&Tag::Int(8))
+                && output.get(&"Items".into()) == Some(&Tag::List(Vec::new())) => {}
+        _ => return None,
+    }
+    Some(item.clone())
 }
 
 impl Phase {
@@ -107,12 +173,25 @@ impl Piston {
             return None;
         }
         let stone = integer(&data, "CapturedStone");
+        let depot = integer(&data, "CapturedDepot");
         let pole = integer(&data, "CapturedPole");
+        let cargo = match data.get(&"CargoKind".into()) {
+            None => Cargo::Stone,
+            Some(Tag::String(s)) if s == &JavaString::from("stone") => Cargo::Stone,
+            Some(Tag::String(s)) if s == &JavaString::from("depot") => Cargo::Depot,
+            _ => return None,
+        };
         if !matches!(stone, 0 | 1)
+            || !matches!(depot, 0 | 1)
             || !matches!(pole, 0 | 1)
+            || stone + depot > 1
+            || (stone == 1 && cargo != Cargo::Stone)
+            || (depot == 1 && cargo != Cargo::Depot)
             || (stone == 1 && data.get(&"Stone".into()) != Some(&Tag::String(STONE.into())))
+            || (depot == 1 && depot_item(&data).is_none())
             || (pole == 1 && data.get(&"Pole".into()) != Some(&Tag::String(POLE.into())))
-            || (matches!(phase, Phase::Retracted | Phase::Extended) && (stone != 0 || pole != 0))
+            || (matches!(phase, Phase::Retracted | Phase::Extended)
+                && (stone != 0 || depot != 0 || pole != 0))
             || (phase == Phase::Retracted && offset != 0.0)
             || (phase == Phase::Extended && offset != 1.0)
         {
@@ -130,11 +209,24 @@ impl Piston {
     fn captured_stone(&self) -> bool {
         integer(&self.data, "CapturedStone") == 1
     }
+    fn captured_depot(&self) -> bool {
+        integer(&self.data, "CapturedDepot") == 1
+    }
+    fn cargo(&self) -> Cargo {
+        if self.data.get(&"CargoKind".into()) == Some(&Tag::String("depot".into())) {
+            Cargo::Depot
+        } else {
+            Cargo::Stone
+        }
+    }
+    fn captured_cargo(&self) -> bool {
+        self.captured_stone() || self.captured_depot()
+    }
     fn captured_pole(&self) -> bool {
         integer(&self.data, "CapturedPole") == 1
     }
     fn captured(&self) -> bool {
-        self.captured_stone() || self.captured_pole()
+        self.captured_cargo() || self.captured_pole()
     }
     fn offset(&self) -> f32 {
         float(&self.data, "Offset")
@@ -146,9 +238,16 @@ impl Piston {
         self.phase = phase;
         self.data.insert("Phase".into(), Tag::Int(phase as i32));
     }
-    fn set_captured(&mut self, stone: bool, pole: bool) {
-        self.data
-            .insert("CapturedStone".into(), Tag::Byte(u8::from(stone) as i8));
+    fn set_captured(&mut self, cargo: bool, pole: bool) {
+        let kind = self.cargo();
+        self.data.insert(
+            "CapturedStone".into(),
+            Tag::Byte(u8::from(cargo && kind == Cargo::Stone) as i8),
+        );
+        self.data.insert(
+            "CapturedDepot".into(),
+            Tag::Byte(u8::from(cargo && kind == Cargo::Depot) as i8),
+        );
         self.data
             .insert("CapturedPole".into(), Tag::Byte(u8::from(pole) as i8));
     }
@@ -220,6 +319,98 @@ fn set(game: &mut Game<'_>, pos: [i32; 3], block: &str) -> bool {
     game.native_block(pos) == block
 }
 
+/// Capture transfers the depot's held stack into the piston owner. Horizon's
+/// ordinary block replacement spills every ModContainer slot, so only this
+/// depot-to-proxy write suppresses block-entity removal side effects.
+fn capture_depot_block(game: &mut Game<'_>, pos: [i32; 3]) -> bool {
+    let Some(state) = game.pack.assets.registry.default_state(PROXY) else {
+        return false;
+    };
+    let dim = game.dim.id().to_owned();
+    game.native_set_block(
+        &dim,
+        pos,
+        state,
+        3 | horizon_world::level::flags::UPDATE_SKIP_BLOCK_ENTITY_SIDEEFFECTS,
+    );
+    game.native_block(pos) == PROXY
+}
+
+fn depot_matches(game: &Game<'_>, pos: [i32; 3], item: &ItemStack) -> bool {
+    game.native_block(pos) == DEPOT
+        && game.world.block_entities.get(&(pos[0], pos[1], pos[2])).is_some_and(
+            |entity| matches!(entity, BlockEntity::Mod(e) if depot_held(e).as_ref() == Some(item)),
+        )
+}
+
+fn empty_depot_target(entity: &ModBlockEntity) -> bool {
+    if entity.id != DEPOT
+        || !matches!(entity.items.len(), 0 | 9)
+        || entity.items.iter().any(Option::is_some)
+        || entity
+            .nbt
+            .keys()
+            .any(|key| key != &JavaString::from("OutputBuffer"))
+    {
+        return false;
+    }
+    match entity.nbt.get(&"OutputBuffer".into()) {
+        None => true,
+        Some(Tag::Compound(output)) => {
+            output.get(&"Size".into()) == Some(&Tag::Int(8))
+                && output.get(&"Items".into()) == Some(&Tag::List(Vec::new()))
+        }
+        _ => false,
+    }
+}
+
+/// A depot already materialized by a failed prior attempt is retried in place.
+/// The piston keeps its saved item claim until the actual target entity agrees.
+fn materialize_cargo(game: &mut Game<'_>, piston: &mut Piston, pos: [i32; 3]) -> bool {
+    if piston.cargo() == Cargo::Stone {
+        return set(game, pos, STONE);
+    }
+    let Some(item) = depot_item(&piston.data) else {
+        return false;
+    };
+    if game.native_block(pos) == DEPOT && integer(&piston.data, "DepotMaterializing") != 1 {
+        return false;
+    }
+    if depot_matches(game, pos, &item) {
+        return true;
+    }
+    if game.native_block(pos) != DEPOT {
+        if !set(game, pos, DEPOT) {
+            return false;
+        }
+        piston
+            .data
+            .insert("DepotMaterializing".into(), Tag::Byte(1));
+    } else if integer(&piston.data, "DepotMaterializing") != 1 {
+        // An independently placed depot is not the owner's restoration target.
+        return false;
+    }
+    let installed = game.native_with_mod_block_entity(pos, |entity| {
+        // Check the whole target before writing: otherwise a stale/foreign NBT
+        // field could make post-write verification fail with two item copies.
+        if !empty_depot_target(entity) {
+            return false;
+        }
+        if entity.items.is_empty() {
+            entity.items.resize(9, None);
+        }
+        entity.items[0] = Some(item.clone());
+        super::create_port::depot_data(entity);
+        true
+    }) == Some(true);
+    if installed && depot_matches(game, pos, &item) {
+        game.native_block_entity_sync(pos);
+        true
+    } else {
+        false
+    }
+}
+
 fn base_state(game: &mut Game<'_>, pos: [i32; 3], state: &str) -> bool {
     if game.native_block_property(pos, "state").as_deref() == Some(state) {
         return true;
@@ -231,7 +422,7 @@ fn base_state(game: &mut Game<'_>, pos: [i32; 3], state: &str) -> bool {
 fn path_clear(game: &Game<'_>, piston: &Piston, from: f32, to: f32) -> bool {
     let reserved = piston.reserved();
     super::create_s5_carrier::static_path_clear_cells(game, piston.base, &reserved, from, to)
-        && (!piston.captured_stone()
+        && (!piston.captured_cargo()
             || super::create_s5_carrier::static_path_clear_cells(
                 game,
                 piston.head,
@@ -251,14 +442,14 @@ fn planned_push(
     let (source, block) = if piston.captured_pole() {
         (piston.base, HEAD)
     } else {
-        (piston.head, STONE)
+        (piston.head, piston.cargo().block())
     };
     let (anchor, projection) = piston.projection(game, source, block, from, to)?;
     let step = carrier_step(from, to)?;
     let cube = Aabb::new(Vec3::new(0.0, 0.0, 0.0), Vec3::new(1.0, 1.0, 1.0));
     let mut boxes = vec![cube];
     let mut final_bounds = vec![piston.bounds(source, to)];
-    if piston.captured_pole() && piston.captured_stone() {
+    if piston.captured_pole() && piston.captured_cargo() {
         boxes.push(Aabb::new(
             Vec3::new(1.0, 0.0, 0.0),
             Vec3::new(2.0, 1.0, 1.0),
@@ -276,16 +467,47 @@ fn planned_push(
 /// in the same chunk before the bounded capture can start.
 fn capture_extension(game: &mut Game<'_>, piston: &mut Piston) -> bool {
     let reserved = piston.reserved();
+    let head_block = game.native_block(piston.head);
+    let cargo = match head_block.as_str() {
+        STONE
+            if !game.world.block_entities.contains_key(&(
+                piston.head[0],
+                piston.head[1],
+                piston.head[2],
+            )) =>
+        {
+            Cargo::Stone
+        }
+        DEPOT
+            if game
+                .native_block_property(piston.head, "waterlogged")
+                .as_deref()
+                != Some("true") =>
+        {
+            Cargo::Depot
+        }
+        _ => return false,
+    };
+    let held = if cargo == Cargo::Depot {
+        let Some(BlockEntity::Mod(entity)) =
+            game.world
+                .block_entities
+                .get(&(piston.head[0], piston.head[1], piston.head[2]))
+        else {
+            return false;
+        };
+        let Some(item) = depot_held(entity) else {
+            return false;
+        };
+        Some(item)
+    } else {
+        None
+    };
     if piston.phase != Phase::Retracted
         || piston.offset() != 0.0
         || game.native_block(piston.pole) != POLE
         || game.native_block_property(piston.pole, "facing").as_deref() != Some("east")
-        || game.native_block(piston.head) != STONE
         || game.native_block(piston.dest) != "minecraft:air"
-        || game
-            .world
-            .block_entities
-            .contains_key(&(piston.head[0], piston.head[1], piston.head[2]))
         || game
             .world
             .block_entities
@@ -315,13 +537,35 @@ fn capture_extension(game: &mut Game<'_>, piston: &mut Piston) -> bool {
     piston.set_phase(Phase::Extending);
     piston.set_float("Offset", 0.0);
     piston.set_float("Previous", 0.0);
-    piston
-        .data
-        .insert("Stone".into(), Tag::String(STONE.into()));
+    piston.data.insert(
+        "CargoKind".into(),
+        Tag::String(
+            match cargo {
+                Cargo::Stone => "stone",
+                Cargo::Depot => "depot",
+            }
+            .into(),
+        ),
+    );
+    if cargo == Cargo::Stone {
+        piston
+            .data
+            .insert("Stone".into(), Tag::String(STONE.into()));
+        piston.data.remove(&"DepotItem".into());
+    } else if let Some(item) = held {
+        piston.data.remove(&"Stone".into());
+        piston.data.insert(
+            "DepotItem".into(),
+            horizon_items::item_nbt::item_to_nbt(&item),
+        );
+    }
     piston.data.insert("Pole".into(), Tag::String(POLE.into()));
     piston.data.insert("CapturePending".into(), Tag::Byte(1));
-    if !set(game, piston.head, PROXY)
-        || !set(game, piston.dest, PROXY)
+    if !(if cargo == Cargo::Depot {
+        capture_depot_block(game, piston.head)
+    } else {
+        set(game, piston.head, PROXY)
+    }) || !set(game, piston.dest, PROXY)
         || !set(game, piston.pole, "minecraft:air")
     {
         rollback_capture(game, piston);
@@ -335,25 +579,28 @@ fn capture_extension(game: &mut Game<'_>, piston: &mut Piston) -> bool {
 }
 
 /// Capture's writes can fail independently. Classify each physical original
-/// before retrying: a missing stone or pole remains an NBT-owned payload;
+/// before retrying: a missing cargo or pole remains an NBT-owned payload;
 /// a verified world original is no longer owned by the machine. The pending
 /// flag keeps removal blocked even when both originals have returned but a
 /// spare derived proxy still needs clearing.
 fn rollback_capture(game: &mut Game<'_>, piston: &mut Piston) -> bool {
-    piston.set_captured(
-        game.native_block(piston.head) != STONE,
-        game.native_block(piston.pole) != POLE,
-    );
-    if piston.captured_stone()
-        && matches!(
-            game.native_block(piston.head).as_str(),
-            PROXY | "minecraft:air"
-        )
-        && game.create_s5_body_clear(
-            BlockPos::new(piston.head[0], piston.head[1], piston.head[2]),
-            piston.bounds(piston.head, 0.0),
-        )
-        && set(game, piston.head, STONE)
+    let cargo_in_world = match piston.cargo() {
+        Cargo::Stone => game.native_block(piston.head) == STONE,
+        Cargo::Depot => {
+            depot_item(&piston.data).is_some_and(|item| depot_matches(game, piston.head, &item))
+        }
+    };
+    piston.set_captured(!cargo_in_world, game.native_block(piston.pole) != POLE);
+    let current = game.native_block(piston.head);
+    if piston.captured_cargo()
+        && (matches!(current.as_str(), PROXY | "minecraft:air")
+            || (piston.cargo() == Cargo::Depot && current == DEPOT))
+        && (current == DEPOT
+            || game.create_s5_body_clear(
+                BlockPos::new(piston.head[0], piston.head[1], piston.head[2]),
+                piston.bounds(piston.head, 0.0),
+            ))
+        && materialize_cargo(game, piston, piston.head)
     {
         piston.set_captured(false, piston.captured_pole());
     }
@@ -368,16 +615,24 @@ fn rollback_capture(game: &mut Game<'_>, piston: &mut Piston) -> bool {
         )
         && set(game, piston.pole, POLE)
     {
-        piston.set_captured(piston.captured_stone(), false);
+        piston.set_captured(piston.captured_cargo(), false);
     }
     if game.native_block(piston.dest) == PROXY {
         let _ = set(game, piston.dest, "minecraft:air");
     }
     let restored = !piston.captured()
-        && game.native_block(piston.head) == STONE
+        && match piston.cargo() {
+            Cargo::Stone => game.native_block(piston.head) == STONE,
+            Cargo::Depot => {
+                depot_item(&piston.data).is_some_and(|item| depot_matches(game, piston.head, &item))
+            }
+        }
         && game.native_block(piston.pole) == POLE
         && game.native_block(piston.dest) == "minecraft:air";
     if restored {
+        piston.data.remove(&"DepotItem".into());
+        piston.data.remove(&"DepotMaterializing".into());
+        piston.data.remove(&"CargoKind".into());
         piston.data.remove(&"CapturePending".into());
         piston.set_phase(Phase::Retracted);
         piston.status("capture-rolled-back");
@@ -452,7 +707,10 @@ fn settle(game: &mut Game<'_>, piston: &mut Piston, endpoint: f32) -> bool {
     if piston.captured() && !path_clear(game, piston, from, endpoint) {
         return false;
     }
-    if piston.captured_stone() && game.native_block(piston.dest) != PROXY {
+    if piston.captured_cargo()
+        && game.native_block(piston.dest) != PROXY
+        && !(piston.cargo() == Cargo::Depot && game.native_block(piston.dest) == DEPOT)
+    {
         return false;
     }
     if piston.captured_pole() && game.native_block(piston.head) != PROXY {
@@ -467,7 +725,7 @@ fn settle(game: &mut Game<'_>, piston: &mut Piston, endpoint: f32) -> bool {
         None
     };
     let extension = piston.phase == Phase::Extending;
-    let stone_target = if endpoint == 1.0 {
+    let cargo_target = if endpoint == 1.0 {
         piston.dest
     } else {
         piston.head
@@ -499,10 +757,10 @@ fn settle(game: &mut Game<'_>, piston: &mut Piston, endpoint: f32) -> bool {
         if let Some(push) = push.take() {
             game.create_s5_commit_push(push);
         }
-        piston.set_captured(piston.captured_stone(), false);
+        piston.set_captured(piston.captured_cargo(), false);
     }
-    if extension && piston.captured_stone() {
-        if !set(game, stone_target, STONE) {
+    if extension && piston.captured_cargo() {
+        if !materialize_cargo(game, piston, cargo_target) {
             piston.data.insert("RestorePending".into(), Tag::Byte(1));
             piston
                 .data
@@ -513,6 +771,8 @@ fn settle(game: &mut Game<'_>, piston: &mut Piston, endpoint: f32) -> bool {
             game.create_s5_commit_push(push);
         }
         piston.set_captured(false, piston.captured_pole());
+        piston.data.remove(&"DepotItem".into());
+        piston.data.remove(&"DepotMaterializing".into());
     }
     if !pole_first && piston.captured_pole() {
         if !set(game, pole_target, pole_form) {
@@ -525,7 +785,7 @@ fn settle(game: &mut Game<'_>, piston: &mut Piston, endpoint: f32) -> bool {
         if let Some(push) = push.take() {
             game.create_s5_commit_push(push);
         }
-        piston.set_captured(piston.captured_stone(), false);
+        piston.set_captured(piston.captured_cargo(), false);
     }
     if game.native_block(unused) == PROXY && !set(game, unused, "minecraft:air") {
         piston.status("proxy-clear-blocked");
@@ -544,6 +804,9 @@ fn settle(game: &mut Game<'_>, piston: &mut Piston, endpoint: f32) -> bool {
     });
     piston.data.remove(&"RestorePending".into());
     piston.data.remove(&"PendingEndpoint".into());
+    piston.data.remove(&"CargoKind".into());
+    piston.data.remove(&"DepotItem".into());
+    piston.data.remove(&"DepotMaterializing".into());
     piston.status("placed");
     let _ = base_state(
         game,
@@ -647,7 +910,7 @@ pub(super) fn tick(game: &mut Game<'_>, pos: [i32; 3], entity: &mut ModBlockEnti
         } else if let Some(delta) = eastward_delta(rpm, from) {
             let to = (from + delta).clamp(0.0, 1.0);
             if !piston.captured()
-                || (piston.captured_stone() && game.native_block(piston.dest) != PROXY)
+                || (piston.captured_cargo() && game.native_block(piston.dest) != PROXY)
                 || (piston.captured_pole() && game.native_block(piston.head) != PROXY)
                 || !path_clear(game, &piston, from, to)
             {
@@ -703,7 +966,7 @@ pub(super) fn after_sync(game: &mut Game<'_>) {
         let current = piston.offset();
         for (captured, source, block) in [
             (piston.captured_pole(), piston.base, HEAD),
-            (piston.captured_stone(), piston.head, STONE),
+            (piston.captured_cargo(), piston.head, piston.cargo().block()),
         ] {
             let proxy = if block == HEAD {
                 piston.head
@@ -724,6 +987,57 @@ pub(super) fn after_sync(game: &mut Game<'_>) {
                     .push(([anchor.x, anchor.y, anchor.z], projection.shape_state()));
             }
         }
+    }
+}
+
+/// The vanilla moving-piston renderer submits only the block model. The held
+/// depot stack lives in the saved piston owner while the real depot is absent,
+/// so draw that one item at the same interpolated block position on each peer.
+pub(super) fn draw_mounted_item(
+    game: &Game<'_>,
+    camera: glam::DVec3,
+    alpha: f64,
+    out: &mut Vec<horizon_client::mesher::Vertex>,
+) {
+    if !game.native_window() || !game.native_on("create") {
+        return;
+    }
+    let partial = (alpha as f32).clamp(0.0, 1.0);
+    for piston in pistons(game).into_iter().filter(Piston::captured_depot) {
+        if !piston.phase.moving() || game.native_block(piston.dest) != PROXY {
+            continue;
+        }
+        let Some(item) = depot_item(&piston.data) else {
+            continue;
+        };
+        let previous = float(&piston.data, "Previous");
+        let offset = previous + (piston.offset() - previous) * partial;
+        let origin = glam::DVec3::new(
+            f64::from(piston.head[0]) + f64::from(offset),
+            f64::from(piston.head[1]),
+            f64::from(piston.head[2]),
+        ) - camera;
+        let (block_light, sky_light) =
+            game.native_light([piston.head[0], piston.head[1] + 1, piston.head[2]]);
+        let mut draw = super::native_block_entity_draw::BlockEntityDraw::posed(
+            partial,
+            game.world.game_time,
+            horizon_client::block_entity_render::vertex_light((sky_light << 4) | block_light),
+            piston.head,
+            glam::Mat4::from_translation(origin.as_vec3()),
+            horizon_client::block_entity_render::diffuse_lights(game.dim == super::Dim::Nether),
+            Vec::new(),
+        );
+        let mut entity = ModBlockEntity::default();
+        entity.nbt.insert(
+            "HeldItem".into(),
+            Tag::Compound(Compound::from([
+                ("Item".into(), horizon_items::item_nbt::item_to_nbt(&item)),
+                ("Angle".into(), Tag::Int(0)),
+            ])),
+        );
+        super::create_port_presentation::depot(game, piston.head, &entity, &mut draw);
+        out.extend(draw.into_vertices());
     }
 }
 
@@ -772,6 +1086,7 @@ pub(super) fn guard_destroy(game: &mut Game<'_>, pos: [i32; 3], canceled: &mut b
         && entity.id == BASE
         && let Some(Tag::Compound(data)) = entity.nbt.get(&KEY.into())
         && (integer(data, "CapturedStone") == 1
+            || integer(data, "CapturedDepot") == 1
             || integer(data, "CapturedPole") == 1
             || integer(data, "CapturePending") == 1
             || integer(data, "RetractionPending") == 1
@@ -792,4 +1107,78 @@ pub(super) fn guard_proxy_use(game: &Game<'_>, pos: [i32; 3]) -> bool {
     pistons(game)
         .iter()
         .any(|p| p.phase.moving() && [p.pole, p.head, p.dest].contains(&pos))
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn piston(data: Compound) -> Piston {
+        Piston {
+            base: [6, 65, 5],
+            pole: [5, 65, 5],
+            head: [7, 65, 5],
+            dest: [8, 65, 5],
+            phase: Phase::Extending,
+            data,
+        }
+    }
+
+    fn held_depot() -> ModBlockEntity {
+        let mut entity = ModBlockEntity::default();
+        entity.id = DEPOT.into();
+        entity.items = vec![None; 9];
+        entity.items[0] = Some(ItemStack::new(INGOT, 1));
+        super::super::create_port::depot_data(&mut entity);
+        entity
+    }
+
+    #[test]
+    fn old_stone_and_new_depot_use_distinct_custody_flags() {
+        let mut old = piston(Compound::new());
+        assert_eq!(old.cargo(), Cargo::Stone);
+        old.set_captured(true, true);
+        assert!(old.captured_stone() && !old.captured_depot());
+        let mut data = Compound::new();
+        data.insert("CargoKind".into(), Tag::String("depot".into()));
+        data.insert(
+            "DepotItem".into(),
+            horizon_items::item_nbt::item_to_nbt(&ItemStack::new(INGOT, 1)),
+        );
+        let mut mounted = piston(data);
+        mounted.set_captured(true, true);
+        assert!(mounted.captured_depot() && !mounted.captured_stone());
+        assert_eq!(depot_item(&mounted.data), Some(ItemStack::new(INGOT, 1)));
+        mounted.set_captured(false, true);
+        assert!(!mounted.captured_cargo() && mounted.captured_pole());
+    }
+
+    #[test]
+    fn depot_refuses_output_and_malformed_payload_before_capture() {
+        let mut depot = held_depot();
+        assert_eq!(depot_held(&depot), Some(ItemStack::new(INGOT, 1)));
+        depot.items[1] = Some(ItemStack::new("create:iron_sheet", 1));
+        assert!(depot_held(&depot).is_none());
+        depot.items[1] = None;
+        depot.nbt.insert("OutputBuffer".into(), Tag::Int(8));
+        assert!(depot_held(&depot).is_none());
+        super::super::create_port::depot_data(&mut depot);
+        depot.items[0] = Some(ItemStack::new(INGOT, 2));
+        assert!(depot_held(&depot).is_none());
+    }
+
+    #[test]
+    fn restoration_target_is_empty_and_known_before_item_installation() {
+        let mut depot = ModBlockEntity::default();
+        depot.id = DEPOT.into();
+        assert!(empty_depot_target(&depot));
+        super::super::create_port::depot_data(&mut depot);
+        assert!(empty_depot_target(&depot));
+        depot.nbt.insert("foreign".into(), Tag::Int(1));
+        assert!(!empty_depot_target(&depot));
+        depot.nbt.remove(&"foreign".into());
+        depot.items = vec![None; 9];
+        depot.items[0] = Some(ItemStack::new(INGOT, 1));
+        assert!(!empty_depot_target(&depot));
+    }
 }

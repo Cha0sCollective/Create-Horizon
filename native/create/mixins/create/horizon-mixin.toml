@@ -41,6 +41,19 @@ bindings = [
 ]
 
 [[injection]]
+id = "s6-mounted-depot-item-draw"
+target = "horizon_client::game::moving_pistons::Game<'_>::moving_piston_geometry"
+kind = "RETURN"
+helper = "s6_mounted_draw.rs"
+bindings = [
+ {name="result",ty="()",value="$value"},
+ {name="game",ty="&crate::game::Game<'_>",value="self"},
+ {name="camera",ty="glam::DVec3",value="camera"},
+ {name="alpha",ty="f64",value="alpha"},
+ {name="out",ty="&mut Vec<horizon_client::mesher::Vertex>",value="&mut *out"},
+]
+
+[[injection]]
 id = "s5-owner-returned"
 target = "horizon_client::game::native_hooks::Game<'_>::put_back_mod_block_entity"
 kind = "RETURN"
