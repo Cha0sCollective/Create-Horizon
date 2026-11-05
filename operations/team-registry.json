@@ -6,7 +6,7 @@
   "operations_enrolled_at": "2026-11-05T20:28:36.178Z",
   "root_rollout": "2026/10/25/rollout-2026-10-25T14-12-55-01a1747a-eb1f-7183-b3f6-63f0ccc37f13.jsonl",
   "heavy_resource": {
-    "owner": "operations-integration-001-build",
+    "owner": "fluids-cohort-001-runtime",
     "state": "reserved",
     "queue": []
   },
@@ -60,7 +60,7 @@
       "thread_id": "01a1ad7f-0de7-7871-aec9-617ed9916499",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:44.555Z",
-      "state": "contraptions-001 core/read-only native preflight implementation",
+      "state": "core/preflight checks PASS; live owner architecture awaits user direction",
       "lane_initial_head": "76dfaf78370f41b2a5c68620c55be6ecab96f16f"
     },
     {
@@ -94,7 +94,7 @@
     "branch": "codex/create-team-integration-001",
     "path": "G:\\Create Rusty\\.local\\integration\\create-teams-001",
     "head": "abf48a5ec909b9b392ece15c56ed23f248cf3ed3",
-    "state": "10 focused core/assets tests and stage PASS; host compile in progress",
+    "state": "shared stage/clippy/build/focused tests PASS; consolidated runtime in progress",
     "source_map_sha256": "3f204b535652c05435f3c2b817359da1caef36fdf759a5a63b837470c765fa14"
   }
 }

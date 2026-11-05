@@ -13,8 +13,8 @@ see docs/reference/NATIVE_S6_BELT_TRANSPORT_RESULTS.md. S6 remains OPEN.
 | --- | --- |
 | Machinery | Selected fan washing PASS on unchanged .8 inputs, seven exits0/completion CLEAR; result integrated. Next source-only processing reuse assessment. |
 | Transport | Bare-belt fix accepted; prepared transport-002 now owns dedicated runtime lease. No new build planned. |
-| Fluids and power | One stationary water tank through existing generic ModBlockEntity/fluid services; Java TankContent codec, no host/global-schema change. |
-| Contraptions | Selective staged affd76f core plus read-only native preflight; no custody/save/motion framework. |
+| Fluids and power | Tank/transfer seam source CLEAR and unit tests PASS; sole consolidated tank/track/audio runtime operator after shared build. |
+| Contraptions | Core7/native-preflight5 tests and shared compile PASS; no live invocation. Owner direction pending for live assembly architecture. |
 | Trains and schematics | Source-aligned straight stationary track X/Z, existing placement/save services. No graph/train/import claim. |
 | Experience and parity | Reviewed millstone Ambient audio candidate6e0cb78 ready; focused runtime preparation, awaiting shared validation. |
 
@@ -23,7 +23,9 @@ remain in isolated lanes. Root-owned integration branch
 codex/create-team-integration-001 at .local/integration/create-teams-001 starts
 with reviewed audio9e9a779 and is now stable8cadfa1 with all four source handoffs,
 root wiring and coherent .10/cache13. Static checks and fresh independent
-composition review CLEAR; compilation and gameplay remain pending. It is NOT
+composition review CLEAR; finalabf48a5 shared stage/Clippy/build and23 selected
+tests PASS. Gameplay remains pending. See docs/teams/INTEGRATION_001_BUILD_RESULTS.md.
+It is NOT
 accepted or a playable release. Compile compatible ready candidates together
 once the host-wide slot is free. Reuse shared installed
 tooling/dependency caches under that exclusive lease; no duplicate historical
