@@ -44,15 +44,25 @@ warnings); independent Sol High source, delta and completion reviews CLEAR.
 See `docs/reference/NATIVE_S5_ACTUATOR_RESULTS.md` and the local raw packet
 `.local/native-s5-actuator-01`. Exact build input map is
 `58adc2a9f85ce9870828dafa630e51d20f5a9ec14f50e00b969efe18fedef860`.
-This accepts only the finite profile. S6 begins with one bounded additional
-processing family packet, checking existing native code and Java behavior first.
+This accepts only the finite profile. The first S6 family, plain-iron pressing
+on one depot, passed integrated and dedicated/two-client Survival checks,
+including a stopped one-ingot/one-sheet cold reopen and peer pickup of exactly
+two sheets. No production code or host API changed; the S5 binary was reused.
+Independent Sol High packet and completion reviews CLEAR. See
+`docs/design/NATIVE_S6_PRESSING_PACKET.md` and
+`docs/reference/NATIVE_S6_PRESSING_RESULTS.md`; raw evidence is in the two
+local `.local/native-s6-press-*` packets. Tag-wide and exact Java tick parity
+remain unclaimed. S6 as a whole is OPEN. The next roadmap family is
+mounted/portable transfer; start with a read-only feasibility audit before a
+bounded implementation packet.
 Ask before broad host/API/architecture expansion; absence of a named hook alone
 does not prove a blocker. No game/test process is currently running.
 
 ## Current checkpoint
 
-Private branch `codex/native-s5-mechanical-piston`, based on accepted/private-synced
-S5 feasibility `a6668abf815b31bedcde8d28e435fcdecddcee88`, itself based on S4
+Private branch `codex/native-s6-pressing`, based on accepted/private-synced
+S5 `9b8068372ae2819b75eae0bae9edf4705c30c701` and feasibility
+`a6668abf815b31bedcde8d28e435fcdecddcee88`, itself based on S4
 `b88eb47bbb83138e9fe62684f2fcf2f1969e3702` on `codex/native-s4-factory`, exact
 GitHub remote verified. Accepted/private-synced S3 is
 `67566136634139309a04bb12b8aaacbec518d743` on `codex/native-s3-mvp`, clean before
