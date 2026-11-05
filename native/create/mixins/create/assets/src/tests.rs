@@ -485,6 +485,33 @@ fn bundled_content_rejects_paths_outside_its_namespace_before_writing() {
 }
 
 #[test]
+fn bundled_track_pickaxe_rule_has_one_exact_namespace_exception() {
+    let bundle: BTreeMap<String, String> =
+        serde_json::from_str(include_str!("../../data/content.json")).unwrap();
+    let path = "data/minecraft/tags/block/mineable/pickaxe.json";
+    let tag: Value = serde_json::from_str(&bundle[path]).unwrap();
+    assert_eq!(tag, json!({"replace":false,"values":["create:track"]}));
+
+    let home = Stage::new(&std::env::temp_dir()).unwrap();
+    let content = serde_json::to_vec(&BTreeMap::from([
+        ("horizon-mod.toml", "id = \"create\"\n"),
+        (path, bundle[path].as_str()),
+    ]))
+    .unwrap();
+    let installed = bundled_content(&home.0, &content).unwrap();
+    assert_eq!(
+        fs::read_to_string(installed.join(path)).unwrap(),
+        bundle[path]
+    );
+    let refused = serde_json::to_vec(&BTreeMap::from([
+        ("horizon-mod.toml", "id = \"create\"\n"),
+        ("data/minecraft/tags/block/mineable/axe.json", "{}"),
+    ]))
+    .unwrap();
+    assert!(bundled_content(&home.0, &refused).is_err());
+}
+
+#[test]
 fn imports_dependencies_metadata_and_notice_without_code_or_unused_assets() {
     let home = Stage::new(&std::env::temp_dir()).unwrap();
     let bytes = fixture(|_| {});

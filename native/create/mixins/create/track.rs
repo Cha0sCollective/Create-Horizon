@@ -10,7 +10,7 @@ use horizon_world::{level::PlacementContext, registry::BlockStateId};
 
 const ID: &str = "create:track";
 
-fn block(game: &GameLevel<'_>, pos: [i32; 3]) -> &str {
+fn block<'a>(game: &'a GameLevel<'_>, pos: [i32; 3]) -> &'a str {
     game.facts
         .get(game.world.block(pos[0], pos[1], pos[2]))
         .name
