@@ -21,9 +21,26 @@ PASS, final game1ed0d734/ctl1c91ecdf. Four manifests agree on `.6`; only the
 embedded version entry changed,405 content-map entries unchanged. Preserve the
 first compile-only binary8462b697 and Windows/WSL clean-check preflight failure;
 the latter was resolved with per-command CRLF normalization, no source/global
-config edit. Raw packet `.local/native-s6-host-refresh-01`. No new gameplay or
-migration pass is claimed. No game is running. Focused lint/host invariants are
-running. Next: integrated/dedicated composition and completion review. Stop for
+config edit. Raw packet `.local/native-s6-host-refresh-01`. Reviewed source
+checkpoint `d939036`; focused lint PASS34warnings and all six actual host/
+serializer tests PASS. Frozen map
+`e003ce71f02f50174bec94033a973cd45b73eb87474d6229c0f28e1bdc022291`,567 native
+files. No new gameplay or migration pass is claimed. First composition in isolated
+`s6-refresh-integrated-runs/integrated-p5bv96ne` passed dropped-ingot Depot catch/
+collection and dry input, but piston assembly refused the new host's ordinary
+`components:{}` metadata. It is FALSE for the composed gate; normal exit0, raw
+transcript, failed world and full chunk decode remain in packet01. No game runs.
+
+Bounded repair is in `s5_piston.rs`: admit only absent/exact empty-compound block
+components at the four cargo/interface/restoration guards; retain nonempty,
+malformed and foreign refusal. No host/schema/global stripping. Independent
+read-only delta/effects review CLEAR; its actual checks now PASS. One new test
+uses the actual host placement/decoder and the capture/refusal predicates (its
+slot sizing is explicit test setup). All five affected tests, Clippy34warnings and
+locked build PASS under `.local/native-s6-host-refresh-02`; unchanged six host
+invariants are reused from01. Repaired game062d52ea/ctl1c91ecdf. No game runs yet.
+Next: freeze repaired inputs, composition in both modes and completion review.
+No playable data/launcher setting changed. Stop for
 an actual broader redesign or changed acceptance; no wholesale0.7 import.
 
 ## Accepted dry-mixing increment; heating assessment next

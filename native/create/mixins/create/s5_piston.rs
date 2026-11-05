@@ -78,6 +78,22 @@ fn plain_ingot(item: &ItemStack) -> bool {
     item.item.as_ref() == INGOT && item.count == 1 && item.damage == 0 && item.extra.is_none()
 }
 
+// The host's BlockItem placement writes this field even without components.
+// Absence and an empty compound carry no block data; every other value is opaque.
+fn empty_block_components(key: &JavaString, value: &Tag) -> bool {
+    key == &JavaString::from("components")
+        && matches!(value, Tag::Compound(components) if components.is_empty())
+}
+
+fn empty_interface_entity(entity: &ModBlockEntity) -> bool {
+    entity.id == INTERFACE
+        && entity.items.iter().all(Option::is_none)
+        && entity
+            .nbt
+            .iter()
+            .all(|(key, value)| empty_block_components(key, value))
+}
+
 fn read_connection(data: &Compound) -> Option<Connection> {
     let flag = |key: &str| match data.get(&key.into()) {
         Some(Tag::Int(0) | Tag::Byte(0)) => Some(false),
@@ -122,11 +138,11 @@ fn depot_held(entity: &ModBlockEntity) -> Option<ItemStack> {
     }
     // Only the ordinary held-stack presentation and empty processing buffer
     // belong to this profile. An active or unknown depot payload is refused.
-    if entity
-        .nbt
-        .keys()
-        .any(|key| key != &JavaString::from("HeldItem") && key != &JavaString::from("OutputBuffer"))
-    {
+    if entity.nbt.iter().any(|(key, value)| {
+        key != &JavaString::from("HeldItem")
+            && key != &JavaString::from("OutputBuffer")
+            && !empty_block_components(key, value)
+    }) {
         return None;
     }
     let Some(Tag::Compound(held)) = entity.nbt.get(&"HeldItem".into()) else {
@@ -464,10 +480,9 @@ fn empty_depot_target(entity: &ModBlockEntity) -> bool {
     if entity.id != DEPOT
         || !matches!(entity.items.len(), 0 | 9)
         || entity.items.iter().any(Option::is_some)
-        || entity
-            .nbt
-            .keys()
-            .any(|key| key != &JavaString::from("OutputBuffer"))
+        || entity.nbt.iter().any(|(key, value)| {
+            key != &JavaString::from("OutputBuffer") && !empty_block_components(key, value)
+        })
     {
         return false;
     }
@@ -612,9 +627,13 @@ fn planned_push(
 fn empty_interface(game: &Game<'_>, pos: [i32; 3]) -> bool {
     game.native_block(pos) == INTERFACE
         && game.native_block_property(pos, "facing").as_deref() == Some("east")
-        && game.world.block_entities.get(&(pos[0], pos[1], pos[2])).is_some_and(
-            |entity| matches!(entity, BlockEntity::Mod(e) if e.id == INTERFACE && e.items.iter().all(Option::is_none) && e.nbt.is_empty()),
-        )
+        && game
+            .world
+            .block_entities
+            .get(&(pos[0], pos[1], pos[2]))
+            .is_some_and(
+                |entity| matches!(entity, BlockEntity::Mod(e) if empty_interface_entity(e)),
+            )
 }
 
 fn materialize_interface(game: &mut Game<'_>, piston: &mut Piston, pos: [i32; 3]) -> bool {
@@ -1207,10 +1226,16 @@ fn station_available(game: &mut Game<'_>, piston: &Piston) -> bool {
     let pos = piston.stationary();
     if game.native_block(pos) != INTERFACE
         || game.native_block_property(pos, "facing").as_deref() != Some("west")
-        || !game.world.block_entities.get(&(pos[0], pos[1], pos[2])).is_some_and(
-            |entity| matches!(entity, BlockEntity::Mod(e) if e.id == INTERFACE && e.items.iter().all(Option::is_none) && e.nbt.is_empty()),
-        )
-    { return false; }
+        || !game
+            .world
+            .block_entities
+            .get(&(pos[0], pos[1], pos[2]))
+            .is_some_and(
+                |entity| matches!(entity, BlockEntity::Mod(e) if empty_interface_entity(e)),
+            )
+    {
+        return false;
+    }
     let dim = game.dim.id().to_owned();
     game.native_neighbor_signal(&dim, pos) == 0
 }
@@ -1910,6 +1935,72 @@ mod tests {
         depot.items = vec![None; 9];
         depot.items[0] = Some(ItemStack::new(INGOT, 1));
         assert!(!empty_depot_target(&depot));
+    }
+
+    #[test]
+    fn host_placement_components_are_accepted_only_when_empty() {
+        let mut held = held_depot();
+        let mut target = ModBlockEntity::default();
+        target.id = DEPOT.into();
+        let mut interface = ModBlockEntity::default();
+        interface.id = INTERFACE.into();
+        assert_eq!(depot_held(&held), Some(ItemStack::new(INGOT, 1)));
+        assert!(empty_depot_target(&target) && empty_interface_entity(&interface));
+
+        // Use the actual new host producer and loader, including its empty field.
+        for entity in [&mut held, &mut target, &mut interface] {
+            let saved = horizon_client::save::encode_block_entity(
+                (7, 65, 5),
+                &BlockEntity::Mod(Box::new(entity.clone())),
+                &entity.id,
+            );
+            let placed = horizon_client::block_entity_item::place(&saved, &Compound::new(), false);
+            let (_, BlockEntity::Mod(loaded)) =
+                horizon_client::save::decode_block_entity(&placed).unwrap()
+            else {
+                panic!("placed mod entity missing");
+            };
+            *entity = *loaded;
+            if entity.items.iter().any(Option::is_some) {
+                // The ordinary native tick sizes a loaded Depot's inventory.
+                entity.items.resize(9, None);
+            }
+            assert_eq!(
+                entity.nbt.get(&"components".into()),
+                Some(&Tag::Compound(Compound::new()))
+            );
+        }
+        assert_eq!(depot_held(&held), Some(ItemStack::new(INGOT, 1)));
+        assert!(empty_depot_target(&target) && empty_interface_entity(&interface));
+
+        for value in [
+            Tag::Compound(Compound::from([(
+                "minecraft:custom_name".into(),
+                Tag::String("named".into()),
+            )])),
+            Tag::Int(0),
+            Tag::List(Vec::new()),
+        ] {
+            for entity in [&mut held, &mut target, &mut interface] {
+                entity.nbt.insert("components".into(), value.clone());
+            }
+            let before = [held.nbt.clone(), target.nbt.clone(), interface.nbt.clone()];
+            assert!(depot_held(&held).is_none());
+            assert!(!empty_depot_target(&target) && !empty_interface_entity(&interface));
+            assert_eq!(
+                before,
+                [held.nbt.clone(), target.nbt.clone(), interface.nbt.clone()]
+            );
+        }
+        for entity in [&mut held, &mut target, &mut interface] {
+            entity
+                .nbt
+                .insert("components".into(), Tag::Compound(Compound::new()));
+            entity.nbt.insert("foreign".into(), Tag::Int(1));
+        }
+        assert!(depot_held(&held).is_none());
+        assert!(!empty_depot_target(&target) && !empty_interface_entity(&interface));
+        assert_eq!(held.items[0], Some(ItemStack::new(INGOT, 1)));
     }
 
     #[test]

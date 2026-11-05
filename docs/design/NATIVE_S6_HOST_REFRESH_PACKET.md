@@ -65,3 +65,23 @@ No playable saves or Prism/Java settings, Open to LAN, full fluids, broad world
 compatibility, crash atomicity, public publishing, release or cleanup is included.
 After this refresh is accepted, define the separate coal/heated-brass packet using
 upstream's existing code; ask before expanding its acceptance or architecture.
+
+## Observed compatibility repair
+
+The first integrated run caught an ordinary-placement difference beyond static
+signature/codec checks. New host `game/block_items.rs` preserves a Mod entity's
+saved tag; placement now reaches `block_entity_item::place`, which writes
+`components: Compound(own)` even when empty. The prior host's vanilla canonicalizer
+did not preserve the mod tag in that path. Actual normal Depot/interface payloads
+therefore contain `components:{}`. The old strict guards refused assembly before
+capture, preserving the item. The FALSE run, exit0 and decoded failed save remain.
+
+The bounded `s5_piston.rs` adapter admits only this semantically empty field (or
+its absence) at held-Depot, empty restoration, moving-interface and stationary-
+interface guards. Existing item/custody/orientation/power rules remain; meaningful,
+malformed or unknown payloads still refuse, and no metadata is stripped globally.
+Independent read-only delta/effects review CLEAR. A real host-placement/decode test
+covers valid absence/empty and nonempty/scalar/list/foreign refusal without input
+mutation, alongside the four existing affected S5 tests. Its slot resize is test
+setup, not a claim to execute a runtime tick. Then requalify the composed live
+operation/cold reopen on repaired frozen inputs. Unchanged host tests are reused.
