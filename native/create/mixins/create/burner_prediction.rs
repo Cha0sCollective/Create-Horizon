@@ -1,6 +1,6 @@
 // Copyright (c) 2026 create-horizon contributors
 // SPDX-License-Identifier: MIT
-// Exact-pinned adapter inside game/remote.rs. Only recognized burner actions
+// Exact-pinned adapter inside game/remote.rs. Recognized burner/Basin bucket actions
 // own this turn; packets use the same methods/fields as the vanilla turn.
 use super::{Game, Hand, S, face_direction, hand_id, play};
 
@@ -12,7 +12,10 @@ pub(in crate::game) fn block(game: &mut Game<'_>, hand: Hand) -> bool {
     let fuel = game.with_hand(hand, |g| {
         super::super::create_port_burner::reacts(g, hit.pos)
     });
-    if !fuel {
+    let basin_bucket = game.with_hand(hand, |g| {
+        super::super::create_port_basin::bucket_reacts(g, hit.pos)
+    });
+    if !fuel && !basin_bucket {
         return false;
     }
     let sequence = game.next_sequence();
@@ -30,7 +33,12 @@ pub(in crate::game) fn block(game: &mut Game<'_>, hand: Hand) -> bool {
         remote.use_target = Some(hit.pos);
     }
     let predicted = game.with_hand(hand, |g| {
-        super::super::create_port_burner::predict_client(g, hit.pos)
+        if fuel {
+            super::super::create_port_burner::predict_client(g, hit.pos)
+        } else {
+            // Basin inventory/fluid changes wait for the authoritative server.
+            true
+        }
     });
     debug_assert!(predicted);
     game.with_hand(hand, Game::swing_arm);

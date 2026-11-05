@@ -1,6 +1,6 @@
 [mod]
 id = "create"
-version = "0.5.0-ch4os.7"
+version = "0.5.0-ch4os.8"
 
 [compatibility]
 horizon_revision = "9c7f9b2215dfed497aba5522c44f38926628648d"
@@ -862,3 +862,56 @@ hook_version=1
 kind="HEAD"
 helper="burner_unload.rs"
 bindings=[{name="game",ty="&crate::game::Game<'_>",value="self"}]
+
+[[injection]]
+id = "basin-custom-block-fluids"
+target = "horizon_client::game::native_hooks::Game<'_>::native_custom_block_fluids"
+kind = "HEAD"
+helper = "fluid-custom_block_fluids.rs"
+bindings = [
+ {name="block",ty="&str",value="block"},
+ {name="custom",ty="&mut bool",value="&mut *custom"},
+]
+
+
+[[injection]]
+id = "basin-custom-fluid-tanks"
+target = "horizon_client::game::native_hooks::Game<'_>::native_custom_fluid_tanks"
+kind = "HEAD"
+helper = "fluid-custom_fluid_tanks.rs"
+bindings = [
+ {name="game",ty="&crate::game::Game<'_>",value="self"},
+ {name="pos",ty="[i32; 3]",value="pos"},
+ {name="side",ty="Option<horizon_core::geometry::Direction>",value="side"},
+ {name="out",ty="&mut Option<Vec<crate::mod_api::NativeFluidTankView>>",value="&mut *out"},
+]
+
+
+[[injection]]
+id = "basin-custom-fluid-fill"
+target = "horizon_client::game::native_hooks::Game<'_>::native_custom_fluid_fill"
+kind = "HEAD"
+helper = "fluid-custom_fluid_fill.rs"
+bindings = [
+ {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
+ {name="pos",ty="[i32; 3]",value="pos"},
+ {name="side",ty="Option<horizon_core::geometry::Direction>",value="side"},
+ {name="resource",ty="&crate::mod_api::NativeFluidStack",value="resource"},
+ {name="action",ty="crate::mod_api::NativeFluidAction",value="action"},
+ {name="out",ty="&mut Option<i32>",value="&mut *out"},
+]
+
+
+[[injection]]
+id = "basin-custom-fluid-drain"
+target = "horizon_client::game::native_hooks::Game<'_>::native_custom_fluid_drain"
+kind = "HEAD"
+helper = "fluid-custom_fluid_drain.rs"
+bindings = [
+ {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
+ {name="pos",ty="[i32; 3]",value="pos"},
+ {name="side",ty="Option<horizon_core::geometry::Direction>",value="side"},
+ {name="request",ty="&crate::mod_api::NativeFluidDrain",value="request"},
+ {name="action",ty="crate::mod_api::NativeFluidAction",value="action"},
+ {name="out",ty="&mut Option<crate::mod_api::NativeFluidStack>",value="&mut *out"},
+]

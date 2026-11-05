@@ -5,7 +5,19 @@ route. S6 is OPEN. The owner authorizes progress through S6 until the next
 requested break, genuine blocker, required input or scope boundary. Read
 `docs/design/STAGE_PROGRESSION_PLAN.md` and `NATIVE_PLAYABILITY_PLAN.md`.
 
-## Accepted coal/heated-brass; next-family assessment
+## Active plain-water Basin candidate
+
+Branch `codex/native-s6-water-basin`, based on accepted/private-synced074122b7.
+Packet `docs/design/NATIVE_S6_WATER_BASIN_PACKET.md`. Candidate `.8`, unchanged
+host9c7f9b22/Mixinse8cd0aa3, tank codec/core/save schema and asset catalog11.
+Selected existing upstream fluid hooks/adapters, strict water-only input and
+empty-output guards, ordinary bucket exchange and exact flour1000mB dough recipe.
+Source review and focused actual checks/build are running. No water gameplay
+qualification or S6 completion yet; accepted `.7` and all prior evidence remain.
+Raw `.local/native-s6-water-basin-01`. Stop for a broader API/schema/framework,
+changed acceptance, genuine blocker or required input.
+
+## Accepted coal/heated-brass
 
 Branch `codex/native-s6-coal-heating`, reviewed source
 `5ac874ff0d7cfbf14bb8b26b2cabf891929ffbee`, completion review CLEAR. Result
@@ -36,6 +48,7 @@ Next is a separate read-only bounded water-only Basin reuse assessment on the
 accepted pins. No broad fluid/capture import, new framework, altered save schema,
 public publishing, cleanup or playable/launcher edit follows from this result.
 Stop for broader redesign, changed acceptance, genuine blocker or required input.
+
 ## Accepted bounded host refresh
 
 Owner-approved branch `codex/native-s6-heating-host-refresh`, reviewed repaired

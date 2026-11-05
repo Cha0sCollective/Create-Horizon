@@ -6,8 +6,8 @@ namespace = "create"
 repository = "https://github.com/Cha0sCollective/Create-Horizon"
 visibility = "private"
 stage = "Native S1 through S5 complete; S6 feature families open"
-active_packet = "Coal/heated-brass accepted: completion review CLEAR; 28 focused tests, build and integrated/dedicated gameplay PASS. See docs/reference/NATIVE_S6_COAL_HEATING_RESULTS.md; old G1 remains historical and unpassed"
-next_stage = "Assess bounded water-only Basin reuse on the accepted host before the next separate S6 packet; no full fluids, general contraptions or release implied"
+active_packet = "Plain-water Basin candidate: selected upstream adapters/exact dough recipe, source review and focused checks/build active; no water gameplay pass. See docs/design/NATIVE_S6_WATER_BASIN_PACKET.md; old G1 remains historical and unpassed"
+next_stage = "Qualify only plain-water bucket/dough integration in integrated/dedicated play after review/build; no broad fluids, general contraptions or release implied"
 
 [specification]
 version = "0.1"

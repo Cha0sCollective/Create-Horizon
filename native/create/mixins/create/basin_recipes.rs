@@ -391,6 +391,9 @@ fn supported_recipe(id: &str, json: &serde_json::Value) -> bool {
         "create:mixing/brass_ingot" => {
             serde_json::json!({"type":"create:mixing","heat_requirement":"heated","ingredients":["#c:ingots/copper","#c:ingots/zinc"],"results":[{"count":2,"id":"create:brass_ingot"}]})
         }
+        "create:mixing/dough_by_mixing" => {
+            serde_json::json!({"type":"create:mixing","ingredients":["#c:flours/wheat",{"type":"neoforge:single","amount":1000,"fluid":"minecraft:water"}],"results":[{"id":"create:dough"}]})
+        }
         _ => return false,
     };
     *json == expected
@@ -427,5 +430,34 @@ mod coal_tests {
         use create_engine::basin::{Heat, HeatRequirement};
         assert!(!HeatRequirement::Heated.accepts(Heat::Smouldering));
         assert!(HeatRequirement::Heated.accepts(Heat::Fading));
+    }
+}
+
+#[cfg(test)]
+mod water_tests {
+    use super::*;
+    #[test]
+    fn exact_one_flour_one_bucket_definition_only() {
+        let recipe = serde_json::json!({"type":"create:mixing","ingredients":["#c:flours/wheat",{"type":"neoforge:single","amount":1000,"fluid":"minecraft:water"}],"results":[{"id":"create:dough"}]});
+        assert!(supported_recipe("create:mixing/dough_by_mixing", &recipe));
+        for (key, value) in [
+            (
+                "ingredients",
+                serde_json::json!(["#c:flours/wheat",{"type":"neoforge:single","amount":250,"fluid":"minecraft:water"}]),
+            ),
+            (
+                "ingredients",
+                serde_json::json!(["#c:flours/wheat",{"type":"neoforge:single","amount":1000,"fluid":"minecraft:lava"}]),
+            ),
+            (
+                "results",
+                serde_json::json!([{"id":"create:dough","count":2}]),
+            ),
+            ("extra", serde_json::json!(true)),
+        ] {
+            let mut changed = recipe.clone();
+            changed[key] = value;
+            assert!(!supported_recipe("create:mixing/dough_by_mixing", &changed));
+        }
     }
 }

@@ -2,10 +2,14 @@
 // Copyright (c) 2026 create-horizon contributors
 // SPDX-License-Identifier: MIT
 // Create 6.0.10 BasinBlockEntity/BasinInventory/BasinRenderer adapter.
-// Heat-aware, unfiltered, downward basin; two canonical water/lava tank halves.
+// Heat-aware, unfiltered, downward basin; bounded plain-water input tank support.
 // Unknown tanks, filters and spouts remain unsupported; never discard them.
 use super::{
     Game, GameLevel, create_port_fluid_codec as fluids, native_block_entity_draw::BlockEntityDraw,
+};
+use crate::mod_api::{
+    NativeFluidAction, NativeFluidDrain, NativeFluidRenderOptions, NativeFluidStack,
+    NativeFluidTankView,
 };
 use crate::{
     containers::{BlockEntity, ModBlockEntity, ModContainer, ModRevision},
@@ -240,6 +244,8 @@ pub(super) fn unsupported(
                     | "minecraft:copper_ingot"
                     | "create:zinc_ingot"
                     | "create:brass_ingot"
+                    | "create:wheat_flour"
+                    | "create:dough"
             )
             || *stack != ItemStack::new(&stack.item, stack.count)
             || game
@@ -255,8 +261,10 @@ pub(super) fn unsupported(
     for key in ["InputTanks", "OutputTanks"] {
         match read_tanks(entity, key) {
             Err(fluids::Unsupported(reason)) => return Some(reason),
-            Ok(tanks) if tanks.iter().any(Option::is_some) => {
-                return Some("dry mixing does not expose nonempty tanks");
+            Ok(tanks) if !supported_water_tanks(key, &tanks) => {
+                return Some(
+                    "only plain input water and empty output-fluid segments are supported",
+                );
             }
             _ => {}
         }
@@ -488,6 +496,162 @@ fn set_tanks(entity: &mut ModBlockEntity, input: Tag, output: Tag) -> bool {
     }
     changed
 }
+fn supported_water_tanks(key: &str, tanks: &fluids::Tanks) -> bool {
+    match key {
+        "InputTanks" => tanks
+            .iter()
+            .flatten()
+            .all(|fluid| fluid.key.id == "minecraft:water" && fluid.key.components.is_empty()),
+        "OutputTanks" => tanks.iter().all(Option::is_none),
+        _ => false,
+    }
+}
+fn plain_bucket(stack: &ItemStack, maximum: u32) -> bool {
+    stack.count > 0 && stack.count <= maximum && *stack == ItemStack::new(&stack.item, stack.count)
+}
+fn fluid_state(game: &Game<'_>, pos: Pos) -> Option<Basin> {
+    let BlockEntity::Mod(entity) = game.world.block_entities.get(&(pos[0], pos[1], pos[2]))? else {
+        return None;
+    };
+    if entity.id != ID || unsupported(game, pos, entity).is_some() {
+        return None;
+    }
+    Some(Basin {
+        input_fluids: read_tanks(entity, "InputTanks").ok()?,
+        output_fluids: read_tanks(entity, "OutputTanks").ok()?,
+        ..Basin::default()
+    })
+}
+fn commit_fluids(game: &mut Game<'_>, pos: Pos, state: &Basin) -> bool {
+    if fluid_state(game, pos).is_none() {
+        return false;
+    }
+    let changed = game
+        .native_with_mod_block_entity(pos, |entity| {
+            if entity.id != ID || !crate::game::create_port::inventory_supported(entity) {
+                return false;
+            }
+            let Ok((input, output)) = replacement_tanks(entity, state) else {
+                return false;
+            };
+            set_tanks(entity, input, output)
+        })
+        .unwrap_or(false);
+    if changed {
+        game.native_block_entity_sync(pos);
+        notify_contents(game, pos);
+    }
+    changed
+}
+fn core_fluid(stack: &NativeFluidStack) -> Option<rules::Fluid<fluids::Key>> {
+    (stack.amount > 0 && stack.fluid == "minecraft:water" && stack.components.is_empty()).then(
+        || rules::Fluid {
+            key: fluids::Key {
+                id: stack.fluid.clone(),
+                components: stack.components.clone(),
+            },
+            amount: stack.amount as u32,
+        },
+    )
+}
+fn native_fluid(stack: &rules::Fluid<fluids::Key>) -> NativeFluidStack {
+    NativeFluidStack {
+        fluid: stack.key.id.clone(),
+        amount: stack.amount as i32,
+        components: stack.key.components.clone(),
+    }
+}
+/// Generic API6 ownership: all source sides, including explicit unsided access.
+pub(super) fn custom_fluids(block: &str, custom: &mut bool) {
+    if block == ID {
+        *custom = true;
+    }
+}
+pub(super) fn fluid_tanks(
+    game: &Game<'_>,
+    pos: Pos,
+    _side: Option<horizon_core::geometry::Direction>,
+    out: &mut Option<Vec<NativeFluidTankView>>,
+) {
+    let Some(state) = fluid_state(game, pos) else {
+        return;
+    };
+    *out = Some(
+        (0..4)
+            .map(|tank| NativeFluidTankView {
+                tank,
+                content: state.fluid(tank).map(native_fluid),
+                capacity: rules::TANK_CAPACITY as i32,
+                can_fill: tank >= 2,
+                can_drain: true,
+            })
+            .collect(),
+    );
+}
+pub(super) fn fluid_fill(
+    game: &mut Game<'_>,
+    pos: Pos,
+    _side: Option<horizon_core::geometry::Direction>,
+    resource: &NativeFluidStack,
+    action: NativeFluidAction,
+    out: &mut Option<i32>,
+) {
+    let Some(mut state) = fluid_state(game, pos) else {
+        return;
+    };
+    *out = Some(0);
+    let Some(resource) = core_fluid(resource) else {
+        return;
+    };
+    // Injected into the defining crate today; reject future external variants.
+    #[allow(unreachable_patterns)]
+    let simulate = match action {
+        NativeFluidAction::Simulate => true,
+        NativeFluidAction::Execute => false,
+        _ => return,
+    };
+    let amount = state.fill_input_fluid(&resource, simulate);
+    if !simulate && amount > 0 && !commit_fluids(game, pos, &state) {
+        return;
+    }
+    *out = Some(amount as i32);
+}
+pub(super) fn fluid_drain(
+    game: &mut Game<'_>,
+    pos: Pos,
+    _side: Option<horizon_core::geometry::Direction>,
+    request: &NativeFluidDrain,
+    action: NativeFluidAction,
+    out: &mut Option<NativeFluidStack>,
+) {
+    let Some(mut state) = fluid_state(game, pos) else {
+        return;
+    };
+    let selected;
+    let request = match request {
+        NativeFluidDrain::Any(maximum) if *maximum > 0 => rules::FluidRequest::Any(*maximum as u32),
+        NativeFluidDrain::Exact(stack) => {
+            let Some(stack) = core_fluid(stack) else {
+                return;
+            };
+            selected = stack;
+            rules::FluidRequest::Exact(&selected)
+        }
+        _ => return,
+    };
+    // Injected into the defining crate today; reject future external variants.
+    #[allow(unreachable_patterns)]
+    let simulate = match action {
+        NativeFluidAction::Simulate => true,
+        NativeFluidAction::Execute => false,
+        _ => return,
+    };
+    let report = state.drain_fluid(request, simulate);
+    if !simulate && report.consumed > 0 && !commit_fluids(game, pos, &state) {
+        return;
+    }
+    *out = report.returned.as_ref().map(native_fluid);
+}
 pub(super) fn can_place(
     slots: &[Option<ItemStack>],
     local: usize,
@@ -616,12 +780,34 @@ pub(super) fn tick(game: &mut Game<'_>, pos: Pos, entity: &mut ModBlockEntity) -
     // collision API; no guessed contact height or direct teleport is used.
     changed
 }
+fn bucket_item(stack: Option<&ItemStack>) -> bool {
+    stack.is_some_and(|stack| {
+        stack.count > 0
+            && matches!(
+                stack.item.as_ref(),
+                "minecraft:water_bucket" | "minecraft:bucket" | "minecraft:lava_bucket"
+            )
+    })
+}
+/// Claim exactly one per-hand native block action before vanilla UseItem fallback.
+/// Eligibility intentionally includes patched buckets: the server refuses those
+/// without allowing the client to spill/replace them through vanilla prediction.
+pub(super) fn bucket_reacts(game: &Game<'_>, pos: Pos) -> bool {
+    game.native_on("create") && game.native_block(pos) == ID && bucket_item(game.held())
+}
 pub(super) fn reacts(game: &Game<'_>, pos: Pos) -> bool {
     game.native_on("create")
         && game.native_block(pos) == ID
-        && game
-            .held()
-            .is_none_or(|s| s.count == 0 || s.item.as_ref() == "minecraft:air")
+        && game.held().is_none_or(|stack| {
+            stack.count == 0
+                || matches!(
+                    stack.item.as_ref(),
+                    "minecraft:air"
+                        | "minecraft:water_bucket"
+                        | "minecraft:bucket"
+                        | "minecraft:lava_bucket"
+                )
+        })
 }
 fn give_container(game: &mut Game<'_>, pos: Pos, stack: ItemStack) {
     let player = game.native_acting_id();
@@ -633,12 +819,105 @@ fn give_container(game: &mut Game<'_>, pos: Pos, stack: ItemStack) {
         }
     }
 }
+fn bucket_click(game: &mut Game<'_>, pos: Pos, held: &ItemStack) -> bool {
+    // The host container helper reads the item ID and constructs a fresh
+    // remainder. Reject component patches before that lossy boundary.
+    if !plain_bucket(held, super::create_port::stack_maximum(game, held)) {
+        return true;
+    }
+    let dim = game.dim.id().to_owned();
+    match held.item.as_ref() {
+        "minecraft:water_bucket" => {
+            let Some((fluid, amount, remainder)) = game.native_item_fluid_drain(held, 1000) else {
+                return true;
+            };
+            let fluid = NativeFluidStack {
+                fluid,
+                amount,
+                components: Compound::new(),
+            };
+            if game.native_fluid_fill_stack(&dim, pos, None, &fluid, NativeFluidAction::Simulate)
+                != amount
+            {
+                return true;
+            }
+            if game.native_fluid_fill_stack(&dim, pos, None, &fluid, NativeFluidAction::Execute)
+                != amount
+            {
+                return true;
+            }
+            if !game.creative {
+                if held.count == 1 {
+                    *game.held_mut() = Some(remainder);
+                } else {
+                    if let Some(s) = game.held_mut() {
+                        s.count -= 1;
+                    }
+                    give_container(game, pos, remainder);
+                }
+            }
+            true
+        }
+        "minecraft:bucket" => {
+            let Some(tanks) = game.native_fluid_view(&dim, pos, None) else {
+                return true;
+            };
+            for tank in tanks {
+                let Some(mut fluid) = tank.content else {
+                    continue;
+                };
+                // API item containers cannot carry an opaque fluid component
+                // patch. Refuse it explicitly rather than flattening it.
+                if !fluid.components.is_empty() || fluid.amount < 1000 {
+                    continue;
+                }
+                let Some((amount, filled)) = game.native_item_fluid_fill(held, &fluid.fluid, 1000)
+                else {
+                    continue;
+                };
+                if amount != 1000 {
+                    continue;
+                }
+                fluid.amount = amount;
+                let drained = game.native_fluid_drain_stack(
+                    &dim,
+                    pos,
+                    None,
+                    &NativeFluidDrain::Exact(fluid),
+                    NativeFluidAction::Execute,
+                );
+                if !drained.is_some_and(|actual| {
+                    actual.amount == 1000
+                        && actual.fluid == "minecraft:water"
+                        && actual.components.is_empty()
+                }) {
+                    return true;
+                }
+                if !game.creative {
+                    game.consume_held();
+                    give_container(game, pos, filled);
+                }
+                return true;
+            }
+            true // GenericItemFilling claims even a refused/insufficient bucket.
+        }
+        "minecraft:lava_bucket" => true, // Claimed refusal: never spill through vanilla.
+        _ => false,
+    }
+}
 pub(super) fn right_click(game: &mut Game<'_>, pos: Pos) -> bool {
     if crate::game::create_port::inventory_blocked(game, pos) {
         return true;
     }
     if !reacts(game, pos) {
         return false;
+    }
+    if let Some(held) = game
+        .held()
+        .filter(|stack| stack.count > 0 && stack.item.as_ref() != "minecraft:air")
+        .cloned()
+    {
+        return bucket_click(game, pos, &held);
     }
     let stacks = game
         .native_with_mod_block_entity(pos, |entity| {
@@ -759,6 +1038,65 @@ pub(super) fn client_tick(game: &mut Game<'_>) {
         }
     });
 }
+fn draw_fluids(
+    game: &Game<'_>,
+    pos: Pos,
+    entity: &ModBlockEntity,
+    draw: &mut BlockEntityDraw,
+) -> f32 {
+    if unsupported(game, pos, entity).is_some() {
+        return 0.0;
+    }
+    let rendered = MOTION.with(|cache| {
+        let mut cache = cache.borrow_mut();
+        let motion = cache
+            .dimension(std::ptr::from_ref(&game.world) as usize, game.dim.id())
+            .get(&pos);
+        std::array::from_fn::<_, 4, _>(|i| {
+            if let Some(m) = motion {
+                return (
+                    m.rendered_fluids[i].clone(),
+                    m.fluid_levels[i].at(draw.partial) * rules::TANK_CAPACITY as f32,
+                );
+            }
+            let key = if i < 2 { "InputTanks" } else { "OutputTanks" };
+            let fluid = read_tanks(entity, key).ok().and_then(|t| t[i % 2].clone());
+            let units = fluids::read_levels(entity.nbt.get(&key.into()))
+                .map_or(0.0, |l| l[i % 2].value * rules::TANK_CAPACITY as f32);
+            (fluid, units)
+        })
+    });
+    let total: f32 = rendered.iter().map(|(_, units)| units).sum();
+    if total < 1.0 {
+        return 0.0;
+    }
+    let ratio = (total / 2000.0).clamp(0.0, 1.0);
+    let height = 2.0 / 16.0 + 12.0 / 16.0 * (1.0 - (1.0 - ratio) * (1.0 - ratio));
+    let mut x = 2.0 / 16.0;
+    for (fluid, units) in rendered {
+        let Some(fluid) = fluid else {
+            continue;
+        };
+        if units < 1.0 {
+            continue;
+        }
+        let next = x + (units / total).clamp(0.0, 1.0) * 12.0 / 16.0;
+        game.native_draw_fluid_box(
+            draw,
+            &native_fluid(&fluid),
+            [x, 2.0 / 16.0, 2.0 / 16.0, next, height, 14.0 / 16.0],
+            NativeFluidRenderOptions {
+                argb: None,
+                render_bottom: false,
+                // Actual source fixture's stitched blocks atlas is 2048x1024.
+                // This is explicit because Horizon stores block sprites in arrays.
+                uv_shrink_ratio: 4.0 / 2048.0,
+            },
+        );
+        x = next;
+    }
+    height
+}
 pub(super) fn draw(
     game: &Game<'_>,
     pos: Pos,
@@ -787,7 +1125,7 @@ pub(super) fn draw(
         entity.items.len()
     };
     let items = &entity.items[..end];
-    let fluid_height: f32 = 0.0; // Reviewed dry profile: no external fluid rendering.
+    let fluid_height = draw_fluids(game, pos, entity, draw);
     let item_height = (fluid_height - 0.3).clamp(0.125, 0.6);
     let mut count = items.iter().flatten().filter(|s| s.count > 0).count();
     if count == 0 {
@@ -843,4 +1181,93 @@ pub(super) fn draw(
     }
     draw.pop();
     true
+}
+
+#[cfg(test)]
+mod water_tests {
+    use super::*;
+    fn water(amount: i32) -> NativeFluidStack {
+        NativeFluidStack {
+            fluid: "minecraft:water".into(),
+            amount,
+            components: Compound::new(),
+        }
+    }
+    #[test]
+    fn canonical_water_roundtrip_and_strict_capability_boundary() {
+        let native = water(1000);
+        let core = core_fluid(&native).unwrap();
+        let tanks = [Some(core.clone()), None];
+        assert!(supported_water_tanks("InputTanks", &tanks));
+        assert!(!supported_water_tanks("OutputTanks", &tanks));
+        let empty = empty_tanks();
+        let encoded = fluids::write_half(Some(&empty), &tanks).unwrap();
+        assert_eq!(fluids::read_half(Some(&encoded)).unwrap(), tanks);
+        let back = native_fluid(&core);
+        assert_eq!(back.fluid, native.fluid);
+        assert_eq!(back.amount, 1000);
+        assert!(back.components.is_empty());
+        assert!(core_fluid(&water(0)).is_none());
+        let mut lava = water(1000);
+        lava.fluid = "minecraft:lava".into();
+        assert!(core_fluid(&lava).is_none());
+        let mut patched = water(1000);
+        patched.components.insert("foreign".into(), Tag::Int(1));
+        assert!(core_fluid(&patched).is_none());
+        let mut foreign = tanks.clone();
+        foreign[0].as_mut().unwrap().key.components = patched.components;
+        assert!(!supported_water_tanks("InputTanks", &foreign));
+        let cleared = fluids::write_half(Some(&encoded), &[None, None]).unwrap();
+        assert!(
+            fluids::read_half(Some(&cleared))
+                .unwrap()
+                .iter()
+                .all(Option::is_none)
+        );
+    }
+    #[test]
+    fn plain_bucket_guard_uses_actual_component_decoder() {
+        assert!(plain_bucket(&ItemStack::new("minecraft:bucket", 16), 16));
+        assert!(!plain_bucket(&ItemStack::new("minecraft:bucket", 17), 16));
+        assert!(!plain_bucket(&ItemStack::new("minecraft:bucket", 0), 16));
+        assert!(!plain_bucket(
+            &ItemStack::new("minecraft:water_bucket", 2),
+            1
+        ));
+        let tag = Tag::compound([
+            ("id", Tag::String("minecraft:bucket".into())),
+            ("count", Tag::Int(1)),
+            (
+                "components",
+                Tag::compound([("minecraft:custom_name", Tag::String("\"patched\"".into()))]),
+            ),
+        ]);
+        let stack = horizon_items::item_nbt::item_from_nbt(&tag).unwrap();
+        assert!(!plain_bucket(&stack, 16));
+        assert!(bucket_item(Some(&stack)));
+        assert!(bucket_item(Some(&ItemStack::new(
+            "minecraft:lava_bucket",
+            1
+        ))));
+        assert!(!bucket_item(Some(&ItemStack::new("minecraft:stick", 1))));
+        assert!(!bucket_item(None));
+    }
+    #[test]
+    fn water_simulation_capacity_and_exact_drain_keep_source_accounting() {
+        let mut basin = Basin::default();
+        let resource = core_fluid(&water(1000)).unwrap();
+        let before = basin.clone();
+        assert_eq!(basin.fill_input_fluid(&resource, true), 1000);
+        assert_eq!(basin, before);
+        assert_eq!(basin.fill_input_fluid(&resource, false), 1000);
+        let full = basin.clone();
+        assert_eq!(basin.fill_input_fluid(&resource, true), 0);
+        assert_eq!(basin, full);
+        let simulated = basin.drain_fluid(rules::FluidRequest::Exact(&resource), true);
+        assert_eq!(basin, full);
+        let actual = basin.drain_fluid(rules::FluidRequest::Exact(&resource), false);
+        assert_eq!(actual, simulated);
+        assert_eq!((actual.consumed, actual.source_discarded), (1000, 0));
+        assert!(basin.input_fluids.iter().all(Option::is_none));
+    }
 }
