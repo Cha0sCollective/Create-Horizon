@@ -13,6 +13,13 @@ change. The accepted playable primary remains separate while validation is open.
 | Fluids001 | 01bec38c tank plus handoff5e7551e | Source CLEAR; codec/capability/save/render checks pending |
 | Trains/Schematics001 | aa30f68 plus repaired79c95f7 and status99d97fb | Source CLEAR; compile/track gameplay pending |
 
+Additive tank validation delta936c80b shares the real callback's transfer branches
+with a small NBT read/commit closure seam. Focused tests cover simulated and clipped
+execution, refusal and failed commits. The Game binding/callback signatures are
+unchanged; no developer command or host test API was added. Fresh team delta review
+CLEAR. The original8cadfa1 source map remains preserved; freeze a new map before
+the shared build and include `create_port_fluid_tank::transfer_tests`.
+
 Root added exactly the Contraptions handoff's engine export and native module,
 without a caller or ownership path. For belt/tank right-click conflict, preserve
 separate handled arms with cancellation/swing/return, keeping the accepted belt
