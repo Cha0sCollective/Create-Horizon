@@ -60,7 +60,8 @@ is included so the selected saw block remains obtainable without a new material.
 
 Pure tests check 200/20-unit RPM scaling, zero-power pause, single-item output,
 and unsupported-item unchanged ejection. Focused native checks cover source
-recipes, ports/stress, placement, item custody, save and render declarations.
+recipes, ports/stress, placement, item custody, save and render declarations,
+including the shaft pose for both `axis_along_first` settings.
 After a host-wide lease, one isolated integrated and dedicated/two-client
 milestone should show ordinary input, exact six-shaft output and collection,
 unsupported return, mid-cut stop and normal cold reopen, actual peer-visible
