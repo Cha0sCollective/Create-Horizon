@@ -11,8 +11,8 @@ see docs/reference/NATIVE_S6_BELT_TRANSPORT_RESULTS.md. S6 remains OPEN.
 
 | Team | Current bounded packet |
 | --- | --- |
-| Machinery | Fan washing: unchanged .8 binaries/source verified; integrated complete, dedicated/cold-reopen/peer checks in progress. Sole heavy reservation. |
-| Transport | Bare-belt fix accepted; transport-002 two-controller handoff drivers/maps preparing, next in runtime queue. No new build planned. |
+| Machinery | Selected fan washing PASS on unchanged .8 inputs, seven exits0/completion CLEAR; result integrated. Next source-only processing reuse assessment. |
+| Transport | Bare-belt fix accepted; prepared transport-002 now owns dedicated runtime lease. No new build planned. |
 | Fluids and power | One stationary water tank through existing generic ModBlockEntity/fluid services; Java TankContent codec, no host/global-schema change. |
 | Contraptions | Selective staged affd76f core plus read-only native preflight; no custody/save/motion framework. |
 | Trains and schematics | Source-aligned straight stationary track X/Z, existing placement/save services. No graph/train/import claim. |
@@ -21,9 +21,11 @@ see docs/reference/NATIVE_S6_BELT_TRANSPORT_RESULTS.md. S6 remains OPEN.
 Primary has three proposal/packet docs integrated. New production candidates
 remain in isolated lanes. Root-owned integration branch
 codex/create-team-integration-001 at .local/integration/create-teams-001 starts
-with reviewed audio9e9a779; it is NOT accepted or a playable release. Add only
-stable reviewed handoffs, reconcile shared wiring serially, and compile compatible
-ready candidates together once the host-wide slot is free. Reuse shared installed
+with reviewed audio9e9a779 and is now stable8cadfa1 with all four source handoffs,
+root wiring and coherent .10/cache13. Static checks and fresh independent
+composition review CLEAR; compilation and gameplay remain pending. It is NOT
+accepted or a playable release. Compile compatible ready candidates together
+once the host-wide slot is free. Reuse shared installed
 tooling/dependency caches under that exclusive lease; no duplicate historical
 batteries or per-team copies of large targets. Validation claims remain separate.
 

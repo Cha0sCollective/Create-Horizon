@@ -20,8 +20,17 @@ Transport's historical held checkpoint2adc50a9/native43cef7dd (`.9`) is preserve
 Repair0df826c/handoff214c1d4 closes the stale Depot peer component. Fresh independent
 Sol High integration review CLEAR supports bounded bare-belt acceptance by composed
 evidence; see `docs/reference/NATIVE_S6_BELT_TRANSPORT_RESULTS.md`. No fullS6 claim.
-Machinery now owns the sole lease for its fan/water-catalyst/Depot flour-to-dough
-packet, using unchanged compatible binaries when verifiable. Other teams have
+Machinery's selected one-item fan/water-catalyst/Depot packet is now PASS on
+unchanged `.8` inputs, including normal cold reopen and actual peer flour/dough/
+empty views; seven process exits0, completion review CLEAR. Its initial empty
+image interpretation was corrected by direct comparison, without source repair
+or new game runs. See `docs/teams/machinery/MACHINERY_001_RESULTS.md`.
+Transport002 now owns the sole runtime lease for a two-controller belt handoff.
+Root candidate8cadfa1 (`codex/create-team-integration-001`) composes four reviewed
+source packets at development `.10`/resource-cache13: audio, tank, straight track,
+and core/read-only preflight. Static checks and fresh composition review CLEAR;
+shared compile/tests/gameplay remain pending. Accepted primary stays separate.
+Other teams have
 bounded isolated allocations: active millstone audio, straight stationary track,
 staged portable contraption core plus read-only native preflight, and one stationary
 water tank through existing generic ModBlockEntity NBT/fluid services. A new tank's
