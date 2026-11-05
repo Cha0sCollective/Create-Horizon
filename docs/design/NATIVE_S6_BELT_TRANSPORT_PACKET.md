@@ -30,7 +30,8 @@ upstream implementations. These findings do not authorize a broad new framework.
 ## Supported profile
 
 One short, fully loaded, horizontal bare chain built with the ordinary connector
-between supplied shafts. Plain dropped-item intake; existing motor stop/reverse;
+between supplied shafts. Plain dropped-item intake; existing motor GUI reversal
+and ordinary existing Clutch/vanilla-lever stop (the GUI's minimum is1, not0);
 direct belt-to-accepted-Depot transfer followed by stock hopper; empty-hand
 collection; occupied-Depot backpressure; normal stopped-stocked cold restart and
 actual dedicated peer occupied-to-empty view. Supplied materials/platform/power
@@ -66,7 +67,9 @@ Two bounded local repairs identified before import:
    before capture/tick/collection/preparation/save/destruction. Controller-aware
    destruction must retain undecodable live ownership instead of ejecting an
    older cache copy. Preserve invalid canonical NBT unchanged and allow recovery
-   after explicit fixture repair. No general codec or new container-owner API.
+   after explicit fixture repair. Fresh metadata-free entities require Inventory
+   absent; present stock without initialized ownership is opaque/refused. No
+   general codec or new container-owner API.
 
 Add selected original-ID belt declarations/connector/loot/recipe/tags and local
 asset catalog/cache-version changes. Original art is imported only from the

@@ -983,7 +983,9 @@ fn metadata_matches(e: &ModBlockEntity, controller: Pos, length: usize, index: u
             && pos_tag(&e.nbt, "Controller") == Some(controller)
             && e.nbt.get(&"IsController".into()) == Some(&Tag::Byte(i8::from(index == 0)))
     } else {
-        !["Index", "Controller", "IsController"]
+        // A fresh belt has no owned Inventory yet. A present record without
+        // initialized ownership must stay opaque until explicit metadata repair.
+        !["Index", "Controller", "IsController", "Inventory"]
             .iter()
             .any(|key| e.nbt.contains_key(&(*key).into()))
     }
