@@ -34,10 +34,17 @@ Map `cd8228d648b4e0fde510b71085724e4f9e5fbcafcc7e7fb0e83a87a1e4a5f0a6`;
 game36e13c3f/ctl32f37332. Existing content387 unchanged, three language/tab files
 changed,16 selected additions plus separately recorded version edits.
 
-Next: read-only assessment of the upstream burner's state-aware entity creation,
-fuel/heat and client presentation on retained pins. Upstream236c87a8 already
-implements these; full0.7 import remains HOLD for absent newer host/type/schema
-interfaces. No heating, full fluid support or dependency upgrade is accepted.
+Dry result accepted/private-synced at `3ad300e`. Heating reuse assessment:
+`docs/design/NATIVE_S6_HEATING_REUSE_ASSESSMENT.md`, independent review CLEAR.
+Upstream236c87a8 already implements fuel/heat, heated brass and presentation, but
+full adapter reuse requires newer state-aware factory/render services absent from
+the current pin. A shallow read-only9c7f9b22 reference confirms all45 current
+injection names and24 module paths persist; static source inventory is not a
+build/migration pass. The upstream identity method replaces our private shim;
+new transient update semantics need review. No production pin/source changed.
+Pending owner route: recommended bounded isolated9c7f9b22/e8cd0aa3 candidate
+migration; alternatives explicitly reduced old-host heating or heating deferral.
+Full0.7 import stays HOLD; no heating/full fluids/dependency upgrade is accepted.
 Stop before a broad host/API/schema/lifecycle framework or changed acceptance.
 
 ## Accepted portable-interface packet
