@@ -51,3 +51,21 @@ pin, sound framework, or acceptance rule.
    final claims. Preserve all failed attempts and raw evidence outside Git.
 
 No public release, upstream message, playable-world or Prism change follows.
+
+## Read-only runtime triage — November 5
+
+The frozen shared candidate `abf48a5` contains the reviewed millstone source
+unchanged. In raw integrated `audio-00.json` and `calls-00.jsonl` under
+`.local/native-team-runtime-001/integrated-mn_pl_nk`, the client `heard` counts
+rose from zero to 124 `create:crushing_1` / 62 `create:crushing_2` during powered
+input, then stayed at 133 / 66 across the final quiet interval. This verifies
+the client callback and selected event cadence, not audible playback.
+
+Root confirmed the frozen binary was built with `--no-default-features` and
+without `horizon-client/audio`; its zero audio channels/decoded sounds therefore
+cannot qualify output. Keep no defaults for the next shared build, but enable
+`--features horizon-client/audio` explicitly (controllers remain off). Check
+the **exact process binary** and startup audio-device state, then repeat the
+small active/quiet observation and capture real output through an existing
+monitor if available. If no output device/capture is available, record audible
+playback as unobserved. No millstone source repair or extra machine scope follows.
