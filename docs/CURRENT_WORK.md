@@ -1,19 +1,25 @@
 # Current work
 
-Native S1, S2 and S3 are COMPLETE under the owner-adopted November 4 native route.
-Fresh independent Sol High source/driver/completion reviews cleared bounded S2/S3.
+Native S1 through S4 are COMPLETE under the owner-adopted November 4 native route.
+Fresh independent Sol High source/driver/completion reviews cleared bounded stages.
 See `docs/reference/NATIVE_S1_PLAYABILITY_RESULTS.md` and
-`docs/reference/NATIVE_S2_KINETICS_RESULTS.md` and `NATIVE_S3_MVP_RESULTS.md` for
+`docs/reference/NATIVE_S2_KINETICS_RESULTS.md`, `NATIVE_S3_MVP_RESULTS.md` and
+`NATIVE_S4_FACTORY_RESULTS.md` for
 evidence and limits.
 The owner now authorizes continuing through S6 until the next requested break.
-Next packet: define S4's bounded survival/normal-terrain recipe and powered-line
-checklist using existing native machines and host services before changes.
-`docs/design/STAGE_PROGRESSION_PLAN.md` supplies the stage authority. S4 is not
-yet accepted; prior S3 packet remains `docs/design/NATIVE_S3_MVP_PACKET.md`.
+Completed packet: `docs/design/NATIVE_S4_FACTORY_PACKET.md`, fresh independent Sol
+High packet and completion reviews CLEAR. Survival/normal-terrain recipe chain
+from vanilla fixtures, one finite water-wheel/hopper milling factory and ordinary
+save/rejoin. Adaptive existing-control sessions retain valid checkpoints rather
+than replaying all crafting after a later camera/driver error. S4 is accepted.
+Next: S5 feasibility/current-upstream audit for one controlled moving assembly,
+then a bounded reviewed packet; ask before broad host/API/architecture expansion.
 
 ## Current checkpoint
 
-Private branch `codex/native-s3-mvp`; accepted S2 is `c0905ca68d122fcaec31e4c0e6cba197bb73f3ff`
+Private branch `codex/native-s4-factory`; accepted/private-synced S3 is
+`67566136634139309a04bb12b8aaacbec518d743` on `codex/native-s3-mvp`, clean before
+this packet. Accepted S2 is `c0905ca68d122fcaec31e4c0e6cba197bb73f3ff`
 on `codex/native-s2-kinetics`, exact GitHub remote verified. Accepted S1 remains on
 `codex/native-create-playability`. Adoption `d8c7274`; exact upstream
 source import `e401338aa1bc1a921139a33145a70c730f6011d7`; reviewed parity fix
@@ -64,16 +70,46 @@ Seven orchestrated exits0; board/chain/refusal images inspected. Two setup/drive
 FALSE attempts preservedattempt1/2; finalsource/driver/checklist reviewsCLEAR.
 No S2 battery repeat. `native/PLAY_PRIVATE.md` is the qualified bounded guide.
 
+S4 is using unchanged S3 binaries; no game-source patch/rebuild. Its adaptive
+session helpers received fresh Sol High review (start5c3bba8c/control dd0e1116),
+including clean-exit-before-reopen and account-session-env removal. Eight selected
+recipes match7ff2760e after codec normalization. Normal generated Survival world
+`integrated-9fhneh9o` completed actual crafting/application/mining:4alloy then
+8shafts,2small/2largecogs,1wheel,casing,1millstone; vanilla inputs consumed. No
+Create item was given. Normal quit exit0 and cold reopen retain inventory/mode/
+spawn_mobs=false; unsupported console `save-all flush` remains recorded, and the
+successful normal-quit/reopen is the save evidence. The later aiming/placement
+failure was resolved with an ordinary temporary support block, without a source
+patch. All six factory nodes were placed from crafted stock. Water flow1 provides
+256SU against64SU load, signed speeds8/8/8/8/-16/16. Hoppers move3cobble into the
+unpowered mill without stealing input. Removing water pausesTimer177; normal
+cold reopen retains177/input3/Speed0, then restoring water produces exactly3gravel
+in the output chest. Actual chest UI and normal shift-click collection agree;
+actor gains3gravel and chest becomes empty. Bounded departure reports factory
+unavailable; return retains power/output. All four integrated sessions exit0.
+Raw commands, partial failures, snapshots and exit receipts remain under
+`.local/native-s4-01` and Linux run`integrated-9fhneh9o`. Dedicated`msonj7j7` with
+two rendered clients PASS equivalent finite power/automation, timer153 pause,
+peer rejoin, cold server/both-client retention and completion3gravel. Peer actual
+chest UI/shift-click gains3; actor0/chestempty. All6 successful-run processes exit0.
+Submitted matrices show wheel8/mill16RPM on all3 clients. Fresh independent
+completion review CLEAR at resultcandidate1c2bd38d/evidencesummaryd194a4ab. No S4
+production source or binary change. Initial dedicated unsupportedseed exit1 and
+pre-loginop/title-wait driver failures remain separately preserved and unqualified.
+
 ## Boundaries and following work
 
-Supported profile: five types, fixed mob-free Creative TestTerrain Overworld,
-integrated and dedicated/two rendered matching clients. Open to LAN, custom
+S1–S3 profile: five types, fixed mob-free Creative TestTerrain Overworld;
+S4 adds one normal water wheel/finite hopper mill in normal generated mob-free
+Survival terrain. Integrated and dedicated/two matching rendered clients.
+Open to LAN, custom
 cross-owner interrupted-crash framework and extra hardened replay guarantees
 remain deferred. Native code is trusted. No full Create/modpack compatibility,
 unqualified client resync, legacy G1 pass, Java/world import or release claim.
 
-Current work is S4 reuse/gap assessment of an obtainable crafting chain and one
-useful survival-powered factory in ordinary host-generated terrain.
+Current work is checkpointing S4, then S5 reuse/feasibility assessment. Latest port
+experimental branch is noweb8b96e8 (0.7 developer checkpoint); contraptions remain
+pending. Official upstream78a7e6a7 was fetched read-only; testedfc021 pins remain.
 Read the stage progression plan; identify the concrete failing behavior and reuse
 upstream before changes. Ask before going beyond authorized stage outcomes or
 adopted architecture/schema/framework/acceptance boundaries.
