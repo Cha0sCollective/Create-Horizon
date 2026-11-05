@@ -6,8 +6,8 @@
   "operations_enrolled_at": "2026-11-05T20:28:36.178Z",
   "root_rollout": "2026/10/25/rollout-2026-10-25T14-12-55-01a1747a-eb1f-7183-b3f6-63f0ccc37f13.jsonl",
   "heavy_resource": {
-    "owner": null,
-    "state": "free",
+    "owner": "transport-001",
+    "state": "reserved",
     "queue": []
   },
   "teams": [
@@ -21,7 +21,7 @@
       "thread_id": "01a1ad7e-e33b-7ef2-8bc2-606e374fb5de",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:31.729Z",
-      "state": "dispatched",
+      "state": "read-only nested discovery",
       "lane_initial_head": "76dfaf78370f41b2a5c68620c55be6ecab96f16f"
     },
     {
@@ -34,7 +34,7 @@
       "thread_id": "01a1ad7e-f1a5-7052-b948-19607d6dd8e4",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:37.443Z",
-      "state": "dispatched",
+      "state": "repair-review; exclusive validation reservation",
       "lane_initial_head": "f00d04a3249b53bee453a0191d65285b0e7f6538"
     },
     {
@@ -47,7 +47,7 @@
       "thread_id": "01a1ad7f-00d6-7c60-8820-89ddbee3d21c",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:40.745Z",
-      "state": "dispatched",
+      "state": "read-only nested discovery",
       "lane_initial_head": "76dfaf78370f41b2a5c68620c55be6ecab96f16f"
     },
     {
@@ -60,7 +60,7 @@
       "thread_id": "01a1ad7f-0de7-7871-aec9-617ed9916499",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:44.555Z",
-      "state": "dispatched",
+      "state": "read-only nested discovery",
       "lane_initial_head": "76dfaf78370f41b2a5c68620c55be6ecab96f16f"
     },
     {
@@ -73,7 +73,7 @@
       "thread_id": "01a1ad7f-1bc5-7d53-89d7-89c76219d1c8",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:48.006Z",
-      "state": "dispatched",
+      "state": "read-only nested discovery",
       "lane_initial_head": "76dfaf78370f41b2a5c68620c55be6ecab96f16f"
     },
     {
@@ -86,7 +86,7 @@
       "thread_id": "01a1ad7f-28cf-7452-9a78-12912bc4d097",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:51.489Z",
-      "state": "dispatched",
+      "state": "read-only nested discovery",
       "lane_initial_head": "76dfaf78370f41b2a5c68620c55be6ecab96f16f"
     }
   ]

@@ -35,7 +35,12 @@ foreach ($file in $files.Values) {
                 $line = $reader.ReadLine()
                 if ($line -notmatch '"type"\s*:\s*"(session_meta|token_count)"') { continue }
                 try { $value = $line | ConvertFrom-Json } catch { continue }
-                if ($value.type -eq 'session_meta') { $meta=$value.payload; $metaAt=(Read-Utc $value.timestamp); continue }
+                # Full-context child logs can embed their parent's metadata after
+                # their own header. The first header owns this file and counters.
+                if ($value.type -eq 'session_meta') {
+                    if ($null -eq $meta) { $meta=$value.payload; $metaAt=(Read-Utc $value.timestamp) }
+                    continue
+                }
                 if ($value.type -eq 'event_msg' -and $value.payload.type -eq 'token_count' -and $null -ne $value.payload.info.total_token_usage) {
                     $samples.Add([pscustomobject]@{at=(Read-Utc $value.timestamp);usage=$value.payload.info.total_token_usage})
                 }

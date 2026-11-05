@@ -22,7 +22,9 @@ Command receipts retain precise execution durations separately from phase elapse
 Only operations runs `tools/operations/collect-usage.ps1`. It reads session/parent
 metadata and token_count usage records from accessible local Codex logs with a
 shared read handle, selects registered teams and descendants, subtracts counters
-at enrollment and deduplicates sessions. Cached input and reasoning output remain
+at enrollment and deduplicates sessions. The first session header owns a log;
+embedded parent headers in full-context forks do not replace child identity.
+Cached input and reasoning output remain
 subsets. No raw messages/transcripts, credentials or billing API are copied.
 
 The local output contains token-usage.csv, time-events.csv and usage-summary.json.
