@@ -19,9 +19,17 @@ Transport alone starts from held checkpoint2adc50a9/native43cef7dd (`.9`), plus
 operations adoption. Its final dedicated peer still draws Depot gold after hopper
 extraction despite correct authoritative/save counts. First writable packet is
 the narrow replica repair and focused requalification. Belt is not accepted.
-Other teams start from accepted `.8`, with bounded parallel reuse/Java discovery
-and one next-packet proposal each. Broader architecture/schema/acceptance gates
-remain. Do not resume old frozen drivers against changed checkout paths.
+Transport returned reviewed repair214c1d4 and its heavy lease; root is reviewing
+the original belt evidence plus narrow eventual peer-clear repair before acceptance.
+Machinery now owns the sole lease for its fan/water-catalyst/Depot flour-to-dough
+packet, using unchanged compatible binaries when verifiable. Other teams have
+bounded isolated allocations: active millstone audio, straight stationary track,
+staged portable contraption core plus read-only native preflight, and one stationary
+water tank through existing generic ModBlockEntity NBT/fluid services. A new tank's
+block-local Java codec fits that existing extension service; no global/host schema,
+existing codec, migration or shared-owner format change is authorized. Stop if that
+premise fails. Contraption custody/live motion and broader schema/framework/import
+decisions remain gated. No old frozen driver is resumed against changed paths.
 
 ## Accepted plain-water Basin
 
