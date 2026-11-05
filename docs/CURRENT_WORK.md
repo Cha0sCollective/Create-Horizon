@@ -11,7 +11,25 @@ Private branch `codex/native-s6-portable-interface`, based on accepted and
 privately synced mounted-depot checkpoint `a77af67`. The current read-only audit
 and next packet are `docs/design/NATIVE_S6_PORTABLE_ITEM_AUDIT.md` and
 `NATIVE_S6_PORTABLE_ITEM_PACKET.md`. Independent Sol High packet/delta review CLEAR;
-no portable-interface production code or game run has started.
+portable-interface implementation and live verification are in progress.
+Four focused connection-state and four host custody/wire tests PASS, as do
+manifest consistency, formatting and Clippy (27 nonfatal warnings). Independent
+source/delta reviews CLEAR, including the client-only wire read and part axes.
+The first trial used game6c35f7c5/ctl507b23e1 and frozen input map
+`4b4cb3fc2516bccf5d200f7075c5a29bb105e4712e2f9f95e1ad629ab7c6d6e4`;
+preserve it as the pre-clearance-fix candidate, not accepted game evidence.
+Content generation preserves376 unrelated files and retained pressing tags.
+Game verification remains pending in `.local/native-s6-portable-01`; no portable
+profile is accepted yet. The pre-trace/axis test hash map and both build receipts
+are preserved; no unchanged test battery was replayed for those reviewed deltas.
+First integrated trial `integrated-x_gx74cb` preserved ordinary placement and
+obstruction refusal. It transferred1ingot to the chest with no drops, but the
+old private clearance cap2 rejected all three-part movement at offset0. The
+trial is FALSE for movement/settlement; normal quit exit0 retained the block
+owner and chest1. The bounded cap3/final-bounds4 correction received independent
+Sol High delta CLEAR, Clippy PASS27warnings and a locked build PASS at
+game45e08336/ctl507b23e1. Checkpoint this reviewed WIP privately, freeze its new
+map, then adaptively reopen the same disposable world. No game is running now.
 
 The accepted mounted-depot change adds one plain-iron cargo to the east-facing,
 one-pole, one-cell piston. It uses private owner NBT and existing native host
@@ -28,8 +46,8 @@ Final input map SHA-256:
 `8db54c33f380fb60b0bc9f2f9cf1be7594e7c31573b439ad92f17082759bf037`.
 Raw evidence is local `.local/native-s6-mounted-01`; see
 `docs/reference/NATIVE_S6_MOUNTED_DEPOT_RESULTS.md` for distinct primary/final
-maps and the exact limits. Next: implement the finite canonical-slot and mutable
-hopper-source adapter route, then independent source/delta review before live use. Mounted
+maps and the exact limits. Next: finish portable movement, custody, refusal,
+peer/cold-reopen and regression checks, then independent completion review. Mounted
 depot alone does not complete S6. Ask before broad host/API/schema or general
 contraption architecture changes or changed acceptance outcomes.
 

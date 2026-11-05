@@ -26,6 +26,7 @@ pub const BLOCKS: &[&str] = &[
     "mechanical_drill",
     "mechanical_piston",
     "piston_extension_pole",
+    "portable_storage_interface",
 ];
 pub const ITEMS: &[&str] = &[
     "iron_sheet",
@@ -69,4 +70,7 @@ pub const PARTS: &[&str] = &[
     "encased_fan/propeller",
     "mechanical_drill/block",
     "mechanical_drill/head",
+    "portable_storage_interface/block_middle",
+    "portable_storage_interface/block_middle_powered",
+    "portable_storage_interface/block_top",
 ];

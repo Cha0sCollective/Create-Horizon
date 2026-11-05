@@ -319,7 +319,10 @@ fn level_ports(game: &GameLevel<'_>, pos: [i32; 3]) -> [bool; 6] {
         if !super::create_port::owns(name)
             || matches!(
                 name,
-                "create:depot" | "create:water_wheel_structure" | "create:piston_extension_pole"
+                "create:depot"
+                    | "create:water_wheel_structure"
+                    | "create:piston_extension_pole"
+                    | "create:portable_storage_interface"
             )
         {
             return false;

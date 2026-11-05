@@ -83,6 +83,48 @@ def mechanical_piston_content():
                    ("piston_extension_pole" if name == "mechanical_piston_head" else name)}]}]})
 
 
+def portable_interface_content():
+    # MIT AllShapes and WrenchableDirectionalBlock: FACING only, 14/16 high
+    # before rotation. Provisional art below is authored here with vanilla IDs.
+    directions = ["down", "up", "north", "south", "west", "east"]
+    shapes = {"up": [[0, 0, 0, 1, .875, 1]], "down": [[0, .125, 0, 1, 1, 1]],
+              "north": [[0, 0, .125, 1, 1, 1]], "south": [[0, 0, 0, 1, 1, .875]],
+              "west": [[.125, 0, 0, 1, 1, 1]], "east": [[0, 0, 0, .875, 1, 1]]}
+    write("data/create/horizon/block/portable_storage_interface.json", {
+        "template": "minecraft:glass", "item": True,
+        "properties": {"hardness": 1.5, "explosion_resistance": 6,
+                       "requires_tool": True, "render_shape": "MODEL", "sounds": "minecraft:andesite"},
+        "state_properties": {"facing": {"type": "enum", "values": directions}},
+        "default_state": {"facing": "east"},
+        "shapes": {"property": "facing", "values": shapes},
+        "collision_shapes": {"property": "facing", "values": shapes},
+    })
+    base = "portable_storage_interface/"
+    model(base + "block", [([0, 0, 0], [16, 8, 16])], "minecraft:block/andesite")
+    model(base + "block_middle", [([4, 0, 4], [12, 6, 12])], "minecraft:block/iron_block")
+    model(base + "block_middle_powered", [([4, 0, 4], [12, 6, 12])], "minecraft:block/gold_block")
+    model(base + "block_top", [([1, 12, 1], [15, 14, 15])], "minecraft:block/iron_block")
+    model(base + "item", [([0, 0, 0], [16, 8, 16]), ([4, 6, 4], [12, 12, 12]),
+                           ([1, 12, 1], [15, 14, 15])], "minecraft:block/andesite")
+    rotations = {"up": {}, "down": {"x": 180}, "north": {"x": 90},
+                 "south": {"x": 90, "y": 180}, "west": {"x": 90, "y": 270},
+                 "east": {"x": 90, "y": 90}}
+    write("assets/create/blockstates/portable_storage_interface.json", {"variants": {
+        "facing=" + face: {"model": "create:block/" + base + "block", **rotation}
+        for face, rotation in rotations.items()}})
+    write("assets/create/models/item/portable_storage_interface.json", {"parent": "create:block/" + base + "item"})
+    write("assets/create/items/portable_storage_interface.json", {"model": {
+        "type": "minecraft:model", "model": "create:item/portable_storage_interface"}})
+    write("data/create/loot_table/blocks/portable_storage_interface.json", {
+        "type": "minecraft:block", "pools": [{"rolls": 1, "entries": [
+            {"type": "minecraft:item", "name": "create:portable_storage_interface"}]}]})
+    for locale in ["en_us", "ru_ru"]:
+        path = CONTENT / ("assets/create/lang/" + locale + ".json")
+        lang = json.loads(path.read_text())
+        lang["block.create.portable_storage_interface"] = "Portable Storage Interface"
+        path.write_text(json.dumps(lang, ensure_ascii=False, indent=2) + "\n")
+
+
 def processors():
     # State and collision definitions translated from MIT MillstoneBlock,
     # DirectionalKineticBlock and AllShapes. Geometry below is our provisional
@@ -250,7 +292,7 @@ def main():
     CONTENT.mkdir(exist_ok=True)
     (CONTENT / "horizon-mod.toml").write_text('''id = "create"
 name = "Create for Horizon — prototype"
-version = "0.5.0-ch4os.3"
+version = "0.5.0-ch4os.4"
 description = "Experimental kinetic foundation with milling, bulk fan processing, stationary drilling, pressing, depots, crafting and a bounded one-pole mechanical piston."
 authors = ["create-horizon contributors"]
 api = "0.2"
@@ -311,8 +353,8 @@ capabilities = ["registries"]
         vanilla = "gold" if name == "golden" else name
         write("assets/create/models/item/" + name + "_sheet.json", {"parent": "minecraft:item/generated", "textures": {"layer0": "minecraft:item/" + vanilla + "_ingot"}})
         write("assets/create/items/" + name + "_sheet.json", {"model": {"type": "minecraft:model", "model": "create:item/" + name + "_sheet"}})
-        # Adapted from the three MIT Create pressing recipes. Convention tags are
-        # narrowed to vanilla ingots for this initial, self-contained content set.
+        # Bootstrap recipes; foundation() below replaces them with the retained
+        # MIT recipes, including their convention-tag ingredients.
         write("data/create/recipe/pressing/" + vanilla + "_ingot.json", {
             "type": "create:pressing", "ingredients": ["minecraft:" + vanilla + "_ingot"],
             "results": [{"id": "create:" + name + "_sheet"}],
@@ -329,6 +371,7 @@ capabilities = ["registries"]
         write("assets/create/lang/" + language + ".json", lang)
     foundation()
     mechanical_piston_content()
+    portable_interface_content()
     # Source installs carry only the native bundle. Its documented data folder
     # therefore contains the complete public content, with no player-side Python.
     files = {path.relative_to(CONTENT).as_posix(): path.read_text()

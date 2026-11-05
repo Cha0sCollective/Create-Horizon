@@ -9,6 +9,7 @@ use crate::{
     items::ItemStack,
 };
 use create_engine::linear_carrier::{carrier_step, eastward_delta, reversal_offset};
+use create_engine::portable_interface::Connection;
 use horizon_core::{
     geometry::{Aabb, Direction, Vec3},
     position::BlockPos,
@@ -24,6 +25,7 @@ const POLE: &str = "create:piston_extension_pole";
 const HEAD: &str = "create:mechanical_piston_head";
 const STONE: &str = "minecraft:stone";
 const DEPOT: &str = "create:depot";
+const INTERFACE: &str = "create:portable_storage_interface";
 const INGOT: &str = "minecraft:iron_ingot";
 const PROXY: &str = "minecraft:moving_piston";
 
@@ -54,13 +56,14 @@ enum Phase {
 enum Cargo {
     Stone,
     Depot,
+    Portable,
 }
 
 impl Cargo {
     fn block(self) -> &'static str {
         match self {
             Self::Stone => STONE,
-            Self::Depot => DEPOT,
+            Self::Depot | Self::Portable => DEPOT,
         }
     }
 }
@@ -69,6 +72,41 @@ fn depot_item(data: &Compound) -> Option<ItemStack> {
     let item = horizon_items::item_nbt::item_from_nbt(data.get(&"DepotItem".into())?)?;
     (item.item.as_ref() == INGOT && item.count == 1 && item.damage == 0 && item.extra.is_none())
         .then_some(item)
+}
+
+fn plain_ingot(item: &ItemStack) -> bool {
+    item.item.as_ref() == INGOT && item.count == 1 && item.damage == 0 && item.extra.is_none()
+}
+
+fn read_connection(data: &Compound) -> Option<Connection> {
+    let flag = |key: &str| match data.get(&key.into()) {
+        Some(Tag::Int(0) | Tag::Byte(0)) => Some(false),
+        Some(Tag::Int(1) | Tag::Byte(1)) => Some(true),
+        _ => None,
+    };
+    let number = |key: &str| match data.get(&key.into()) {
+        Some(Tag::Int(n)) => Some(*n),
+        _ => None,
+    };
+    Some(Connection {
+        timer: number("PortableTimer")?,
+        keep_alive: number("PortableKeepAlive")?,
+        working: flag("PortableWorking")?,
+        linked: flag("PortableLinked")?,
+        stalled: flag("PortableStalled")?,
+    })
+}
+
+fn write_connection(data: &mut Compound, connection: Connection) {
+    for (key, value) in [
+        ("PortableTimer", connection.timer),
+        ("PortableKeepAlive", connection.keep_alive),
+        ("PortableWorking", i32::from(connection.working)),
+        ("PortableLinked", i32::from(connection.linked)),
+        ("PortableStalled", i32::from(connection.stalled)),
+    ] {
+        data.insert(key.into(), Tag::Int(value));
+    }
 }
 
 fn depot_held(entity: &ModBlockEntity) -> Option<ItemStack> {
@@ -134,6 +172,10 @@ struct Piston {
     dest: [i32; 3],
     phase: Phase,
     data: Compound,
+    // Only the finite portable profile uses the canonical base container slot.
+    // The accepted depot-only profile retains its original saved NBT codec.
+    portable: bool,
+    item: Option<ItemStack>,
 }
 
 impl Piston {
@@ -179,6 +221,7 @@ impl Piston {
             None => Cargo::Stone,
             Some(Tag::String(s)) if s == &JavaString::from("stone") => Cargo::Stone,
             Some(Tag::String(s)) if s == &JavaString::from("depot") => Cargo::Depot,
+            Some(Tag::String(s)) if s == &JavaString::from("portable_depot") => Cargo::Portable,
             _ => return None,
         };
         if !matches!(stone, 0 | 1)
@@ -186,14 +229,62 @@ impl Piston {
             || !matches!(pole, 0 | 1)
             || stone + depot > 1
             || (stone == 1 && cargo != Cargo::Stone)
-            || (depot == 1 && cargo != Cargo::Depot)
+            || (depot == 1 && !matches!(cargo, Cargo::Depot | Cargo::Portable))
             || (stone == 1 && data.get(&"Stone".into()) != Some(&Tag::String(STONE.into())))
-            || (depot == 1 && depot_item(&data).is_none())
+            || (depot == 1 && cargo == Cargo::Depot && depot_item(&data).is_none())
             || (pole == 1 && data.get(&"Pole".into()) != Some(&Tag::String(POLE.into())))
             || (matches!(phase, Phase::Retracted | Phase::Extended)
                 && (stone != 0 || depot != 0 || pole != 0))
             || (phase == Phase::Retracted && offset != 0.0)
             || (phase == Phase::Extended && offset != 1.0)
+        {
+            return None;
+        }
+        let portable = cargo == Cargo::Portable;
+        // Remote block-entity updates carry the wire snapshot, not canonical
+        // slots. Old client slot contents may also be stale after extraction.
+        let item = if game.remote.is_some() {
+            if portable {
+                wire_snapshot(&data)?
+            } else {
+                None
+            }
+        } else {
+            entity.items.first().cloned().flatten()
+        };
+        let interface = integer(&data, "CapturedInterface");
+        let transferred = integer(&data, "PortableTransferred");
+        if (game.remote.is_none() && entity.items.iter().skip(1).any(Option::is_some))
+            || (item.is_some() && (!portable || depot != 1))
+            || item.as_ref().is_some_and(|item| !plain_ingot(item))
+            || !matches!(interface, 0 | 1)
+            || (interface == 1 && !portable)
+            || (portable
+                && (!phase.moving()
+                    || base[0].checked_add(4)? >> 4 != base[0] >> 4
+                    || data.contains_key(&"DepotItem".into())
+                    || !matches!(
+                        data.get(&"PortableTransferred".into()),
+                        Some(Tag::Int(0 | 1) | Tag::Byte(0 | 1))
+                    )
+                    || (depot == 1 && item.is_none() != (transferred == 1))
+                    || !read_connection(&data)?.valid()))
+        {
+            return None;
+        }
+        if portable
+            && [
+                "PortableDistance",
+                "PortableArm",
+                "PortablePreviousArm",
+                "PortableStation",
+                "PortablePreviousStation",
+            ]
+            .iter()
+            .any(|key| {
+                let v = float(&data, key);
+                !v.is_finite() || !(0.0..=2.0).contains(&v)
+            })
         {
             return None;
         }
@@ -204,6 +295,8 @@ impl Piston {
             dest: [dest_x, base[1], base[2]],
             phase,
             data,
+            portable,
+            item,
         })
     }
     fn captured_stone(&self) -> bool {
@@ -213,10 +306,10 @@ impl Piston {
         integer(&self.data, "CapturedDepot") == 1
     }
     fn cargo(&self) -> Cargo {
-        if self.data.get(&"CargoKind".into()) == Some(&Tag::String("depot".into())) {
-            Cargo::Depot
-        } else {
-            Cargo::Stone
+        match self.data.get(&"CargoKind".into()) {
+            Some(Tag::String(s)) if s == &JavaString::from("depot") => Cargo::Depot,
+            Some(Tag::String(s)) if s == &JavaString::from("portable_depot") => Cargo::Portable,
+            _ => Cargo::Stone,
         }
     }
     fn captured_cargo(&self) -> bool {
@@ -226,7 +319,23 @@ impl Piston {
         integer(&self.data, "CapturedPole") == 1
     }
     fn captured(&self) -> bool {
-        self.captured_cargo() || self.captured_pole()
+        self.captured_cargo() || self.captured_pole() || self.captured_interface()
+    }
+    fn captured_interface(&self) -> bool {
+        integer(&self.data, "CapturedInterface") == 1
+    }
+    fn front(&self) -> [i32; 3] {
+        [self.base[0] + 3, self.base[1], self.base[2]]
+    }
+    fn stationary(&self) -> [i32; 3] {
+        [self.base[0] + 4, self.base[1], self.base[2]]
+    }
+    fn held_item(&self) -> Option<ItemStack> {
+        if self.portable {
+            self.item.clone()
+        } else {
+            depot_item(&self.data)
+        }
     }
     fn offset(&self) -> f32 {
         float(&self.data, "Offset")
@@ -246,7 +355,7 @@ impl Piston {
         );
         self.data.insert(
             "CapturedDepot".into(),
-            Tag::Byte(u8::from(cargo && kind == Cargo::Depot) as i8),
+            Tag::Byte(u8::from(cargo && matches!(kind, Cargo::Depot | Cargo::Portable)) as i8),
         );
         self.data
             .insert("CapturedPole".into(), Tag::Byte(u8::from(pole) as i8));
@@ -255,6 +364,10 @@ impl Piston {
         self.data.insert("Status".into(), Tag::String(value.into()));
     }
     fn store(self, entity: &mut ModBlockEntity) {
+        if self.portable {
+            entity.items.resize(1, None);
+            entity.items[0] = self.item;
+        }
         entity.nbt.insert(KEY.into(), Tag::Compound(self.data));
     }
     fn bounds(&self, source: [i32; 3], offset: f32) -> Aabb {
@@ -264,8 +377,12 @@ impl Piston {
             Vec3::new(x + f64::from(offset) + 1.0, y + 1.0, z + 1.0),
         )
     }
-    fn reserved(&self) -> [[i32; 3]; 4] {
-        [self.base, self.pole, self.head, self.dest]
+    fn reserved(&self) -> Vec<[i32; 3]> {
+        let mut cells = vec![self.base, self.pole, self.head, self.dest];
+        if self.portable {
+            cells.push(self.front());
+        }
+        cells
     }
     fn projection(
         &self,
@@ -370,13 +487,14 @@ fn materialize_cargo(game: &mut Game<'_>, piston: &mut Piston, pos: [i32; 3]) ->
     if piston.cargo() == Cargo::Stone {
         return set(game, pos, STONE);
     }
-    let Some(item) = depot_item(&piston.data) else {
+    let item = piston.held_item();
+    if item.is_none() && !piston.portable {
         return false;
-    };
+    }
     if game.native_block(pos) == DEPOT && integer(&piston.data, "DepotMaterializing") != 1 {
         return false;
     }
-    if depot_matches(game, pos, &item) {
+    if cargo_in_depot(game, piston, pos) {
         return true;
     }
     if game.native_block(pos) != DEPOT {
@@ -399,15 +517,31 @@ fn materialize_cargo(game: &mut Game<'_>, piston: &mut Piston, pos: [i32; 3]) ->
         if entity.items.is_empty() {
             entity.items.resize(9, None);
         }
-        entity.items[0] = Some(item.clone());
+        entity.items[0] = item.clone();
         super::create_port::depot_data(entity);
         true
     }) == Some(true);
-    if installed && depot_matches(game, pos, &item) {
+    if installed && cargo_in_depot(game, piston, pos) {
         game.native_block_entity_sync(pos);
         true
     } else {
         false
+    }
+}
+
+fn cargo_in_depot(game: &Game<'_>, piston: &Piston, pos: [i32; 3]) -> bool {
+    if let Some(item) = piston.held_item() {
+        depot_matches(game, pos, &item)
+    } else {
+        piston.portable
+            && game.native_block(pos) == DEPOT
+            && game
+                .world
+                .block_entities
+                .get(&(pos[0], pos[1], pos[2]))
+                .is_some_and(
+                    |entity| matches!(entity, BlockEntity::Mod(e) if empty_depot_target(e)),
+                )
     }
 }
 
@@ -430,6 +564,14 @@ fn path_clear(game: &Game<'_>, piston: &Piston, from: f32, to: f32) -> bool {
                 from,
                 to,
             ))
+        && (!piston.captured_interface()
+            || super::create_s5_carrier::static_path_clear_cells(
+                game,
+                piston.dest,
+                &reserved,
+                from,
+                to,
+            ))
 }
 
 fn planned_push(
@@ -439,27 +581,217 @@ fn planned_push(
     to: f32,
     returning_pole: bool,
 ) -> Option<super::piston_push::create_s5_clearance::S5PushPlan> {
-    let (source, block) = if piston.captured_pole() {
-        (piston.base, HEAD)
-    } else {
-        (piston.head, piston.cargo().block())
-    };
+    let parts: Vec<_> = [
+        (piston.captured_pole(), piston.base, HEAD),
+        (piston.captured_cargo(), piston.head, piston.cargo().block()),
+        (piston.captured_interface(), piston.dest, INTERFACE),
+    ]
+    .into_iter()
+    .filter(|part| part.0)
+    .collect();
+    let &(_, source, block) = parts.first()?;
     let (anchor, projection) = piston.projection(game, source, block, from, to)?;
     let step = carrier_step(from, to)?;
-    let cube = Aabb::new(Vec3::new(0.0, 0.0, 0.0), Vec3::new(1.0, 1.0, 1.0));
-    let mut boxes = vec![cube];
-    let mut final_bounds = vec![piston.bounds(source, to)];
-    if piston.captured_pole() && piston.captured_cargo() {
-        boxes.push(Aabb::new(
-            Vec3::new(1.0, 0.0, 0.0),
-            Vec3::new(2.0, 1.0, 1.0),
-        ));
-        final_bounds.push(piston.bounds(piston.head, to));
-    }
+    let boxes: Vec<_> = parts
+        .iter()
+        .map(|(_, pos, _)| {
+            let x = f64::from(pos[0] - source[0]);
+            Aabb::new(Vec3::new(x, 0.0, 0.0), Vec3::new(x + 1.0, 1.0, 1.0))
+        })
+        .collect();
+    let mut final_bounds: Vec<_> = parts
+        .iter()
+        .map(|(_, pos, _)| piston.bounds(*pos, to))
+        .collect();
     if returning_pole {
         final_bounds.push(piston.bounds(piston.pole, 0.0));
     }
     game.create_s5_plan_push_shapes(anchor, projection, step.progress, &boxes, &final_bounds)
+}
+
+fn empty_interface(game: &Game<'_>, pos: [i32; 3]) -> bool {
+    game.native_block(pos) == INTERFACE
+        && game.native_block_property(pos, "facing").as_deref() == Some("east")
+        && game.world.block_entities.get(&(pos[0], pos[1], pos[2])).is_some_and(
+            |entity| matches!(entity, BlockEntity::Mod(e) if e.id == INTERFACE && e.items.iter().all(Option::is_none) && e.nbt.is_empty()),
+        )
+}
+
+fn materialize_interface(game: &mut Game<'_>, piston: &mut Piston, pos: [i32; 3]) -> bool {
+    let block = game.native_block(pos);
+    if block == INTERFACE {
+        return integer(&piston.data, "InterfaceMaterializing") == 1 && empty_interface(game, pos);
+    }
+    if !matches!(block.as_str(), PROXY | "minecraft:air")
+        || !game.create_s5_body_clear(
+            BlockPos::new(pos[0], pos[1], pos[2]),
+            piston.bounds(pos, 0.0),
+        )
+        || !set(game, pos, INTERFACE)
+    {
+        return false;
+    }
+    piston
+        .data
+        .insert("InterfaceMaterializing".into(), Tag::Byte(1));
+    empty_interface(game, pos)
+}
+
+fn close_connection(piston: &mut Piston) {
+    if piston.portable {
+        write_connection(&mut piston.data, Connection::default());
+    }
+}
+
+fn capture_portable_extension(game: &mut Game<'_>, piston: &mut Piston, item: ItemStack) -> bool {
+    let mut candidate = piston.clone();
+    candidate.portable = true;
+    if candidate.base[0]
+        .checked_add(4)
+        .is_none_or(|x| x >> 4 != candidate.base[0] >> 4)
+    {
+        return false;
+    }
+    let cells = candidate.reserved();
+    let dim = game.dim.id().to_owned();
+    if piston.phase != Phase::Retracted || piston.offset() != 0.0
+        || game.native_block(piston.pole) != POLE
+        || game.native_block_property(piston.pole, "facing").as_deref() != Some("east")
+        || !game.world.block_entities.get(&(piston.pole[0], piston.pole[1], piston.pole[2])).is_some_and(
+            |entity| matches!(entity, BlockEntity::Mod(e) if e.id == POLE && e.items.is_empty()),
+        )
+        || !empty_interface(game, piston.dest)
+        || game.native_neighbor_signal(&dim, piston.dest) > 0
+        || game.native_block(candidate.front()) != "minecraft:air"
+        || game.world.block_entities.contains_key(&(candidate.front()[0], candidate.front()[1], candidate.front()[2]))
+        || !super::create_s5_carrier::static_path_clear_cells(game, piston.base, &cells, 0.0, 1.0)
+        || !super::create_s5_carrier::static_path_clear_cells(game, piston.head, &cells, 0.0, 1.0)
+        || !super::create_s5_carrier::static_path_clear_cells(game, piston.dest, &cells, 0.0, 1.0)
+    {
+        return false;
+    }
+    candidate.item = Some(item.clone());
+    candidate.set_phase(Phase::Extending);
+    candidate.set_float("Offset", 0.0);
+    candidate.set_float("Previous", 0.0);
+    candidate
+        .data
+        .insert("CargoKind".into(), Tag::String("portable_depot".into()));
+    candidate.data.remove(&"Stone".into());
+    candidate.data.remove(&"DepotItem".into());
+    candidate
+        .data
+        .insert("Pole".into(), Tag::String(POLE.into()));
+    candidate.data.insert("CapturePending".into(), Tag::Byte(1));
+    candidate
+        .data
+        .insert("CapturedInterface".into(), Tag::Byte(0));
+    candidate.set_captured(false, false);
+    write_connection(&mut candidate.data, Connection::default());
+    candidate.data.remove(&"PortableCell".into());
+    candidate
+        .data
+        .insert("PortableTransferred".into(), Tag::Byte(0));
+    for key in [
+        "PortableDistance",
+        "PortableArm",
+        "PortablePreviousArm",
+        "PortableStation",
+        "PortablePreviousStation",
+    ] {
+        candidate.set_float(key, 0.0);
+    }
+    *piston = candidate;
+
+    let depot_changed = capture_depot_block(game, piston.head);
+    let depot_absent = !depot_matches(game, piston.head, &item);
+    piston.set_captured(depot_absent, false);
+    if !depot_absent {
+        piston.item = None;
+    }
+    if !depot_changed {
+        rollback_portable_capture(game, piston);
+        return false;
+    }
+    let interface_changed = set(game, piston.dest, PROXY);
+    piston.data.insert(
+        "CapturedInterface".into(),
+        Tag::Byte(i8::from(!empty_interface(game, piston.dest))),
+    );
+    if !interface_changed || !set(game, piston.front(), PROXY) {
+        rollback_portable_capture(game, piston);
+        return false;
+    }
+    let pole_changed = set(game, piston.pole, "minecraft:air");
+    piston.set_captured(true, game.native_block(piston.pole) != POLE);
+    if !pole_changed {
+        rollback_portable_capture(game, piston);
+        return false;
+    }
+    piston.data.remove(&"CapturePending".into());
+    piston.status("extending-portable");
+    let _ = base_state(game, piston.base, "moving");
+    true
+}
+
+fn rollback_portable_capture(game: &mut Game<'_>, piston: &mut Piston) -> bool {
+    close_connection(piston);
+    // Flags are observed after each actual capture write. A delivered depot
+    // clears the canonical slot immediately, even if another block must retry.
+    if piston.captured_cargo()
+        && matches!(
+            game.native_block(piston.head).as_str(),
+            PROXY | "minecraft:air" | DEPOT
+        )
+        && (game.native_block(piston.head) == DEPOT
+            || game.create_s5_body_clear(
+                BlockPos::new(piston.head[0], piston.head[1], piston.head[2]),
+                piston.bounds(piston.head, 0.0),
+            ))
+        && materialize_cargo(game, piston, piston.head)
+    {
+        piston.set_captured(false, piston.captured_pole());
+        piston.item = None;
+    }
+    if piston.captured_interface() {
+        if materialize_interface(game, piston, piston.dest) {
+            piston.data.insert("CapturedInterface".into(), Tag::Byte(0));
+            piston.data.remove(&"InterfaceMaterializing".into());
+        }
+    }
+    if piston.captured_pole()
+        && matches!(
+            game.native_block(piston.pole).as_str(),
+            PROXY | "minecraft:air"
+        )
+        && game.create_s5_body_clear(
+            BlockPos::new(piston.pole[0], piston.pole[1], piston.pole[2]),
+            piston.bounds(piston.pole, 0.0),
+        )
+        && set(game, piston.pole, POLE)
+    {
+        piston.set_captured(piston.captured_cargo(), false);
+    }
+    if !piston.captured_interface() && game.native_block(piston.front()) == PROXY {
+        let _ = set(game, piston.front(), "minecraft:air");
+    }
+    let restored = !piston.captured()
+        && game.native_block(piston.head) == DEPOT
+        && empty_interface(game, piston.dest)
+        && game.native_block(piston.pole) == POLE
+        && game.native_block(piston.front()) == "minecraft:air";
+    if restored {
+        piston.set_phase(Phase::Retracted);
+        piston.data.remove(&"CapturePending".into());
+        piston.data.remove(&"CargoKind".into());
+        piston.data.remove(&"DepotMaterializing".into());
+        piston.status("capture-rolled-back");
+        let _ = base_state(game, piston.base, "retracted");
+    } else {
+        piston.data.insert("CapturePending".into(), Tag::Byte(1));
+        piston.status("capture-restore-blocked");
+    }
+    restored
 }
 
 /// The real pole is initially placed. No payload is inferred from an empty
@@ -484,11 +816,15 @@ fn capture_extension(game: &mut Game<'_>, piston: &mut Piston) -> bool {
                 .as_deref()
                 != Some("true") =>
         {
-            Cargo::Depot
+            if game.native_block(piston.dest) == INTERFACE {
+                Cargo::Portable
+            } else {
+                Cargo::Depot
+            }
         }
         _ => return false,
     };
-    let held = if cargo == Cargo::Depot {
+    let held = if matches!(cargo, Cargo::Depot | Cargo::Portable) {
         let Some(BlockEntity::Mod(entity)) =
             game.world
                 .block_entities
@@ -503,6 +839,9 @@ fn capture_extension(game: &mut Game<'_>, piston: &mut Piston) -> bool {
     } else {
         None
     };
+    if cargo == Cargo::Portable {
+        return capture_portable_extension(game, piston, held.expect("validated held depot"));
+    }
     if piston.phase != Phase::Retracted
         || piston.offset() != 0.0
         || game.native_block(piston.pole) != POLE
@@ -543,6 +882,7 @@ fn capture_extension(game: &mut Game<'_>, piston: &mut Piston) -> bool {
             match cargo {
                 Cargo::Stone => "stone",
                 Cargo::Depot => "depot",
+                Cargo::Portable => unreachable!("handled by finite portable capture"),
             }
             .into(),
         ),
@@ -584,9 +924,12 @@ fn capture_extension(game: &mut Game<'_>, piston: &mut Piston) -> bool {
 /// flag keeps removal blocked even when both originals have returned but a
 /// spare derived proxy still needs clearing.
 fn rollback_capture(game: &mut Game<'_>, piston: &mut Piston) -> bool {
+    if piston.portable {
+        return rollback_portable_capture(game, piston);
+    }
     let cargo_in_world = match piston.cargo() {
         Cargo::Stone => game.native_block(piston.head) == STONE,
-        Cargo::Depot => {
+        Cargo::Depot | Cargo::Portable => {
             depot_item(&piston.data).is_some_and(|item| depot_matches(game, piston.head, &item))
         }
     };
@@ -623,7 +966,7 @@ fn rollback_capture(game: &mut Game<'_>, piston: &mut Piston) -> bool {
     let restored = !piston.captured()
         && match piston.cargo() {
             Cargo::Stone => game.native_block(piston.head) == STONE,
-            Cargo::Depot => {
+            Cargo::Depot | Cargo::Portable => {
                 depot_item(&piston.data).is_some_and(|item| depot_matches(game, piston.head, &item))
             }
         }
@@ -703,17 +1046,26 @@ fn settle(game: &mut Game<'_>, piston: &mut Piston, endpoint: f32) -> bool {
     if !piston.phase.moving() || !matches!(endpoint, 0.0 | 1.0) {
         return false;
     }
+    close_connection(piston);
     let from = piston.offset();
     if piston.captured() && !path_clear(game, piston, from, endpoint) {
         return false;
     }
     if piston.captured_cargo()
         && game.native_block(piston.dest) != PROXY
-        && !(piston.cargo() == Cargo::Depot && game.native_block(piston.dest) == DEPOT)
+        && !(matches!(piston.cargo(), Cargo::Depot | Cargo::Portable)
+            && game.native_block(piston.dest) == DEPOT)
     {
         return false;
     }
     if piston.captured_pole() && game.native_block(piston.head) != PROXY {
+        return false;
+    }
+    if piston.captured_interface()
+        && game.native_block(piston.front()) != PROXY
+        && !(integer(&piston.data, "InterfaceMaterializing") == 1
+            && game.native_block(piston.front()) == INTERFACE)
+    {
         return false;
     }
     let mut push = if piston.captured() {
@@ -739,7 +1091,11 @@ fn settle(game: &mut Game<'_>, piston: &mut Piston, endpoint: f32) -> bool {
     let unused = if endpoint == 1.0 {
         piston.pole
     } else if extension {
-        piston.dest
+        if piston.portable {
+            piston.front()
+        } else {
+            piston.dest
+        }
     } else {
         piston.head
     };
@@ -759,6 +1115,18 @@ fn settle(game: &mut Game<'_>, piston: &mut Piston, endpoint: f32) -> bool {
         }
         piston.set_captured(piston.captured_cargo(), false);
     }
+    if piston.captured_interface() && endpoint == 1.0 {
+        if !materialize_interface(game, piston, piston.front()) {
+            piston.data.insert("RestorePending".into(), Tag::Byte(1));
+            piston.data.insert("PendingEndpoint".into(), Tag::Int(1));
+            return false;
+        }
+        piston.data.insert("CapturedInterface".into(), Tag::Byte(0));
+        piston.data.remove(&"InterfaceMaterializing".into());
+        if let Some(push) = push.take() {
+            game.create_s5_commit_push(push);
+        }
+    }
     if extension && piston.captured_cargo() {
         if !materialize_cargo(game, piston, cargo_target) {
             piston.data.insert("RestorePending".into(), Tag::Byte(1));
@@ -771,8 +1139,23 @@ fn settle(game: &mut Game<'_>, piston: &mut Piston, endpoint: f32) -> bool {
             game.create_s5_commit_push(push);
         }
         piston.set_captured(false, piston.captured_pole());
+        if piston.portable {
+            piston.item = None;
+        }
         piston.data.remove(&"DepotItem".into());
         piston.data.remove(&"DepotMaterializing".into());
+    }
+    if piston.captured_interface() && endpoint == 0.0 {
+        if !materialize_interface(game, piston, piston.dest) {
+            piston.data.insert("RestorePending".into(), Tag::Byte(1));
+            piston.data.insert("PendingEndpoint".into(), Tag::Int(0));
+            return false;
+        }
+        piston.data.insert("CapturedInterface".into(), Tag::Byte(0));
+        piston.data.remove(&"InterfaceMaterializing".into());
+        if let Some(push) = push.take() {
+            game.create_s5_commit_push(push);
+        }
     }
     if !pole_first && piston.captured_pole() {
         if !set(game, pole_target, pole_form) {
@@ -818,6 +1201,215 @@ fn settle(game: &mut Game<'_>, piston: &mut Piston, endpoint: f32) -> bool {
         },
     );
     true
+}
+
+fn station_available(game: &mut Game<'_>, piston: &Piston) -> bool {
+    let pos = piston.stationary();
+    if game.native_block(pos) != INTERFACE
+        || game.native_block_property(pos, "facing").as_deref() != Some("west")
+        || !game.world.block_entities.get(&(pos[0], pos[1], pos[2])).is_some_and(
+            |entity| matches!(entity, BlockEntity::Mod(e) if e.id == INTERFACE && e.items.iter().all(Option::is_none) && e.nbt.is_empty()),
+        )
+    { return false; }
+    let dim = game.dim.id().to_owned();
+    game.native_neighbor_signal(&dim, pos) == 0
+}
+
+fn portable_before_motion(game: &mut Game<'_>, piston: &mut Piston, rpm: f32) -> bool {
+    if !piston.portable {
+        return false;
+    }
+    let mut connection = read_connection(&piston.data).expect("validated portable state");
+    if rpm >= 0.0 || !station_available(game, piston) {
+        if connection.linked || connection.working || connection.stalled {
+            connection.close();
+        } else {
+            connection.timer_tick();
+        }
+    } else {
+        connection.timer_tick();
+    }
+    write_connection(&mut piston.data, connection);
+    connection.stalled
+}
+
+fn portable_after_motion(game: &mut Game<'_>, piston: &mut Piston, motion: f32) {
+    if !piston.portable || !piston.phase.moving() {
+        return;
+    }
+    let mut connection = read_connection(&piston.data).expect("validated portable state");
+    let available = station_available(game, piston);
+    let cell =
+        create_engine::portable_interface::active_cell(piston.offset()).expect("validated offset");
+    if integer(&piston.data, "PortableCell") != cell
+        || (integer(&piston.data, "PortableAvailable") == 1) != available
+    {
+        let was_linked = connection.linked;
+        connection.encounter(piston.offset(), available);
+        if connection.linked && !was_linked {
+            piston.set_float(
+                "PortableDistance",
+                ((0.15 - piston.offset()).abs() + 0.85).min(2.0),
+            );
+        }
+    }
+    connection.actor_tick(piston.offset(), motion, available);
+    let old_arm = float(&piston.data, "PortableArm");
+    let distance = float(&piston.data, "PortableDistance");
+    let target_arm = if connection.working && connection.timer > 4 {
+        distance * 0.5
+    } else {
+        0.0
+    };
+    piston.set_float("PortablePreviousArm", old_arm);
+    piston.set_float(
+        "PortableArm",
+        old_arm + (target_arm - old_arm).clamp(-0.25, 0.25),
+    );
+    piston.set_float(
+        "PortablePreviousStation",
+        float(&piston.data, "PortableStation"),
+    );
+    piston.set_float(
+        "PortableStation",
+        connection.animation().powi(2) * distance * 0.5,
+    );
+    piston.data.insert("PortableCell".into(), Tag::Int(cell));
+    piston
+        .data
+        .insert("PortableAvailable".into(), Tag::Byte(i8::from(available)));
+    if connection.stalled {
+        piston.data.insert("Stalled".into(), Tag::Byte(1));
+    }
+    write_connection(&mut piston.data, connection);
+}
+
+/// The selected hopper source preflight calls this with a full mutable host.
+/// It grants a stack-local view of the sole canonical slot, never a copy.
+pub(super) fn portable_source(game: &mut Game<'_>, station: [i32; 3]) -> Option<[i32; 3]> {
+    if game.remote.is_some() || game.lan.is_none() {
+        return None;
+    }
+    let mut candidates = pistons(game)
+        .into_iter()
+        .filter(|p| p.portable && p.stationary() == station);
+    let piston = candidates.next()?;
+    if candidates.next().is_some() || piston.phase != Phase::Extending
+        || !piston.captured_depot() || !piston.captured_interface() || !piston.captured_pole()
+        || game.native_block(piston.pole) != "minecraft:air"
+        || integer(&piston.data, "CapturePending") != 0
+        || integer(&piston.data, "RestorePending") != 0
+        || integer(&piston.data, "RemovalRequested") != 0
+        || !read_connection(&piston.data)?.connected()
+        || create_engine::portable_interface::active_cell(piston.offset()) != Some(4)
+        || [piston.head, piston.dest, piston.front()].iter().any(|pos| game.native_block(*pos) != PROXY)
+        || !game.world.block_entities.get(&(piston.base[0], piston.base[1], piston.base[2])).is_some_and(
+            |entity| matches!(entity, BlockEntity::Mod(e) if { let rpm = float(&e.nbt, "Speed"); rpm.is_finite() && rpm < 0.0 }),
+        )
+        || !station_available(game, &piston)
+    { return None; }
+    static TRACE: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
+    if *TRACE.get_or_init(|| std::env::var_os("CREATE_HORIZON_TRACE").is_some()) {
+        let owner_tick = match piston.data.get(&"Tick".into()) {
+            Some(Tag::Long(t)) => *t,
+            _ => 0,
+        };
+        let key = (
+            piston.base,
+            piston.item.is_some(),
+            owner_tick == game.world.game_time,
+        );
+        thread_local! { static SEEN: std::cell::RefCell<std::collections::BTreeSet<([i32;3],bool,bool)>> = const { std::cell::RefCell::new(std::collections::BTreeSet::new()) }; }
+        if SEEN.with(|seen| seen.borrow_mut().insert(key)) {
+            log::info!(
+                "Create portable hopper source: {}",
+                serde_json::json!({"base":piston.base,
+                "time":game.world.game_time,"owner_tick":owner_tick,"owner_already_ticked":key.2,
+                "item_present":key.1,"timer":integer(&piston.data,"PortableTimer")})
+            );
+        }
+    }
+    Some(piston.base)
+}
+
+pub(super) fn portable_changed(game: &mut Game<'_>, pos: (i32, i32, i32)) {
+    let Some(BlockEntity::Mod(entity)) = game.world.block_entities.get(&pos) else {
+        return;
+    };
+    // The stock transfer changed the slot before this callback. Validate that
+    // one allowed transient transition, then publish the empty custody state.
+    if entity.items.first().is_some_and(Option::is_some) {
+        return;
+    }
+    let mut pending = ModBlockEntity::default();
+    pending.id = entity.id.clone();
+    pending.nbt = entity.nbt.clone();
+    pending.items = entity.items.clone();
+    let Some(Tag::Compound(data)) = pending.nbt.get_mut(&KEY.into()) else {
+        return;
+    };
+    if integer(data, "PortableTransferred") != 0 {
+        return;
+    }
+    data.insert("PortableTransferred".into(), Tag::Byte(1));
+    let Some(mut piston) = Piston::read(game, [pos.0, pos.1, pos.2], &pending) else {
+        return;
+    };
+    if !piston.portable || !piston.captured_depot() || piston.item.is_some() {
+        return;
+    }
+    let Some(mut connection) = read_connection(&piston.data) else {
+        return;
+    };
+    // The stock move has already committed. Publish empty custody even if a
+    // later side effect closed the link; only a still-connected timer resets.
+    let _ = connection.content_transferred();
+    piston
+        .data
+        .insert("PortableTransferred".into(), Tag::Byte(1));
+    write_connection(&mut piston.data, connection);
+    if let Some(BlockEntity::Mod(entity)) = game.world.block_entities.get_mut(&pos) {
+        piston.store(entity);
+    }
+    game.native_block_entity_sync([pos.0, pos.1, pos.2]);
+}
+
+fn wire_item(data: &Compound) -> Option<ItemStack> {
+    wire_snapshot(data).flatten()
+}
+
+fn wire_snapshot(data: &Compound) -> Option<Option<ItemStack>> {
+    let Some(Tag::Compound(wire)) = data.get(&"PortableItemWire".into()) else {
+        return None;
+    };
+    match wire.get(&"Present".into()) {
+        Some(Tag::Int(0) | Tag::Byte(0)) => return Some(None),
+        Some(Tag::Int(1) | Tag::Byte(1)) => {}
+        _ => return None,
+    }
+    let item = horizon_items::item_nbt::item_from_nbt(wire.get(&"Item".into())?)?;
+    plain_ingot(&item).then_some(Some(item))
+}
+
+pub(super) fn update_tag(entity: &ModBlockEntity, tag: &mut Option<Compound>) {
+    if entity.id != BASE {
+        return;
+    }
+    let snapshot = tag.get_or_insert_with(|| entity.nbt.clone());
+    let Some(Tag::Compound(data)) = snapshot.get_mut(&KEY.into()) else {
+        return;
+    };
+    let item = (data.get(&"CargoKind".into()) == Some(&Tag::String("portable_depot".into()))
+        && integer(data, "CapturedDepot") == 1)
+        .then(|| entity.items.first().cloned().flatten())
+        .flatten()
+        .filter(plain_ingot);
+    let mut wire = Compound::new();
+    wire.insert("Present".into(), Tag::Byte(i8::from(item.is_some())));
+    if let Some(item) = item {
+        wire.insert("Item".into(), horizon_items::item_nbt::item_to_nbt(&item));
+    }
+    data.insert("PortableItemWire".into(), Tag::Compound(wire));
 }
 
 pub(super) fn tick(game: &mut Game<'_>, pos: [i32; 3], entity: &mut ModBlockEntity) {
@@ -890,6 +1482,8 @@ pub(super) fn tick(game: &mut Game<'_>, pos: [i32; 3], entity: &mut ModBlockEnti
             return;
         }
     }
+    let motion_start = piston.offset();
+    let interface_stalled = portable_before_motion(game, &mut piston, rpm);
     if piston.phase.moving() {
         let from = piston.offset();
         let previous_rpm = float(&piston.data, "RPM");
@@ -907,11 +1501,15 @@ pub(super) fn tick(game: &mut Game<'_>, pos: [i32; 3], entity: &mut ModBlockEnti
                 piston.data.insert("Stalled".into(), Tag::Byte(1));
                 piston.status("stop-blocked");
             }
+        } else if interface_stalled {
+            piston.set_float("Previous", from);
+            piston.status("interface-stalled");
         } else if let Some(delta) = eastward_delta(rpm, from) {
             let to = (from + delta).clamp(0.0, 1.0);
             if !piston.captured()
                 || (piston.captured_cargo() && game.native_block(piston.dest) != PROXY)
                 || (piston.captured_pole() && game.native_block(piston.head) != PROXY)
+                || (piston.captured_interface() && game.native_block(piston.front()) != PROXY)
                 || !path_clear(game, &piston, from, to)
             {
                 piston.data.insert("Stalled".into(), Tag::Byte(1));
@@ -935,6 +1533,10 @@ pub(super) fn tick(game: &mut Game<'_>, pos: [i32; 3], entity: &mut ModBlockEnti
             }
         }
     }
+    if piston.portable && piston.phase.moving() && rpm < 0.0 {
+        let motion = piston.offset() - motion_start;
+        portable_after_motion(game, &mut piston, motion);
+    }
     piston.data.insert("RPM".into(), Tag::Float(rpm.to_bits()));
     piston
         .data
@@ -949,9 +1551,7 @@ pub(super) fn tick(game: &mut Game<'_>, pos: [i32; 3], entity: &mut ModBlockEnti
 pub(super) fn before_sync(game: &mut Game<'_>) {
     let profiles = pistons(game);
     game.world.moving_pistons.retain(|(pos, _)| {
-        !profiles
-            .iter()
-            .any(|p| [p.base, p.head, p.dest].contains(pos))
+        !profiles.iter().any(|p| p.reserved().contains(pos))
             || game
                 .block_ticks
                 .moving_pistons
@@ -967,12 +1567,9 @@ pub(super) fn after_sync(game: &mut Game<'_>) {
         for (captured, source, block) in [
             (piston.captured_pole(), piston.base, HEAD),
             (piston.captured_cargo(), piston.head, piston.cargo().block()),
+            (piston.captured_interface(), piston.dest, INTERFACE),
         ] {
-            let proxy = if block == HEAD {
-                piston.head
-            } else {
-                piston.dest
-            };
+            let proxy = [source[0] + 1, source[1], source[2]];
             if !captured || game.native_block(proxy) != PROXY {
                 continue;
             }
@@ -1007,7 +1604,19 @@ pub(super) fn draw_mounted_item(
         if !piston.phase.moving() || game.native_block(piston.dest) != PROXY {
             continue;
         }
-        let Some(item) = depot_item(&piston.data) else {
+        let shown = if piston.portable {
+            if game.remote.is_some() {
+                wire_item(&piston.data)
+            } else {
+                piston.item.clone()
+            }
+        } else {
+            depot_item(&piston.data)
+        };
+        if piston.portable {
+            trace_portable_item(game, &piston, shown.as_ref());
+        }
+        let Some(item) = shown else {
             continue;
         };
         let previous = float(&piston.data, "Previous");
@@ -1039,6 +1648,123 @@ pub(super) fn draw_mounted_item(
         super::create_port_presentation::depot(game, piston.head, &entity, &mut draw);
         out.extend(draw.into_vertices());
     }
+    for piston in pistons(game).into_iter().filter(Piston::captured_interface) {
+        if game.native_block(piston.front()) != PROXY {
+            continue;
+        }
+        let previous = float(&piston.data, "Previous");
+        let offset = previous + (piston.offset() - previous) * partial;
+        let origin = glam::DVec3::new(
+            f64::from(piston.dest[0]) + f64::from(offset),
+            f64::from(piston.dest[1]),
+            f64::from(piston.dest[2]),
+        ) - camera;
+        let (block_light, sky_light) =
+            game.native_light([piston.dest[0], piston.dest[1] + 1, piston.dest[2]]);
+        let mut draw = super::native_block_entity_draw::BlockEntityDraw::posed(
+            partial,
+            game.world.game_time,
+            horizon_client::block_entity_render::vertex_light((sky_light << 4) | block_light),
+            piston.dest,
+            glam::Mat4::from_translation(origin.as_vec3()),
+            horizon_client::block_entity_render::diffuse_lights(game.dim == super::Dim::Nether),
+            Vec::new(),
+        );
+        let arm = interpolate(&piston.data, "PortablePreviousArm", "PortableArm", partial);
+        draw_interface_parts(
+            game,
+            &mut draw,
+            "east",
+            arm,
+            read_connection(&piston.data).is_some_and(Connection::connected),
+        );
+        out.extend(draw.into_vertices());
+    }
+}
+
+fn interpolate(data: &Compound, previous: &str, current: &str, partial: f32) -> f32 {
+    let a = float(data, previous);
+    a + (float(data, current) - a) * partial.clamp(0.0, 1.0)
+}
+
+fn draw_interface_parts(
+    game: &Game<'_>,
+    draw: &mut super::native_block_entity_draw::BlockEntityDraw,
+    facing: &str,
+    arm: f32,
+    lit: bool,
+) {
+    draw.push();
+    let (y, x) = match facing {
+        "down" => (0.0, 180.0),
+        "north" => (180.0, 90.0),
+        "south" => (0.0, 90.0),
+        "east" => (90.0, 90.0),
+        "west" => (270.0, 90.0),
+        _ => (0.0, 0.0),
+    };
+    draw.rotate_about([0.0, 1.0, 0.0], y, [0.5; 3]);
+    draw.rotate_about([1.0, 0.0, 0.0], x, [0.5; 3]);
+    draw.push();
+    draw.translate([0.0, arm * 0.5 + 0.375, 0.0]);
+    game.native_draw_model(
+        draw,
+        if lit {
+            "create:block/portable_storage_interface/block_middle_powered"
+        } else {
+            "create:block/portable_storage_interface/block_middle"
+        },
+        0xFFFFFF,
+    );
+    draw.pop();
+    draw.translate([0.0, arm, 0.0]);
+    game.native_draw_model(
+        draw,
+        "create:block/portable_storage_interface/block_top",
+        0xFFFFFF,
+    );
+    draw.pop();
+}
+
+pub(super) fn draw_stationary_interface(
+    game: &Game<'_>,
+    pos: [i32; 3],
+    draw: &mut super::native_block_entity_draw::BlockEntityDraw,
+) {
+    let state = pistons(game)
+        .into_iter()
+        .find(|p| p.portable && p.stationary() == pos);
+    let (arm, lit) = state.map_or((0.0, false), |p| {
+        (
+            interpolate(
+                &p.data,
+                "PortablePreviousStation",
+                "PortableStation",
+                draw.partial,
+            ),
+            read_connection(&p.data).is_some_and(Connection::connected),
+        )
+    });
+    let facing = game
+        .native_block_property(pos, "facing")
+        .unwrap_or_else(|| "up".into());
+    draw_interface_parts(game, draw, &facing, arm, lit);
+}
+
+fn trace_portable_item(game: &Game<'_>, piston: &Piston, item: Option<&ItemStack>) {
+    static TRACE: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
+    if !*TRACE.get_or_init(|| std::env::var_os("CREATE_HORIZON_TRACE").is_some()) {
+        return;
+    }
+    thread_local! { static LAST: std::cell::RefCell<std::collections::BTreeMap<[i32;3],bool>> = const { std::cell::RefCell::new(std::collections::BTreeMap::new()) }; }
+    let present = item.is_some();
+    if LAST.with(|last| last.borrow_mut().insert(piston.base, present) != Some(present)) {
+        log::info!(
+            "Create portable item render: {}",
+            serde_json::json!({"base":piston.base,"present":present,
+            "item":item.map(|item| item.item.as_ref()),"count":item.map_or(0, |item| item.count),"time":game.world.game_time})
+        );
+    }
 }
 
 pub(super) fn refresh(game: &mut Game<'_>) {
@@ -1066,7 +1792,7 @@ pub(super) fn guard_destroy(game: &mut Game<'_>, pos: [i32; 3], canceled: &mut b
             || integer(&p.data, "RetractionPending") == 1
             || integer(&p.data, "RestorePending") == 1
     }) {
-        if [piston.pole, piston.head, piston.dest].contains(&pos) {
+        if piston.reserved().contains(&pos) && piston.base != pos {
             *canceled = true;
             return;
         }
@@ -1087,10 +1813,12 @@ pub(super) fn guard_destroy(game: &mut Game<'_>, pos: [i32; 3], canceled: &mut b
         && let Some(Tag::Compound(data)) = entity.nbt.get(&KEY.into())
         && (integer(data, "CapturedStone") == 1
             || integer(data, "CapturedDepot") == 1
+            || integer(data, "CapturedInterface") == 1
             || integer(data, "CapturedPole") == 1
             || integer(data, "CapturePending") == 1
             || integer(data, "RetractionPending") == 1
-            || integer(data, "RestorePending") == 1)
+            || integer(data, "RestorePending") == 1
+            || entity.items.iter().any(Option::is_some))
     {
         *canceled = true;
     }
@@ -1100,13 +1828,13 @@ pub(super) fn guard_wrench(game: &Game<'_>, item: &str, pos: [i32; 3]) -> bool {
     item == "create:wrench"
         && pistons(game)
             .iter()
-            .any(|p| p.phase.moving() && [p.base, p.pole, p.head, p.dest].contains(&pos))
+            .any(|p| p.phase.moving() && p.reserved().contains(&pos))
 }
 
 pub(super) fn guard_proxy_use(game: &Game<'_>, pos: [i32; 3]) -> bool {
     pistons(game)
         .iter()
-        .any(|p| p.phase.moving() && [p.pole, p.head, p.dest].contains(&pos))
+        .any(|p| p.phase.moving() && p.reserved().contains(&pos) && p.base != pos)
 }
 
 #[cfg(test)]
@@ -1121,6 +1849,8 @@ mod tests {
             dest: [8, 65, 5],
             phase: Phase::Extending,
             data,
+            portable: false,
+            item: None,
         }
     }
 
@@ -1180,5 +1910,41 @@ mod tests {
         depot.items = vec![None; 9];
         depot.items[0] = Some(ItemStack::new(INGOT, 1));
         assert!(!empty_depot_target(&depot));
+    }
+
+    #[test]
+    fn portable_item_wire_is_derived_and_explicitly_cleared_without_saved_copy() {
+        let mut owner = ModBlockEntity::default();
+        owner.id = BASE.into();
+        owner.items = vec![Some(ItemStack::new(INGOT, 1))];
+        let data = Compound::from([
+            ("CargoKind".into(), Tag::String("portable_depot".into())),
+            ("CapturedDepot".into(), Tag::Byte(1)),
+        ]);
+        owner.nbt.insert(KEY.into(), Tag::Compound(data));
+        let mut tag = None;
+        update_tag(&owner, &mut tag);
+        let Some(Tag::Compound(data)) = tag.as_ref().unwrap().get(&KEY.into()) else {
+            panic!("owner wire missing");
+        };
+        assert_eq!(wire_item(data), Some(ItemStack::new(INGOT, 1)));
+        let Some(Tag::Compound(saved)) = owner.nbt.get(&KEY.into()) else {
+            unreachable!()
+        };
+        assert!(!saved.contains_key(&"PortableItemWire".into()));
+        assert!(!saved.contains_key(&"DepotItem".into()));
+
+        owner.items[0] = None;
+        tag = None;
+        update_tag(&owner, &mut tag);
+        let Some(Tag::Compound(data)) = tag.as_ref().unwrap().get(&KEY.into()) else {
+            unreachable!()
+        };
+        let Some(Tag::Compound(wire)) = data.get(&"PortableItemWire".into()) else {
+            unreachable!()
+        };
+        assert_eq!(integer(wire, "Present"), 0);
+        assert!(!wire.contains_key(&"Item".into()));
+        assert!(wire_item(data).is_none());
     }
 }

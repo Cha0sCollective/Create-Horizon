@@ -1,6 +1,6 @@
 [mod]
 id = "create"
-version = "0.5.0-ch4os.3"
+version = "0.5.0-ch4os.4"
 
 [compatibility]
 horizon_revision = "fc02103818c212920fd24aa34a2b2f91ba49e56f"
@@ -446,6 +446,18 @@ helper = "depot_changed.rs"
 bindings = [
  {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
  {name="pos",ty="(i32,i32,i32)",value="pos"},
+]
+
+[[injection]]
+id = "portable-hopper-source"
+target = "horizon_client::game::machines::Game<'_>::suck_from_container"
+kind = "HEAD"
+cancellable = true
+helper = "s6_hopper_source.rs"
+bindings = [
+ {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
+ {name="above",ty="(i32,i32,i32)",value="above"},
+ {name="hopper",ty="&crate::game::machines::View",value="hopper"},
 ]
 
 [[module]]

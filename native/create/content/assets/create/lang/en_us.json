@@ -42,5 +42,6 @@
   "item.create.propeller": "Propeller",
   "item.create.wheat_flour": "Wheat Flour",
   "item.create.dough": "Dough",
-  "create.kinetics.creative_motor.rotation_speed": "Generated Speed in RPM"
+  "create.kinetics.creative_motor.rotation_speed": "Generated Speed in RPM",
+  "block.create.portable_storage_interface": "Portable Storage Interface"
 }

@@ -120,6 +120,11 @@ sweep and client projection must include depot and moving interface. An empty
 restored depot is valid only after the canonical owner slot is known empty.
 A failed write cannot fabricate successful restoration or release an item.
 Preserve original interface states/metadata allowed by this finite profile.
+The private S5 clearance adapter's old admission bound is two moving boxes and
+three final bounds. This declared three-part profile needs exactly three moving
+boxes and up to four final bounds (including the returning pole cell). Raise
+only those finite limits after independent delta review; retain the existing
+per-body collision/budget/commit algorithm and all previous one/two-box callers.
 
 Register the original interface ID and six-way facing, ordinary placement,
 item/loot and readable local-JAR model/connection rendering using the
@@ -129,6 +134,9 @@ their Survival crafting progression. Do not add a general actor/assembly/capabil
 interface, arbitrary inventories, filters, bidirectional transfer or riders.
 The reference interface inherits only FACING from WrenchableDirectionalBlock;
 do not invent a waterlogged interface property. Depot waterlogging remains refused.
+Use distinct private native/content version `0.5.0-ch4os.4` for this new block
+and owner-wire profile; retain the accepted `.3` binaries/evidence. Check the
+existing manifest consistency and matched-client gate without a broad replay.
 Stop for owner input if a broader host/API/schema/architecture change is needed.
 
 ## Focused gate

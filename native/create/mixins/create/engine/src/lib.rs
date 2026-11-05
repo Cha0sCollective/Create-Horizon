@@ -11,6 +11,9 @@ pub mod propagation;
 #[path = "core/linear_carrier.rs"]
 pub mod linear_carrier;
 
+#[path = "core/portable_interface.rs"]
+pub mod portable_interface;
+
 #[path = "core/depot.rs"]
 pub mod depot;
 

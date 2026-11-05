@@ -129,6 +129,7 @@ pub(super) fn owns(block: &str) -> bool {
             | "create:mechanical_drill"
             | "create:mechanical_piston"
             | "create:piston_extension_pole"
+            | "create:portable_storage_interface"
     )
 }
 
@@ -270,7 +271,9 @@ pub(super) fn placed(game: &mut Game<'_>, stack: &ItemStack, pos: [i32; 3]) {
                     Direction::West,
                 ][((f64::from(game.yaw) / 90.0 + 0.5).floor() as i64 & 3) as usize],
             ),
-            "create:mechanical_piston" => Some(if sneaking { look } else { look.opposite() }),
+            "create:mechanical_piston" | "create:portable_storage_interface" => {
+                Some(if sneaking { look } else { look.opposite() })
+            }
             "create:piston_extension_pole" => Some(face.opposite()),
             _ => None,
         };
@@ -948,6 +951,15 @@ pub(super) fn update_tag(entity: &ModBlockEntity, tag: &mut Option<Compound>) {
 
 pub(super) fn container(block: &str, container: &mut Option<ModContainer>) {
     crate::game::create_port_millstone::container(block, container);
+    if block == "create:mechanical_piston" && container.is_none() {
+        *container = Some(ModContainer {
+            slots: 1,
+            faces: std::array::from_fn(|_| Vec::new()),
+            inputs: Vec::new(),
+            outputs: Vec::new(),
+            menu: None,
+        });
+    }
     if block == "create:depot" && container.is_none() {
         *container = Some(ModContainer {
             slots: 9,
@@ -1026,6 +1038,10 @@ pub(super) fn draw(
     draw: &mut BlockEntityDraw,
 ) {
     if !owns(block) {
+        return;
+    }
+    if block == "create:portable_storage_interface" {
+        super::create_s5_piston::draw_stationary_interface(game, pos, draw);
         return;
     }
     let original = ORIGINAL_ASSETS.load(std::sync::atomic::Ordering::Relaxed);

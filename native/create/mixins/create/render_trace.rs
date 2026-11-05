@@ -3,7 +3,8 @@ fn create_render_trace(draw: &crate::game::native_block_entity_draw::BlockEntity
     static TRACE: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
     let processor = model.ends_with("millstone/inner")
         || model.ends_with("encased_fan/propeller")
-        || model.ends_with("mechanical_drill/head");
+        || model.ends_with("mechanical_drill/head")
+        || model.contains("portable_storage_interface/block_");
     if !*TRACE.get_or_init(|| std::env::var_os("CREATE_HORIZON_TRACE_POSES").is_some())
         || !processor && draw.game_time % 10 != 0
         || !model.starts_with("create:")

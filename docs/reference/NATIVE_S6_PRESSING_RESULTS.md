@@ -26,6 +26,12 @@ uses Horizon's `#tag` ingredient syntax with the same tag and result, while
 `native/create/tools/content.py` would regenerate a vanilla-only ingredient.
 The packet limits the tested input to plain `minecraft:iron_ingot`, and
 requires generator reconciliation before regeneration or a tag-parity claim.
+Correction from the November5 portable-interface source audit: that earlier
+generator statement examined the bootstrap writes only. The later `foundation()`
+call rewrites the retained MIT recipes from `tools/data/recipes.json`, including
+the convention tags. Regeneration must preserve the existing tag recipes; no
+ingredient repair is needed. The game evidence and plain-iron qualification
+remain unchanged, and no tag-wide parity claim is added.
 Java `PressingBehaviour` uses `CYCLE=240`, applies at 120 and scales tick speed
 with RPM; `MechanicalPressBlockEntity` defaults `bulkPressing=false` and its
 depot callback retains unprocessed input and buffers output. The native core

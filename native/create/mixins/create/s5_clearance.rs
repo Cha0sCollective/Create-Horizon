@@ -40,8 +40,9 @@ impl Game<'_> {
         self.create_s5_plan_push_shapes(pos, piston, progress, &[cube], &[final_bounds])
     }
 
-    /// The finite real actuator moves its head and at most one stone together.
-    /// Plan both solid boxes against each body with one movement budget/commit.
+    /// The finite actuator moves a head and at most two declared cargo blocks.
+    /// The fourth final bound is the returning pole's original cell. Plan the
+    /// complete finite shape against each body with one movement budget/commit.
     pub(crate) fn create_s5_plan_push_shapes(
         &mut self,
         pos: BlockPos,
@@ -50,7 +51,7 @@ impl Game<'_> {
         boxes: &[Aabb],
         final_bounds: &[Aabb],
     ) -> Option<S5PushPlan> {
-        if boxes.is_empty() || final_bounds.is_empty() || boxes.len() > 2 || final_bounds.len() > 3
+        if boxes.is_empty() || final_bounds.is_empty() || boxes.len() > 3 || final_bounds.len() > 4
         {
             return None;
         }
