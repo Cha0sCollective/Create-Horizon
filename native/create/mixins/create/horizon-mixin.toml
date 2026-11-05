@@ -301,6 +301,22 @@ bindings = [
   { name = "claimed", ty = "&mut bool", value = "&mut *claimed" },
 ]
 
+# Only FunnelItem's unsneaked main-hand chest use skips the chest's turn.
+# The real Shift key remains unchanged for subsequent placement state.
+[[injection]]
+id = "funnel-chest-use-priority"
+target = "horizon_client::game::Game<'_>::use_hand"
+kind = "MODIFY_VARIABLE"
+variable = { name = "sneaking", ordinal = 0, at = "STORE" }
+require = 1
+ordinal = 0
+helper = "funnel_chest_sneaking.rs"
+bindings = [
+  { name = "sneaking", ty = "bool", value = "$value" },
+  { name = "game", ty = "&crate::game::Game<'_>", value = "&*self" },
+  { name = "block_hit", ty = "Option<&crate::game::Hit>", value = "block_hit" },
+]
+
 [[injection]]
 id = "placed"
 hook = "place_block"
@@ -924,6 +940,12 @@ id="belt"
 file="crates/horizon-client/src/game.rs"
 name="create_port_belt"
 source="belt.rs"
+
+[[module]]
+id="andesite-funnel"
+file="crates/horizon-client/src/game.rs"
+name="create_port_funnel"
+source="funnel.rs"
 
 [[injection]]
 id="belt-component-types"

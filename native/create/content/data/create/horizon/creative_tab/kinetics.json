@@ -32,6 +32,7 @@
     "create:basin",
     "create:mechanical_mixer",
     "create:blaze_burner",
+    "create:andesite_funnel",
     "create:iron_sheet",
     "create:golden_sheet",
     "create:copper_sheet",

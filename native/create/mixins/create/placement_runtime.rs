@@ -49,6 +49,23 @@ pub(super) fn state(
     answer: &mut Option<Option<BlockStateId>>,
 ) {
     let block = game.native_state_block(state).unwrap_or("");
+    if block == "create:andesite_funnel" {
+        // Only the selected standing, downward extractor is placeable. A
+        // horizontal funnel above a belt requires separate Belt Funnel content.
+        let pos = [ctx.pos.x, ctx.pos.y, ctx.pos.z];
+        let behind = game.world.block(pos[0], pos[1] + 1, pos[2]);
+        if ctx.item != "create:andesite_funnel"
+            || ctx.sneaking
+            || ctx.face != D::Down
+            || super::create_port::nearest(ctx.yaw, ctx.pitch) != Direction::Up
+            || game.native_state_block(behind) != Some("minecraft:chest")
+        {
+            *answer = Some(None);
+            return;
+        }
+        *answer = Some(Some(state));
+        return;
+    }
     if block == "create:blaze_burner" {
         // BlazeBurnerBlock.getStateForPlacement reads the actual BlockItem,
         // including the empty item alias. Other placement callers get the

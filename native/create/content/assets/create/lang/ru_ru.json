@@ -47,5 +47,6 @@
   "block.create.basin": "Basin",
   "block.create.mechanical_mixer": "Mechanical Mixer",
   "block.create.blaze_burner": "Blaze Burner",
-  "item.create.empty_blaze_burner": "Empty Blaze Burner"
+  "item.create.empty_blaze_burner": "Empty Blaze Burner",
+  "block.create.andesite_funnel": "Андезитовая воронка"
 }

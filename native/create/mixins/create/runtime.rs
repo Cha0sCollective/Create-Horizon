@@ -113,6 +113,7 @@ pub(super) fn owns(block: &str) -> bool {
             | "create:large_cogwheel"
             | "create:mechanical_press"
             | "create:depot"
+            | "create:andesite_funnel"
             | "create:gearbox"
             | "create:clutch"
             | "create:gearshift"
@@ -780,6 +781,10 @@ pub(super) fn tick(game: &mut Game<'_>, pos: [i32; 3], entity: &mut ModBlockEnti
         if slide_depot(game, pos, entity) || changed {
             game.native_block_entity_sync(pos);
         }
+        return;
+    }
+    if block == "create:andesite_funnel" {
+        crate::game::create_port_funnel::tick(game, pos, entity);
         return;
     }
     if crate::game::create_port_generators::tick(game, pos, entity, &block) {
