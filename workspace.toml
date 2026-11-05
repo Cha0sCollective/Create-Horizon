@@ -6,8 +6,8 @@ namespace = "create"
 repository = "https://github.com/Cha0sCollective/Create-Horizon"
 visibility = "private"
 stage = "Native S1 through S5 complete; S6 feature families open"
-active_packet = "Plain-water Basin accepted at reviewed source06c460f9: focused checks, integrated/dedicated water buckets/dough/cold reopen, eight normal process exits and independent completion review CLEAR. See docs/reference/NATIVE_S6_WATER_BASIN_RESULTS.md; old G1 remains historical and unpassed"
-next_stage = "Read-only current upstream/staging reuse assessment before the next separate S6 packet; no broad API/schema/framework, general contraptions or release implied"
+active_packet = "Bare horizontal belt candidate based on accepted water02d029f3, selected upstream7db3733 transport/ownership plus narrow refusal/metadata repairs; pre-build source review. See docs/design/NATIVE_S6_BELT_TRANSPORT_PACKET.md; old G1 remains historical and unpassed"
+next_stage = "Review/build and qualify only the bounded belt-to-Depot/hopper profile; no broad API/schema/framework, belt processors, general contraptions or release implied"
 
 [specification]
 version = "0.1"

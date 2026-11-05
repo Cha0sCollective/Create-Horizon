@@ -14,6 +14,9 @@ fn create_depot_prediction(
             )
         })
         || crate::game::create_port::depot_reacts(game, hit.pos, hit.face)
+        || game.native_on("create")
+            && (game.native_block(hit.pos) == "create:belt"
+                || held.is_some_and(|s| s.item.as_ref() == "create:belt_connector"))
     {
         std::ops::ControlFlow::Break((InteractionResult::Success, DryUse::default()))
     } else {

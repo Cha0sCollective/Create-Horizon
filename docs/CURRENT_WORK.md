@@ -5,6 +5,19 @@ route. S6 is OPEN. The owner authorizes progress through S6 until the next
 requested break, genuine blocker, required input or scope boundary. Read
 `docs/design/STAGE_PROGRESSION_PLAN.md` and `NATIVE_PLAYABILITY_PLAN.md`.
 
+## Active bare-belt candidate
+
+Branch `codex/native-s6-belt-transport`, based on accepted/private-synced02d029f3.
+Packet `docs/design/NATIVE_S6_BELT_TRANSPORT_PACKET.md`. Fresh independent Sol
+High reuse preflight found7db3733's existing transport/ownership implementation
+usable on unchanged9c7f9b22/e8cd0aa3. Candidate `.9`, asset catalog12, is being
+adapted/reviewed before first build. Bare horizontal chain -> accepted Depot ->
+stock hopper; source Press/fan processing, broad kinetics and general contraptions
+are excluded. Narrow strict all-or-nothing inventory/physical metadata checks
+and replacement-aware destruction address identified source gaps. No belt pass
+or S6 completion yet. Raw `.local/native-s6-belt-transport-01`. Stop for broader
+API/schema/framework work, changed acceptance, genuine blocker or required input.
+
 ## Accepted plain-water Basin
 
 Branch `codex/native-s6-water-basin`, reviewed source06c460f9, based on074122b7.

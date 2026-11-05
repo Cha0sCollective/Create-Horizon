@@ -343,11 +343,17 @@ def coal_heating_content():
     write("data/create/horizon/creative_tab/kinetics.json",tab)
 
 
+def belt_content():
+    # Selected MIT7db source-authored declarations/fallbacks; local original art only.
+    values = json.loads((ROOT / "tools/data/belt-content.json").read_text())
+    for path, value in values.items(): write(path, value)
+
+
 def main():
     CONTENT.mkdir(exist_ok=True)
     (CONTENT / "horizon-mod.toml").write_text('''id = "create"
 name = "Create for Horizon — prototype"
-version = "0.5.0-ch4os.8"
+version = "0.5.0-ch4os.9"
 description = "Experimental kinetic foundation with milling, bulk fan processing, stationary drilling, pressing, depots, crafting and a bounded one-pole mechanical piston."
 authors = ["create-horizon contributors"]
 api = "0.2"
@@ -429,6 +435,7 @@ capabilities = ["registries"]
     portable_interface_content()
     dry_mixing_content()
     coal_heating_content()
+    belt_content()
     write("data/create/recipe/mixing/dough_by_mixing.json", {'type': 'create:mixing', 'ingredients': ['#c:flours/wheat', {'type': 'neoforge:single', 'amount': 1000, 'fluid': 'minecraft:water'}], 'results': [{'id': 'create:dough'}]})
     # Source installs carry only the native bundle. Its documented data folder
     # therefore contains the complete public content, with no player-side Python.

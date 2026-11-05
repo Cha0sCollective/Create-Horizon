@@ -26,3 +26,8 @@ def rust_catalog():
 BLOCKS += ["blaze_burner"]
 ITEMS += ["empty_blaze_burner"]
 PARTS += ['blaze_burner/block', 'blaze_burner/blaze/inert', 'blaze_burner/blaze/idle', 'blaze_burner/blaze/active', 'blaze_burner/rods_small', 'blaze_burner/rods_large', 'blaze_burner/flame']
+
+# Selected S6 bare belt; no casing/dyes/passenger resources.
+INTERNAL_BLOCKS += ["belt"]
+ITEMS += ["belt_connector"]
+PARTS += ["belt_pulley", "belt/particle"] + ["belt/" + part for part in ["start","middle","end","start_bottom","middle_bottom","end_bottom","diagonal_start","diagonal_middle","diagonal_end"]]

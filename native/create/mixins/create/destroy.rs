@@ -3,6 +3,7 @@ fn create_destroy(game: &mut crate::game::Game<'_>, pos: [i32; 3], canceled: &mu
         *canceled = true;
         return;
     }
+    crate::game::create_port_belt::destroy(game, pos);
     crate::game::create_s5_carrier::guard_destroy(game, pos, canceled);
     crate::game::create_s5_piston::guard_destroy(game, pos, canceled);
     if !*canceled {
