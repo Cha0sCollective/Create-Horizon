@@ -24,3 +24,13 @@ runtime ends, the root may move this reviewed branch onto its existing stable
 integration worktree/build path for cache reuse, preserving every prior map,
 immutable binary and raw world. Do not create another large target/cache/stage.
 Any repair required by cohort001 must first be composed here before later build.
+
+Fresh independent read-only Sol High composition review CLEAR at9823168,
+November5 23:12:44–23:14:25UTC (101seconds). No source script/test/build was run
+by that reviewer. The actual core test filter is `saw::tests`, rather than the
+`core::saw::tests` spelling in the team handoff; require a nonzero executed count.
+Affected validation also includes the selected saw kinetic-port/stress test,
+the two processor asset/recipe checks, locked stage/lint/build and the finite
+integrated/dedicated saw milestone. Existing cohort001 runtime failures must be
+repaired and composed before this candidate is built. Compilation/gameplay and
+all acceptance remain pending.
