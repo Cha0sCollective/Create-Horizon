@@ -512,6 +512,8 @@ fn collect(bytes: Vec<u8>) -> io::Result<BTreeMap<String, Vec<u8>>> {
     }
     reader.texture("create:block/blaze_burner_flame_scroll")?;
     reader.texture("create:block/blaze_burner_flame_superheated_scroll")?;
+    reader.texture("create:block/belt_scroll")?;
+    reader.texture("create:block/belt_diagonal_scroll")?;
     // Generated local texture variants inherit the original OBJ geometry. They
     // remain in the player's private cache, under the original asset terms.
     for part in WHEEL_PARTS {
