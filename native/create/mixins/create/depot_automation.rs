@@ -14,6 +14,17 @@ fn create_depot_can_place(
     if let Some(crate::containers::BlockEntity::Mod(entity)) =
         containers.world.block_entities.get(&pos)
     {
+        if entity.id == "create:basin" {
+            return std::ops::ControlFlow::Break(
+                crate::game::create_port::inventory_supported(entity)
+                    && crate::game::create_port_basin::can_place(
+                        &entity.items,
+                        local,
+                        stack,
+                        containers.max_stack(stack),
+                    ),
+            );
+        }
         if entity.id == "create:millstone" {
             return std::ops::ControlFlow::Break(
                 local == 0 && crate::game::create_port_millstone::automation_accepts(stack),

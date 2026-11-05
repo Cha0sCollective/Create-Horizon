@@ -38,6 +38,8 @@ pub enum Kind {
     },
     Press,
     Millstone,
+    /// Fixed-Y small cog without a shaft port (MechanicalMixerBlock).
+    Mixer,
     MechanicalPiston,
     Consumer {
         facing: Pos,
@@ -66,6 +68,7 @@ impl Node {
             Kind::Motor { facing, .. } => delta == facing,
             Kind::Consumer { facing, .. } => delta == facing,
             Kind::Millstone => delta == [0, -1, 0],
+            Kind::Mixer => false,
             Kind::Gearbox => delta[self.axis.index()] == 0,
             _ => delta[self.axis.index()].abs() == 1,
         }
@@ -95,7 +98,7 @@ impl Node {
     fn impact(self) -> f32 {
         match self.kind {
             Kind::Press => 8.0,
-            Kind::Millstone => 4.0,
+            Kind::Millstone | Kind::Mixer => 4.0,
             Kind::MechanicalPiston => 4.0,
             Kind::Consumer { impact, .. } => impact,
             _ => 0.0,
@@ -104,7 +107,7 @@ impl Node {
     fn cog(self) -> Option<bool> {
         match self.kind {
             Kind::Cog { large } => Some(large),
-            Kind::Millstone => Some(false),
+            Kind::Millstone | Kind::Mixer => Some(false),
             _ => None,
         }
     }
@@ -675,5 +678,64 @@ mod tests {
         assert_eq!(recovered.status, Status::Running);
         assert_eq!((recovered.capacity, recovered.stress), (48.0, 0.0));
         assert_eq!(recovered.speed(nodes[1].pos), -16.0);
+    }
+}
+
+// Selected unchanged upstream236c87a8 connection/stress regression.
+#[cfg(test)]
+mod imported_mixer_connection {
+    use super::*;
+    fn network(nodes: &[Node]) -> Network {
+        solve(nodes[0], |p| nodes.iter().copied().find(|n| n.pos == p))
+    }
+    #[test]
+    fn mixer_is_driven_through_cogs_and_never_through_a_shaft() {
+        let mixer = Node {
+            pos: [0, 0, 0],
+            axis: Axis::Y,
+            kind: Kind::Mixer,
+        };
+        let motor = Node {
+            pos: [1, -1, 0],
+            axis: Axis::Y,
+            kind: Kind::Motor {
+                facing: [0, 1, 0],
+                rpm: 128.0,
+                capacity: 16.0,
+            },
+        };
+        let cog = Node {
+            pos: [1, 0, 0],
+            axis: Axis::Y,
+            kind: Kind::Cog { large: false },
+        };
+        let powered = network(&[motor, cog, mixer]);
+        assert_eq!(powered.status, Status::Running);
+        assert_eq!(powered.speed(mixer.pos), -128.0);
+        assert_eq!(powered.stress, 512.0);
+        for direction in [
+            [0, -1, 0],
+            [0, 1, 0],
+            [-1, 0, 0],
+            [1, 0, 0],
+            [0, 0, -1],
+            [0, 0, 1],
+        ] {
+            assert!(!mixer.shaft_port(direction));
+        }
+        let below = Node {
+            pos: [0, -1, 0],
+            ..motor
+        };
+        let isolated = network(&[mixer, below]);
+        assert_eq!(isolated.status, Status::Idle);
+        assert_eq!(isolated.speed(mixer.pos), 0.0);
+        let large = Node {
+            pos: [1, 0, 1],
+            kind: Kind::Cog { large: true },
+            ..cog
+        };
+        assert_eq!(ratio(large, mixer), Some(-2.0));
+        assert_eq!(ratio(mixer, large), Some(-0.5));
     }
 }

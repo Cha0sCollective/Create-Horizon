@@ -27,6 +27,8 @@ pub const BLOCKS: &[&str] = &[
     "mechanical_piston",
     "piston_extension_pole",
     "portable_storage_interface",
+    "basin",
+    "mechanical_mixer",
 ];
 pub const ITEMS: &[&str] = &[
     "iron_sheet",
@@ -73,4 +75,7 @@ pub const PARTS: &[&str] = &[
     "portable_storage_interface/block_middle",
     "portable_storage_interface/block_middle_powered",
     "portable_storage_interface/block_top",
+    "cogwheel_shaftless",
+    "mechanical_mixer/pole",
+    "mechanical_mixer/head",
 ];

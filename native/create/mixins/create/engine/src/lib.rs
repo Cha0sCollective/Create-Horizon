@@ -1,4 +1,6 @@
 //! Game-independent parts, also compiled as the native bundle's engine crate.
+#[path = "core/basin.rs"]
+pub mod basin;
 #[path = "core/kinetics.rs"]
 pub mod kinetics;
 #[path = "core/placement.rs"]
@@ -7,6 +9,8 @@ pub mod placement;
 pub mod pressing;
 #[path = "core/propagation.rs"]
 pub mod propagation;
+#[path = "core/session_cache.rs"]
+pub mod session_cache;
 
 #[path = "core/linear_carrier.rs"]
 pub mod linear_carrier;

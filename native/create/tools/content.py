@@ -125,6 +125,32 @@ def portable_interface_content():
         path.write_text(json.dumps(lang, ensure_ascii=False, indent=2) + "\n")
 
 
+def dry_mixing_content():
+    # MIT declarations adapted from upstream236c87a8. Contextual shapes/contact
+    # are intentionally absent on the pinned host; this profile is hopper-fed.
+    declarations = {'basin': {'template': 'minecraft:glass', 'item': True, 'properties': {'hardness': 1.5, 'explosion_resistance': 6, 'requires_tool': True, 'map_color': 21, 'sounds': 'minecraft:netherite_block', 'render_shape': 'MODEL'}, 'state_properties': {'facing': {'type': 'enum', 'values': ['down', 'north', 'south', 'west', 'east']}}, 'default_state': {'facing': 'down'}, 'shapes': {'default': [[0, 0.125, 0, 0.125, 1, 1], [0.875, 0.125, 0, 1, 1, 1], [0.125, 0.125, 0, 0.875, 1, 0.125], [0.125, 0.125, 0.875, 0.875, 1, 1], [0.125, 0, 0.125, 0.875, 0.125, 0.875]]}, 'collision_shapes': {'default': [[0, 0.125, 0, 0.125, 1, 1], [0.875, 0.125, 0, 1, 1, 1], [0.125, 0.125, 0, 0.875, 1, 0.125], [0.125, 0.125, 0.875, 0.875, 1, 1], [0.125, 0, 0.125, 0.875, 0.125, 0.875]]}}, 'mechanical_mixer': {'template': 'minecraft:glass', 'item': True, 'properties': {'hardness': 1.5, 'explosion_resistance': 6, 'requires_tool': True, 'map_color': 11, 'sounds': 'minecraft:stone', 'render_shape': 'MODEL'}, 'shapes': {'default': [[0, 0, 0, 0.25, 1, 1], [0.75, 0, 0, 1, 1, 1], [0.25, 0, 0, 0.75, 1, 0.25], [0.25, 0, 0.75, 0.75, 1, 1]]}, 'collision_shapes': {'default': [[0, 0, 0, 0.25, 1, 1], [0.75, 0, 0, 1, 1, 1], [0.25, 0, 0, 0.75, 1, 0.25], [0.25, 0, 0.75, 0.75, 1, 1]]}}}
+    for name, declaration in declarations.items():
+        write("data/create/horizon/block/" + name + ".json", declaration)
+        write("assets/create/blockstates/" + name + ".json", {"variants": {"": {"model": "create:block/" + name + "/block"}}})
+        write("assets/create/models/item/" + name + ".json", {"parent": "create:block/" + name + "/block"})
+        write("assets/create/items/" + name + ".json", {"model": {"type": "minecraft:model", "model": "create:item/" + name}})
+        write("data/create/loot_table/blocks/" + name + ".json", {"type": "minecraft:block", "pools": [{"rolls": 1, "entries": [{"type": "minecraft:item", "name": "create:" + name}]}]})
+    model("basin/block", [([0,2,0],[2,16,16]),([14,2,0],[16,16,16]),([2,2,0],[14,16,2]),([2,2,14],[14,16,16]),([2,0,2],[14,2,14])], "minecraft:block/andesite")
+    model("mechanical_mixer/block", [([0,0,0],[4,16,16]),([12,0,0],[16,16,16]),([4,0,0],[12,16,4]),([4,0,12],[12,16,16])], "minecraft:block/andesite")
+    model("cogwheel_shaftless", [([0,6,0],[16,10,16])])
+    model("mechanical_mixer/pole", [([6,0,6],[10,16,10])])
+    model("mechanical_mixer/head", [([2,0,2],[14,3,14]),([6,3,6],[10,8,10])])
+    write("data/create/recipe/mixing/andesite_alloy.json", {"type":"create:mixing", "ingredients":[{"item":"minecraft:andesite"},{"tag":"c:nuggets/iron"}], "results":[{"id":"create:andesite_alloy"}]})
+    tag_path=CONTENT / "data/c/tags/item/nuggets/iron.json"
+    tag=json.loads(tag_path.read_text()) if tag_path.exists() else {"values":[]}
+    if "minecraft:iron_nugget" not in tag["values"]: tag["values"].append("minecraft:iron_nugget")
+    write("data/c/tags/item/nuggets/iron.json",tag)
+    for locale in ["en_us", "ru_ru"]:
+        path=CONTENT / ("assets/create/lang/" + locale + ".json")
+        lang=json.loads(path.read_text());lang.update({"block.create.basin":"Basin", "block.create.mechanical_mixer":"Mechanical Mixer"})
+        path.write_text(json.dumps(lang, indent=2, ensure_ascii=False) + "\n")
+
+
 def processors():
     # State and collision definitions translated from MIT MillstoneBlock,
     # DirectionalKineticBlock and AllShapes. Geometry below is our provisional
@@ -292,7 +318,7 @@ def main():
     CONTENT.mkdir(exist_ok=True)
     (CONTENT / "horizon-mod.toml").write_text('''id = "create"
 name = "Create for Horizon — prototype"
-version = "0.5.0-ch4os.4"
+version = "0.5.0-ch4os.5"
 description = "Experimental kinetic foundation with milling, bulk fan processing, stationary drilling, pressing, depots, crafting and a bounded one-pole mechanical piston."
 authors = ["create-horizon contributors"]
 api = "0.2"
@@ -372,6 +398,7 @@ capabilities = ["registries"]
     foundation()
     mechanical_piston_content()
     portable_interface_content()
+    dry_mixing_content()
     # Source installs carry only the native bundle. Its documented data folder
     # therefore contains the complete public content, with no player-side Python.
     files = {path.relative_to(CONTENT).as_posix(): path.read_text()

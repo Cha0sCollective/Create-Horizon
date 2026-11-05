@@ -30,3 +30,23 @@ and old host tools are preserved historical work. The active scope, reference pi
 and acceptance are in `../docs/design/NATIVE_PLAYABILITY_PLAN.md` (relative to the
 repository root: `docs/design/NATIVE_PLAYABILITY_PLAN.md`). No public engine import,
 upstream contribution, merge or release is part of this adoption.
+
+## Selected S6 Basin/Mixer reuse
+
+Private dry-mixing increment reuses MIT source from upstream commit
+`236c87a889cd76f7e663d1d182c28dc1145f7b14` (0.7.0-alpha.2), without replacing
+the imported base or upgrading its host. `engine/src/core/basin.rs` and
+`fluid_codec.rs` are exact source imports; `session_cache.rs` extracts only the
+small utility from `core/transport.rs`. The Mixer connection test is also reused
+from that revision. Basin/Mixer/recipe and Basin-only inventory adapters are
+adapted from its corresponding files, preserving their headers and MIT notices.
+
+Local changes restrict this increment to the reviewed dry recipe/plain inputs,
+remove unavailable fluid/Press/Basin integrations and use the existing tint.
+Fresh canonical inventory snapshots repair the observed post-hopper save/update
+gap. A private generated identity comparator and existing placement/removal/render
+hooks adapt the code to fc021038/Mixinsa1e13326. The original reference6.0.11
+has no selected Basin/Mixer/burner/heat-rule source differences from6.0.10.
+Upstream reports remain attributed reference evidence, not private gameplay passes.
+Details: `docs/design/NATIVE_S6_BASIN_REUSE_AUDIT.md` and
+`NATIVE_S6_DRY_MIXING_PACKET.md`; raw source hashes are local outside Git.

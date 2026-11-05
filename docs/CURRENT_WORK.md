@@ -15,10 +15,22 @@ audit/packet review CLEAR for `docs/design/NATIVE_S6_BASIN_REUSE_AUDIT.md` and
 `NATIVE_S6_DRY_MIXING_PACKET.md`. Implementation is starting; no new gameplay
 profile is accepted. Retain tested host/Mixins pins. Only dry plain andesite +
 iron nugget -> alloy is admitted; heat/full fluids are subsequent decisions.
-Source/effects review is required before live use. Root alone writes/builds/runs.
+Source/effects review cleared the finite implementation after fixing destruction,
+head bounds and placement hookups, conditional on actual final checks. Root alone
+writes/builds/runs. Eighteen imported core tests and the actual serializer-library
+immediate-save/identity/opaque invariant PASS; Clippy PASS34warnings and stage5
+passes. An earlier game-crate filter ran0tests and supplies no invariant evidence.
+Pinned-tool RETURN/alias/helper-shape rejections are preserved in indexed logs.
+The final no-shaft correction and imported Mixer connection test PASS; locked
+build PASS at game36e13c3f/ctl32f37332. Final source/effects Sol High review CLEAR
+for live tests. No new gameplay profile is accepted yet. Prior checks are reused
+for unchanged paths; source and current resource/binary maps will be frozen.
 
-Next: narrow Basin/Mixer/codec/cache import, private entity-identity comparator,
-selected content and Mixer-only kinetic cases; then focused checks and review.
+Raw packet `.local/native-s6-dry-mixing-01`; content generation changed only
+three existing language/tab files, added16 selected files and preserved387 others
+(version edits recorded separately). Version `.5`, asset schema10. No game is
+running. Next: final locked build, freeze source/binary maps, integrated then
+dedicated/two-client smoke/cold-reopen checks, independent completion review.
 Stop before a broad host/API/schema/lifecycle framework or changed acceptance.
 
 ## Accepted portable-interface packet

@@ -130,6 +130,8 @@ pub(super) fn owns(block: &str) -> bool {
             | "create:mechanical_piston"
             | "create:piston_extension_pole"
             | "create:portable_storage_interface"
+            | "create:basin"
+            | "create:mechanical_mixer"
     )
 }
 
@@ -165,6 +167,35 @@ pub(super) fn number(nbt: &Compound, key: &str) -> f32 {
         Some(Tag::Long(n)) => *n as f32,
         _ => 0.0,
     }
+}
+
+// Basin-only guards; existing accepted machine serializers are unchanged.
+pub(super) fn inventory_supported(entity: &ModBlockEntity) -> bool {
+    entity.id != "create:basin"
+        || horizon_client::save::create_basin_inventory_codec::supported(entity)
+}
+pub(super) fn inventory_blocked(game: &Game<'_>, pos: [i32; 3]) -> bool {
+    matches!(game.world.block_entities.get(&(pos[0],pos[1],pos[2])), Some(BlockEntity::Mod(entity)) if !inventory_supported(entity))
+}
+pub(super) fn stack_maximum_override(stack: &ItemStack) -> Option<u32> {
+    let data = stack.data()?;
+    if data.other("!minecraft:max_stack_size").is_some() {
+        return Some(1);
+    }
+    let value = match data.other("minecraft:max_stack_size")? {
+        Tag::Byte(v) => i32::from(*v),
+        Tag::Short(v) => i32::from(*v),
+        Tag::Int(v) => *v,
+        Tag::Long(v) => *v as i32,
+        Tag::Float(v) => f32::from_bits(*v) as i32,
+        Tag::Double(v) => f64::from_bits(*v) as i32,
+        _ => return None,
+    };
+    (1..=99).contains(&value).then_some(value as u32)
+}
+pub(super) fn stack_maximum(game: &Game<'_>, stack: &ItemStack) -> u32 {
+    stack_maximum_override(stack)
+        .unwrap_or_else(|| game.native_max_stack_size(&stack.item).unwrap_or(64))
 }
 
 pub(super) fn integer(nbt: &Compound, key: &str) -> i32 {
@@ -221,6 +252,17 @@ pub(super) fn placed(game: &mut Game<'_>, stack: &ItemStack, pos: [i32; 3]) {
         return;
     };
     if !owns(&stack.item) {
+        return;
+    }
+    if matches!(
+        stack.item.as_ref(),
+        "create:basin" | "create:mechanical_mixer"
+    ) {
+        game.native_with_mod_block_entity(pos, |entity| {
+            crate::game::create_port_basin::initialize(entity);
+            crate::game::create_port_mixer::initialize(entity);
+        });
+        game.native_block_entity_sync(pos);
         return;
     }
     let Some(face) = Direction::from_vector(face) else {
@@ -316,6 +358,9 @@ pub(super) fn placed(game: &mut Game<'_>, stack: &ItemStack, pos: [i32; 3]) {
 }
 
 pub(super) fn depot_reacts(game: &Game<'_>, pos: [i32; 3], face: [i32; 3]) -> bool {
+    if crate::game::create_port_basin::reacts(game, pos) {
+        return true;
+    }
     if crate::game::create_port_millstone::reacts(game, pos) {
         return true;
     }
@@ -338,6 +383,11 @@ pub(super) fn depot_reacts(game: &Game<'_>, pos: [i32; 3], face: [i32; 3]) -> bo
 }
 
 pub(super) fn right_click(game: &mut Game<'_>, pos: [i32; 3], face: [i32; 3], canceled: &mut bool) {
+    if crate::game::create_port_basin::right_click(game, pos) {
+        game.swing_arm();
+        *canceled = true;
+        return;
+    }
     if crate::game::create_port_interactions::right_click(game, pos, face) {
         game.swing_arm();
         *canceled = true;
@@ -509,11 +559,15 @@ pub(super) fn node(game: &Game<'_>, pos: [i32; 3]) -> Option<Node> {
             }
         };
     }
-    if block == "create:millstone" {
+    if matches!(
+        block.as_str(),
+        "create:millstone" | "create:mechanical_mixer"
+    ) {
         axis = Axis::Y;
     }
     let kind = match block.as_str() {
         "create:millstone" => Kind::Millstone,
+        "create:mechanical_mixer" => Kind::Mixer,
         "create:mechanical_piston" => Kind::MechanicalPiston,
         "create:encased_fan" | "create:mechanical_drill" => Kind::Consumer {
             facing: direction.map(|v| -v),
@@ -662,6 +716,12 @@ pub(super) fn tick(game: &mut Game<'_>, pos: [i32; 3], entity: &mut ModBlockEnti
     if !owns(&block) {
         return;
     }
+    if block == "create:basin" {
+        if crate::game::create_port_basin::tick(game, pos, entity) {
+            game.native_block_entity_sync(pos);
+        }
+        return;
+    }
     if block == "create:depot" {
         crate::game::create_port_world_items::catch(game, pos, entity);
         if depot_data(entity) {
@@ -783,6 +843,10 @@ pub(super) fn tick(game: &mut Game<'_>, pos: [i32; 3], entity: &mut ModBlockEnti
         || old_stress != network.stress
         || old_status.as_ref() != entity.nbt.get(&"NetworkStatus".into())
         || old_source.as_ref() != entity.nbt.get(&"create_horizon:kinetic".into());
+    if block == "create:mechanical_mixer" {
+        crate::game::create_port_mixer::on_speed_changed(entity, old_rpm, rpm);
+        sync |= crate::game::create_port_mixer::tick(game, pos, entity, rpm);
+    }
     if block == "create:millstone" {
         sync |= crate::game::create_port_millstone::tick(game, pos, entity, rpm);
     }
@@ -940,6 +1004,7 @@ pub(super) fn update_tag(entity: &ModBlockEntity, tag: &mut Option<Compound>) {
         && tag.is_none()
     {
         let mut snapshot = entity.nbt.clone();
+        horizon_client::save::create_basin_inventory_codec::snapshot(entity, &mut snapshot);
         if entity.id == "create:depot" && entity.items.first().is_none_or(Option::is_none) {
             // Horizon merges update tags. Absence would leave the old rendered
             // stack alive; send an explicit empty value on the wire only.
@@ -950,6 +1015,7 @@ pub(super) fn update_tag(entity: &ModBlockEntity, tag: &mut Option<Compound>) {
 }
 
 pub(super) fn container(block: &str, container: &mut Option<ModContainer>) {
+    crate::game::create_port_basin::container(block, container);
     crate::game::create_port_millstone::container(block, container);
     if block == "create:mechanical_piston" && container.is_none() {
         *container = Some(ModContainer {
@@ -972,6 +1038,7 @@ pub(super) fn container(block: &str, container: &mut Option<ModContainer>) {
 }
 
 pub(super) fn models(models: &mut Vec<String>) {
+    crate::game::create_port_mixer::models(models);
     models.push("create:block/port_hint".into());
     for part in create_assets::WHEEL_PARTS {
         for wood in create_assets::WOODS {
@@ -1038,6 +1105,11 @@ pub(super) fn draw(
     draw: &mut BlockEntityDraw,
 ) {
     if !owns(block) {
+        return;
+    }
+    if crate::game::create_port_basin::draw(game, pos, entity, draw)
+        || crate::game::create_port_mixer::draw(game, pos, entity, draw)
+    {
         return;
     }
     if block == "create:portable_storage_interface" {

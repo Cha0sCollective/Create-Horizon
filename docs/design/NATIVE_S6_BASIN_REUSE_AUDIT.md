@@ -74,6 +74,17 @@ callbacks. Preserve accepted S2 solver/source policy and other machine timers.
 Add only Basin-local inventory helpers; do not replace shared loaders wholesale.
 Keep existing portable-owner change notification when adding Basin notification.
 
+A concrete upstream integration gap was also found: a hopper can modify live
+slots after the Basin tick's canonical NBT refresh. The normal save encoder then
+writes fresh generic Items alongside stale InputItems/OutputItems, while the
+canonical loader ignores generic Items. A Basin-only read-only snapshot at save
+and client-update construction derives both mirrors from the live slots, retaining
+unknown siblings and refusing opaque sizes. This repair received independent
+Sol High CLEAR. Pinned Mixins rejects RETURN on the encoder's nested import, so
+the compatible cancellable HEAD handles only supported Basin entities using the
+exact pinned Mod encoder branch plus that snapshot; other entities continue.
+No live mutation, extra notification or generic durability framework is added.
+
 ## Behavior decisions and proposed sequence
 
 The core intentionally reproduces source output overbooking/partial-consumption

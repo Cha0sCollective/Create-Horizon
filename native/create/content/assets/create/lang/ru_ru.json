@@ -43,5 +43,7 @@
   "item.create.wheat_flour": "Пшеничная мука",
   "item.create.dough": "Тесто",
   "create.kinetics.creative_motor.rotation_speed": "Generated Speed in RPM",
-  "block.create.portable_storage_interface": "Portable Storage Interface"
+  "block.create.portable_storage_interface": "Portable Storage Interface",
+  "block.create.basin": "Basin",
+  "block.create.mechanical_mixer": "Mechanical Mixer"
 }

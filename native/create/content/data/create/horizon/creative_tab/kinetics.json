@@ -29,6 +29,8 @@
     "create:mechanical_piston",
     "create:piston_extension_pole",
     "create:portable_storage_interface",
+    "create:basin",
+    "create:mechanical_mixer",
     "create:iron_sheet",
     "create:golden_sheet",
     "create:copper_sheet",
