@@ -3,6 +3,9 @@
 Assessment after accepted dry-mixing `3ad300e`; no heating implementation or pin
 change is included. Independent read-only Sol High assessment review CLEAR;
 the host route still needs the owner's decision.
+The owner subsequently selected the bounded refresh; its authorized candidate
+work is recorded in `NATIVE_S6_HOST_REFRESH_PACKET.md`. This assessment retains
+the alternatives and evidence used for that decision.
 Upstream source236c87a889cd76f7e663d1d182c28dc1145f7b14
 and its exact target host9c7f9b2215dfed497aba5522c44f38926628648d/Mixins
 e8cd0aa38cffef49cb2e088ef716baa107148c02 are separate from our tested

@@ -6,8 +6,8 @@ namespace = "create"
 repository = "https://github.com/Cha0sCollective/Create-Horizon"
 visibility = "private"
 stage = "Native S1 through S5 complete; S6 feature families open"
-active_packet = "Reviewed dry Basin/Mixer reuse on tested host pins; see docs/design/NATIVE_S6_DRY_MIXING_PACKET.md and docs/CURRENT_WORK.md. No gameplay acceptance yet; old G1 remains historical and unpassed"
-next_stage = "Separate bounded heating assessment after dry mixing; no full fluids, general contraptions, upgrade or release implied"
+active_packet = "Owner-approved bounded host refresh for heating reuse; candidate pins are unqualified until docs/design/NATIVE_S6_HOST_REFRESH_PACKET.md passes. Dry mixing remains accepted on the preserved baseline; old G1 remains historical and unpassed"
+next_stage = "Qualify retained behavior on the exact candidate host pair, then scope coal/heated brass; no full fluids, general contraptions or release implied"
 
 [specification]
 version = "0.1"
@@ -18,7 +18,7 @@ sha256 = "4d32767eae66bbd209c83e40618d31a02052181adcc1b0c3b9466154438ee781"
 [horizon]
 upstream = "https://github.com/horizon-rust/horizon.git"
 fork = "https://github.com/Cha0sCollective/Horizon.git"
-revision = "fc02103818c212920fd24aa34a2b2f91ba49e56f"
+revision = "9c7f9b2215dfed497aba5522c44f38926628648d"
 minecraft = "26.3"
 protocol = 777
 
@@ -153,13 +153,13 @@ repository = "https://github.com/Delete228/create-horizon.git"
 revision = "16c5d454b1b9860da01b78474ea5206f0664d384"
 version = "0.5.0"
 path = "native/create"
-horizon_mixins_revision = "a1e13326306c6bc074b11e6a4926deb551c4083e"
+horizon_mixins_revision = "e8cd0aa38cffef49cb2e088ef716baa107148c02"
 native_hooks_api = 359
 runtime_namespace = "create"
 resource_create_version = "6.0.10"
 resource_jar_sha256 = "ef87fe5709f1ba1f5b8bb20a2925b5afb4669e178fd6d8bf10c167759eefe37a"
 plan = "docs/design/NATIVE_PLAYABILITY_PLAN.md"
-status = "native S1 complete under adopted profile; selected milling patch76189de and results recorded; S2/S3 not accepted"
+status = "Native S1-S5 complete and selected S6 families accepted on baseline fc021038; 9c7f9b22/e8cd0aa3 refresh is a candidate requiring focused qualification"
 
 [legacy_host]
 horizon_revision = "cf62fe270b243780f9aa86c49b456d9dd9078b42"

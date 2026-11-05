@@ -50,3 +50,16 @@ has no selected Basin/Mixer/burner/heat-rule source differences from6.0.10.
 Upstream reports remain attributed reference evidence, not private gameplay passes.
 Details: `docs/design/NATIVE_S6_BASIN_REUSE_AUDIT.md` and
 `NATIVE_S6_DRY_MIXING_PACKET.md`; raw source hashes are local outside Git.
+
+## Candidate host refresh
+
+After accepting dry mixing, the owner selected a bounded isolated refresh to the
+same upstream port's host `9c7f9b2215dfed497aba5522c44f38926628648d` and Mixins
+`e8cd0aa38cffef49cb2e088ef716baa107148c02`. Candidate version `.6` retains the
+private supported machines and recipes; it is not a whole0.7 import. The old `.5`
+branch/maps/binaries remain the qualified baseline until focused migration checks
+and independent review pass. Upstream now provides `ModRevision::same_entity`,
+so this candidate removes the private generated comparator rather than duplicating
+it. New factory/renderer capabilities are prerequisites for later selected heating
+reuse, not acceptance of heat, fluids or every upstream feature. See
+`docs/design/NATIVE_S6_HOST_REFRESH_PACKET.md` and `docs/CURRENT_WORK.md`.

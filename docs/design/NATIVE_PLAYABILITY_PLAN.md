@@ -8,6 +8,11 @@ OPEN against the bounded outcomes below. No release authority.
 
 ## Reuse boundary
 
+Subsequent owner decision: after accepted dry mixing, a separate bounded candidate
+host refresh is authorized by `NATIVE_S6_HOST_REFRESH_PACKET.md`. Its pins apply
+only to the candidate; the original adoption and qualified baseline below remain
+historical evidence, not a new migration pass.
+
 Use the unchanged tested Create port `16c5d454b1b9860da01b78474ea5206f0664d384`
 (MIT), official Horizon `fc02103818c212920fd24aa34a2b2f91ba49e56f`, Mixins
 `a1e13326306c6bc074b11e6a4926deb551c4083e`, native API 359 and Rust 1.99.1.

@@ -5,6 +5,27 @@ route. S6 is OPEN. The owner authorizes progress through S6 until the next
 requested break, genuine blocker, required input or scope boundary. Read
 `docs/design/STAGE_PROGRESSION_PLAN.md` and `NATIVE_PLAYABILITY_PLAN.md`.
 
+## Active owner-approved host refresh
+
+The owner selected the bounded upstream host-refresh route. Candidate branch
+`codex/native-s6-heating-host-refresh` starts at preserved `b746b30`. Active packet
+`docs/design/NATIVE_S6_HOST_REFRESH_PACKET.md`; candidate `.6` pins exact
+Horizon9c7f9b22/Mixinse8cd0aa3 in a separate owned generated build directory.
+The original reference checkout, qualified `.5` branch/maps/binaries/worlds and
+warm caches remain. Initial delta is matching manifests/pins and removing the
+private identity shim now provided upstream. Fresh independent source/effects
+review CLEAR: save/identity/ownership paths retain the supported behavior; add one
+dropped-ingot Depot observation for the changed item-contact path. Actual Mixins
+plan/apply resolves45 injections/23 modules. Compatibility and final locked builds
+PASS, final game1ed0d734/ctl1c91ecdf. Four manifests agree on `.6`; only the
+embedded version entry changed,405 content-map entries unchanged. Preserve the
+first compile-only binary8462b697 and Windows/WSL clean-check preflight failure;
+the latter was resolved with per-command CRLF normalization, no source/global
+config edit. Raw packet `.local/native-s6-host-refresh-01`. No new gameplay or
+migration pass is claimed. No game is running. Focused lint/host invariants are
+running. Next: integrated/dedicated composition and completion review. Stop for
+an actual broader redesign or changed acceptance; no wholesale0.7 import.
+
 ## Accepted dry-mixing increment; heating assessment next
 
 Branch `codex/native-s6-basin-mixer`, reviewed/private-synced source `e52dc33`,
@@ -42,9 +63,9 @@ the current pin. A shallow read-only9c7f9b22 reference confirms all45 current
 injection names and24 module paths persist; static source inventory is not a
 build/migration pass. The upstream identity method replaces our private shim;
 new transient update semantics need review. No production pin/source changed.
-Pending owner route: recommended bounded isolated9c7f9b22/e8cd0aa3 candidate
-migration; alternatives explicitly reduced old-host heating or heating deferral.
-Full0.7 import stays HOLD; no heating/full fluids/dependency upgrade is accepted.
+The owner selected bounded isolated9c7f9b22/e8cd0aa3 candidate migration; the active
+packet above records that authorization. Full0.7 import stays HOLD; no new
+heating/full-fluid gameplay or migration qualification is accepted yet.
 Stop before a broad host/API/schema/lifecycle framework or changed acceptance.
 
 ## Accepted portable-interface packet

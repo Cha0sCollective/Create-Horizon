@@ -1,9 +1,9 @@
 [mod]
 id = "create"
-version = "0.5.0-ch4os.5"
+version = "0.5.0-ch4os.6"
 
 [compatibility]
-horizon_revision = "fc02103818c212920fd24aa34a2b2f91ba49e56f"
+horizon_revision = "9c7f9b2215dfed497aba5522c44f38926628648d"
 
 [[module]]
 id = "basin"
@@ -28,12 +28,6 @@ id = "basin-empty-tank-codec"
 file = "crates/horizon-client/src/game.rs"
 name = "create_port_fluid_codec"
 source = "fluid_codec.rs"
-
-[[module]]
-id = "basin-entity-revision"
-file = "crates/horizon-client-render/src/chunk/block_entity.rs"
-name = "create_basin_entity_revision"
-source = "basin_revision.rs"
 
 [[module]]
 id = "basin-inventory-codec"
