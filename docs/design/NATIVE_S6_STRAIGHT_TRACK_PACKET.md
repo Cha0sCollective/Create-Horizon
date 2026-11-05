@@ -1,7 +1,10 @@
 # S6 stationary straight track — team candidate
 
-Status: source candidate in `codex/team-trains-schematics`; independent source
-review and shared build/game qualification pending. This packet is one finite
+Status: source candidate in `codex/team-trains-schematics` at
+`79c95f7c0ce87a5502761a8b4c9642250f3163a0`. Independent read-only Sol High
+review held two findings at `aa30f68e93ca7ead94301141fffeb9cc280c9099`;
+the narrow repair delta received CLEAR at `79c95f7`. Shared build/game
+qualification is pending. This packet is one finite
 track foundation, not a rail graph, train, schematic or S6 completion claim.
 
 ## Inputs and provenance
@@ -70,7 +73,7 @@ track foundation, not a rail graph, train, schematic or S6 completion claim.
   ordinary X/Z placement, refusal, one-item break/collection, actual model
   visibility and normal cold save/reopen. Reuse accepted piston/portable evidence;
   run only affected interaction checks because shared `use_on` is touched.
-- Fresh independent read-only Sol High source review on a stable diff is
-  required before the gameplay milestone. Root owns resource scheduling,
+- Fresh independent read-only Sol High source review is complete on the
+  source and repair delta. Root owns resource scheduling,
   integration, acceptance and any private sync. Java execution, public release,
   external schematic/world import and broader train contracts remain out of scope.
