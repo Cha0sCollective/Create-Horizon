@@ -4,6 +4,8 @@
 The candidate is limited to an upward-facing Mechanical Saw accepting one ordinary
 dropped `create:andesite_alloy` while powered and returning exactly six
 `create:shaft`. The source packet is `MACHINERY_002_PACKET.md`.
+The project lead reported the source composed at root candidate `9823168`
+with a fresh composition review CLEAR; that is not a runtime acceptance.
 
 ## Exact source and provenance
 
@@ -59,7 +61,8 @@ engine repository.
 
 No heavy Cargo build, native staging, integrated test or game run was started;
 the project lead owns the shared host-wide lease. Once leased, run the focused
-`create-engine` `core::saw::tests` and selected kinetic saw test, the
+`create-engine` `saw::tests` (require a nonzero listed and executed test count)
+and the selected kinetic saw test, the
 `create-assets` bundled processor/content-import checks, native preflight and
 the composed locked build. Pose-check both `axis_along_first` settings. The
 packet's real-game milestone remains pending: ordinary one-item input, exact
@@ -74,6 +77,11 @@ Verify actual motor source, network and saw RPM; a new camera/GUI battery for
 that unchanged control is unnecessary. Use ordinary interactions for new saw
 behavior, and do not write saw Speed, input or progress fields to manufacture
 processing evidence.
+
+The packet-local `.local/machinery-002/RUN_ORDER.md` and driver take the next
+root-frozen dedicated session and control binary as inputs. They were prepared
+from the existing team-runtime session/call semantics; no new binary or
+gameplay receipt is claimed here.
 
 Phase intervals are tracked in the local team-operations ledger. Token usage
 is not recorded in a verified local counter and remains unknown.
