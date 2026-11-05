@@ -51,9 +51,9 @@ Upstream reports remain attributed reference evidence, not private gameplay pass
 Details: `docs/design/NATIVE_S6_BASIN_REUSE_AUDIT.md` and
 `NATIVE_S6_DRY_MIXING_PACKET.md`; raw source hashes are local outside Git.
 
-## Plain-water Basin candidate
+## Accepted plain-water Basin
 
-The `.8` candidate selects upstream236c87a8's four existing custom-fluid hooks,
+The accepted `.8` increment selects upstream236c87a8's four existing custom-fluid hooks,
 fluid capability/commit, bucket and Basin renderer functions on the already
 accepted host. Private strict water-only input, empty output-fluid and exact
 plain-bucket/state predicates keep mixed-fluid/source-discard cases unreachable.
@@ -63,7 +63,9 @@ dry/brass definitions remain. Existing resources suffice; only the exact upstrea
 water/flour dough recipe is added, with version stamps. Native code and original
 art provenance stay separate. Current upstream manifest/dough recipe were read
 again before selection. See `docs/design/NATIVE_S6_WATER_BASIN_PACKET.md` for
-reference equivalence, limitations and pending qualification.
+reference equivalence and limitations; bounded actual integrated/dedicated
+qualification and independent completion review CLEAR are recorded in
+`docs/reference/NATIVE_S6_WATER_BASIN_RESULTS.md`.
 
 ## Accepted coal-heating selections
 

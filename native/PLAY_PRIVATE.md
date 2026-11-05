@@ -3,7 +3,7 @@
 This launch example uses the personal five-type Creative profile. Later bounded
 Survival/machine profiles are recorded in the native S4-S6 results; they do not
 qualify every included block. The current private package
-version is `0.5.0-ch4os.7`, based on upstream0.5.0 with selected later reuse. Use the same private build on
+version is `0.5.0-ch4os.8`, based on upstream0.5.0 with selected later reuse. Use the same private build on
 the server and clients. Original Create IDs remain `create:`.
 
 ## Build
@@ -73,7 +73,8 @@ Basin. Supply copper ingot1 and zinc ingot1 through a vanilla hopper and power
 the Mixer at32RPM or more within the accepted network limits. Right-click the
 occupied burner with plain coal; the heated recipe gives exactly two brass.
 Collect Basin output with an empty hand. Empty cages cannot be fueled; blaze
-capture/acquisition, other fuels and fluids are deferred.
+capture/acquisition and other fuels are deferred. Plain-water Basin support is
+separate from the heating recipe.
 
 Fuel at the full10,000-tick buffer is consumed without adding time, matching the
 owner-selected Java behavior. Sneak-wrench pickup gives a fresh occupied item
@@ -81,6 +82,22 @@ without retained fuel. Ordinary save/reopen preserves the placed burner's fuel,
 which resumes ticking normally. See the exact
 [heating result](../docs/reference/NATIVE_S6_COAL_HEATING_RESULTS.md) for fixtures,
 limits and the separately counted additional presentation runs.
+
+## Plain-water dough subset
+
+With the same supplied-materials Basin/Mixer arrangement, right-click the Basin
+with an ordinary water bucket to insert1000mB and receive an empty bucket. Supply
+one plain wheat flour through a hopper and power the Mixer at32RPM or more;
+collect one dough with an empty hand. An empty bucket can recover a full1000mB
+before processing. Main/offhand exchanges and stacked empty buckets are supported.
+An already full matching source refuses another water bucket without consumption.
+
+Only plain input water is supported; lava clicks are refused at the Basin.
+Mixed/output fluids, pipes/pumps, modified buckets and general fluid automation
+are outside this profile. Whole buckets do not top up or drain a partial500mB
+fixture. Normal save/reopen retains supported stored water/flour. See the
+[water result](../docs/reference/NATIVE_S6_WATER_BASIN_RESULTS.md) for the exact
+fixture/refill and rendered-observation limits.
 
 Dedicated play uses the same built game through Horizon's existing `--dedicated`
 route, with server/clients in separate instance homes. Existing mod negotiation

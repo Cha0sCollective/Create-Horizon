@@ -5,17 +5,31 @@ route. S6 is OPEN. The owner authorizes progress through S6 until the next
 requested break, genuine blocker, required input or scope boundary. Read
 `docs/design/STAGE_PROGRESSION_PLAN.md` and `NATIVE_PLAYABILITY_PLAN.md`.
 
-## Active plain-water Basin candidate
+## Accepted plain-water Basin
 
-Branch `codex/native-s6-water-basin`, based on accepted/private-synced074122b7.
-Packet `docs/design/NATIVE_S6_WATER_BASIN_PACKET.md`. Candidate `.8`, unchanged
+Branch `codex/native-s6-water-basin`, reviewed source06c460f9, based on074122b7.
+Packet `docs/design/NATIVE_S6_WATER_BASIN_PACKET.md`; result
+`docs/reference/NATIVE_S6_WATER_BASIN_RESULTS.md`. Accepted `.8`, unchanged
 host9c7f9b22/Mixinse8cd0aa3, tank codec/core/save schema and asset catalog11.
 Selected existing upstream fluid hooks/adapters, strict water-only input and
 empty-output guards, ordinary bucket exchange and exact flour1000mB dough recipe.
-Source review and focused actual checks/build are running. No water gameplay
-qualification or S6 completion yet; accepted `.7` and all prior evidence remain.
-Raw `.local/native-s6-water-basin-01`. Stop for a broader API/schema/framework,
-changed acceptance, genuine blocker or required input.
+Fresh independent read-only Sol High source/repair/completion reviews CLEAR.
+Five unique focused tests, formatting, stage64/29, Clippy34warnings and locked
+build PASS. Integrated and dedicated/two rendered clients pass main/offhand
+bucket exchange, lava/full/500mB refusal, exact dough, cold water/flour reopen,
+explicit-fixture-clear/refill recovery and dry alloy regression. Actor final
+dough2/alloy1/bucket4/lava1/stick1 includes separate equipment.offhand bucket1;
+dedicated peer retains pre-supply incidental leaf4, default0; machines empty.
+Actual integrated water/product and dedicated peer water/product-to-empty images
+pass; integrated final empty is query/save evidence. All8 process exits0.
+No game running; no production change during gameplay. All612 native hashes
+match map34aa8614; held game69a8537a/control446f2f1f. Raw packet
+`.local/native-s6-water-basin-01`, completion-evidence.json indexes40 mirror
+artifacts. Earlier face-lookup/helper failures remain preserved and excluded.
+S6 remains OPEN; accepted `.7` and all prior evidence remain. Next is read-only
+current-upstream/staging reuse assessment before another separate family packet.
+Stop for a broader API/schema/framework, changed acceptance, genuine blocker
+or required input. No public publishing, cleanup or playable/launcher edits.
 
 ## Accepted coal/heated-brass
 
@@ -44,8 +58,8 @@ map341f7a89baf048c272c287e0868344e1f8cb49f85996d526a8b629b8facf1212;
 runtime inputse7228f048d96e1a02a1bbc2456277e0a57da2cc14d82e33caae93dc722aef8ef,
 held game70b1bfd5a66a/control e1458e7a. Earlier `.6` baseline remains preserved.
 
-Next is a separate read-only bounded water-only Basin reuse assessment on the
-accepted pins. No broad fluid/capture import, new framework, altered save schema,
+The subsequently accepted water-only packet above retains these pins. No broad
+fluid/capture import, new framework, altered save schema,
 public publishing, cleanup or playable/launcher edit follows from this result.
 Stop for broader redesign, changed acceptance, genuine blocker or required input.
 
