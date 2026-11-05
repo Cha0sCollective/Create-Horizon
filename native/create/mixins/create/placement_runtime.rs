@@ -346,6 +346,7 @@ fn level_ports(game: &GameLevel<'_>, pos: [i32; 3]) -> [bool; 6] {
             || matches!(
                 name,
                 "create:depot"
+                    | "create:andesite_funnel"
                     | "create:water_wheel_structure"
                     | "create:piston_extension_pole"
                     | "create:portable_storage_interface"
