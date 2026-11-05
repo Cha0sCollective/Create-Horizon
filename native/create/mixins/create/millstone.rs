@@ -12,6 +12,7 @@ use create_engine::{
     kinetics::Axis,
     milling::{self, Action, MillCycle},
 };
+use horizon_client_render::sound_engine::{SoundEngine, SoundInstance, Sounds};
 use horizon_core::random::RandomSource;
 use horizon_world::nbt::{Compound, Tag};
 use std::{
@@ -452,12 +453,64 @@ pub(super) fn draw(
     true
 }
 
-/// Client-only counterpart of spawnParticles. Run once per client game tick,
-/// rather than per rendered frame, so frame rate never changes particle rate.
+/// The one-source MILLING soundscape from the Java reference. The native client
+/// selects one nearby millstone; grouped soundscapes for several machines are
+/// deliberately outside this adapter.
+fn milling_audio(rpm: f32, distance_sq: f64, tick: u32) -> Option<(f32, f32, bool, i32)> {
+    if rpm == 0.0 || distance_sq >= 16.0 * 16.0 {
+        return None;
+    }
+    let pitch = (rpm.abs() / 256.0 + 0.45).clamp(0.85, 1.0) * 0.75;
+    // Java's one-source volume is max(1 / 150, .025) times its 16-block
+    // distance multiplier. The client cap defaults to .1.
+    let volume = 0.025 * (2.0 - distance_sq.sqrt() as f32 / 8.0);
+    let delay = if distance_sq > 100.0 {
+        (distance_sq.sqrt() / 2.0) as i32
+    } else {
+        0
+    };
+    Some((volume, pitch, tick.is_multiple_of(2), delay))
+}
+
+fn play_milling_audio(
+    game: &mut Game<'_>,
+    event: &str,
+    center: [f64; 3],
+    volume: f32,
+    pitch: f32,
+    delay: i32,
+) {
+    // Java's RepeatingSound uses SoundSource.AMBIENT (index 8), not the
+    // event-name default. The delayed path matches playLocalSound(..., true).
+    const AMBIENT: usize = 8;
+    if delay == 0 {
+        game.audio
+            .play_on(AMBIENT, event, Some(center), volume, pitch);
+    } else {
+        let sound = SoundInstance::at(
+            event,
+            AMBIENT,
+            volume,
+            pitch,
+            SoundEngine::unseeded(),
+            center,
+        );
+        let id = game.audio.engine.add(sound, false);
+        game.audio.engine.play_delayed(id, delay);
+    }
+}
+
+/// Client-only counterpart of spawnParticles and tickAudio. Run once per client
+/// game tick, rather than per rendered frame, so frame rate changes neither rate.
 pub(super) fn client_tick(game: &mut Game<'_>) {
-    if !game.native_window() || !game.native_on("create") {
+    if !game.native_window() || !game.native_on("create") || game.pause {
         return;
     }
+    let listener = game
+        .player
+        .as_ref()
+        .map(|p| [p.position.x, p.position.y, p.position.z]);
+    let mut audible: Option<([i32; 3], f32, f64)> = None;
     let entries: Vec<_> = game
         .world
         .block_entities
@@ -482,9 +535,6 @@ pub(super) fn client_tick(game: &mut Game<'_>) {
                         .any(|s| s.count == milling::HANDLER_SLOT_LIMIT),
                     _ => false,
                 });
-            if rpm == 0.0 || timer <= 0 || outputs_full {
-                return None;
-            }
             let input = e
                 .nbt
                 .get(&"InputInventory".into())
@@ -494,9 +544,48 @@ pub(super) fn client_tick(game: &mut Game<'_>) {
                     _ => None,
                 })
                 .and_then(horizon_items::item_nbt::item_from_nbt)?;
+            if let Some(listener) = listener {
+                let distance_sq = [x, y, z]
+                    .into_iter()
+                    .enumerate()
+                    .map(|(axis, coord)| (f64::from(coord) + 0.5 - listener[axis]).powi(2))
+                    .sum();
+                if milling_audio(rpm, distance_sq, 0).is_some()
+                    && audible.is_none_or(|(_, _, nearest)| distance_sq < nearest)
+                {
+                    audible = Some(([x, y, z], rpm, distance_sq));
+                }
+            }
+            if rpm == 0.0 || timer <= 0 || outputs_full {
+                return None;
+            }
             Some(([x, y, z], rpm, input))
         })
         .collect();
+    if let Some((pos, rpm, distance_sq)) = audible {
+        let tick = crate::game::create_port_burner_clock::time(0.0) as u32;
+        if let Some((volume, pitch, second, delay)) = milling_audio(rpm, distance_sq, tick) {
+            let center = pos.map(|v| f64::from(v) + 0.5);
+            play_milling_audio(
+                game,
+                "create:crushing_1",
+                center,
+                volume * 1.545,
+                pitch,
+                delay,
+            );
+            if second {
+                play_milling_audio(
+                    game,
+                    "create:crushing_2",
+                    center,
+                    volume * 0.425,
+                    pitch,
+                    delay,
+                );
+            }
+        }
+    }
     for (pos, rpm, input) in entries {
         let angle = f64::from(game.world.random.next_float() * 360.0).to_radians();
         let next = angle + (if rpm > 0.0 { 25.0f64 } else { -25.0f64 }).to_radians();
@@ -508,5 +597,26 @@ pub(super) fn client_tick(game: &mut Game<'_>) {
         let center = std::array::from_fn(|i| f64::from(pos[i]) + 0.5 + offset[i]);
         let options = game.item_particle(&input);
         game.particles.add(&options, center, velocity);
+    }
+}
+
+#[cfg(test)]
+mod audio_tests {
+    use super::milling_audio;
+
+    #[test]
+    fn milling_audio_uses_reference_pitch_and_stops_without_power_or_range() {
+        assert_eq!(milling_audio(0.0, 0.0, 0), None);
+        assert_eq!(milling_audio(16.0, 256.0, 0), None);
+        let (volume, pitch, second, delay) = milling_audio(16.0, 0.0, 0).unwrap();
+        assert!((volume - 0.05).abs() < 1e-6);
+        assert!((pitch - 0.6375).abs() < 1e-6);
+        assert!(second);
+        assert_eq!(delay, 0);
+        let (volume, pitch, second, delay) = milling_audio(-256.0, 144.0, 1).unwrap();
+        assert!((volume - 0.0125).abs() < 1e-6);
+        assert!((pitch - 0.75).abs() < 1e-6);
+        assert!(!second);
+        assert_eq!(delay, 6);
     }
 }
