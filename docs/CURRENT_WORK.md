@@ -5,6 +5,24 @@ route. S6 is OPEN. The owner authorizes progress through S6 until the next
 requested break, genuine blocker, required input or scope boundary. Read
 `docs/design/STAGE_PROGRESSION_PLAN.md` and `NATIVE_PLAYABILITY_PLAN.md`.
 
+## Operations and team activation — November 5
+
+Primary branch `codex/create-team-operations` retains accepted water02d029f3.
+Owner-requested six team chats and isolated lanes are launched under reviewed
+`orchestration/PROJECT_TEAMS.md`; actual IDs/branches/bases are in
+`operations/team-registry.json`, current assignments in `operations/STATUS.md`.
+Operations owns integration, remote pushes, host pins and one heavy build/runtime
+reservation. Per-team actual token counters and phase intervals are collected
+locally; unknown counters remain unknown. No raw transcripts enter Git.
+
+Transport alone starts from held checkpoint2adc50a9/native43cef7dd (`.9`), plus
+operations adoption. Its final dedicated peer still draws Depot gold after hopper
+extraction despite correct authoritative/save counts. First writable packet is
+the narrow replica repair and focused requalification. Belt is not accepted.
+Other teams start from accepted `.8`, with bounded parallel reuse/Java discovery
+and one next-packet proposal each. Broader architecture/schema/acceptance gates
+remain. Do not resume old frozen drivers against changed checkout paths.
+
 ## Accepted plain-water Basin
 
 Branch `codex/native-s6-water-basin`, reviewed source06c460f9, based on074122b7.

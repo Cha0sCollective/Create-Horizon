@@ -6,8 +6,8 @@ namespace = "create"
 repository = "https://github.com/Cha0sCollective/Create-Horizon"
 visibility = "private"
 stage = "Native S1 through S5 complete; S6 feature families open"
-active_packet = "Plain-water Basin accepted at reviewed source06c460f9: focused checks, integrated/dedicated water buckets/dough/cold reopen, eight normal process exits and independent completion review CLEAR. See docs/reference/NATIVE_S6_WATER_BASIN_RESULTS.md; old G1 remains historical and unpassed"
-next_stage = "Read-only current upstream/staging reuse assessment before the next separate S6 packet; no broad API/schema/framework, general contraptions or release implied"
+active_packet = "Six owner-requested Create team chats/isolated lanes under orchestration/PROJECT_TEAMS.md; operations owns integration and token/time tracking. Accepted .8 water baseline retained; isolated .9 belt checkpoint2adc50a9 is HOLD for stale peer Depot after hopper extraction. See operations/STATUS.md and team-registry.json; old G1 remains historical and unpassed"
+next_stage = "Transport focused replica repair; five parallel bounded source-reuse/Java discovery packets, allocated by project lead. Existing architecture/schema/acceptance gates remain; no release implied"
 
 [specification]
 version = "0.1"
