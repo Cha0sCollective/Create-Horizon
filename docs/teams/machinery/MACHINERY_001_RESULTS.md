@@ -1,10 +1,12 @@
-# Machinery 001 — fan washing over a Depot: HOLD
+# Machinery 001 — fan washing over a Depot: PASS within selected scope
 
 Packet: `docs/teams/machinery/MACHINERY_001_PACKET.md`. The selected fan path
-processed and preserved one-item custody, but the dedicated peer's cold-reopened
-view omitted a server-held flour. This packet is **HOLD**, not a complete
-machine/replica qualification. S6 remains open. The actual cause of the missing
-presentation is not established; no shared Depot or host source was changed.
+processed and preserved one-item custody, including a peer-visible flour to
+dough to empty transition across normal cold reopen. This is a **PASS only for
+the packet's selected one-item fan path**; S6 remains open. The initial
+empty-top reading of the cold peer image was mistaken. The original HOLD
+assessment remains preserved in the raw index, with an additive correction.
+No shared Depot or host source was changed.
 
 ## Exact inputs and reuse
 
@@ -14,7 +16,7 @@ Lane `codex/team-machinery` at packet/source HEAD
 matched accepted input map SHA-256
 `34aa86142346922d5e4e8aa3a86a29aed6eee695fb71415b39ce66e1f45dd83f`.
 Held game `69a8537a1623bc3e309d1a8fb58151d9d0de1220bd803071272ec31960e80515`
-and control `446f2f1fe8c15ee082a25c2ea8dacd79b66df8bcf4768150373f2c3caf319cda`
+and control `446f2f1fe8c15ee082a25c2ea8dacd79b66df8bcf4768150373f2f3caf319cda`
 were byte-verified before launch. Native/content version remains
 `0.5.0-ch4os.8`, Horizon `9c7f9b22`, Mixins `e8cd0aa3`, API 359 and
 Rust 1.99.1. No Cargo build, Java execution or production source change occurred.
@@ -50,24 +52,28 @@ exit codes 0. A cold restart of the *same* server world and both clients
 gave authoritative Depot NBT with one flour, type `create:splashing`, timer
 111 and motor speed 0. The actor still held the first dough and no flour.
 
-**Failing observation:** the peer's pre-close screenshot showed flour on the
-Depot, but its same-pose cold-reopened screenshot showed an empty top while
-the authoritative query still held flour and timer 111. Resuming power made
-the second dough; the peer's same-pose product screenshot showed it. The peer
-ordinarily collected that one dough and its same-pose empty screenshot showed
-the clear Depot. Final actor and peer each held one dough; authoritative
+The peer's pre-close and same-pose cold-reopened screenshots both show two
+pale flour piles on the Depot top, agreeing with the authoritative retained
+flour and timer 111. Resuming power made the second dough; the peer's
+same-pose product screenshot shows its distinct round model. The peer
+ordinarily collected that dough and its same-pose empty screenshot shows
+the clear Depot top. Final actor and peer each held one dough; authoritative
 Depot slots and dropped entities contained no flour or dough. The final
-server and two clients again exited 0. These item counts do not repair or
-override the failed cold peer presentation. The accepted Transport 001
-empty-clear correction was not integrated into this `.8` fan candidate; its
-effect on this initial nonempty reopen has not been established.
+server and two clients again exited 0. The accepted Transport 001 empty-clear
+correction was not integrated into this `.8` fan candidate; these observations
+make no claim about that separate repair.
 
 ## Evidence and preserved failures
 
 Ignored evidence index:
 `.local/machinery-001/completion-evidence.json`, SHA-256
 `08cf3d18cbef32f0bf96168404bf95e40c6ad515cd6082659a08ddabecf0bd9c`.
-It records the fresh lane source map, held binary pins, 26 measured control
+Its initial `HOLD` status is an incorrect image interpretation, preserved
+verbatim. Additive `.local/machinery-001/completion-evidence-correction.json`,
+SHA-256 `ff990e2ee38cc5fb8e7bdb16bbc9e00d4827dbddb43283e67f8b5c7e36e31b53`,
+records the direct four-image comparison, exact image hashes and corrected
+bounded PASS without changing game state. The original index records the
+fresh lane source map, held binary pins, 26 measured control
 receipts (23 successful, three failed), seven zero process exits, five selected
 images and hashes of 13 mirrored artifacts. Raw commands, logs, images and
 worlds remain in the isolated Linux runs
@@ -81,7 +87,7 @@ The four peer images in the index use the same position
 | Image | What it shows |
 | --- | --- |
 | `dedicated-peer-flour-paused.png` | Visible held flour before normal close |
-| `dedicated-peer-flour-reopened.png` | **FALSE:** empty-looking Depot top after cold reopen, with server flour/timer 111 |
+| `dedicated-peer-flour-reopened.png` | Same two pale flour piles after cold reopen; server flour/timer 111 |
 | `dedicated-peer-dough-product.png` | Visible dough after power resumes |
 | `dedicated-peer-empty-after.png` | Empty top after peer collection, with peer dough 1 |
 
@@ -97,17 +103,17 @@ their original outputs remain indexed rather than rewritten as passes.
 
 The reopened peer log has 6,024 lines and 5,004 fan-propeller pose lines but
 no `create:depot` or `FanProcessing` lines. No existing packet or client
-inventory-NBT trace was available from that log. The screenshot is actual
-client presentation; the query is server authority. This evidence establishes
-the discrepancy, not its network or renderer cause.
+inventory-NBT trace was available from that log. The screenshots are actual
+client presentation; the queries are server authority. The flour, dough and
+empty models were compared directly at the same camera pose after the initial
+misreading. No new runtime was used for this correction.
 
 ## Handoff
 
-The central host-wide game slot is free; no process is running. A narrow
-read-only shared Depot replica/update investigation belongs to the project
-lead for allocation with Transport. Machinery must not edit shared Depot
-callbacks, host hooks, pins or acceptance scope. Any named fan-owned repair
-would receive focused checks and fresh independent read-only Sol High review.
-The one-item fan observations do not qualify belts, loose-item processing,
-other fan media, stack/chanced recipes, arbitrary worlds, crash atomicity or
-release. Independent completion/evidence review is pending on this HOLD record.
+The central host-wide game slot is free; no process is running. The initial
+proposal for a shared Depot replica repair was withdrawn after direct image
+comparison; no such defect is established here. Machinery must not edit shared
+Depot callbacks, host hooks, pins or acceptance scope. The one-item fan
+observations do not qualify belts, loose-item processing, other fan media,
+stack/chanced recipes, arbitrary worlds, crash atomicity or release.
+Independent completion/evidence delta review is pending on this correction.
