@@ -8,6 +8,9 @@ pub mod pressing;
 #[path = "core/propagation.rs"]
 pub mod propagation;
 
+#[path = "core/linear_carrier.rs"]
+pub mod linear_carrier;
+
 #[path = "core/depot.rs"]
 pub mod depot;
 

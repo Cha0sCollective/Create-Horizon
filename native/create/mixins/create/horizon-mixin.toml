@@ -1,9 +1,56 @@
 [mod]
 id = "create"
-version = "0.5.0-ch4os.1"
+version = "0.5.0-ch4os.2"
 
 [compatibility]
 horizon_revision = "fc02103818c212920fd24aa34a2b2f91ba49e56f"
+
+[[module]]
+id = "s5-carrier"
+file = "crates/horizon-client/src/game.rs"
+name = "create_s5_carrier"
+source = "s5_carrier.rs"
+
+[[module]]
+id = "s5-clearance"
+file = "crates/horizon-client/src/game/piston_push.rs"
+name = "create_s5_clearance"
+source = "s5_clearance.rs"
+
+[[injection]]
+id = "s5-before-piston-sync"
+target = "horizon_client::game::Game<'_>::sync_moving_pistons"
+kind = "HEAD"
+helper = "s5_before_sync.rs"
+bindings = [{name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"}]
+
+[[injection]]
+id = "s5-after-piston-sync"
+target = "horizon_client::game::Game<'_>::sync_moving_pistons"
+kind = "RETURN"
+helper = "s5_after_sync.rs"
+bindings = [
+ {name="result",ty="()",value="$value"},
+ {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
+]
+
+[[injection]]
+id = "s5-owner-returned"
+target = "horizon_client::game::native_hooks::Game<'_>::put_back_mod_block_entity"
+kind = "RETURN"
+helper = "s5_owner_returned.rs"
+bindings = [
+ {name="result",ty="()",value="$value"},
+ {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
+ {name="pos",ty="(i32,i32,i32)",value="pos"},
+]
+
+[[injection]]
+id = "s5-remote-received"
+target = "horizon_client::game::remote::Game<'_>::tick_remote_level"
+kind = "HEAD"
+helper = "s5_remote_received.rs"
+bindings = [{name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"}]
 
 [[crate]]
 id = "engine"

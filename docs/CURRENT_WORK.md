@@ -12,12 +12,35 @@ High packet and completion reviews CLEAR. Survival/normal-terrain recipe chain
 from vanilla fixtures, one finite water-wheel/hopper milling factory and ordinary
 save/rejoin. Adaptive existing-control sessions retain valid checkpoints rather
 than replaying all crafting after a later camera/driver error. S4 is accepted.
-Next: S5 feasibility/current-upstream audit for one controlled moving assembly,
-then a bounded reviewed packet; ask before broad host/API/architecture expansion.
+Active S5 audit/packet: `docs/design/NATIVE_S5_FEASIBILITY_AUDIT.md` and
+`NATIVE_S5_ADAPTER_SPIKE_PACKET.md`, fresh independent Sol High reviews CLEAR.
+One-cell eastward stone-carrier spike uses a deliberately configured trial motor;
+it is not an actual mechanical-piston binding or S5 completion. Selected pure
+motion/reversal/projection source review CLEAR;6focused tests and coreClippy PASS.
+Private carrier/clearance/update/sync/removal hooks and distinct existing
+metadata0.5.0-ch4os.2 passed source/delta review and an exact-pinned build.
+The bounded dedicated/two-client trial demonstrated capture, RPM stop/reversal,
+world obstruction, client collision, blocked escape/removal, safe restoration,
+normal cold save/reopen, peer rejoin and one ordinary vanilla-piston regression.
+Both dedicated sessions and all four clients exited0. See provisional
+`docs/reference/NATIVE_S5_CARRIER_PROBE_RESULTS.md` and the raw local evidence.
+Independent boundary review found the missing neighboring collision sweep;
+the narrow correction and restore retry received delta CLEAR, compiled in a
+new exact-pinned binary, and passed a focused fence-intrusion refusal/clearance
+run (server and two clients exit0). Final independent feasibility-result review
+CLEAR: the one-cell private adapter route is plausible. The actual normal
+mechanical piston has different stop/retraction and one-pole/head ownership
+rules; its reviewed binding packet is
+`docs/design/NATIVE_S5_ACTUATOR_BINDING_PACKET.md`. The probe is not S5
+acceptance. S5 remains OPEN until that actual actuator is bound and qualified.
+Ask before broad host/API/architecture expansion; absence of a named hook alone
+does not prove a blocker. No game/test process is currently running.
 
 ## Current checkpoint
 
-Private branch `codex/native-s4-factory`; accepted/private-synced S3 is
+Private branch `codex/native-s5-feasibility`, based on accepted/private-synced S4
+`b88eb47bbb83138e9fe62684f2fcf2f1969e3702` on `codex/native-s4-factory`, exact
+GitHub remote verified. Accepted/private-synced S3 is
 `67566136634139309a04bb12b8aaacbec518d743` on `codex/native-s3-mvp`, clean before
 this packet. Accepted S2 is `c0905ca68d122fcaec31e4c0e6cba197bb73f3ff`
 on `codex/native-s2-kinetics`, exact GitHub remote verified. Accepted S1 remains on
@@ -107,9 +130,11 @@ cross-owner interrupted-crash framework and extra hardened replay guarantees
 remain deferred. Native code is trusted. No full Create/modpack compatibility,
 unqualified client resync, legacy G1 pass, Java/world import or release claim.
 
-Current work is checkpointing S4, then S5 reuse/feasibility assessment. Latest port
+Current work is the bounded S5 carrier spike. Latest port
 experimental branch is noweb8b96e8 (0.7 developer checkpoint); contraptions remain
-pending. Official upstream78a7e6a7 was fetched read-only; testedfc021 pins remain.
+pending. Official upstream78a7e6a7120e787704925c5c00158579c710617b was fetched
+read-only; testedfc021 pins remain. Newer port processing families are potential
+later reuse, not a qualified wholesale dependency upgrade.
 Read the stage progression plan; identify the concrete failing behavior and reuse
 upstream before changes. Ask before going beyond authorized stage outcomes or
 adopted architecture/schema/framework/acceptance boundaries.

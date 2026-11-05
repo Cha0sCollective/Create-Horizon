@@ -91,3 +91,11 @@ included in the mod. Builds pin the published commit
 recognizes Rust's built-in `recursion_limit` attribute. The launcher fetches that
 commit from the official repository; no tool source is patched locally. This is
 a pinned source dependency, not an upstream approval of this port.
+
+Private S5 feasibility increment: `engine/src/core/linear_carrier.rs` is informed
+by Create6.0.11/7ff2760e `KineticBlockEntity.convertToLinear`,
+`MechanicalPistonBlockEntity.getMovementSpeed` and
+`LinearActuatorBlockEntity.onSpeedChanged`. Its scope is selected one-cell motion
+math, not a complete piston/contraption port. `s5_clearance.rs` adapts/reuses MIT
+Horizonfc021038 `game/piston_push.rs` body selection, piston displacement limits,
+collision resolution and movement application for the bounded private probe.
