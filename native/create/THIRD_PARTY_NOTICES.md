@@ -39,6 +39,10 @@ The following MIT code informed or was adapted into the Rust engine:
 - `content/processing/recipe/ProcessingOutput`: per-output-item probability rolls
   and result construction. `content/kinetics/belt/transport/TransportedItemStack` supplies the
   transported fan-processing field conventions.
+- `content/logistics/funnel/FunnelItem`, `FunnelBlock`,
+  `AbstractFunnelBlock`, `FunnelBlockEntity`, and `infrastructure/config/CLogistics`:
+  selected downward Andesite Funnel placement, redstone pause, one-item
+  extraction, outlet obstruction and cooldown. Belt Funnel remains unported.
 - `content/kinetics/drill/DrillBlock`, `DrillBlockEntity`, `DrillRenderer`, and
   `content/kinetics/base/BlockBreakingKineticBlockEntity`: stationary front-block
   selection, break progress/retry timing, source NBT names, ordinary loot, rear

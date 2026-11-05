@@ -498,6 +498,50 @@ def saw_content():
         path.write_text(json.dumps(lang, ensure_ascii=False, indent=2) + "\n")
 
 
+def funnel_content():
+    # Selected standing ceiling shape; no Belt Funnel or original art bytes.
+    shape = [[2/16, 8/16, 2/16, 14/16, 18/16, 14/16],
+             [1/16, 8/16, 1/16, 15/16, 15/16, 15/16],
+             [0, 6/16, 0, 1, 12/16, 1]]
+    write("data/create/horizon/block/andesite_funnel.json", {
+        "template": "minecraft:glass", "item": True,
+        "properties": {"hardness": 1.5, "render_shape": "MODEL",
+                       "sounds": "minecraft:andesite"},
+        "state_properties": {
+            "facing": {"type": "enum", "values": ["down"]},
+            "extracting": {"type": "boolean"},
+            "powered": {"type": "boolean"}},
+        "default_state": {"facing": "down", "extracting": "true", "powered": "false"},
+        "shapes": {"default": shape}, "collision_shapes": {"default": shape},
+    })
+    write("assets/create/blockstates/andesite_funnel.json", {
+        "variants": {f"facing=down,extracting={extracting},powered={powered}":
+                     {"model": "create:block/andesite_funnel/block"}
+                     for extracting in ("false", "true") for powered in ("false", "true")}
+    })
+    model("andesite_funnel/block", [([2,8,2],[14,18,14]),
+                                    ([1,8,1],[15,15,15]),
+                                    ([0,6,0],[16,12,16])], "minecraft:block/andesite")
+    write("assets/create/models/item/andesite_funnel.json",
+          {"parent": "create:block/andesite_funnel/block"})
+    write("assets/create/items/andesite_funnel.json", {"model": {
+        "type": "minecraft:model", "model": "create:item/andesite_funnel"}})
+    write("data/create/loot_table/blocks/andesite_funnel.json", {
+        "type": "minecraft:block", "pools": [{"rolls": 1, "entries": [
+            {"type": "minecraft:item", "name": "create:andesite_funnel"}]}]})
+    for language, name in (("en_us", "Andesite Funnel"),
+                           ("ru_ru", "Андезитовая воронка")):
+        path = CONTENT / f"assets/create/lang/{language}.json"
+        lang = json.loads(path.read_text())
+        lang["block.create.andesite_funnel"] = name
+        write(f"assets/create/lang/{language}.json", lang)
+    path = CONTENT / "data/create/horizon/creative_tab/kinetics.json"
+    tab = json.loads(path.read_text())
+    from catalog import BLOCKS, ITEMS
+    tab["items"] = ["create:" + name for name in BLOCKS + ITEMS]
+    write("data/create/horizon/creative_tab/kinetics.json", tab)
+
+
 def main():
     CONTENT.mkdir(exist_ok=True)
     (CONTENT / "horizon-mod.toml").write_text('''id = "create"
@@ -588,6 +632,9 @@ capabilities = ["registries"]
     fluid_tank_content()
     straight_track_content()
     saw_content()
+
+
+    funnel_content()
     write("data/create/recipe/mixing/dough_by_mixing.json", {'type': 'create:mixing', 'ingredients': ['#c:flours/wheat', {'type': 'neoforge:single', 'amount': 1000, 'fluid': 'minecraft:water'}], 'results': [{'id': 'create:dough'}]})
     # Source installs carry only the native bundle. Its documented data folder
     # therefore contains the complete public content, with no player-side Python.

@@ -34,3 +34,6 @@ PARTS += ['blaze_burner/block', 'blaze_burner/blaze/inert', 'blaze_burner/blaze/
 INTERNAL_BLOCKS += ["belt"]
 ITEMS += ["belt_connector"]
 PARTS += ["belt_pulley", "belt/particle"] + ["belt/" + part for part in ["start","middle","end","start_bottom","middle_bottom","end_bottom","diagonal_start","diagonal_middle","diagonal_end"]]
+
+# Selected S6 standing downward Andesite Funnel. Belt Funnel is separate.
+BLOCKS += ["andesite_funnel"]

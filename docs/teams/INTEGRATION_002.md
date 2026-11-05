@@ -1,4 +1,4 @@
-# Team integration 002 — stationary saw source candidate
+# Team integration 002 — saw, funnel, tank repair and client audio candidate
 
 Root-owned source preparation based on compiled cohort001 `abf48a5` plus
 Machinery002 reviewed source5f557a7/handoff67e7bba. This is a NEXT candidate;
@@ -41,3 +41,26 @@ Cohort001's no-defaults build could emit observed client requests but had no
 compiled audio output. This is a build-profile correction on unchanged host
 pins, not an audio algorithm repair. A fresh delta review and output observation
 on the next held binary are required; no earlier audio output pass is inferred.
+
+Funnel source8019896/cache repair1c14bc9/handoff7a79ccc is now composed.
+The shared generator retains all tank/track/saw helpers and adds the funnel;
+all content, bundle and catalog outputs are regenerated together. Development
+version remains .11; unused next resource cache14 covers every catalog addition
+(the individual funnel branch advanced its own baseline12 to13). Distribution
+contracts pass for this combined tree, without relaxing notices or recipe checks.
+
+The exact tank envelope repair3ccf56d is preserved byte-for-byte in c11f8e2.
+It accepts only the native empty components compound; the new codec regression
+and ordinary post-repair water/window/client checks remain required. Its team
+Sol High source review was CLEAR at23:25:58–23:26:45UTC (47seconds).
+The standard audio helper delta8b94b80 also received independent CLEAR
+at23:24:54–23:25:24UTC (30seconds). Neither is a gameplay pass.
+
+Fresh shared funnel composition review and final frozen build are next.
+Funnel scope is ordinary unsneaked MAIN-HAND placement below a chest, one-item
+side-aware extraction, redstone/obstruction/cooldown and accepted falling-item
+belt capture. Shift/offhand/other orientations, Belt Funnel, general filtering
+and arbitrary native spawn-veto conservation are unqualified. Existing track
+source and its finite first-cohort runtime remain unchanged and reusable after
+completion qualification. First-cohort failures and source/binary maps remain
+immutable; do not replay its driver against this new source.

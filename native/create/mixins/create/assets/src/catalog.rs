@@ -33,6 +33,7 @@ pub const BLOCKS: &[&str] = &[
     "fluid_tank",
     "track",
     "blaze_burner",
+    "andesite_funnel",
 ];
 pub const ITEMS: &[&str] = &[
     "iron_sheet",
