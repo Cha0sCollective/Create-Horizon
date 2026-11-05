@@ -1,91 +1,76 @@
 # Current work
 
-Native S1 through S5 are COMPLETE under the owner-adopted November 4 native
-route. S6 is OPEN. The owner authorizes continued progress through S6 until
-the next requested break, genuine blocker, required input or scope boundary.
-Read `docs/design/STAGE_PROGRESSION_PLAN.md` and `NATIVE_PLAYABILITY_PLAN.md`.
+Native S1 through S5 are COMPLETE under the owner-adopted November4 native
+route. S6 is OPEN. The owner authorizes progress through S6 until the next
+requested break, genuine blocker, required input or scope boundary. Read
+`docs/design/STAGE_PROGRESSION_PLAN.md` and `NATIVE_PLAYABILITY_PLAN.md`.
 
-## Active packet and checkpoint
+## Accepted portable-interface packet
 
-Private branch `codex/native-s6-portable-interface`, based on accepted and
-privately synced mounted-depot checkpoint `a77af67`. The current read-only audit
-and next packet are `docs/design/NATIVE_S6_PORTABLE_ITEM_AUDIT.md` and
-`NATIVE_S6_PORTABLE_ITEM_PACKET.md`. Independent Sol High packet/delta review CLEAR;
-portable-interface implementation and live verification are in progress.
-Four focused connection-state and four host custody/wire tests PASS, as do
-manifest consistency, formatting and Clippy (27 nonfatal warnings). Independent
-source/delta reviews CLEAR, including the client-only wire read and part axes.
-The first trial used game6c35f7c5/ctl507b23e1 and frozen input map
-`4b4cb3fc2516bccf5d200f7075c5a29bb105e4712e2f9f95e1ad629ab7c6d6e4`;
-preserve it as the pre-clearance-fix candidate, not accepted game evidence.
-Content generation preserves376 unrelated files and retained pressing tags.
-Game verification remains pending in `.local/native-s6-portable-01`; no portable
-profile is accepted yet. The pre-trace/axis test hash map and both build receipts
-are preserved; no unchanged test battery was replayed for those reviewed deltas.
-First integrated trial `integrated-x_gx74cb` preserved ordinary placement and
-obstruction refusal. It transferred1ingot to the chest with no drops, but the
-old private clearance cap2 rejected all three-part movement at offset0. The
-trial is FALSE for movement/settlement; normal quit exit0 retained the block
-owner and chest1. The bounded cap3/final-bounds4 correction received independent
-Sol High delta CLEAR, Clippy PASS27warnings and a locked build PASS at
-game45e08336/ctl507b23e1. Checkpoint this reviewed WIP privately, freeze its new
-map, then adaptively reopen the same disposable world. No game is running now.
+Private branch `codex/native-s6-portable-interface`; reviewed source checkpoint
+`6376c3a`, based on accepted mounted-depot `a77af67`. Fresh independent read-only
+Sol High completion review CLEAR. Result:
+`docs/reference/NATIVE_S6_PORTABLE_ITEM_RESULTS.md`. Audit/packet:
+`docs/design/NATIVE_S6_PORTABLE_ITEM_AUDIT.md` and
+`NATIVE_S6_PORTABLE_ITEM_PACKET.md`. Native/content version `0.5.0-ch4os.4`.
 
-The accepted mounted-depot change adds one plain-iron cargo to the east-facing,
-one-pole, one-cell piston. It uses private owner NBT and existing native host
-services. No engine API or public engine checkout changed. Source/delta and
-completion Sol High reviews CLEAR. Three focused Rust tests,
-Clippy (26 nonfatal warnings), rustfmt, diff check and the locked build PASS.
-Dedicated/two rendered clients and integrated Survival passed capture, movement,
-settle, normal nonsticky return, exact one-ingot custody, refusal, peer display,
-active-motion normal cold reopen and ordinary collection. Final-build integrated
-synthetic partial-capture/blocked-install retries and a positive extension/return
-passed; all eight game processes exited0. No game process is running.
+One one-pole/one-cell piston carries a depot/plain iron ingot and one portable
+interface. Its sole canonical item slot is exposed to one vanilla hopper/chest
+through a live checked private view; no stationary buffer or new host API.
+Integrated and dedicated/two rendered clients passed motion, connection/stall,
+stock transfer, timeout/resume, empty settlement/nonsticky return, refusal,
+ordinary collection and client occupied-to-empty presentation. A normal cold
+connected reopen preserved exactly one saved ingot. Both actual ticker orders
+passed. Focused constructed partial-capture/restoration retry and stone regression
+passed. Four core/four host tests, manifests, formatting, Clippy27warnings and
+locked build passed. The accepted sessions total17 normal process exits0.
+No game is running.
 
-Final input map SHA-256:
-`8db54c33f380fb60b0bc9f2f9cf1be7594e7c31573b439ad92f17082759bf037`.
-Raw evidence is local `.local/native-s6-mounted-01`; see
-`docs/reference/NATIVE_S6_MOUNTED_DEPOT_RESULTS.md` for distinct primary/final
-maps and the exact limits. Next: finish portable movement, custody, refusal,
-peer/cold-reopen and regression checks, then independent completion review. Mounted
-depot alone does not complete S6. Ask before broad host/API/schema or general
-contraption architecture changes or changed acceptance outcomes.
+Input map `74a642c6ec94818e1c3b6d6003472884d1c9f3a947571d5e2ccca686db58a847`;
+game45e08336/ctl507b23e1. Raw packet `.local/native-s6-portable-01`, final
+native-read mirror `evidence-complete/`. Preserve pre-cap map4b4cb3fc and FALSE
+motion, insufficient319/320 initial fill, unqualified socket restart and camera
+attempts. The result distinguishes failed recipes from passed game observations.
+Do not rerun old drivers against newer sources or relabel their evidence.
+
+Next: privately sync this accepted result, then audit the next existing S6 family
+before proposing another bounded packet. Fresh upstream source at236c87a8 already
+contains bounded Basin/Mixer, heating and water/lava Basin handling; assess reuse
+before implementing those systems. No import/upgrade is decided by that read.
+Ask before broad host/API/schema or general contraption architecture changes,
+changed acceptance outcomes, or other scope expansion. This packet does not
+complete S6, broad Create, the modpack, crafting progression or crash atomicity.
 
 ## Accepted stages and pins
 
-S1 result: `docs/reference/NATIVE_S1_PLAYABILITY_RESULTS.md`, private branch
-`codex/native-create-playability`. S2 `c0905ca6` on `codex/native-s2-kinetics`:
-`NATIVE_S2_KINETICS_RESULTS.md`. S3 `67566136` on `codex/native-s3-mvp`:
-`NATIVE_S3_MVP_RESULTS.md`; qualified guide `native/PLAY_PRIVATE.md`.
-S4 `b88eb47b` on `codex/native-s4-factory`: `NATIVE_S4_FACTORY_RESULTS.md`.
-S5 `9b806837` on `codex/native-s5-mechanical-piston`:
-`NATIVE_S5_ACTUATOR_RESULTS.md`. First S6 pressing family `f6e3d74`:
-`NATIVE_S6_PRESSING_RESULTS.md`. Accepted checkpoints were privately synced.
+S1: `docs/reference/NATIVE_S1_PLAYABILITY_RESULTS.md`, branch
+`codex/native-create-playability`. S2 `c0905ca6`/`NATIVE_S2_KINETICS_RESULTS.md`;
+S3 `67566136`/`NATIVE_S3_MVP_RESULTS.md`; private guide `native/PLAY_PRIVATE.md`.
+S4 `b88eb47b`/`NATIVE_S4_FACTORY_RESULTS.md`;
+S5 `9b806837`/`NATIVE_S5_ACTUATOR_RESULTS.md`.
+Earlier S6 families: pressing `f6e3d74`/`NATIVE_S6_PRESSING_RESULTS.md`, mounted
+depot `a77af67`/`NATIVE_S6_MOUNTED_DEPOT_RESULTS.md`. These checkpoints are
+privately synced; their exact claims/failed attempts remain in their results.
 
 Pins: port16c5d454, official Horizonfc021038, Mixinsa1e13326, native API359,
 Rust1.99.1, Minecraft26.3. Java reference6.0.11/7ff2760e/NeoForge21.1.219;
-base/local art remains6.0.10 with selected differences explicitly qualified.
-Native IDs are `create:`; code is `native/create/` with its own Cargo workspace.
-Repository-root Cargo and old Wasm/native-host runners remain historical.
-
-S1-S3 qualify five types in fixed mob-free Creative TestTerrain Overworld.
-S4 adds one water-wheel/hopper mill in normal generated Survival terrain.
-S5 qualifies the finite mechanical piston/stone profile, and S6 adds families
-only through reviewed packets. Open to LAN, custom interrupted-crash/replay
-framework, broad Create/modpack compatibility and Java/world import remain
-outside these accepted outcomes. Ordinary native save/reopen is a distinct claim.
+base/local art6.0.10 with selected differences explicitly qualified. IDs are
+`create:`. `native/create/` has its own Cargo workspace; root Cargo and old
+Wasm/native-host runners remain historical. S1-S3 qualify five types in fixed
+mob-free Creative TestTerrain. S4 adds one Survival water-wheel/hopper mill in
+normal terrain; S5 and S6 add only their recorded finite profiles. Open to LAN,
+custom crash/replay framework, broad compatibility and Java/world import remain
+deferred/outside scope. Ordinary native save/reopen is a distinct claim.
 
 ## Preserved state and publication
 
-Use the coordinator directly; root alone performs serial writes/compiler/runtime/
-WSL/Git. Required independent Sol High reviewers are read-only, with no standing
-team. Private pushes require fresh PRIVATE metadata/exact origin/normal hooks.
-Public engine publishing needs its separate bounded assignment and FINAL/privacy
+Coordinator implements directly; root alone performs serial writes, compiler,
+runtime, WSL and Git. Required Sol High reviewers are read-only, no standing team.
+Private pushes need fresh PRIVATE metadata, exact origin and normal hooks.
+Public engine publishing needs a separate bounded assignment and FINAL/privacy
 review. No merge, release, upstream message, cleanup or playable/Prism/Java edit.
 
 Old engine `.local/worktrees/s1-native-close-composition` stays frozen on
-`codex/s1-configured-operation` at9f7d5ec with five dirty files, original hash
-map8c89696b and invalid TransferOutcome-import HOLD. Do not fix/format/build it.
-Preserve all historical FALSE/HOLD, references, saves, caches and prior binaries.
-Qualification drivers remain bound to their exact source/input maps; do not
-rerun historical drivers against a newer binary or relabel old evidence.
+`codex/s1-configured-operation` at9f7d5ec with five dirty files, original map8c89696b
+and invalid TransferOutcome-import HOLD. Preserve references, worlds, caches,
+prior binaries and every historical FALSE/HOLD; do not fix/format/build that tree.
