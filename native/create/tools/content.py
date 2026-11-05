@@ -343,6 +343,47 @@ def coal_heating_content():
     write("data/create/horizon/creative_tab/kinetics.json",tab)
 
 
+def fluid_tank_content():
+    # One isolated controller. Source-style bottom/top/shape keys permit the
+    # locally imported 6.0.10 blockstate to select its single-window model.
+    name = "fluid_tank"
+    write("data/create/horizon/block/" + name + ".json", {
+        "template": "minecraft:glass", "item": True,
+        "properties": {"hardness": 3, "explosion_resistance": 6,
+                       "requires_tool": True, "render_shape": "MODEL",
+                       "sounds": "minecraft:copper_block"},
+        "state_properties": {
+            "bottom": {"type": "boolean"},
+            "top": {"type": "boolean"},
+            "shape": {"type": "enum", "values": ["window", "plain"]},
+        },
+        "default_state": {"bottom": "true", "top": "true", "shape": "window"},
+        "shapes": {"default": [[0, 0, 0, 1, 1, 1]]},
+        "collision_shapes": {"default": [[0, 0, 0, 1, 1, 1]]},
+    })
+    write("assets/create/blockstates/" + name + ".json", {"variants": {
+        "bottom=true,shape=window,top=true": {"model": "create:block/fluid_tank/block_single_window"},
+        "bottom=true,shape=plain,top=true": {"model": "create:block/fluid_tank/block_single"},
+    }})
+    model("fluid_tank/block_single_window", [
+        ([0, 0, 0], [16, 2, 16]), ([0, 14, 0], [16, 16, 16]),
+        ([0, 2, 0], [2, 14, 2]), ([14, 2, 0], [16, 14, 2]),
+        ([0, 2, 14], [2, 14, 16]), ([14, 2, 14], [16, 14, 16]),
+    ], "minecraft:block/copper_block")
+    model("fluid_tank/block_single", [([0, 0, 0], [16, 16, 16])], "minecraft:block/copper_block")
+    write("assets/create/models/item/" + name + ".json", {"parent": "create:block/fluid_tank/block_single_window"})
+    write("assets/create/items/" + name + ".json", {"model": {
+        "type": "minecraft:model", "model": "create:item/fluid_tank"}})
+    write("data/create/loot_table/blocks/" + name + ".json", {
+        "type": "minecraft:block", "pools": [{"rolls": 1, "entries": [
+            {"type": "minecraft:item", "name": "create:fluid_tank"}]}]})
+    for locale in ["en_us", "ru_ru"]:
+        path = "assets/create/lang/" + locale + ".json"
+        lang = json.loads((CONTENT / path).read_text())
+        lang["block.create.fluid_tank"] = "Fluid Tank"
+        write(path, lang)
+
+
 def main():
     CONTENT.mkdir(exist_ok=True)
     (CONTENT / "horizon-mod.toml").write_text('''id = "create"
@@ -429,6 +470,7 @@ capabilities = ["registries"]
     portable_interface_content()
     dry_mixing_content()
     coal_heating_content()
+    fluid_tank_content()
     write("data/create/recipe/mixing/dough_by_mixing.json", {'type': 'create:mixing', 'ingredients': ['#c:flours/wheat', {'type': 'neoforge:single', 'amount': 1000, 'fluid': 'minecraft:water'}], 'results': [{'id': 'create:dough'}]})
     # Source installs carry only the native bundle. Its documented data folder
     # therefore contains the complete public content, with no player-side Python.

@@ -1,7 +1,10 @@
 # FLUIDS-001 — isolated plain-water fluid tank (proposal)
 
-Status: proposal only, November 5, 2026. No production source, host pin, save
-format, or acceptance change is allocated by this document. Candidate base is
+Status: bounded implementation allocated by the project lead on November 5,
+2026; this document does not accept source or gameplay. The lead approved a new
+per-block `TankContent` mapping only through existing generic `ModBlockEntity`
+NBT services. Host/global save schema, Basin codec, migration, shared owner
+protocol, framework and acceptance changes remain outside allocation. Candidate base is
 accepted water `02d029f3bea09c62480e07e315e23d4868f9180a` (native `.8`);
 this team's proposal lane starts at `76dfaf78370f41b2a5c68620c55be6ecab96f16f`.
 Keep Horizon `9c7f9b2215dfed497aba5522c44f38926628648d` and Mixins
@@ -73,12 +76,14 @@ or another team's domain as part of this proposal.
 
 ## Allocation gate and minimal exit checks
 
-Before source work, the project lead must decide whether the new tank-specific
-`TankContent` representation fits existing generic `ModBlockEntity` NBT services
-or crosses the owner-gated schema boundary. Establish the exact supported
-`TankContent` encoding and treatment of the other Java controller fields first.
-If host/global schema, Basin codec, broad network, or acceptance boundaries must
-change, stop for the existing owner gate.
+Read-only source tracing at pinned host `9c7f9b22` found generic save and restore
+of arbitrary `ModBlockEntity.nbt` (`save.rs` 617–633 and 871–907), generic entity
+factory and sync (`native_hooks.rs` 9407–9479 and 8615–8653), and client update
+merge that requires explicit empty `TankContent` on drain-to-empty
+(`horizon-client-render/src/chunk/block_entity.rs` 198–205). This supports the
+lead's per-block storage premise statically; cold reopen and peer rendering
+still need runtime proof. If host/global schema, Basin codec, broad network, or
+acceptance boundaries must change, stop for the existing owner gate.
 
 After a bounded production allocation: focused pure tests for empty/partial/full
 fill and drain, simulate/execute agreement, exact and any-drain amounts, malformed
