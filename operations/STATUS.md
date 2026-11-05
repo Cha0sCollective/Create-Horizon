@@ -40,6 +40,12 @@ collector now retains the owning first header. Native smoke observed each team's
 lead plus two specialists once; fresh read-only Sol High repair review CLEAR.
 Missing telemetry remains unknown. No raw transcript content was copied.
 
+Next queued resource packet: `machinery-001`, one fan/water-catalyst/Depot-held
+flour-to-dough path. Machinery may commit its packet document now; it has no
+active heavy reservation until Transport returns the resource and root grants it.
+No planned source edit or unchanged build is needed; defects require a named
+fan-owned repair. Accepted generic power/Depot/Basin evidence is reused.
+
 Initial coordination decisions: Machinery must distinguish fan washing from
 accepted S4 milling and S6 Basin dough; Experience must identify a concrete
 improvement beyond imported goggles/HUD. Fluid tank persistence and general

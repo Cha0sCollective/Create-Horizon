@@ -8,7 +8,9 @@
   "heavy_resource": {
     "owner": "transport-001",
     "state": "reserved",
-    "queue": []
+    "queue": [
+      "machinery-001"
+    ]
   },
   "teams": [
     {
@@ -21,7 +23,7 @@
       "thread_id": "01a1ad7e-e33b-7ef2-8bc2-606e374fb5de",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:31.729Z",
-      "state": "read-only nested discovery",
+      "state": "machinery-001 packet documentation; queued for validation",
       "lane_initial_head": "76dfaf78370f41b2a5c68620c55be6ecab96f16f"
     },
     {
@@ -47,7 +49,7 @@
       "thread_id": "01a1ad7f-00d6-7c60-8820-89ddbee3d21c",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:40.745Z",
-      "state": "read-only nested discovery",
+      "state": "proposal documentation; tank persistence gate held",
       "lane_initial_head": "76dfaf78370f41b2a5c68620c55be6ecab96f16f"
     },
     {
@@ -60,7 +62,7 @@
       "thread_id": "01a1ad7f-0de7-7871-aec9-617ed9916499",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:44.555Z",
-      "state": "read-only nested discovery",
+      "state": "staged-core reuse reassessment; proposal only",
       "lane_initial_head": "76dfaf78370f41b2a5c68620c55be6ecab96f16f"
     },
     {
