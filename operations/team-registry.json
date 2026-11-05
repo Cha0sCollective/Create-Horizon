@@ -6,11 +6,9 @@
   "operations_enrolled_at": "2026-11-05T20:28:36.178Z",
   "root_rollout": "2026/10/25/rollout-2026-10-25T14-12-55-01a1747a-eb1f-7183-b3f6-63f0ccc37f13.jsonl",
   "heavy_resource": {
-    "owner": "transport-002",
+    "owner": "operations-integration-001-build",
     "state": "reserved",
-    "queue": [
-      "operations-integration-001-build"
-    ]
+    "queue": []
   },
   "teams": [
     {
@@ -23,7 +21,7 @@
       "thread_id": "01a1ad7e-e33b-7ef2-8bc2-606e374fb5de",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:31.729Z",
-      "state": "machinery-001 fan washing bounded PASS; seven normal exits; lease returned",
+      "state": "fan001 accepted; saw002 source production allocated",
       "lane_initial_head": "76dfaf78370f41b2a5c68620c55be6ecab96f16f"
     },
     {
@@ -36,7 +34,7 @@
       "thread_id": "01a1ad7e-f1a5-7052-b948-19607d6dd8e4",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:37.443Z",
-      "state": "transport-002 dedicated two-controller handoff runtime; exclusive lease",
+      "state": "transport002 accepted; bounded funnel reuse discovery",
       "lane_initial_head": "f00d04a3249b53bee453a0191d65285b0e7f6538"
     },
     {
@@ -49,7 +47,7 @@
       "thread_id": "01a1ad7f-00d6-7c60-8820-89ddbee3d21c",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:40.745Z",
-      "state": "fluids-001 bounded tank implementation; existing generic storage only",
+      "state": "tank source and transfer-test seam CLEAR; shared compile/runtime pending",
       "lane_initial_head": "76dfaf78370f41b2a5c68620c55be6ecab96f16f"
     },
     {
@@ -95,8 +93,8 @@
   "integration_candidate": {
     "branch": "codex/create-team-integration-001",
     "path": "G:\\Create Rusty\\.local\\integration\\create-teams-001",
-    "head": "8cadfa1ff6faa9b77b4b578ea00bea99f2dda06f",
-    "state": "source composition CLEAR; shared build/tests pending",
-    "source_map_sha256": "26feda34e5e4257822ccfa835f98b5a6c21ab70f8d299f5c139e862138a596b2"
+    "head": "abf48a5ec909b9b392ece15c56ed23f248cf3ed3",
+    "state": "10 focused core/assets tests and stage PASS; host compile in progress",
+    "source_map_sha256": "3f204b535652c05435f3c2b817359da1caef36fdf759a5a63b837470c765fa14"
   }
 }

@@ -25,11 +25,18 @@ unchanged `.8` inputs, including normal cold reopen and actual peer flour/dough/
 empty views; seven process exits0, completion review CLEAR. Its initial empty
 image interpretation was corrected by direct comparison, without source repair
 or new game runs. See `docs/teams/machinery/MACHINERY_001_RESULTS.md`.
-Transport002 now owns the sole runtime lease for a two-controller belt handoff.
-Root candidate8cadfa1 (`codex/create-team-integration-001`) composes four reviewed
+Transport002's dedicated two-controller belt handoff is now PASS on unchanged `.9`
+source: stopped receiver refuses under powered source; release transfers exactly
+once; actual peer occupied/empty and saved chestgold1; three exits0, completion
+review CLEAR. See `orchestration/teams/transport-002-results.md`.
+Operations now owns the sole heavy lease for the shared cohort build.
+Root candidateabf48a5 (`codex/create-team-integration-001`) composes four reviewed
 source packets at development `.10`/resource-cache13: audio, tank, straight track,
 and core/read-only preflight. Static checks and fresh composition review CLEAR;
-shared compile/tests/gameplay remain pending. Accepted primary stays separate.
+shared checks are in progress. Seven contraption-core, one track-core and two
+track-asset tests pass; staging passes after a two-comment pinned-parser repair.
+All661 native inputs are frozen by source-inputs-r4; host compilation/client
+tests/gameplay remain pending. Accepted primary stays separate.
 Other teams have
 bounded isolated allocations: active millstone audio, straight stationary track,
 staged portable contraption core plus read-only native preflight, and one stationary
