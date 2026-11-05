@@ -131,6 +131,7 @@ pub(super) fn owns(block: &str) -> bool {
             | "create:piston_extension_pole"
             | "create:portable_storage_interface"
             | "create:basin"
+            | "create:fluid_tank"
             | "create:blaze_burner"
             | "create:mechanical_mixer"
             | "create:belt"
@@ -151,6 +152,8 @@ pub(super) fn entity(block: &str, entity: &mut Option<(String, Compound)>) {
         let mut nbt = Compound::new();
         if block == "create:creative_motor" {
             nbt.insert("ScrollValue".into(), Tag::Int(16));
+        } else if block == "create:fluid_tank" {
+            nbt = crate::game::create_port_fluid_tank_codec::initial();
         }
         *entity = Some((id.to_owned(), nbt));
     }
@@ -369,6 +372,9 @@ pub(super) fn depot_reacts(game: &Game<'_>, pos: [i32; 3], face: [i32; 3]) -> bo
     if crate::game::create_port_basin::reacts(game, pos) {
         return true;
     }
+    if crate::game::create_port_fluid_tank::bucket_reacts(game, pos) {
+        return true;
+    }
     if crate::game::create_port_millstone::reacts(game, pos) {
         return true;
     }
@@ -392,6 +398,13 @@ pub(super) fn depot_reacts(game: &Game<'_>, pos: [i32; 3], face: [i32; 3]) -> bo
 
 pub(super) fn right_click(game: &mut Game<'_>, pos: [i32; 3], face: [i32; 3], canceled: &mut bool) {
     if super::create_port_belt::right_click(game, pos, face) {
+        *canceled = true;
+        game.swing_arm();
+        return;
+    }
+    if crate::game::create_port_fluid_tank::wrench(game, pos)
+        || crate::game::create_port_fluid_tank::right_click(game, pos)
+    {
         *canceled = true;
         game.swing_arm();
         return;
@@ -1175,6 +1188,7 @@ pub(super) fn draw(
         return;
     }
     if crate::game::create_port_basin::draw(game, pos, entity, draw)
+        || crate::game::create_port_fluid_tank::draw(game, pos, entity, draw)
         || crate::game::create_port_mixer::draw(game, pos, entity, draw)
     {
         return;

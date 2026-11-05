@@ -15,7 +15,10 @@ pub(in crate::game) fn block(game: &mut Game<'_>, hand: Hand) -> bool {
     let basin_bucket = game.with_hand(hand, |g| {
         super::super::create_port_basin::bucket_reacts(g, hit.pos)
     });
-    if !fuel && !basin_bucket {
+    let tank_bucket = game.with_hand(hand, |g| {
+        super::super::create_port_fluid_tank::bucket_reacts(g, hit.pos)
+    });
+    if !fuel && !basin_bucket && !tank_bucket {
         return false;
     }
     let sequence = game.next_sequence();

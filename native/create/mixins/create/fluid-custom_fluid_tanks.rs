@@ -5,4 +5,7 @@ fn create_custom_fluid_tanks(
     out: &mut Option<Vec<crate::mod_api::NativeFluidTankView>>,
 ) {
     crate::game::create_port_basin::fluid_tanks(game, pos, side, out);
+    if out.is_none() {
+        crate::game::create_port_fluid_tank::fluid_tanks(game, pos, side, out);
+    }
 }

@@ -7,4 +7,7 @@ fn create_custom_fluid_drain(
     out: &mut Option<crate::mod_api::NativeFluidStack>,
 ) {
     crate::game::create_port_basin::fluid_drain(game, pos, side, request, action, out);
+    if out.is_none() {
+        crate::game::create_port_fluid_tank::fluid_drain(game, pos, side, request, action, out);
+    }
 }

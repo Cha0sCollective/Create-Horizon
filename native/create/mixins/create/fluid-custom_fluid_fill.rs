@@ -7,4 +7,7 @@ fn create_custom_fluid_fill(
     out: &mut Option<i32>,
 ) {
     crate::game::create_port_basin::fluid_fill(game, pos, side, resource, action, out);
+    if out.is_none() {
+        crate::game::create_port_fluid_tank::fluid_fill(game, pos, side, resource, action, out);
+    }
 }

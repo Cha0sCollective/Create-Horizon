@@ -36,6 +36,18 @@ name = "create_port_fluid_codec"
 source = "fluid_codec.rs"
 
 [[module]]
+id = "fluid-tank-codec"
+file = "crates/horizon-client/src/game.rs"
+name = "create_port_fluid_tank_codec"
+source = "fluid_tank_codec.rs"
+
+[[module]]
+id = "fluid-tank"
+file = "crates/horizon-client/src/game.rs"
+name = "create_port_fluid_tank"
+source = "fluid_tank.rs"
+
+[[module]]
 id = "basin-inventory-codec"
 file = "crates/horizon-client/src/save.rs"
 name = "create_basin_inventory_codec"
