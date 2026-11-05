@@ -30,10 +30,11 @@ its fall callback. This packet tests an item landing while already powered and
 does not claim identical behavior for an item left resting before power starts.
 
 The upward saw has two opposing horizontal shaft ports chosen by
-`axis_along_first`, with 4.0 SU/RPM impact. Its item movement direction follows
-the selected shaft axis and signed speed. The horizontal block/tree-breaking
-and entity-damage paths are separate and not implemented in this packet;
-horizontal saw states are inert and expose no kinetic node here.
+`axis_along_first`, with 4.0 SU/RPM impact. Item travel is perpendicular to the
+selected shaft axis, with its direction determined by signed speed. The
+horizontal block/tree-breaking and entity-damage paths are separate and not
+implemented in this packet;
+non-up saw states are inert and expose no kinetic node here.
 
 ## Ownership and proposed source
 

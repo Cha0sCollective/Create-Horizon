@@ -366,8 +366,11 @@ pub(super) fn draw(
     );
     draw.push();
     draw.rotate_about(create_engine::visual::positive_axis(axis), angle, [0.5; 3]);
-    if axis == Axis::X {
-        draw.rotate_about([0.0, 1.0, 0.0], 90.0, [0.5; 3]);
+    // The shaft model is Y-oriented; place it along the horizontal ports.
+    match axis {
+        Axis::X => draw.rotate_about([0.0, 0.0, 1.0], -90.0, [0.5; 3]),
+        Axis::Z => draw.rotate_about([1.0, 0.0, 0.0], 90.0, [0.5; 3]),
+        Axis::Y => {}
     }
     game.native_draw_model(draw, "create:block/shaft", 0xFFFFFF);
     draw.pop();
