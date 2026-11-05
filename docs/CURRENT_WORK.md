@@ -20,8 +20,24 @@ Transport's historical held checkpoint2adc50a9/native43cef7dd (`.9`) is preserve
 Repair0df826c/handoff214c1d4 closes the stale Depot peer component. Fresh independent
 Sol High integration review CLEAR supports bounded bare-belt acceptance by composed
 evidence; see `docs/reference/NATIVE_S6_BELT_TRANSPORT_RESULTS.md`. No fullS6 claim.
-Machinery now owns the sole lease for its fan/water-catalyst/Depot flour-to-dough
-packet, using unchanged compatible binaries when verifiable. Other teams have
+Machinery's selected one-item fan/water-catalyst/Depot packet is now PASS on
+unchanged `.8` inputs, including normal cold reopen and actual peer flour/dough/
+empty views; seven process exits0, completion review CLEAR. Its initial empty
+image interpretation was corrected by direct comparison, without source repair
+or new game runs. See `docs/teams/machinery/MACHINERY_001_RESULTS.md`.
+Transport002's dedicated two-controller belt handoff is now PASS on unchanged `.9`
+source: stopped receiver refuses under powered source; release transfers exactly
+once; actual peer occupied/empty and saved chestgold1; three exits0, completion
+review CLEAR. See `orchestration/teams/transport-002-results.md`.
+Operations now owns the sole heavy lease for the shared cohort build.
+Root candidateabf48a5 (`codex/create-team-integration-001`) composes four reviewed
+source packets at development `.10`/resource-cache13: audio, tank, straight track,
+and core/read-only preflight. Static checks and fresh composition review CLEAR;
+shared checks are in progress. Seven contraption-core, one track-core and two
+track-asset tests pass; staging passes after a two-comment pinned-parser repair.
+All661 native inputs are frozen by source-inputs-r4; host compilation/client
+tests/gameplay remain pending. Accepted primary stays separate.
+Other teams have
 bounded isolated allocations: active millstone audio, straight stationary track,
 staged portable contraption core plus read-only native preflight, and one stationary
 water tank through existing generic ModBlockEntity NBT/fluid services. A new tank's

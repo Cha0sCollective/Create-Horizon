@@ -196,6 +196,10 @@ fn processor_parts_and_ingredients_are_required_without_accepting_java_loaders()
         "assets/create/blockstates/mechanical_drill.json",
         "assets/create/models/block/mechanical_drill/head.json",
         "assets/create/models/item/mechanical_drill.json",
+        "assets/create/blockstates/mechanical_saw.json",
+        "assets/create/models/block/mechanical_saw/blade_vertical_active.json",
+        "assets/create/models/block/mechanical_saw/blade_vertical_inactive.json",
+        "assets/create/models/block/mechanical_saw/blade_vertical_reversed.json",
     ];
     for path in required {
         let missing = fixture(|files| {
@@ -209,6 +213,7 @@ fn processor_parts_and_ingredients_are_required_without_accepting_java_loaders()
         "assets/create/models/block/millstone/inner.json",
         "assets/create/models/block/encased_fan/propeller.json",
         "assets/create/models/block/mechanical_drill/head.json",
+        "assets/create/models/block/mechanical_saw/blade_vertical_active.json",
     ] {
         let java = fixture(|files| {
             files.insert(path.into(), br#"{"loader":"create:java_loader"}"#.to_vec());
@@ -316,7 +321,33 @@ fn bundled_processors_have_source_states_collision_and_real_processing_recipes()
         read("data/create/recipe/crafting/kinetics/mechanical_drill.json")["result"]["id"],
         "create:mechanical_drill"
     );
-    for id in ["millstone", "encased_fan", "mechanical_drill"] {
+    let saw = read("data/create/horizon/block/mechanical_saw.json");
+    assert_eq!(saw["default_state"]["facing"], "up");
+    assert_eq!(
+        saw["collision_shapes"]["values"]["up"],
+        json!([[0, 0, 0, 1, 0.75, 1]])
+    );
+    assert_eq!(
+        read("assets/create/blockstates/mechanical_saw.json")["variants"]
+            .as_object()
+            .unwrap()
+            .len(),
+        24
+    );
+    let cutting = read("data/create/recipe/cutting/andesite_alloy.json");
+    assert_eq!(cutting["type"], "create:cutting");
+    assert_eq!(
+        cutting["ingredients"],
+        json!([{"item":"create:andesite_alloy"}])
+    );
+    assert_eq!(cutting["processing_time"], 200);
+    assert_eq!(cutting["results"], json!([{"count":6,"id":"create:shaft"}]));
+    for id in [
+        "millstone",
+        "encased_fan",
+        "mechanical_drill",
+        "mechanical_saw",
+    ] {
         let loot = read(&format!("data/create/loot_table/blocks/{id}.json"));
         assert_eq!(
             loot["pools"][0]["entries"][0]["name"],

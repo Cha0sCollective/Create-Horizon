@@ -26,6 +26,7 @@
     "create:millstone",
     "create:encased_fan",
     "create:mechanical_drill",
+    "create:mechanical_saw",
     "create:mechanical_piston",
     "create:piston_extension_pole",
     "create:portable_storage_interface",

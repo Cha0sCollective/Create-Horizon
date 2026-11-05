@@ -43,6 +43,12 @@ The following MIT code informed or was adapted into the Rust engine:
   `content/kinetics/base/BlockBreakingKineticBlockEntity`: stationary front-block
   selection, break progress/retry timing, source NBT names, ordinary loot, rear
   shaft and rotating head. Contraption movement and entity damage are not ported.
+- Pinned Create 6.0.11 `7ff2760e4924d35d4bc2e22c4b19923f0178cd16`:
+  `content/kinetics/saw/SawBlock`, `SawBlockEntity`, `SawRenderer`,
+  `content/processing/recipe/ProcessingInventory`, and generated
+  `data/create/recipe/cutting/andesite_alloy.json`: selected upward-facing
+  one-item saw clock, 4 SU/RPM ports, inventory fields and exact shaft recipe.
+  Tree cutting, entity damage, belts, filters and bulk processing are absent.
 - `AllSoundEvents` and infrastructure configs: selected composite sound events,
   default gains/pitches, stress and speed parameters.
 - 123 MIT datapack recipes and 35 behavior/ingredient tags, exported from
@@ -91,3 +97,11 @@ included in the mod. Builds pin the published commit
 recognizes Rust's built-in `recursion_limit` attribute. The launcher fetches that
 commit from the official repository; no tool source is patched locally. This is
 a pinned source dependency, not an upstream approval of this port.
+
+Private S5 feasibility increment: `engine/src/core/linear_carrier.rs` is informed
+by Create6.0.11/7ff2760e `KineticBlockEntity.convertToLinear`,
+`MechanicalPistonBlockEntity.getMovementSpeed` and
+`LinearActuatorBlockEntity.onSpeedChanged`. Its scope is selected one-cell motion
+math, not a complete piston/contraption port. `s5_clearance.rs` adapts/reuses MIT
+Horizonfc021038 `game/piston_push.rs` body selection, piston displacement limits,
+collision resolution and movement application for the bounded private probe.

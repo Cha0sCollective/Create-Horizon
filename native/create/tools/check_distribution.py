@@ -28,7 +28,19 @@ def main():
     assert declared_blocks == set(BLOCKS+INTERNAL_BLOCKS) and declared_items == set(ITEMS)
     tab=json.loads((content / "data/create/horizon/creative_tab/kinetics.json").read_text())
     assert tab["items"] == ["create:"+name for name in BLOCKS+ITEMS]
-    assert len(list((content / "data/create/recipe").rglob("*.json"))) == len(reference["recipes"])
+    # Later selected packets add these source-backed recipes outside the
+    # original 123-recipe export. Keep the check exact as families grow.
+    supplemental = {
+        "create/recipe/crafting/kinetics/belt_connector.json",
+        "create/recipe/crafting/kinetics/mechanical_saw.json",
+        "create/recipe/cutting/andesite_alloy.json",
+        "create/recipe/mixing/andesite_alloy.json",
+        "create/recipe/mixing/brass_ingot.json",
+        "create/recipe/mixing/dough_by_mixing.json",
+    }
+    recipes = {p.relative_to(content / "data").as_posix()
+               for p in (content / "data/create/recipe").rglob("*.json")}
+    assert recipes == set(reference["recipes"]) | supplemental
     for path in [*NATIVE.rglob("*"), *content.rglob("*")]:
         assert not path.is_symlink(), "Source bundles must not contain links: " + str(path)
         assert path.suffix.lower() not in {".jar", ".class", ".png", ".ogg"}, str(path)
