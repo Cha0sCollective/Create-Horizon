@@ -29,6 +29,7 @@ pub const BLOCKS: &[&str] = &[
     "portable_storage_interface",
     "basin",
     "mechanical_mixer",
+    "track",
     "blaze_burner",
 ];
 pub const ITEMS: &[&str] = &[

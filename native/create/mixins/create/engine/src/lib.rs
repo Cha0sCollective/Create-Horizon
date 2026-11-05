@@ -11,6 +11,8 @@ pub mod pressing;
 pub mod propagation;
 #[path = "core/session_cache.rs"]
 pub mod session_cache;
+#[path = "core/track.rs"]
+pub mod track;
 
 #[path = "core/linear_carrier.rs"]
 pub mod linear_carrier;
