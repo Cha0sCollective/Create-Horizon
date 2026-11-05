@@ -124,6 +124,32 @@ pub(super) fn right_click(game: &mut Game<'_>, pos: [i32; 3], face: [i32; 3]) ->
         .held()
         .is_some_and(|s| s.item.as_ref() == "create:wrench");
     if wrench {
+        if secondary(game) && block == "create:blaze_burner" {
+            // IWrenchable.onSneakWrenched uses Block.getDrops, not the
+            // block's primary item or Ctrl+Pick data. Empty/lit cages drop
+            // the empty alias; captured burners drop a fresh filled item.
+            let drops = if game.creative {
+                Vec::new()
+            } else {
+                let state = game.world.block(pos[0], pos[1], pos[2]);
+                let tool = game.held().cloned();
+                let saved = game
+                    .world
+                    .block_entities
+                    .get(&(pos[0], pos[1], pos[2]))
+                    .map(|entity| {
+                        crate::save::encode_block_entity((pos[0], pos[1], pos[2]), entity, &block)
+                    });
+                game.block_loot_at(pos, state, tool.as_ref(), saved)
+            };
+            if switch(game, pos, "minecraft:air") {
+                for stack in drops {
+                    give(game, stack, pos);
+                }
+                crate::game::create_port_sounds::wrench(game, pos, true);
+            }
+            return true;
+        }
         let pickup = if block == "create:gearbox"
             && game.native_block_property(pos, "axis").as_deref() != Some("y")
         {

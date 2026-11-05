@@ -21,3 +21,8 @@ def rust_catalog():
     for name, values in [('BLOCKS', BLOCKS), ('ITEMS', ITEMS), ('PARTS', PARTS)]:
         text += 'pub const ' + name + ': &[&str] = &[\n' + ''.join('    "' + v + '",\n' for v in values) + '];\n'
     return text
+
+# Selected S6 coal burner; no special-fuel/capture/cosmetic content.
+BLOCKS += ["blaze_burner"]
+ITEMS += ["empty_blaze_burner"]
+PARTS += ['blaze_burner/block', 'blaze_burner/blaze/inert', 'blaze_burner/blaze/idle', 'blaze_burner/blaze/active', 'blaze_burner/rods_small', 'blaze_burner/rods_large', 'blaze_burner/flame']

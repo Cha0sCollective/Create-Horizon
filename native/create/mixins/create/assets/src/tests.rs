@@ -8,7 +8,7 @@ fn fixture(change: impl FnOnce(&mut BTreeMap<String, Vec<u8>>)) -> Vec<u8> {
     let mut json_file = |name: String, value: Value| {
         files.insert(name, serde_json::to_vec(&value).unwrap());
     };
-    for block in BLOCKS {
+    for block in BLOCKS.iter().copied().chain(["mechanical_piston_head"]) {
         json_file(
             format!("assets/create/blockstates/{block}.json"),
             json!({"variants": {"": {"model": "create:block/shared"}}}),
@@ -45,6 +45,15 @@ fn fixture(change: impl FnOnce(&mut BTreeMap<String, Vec<u8>>)) -> Vec<u8> {
         "assets/create/sounds.json".into(),
         json!({"fixture":{"sounds":["create:fixture"]}}),
     );
+    for name in [
+        "blaze_burner_flame_scroll",
+        "blaze_burner_flame_superheated_scroll",
+    ] {
+        files.insert(
+            format!("assets/create/textures/block/{name}.png"),
+            b"\x89PNG\r\n\x1a\nsynthetic fixture".to_vec(),
+        );
+    }
     files.insert(
         "assets/create/sounds/fixture.ogg".into(),
         b"OggSsynthetic fixture".to_vec(),

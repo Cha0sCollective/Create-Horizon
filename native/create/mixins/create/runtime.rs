@@ -131,12 +131,13 @@ pub(super) fn owns(block: &str) -> bool {
             | "create:piston_extension_pole"
             | "create:portable_storage_interface"
             | "create:basin"
+            | "create:blaze_burner"
             | "create:mechanical_mixer"
     )
 }
 
 pub(super) fn entity(block: &str, entity: &mut Option<(String, Compound)>) {
-    if owns(block) && entity.is_none() {
+    if owns(block) && block != "create:blaze_burner" && entity.is_none() {
         let id = match block {
             "create:creative_motor" => "create:motor",
             "create:mechanical_drill" => "create:drill",
@@ -358,6 +359,9 @@ pub(super) fn placed(game: &mut Game<'_>, stack: &ItemStack, pos: [i32; 3]) {
 }
 
 pub(super) fn depot_reacts(game: &Game<'_>, pos: [i32; 3], face: [i32; 3]) -> bool {
+    if super::create_port_burner::reacts(game, pos) {
+        return true;
+    }
     if crate::game::create_port_basin::reacts(game, pos) {
         return true;
     }
@@ -383,6 +387,11 @@ pub(super) fn depot_reacts(game: &Game<'_>, pos: [i32; 3], face: [i32; 3]) -> bo
 }
 
 pub(super) fn right_click(game: &mut Game<'_>, pos: [i32; 3], face: [i32; 3], canceled: &mut bool) {
+    if super::create_port_burner::right_click(game, pos) {
+        *canceled = true;
+        game.swing_arm();
+        return;
+    }
     if crate::game::create_port_basin::right_click(game, pos) {
         game.swing_arm();
         *canceled = true;
@@ -716,6 +725,10 @@ pub(super) fn tick(game: &mut Game<'_>, pos: [i32; 3], entity: &mut ModBlockEnti
     if !owns(&block) {
         return;
     }
+    if block == "create:blaze_burner" {
+        super::create_port_burner::tick(game, pos, entity);
+        return;
+    }
     if block == "create:basin" {
         if crate::game::create_port_basin::tick(game, pos, entity) {
             game.native_block_entity_sync(pos);
@@ -999,7 +1012,11 @@ pub(super) fn update_tag(entity: &ModBlockEntity, tag: &mut Option<Compound>) {
     if (owns(&entity.id)
         || matches!(
             entity.id.as_str(),
-            "create:motor" | "create:simple_kinetic" | "create:encased_shaft" | "create:drill"
+            "create:motor"
+                | "create:simple_kinetic"
+                | "create:encased_shaft"
+                | "create:drill"
+                | "create:blaze_heater"
         ))
         && tag.is_none()
     {
@@ -1105,6 +1122,10 @@ pub(super) fn draw(
     draw: &mut BlockEntityDraw,
 ) {
     if !owns(block) {
+        return;
+    }
+    if block == "create:blaze_burner" {
+        super::create_port_burner_presentation::draw(game, pos, _state, entity, draw);
         return;
     }
     if crate::game::create_port_basin::draw(game, pos, entity, draw)

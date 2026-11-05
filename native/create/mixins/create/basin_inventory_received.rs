@@ -4,5 +4,6 @@ fn create_basin_inventory_received(
     kind: i32,
     tag: &horizon_world::nbt::Tag,
 ) {
+    crate::game::create_port_burner::packet(game, pos, kind, tag);
     crate::game::create_port_basin_inventory_packet::packet(game, pos, kind, tag);
 }

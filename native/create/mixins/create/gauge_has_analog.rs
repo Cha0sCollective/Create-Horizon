@@ -3,6 +3,9 @@ fn create_gauge_has_analog(
     state: horizon_world::registry::BlockStateId,
     output: &mut bool,
 ) {
+    if game.native_state_block(state) == Some(crate::game::create_port_burner::BLOCK) {
+        *output = true;
+    }
     if matches!(
         game.facts.get(state).name.as_ref(),
         "create:speedometer" | "create:stressometer"

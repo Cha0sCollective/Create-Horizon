@@ -51,6 +51,27 @@ Upstream reports remain attributed reference evidence, not private gameplay pass
 Details: `docs/design/NATIVE_S6_BASIN_REUSE_AUDIT.md` and
 `NATIVE_S6_DRY_MIXING_PACKET.md`; raw source hashes are local outside Git.
 
+## Coal-heating candidate selections
+
+On `codex/native-s6-coal-heating`, `.7` selects MIT upstream
+236c87a889cd76f7e663d1d182c28dc1145f7b14 burner simulation, visual core,
+presentation and server-derived fuel-definition sync/protocol. Core behavior and
+sync remain attributed source reuse; coal-only hand/prediction adapters, strict
+supported-state guards and minimal particle-math/client-clock selections bound
+the private capability. The source state-aware factory, placement, light,
+comparator and wrench-loot path use the refreshed host's existing services.
+Original saved entity/field names are retained. This is not a new host or
+general effects/persistence framework.
+
+The exact upstream heated brass recipe is the second explicitly admitted mixing
+recipe; the dry recipe remains unchanged. Import catalog/cache schema11 selects
+ordinary burner parts and scroll sprites from the player's pinned6.0.10 JAR.
+Committed fallback models are authored cuboids referencing vanilla texture IDs.
+No original art bytes are bundled. Empty cage is an item/factory/loot boundary;
+capture, ignition, special/creative fuels, hats/goggles and fluids are deferred.
+Packet `docs/design/NATIVE_S6_COAL_HEATING_PACKET.md` records pending fuel-cap
+policy and qualification. A source-review pass is not a heating-gameplay pass.
+
 ## Accepted bounded host refresh
 
 After accepting dry mixing, the owner selected a bounded isolated refresh to the

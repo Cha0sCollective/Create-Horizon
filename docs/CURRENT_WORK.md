@@ -5,7 +5,41 @@ route. S6 is OPEN. The owner authorizes progress through S6 until the next
 requested break, genuine blocker, required input or scope boundary. Read
 `docs/design/STAGE_PROGRESSION_PLAN.md` and `NATIVE_PLAYABILITY_PLAN.md`.
 
-## Accepted bounded host refresh; heating packet next
+## Active coal/heated-brass candidate
+
+Branch `codex/native-s6-coal-heating`, based on accepted/private-synced host
+refresh `792d7a7`. Packet `docs/design/NATIVE_S6_COAL_HEATING_PACKET.md`.
+Native/content `.7`, unchanged host9c7f9b22/Mixinse8cd0aa3; accepted `.6` remains
+preserved. Selected existing upstream236c87a8 burner/visual/fuel-sync code and
+one exact heated brass recipe; no full0.7/fluid/capture import.
+
+Fresh independent read-only Sol High source/effects review CLEAR after repairing
+empty-cage sneak-wrench pickup using upstream's state-aware loot and guarding
+unsupported visual states. Plain coal only, strict source-field/empty metadata
+guards, passive burner/no kinetic node, exact two-recipe admission. Seven
+imported core tests and15 importer tests PASS. Initial importer attempt failed
+on its stale synthetic piston-head fixture; failure preserved, fixture repaired.
+Five actual adapter/sync tests and one exact-recipe boundary test also PASS:
+28 total executed focused tests. Clippy35warnings and locked build PASS. First
+adapter compilation failed on a JavaString accessor; exact UTF-16 comparison
+repair and independent delta review CLEAR. Failed attempts remain preserved.
+No heating gameplay pass or S6 completion yet. Raw
+`.local/native-s6-coal-heating-01`; result
+`docs/reference/NATIVE_S6_COAL_HEATING_CHECKPOINT.md`.
+
+Candidate map341f7a89baf048c272c287e0868344e1f8cb49f85996d526a8b629b8facf1212,
+607 unchanged native files, held game70b1bfd5a66a/control e1458e7a. Accepted
+`.6` held game/control hashes verified unchanged. All422 embedded content entries
+match source;16 additions/four modified entries preserve402 baseline entries.
+No heating game started and no game is running.
+
+Required owner input is pending: retain Java's coal consumption at a full
+10,000-tick buffer, adding no time, or refuse ineffective fuel. Do not silently
+decide the new policy from the earlier millstone-loss decision. Finalize the
+candidate and integrated/dedicated gameplay qualification after this choice.
+Stop for broader redesign, changed acceptance or another genuine blocker.
+
+## Accepted bounded host refresh
 
 Owner-approved branch `codex/native-s6-heating-host-refresh`, reviewed repaired
 source `90f0c05079d2e2d07e1e3863bef9d359e6436b53`. Fresh independent read-only

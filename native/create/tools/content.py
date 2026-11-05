@@ -314,11 +314,40 @@ def foundation():
     }.items()})
 
 
+
+def coal_heating_content():
+    # Selected MIT upstream236c87a8 declarations. Original art remains JAR-only.
+    write("data/create/horizon/block/blaze_burner.json", {'template': 'minecraft:glass', 'shapes': {'default': [[0.0625, 0, 0.0625, 0.9375, 0.875, 0.9375]]}, 'collision_shapes': {'default': [[0, 0, 0, 1, 0.25, 1]]}, 'collision_context_shapes': {'player': {'default': [[0.0625, 0, 0.0625, 0.9375, 0.875, 0.9375]]}, 'item': {'default': [[0.0625, 0, 0.0625, 0.9375, 0.875, 0.9375]]}, 'living': {'default': [[0.0625, 0, 0.0625, 0.9375, 0.875, 0.9375]]}, 'other': {'default': [[0.0625, 0, 0.0625, 0.9375, 0.875, 0.9375]]}}, 'item': True, 'properties': {'hardness': 3, 'explosion_resistance': 6, 'requires_tool': True, 'map_color': 21, 'sounds': 'minecraft:gold_block', 'render_shape': 'MODEL'}, 'state_properties': {'blaze': {'type': 'enum', 'values': ['none', 'smouldering', 'fading', 'kindled', 'seething']}, 'facing': {'type': 'enum', 'values': ['north', 'south', 'west', 'east']}}, 'default_state': {'blaze': 'none', 'facing': 'north'}, 'state_light': {'property': 'blaze', 'values': {'none': 0, 'smouldering': 8, 'fading': 15, 'kindled': 15, 'seething': 15}}})
+    write("data/create/loot_table/blocks/blaze_burner.json", {'type': 'minecraft:block', 'pools': [{'rolls': 1, 'entries': [{'type': 'minecraft:item', 'name': 'create:empty_blaze_burner', 'conditions': [{'type': 'minecraft:survives_explosion'}, {'type': 'minecraft:block_state_property', 'block': 'create:blaze_burner', 'properties': {'blaze': 'none'}}]}, {'type': 'minecraft:item', 'name': 'create:blaze_burner', 'conditions': [{'type': 'minecraft:survives_explosion'}, {'type': 'minecraft:block_state_property', 'block': 'create:blaze_burner', 'properties': {'blaze': 'smouldering'}}]}, {'type': 'minecraft:item', 'name': 'create:blaze_burner', 'conditions': [{'type': 'minecraft:survives_explosion'}, {'type': 'minecraft:block_state_property', 'block': 'create:blaze_burner', 'properties': {'blaze': 'fading'}}]}, {'type': 'minecraft:item', 'name': 'create:blaze_burner', 'conditions': [{'type': 'minecraft:survives_explosion'}, {'type': 'minecraft:block_state_property', 'block': 'create:blaze_burner', 'properties': {'blaze': 'kindled'}}]}, {'type': 'minecraft:item', 'name': 'create:blaze_burner', 'conditions': [{'type': 'minecraft:survives_explosion'}, {'type': 'minecraft:block_state_property', 'block': 'create:blaze_burner', 'properties': {'blaze': 'seething'}}]}]}]})
+    write("data/create/horizon/item/empty_blaze_burner.json", {"template":"minecraft:iron_ingot","max_stack_size":64,"place_block":"create:blaze_burner"})
+    write("assets/create/blockstates/blaze_burner.json", {"variants":{"":{"model":"create:block/blaze_burner/block"}}})
+    for name in ["blaze_burner", "empty_blaze_burner"]:
+        write("assets/create/models/item/"+name+".json", {"parent":"create:block/blaze_burner/block"})
+        write("assets/create/items/"+name+".json", {"model":{"type":"minecraft:model","model":"create:item/"+name}})
+    # Authored fallback geometry uses vanilla textures, never copied source art.
+    model("blaze_burner/block", [([0,0,0],[16,4,16]),([0,4,0],[2,14,2]),([14,4,0],[16,14,2]),([0,4,14],[2,14,16]),([14,4,14],[16,14,16])])
+    for name in ["inert", "idle", "active"]:
+        model("blaze_burner/blaze/"+name, [([4,5,4],[12,13,12])], "minecraft:block/gold_block")
+    for name in ["rods_small", "rods_large"]:
+        model("blaze_burner/"+name, [([2,4,2],[4,12,4]),([12,4,12],[14,12,14])], "minecraft:block/gold_block")
+    model("blaze_burner/flame", [([4,0,4],[12,4,12])], "minecraft:block/magma")
+    write("data/create/recipe/mixing/brass_ingot.json", {"type":"create:mixing","heat_requirement":"heated","ingredients":["#c:ingots/copper","#c:ingots/zinc"],"results":[{"count":2,"id":"create:brass_ingot"}]})
+    for language in ["en_us", "ru_ru"]:
+        path=CONTENT / ("assets/create/lang/"+language+".json")
+        lang=json.loads(path.read_text());lang.update({"block.create.blaze_burner":"Blaze Burner","item.create.empty_blaze_burner":"Empty Blaze Burner"})
+        write("assets/create/lang/"+language+".json",lang)
+    path=CONTENT / "data/create/horizon/creative_tab/kinetics.json"
+    tab=json.loads(path.read_text())
+    for name in ["create:blaze_burner", "create:empty_blaze_burner"]:
+        if name not in tab["items"]: tab["items"].append(name)
+    write("data/create/horizon/creative_tab/kinetics.json",tab)
+
+
 def main():
     CONTENT.mkdir(exist_ok=True)
     (CONTENT / "horizon-mod.toml").write_text('''id = "create"
 name = "Create for Horizon — prototype"
-version = "0.5.0-ch4os.6"
+version = "0.5.0-ch4os.7"
 description = "Experimental kinetic foundation with milling, bulk fan processing, stationary drilling, pressing, depots, crafting and a bounded one-pole mechanical piston."
 authors = ["create-horizon contributors"]
 api = "0.2"
@@ -399,6 +428,7 @@ capabilities = ["registries"]
     mechanical_piston_content()
     portable_interface_content()
     dry_mixing_content()
+    coal_heating_content()
     # Source installs carry only the native bundle. Its documented data folder
     # therefore contains the complete public content, with no player-side Python.
     files = {path.relative_to(CONTENT).as_posix(): path.read_text()

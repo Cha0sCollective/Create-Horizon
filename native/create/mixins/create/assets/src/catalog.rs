@@ -29,6 +29,7 @@ pub const BLOCKS: &[&str] = &[
     "portable_storage_interface",
     "basin",
     "mechanical_mixer",
+    "blaze_burner",
 ];
 pub const ITEMS: &[&str] = &[
     "iron_sheet",
@@ -46,6 +47,7 @@ pub const ITEMS: &[&str] = &[
     "propeller",
     "wheat_flour",
     "dough",
+    "empty_blaze_burner",
 ];
 pub const PARTS: &[&str] = &[
     "shaft",
@@ -78,4 +80,11 @@ pub const PARTS: &[&str] = &[
     "cogwheel_shaftless",
     "mechanical_mixer/pole",
     "mechanical_mixer/head",
+    "blaze_burner/block",
+    "blaze_burner/blaze/inert",
+    "blaze_burner/blaze/idle",
+    "blaze_burner/blaze/active",
+    "blaze_burner/rods_small",
+    "blaze_burner/rods_large",
+    "blaze_burner/flame",
 ];

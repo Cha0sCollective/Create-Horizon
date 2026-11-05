@@ -45,6 +45,8 @@
     "create:goggles",
     "create:propeller",
     "create:wheat_flour",
-    "create:dough"
+    "create:dough",
+    "create:blaze_burner",
+    "create:empty_blaze_burner"
   ]
 }

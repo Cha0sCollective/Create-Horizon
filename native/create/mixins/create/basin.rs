@@ -234,7 +234,12 @@ pub(super) fn unsupported(
             || stack.count > 64
             || !matches!(
                 stack.item.as_ref(),
-                "minecraft:andesite" | "minecraft:iron_nugget" | "create:andesite_alloy"
+                "minecraft:andesite"
+                    | "minecraft:iron_nugget"
+                    | "create:andesite_alloy"
+                    | "minecraft:copper_ingot"
+                    | "create:zinc_ingot"
+                    | "create:brass_ingot"
             )
             || *stack != ItemStack::new(&stack.item, stack.count)
             || game
@@ -242,7 +247,7 @@ pub(super) fn unsupported(
                 .get(&stack.item)
                 .is_some_and(|info| info.crafting_remainder.is_some())
     }) {
-        return Some("dry mixing requires the declared plain items without remainders");
+        return Some("bounded mixing requires the declared plain items without remainders");
     }
     if nonempty(entity.nbt.get(&"Filter".into())) {
         return Some("basin recipe filters are not implemented");

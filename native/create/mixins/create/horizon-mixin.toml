@@ -1,6 +1,6 @@
 [mod]
 id = "create"
-version = "0.5.0-ch4os.6"
+version = "0.5.0-ch4os.7"
 
 [compatibility]
 horizon_revision = "9c7f9b2215dfed497aba5522c44f38926628648d"
@@ -664,3 +664,201 @@ bindings = [
  {name="block",ty="&str",value="block"},
  {name="bounds",ty="&mut [f32;6]",value="&mut *bounds"},
 ]
+
+[[module]]
+id = "burner"
+file = "crates/horizon-client/src/game.rs"
+name = "create_port_burner"
+source = "burner.rs"
+
+
+[[module]]
+id = "burner-presentation"
+file = "crates/horizon-client/src/game.rs"
+name = "create_port_burner_presentation"
+source = "burner_presentation.rs"
+
+
+[[injection]]
+id = "burner-standalone-sprites"
+target = "horizon_client::game::native_hooks::Game<'_>::native_terrain_model_sprites"
+kind = "HEAD"
+helper = "burner_sprites.rs"
+bindings = [
+ {name="sprites",ty="&mut Vec<String>",value="&mut *sprites"},
+]
+
+
+[[injection]]
+id = "burner-stateful-entity"
+target = "horizon_client::game::native_hooks::Game<'_>::native_stateful_block_entity"
+kind = "HEAD"
+helper = "burner_stateful.rs"
+bindings = [
+ {name="block",ty="&str",value="block"},
+ {name="stateful",ty="&mut bool",value="&mut *stateful"},
+]
+
+
+[[injection]]
+id = "burner-entity-from-state"
+target = "horizon_client::game::native_hooks::GameLevel<'_>::native_block_entity_from_state"
+kind = "HEAD"
+helper = "burner_entity.rs"
+bindings = [
+ {name="block",ty="&str",value="block"},
+ {name="properties",ty="&crate::mod_api::BlockProperties",value="properties"},
+ {name="entity",ty="&mut Option<(String,horizon_world::nbt::Compound)>",value="&mut *entity"},
+]
+
+
+[[injection]]
+id = "burner-data-map-types"
+hook = "data_map_types"
+hook_version = 1
+kind = "HEAD"
+helper = "burner_data_maps.rs"
+bindings = [
+ {name="types",ty="&mut Vec<crate::mod_api::NativeDataMapType>",value="&mut *types"},
+]
+
+
+[[module]]
+id="burner-prediction"
+file="crates/horizon-client/src/game/remote.rs"
+name="create_port_burner_prediction"
+source="burner_prediction.rs"
+
+
+[[injection]]
+id="burner-client-block"
+target="horizon_client::game::remote::Game<'_>::remote_use_item_on"
+kind="HEAD"
+cancellable=true
+helper="burner_predict_block.rs"
+bindings=[{name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},{name="hand",ty="crate::game::Hand",value="hand"}]
+
+
+[[injection]]
+id="burner-hand-operated"
+target="horizon_client::game::remote::hand_operated"
+kind="HEAD"
+cancellable=true
+helper="burner_hand_operated.rs"
+bindings=[{name="name",ty="&str",value="name"}]
+
+
+
+[[injection]]
+id="burner-random-animate-tick"
+target="horizon_client_lib::animate_tick::block_animate_tick"
+kind="HEAD"
+helper="burner_animate.rs"
+bindings=[
+{name="engine",ty="&mut crate::particles::ParticleEngine",value="&mut *engine"},
+{name="ctx",ty="&crate::animate_tick::AnimateContext<'_>",value="ctx"},
+{name="state",ty="horizon_world::registry::BlockStateId",value="state"},
+{name="pos",ty="[i32;3]",value="pos"},
+]
+
+
+[[injection]]
+id="burner-client-be-particles"
+target="horizon_client::game::block_entity_anims::Game<'_>::tick_block_entity_anims"
+kind="HEAD"
+helper="burner_particle_tick.rs"
+bindings=[{name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"}]
+
+
+[[injection]]
+id="burner-visual-resources-reloaded"
+hook="client_resources_reloaded"
+hook_version=1
+kind="HEAD"
+helper="burner_resources.rs"
+bindings=[{name="game",ty="&crate::game::Game<'_>",value="self"}]
+
+
+[[module]]
+id="burner-sync"
+file="crates/horizon-client/src/game.rs"
+name="create_port_burner_sync"
+source="burner_sync.rs"
+
+
+[[module]]
+id="burner-sync-protocol"
+file="crates/horizon-client/src/game.rs"
+name="create_port_burner_sync_protocol"
+source="burner_sync_protocol.rs"
+
+
+[[injection]]
+id="burner-pack-files"
+hook="data_pack_files"
+hook_version=1
+kind="HEAD"
+helper="burner_pack_files.rs"
+bindings=[
+ {name="files",ty="&mut Vec<(String, Vec<u8>)>",value="&mut *files"},
+]
+
+
+[[injection]]
+id="burner-sync-login"
+hook="player_logged_in"
+hook_version=1
+kind="HEAD"
+helper="burner_sync_login.rs"
+bindings=[
+ {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
+ {name="player",ty="u128",value="player"},
+]
+
+
+[[injection]]
+id="burner-sync-logout"
+hook="player_logged_out"
+hook_version=1
+kind="HEAD"
+helper="burner_sync_logout.rs"
+bindings=[
+ {name="game",ty="&crate::game::Game<'_>",value="self"},
+ {name="player",ty="u128",value="player"},
+]
+
+
+[[injection]]
+id="burner-sync-world"
+hook="world_lifecycle"
+hook_version=1
+kind="HEAD"
+helper="burner_sync_world.rs"
+bindings=[
+ {name="game",ty="&crate::game::Game<'_>",value="self"},
+ {name="phase",ty="crate::mod_api::WorldPhase",value="phase"},
+]
+
+# Shared save/client codec lives below gameplay, avoiding a client-lib -> Game edge.
+
+[[module]]
+id="burner-clock"
+file="crates/horizon-client/src/game.rs"
+name="create_port_burner_clock"
+source="burner_clock.rs"
+
+[[injection]]
+id="burner-data-received"
+hook="net_from_server"
+hook_version=1
+kind="HEAD"
+helper="burner_received.rs"
+bindings=[{name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},{name="channel",ty="&str",value="channel"},{name="data",ty="&[u8]",value="data"}]
+
+[[injection]]
+id="burner-unload"
+hook="client_level_unload"
+hook_version=1
+kind="HEAD"
+helper="burner_unload.rs"
+bindings=[{name="game",ty="&crate::game::Game<'_>",value="self"}]

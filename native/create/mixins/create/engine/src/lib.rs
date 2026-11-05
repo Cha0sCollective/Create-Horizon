@@ -38,3 +38,10 @@ pub mod fan;
 
 #[path = "core/drilling.rs"]
 pub mod drilling;
+
+#[path = "core/burner.rs"]
+pub mod burner;
+#[path = "core/burner_visual.rs"]
+pub mod burner_visual;
+#[path = "core/particles.rs"]
+pub mod particles;

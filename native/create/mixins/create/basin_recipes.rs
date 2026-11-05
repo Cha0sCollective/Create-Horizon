@@ -51,14 +51,7 @@ struct Recipes {
 }
 
 fn compile(game: &Game<'_>, id: &str, json: &serde_json::Value) -> Option<Recipe> {
-    if id != "create:mixing/andesite_alloy"
-        || json
-            != &serde_json::json!({
-                "type":"create:mixing",
-                "ingredients":[{"item":"minecraft:andesite"},{"tag":"c:nuggets/iron"}],
-                "results":[{"id":"create:andesite_alloy"}]
-            })
-    {
+    if !supported_recipe(id, json) {
         return None;
     }
     // Strict bounded codecs: no unknown ingredient fields can be dropped to
@@ -388,4 +381,51 @@ pub(super) fn apply(game: &mut Game<'_>, pos: Pos, recipe: Option<&Recipe>) -> b
         return false;
     }
     was_empty && matching(game, pos, &mut state, recipe)
+}
+
+fn supported_recipe(id: &str, json: &serde_json::Value) -> bool {
+    let expected = match id {
+        "create:mixing/andesite_alloy" => {
+            serde_json::json!({"type":"create:mixing","ingredients":[{"item":"minecraft:andesite"},{"tag":"c:nuggets/iron"}],"results":[{"id":"create:andesite_alloy"}]})
+        }
+        "create:mixing/brass_ingot" => {
+            serde_json::json!({"type":"create:mixing","heat_requirement":"heated","ingredients":["#c:ingots/copper","#c:ingots/zinc"],"results":[{"count":2,"id":"create:brass_ingot"}]})
+        }
+        _ => return false,
+    };
+    *json == expected
+}
+
+#[cfg(test)]
+mod coal_tests {
+    use super::*;
+    #[test]
+    fn exact_brass_and_unchanged_dry_recipe_only() {
+        let brass = serde_json::json!({"type":"create:mixing","heat_requirement":"heated","ingredients":["#c:ingots/copper","#c:ingots/zinc"],"results":[{"count":2,"id":"create:brass_ingot"}]});
+        assert!(supported_recipe("create:mixing/brass_ingot", &brass));
+        assert!(supported_recipe(
+            "create:mixing/andesite_alloy",
+            &serde_json::json!({"type":"create:mixing","ingredients":[{"item":"minecraft:andesite"},{"tag":"c:nuggets/iron"}],"results":[{"id":"create:andesite_alloy"}]})
+        ));
+        for (key, value) in [
+            ("heat_requirement", serde_json::json!("none")),
+            (
+                "ingredients",
+                serde_json::json!(["minecraft:copper_ingot", "create:zinc_ingot"]),
+            ),
+            (
+                "results",
+                serde_json::json!([{"id":"create:brass_ingot","count":3}]),
+            ),
+            ("extra", serde_json::json!(true)),
+        ] {
+            let mut altered = brass.clone();
+            altered[key] = value;
+            assert!(!supported_recipe("create:mixing/brass_ingot", &altered));
+        }
+        assert!(!supported_recipe("create:mixing/other", &brass));
+        use create_engine::basin::{Heat, HeatRequirement};
+        assert!(!HeatRequirement::Heated.accepts(Heat::Smouldering));
+        assert!(HeatRequirement::Heated.accepts(Heat::Fading));
+    }
 }

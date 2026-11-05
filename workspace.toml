@@ -6,8 +6,8 @@ namespace = "create"
 repository = "https://github.com/Cha0sCollective/Create-Horizon"
 visibility = "private"
 stage = "Native S1 through S5 complete; S6 feature families open"
-active_packet = "Bounded host refresh accepted; see docs/reference/NATIVE_S6_HOST_REFRESH_RESULTS.md. Next scoped coal/heated-brass reuse; old G1 remains historical and unpassed"
-next_stage = "Reuse existing upstream coal/burner/heated-brass code in a separate bounded packet; no full fluids, general contraptions or release implied"
+active_packet = "Coal/heated-brass candidate: source/effects review CLEAR, 28 focused tests/Clippy/locked build PASS; owner fuel-cap choice and gameplay qualification pending. See docs/reference/NATIVE_S6_COAL_HEATING_CHECKPOINT.md; old G1 remains historical and unpassed"
+next_stage = "Resolve owner fuel-cap choice, then qualify the bounded coal/brass increment in integrated/dedicated play; no full fluids, general contraptions or release implied"
 
 [specification]
 version = "0.1"
