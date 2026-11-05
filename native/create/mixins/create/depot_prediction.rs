@@ -10,10 +10,7 @@ fn create_depot_prediction(
         && held.is_some_and(|stack| stack.item.as_ref() == "create:andesite_funnel")
     {
         // The server lets BlockItem place this item before chest use.
-        return std::ops::ControlFlow::Break((
-            InteractionResult::Pass,
-            DryUse::default(),
-        ));
+        return std::ops::ControlFlow::Break((InteractionResult::Pass, DryUse::default()));
     }
     if game.native_on("create")
         && held.is_some_and(|s| {

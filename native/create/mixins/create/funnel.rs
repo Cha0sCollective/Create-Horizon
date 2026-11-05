@@ -64,7 +64,11 @@ pub(super) fn tick(game: &mut Game<'_>, pos: [i32; 3], entity: &mut ModBlockEnti
     // Java scans the funnel block and the block below before committing the
     // extraction. The belt's existing world-item capture owns the next step.
     let min = [pos[0] as f64, (pos[1] - 1) as f64, pos[2] as f64];
-    let max = [(pos[0] + 1) as f64, (pos[1] + 1) as f64, (pos[2] + 1) as f64];
+    let max = [
+        (pos[0] + 1) as f64,
+        (pos[1] + 1) as f64,
+        (pos[2] + 1) as f64,
+    ];
     if !game.native_item_entities(&dim, min, max).is_empty() {
         return;
     }
