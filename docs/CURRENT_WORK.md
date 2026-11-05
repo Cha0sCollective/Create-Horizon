@@ -7,16 +7,13 @@ Read `docs/design/STAGE_PROGRESSION_PLAN.md` and `NATIVE_PLAYABILITY_PLAN.md`.
 
 ## Active packet and checkpoint
 
-Private branch `codex/native-s6-mounted-depot`, based on accepted pressing
-`f6e3d74ad7583f2828da6dd213419f195a2facd5`. The read-only mounted-transfer audit
-and reviewed one-depot packet are committed at `edaa8b6`. The bounded mounted
-depot is accepted after fresh independent completion review CLEAR; checkpoint
-the reviewed production changes and result privately.
-See `docs/design/NATIVE_S6_MOUNTED_TRANSFER_AUDIT.md`,
-`docs/design/NATIVE_S6_MOUNTED_DEPOT_PACKET.md` and
-`docs/reference/NATIVE_S6_MOUNTED_DEPOT_RESULTS.md`.
+Private branch `codex/native-s6-portable-interface`, based on accepted and
+privately synced mounted-depot checkpoint `a77af67`. The current read-only audit
+and next packet are `docs/design/NATIVE_S6_PORTABLE_ITEM_AUDIT.md` and
+`NATIVE_S6_PORTABLE_ITEM_PACKET.md`. Independent Sol High packet/delta review CLEAR;
+no portable-interface production code or game run has started.
 
-The bounded change adds one plain-iron depot cargo to the existing east-facing,
+The accepted mounted-depot change adds one plain-iron cargo to the east-facing,
 one-pole, one-cell piston. It uses private owner NBT and existing native host
 services. No engine API or public engine checkout changed. Source/delta and
 completion Sol High reviews CLEAR. Three focused Rust tests,
@@ -29,12 +26,12 @@ passed; all eight game processes exited0. No game process is running.
 
 Final input map SHA-256:
 `8db54c33f380fb60b0bc9f2f9cf1be7594e7c31573b439ad92f17082759bf037`.
-Raw evidence is local `.local/native-s6-mounted-01`; the result distinguishes the
-prior primary-run map from the final test/Debug-only rebuild and focused retest.
-Next: private checkpoint, then read-only feasibility/requirements for one
-portable-item-interface packet.
-Mounted depot alone does not complete S6. Ask before broad host/API/schema or
-general contraption architecture changes or changed acceptance outcomes.
+Raw evidence is local `.local/native-s6-mounted-01`; see
+`docs/reference/NATIVE_S6_MOUNTED_DEPOT_RESULTS.md` for distinct primary/final
+maps and the exact limits. Next: implement the finite canonical-slot and mutable
+hopper-source adapter route, then independent source/delta review before live use. Mounted
+depot alone does not complete S6. Ask before broad host/API/schema or general
+contraption architecture changes or changed acceptance outcomes.
 
 ## Accepted stages and pins
 
