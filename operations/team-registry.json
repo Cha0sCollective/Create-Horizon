@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "project": "Create only",
+  "project_id": "d6cc99cf-a500-4eff-885d-7093e70e3507",
+  "root_thread_id": "01a1747a-eb1f-7183-b3f6-63f0ccc37f13",
+  "operations_enrolled_at": "2026-11-05T20:28:36.178Z",
+  "root_rollout": "2026/10/25/rollout-2026-10-25T14-12-55-01a1747a-eb1f-7183-b3f6-63f0ccc37f13.jsonl",
+  "heavy_resource": {"owner": null, "state": "free", "queue": []},
+  "teams": [
+    {"key":"machinery","title":"Create - Machinery and Production","path":"G:\\Create Rusty\\.local\\teams\\machinery","branch":"codex/team-machinery","native_base":"02d029f3bea09c62480e07e315e23d4868f9180a","charter":"orchestration/teams/machinery.md","thread_id":null,"host_id":"local","enrolled_at":null,"state":"provisioning"},
+    {"key":"transport","title":"Create - Transport and Logistics","path":"G:\\Create Rusty\\.local\\teams\\transport","branch":"codex/team-transport","native_base":"2adc50a962fd804bbc29c139d863641c19e84af7","charter":"orchestration/teams/transport.md","thread_id":null,"host_id":"local","enrolled_at":null,"state":"provisioning"},
+    {"key":"fluids-power","title":"Create - Fluids and Power","path":"G:\\Create Rusty\\.local\\teams\\fluids-power","branch":"codex/team-fluids-power","native_base":"02d029f3bea09c62480e07e315e23d4868f9180a","charter":"orchestration/teams/fluids_power.md","thread_id":null,"host_id":"local","enrolled_at":null,"state":"provisioning"},
+    {"key":"contraptions","title":"Create - Contraptions","path":"G:\\Create Rusty\\.local\\teams\\contraptions","branch":"codex/team-contraptions","native_base":"02d029f3bea09c62480e07e315e23d4868f9180a","charter":"orchestration/teams/contraptions.md","thread_id":null,"host_id":"local","enrolled_at":null,"state":"provisioning"},
+    {"key":"trains-schematics","title":"Create - Trains and Schematics","path":"G:\\Create Rusty\\.local\\teams\\trains-schematics","branch":"codex/team-trains-schematics","native_base":"02d029f3bea09c62480e07e315e23d4868f9180a","charter":"orchestration/teams/trains_schematics.md","thread_id":null,"host_id":"local","enrolled_at":null,"state":"provisioning"},
+    {"key":"experience","title":"Create - Experience and Parity","path":"G:\\Create Rusty\\.local\\teams\\experience","branch":"codex/team-experience","native_base":"02d029f3bea09c62480e07e315e23d4868f9180a","charter":"orchestration/teams/experience.md","thread_id":null,"host_id":"local","enrolled_at":null,"state":"provisioning"}
+  ]
+}

@@ -16,6 +16,11 @@ with no contributions to Create planned. Preserve the reference snapshot and kee
 source provenance accurate. Do not treat the supplied specification as permission
 to contact upstream maintainers, publish private material or run later stages.
 
-Use the coordinator directly. Operating-rule changes require one fresh, read-only
-Sol High review under the adopted Ch4oS-Orchestration rules. Do not launch a standing
-agent team or increase permission scope merely to follow a role label.
+On November5 the owner requested six Create-only team chats with nested workers
+and made the primary chat operations/integration lead. Follow the reviewed private
+`orchestration/PROJECT_TEAMS.md` and assigned team charter/worktree. Primary
+integration and the shared heavy build/test queue remain project-lead-owned.
+Team roles do not expand actual permissions or authorize public release. Operating-
+rule changes still require fresh read-only independent Sol High review. Retained
+canonical standards preserve the former defaults; this explicit owner adoption
+defines this project's team exception. Other mods are deferred individually.

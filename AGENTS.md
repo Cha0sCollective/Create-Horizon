@@ -38,14 +38,23 @@ Ask before changes beyond authorized stage outcomes or the adopted architecture,
 schema, framework and acceptance boundaries. On November 4 the owner authorized
 continued work through S6 until the next requested break; follow
 `docs/design/STAGE_PROGRESSION_PLAN.md` stage by stage. Stop for a genuine blocker
-or required input. No merge, release or upstream contact is authorized.
+or required input. No GitHub merge, release or upstream contact is authorized.
 
 ## Orchestration
 
-The coordinator implements directly and retains its model/effort. Delegate only a
-bounded task that benefits from another agent. No standing team, mandatory
-explorer, custom workers or permission increase follows from a role label. Ultra
-requires explicit owner approval.
+On November5 the owner explicitly requested six Create-only team-lead chats with
+nested specialists and made the primary chat lead for operations/integration,
+including per-team tokens and implementation/build/test time. Follow the reviewed
+`orchestration/PROJECT_TEAMS.md` and assigned `orchestration/teams/` charter. This
+project-specific authorization supersedes the old no-standing-team default in
+retained source standards. Other mods are deferred individually.
+
+Each team uses its assigned private Git worktree/branch and bounded packets.
+Leads coordinate useful nested tasks and reconcile coherent candidate integrations;
+workers edit only their explicitly owned files in isolated worker worktrees.
+Verify actual paths, revisions, dirty files and permissions. No simultaneous
+writers share a checkout/index. Keep selected model/effort; a role grants no
+permission or capacity increase. Ultra still requires explicit owner approval.
 
 Require one fresh read-only independent Sol High review for substantive behavior,
 security-sensitive changes and operating rules. Routine documentation/mechanical
@@ -54,7 +63,16 @@ reviews cover the delta and effects. A reviewer never edits or approves its own
 production work. Verify actual permissions: the parent's runtime overrides the
 profile default. Restrict reviewers to native reads/Git reads unless a bounded
 task explicitly authorizes other validation within the existing permission scope.
-Root alone performs serial source, formatter, compiler, runtime, WSL and Git writes.
+Project lead owns primary/shared integration, host pins, effective rules, resource
+queue, central accounting and remote pushes. Leads/workers may make assigned local
+source/Git writes in their isolated lanes. Team candidates may propose shared
+wiring with explicit handoffs; project lead resolves cross-team changes serially.
+One root-granted host-wide reservation covers heavy Cargo/staging/linking, Java
+reference and game/server runs. Teams may not start them without that reservation.
+Focused formatting stays within owned files. Initial read-only discovery permits
+only the separately assigned operational timing metadata; reviewers remain strict
+read-only. Track actual usage/time with unknown telemetry explicit; raw transcripts
+stay outside Git. Preserve existing architecture/acceptance/owner gates.
 
 The effective profile is `.codex/agents/independent-reviewer.toml`; routing and
 adoption provenance remain in `orchestration/ADOPTION.md` and local standards.
@@ -88,7 +106,9 @@ its unadopted proposals are not instructions. The owner authorized Create source
 engagement for this personal port with no Create contributions planned. Preserve
 attribution and accurate source-informed provenance, without a clean-room claim.
 
-Private pushes require fresh PRIVATE metadata and exact origin. Public engine
+Local candidate integration is authorized for the project lead and assigned team
+leads. GitHub merges/promotions/releases remain gated as before. Private pushes
+are project-lead-owned and require fresh PRIVATE metadata and exact origin. Public engine
 publishing requires a different FINAL/privacy review, fresh PUBLIC metadata/exact
 origin and normal full-history hooks. No PR, merge, promotion or release follows
 from a review pass. No messages to maintainers or others without authorization.
