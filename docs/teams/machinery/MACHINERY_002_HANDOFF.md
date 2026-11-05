@@ -59,15 +59,16 @@ engine repository.
 
 ## Pending bounded validation
 
-No heavy Cargo build, native staging, integrated test or game run was started;
-the project lead owns the shared host-wide lease. Once leased, run the focused
-`create-engine` `saw::tests` (require a nonzero listed and executed test count)
-and the selected kinetic saw test, the
-`create-assets` bundled processor/content-import checks, native preflight and
-the composed locked build. Pose-check both `axis_along_first` settings. The
-packet's real-game milestone remains pending: ordinary one-item input, exact
-six-shaft collection, unsupported return, stop/resume, normal cold reopen,
-peer-visible blade/input/product/empty states and normal exits. Native intake
+No heavy Cargo build, native staging, integrated test or game run was started
+in this lane; the project lead owns the shared host-wide lease. The focused
+`create-engine` filter is `saw::tests`, and any execution claim requires a
+nonzero listed and executed test count. Root's unchanged core/preflight checks
+are reused at their exact inputs and are not replayed solely because a source
+cohort changes. Pose-check both `axis_along_first` settings. The packet's
+integrated and dedicated real-game milestone remains pending: ordinary
+one-item input, exact six-shaft collection, unsupported return, stop/resume,
+normal cold reopen, integrated actor and dedicated peer blade/input/product/
+empty views, and normal exits. Native intake
 uses grounded-item top-contact polling, so this packet claims an item landing
 while already powered; it does not claim Java fall-callback equivalence for a
 previously resting item.
@@ -78,10 +79,12 @@ that unchanged control is unnecessary. Use ordinary interactions for new saw
 behavior, and do not write saw Speed, input or progress fields to manufacture
 processing evidence.
 
-The packet-local `.local/machinery-002/RUN_ORDER.md` and driver take the next
-root-frozen dedicated session and control binary as inputs. They were prepared
-from the existing team-runtime session/call semantics; no new binary or
-gameplay receipt is claimed here.
+The packet-local `.local/machinery-002/RUN_ORDER.md` and dual-mode driver take
+the next root-frozen integrated or dedicated session and its matching control
+binary as inputs. The original dedicated-only driver is preserved byte-for-byte
+as `saw002_milestone-r1.py` with its recorded hash. All seven behavioral cases
+remain required in both modes; screenshots name the actor or peer view role.
+No new binary or gameplay receipt is claimed here.
 
 Phase intervals are tracked in the local team-operations ledger. Token usage
 is not recorded in a verified local counter and remains unknown.
