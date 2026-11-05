@@ -6,10 +6,10 @@
   "operations_enrolled_at": "2026-11-05T20:28:36.178Z",
   "root_rollout": "2026/10/25/rollout-2026-10-25T14-12-55-01a1747a-eb1f-7183-b3f6-63f0ccc37f13.jsonl",
   "heavy_resource": {
-    "owner": "machinery-001",
+    "owner": "transport-002",
     "state": "reserved",
     "queue": [
-      "transport-002"
+      "operations-integration-001-build"
     ]
   },
   "teams": [
@@ -23,7 +23,7 @@
       "thread_id": "01a1ad7e-e33b-7ef2-8bc2-606e374fb5de",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:31.729Z",
-      "state": "fan-washing integrated/dedicated qualification; exclusive lease",
+      "state": "machinery-001 fan washing bounded PASS; seven normal exits; lease returned",
       "lane_initial_head": "76dfaf78370f41b2a5c68620c55be6ecab96f16f"
     },
     {
@@ -36,7 +36,7 @@
       "thread_id": "01a1ad7e-f1a5-7052-b948-19607d6dd8e4",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:37.443Z",
-      "state": "transport-001 accepted; transport-002 prep, next runtime slot",
+      "state": "transport-002 dedicated two-controller handoff runtime; exclusive lease",
       "lane_initial_head": "f00d04a3249b53bee453a0191d65285b0e7f6538"
     },
     {
