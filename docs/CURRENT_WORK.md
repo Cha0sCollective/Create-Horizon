@@ -29,14 +29,18 @@ Transport002's dedicated two-controller belt handoff is now PASS on unchanged `.
 source: stopped receiver refuses under powered source; release transfers exactly
 once; actual peer occupied/empty and saved chestgold1; three exits0, completion
 review CLEAR. See `orchestration/teams/transport-002-results.md`.
-Operations now owns the sole heavy lease for the shared cohort build.
+Fluids now owns the sole consolidated tank/track/audio runtime lease.
 Root candidateabf48a5 (`codex/create-team-integration-001`) composes four reviewed
 source packets at development `.10`/resource-cache13: audio, tank, straight track,
 and core/read-only preflight. Static checks and fresh composition review CLEAR;
-shared checks are in progress. Seven contraption-core, one track-core and two
-track-asset tests pass; staging passes after a two-comment pinned-parser repair.
-All661 native inputs are frozen by source-inputs-r4; host compilation/client
-tests/gameplay remain pending. Accepted primary stays separate.
+shared stage, Clippy, game/control build and23 selected tests PASS. All661 native
+inputs are frozen by source-inputs-r4. Gameplay is in progress: the integrated
+run found ordinary tank bucket/wrench interactions ineffective; preserve that
+failure while independent track/audio cases proceed. A seeded tank fixture
+cannot qualify ordinary filling. Accepted primary stays separate. Saw source
+candidate9823168 (.11/cache14) is isolated in create-team-integration-002,
+awaiting composition review and later shared build. Transport003 funnel source
+production uses existing services; host/owner/acceptance changes remain gated.
 Other teams have
 bounded isolated allocations: active millstone audio, straight stationary track,
 staged portable contraption core plus read-only native preflight, and one stationary
@@ -237,8 +241,10 @@ deferred/outside scope. Ordinary native save/reopen is a distinct claim.
 
 ## Preserved state and publication
 
-Coordinator implements directly; root alone performs serial writes, compiler,
-runtime, WSL and Git. Required Sol High reviewers are read-only, no standing team.
+The owner-requested six team chats use isolated lanes and nested workers under
+the reviewed PROJECT_TEAMS plan. Root owns serial shared integration, remote
+pushes and the host-wide heavy reservation; a named team may operate that lease.
+Required independent Sol High reviewers remain read-only.
 Private pushes need fresh PRIVATE metadata, exact origin and normal hooks.
 Public engine publishing needs a separate bounded assignment and FINAL/privacy
 review. No merge, release, upstream message, cleanup or playable/Prism/Java edit.
