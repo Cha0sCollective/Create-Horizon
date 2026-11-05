@@ -1,6 +1,6 @@
 [mod]
 id = "create"
-version = "0.5.0-ch4os.9"
+version = "0.5.0-ch4os.10"
 
 [compatibility]
 horizon_revision = "9c7f9b2215dfed497aba5522c44f38926628648d"
@@ -510,6 +510,12 @@ id = "drill"
 file = "crates/horizon-client/src/game.rs"
 name = "create_port_drill"
 source = "drill.rs"
+
+[[module]]
+id = "saw"
+file = "crates/horizon-client/src/game.rs"
+name = "create_port_saw"
+source = "saw.rs"
 
 [[injection]]
 id = "server-data"

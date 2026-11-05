@@ -49,6 +49,8 @@ pub enum Kind {
     /// Fixed-Y small cog without a shaft port (MechanicalMixerBlock).
     Mixer,
     MechanicalPiston,
+    /// Stationary item's two-sided DirectionalAxisKineticBlock saw.
+    Saw,
     Consumer {
         facing: Pos,
         impact: f32,
@@ -108,7 +110,7 @@ impl Node {
         match self.kind {
             Kind::Press => 8.0,
             Kind::Millstone | Kind::Mixer => 4.0,
-            Kind::MechanicalPiston => 4.0,
+            Kind::MechanicalPiston | Kind::Saw => 4.0,
             Kind::Consumer { impact, .. } => impact,
             _ => 0.0,
         }
@@ -538,6 +540,26 @@ mod tests {
     fn motor_has_only_its_facing_shaft_port() {
         let n = network(&[motor([0, 0, 0], 16.0, 16.0), node([-1, 0, 0], Kind::Shaft)]);
         assert!(!n.theoretical.contains_key(&[-1, 0, 0]));
+    }
+
+    #[test]
+    fn up_facing_saw_has_opposing_axis_ports_and_four_stress_per_rpm() {
+        let saw = Node {
+            pos: [1, 0, 0],
+            axis: Axis::X,
+            kind: Kind::Saw,
+        };
+        assert!(saw.shaft_port([-1, 0, 0]));
+        assert!(saw.shaft_port([1, 0, 0]));
+        assert!(!saw.shaft_port([0, 0, 1]));
+        let n = network(&[
+            motor([0, 0, 0], 16.0, 128.0),
+            saw,
+            node([2, 0, 0], Kind::Shaft),
+        ]);
+        assert_eq!(n.speed(saw.pos), 16.0);
+        assert_eq!(n.speed([2, 0, 0]), 16.0);
+        assert_eq!(n.stress, 64.0);
     }
 
     #[test]

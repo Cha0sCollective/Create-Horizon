@@ -4,7 +4,7 @@ TRANSMISSIONS = ['gearbox', 'clutch', 'gearshift', 'hand_crank', 'andesite_encas
 STATIC_BLOCKS = ['andesite_casing', 'brass_casing', 'andesite_alloy_block', 'brass_block', 'zinc_block']
 INSTRUMENTS = ['speedometer', 'stressometer']
 GENERATORS = ['water_wheel', 'large_water_wheel']
-PROCESSORS = ['millstone', 'encased_fan', 'mechanical_drill']
+PROCESSORS = ['millstone', 'encased_fan', 'mechanical_drill', 'mechanical_saw']
 DRY_MIXING = ['basin', 'mechanical_mixer']
 ACTUATORS = ['mechanical_piston', 'piston_extension_pole']
 PORTABLES = ['portable_storage_interface']
@@ -14,6 +14,7 @@ ITEMS = ['iron_sheet', 'golden_sheet', 'copper_sheet', 'andesite_alloy', 'brass_
 PARTS = ['shaft', 'shaft_half', 'cogwheel', 'large_cogwheel', 'creative_motor/block', 'creative_motor/block_vertical', 'mechanical_press/block', 'mechanical_press/head', 'depot/block', 'hand_crank/handle', 'hand_crank/block', 'gauge/dial', 'gauge/speedometer/head', 'gauge/stressometer/head', 'goggles', 'water_wheel/wheel', 'large_water_wheel/block', 'large_water_wheel/block_extension', 'millstone/block', 'millstone/inner', 'encased_fan/block', 'encased_fan/propeller', 'mechanical_drill/block', 'mechanical_drill/head']
 PARTS += ['portable_storage_interface/block_middle', 'portable_storage_interface/block_middle_powered', 'portable_storage_interface/block_top']
 PARTS += ['cogwheel_shaftless', 'mechanical_mixer/pole', 'mechanical_mixer/head']
+PARTS += ['mechanical_saw/blade_vertical_active', 'mechanical_saw/blade_vertical_inactive', 'mechanical_saw/blade_vertical_reversed']
 
 
 def rust_catalog():

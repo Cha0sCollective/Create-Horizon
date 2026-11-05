@@ -318,7 +318,12 @@ fn level_axis(game: &GameLevel<'_>, p: [i32; 3]) -> Axis {
         .into_iter()
         .find(|d| d.name() == prop("facing"))
         .unwrap_or(Direction::Up);
-    if state.name.ends_with("ometer") || state.name == "create:mechanical_piston" {
+    if state.name.ends_with("ometer")
+        || matches!(
+            state.name.as_ref(),
+            "create:mechanical_piston" | "create:mechanical_saw"
+        )
+    {
         return placement::gauge_axis(facing, prop("axis_along_first") == "true");
     }
     match prop("axis") {

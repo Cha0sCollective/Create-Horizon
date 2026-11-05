@@ -125,3 +125,16 @@ metadata without admitting nonempty/unknown payloads. New factory/renderer
 capabilities are prerequisites for later selected heating
 reuse, not acceptance of heat, fluids or every upstream feature. See
 `docs/design/NATIVE_S6_HOST_REFRESH_PACKET.md` and `docs/CURRENT_WORK.md`.
+
+## Machinery 002 candidate: selected stationary saw
+
+Current Delete228/create-horizon main `dd0f3141a33851ac20fa98b807a6532471dba727`
+has no saw/cutting path; it differs from local upstream snapshot `236c87a8`
+only by license notices. The selected private adapter uses the pinned Java
+Create 6.0.11 behavior reference `7ff2760e4924d35d4bc2e22c4b19923f0178cd16`
+for upward-facing item processing, the 32-slot processing inventory, signed
+shaft direction, 4 SU/RPM stress and the exact andesite-alloy-to-six-shafts
+recipe. The player's pinned 6.0.10 JAR supplies original saw models and
+textures only through the existing private offline importer. Authored fallback
+models use vanilla texture IDs. The current candidate is not yet qualified;
+see `docs/teams/machinery/MACHINERY_002_PACKET.md` for its finite scope.

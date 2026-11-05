@@ -349,12 +349,77 @@ def belt_content():
     for path, value in values.items(): write(path, value)
 
 
+def saw_content():
+    # Selected MIT SawBlock state/shape and one generated Java 6.0.11 recipe.
+    # Fallback geometry is authored here with vanilla textures; original ARR
+    # saw art is imported only from the player's pinned 6.0.10 JAR.
+    directions = ["down", "up", "north", "south", "west", "east"]
+    shapes = {"up": [[0, 0, 0, 1, .75, 1]], "down": [[0, .25, 0, 1, 1, 1]],
+              "north": [[0, 0, .25, 1, 1, 1]], "south": [[0, 0, 0, 1, 1, .75]],
+              "west": [[.25, 0, 0, 1, 1, 1]], "east": [[0, 0, 0, .75, 1, 1]]}
+    write("data/create/horizon/block/mechanical_saw.json", {
+        "template": "minecraft:glass", "item": True,
+        "properties": {"hardness": 1.5, "explosion_resistance": 6,
+                       "requires_tool": True, "map_color": 34,
+                       "render_shape": "MODEL", "sounds": "minecraft:andesite"},
+        "state_properties": {
+            "facing": {"type": "enum", "values": directions},
+            "axis_along_first": {"type": "boolean"},
+            "flipped": {"type": "boolean"}},
+        "default_state": {"facing": "up", "axis_along_first": "false", "flipped": "false"},
+        "shapes": {"property": "facing", "values": shapes},
+        "collision_shapes": {"property": "facing", "values": shapes},
+    })
+    model("mechanical_saw/vertical", [([0, 0, 0], [16, 12, 16])], "minecraft:block/andesite")
+    model("mechanical_saw/horizontal", [([0, 0, 0], [16, 12, 16])], "minecraft:block/andesite")
+    model("mechanical_saw/item", [([0, 0, 0], [16, 12, 16]), ([7, 12, 2], [9, 16, 14])],
+          "minecraft:block/andesite")
+    for part in ["active", "inactive", "reversed"]:
+        model("mechanical_saw/blade_vertical_" + part,
+              [([7, 10, 2], [9, 16, 14])], "minecraft:block/iron_block")
+    rotations = {"up": {}, "down": {"x": 180}, "north": {"x": 90},
+                 "south": {"x": 90, "y": 180}, "west": {"x": 90, "y": 270},
+                 "east": {"x": 90, "y": 90}}
+    variants = {}
+    for facing, rotation in rotations.items():
+        for first in [False, True]:
+            for flipped in [False, True]:
+                key = ("axis_along_first=" + str(first).lower() + ",facing=" + facing
+                       + ",flipped=" + str(flipped).lower())
+                turn = 90 if first and facing in ["up", "down"] else 0
+                variants[key] = {"model": "create:block/mechanical_saw/" +
+                                 ("vertical" if facing in ["up", "down"] else "horizontal"),
+                                 **rotation}
+                if turn: variants[key]["y"] = (variants[key].get("y", 0) + turn) % 360
+    write("assets/create/blockstates/mechanical_saw.json", {"variants": variants})
+    write("assets/create/models/item/mechanical_saw.json",
+          {"parent": "create:block/mechanical_saw/item"})
+    write("assets/create/items/mechanical_saw.json", {"model": {
+        "type": "minecraft:model", "model": "create:item/mechanical_saw"}})
+    write("data/create/loot_table/blocks/mechanical_saw.json", {"type": "minecraft:block",
+        "pools": [{"rolls": 1, "entries": [{"type": "minecraft:item",
+                                              "name": "create:mechanical_saw"}]}]})
+    write("data/create/recipe/cutting/andesite_alloy.json", {
+        "type": "create:cutting", "ingredients": [{"item": "create:andesite_alloy"}],
+        "processing_time": 200, "results": [{"count": 6, "id": "create:shaft"}]})
+    write("data/create/recipe/crafting/kinetics/mechanical_saw.json", {
+        "type": "minecraft:crafting_shaped", "category": "misc",
+        "key": {"A": "#c:plates/iron", "C": "create:andesite_casing", "I": "#c:ingots/iron"},
+        "pattern": [" A ", "AIA", " C "],
+        "result": {"count": 1, "id": "create:mechanical_saw"}})
+    for locale, label in [("en_us", "Mechanical Saw"), ("ru_ru", "Механическая пила")]:
+        path = CONTENT / ("assets/create/lang/" + locale + ".json")
+        lang = json.loads(path.read_text())
+        lang["block.create.mechanical_saw"] = label
+        path.write_text(json.dumps(lang, ensure_ascii=False, indent=2) + "\n")
+
+
 def main():
     CONTENT.mkdir(exist_ok=True)
     (CONTENT / "horizon-mod.toml").write_text('''id = "create"
 name = "Create for Horizon — prototype"
-version = "0.5.0-ch4os.9"
-description = "Experimental kinetic foundation with milling, bulk fan processing, stationary drilling, pressing, depots, crafting and a bounded one-pole mechanical piston."
+version = "0.5.0-ch4os.10"
+description = "Experimental kinetic foundation with selected milling, fan, drilling, pressing and stationary saw processing, depots, crafting and a bounded one-pole mechanical piston."
 authors = ["create-horizon contributors"]
 api = "0.2"
 side = "both"
@@ -436,6 +501,7 @@ capabilities = ["registries"]
     dry_mixing_content()
     coal_heating_content()
     belt_content()
+    saw_content()
     write("data/create/recipe/mixing/dough_by_mixing.json", {'type': 'create:mixing', 'ingredients': ['#c:flours/wheat', {'type': 'neoforge:single', 'amount': 1000, 'fluid': 'minecraft:water'}], 'results': [{'id': 'create:dough'}]})
     # Source installs carry only the native bundle. Its documented data folder
     # therefore contains the complete public content, with no player-side Python.

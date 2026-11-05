@@ -127,6 +127,7 @@ pub(super) fn owns(block: &str) -> bool {
             | "create:millstone"
             | "create:encased_fan"
             | "create:mechanical_drill"
+            | "create:mechanical_saw"
             | "create:mechanical_piston"
             | "create:piston_extension_pole"
             | "create:portable_storage_interface"
@@ -318,7 +319,9 @@ pub(super) fn placed(game: &mut Game<'_>, stack: &ItemStack, pos: [i32; 3]) {
                     Direction::West,
                 ][((f64::from(game.yaw) / 90.0 + 0.5).floor() as i64 & 3) as usize],
             ),
-            "create:mechanical_piston" | "create:portable_storage_interface" => {
+            "create:mechanical_piston"
+            | "create:mechanical_saw"
+            | "create:portable_storage_interface" => {
                 Some(if sneaking { look } else { look.opposite() })
             }
             "create:piston_extension_pole" => Some(face.opposite()),
@@ -326,7 +329,10 @@ pub(super) fn placed(game: &mut Game<'_>, stack: &ItemStack, pos: [i32; 3]) {
         };
         if let Some(facing) = facing {
             game.native_set_block_property(pos, "facing", facing.name());
-            if stack.item.as_ref() == "create:mechanical_piston" {
+            if matches!(
+                stack.item.as_ref(),
+                "create:mechanical_piston" | "create:mechanical_saw"
+            ) {
                 // DirectionalAxisKineticBlock: the shaft axis is perpendicular
                 // to the piston face, preferring an existing vertical shaft.
                 let vertical = Direction::ALL
@@ -357,6 +363,15 @@ pub(super) fn placed(game: &mut Game<'_>, stack: &ItemStack, pos: [i32; 3]) {
                     "axis_along_first",
                     if first { "true" } else { "false" },
                 );
+                if stack.item.as_ref() == "create:mechanical_saw" {
+                    let flipped = facing.axis() == Axis::Y
+                        && nearest(game.yaw, 0.0).vector().iter().any(|v| *v > 0);
+                    game.native_set_block_property(
+                        pos,
+                        "flipped",
+                        if flipped { "true" } else { "false" },
+                    );
+                }
             }
         }
     }
@@ -370,6 +385,9 @@ pub(super) fn depot_reacts(game: &Game<'_>, pos: [i32; 3], face: [i32; 3]) -> bo
         return true;
     }
     if crate::game::create_port_millstone::reacts(game, pos) {
+        return true;
+    }
+    if crate::game::create_port_saw::reacts(game, pos) {
         return true;
     }
     if crate::game::create_port_interactions::reacts(game, pos) {
@@ -412,6 +430,11 @@ pub(super) fn right_click(game: &mut Game<'_>, pos: [i32; 3], face: [i32; 3], ca
         return;
     }
     if crate::game::create_port_millstone::right_click(game, pos) {
+        *canceled = true;
+        game.swing_arm();
+        return;
+    }
+    if crate::game::create_port_saw::right_click(game, pos) {
         *canceled = true;
         game.swing_arm();
         return;
@@ -543,6 +566,10 @@ pub(super) fn node(game: &Game<'_>, pos: [i32; 3]) -> Option<Node> {
             .native_block_property(pos, "facing")
             .unwrap_or_else(|| "north".into()),
     );
+    if block == "create:mechanical_saw" && direction != [0, 1, 0] {
+        // The horizontal source mode is a block/tree breaker, deferred here.
+        return None;
+    }
     let mut axis = match axis_property.as_deref() {
         Some("x") => Axis::X,
         Some("y") => Axis::Y,
@@ -553,7 +580,10 @@ pub(super) fn node(game: &Game<'_>, pos: [i32; 3]) -> Option<Node> {
     };
     if matches!(
         block.as_str(),
-        "create:speedometer" | "create:stressometer" | "create:mechanical_piston"
+        "create:speedometer"
+            | "create:stressometer"
+            | "create:mechanical_piston"
+            | "create:mechanical_saw"
     ) {
         let first = game
             .native_block_property(pos, "axis_along_first")
@@ -614,6 +644,7 @@ pub(super) fn node(game: &Game<'_>, pos: [i32; 3]) -> Option<Node> {
         "create:millstone" => Kind::Millstone,
         "create:mechanical_mixer" => Kind::Mixer,
         "create:mechanical_piston" => Kind::MechanicalPiston,
+        "create:mechanical_saw" => Kind::Saw,
         "create:encased_fan" | "create:mechanical_drill" => Kind::Consumer {
             facing: direction.map(|v| -v),
             impact: if block == "create:mechanical_drill" {
@@ -911,6 +942,9 @@ pub(super) fn tick(game: &mut Game<'_>, pos: [i32; 3], entity: &mut ModBlockEnti
     if block == "create:mechanical_drill" {
         sync |= crate::game::create_port_drill::tick(game, pos, entity, rpm);
     }
+    if block == "create:mechanical_saw" {
+        sync |= crate::game::create_port_saw::tick(game, pos, entity, rpm);
+    }
     if matches!(block.as_str(), "create:speedometer" | "create:stressometer") {
         let value = if block == "create:speedometer" {
             create_engine::visual::speed_dial(rpm)
@@ -1076,6 +1110,7 @@ pub(super) fn update_tag(entity: &ModBlockEntity, tag: &mut Option<Compound>) {
 pub(super) fn container(block: &str, container: &mut Option<ModContainer>) {
     crate::game::create_port_basin::container(block, container);
     crate::game::create_port_millstone::container(block, container);
+    crate::game::create_port_saw::container(block, container);
     if block == "create:mechanical_piston" && container.is_none() {
         *container = Some(ModContainer {
             slots: 1,
@@ -1203,6 +1238,9 @@ pub(super) fn draw(
         return;
     }
     if crate::game::create_port_drill::draw(game, pos, entity, draw) {
+        return;
+    }
+    if crate::game::create_port_saw::draw(game, pos, entity, draw) {
         return;
     }
     if block == "create:encased_fan" {
