@@ -99,26 +99,14 @@ pub(super) fn fluid_fill(
     action: NativeFluidAction,
     out: &mut Option<i32>,
 ) {
-    let Some(tank) = state(game, pos) else {
-        return;
-    };
-    *out = Some(0);
-    if !plain_water(resource) {
-        return;
-    }
-    let accepted = (resource.amount as u32).min(codec::CAPACITY - tank.amount);
-    if accepted == 0 {
-        return;
-    }
-    #[allow(unreachable_patterns)]
-    match action {
-        NativeFluidAction::Simulate => *out = Some(accepted as i32),
-        NativeFluidAction::Execute => {
-            if execute(game, pos, tank.amount, tank.amount + accepted) {
-                *out = Some(accepted as i32);
-            }
-        }
-        _ => {}
+    if let Some(accepted) = transfer_fill(
+        game,
+        |game| state(game, pos),
+        |game, old, new| execute(game, pos, old, new),
+        resource,
+        action,
+    ) {
+        *out = Some(accepted);
     }
 }
 
@@ -130,27 +118,72 @@ pub(super) fn fluid_drain(
     action: NativeFluidAction,
     out: &mut Option<NativeFluidStack>,
 ) {
-    let Some(tank) = state(game, pos) else {
-        return;
-    };
+    if let Some(drained) = transfer_drain(
+        game,
+        |game| state(game, pos),
+        |game, old, new| execute(game, pos, old, new),
+        request,
+        action,
+    ) {
+        *out = Some(drained);
+    }
+}
+
+// The callback and the NBT fixture below share these exact transfer branches.
+// `read` is the controller boundary; `commit` is invoked only by Execute.
+fn transfer_fill<T>(
+    source: &mut T,
+    read: impl FnOnce(&T) -> Option<codec::Tank>,
+    commit: impl FnOnce(&mut T, u32, u32) -> bool,
+    resource: &NativeFluidStack,
+    action: NativeFluidAction,
+) -> Option<i32> {
+    let tank = read(source)?;
+    if !plain_water(resource) {
+        return Some(0);
+    }
+    let accepted = (resource.amount as u32).min(codec::CAPACITY - tank.amount);
+    if accepted == 0 {
+        return Some(0);
+    }
+    #[allow(unreachable_patterns)]
+    Some(match action {
+        NativeFluidAction::Simulate => accepted as i32,
+        NativeFluidAction::Execute => {
+            if commit(source, tank.amount, tank.amount + accepted) {
+                accepted as i32
+            } else {
+                0
+            }
+        }
+        _ => 0,
+    })
+}
+
+fn transfer_drain<T>(
+    source: &mut T,
+    read: impl FnOnce(&T) -> Option<codec::Tank>,
+    commit: impl FnOnce(&mut T, u32, u32) -> bool,
+    request: &NativeFluidDrain,
+    action: NativeFluidAction,
+) -> Option<NativeFluidStack> {
+    let tank = read(source)?;
     let maximum = match request {
         NativeFluidDrain::Any(amount) if *amount > 0 => *amount as u32,
         NativeFluidDrain::Exact(stack) if plain_water(stack) => stack.amount as u32,
-        _ => return,
+        _ => return None,
     };
     let accepted = maximum.min(tank.amount);
     if accepted == 0 {
-        return;
+        return None;
     }
     #[allow(unreachable_patterns)]
     match action {
-        NativeFluidAction::Simulate => *out = Some(water(accepted)),
+        NativeFluidAction::Simulate => Some(water(accepted)),
         NativeFluidAction::Execute => {
-            if execute(game, pos, tank.amount, tank.amount - accepted) {
-                *out = Some(water(accepted));
-            }
+            commit(source, tank.amount, tank.amount - accepted).then(|| water(accepted))
         }
-        _ => {}
+        _ => None,
     }
 }
 
@@ -316,4 +349,186 @@ pub(super) fn draw(
         },
     );
     true
+}
+
+#[cfg(test)]
+mod transfer_tests {
+    use super::*;
+    use horizon_world::nbt::Tag;
+
+    fn fixture_commit(nbt: &mut Compound, old: u32, new: u32, fail: bool) -> bool {
+        !fail
+            && codec::read(nbt).is_ok_and(|tank| tank.amount == old)
+            && codec::set_amount(nbt, new).unwrap_or(false)
+    }
+
+    fn fill(
+        nbt: &mut Compound,
+        resource: &NativeFluidStack,
+        action: NativeFluidAction,
+        fail_commit: bool,
+    ) -> (Option<i32>, usize) {
+        let mut commits = 0;
+        let result = transfer_fill(
+            nbt,
+            |nbt| codec::read(nbt).ok(),
+            |nbt, old, new| {
+                commits += 1;
+                fixture_commit(nbt, old, new, fail_commit)
+            },
+            resource,
+            action,
+        );
+        (result, commits)
+    }
+
+    fn drain(
+        nbt: &mut Compound,
+        request: &NativeFluidDrain,
+        action: NativeFluidAction,
+        fail_commit: bool,
+    ) -> (Option<NativeFluidStack>, usize) {
+        let mut commits = 0;
+        let result = transfer_drain(
+            nbt,
+            |nbt| codec::read(nbt).ok(),
+            |nbt, old, new| {
+                commits += 1;
+                fixture_commit(nbt, old, new, fail_commit)
+            },
+            request,
+            action,
+        );
+        (result, commits)
+    }
+
+    #[test]
+    fn fill_simulates_without_commit_and_executes_clipped_amount() {
+        let mut nbt = codec::initial();
+        let before = nbt.clone();
+        assert_eq!(
+            fill(&mut nbt, &water(9_000), NativeFluidAction::Simulate, false),
+            (Some(8_000), 0)
+        );
+        assert_eq!(nbt, before);
+        assert_eq!(
+            fill(&mut nbt, &water(9_000), NativeFluidAction::Execute, false),
+            (Some(8_000), 1)
+        );
+        assert_eq!(codec::read(&nbt).unwrap().amount, 8_000);
+        assert_eq!(
+            fill(&mut nbt, &water(1_000), NativeFluidAction::Execute, false),
+            (Some(0), 0)
+        );
+
+        codec::set_amount(&mut nbt, 7_500).unwrap();
+        let before = nbt.clone();
+        assert_eq!(
+            fill(&mut nbt, &water(1_000), NativeFluidAction::Simulate, false),
+            (Some(500), 0)
+        );
+        assert_eq!(nbt, before);
+        assert_eq!(
+            fill(&mut nbt, &water(1_000), NativeFluidAction::Execute, false),
+            (Some(500), 1)
+        );
+        assert_eq!(codec::read(&nbt).unwrap().amount, 8_000);
+    }
+
+    #[test]
+    fn drain_simulates_without_commit_and_executes_any_and_exact() {
+        for request in [
+            NativeFluidDrain::Any(1_000),
+            NativeFluidDrain::Exact(water(1_000)),
+        ] {
+            let mut nbt = codec::initial();
+            codec::set_amount(&mut nbt, 750).unwrap();
+            let before = nbt.clone();
+            let (simulated, commits) =
+                drain(&mut nbt, &request, NativeFluidAction::Simulate, false);
+            assert_eq!(simulated.map(|stack| stack.amount), Some(750));
+            assert_eq!(commits, 0);
+            assert_eq!(nbt, before);
+            let (executed, commits) = drain(&mut nbt, &request, NativeFluidAction::Execute, false);
+            assert_eq!(executed.map(|stack| stack.amount), Some(750));
+            assert_eq!(commits, 1);
+            assert!(
+                matches!(nbt.get(&"TankContent".into()), Some(Tag::Compound(c)) if c.is_empty())
+            );
+            let (empty, commits) = drain(&mut nbt, &request, NativeFluidAction::Execute, false);
+            assert!(empty.is_none());
+            assert_eq!(commits, 0);
+        }
+    }
+
+    #[test]
+    fn refuses_zero_foreign_components_lava_and_failed_commit() {
+        let mut nbt = codec::initial();
+        let before = nbt.clone();
+        assert_eq!(
+            fill(&mut nbt, &water(0), NativeFluidAction::Execute, false),
+            (Some(0), 0)
+        );
+        let lava = NativeFluidStack {
+            fluid: "minecraft:lava".into(),
+            ..water(1_000)
+        };
+        assert_eq!(
+            fill(&mut nbt, &lava, NativeFluidAction::Execute, false),
+            (Some(0), 0)
+        );
+        let patched = NativeFluidStack {
+            components: Compound::from([("foreign".into(), Tag::Byte(1))]),
+            ..water(1_000)
+        };
+        assert_eq!(
+            fill(&mut nbt, &patched, NativeFluidAction::Execute, false),
+            (Some(0), 0)
+        );
+        for request in [
+            NativeFluidDrain::Exact(lava),
+            NativeFluidDrain::Exact(patched),
+            NativeFluidDrain::Any(0),
+        ] {
+            let (returned, commits) = drain(&mut nbt, &request, NativeFluidAction::Execute, false);
+            assert!(returned.is_none());
+            assert_eq!(commits, 0);
+        }
+        assert_eq!(nbt, before);
+
+        assert_eq!(
+            fill(&mut nbt, &water(1_000), NativeFluidAction::Execute, true),
+            (Some(0), 1)
+        );
+        assert_eq!(nbt, before);
+        codec::set_amount(&mut nbt, 750).unwrap();
+        let before = nbt.clone();
+        let (returned, commits) = drain(
+            &mut nbt,
+            &NativeFluidDrain::Any(1_000),
+            NativeFluidAction::Execute,
+            true,
+        );
+        assert!(returned.is_none());
+        assert_eq!(commits, 1);
+        assert_eq!(nbt, before);
+
+        nbt.insert("Controller".into(), Tag::Compound(Compound::new()));
+        let before = nbt.clone();
+        assert_eq!(
+            fill(&mut nbt, &water(1_000), NativeFluidAction::Execute, false),
+            (None, 0)
+        );
+        assert!(
+            drain(
+                &mut nbt,
+                &NativeFluidDrain::Any(1_000),
+                NativeFluidAction::Execute,
+                false
+            )
+            .0
+            .is_none()
+        );
+        assert_eq!(nbt, before);
+    }
 }
