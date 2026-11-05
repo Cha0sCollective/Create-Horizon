@@ -34,3 +34,10 @@ the two processor asset/recipe checks, locked stage/lint/build and the finite
 integrated/dedicated saw milestone. Existing cohort001 runtime failures must be
 repaired and composed before this candidate is built. Compilation/gameplay and
 all acceptance remain pending.
+
+The standard private client build helper now explicitly enables the existing
+`horizon-client/audio` Cargo feature while leaving optional controllers disabled.
+Cohort001's no-defaults build could emit observed client requests but had no
+compiled audio output. This is a build-profile correction on unchanged host
+pins, not an audio algorithm repair. A fresh delta review and output observation
+on the next held binary are required; no earlier audio output pass is inferred.

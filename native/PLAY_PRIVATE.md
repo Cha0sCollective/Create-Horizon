@@ -3,7 +3,7 @@
 This launch example uses the personal five-type Creative profile. Later bounded
 Survival/machine profiles are recorded in the native S4-S6 results; they do not
 qualify every included block. The current private package
-version is `0.5.0-ch4os.8`, based on upstream0.5.0 with selected later reuse. Use the same private build on
+development candidate is `0.5.0-ch4os.11`, based on upstream0.5.0 with selected later reuse. Its new saw/tank/track/audio packets still need their recorded game qualification. Use the same private build on
 the server and clients. Original Create IDs remain `create:`.
 
 ## Build
@@ -21,7 +21,10 @@ From `create-horizon/native/create/`:
 HORIZON_SOURCE="/path/to/pinned/horizon" ../../tools/dev.sh python3 tools/stage.py build --work-dir "$HOME/.cache/create-horizon/native-stage"
 ```
 
-This builds the game and matching local control tool. Use a new/empty generated
+This builds the game with Horizon's existing audio output and the matching local
+control tool; optional controllers remain disabled. Audio device availability
+and actual playback still need an observation on the resulting binary.
+Use a new/empty generated
 output directory on Linux storage. Builds refuse a different host pin or an
 unowned nonempty external output. The current workspace's compatible host lives
 at `/mnt/g/Create Rusty/.local/evaluations/horizon-heating-refresh/source`.
