@@ -65,8 +65,10 @@ repair identified source gaps. Host9c7f9b22/Mixinse8cd0aa3 remain pinned. Local
 original-art importer catalog12 adds belt/connector parts from the same owner's
 6.0.10 JAR; no original art is committed. The exact retained6.0.10-to6.0.11 Belt/
 Depot proper source comparison is empty, without claiming full-version parity.
-Packet `docs/design/NATIVE_S6_BELT_TRANSPORT_PACKET.md` records the pending
-focused checks and real-game qualification. This is not a belt/S6 completion.
+Packet `docs/design/NATIVE_S6_BELT_TRANSPORT_PACKET.md` records its bounded scope.
+Source/build and server-accounting checks pass, but completion is HOLD for stale
+dedicated peer Depot presentation after hopper removal; see
+`docs/reference/NATIVE_S6_BELT_TRANSPORT_CHECKPOINT.md`. This is not a belt/S6 pass.
 
 ## Accepted plain-water Basin
 

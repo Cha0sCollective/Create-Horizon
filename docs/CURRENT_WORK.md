@@ -10,13 +10,23 @@ requested break, genuine blocker, required input or scope boundary. Read
 Branch `codex/native-s6-belt-transport`, based on accepted/private-synced02d029f3.
 Packet `docs/design/NATIVE_S6_BELT_TRANSPORT_PACKET.md`. Fresh independent Sol
 High reuse preflight found7db3733's existing transport/ownership implementation
-usable on unchanged9c7f9b22/e8cd0aa3. Candidate `.9`, asset catalog12, is being
-adapted/reviewed before first build. Bare horizontal chain -> accepted Depot ->
-stock hopper; source Press/fan processing, broad kinetics and general contraptions
-are excluded. Narrow strict all-or-nothing inventory/physical metadata checks
-and replacement-aware destruction address identified source gaps. No belt pass
-or S6 completion yet. Raw `.local/native-s6-belt-transport-01`. Stop for broader
-API/schema/framework work, changed acceptance, genuine blocker or required input.
+usable on unchanged9c7f9b22/e8cd0aa3. Candidate `.9`, asset catalog12, reviewed
+source43cef7dd is completion HOLD. Checkpoint:
+`docs/reference/NATIVE_S6_BELT_TRANSPORT_CHECKPOINT.md`. Seventeen unique focused
+checks, final stage65/30, Clippy37warnings and locked build pass. Integrated and
+dedicated server/accounting components and focused ownership supplement pass;
+all9 process exits0, no game running. Dedicated peer still draws gold after
+hopper extraction despite saved Depot/hopper0 and chestgold1. Manual collection's
+peer empty view passes. Do not accept the belt until that replica defect is fixed.
+
+All634 final native hashes and64 indexed artifacts match. Map6dca82f7, game
+8b4126d0/controlae72f8a0; original9d1236f main integrated evidence is attributed
+separately. Raw `.local/native-s6-belt-transport-01`. Owner now requests six
+Create-only team chats, nested workers and root operations/integration with usage
+accounting; reviewed proposal `orchestration/PROJECT_TEAMS_PROPOSAL.md` prepares
+that transition. Transport receives this HOLD; other teams start accepted `.8`.
+No S6 completion. Stop for broader API/schema/framework work, changed acceptance,
+genuine blocker or required input.
 
 ## Accepted plain-water Basin
 

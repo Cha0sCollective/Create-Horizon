@@ -6,8 +6,8 @@ namespace = "create"
 repository = "https://github.com/Cha0sCollective/Create-Horizon"
 visibility = "private"
 stage = "Native S1 through S5 complete; S6 feature families open"
-active_packet = "Bare horizontal belt candidate based on accepted water02d029f3, selected upstream7db3733 transport/ownership plus narrow refusal/metadata repairs; pre-build source review. See docs/design/NATIVE_S6_BELT_TRANSPORT_PACKET.md; old G1 remains historical and unpassed"
-next_stage = "Review/build and qualify only the bounded belt-to-Depot/hopper profile; no broad API/schema/framework, belt processors, general contraptions or release implied"
+active_packet = "Bare belt source43cef7dd completion HOLD: final dedicated peer retains Depot gold after hopper extraction despite correct saved counts; nine normal exits and source/server checks pass. See docs/reference/NATIVE_S6_BELT_TRANSPORT_CHECKPOINT.md; old G1 remains historical and unpassed"
+next_stage = "Checkpoint HOLD and hand focused replica repair/requalification to the owner-requested Transport team; other Create teams start accepted water02d029f3. No architecture/acceptance or public-release expansion implied"
 
 [specification]
 version = "0.1"
