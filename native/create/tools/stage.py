@@ -35,7 +35,7 @@ def main():
             raise SystemExit("Refusing redirected generated path: " + str(path))
     ownership.write_text(owner)
     check_horizon()
-    mixins_source = setup_mixins.main()
+    mixins = setup_mixins.main()
     source = work / "horizon-source"
     if not source.exists():
         source.mkdir(parents=True)
@@ -54,9 +54,6 @@ def main():
             if path.name != "CLAUDE.md":
                 raise SystemExit("Unexpected symlink in pristine export: " + str(path))
             path.unlink()
-    mixins = ROOT / "target" / "debug" / "horizon-mixins"
-    if not mixins.exists():
-        cargo("build", "--locked", "--manifest-path", mixins_source / "Cargo.toml", "-p", "horizon-mixins-cli")
     stage = work / "stage"
     digest = hashlib.sha256(str(PINS).encode())
     for path in sorted(NATIVE.rglob("*")):
