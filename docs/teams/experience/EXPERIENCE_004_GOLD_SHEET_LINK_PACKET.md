@@ -23,8 +23,10 @@ that full Create progression is complete.
 - `native/create/content/data/c/tags/item/plates/gold.json` includes
   `create:golden_sheet`. The existing shaped Goggles recipe consumes that tag
   with two glass blocks and one string (`" S " / "GPG"`). The completed
-  Experience 003 milestone proved the ordinary supplied-sheet craft, exact
-  consumption, equip/head views and selected HUD in both modes; see
+  Experience 003 milestone proved the ordinary supplied-sheet craft and exact
+  consumption in dedicated play. Its separate integrated and dedicated
+  equip/head, selected HUD and cold observations retain their fixture
+  provenance; see
   `.local/experience003-prep/HANDOFF.md` and its root completion review CLEAR.
 - [Accepted S6 pressing](../../reference/NATIVE_S6_PRESSING_RESULTS.md)
   qualifies ordinary one-ingot iron pressing/Depot collection, client
