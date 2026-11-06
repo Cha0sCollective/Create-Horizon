@@ -29,18 +29,29 @@ Transport002's dedicated two-controller belt handoff is now PASS on unchanged `.
 source: stopped receiver refuses under powered source; release transfers exactly
 once; actual peer occupied/empty and saved chestgold1; three exits0, completion
 review CLEAR. See `orchestration/teams/transport-002-results.md`.
-Fluids now owns the sole consolidated tank/track/audio runtime lease.
+The first consolidated tank/track/audio runtime is closed: eight normal process
+exits0 and all661 frozen native hashes intact. Operations reserves the next heavy
+lease; no next build has started. Track completion review is pending.
 Root candidateabf48a5 (`codex/create-team-integration-001`) composes four reviewed
 source packets at development `.10`/resource-cache13: audio, tank, straight track,
 and core/read-only preflight. Static checks and fresh composition review CLEAR;
 shared stage, Clippy, game/control build and23 selected tests PASS. All661 native
-inputs are frozen by source-inputs-r4. Gameplay is in progress: the integrated
-run found ordinary tank bucket/wrench interactions ineffective; preserve that
-failure while independent track/audio cases proceed. A seeded tank fixture
-cannot qualify ordinary filling. Accepted primary stays separate. Saw source
-candidate9823168 (.11/cache14) is isolated in create-team-integration-002,
-awaiting composition review and later shared build. Transport003 funnel source
-production uses existing services; host/owner/acceptance changes remain gated.
+inputs are frozen by source-inputs-r4. First gameplay observes straight-track
+placement/refusal/Survival break-collect and both-mode cold reopen. Tank ordinary
+bucket/wrench and water rendering fail because the codec refuses the host's empty
+components envelope; seeded storage alone cannot qualify filling. Audio client
+event cadence is observed, but the first no-defaults build omitted audio output.
+Accepted primary stays separate. Current candidate003 at55339ce (.11/cache14)
+uses the stable physical create-teams-001 build path; the first cohort's detached
+source archive is now create-teams-002. All676 native inputs are frozen in
+native-team-integration-003. Its distribution/format/asset checks, shared stage
+and audio-enabled Clippy PASS; game/control binary build and client tests are
+running. See docs/teams/INTEGRATION_003.md. Six unchanged engine checks are reused.
+Funnel candidate002/1bcf4f6 is preserved separately: the pinned planner rejects
+its chest-use injection on a nested use item. Recursive temporary input mutation
+is not adopted; current upstream/owner options are being assessed read-only.
+Broader framework/host/owner/acceptance changes remain gated. No earlier failed
+observation is converted into a post-repair pass.
 Other teams have
 bounded isolated allocations: active millstone audio, straight stationary track,
 staged portable contraption core plus read-only native preflight, and one stationary

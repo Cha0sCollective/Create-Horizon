@@ -6,7 +6,7 @@
   "operations_enrolled_at": "2026-11-05T20:28:36.178Z",
   "root_rollout": "2026/10/25/rollout-2026-10-25T14-12-55-01a1747a-eb1f-7183-b3f6-63f0ccc37f13.jsonl",
   "heavy_resource": {
-    "owner": "fluids-cohort-001-runtime",
+    "owner": "operations-cohort-003",
     "state": "reserved",
     "queue": []
   },
@@ -21,7 +21,7 @@
       "thread_id": "01a1ad7e-e33b-7ef2-8bc2-606e374fb5de",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:31.729Z",
-      "state": "fan001 accepted; saw002 source reviewed in next integration candidate9823168",
+      "state": "fan001 accepted; saw002 source reviewed; both-mode runtime helper prepared; shared candidate003 build",
       "lane_initial_head": "76dfaf78370f41b2a5c68620c55be6ecab96f16f"
     },
     {
@@ -34,7 +34,7 @@
       "thread_id": "01a1ad7e-f1a5-7052-b948-19607d6dd8e4",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:37.443Z",
-      "state": "transport001/002 accepted; downward Andesite Funnel003 source allocated",
+      "state": "transport001/002 accepted; funnel003 held at pinned planner boundary; read-only upstream/owner-options assessment",
       "lane_initial_head": "f00d04a3249b53bee453a0191d65285b0e7f6538"
     },
     {
@@ -47,7 +47,7 @@
       "thread_id": "01a1ad7f-00d6-7c60-8820-89ddbee3d21c",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:40.745Z",
-      "state": "cohort001 compiled/tests PASS; sole runtime lease; integrated tank interactions failed, independent cases continue",
+      "state": "first combined runtime closed normally; tank repair3ccf56d source CLEAR; completion handoff/review in progress",
       "lane_initial_head": "76dfaf78370f41b2a5c68620c55be6ecab96f16f"
     },
     {
@@ -94,13 +94,20 @@
     "branch": "codex/create-team-integration-001",
     "path": "G:\\Create Rusty\\.local\\integration\\create-teams-001",
     "head": "abf48a5ec909b9b392ece15c56ed23f248cf3ed3",
-    "state": "shared stage/clippy/build/focused tests PASS; consolidated runtime in progress",
-    "source_map_sha256": "3f204b535652c05435f3c2b817359da1caef36fdf759a5a63b837470c765fa14"
+    "state": "closed eight-exit frozen cohort001 source preserved detached at archived_path; old physical build path now serves candidate002",
+    "source_map_sha256": "3f204b535652c05435f3c2b817359da1caef36fdf759a5a63b837470c765fa14",
+    "archived_path": "G:\\Create Rusty\\.local\\integration\\create-teams-002"
   },
   "next_integration_candidate": {
+    "branch": "codex/create-team-integration-003",
+    "path": "G:\\Create Rusty\\.local\\integration\\create-teams-001",
+    "head": "55339ce3347b2ce667281e8a3e6318ec856144e4",
+    "state": "reviewed pre-funnel saw/tank repair/audio helper source; build running, core6 reused, asset2 rerun",
+    "source_map_sha256": "b6b913501fdfc3fe4326dcafb53fc8c47a8eb7dccc697615ba0a5d984e18aa4b"
+  },
+  "held_integration_candidate": {
     "branch": "codex/create-team-integration-002",
-    "path": "G:\\Create Rusty\\.local\\integration\\create-teams-002",
-    "head": "9823168618115dca1aa1226f9d7603cd16ca76a5",
-    "state": "source-only saw composition; no build/runtime; preserve frozen cohort001"
+    "head": "1bcf4f6f1093c42d0e6c3d25c0c0cb87c20240b1",
+    "state": "Funnel private variable injection rejected by pinned Mixins nested-use lowering; no host compile/game; original source/maps preserved. Owner options under read-only assessment."
   }
 }
