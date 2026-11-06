@@ -7,6 +7,7 @@ import subprocess
 import sys
 import time
 import traceback
+import uuid
 
 p = argparse.ArgumentParser()
 p.add_argument('session', type=Path)
@@ -29,57 +30,82 @@ def call(*words, role='actor'):
 def command(value):
     return call('command', value)
 
-def data(x, path=None):
-    q = f'data get block {x} 65 20' + (f' {path}' if path else '')
-    result = command(q)
-    if result.get('ok') is False:
-        return ''
-    lines = result.get('chat') or []
-    if not lines:
-        call('wait', 3)
-        lines = call('chat-log', 30).get('chat', [])
-    prefix = f'{x}, 65, 20 has the following block data:'
-    relevant = [line for line in lines if line.startswith(prefix)]
-    if not relevant and not path:
-        raise AssertionError(f'No block NBT for {x}: {result}')
-    return relevant[-1] if relevant else ''
+def fresh_chat(query, match):
+    marker = 'FLUIDS005_' + uuid.uuid4().hex[:12]
+    command('say ' + marker)
+    command(query)
+    for _ in range(20):
+        lines = call('chat-log', 60).get('chat', [])
+        markers = [i for i, line in enumerate(lines) if marker in line]
+        if markers:
+            fresh = lines[:markers[0]]  # horizon chat-log is newest first
+            hits = [line for line in fresh if match(line)]
+            if hits:
+                return hits[0]
+        call('wait', 1)
+    raise AssertionError(f'No fresh reply to {query!r} after {marker}')
 
-def number(x, path, missing_zero=False):
-    line = data(x, path)
-    if not line and missing_zero:
-        return 0
-    match = re.search(r'([-+]?\d+(?:\.\d+)?)(?:[fFdD])?\s*$', line)
+def data(x):
+    prefix = f'{x}, 65, 20 has the following block data:'
+    return fresh_chat(f'data get block {x} 65 20', lambda line: line.startswith(prefix))
+
+def game_time():
+    line = fresh_chat('time query gametime',
+                      lambda value: value.startswith('The time is '))
+    match = re.fullmatch(r'The time is (\d+)', line)
+    assert match, line
+    return int(match.group(1))
+
+def number(x, key):
+    line = data(x)
+    match = re.search(r'\b' + re.escape(key) + r':\s*(-?\d+(?:\.\d+)?)', line)
     if not match:
-        raise AssertionError(f'No numeric {path}: {line}')
+        raise AssertionError(f'No numeric {key}: {line}')
     return float(match.group(1))
 
-def empty_basin_path(path, ending):
-    line = data(23, path)
-    assert line.endswith(ending), (path, line)
+def content_amount(content):
+    if content == '{}':
+        return 0
+    match = re.fullmatch(r'\{Fluid: \{amount: (\d+), id: "minecraft:water"\}\}', content)
+    assert match, content
+    return int(match.group(1))
+
+def contents(section, expected):
+    values = re.findall(r'TankContent: (\{\}|\{Fluid: \{[^{}]+\}\})', section)
+    assert len(values) == expected, (section, values)
+    return [content_amount(value) for value in values]
 
 def amounts(total):
-    tank = int(number(20, 'TankContent.Fluid.amount', True))
-    basin = int(number(23, 'InputTanks[0].TankContent.Fluid.amount', True))
+    tank_nbt, basin_nbt = data(20), data(23)
+    tank_values = contents(tank_nbt, 1)
+    input_section = basin_nbt.split('InputTanks: [', 1)[1].split('], OutputTanks:', 1)[0]
+    output_section = basin_nbt.split('OutputTanks: [', 1)[1].split('], Overflow:', 1)[0]
+    input_values, output_values = contents(input_section, 2), contents(output_section, 2)
+    assert input_values[1] == 0 and output_values == [0, 0], basin_nbt
+    assert 'InputItems: {Size: 9, Items: []}' in basin_nbt, basin_nbt
+    assert 'OutputItems: {Size: 9, Items: []}' in basin_nbt, basin_nbt
+    tank, basin = tank_values[0], input_values[0]
     state = {'tank': tank, 'basin': basin, 'total': tank + basin,
-             'tank_nbt': data(20), 'basin_nbt': data(23)}
+             'tank_nbt': tank_nbt, 'basin_nbt': basin_nbt}
     steps.append({'amounts': state})
     assert state['total'] == total, state
     assert 0 <= tank <= 8000 and 0 <= basin <= 1000, state
-    assert 'minecraft:water' in state['tank_nbt'] or tank == 0, state
-    assert 'minecraft:water' in state['basin_nbt'] or basin == 0, state
-    for path in ['InputTanks[1].TankContent', 'OutputTanks[0].TankContent',
-                 'OutputTanks[1].TankContent']:
-        empty_basin_path(path, '{}')
-    for path in ['InputItems.Items', 'OutputItems.Items']:
-        empty_basin_path(path, '[]')
     return state
 
 def setblock(x, z, state):
     call('setblock', x, 65, z, state)
 
 def tick(count):
+    before = game_time()
     command(f'tick step {count}')
-    call('wait', count + 5)
+    deadline = time.monotonic() + 180
+    while time.monotonic() < deadline:
+        current = game_time()
+        if current == before + count:
+            return
+        assert current < before + count, (before, count, current)
+        call('wait', 1)
+    raise TimeoutError(f'authoritative tick step {count}: {before} -> {current}')
 
 def look_peer():
     if s['mode'] != 'dedicated':
@@ -88,6 +114,14 @@ def look_peer():
     call('wait-ready', 120, role='peer')
     call('look-at', 23.5, 65.6, 20.5, role='peer')
     call('wait', 8, role='peer')
+
+def empty_inventory(role='actor'):
+    for _ in range(40):
+        value = call('inventory', role=role)
+        if value.get('counts') == {}:
+            return
+        call('wait', 1, role=role)
+    raise AssertionError(f'{role} inventory is not empty: {value}')
 
 def shot(label):
     if s['mode'] != 'dedicated':
@@ -104,7 +138,7 @@ def moved(before, after, expected):
     assert after['basin'] - before['basin'] == expected, (before, after)
 
 def close():
-    call('save')
+    assert call('save').get('ok') is True
     if s['mode'] == 'dedicated':
         call('quit', role='peer')
     call('quit')
@@ -117,6 +151,9 @@ def before_cold():
     command('gamerule doMobSpawning false')
     command('gamemode creative @a')
     command('clear @a')
+    empty_inventory()
+    if s['mode'] == 'dedicated':
+        empty_inventory('peer')
     command('tp @s 25.5 67 23.5')
     call('wait-ready', 120)
     if s['mode'] == 'dedicated':
@@ -192,6 +229,9 @@ def after_cold():
     call('wait-ready', 120)
     look_peer()
     prior = json.loads((out / 'pre-cold-amounts.json').read_text())
+    empty_inventory()
+    if s['mode'] == 'dedicated':
+        empty_inventory('peer')
     current = amounts(1000)
     same(prior, current)
     assert number(21, 'Speed') == 0

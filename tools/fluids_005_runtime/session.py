@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import shutil
 import socket
 import subprocess
@@ -32,28 +33,47 @@ p.add_argument('--source-head', required=True)
 p.add_argument('--jar', required=True, type=Path)
 p.add_argument('--jar-sha256', required=True)
 p.add_argument('--resources', required=True, type=Path)
+p.add_argument('--prerequisites', required=True, type=Path)
+p.add_argument('--prerequisites-sha256', required=True)
+p.add_argument('--resource-sha256', action='append', required=True,
+               help='name=sha256 for each of four prepared base manifests')
 p.add_argument('--run', type=Path)
 args = p.parse_args()
 receipt = args.binaries.resolve(strict=True)
 source_map = args.source_map.resolve(strict=True)
 jar = args.jar.resolve(strict=True)
 resources = args.resources.resolve(strict=True)
+prerequisites = args.prerequisites.resolve(strict=True)
 assert sha(receipt) == args.binaries_sha256, 'binary receipt changed'
 assert sha(source_map) == args.source_map_sha256, 'source map changed'
 assert sha(jar) == args.jar_sha256, 'Create JAR changed'
+assert sha(prerequisites) == args.prerequisites_sha256, '007 prerequisite receipt changed'
 built = json.loads(receipt.read_text())
 inputs = json.loads(source_map.read_text())
+prepared = json.loads(prerequisites.read_text())
 assert built['source_map_sha256'] == args.source_map_sha256
 assert Path(built['source_inputs']).resolve(strict=True) == source_map
 assert inputs['git_head'] == args.source_head and len(args.source_head) == 40
 assert inputs['source_root'] == '/mnt/g/Create Rusty/.local/integration/create-teams-001'
+assert prepared['source_map_sha256'] == args.source_map_sha256
+assert Path(prepared['base_resources']).resolve(strict=True) == resources
+composed = Path(prepared['resources']).resolve(strict=True)
+assert set(prepared['resource_files']) == {'facts.json', 'gameplay-facts.json', 'items.json'}
+for name, digest in prepared['resource_files'].items():
+    assert sha(composed / name) == digest, '007 composed table changed: ' + name
+base_sha = {}
+for item in args.resource_sha256:
+    name, separator, digest = item.partition('=')
+    assert separator and name not in base_sha and re.fullmatch('[0-9a-f]{64}', digest), item
+    base_sha[name] = digest
+assert set(base_sha) == {'horizon-resources.json', 'facts.json', 'gameplay-facts.json', 'items.json'}
+for name, digest in base_sha.items():
+    assert sha(resources / name) == digest, 'prepared base manifest changed: ' + name
 held = Path(built['directory']).resolve(strict=True)
 expected = built['sha256']
 assert set(expected) == {'horizon-client', 'horizon-ctl'}
 for name, digest in expected.items():
     assert sha(held / name) == digest, name
-for name in ['facts.json', 'gameplay-facts.json', 'items.json', 'horizon-resources.json']:
-    assert (resources / name).is_file(), name
 runs.mkdir(exist_ok=True)
 mirror_root.mkdir(exist_ok=True)
 if args.run:
@@ -66,6 +86,8 @@ if args.run:
     assert previous['binary_sha256'] == expected
     assert previous['jar_sha256'] == args.jar_sha256
     assert previous['resources'] == str(resources)
+    assert previous['prerequisites_sha256'] == args.prerequisites_sha256
+    assert previous['base_resource_sha256'] == base_sha
 else:
     run = Path(tempfile.mkdtemp(prefix=args.mode + '-', dir=runs))
     (run / 'mode').write_text(args.mode)
@@ -86,6 +108,7 @@ if args.mode == 'dedicated':
 session = {'mode': args.mode, 'run': str(run), 'mirror': str(mirror), 'index': index,
            'port': port, 'source_head': inputs['git_head'], 'source_revision': inputs['git_head'], 'native_tree': inputs['native_tree'],
            'source_map_sha256': args.source_map_sha256, 'binary_receipt_sha256': args.binaries_sha256,
+           'prerequisites_sha256': args.prerequisites_sha256, 'base_resource_sha256': base_sha,
            'files': {str(held/name):digest for name,digest in expected.items()},
            'binary_sha256': expected, 'jar_sha256': args.jar_sha256, 'resources': str(resources), 'processes': {}}
 children = {}

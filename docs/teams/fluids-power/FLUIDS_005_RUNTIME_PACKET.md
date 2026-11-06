@@ -13,10 +13,12 @@ Run from the Linux host used for the native 007 game, not from Windows Python.
 Before launch, fill the following variables from Operations' actual receipts;
 the displayed paths and hashes are inputs, not values to infer from a prior
 cohort. In particular, `SOURCE_HEAD` is the **full physical 001 commit** named
-by the final frozen 007 map, and `RESOURCES` is the actual prepared resource
-root from its prerequisite receipt. The runtime fails before starting a client
-if any supplied digest, source head/map relationship, JAR, held binary, or
-required resource manifest differs.
+by the final frozen 007 map, and `RESOURCES` is the actual prepared **base**
+resource root from its prerequisite receipt. Supply that frozen prerequisite
+receipt and four SHA-256 digests for the base resource manifests. The runtime
+also checks its three composed resource-table digests, including on cold
+reopen. It fails before starting a client if a supplied digest, source
+head/map relationship, JAR, held binary, or required resource manifest differs.
 
 ```bash
 PACKET='/mnt/g/Create Rusty/.local/teams/fluids-power/tools/fluids_005_runtime'
@@ -28,11 +30,20 @@ SOURCE_HEAD='<full 40-hex physical 001 HEAD from that map>'
 JAR='/mnt/g/Create Rusty/.local/evaluations/create-horizon-05/inputs/create-1.21.1-6.0.10.jar'
 JAR_SHA='ef87fe5709f1ba1f5b8bb20a2925b5afb4669e178fd6d8bf10c167759eefe37a'
 RESOURCES='<absolute prepared base resource root from 007 prerequisite receipt>'
+PREREQUISITES='<absolute 007 restoration-prerequisites.json>'
+PREREQUISITES_SHA='<sha256 of that exact prerequisite receipt>'
+RESOURCE_SHA=(
+  --resource-sha256 'horizon-resources.json=<sha256 of RESOURCES/horizon-resources.json>'
+  --resource-sha256 'facts.json=<sha256 of RESOURCES/facts.json>'
+  --resource-sha256 'gameplay-facts.json=<sha256 of RESOURCES/gameplay-facts.json>'
+  --resource-sha256 'items.json=<sha256 of RESOURCES/items.json>'
+)
 python3 "$PACKET/session.py" integrated \
   --binaries "$BINARIES" --binaries-sha256 "$BINARIES_SHA" \
   --source-map "$SOURCE_MAP" --source-map-sha256 "$SOURCE_MAP_SHA" \
   --source-head "$SOURCE_HEAD" --jar "$JAR" --jar-sha256 "$JAR_SHA" \
-  --resources "$RESOURCES"
+  --resources "$RESOURCES" --prerequisites "$PREREQUISITES" \
+  --prerequisites-sha256 "$PREREQUISITES_SHA" "${RESOURCE_SHA[@]}"
 ```
 
 Use `dedicated` in place of `integrated` for the second, separate fresh world.
@@ -59,7 +70,9 @@ python3 "$PACKET/session.py" integrated \
   --binaries "$BINARIES" --binaries-sha256 "$BINARIES_SHA" \
   --source-map "$SOURCE_MAP" --source-map-sha256 "$SOURCE_MAP_SHA" \
   --source-head "$SOURCE_HEAD" --jar "$JAR" --jar-sha256 "$JAR_SHA" \
-  --resources "$RESOURCES" --run '<printed run path>'
+  --resources "$RESOURCES" --prerequisites "$PREREQUISITES" \
+  --prerequisites-sha256 "$PREREQUISITES_SHA" "${RESOURCE_SHA[@]}" \
+  --run '<printed run path>'
 ```
 
 Again substitute `dedicated` for that mode. Once the new `session-01.json`
@@ -95,7 +108,9 @@ sequence. The Tank water seed and later refill are explicit fixtures, not
 ordinary bucket-fill claims. Actor commands are server-authoritative; peer
 PNG files are real rendered client observations and need visual inspection.
 
-Before cold close, the script uses `tick freeze`/`tick step` to measure:
+Before cold close, the script uses `tick freeze`/`tick step` and fresh server
+`time query gametime` replies to confirm each requested step finished. The
+client control wait alone is not treated as server tick completion. It measures:
 
 1. With zero pump RPM, 16 steps leave Tank 1,000 / Basin 0.
 2. With actual pump speed magnitude 16 RPM, ten active steps move exactly
