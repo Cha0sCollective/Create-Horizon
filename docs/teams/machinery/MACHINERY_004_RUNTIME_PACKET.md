@@ -9,8 +9,18 @@ Machinery has not built, started or driven a game. Preserve every failed receipt
 
 - Run the integrated actor and the dedicated server with actor plus **actual
   peer** from the same root-frozen source map and binary hashes. Pin the
-  combined source at `f71992cb9fce067f96dfa736a318147929846538`
-  (integration of reviewed `f05d8ccfb1e164d865eb923f7156c68546780fd2`).
+  combined source at `f732bd481cfc3d9c4720bc51e4a31e7385e18020`,
+  native tree `471136a9f27049a58bac2707c75b18466e94e17c` (742 files).
+  Its root-frozen source map is
+  `G:\Create Rusty\.local\native-team-integration-007\source-inputs.json`,
+  SHA-256 `0c97fc70d5ce5a8dc81bed1b5ccc21887fbc69628c94e0b0d1a6aff015c70f8a`.
+  The reviewed wheel source descended from
+  `f05d8ccfb1e164d865eb923f7156c68546780fd2`; the later f719→f732
+  differences in wheel adapter/runtime are formatting only.
+  Root's frozen `build-001/binaries.json` identifies game SHA-256
+  `fb8ec9b36084b3a5d4d77e56ea4dcb7cd5f1b49eac4d52fc2998f50cdc2ce2db`
+  and control SHA-256
+  `170e866057d97e73b9231c8084547d4a4a02346238db35901ef64bf3d0d6d449`.
   Record root's compiled map/binary hashes, save path, mode, socket roles and
   current source HEAD in each receipt before acting. Do not substitute this
   team's older checkout or a different cache.
@@ -32,6 +42,13 @@ Machinery has not built, started or driven a game. Preserve every failed receipt
 ## One fixed fixture
 
 Choose an isolated loaded center `(X,Y,Z)` in a mob-free disposable Overworld.
+The setup control queries, sets if needed, and requeries the pinned
+`minecraft:spawn_mobs` rule through marker-bounded server feedback; a client
+dispatch `ok:true` is insufficient. It checks actual fixture block states
+after queued dedicated commands. This packet does not use legacy
+`doMobSpawning`, `doDaylightCycle` or `randomTickSpeed`; the pinned names for
+the latter two are `minecraft:advance_time` and
+`minecraft:random_tick_speed`, and no change to either is needed here.
 Keep a 12-block item census radius around it free of preexisting drops. Use
 fixture setup only for support, power, a lever and two wheels; the controller
 must be created by the wheel-pair lifecycle. The center column `(X,Y-1,Z)` is
@@ -185,3 +202,30 @@ is established by compilation or a client-only screenshot. If a pinned
 control is unavailable in the supplied binaries, record its help/error and
 return the concrete gap to root. No public release, production/schema/pin
 change, Cargo, Java, WSL or game run is part of this source-only preparation.
+
+## Fixed control invocation after root grants the game slot
+
+The packet-local executable control is
+`.local/machinery-004/wheel004_milestone.py` in the Machinery worktree. It
+consumes a `session-XX.json` from root's existing
+`G:\Create Rusty\.local\native-team-runtime-007\session.py` and the frozen
+`horizon-ctl` binary; it does not launch or stop a process. It verifies the
+session's f732 source/tree/map and both binary hashes before any control
+action, writes one case receipt and PNGs below its own ignored `receipts/`,
+and rejects an occupied receipt path. Root retains the ordinary close/reopen
+and exit receipts. Use the same clear origin for all cases in a mode.
+
+```text
+python3 '/mnt/g/Create Rusty/.local/teams/machinery/.local/machinery-004/wheel004_milestone.py' SESSION_JSON '/home/arbiter/.cache/create-horizon/team-integration-007-bin-fb8ec9b36084/horizon-ctl' CASE --origin X Y Z
+```
+
+Run `setup`, `pause` on fresh session index 00. Close normally, cold reopen
+the same run as index 01, then run `cold`, `resume`, `removal`. Repeat this
+order in integrated and dedicated/two-client modes. The `pause` case saves
+while stopped; root must normally quit the integrated actor, or quit both
+dedicated clients and stop the dedicated server before the helper creates
+index 01. The dedicated server command queries authoritative item NBT; local
+`container` and `entities` observations are labelled actor replicas. The
+driver's `passed_control_steps` means its finite checks completed; root must
+still reconcile server state, actual images, process exits and the input map
+before any gameplay PASS claim.
