@@ -21,8 +21,8 @@ checks PASS. Six identical engine checks are reused, not new runs. Source and
 composition reviews CLEAR; final runtime review CLEAR at handoff5a87f94. Both
 new worlds cold-reopened; all eight game processes exited0 and all676 post-run
 source hashes match. Root viewed actual peer Tank/Saw transitions and stopped
-the private audio fixture normally. The heavy queue is idle; no game/test job
-or owned audio fixture remains active.
+the private audio fixture normally. That cohort is closed. The current heavy queue belongs to Transport004;
+its disposable dedicated game session is active. No owned audio fixture is active.
 
 [Current integration record](../docs/teams/INTEGRATION_003.md) and
 [reviewed runtime handoff](../docs/teams/fluids-power/FLUIDS_003_COHORT_RUNTIME_HANDOFF.md)
@@ -32,13 +32,23 @@ codex/create-team-integration-002/1bcf4f6 remains separate. Its cache key must b
 refreshed if later composed because cache14 now serves accepted content without it.
 
 Owner selected the [private Mixins repair](../orchestration/teams/transport-003-mixins-decision.md)
-and reusable entity-owner design. All six teams have bounded assignments: tool
-repair, owner design, and existing-service drill/Tank/train-schematic/goggles
-follow-on proposals. Operations prepares reproducible private tool source pinning
-and candidate004 in the existing stable build path. Accepted .11 source55339ce,
-binaries, worlds and all earlier evidence remain preserved. The owner subsequently approved the bounded004 owner foundation (record/view,
-discovery/tick, peer sync and deletion/relocation guards), with no block capture.
-Live bearing, broader host/schema framework and acceptance expansion remain gated.
+and reusable entity-owner design. Exact private tool/source pins and bootstrap
+are reviewed CLEAR. Candidate565bfd3 (.12/cache15), 692 frozen inputs, passed
+formatting, source-install checks, five bootstrap tests, exact hook staging,
+Clippy and playable compilation. Game6b4c0f7f is immutable. Transport now holds
+the actual Funnel runtime lease; gameplay remains unqualified until observations
+and completion review pass. The original planner HOLD and first format receipt
+remain preserved. Generic archives cannot supply the private compiler; this
+profile is explicitly source-workspace-only.
+
+Contraptions003 design is integrated; the owner approved004 foundation with no
+world-block capture. Owner also approved the one derived goggles presentation
+field in [the reviewed packet](../docs/design/GOGGLES_SOLVER_SPEED_FIELD_PACKET.md).
+Machinery owns its producer and Experience its consumer repair. Trains' Quill
+core/client source is reviewed; a content/named-hook proposal is being completed.
+Fluids004 lifecycle checks are reviewed/queued;005 implements a finite water-only
+Tank/Pump/Pipe/Basin line with existing canonical water owners, no persisted pipe
+flow metadata, no generic transaction framework and no public host change.
 
 Actual team tokens and phase intervals remain outside Git at
 G:\Create Rusty\.local\team-operations. Cached tokens are a subset; missing

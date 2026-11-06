@@ -1,0 +1,6 @@
+tree 2d22d35464d1590328c2c8a863e906055b4bf430
+parent e8cd0aa38cffef49cb2e088ef716baa107148c02
+author Parker <throwaway74048@gmail.com> 1793929452 -0600
+committer Parker <throwaway74048@gmail.com> 1793929452 -0600
+
+Permit ordinary local imports in MODIFY_VARIABLE with conservative macro identity guards

@@ -48,8 +48,8 @@ Shared stage/audio-enabled lint/build and10 new focused tests PASS; six identica
 Saw/kinetic checks are reused. Source preparation/compiler/link commands total
 about8.5minutes; native test-group execution totals0.055s. Both integrated and
 dedicated/two-client cold trials pass; all eight game processes exited0 and all676
-post-run hashes match. Root stopped the private Pulse fixture normally. No game,
-compiler, capture or test fixture remains running. The earlier first-cohort Tank
+post-run hashes match. Root stopped the private Pulse fixture normally. At that cohort closure no game,
+compiler, capture or test fixture remained running; the new lease is described below. The earlier first-cohort Tank
 HOLD, no-output build and all missed fixture attempts remain preserved.
 
 The owner now authorizes the reviewed narrow private Mixins repair for ordinary
@@ -62,12 +62,25 @@ Contraptions003 design c5e5053 is reviewed CLEAR and integrated426d86a. The owne
 then explicitly approved its bounded004 foundation: saved entity record/view,
 peer sync, loaded discovery/tick and deletion/relocation guards, with NO world-block
 capture. Live bearing/controller/custody implementation remains a later decision.
-The four other teams audit existing services for bounded drill, Tank lifecycle,
-train/schematic requirements and goggles/HUD follow-ons. No broader architecture,
-host change, public release or acceptance expansion follows from these tasks.
+Machinery and Experience implement the owner-approved selected goggles field
+contract at `docs/design/GOGGLES_SOLVER_SPEED_FIELD_PACKET.md` (review CLEAR).
+The one derived persisted field has an explicit Byte unavailable marker; it does
+not expand the five-type destructive-propagation profile. Machinery owns the
+producer, Experience the matching consumer. Trains' client-only two-corner Quill
+source is reviewed; shared content/hook wiring remains a separate proposal.
+Fluids' reviewed four-block water line is allocated as endpoint-specific transfer
+on existing Tank/Basin owners, with no persisted pipe flow metadata, generic
+transaction framework or host change. Drill and Tank lifecycle runtime plans
+are reviewed/queued; they have no new gameplay result yet.
 
-The funnel's reviewed code remains HELD at1bcf4f6 until the tool repair and exact
-hook stage/build/ordinary-click gameplay checks pass. A temporary-Shift/recursive
+The funnel's original HELD1bcf4f6 is preserved. The actual private tool repair
+is now pinned at ac5d9e7 (format-only child of testedf7a9815); its genuine Git
+ancestry, full source fingerprint and bootstrap/pin reviews are CLEAR. Eight
+tool fixtures passed on its semantic parent. Frozen candidate565bfd3 (.12/cache15)
+passed formatting, five bootstrap checks, exact hook stage/import preservation,
+Clippy and playable build. Game6b4c0f7f and all692 source hashes are frozen;
+Transport holds the dedicated/integrated runtime lease. Funnel gameplay remains
+unqualified until those actual observations and completion review pass. A temporary-Shift/recursive
 input workaround is not adopted. Candidate004 now uses the stable physical build
 path; candidate003/55339ce is preserved by branch and immutable binaries/maps.
 The next funnel composition must refresh its catalog cache key: cache14 has now

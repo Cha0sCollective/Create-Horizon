@@ -1,0 +1,6 @@
+tree e2e433b88fa550ab126d4fc19973934b53e52c22
+parent f7a9815256d82e77f8cac3b8642a651f7c9c19fe
+author Parker <throwaway74048@gmail.com> 1793929827 -0600
+committer Parker <throwaway74048@gmail.com> 1793929827 -0600
+
+Format reviewed local import fixtures with project pinned rustfmt

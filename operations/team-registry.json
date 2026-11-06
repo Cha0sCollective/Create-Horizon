@@ -6,10 +6,12 @@
   "operations_enrolled_at": "2026-11-05T20:28:36.178Z",
   "root_rollout": "2026/10/25/rollout-2026-10-25T14-12-55-01a1747a-eb1f-7183-b3f6-63f0ccc37f13.jsonl",
   "heavy_resource": {
-    "owner": "transport-004-tool-tests",
-    "state": "reserved: execute focused private Mixins tests only after exact source review CLEAR",
+    "owner": "transport-004-funnel-runtime",
+    "state": "Granted: frozen565bfd3/692 inputs; dedicated Funnel custody and integrated chest-interaction checks",
     "queue": [
-      "operations-funnel004-stage-build-runtime"
+      "machinery-003-drill-runtime",
+      "fluids-004-tank-lifecycle-runtime",
+      "experience-003-goggles-equipment-runtime"
     ]
   },
   "teams": [
@@ -23,7 +25,7 @@
       "thread_id": "01a1ad7e-e33b-7ef2-8bc2-606e374fb5de",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:31.729Z",
-      "state": "003 audit/proposal: existing stationary drill services and finite Survival milestone",
+      "state": "Drill003 runtime packet reviewed/queued; approved selected goggles solver-speed producer in isolated implementation",
       "lane_initial_head": "76dfaf78370f41b2a5c68620c55be6ecab96f16f"
     },
     {
@@ -36,7 +38,7 @@
       "thread_id": "01a1ad7e-f1a5-7052-b948-19607d6dd8e4",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:37.443Z",
-      "state": "004 private narrow Mixins local-use planner repair; funnel held until staging/game proof",
+      "state": "Private Mixins source/pin/tool tests and actualhookcompile PASS; leased actualFunnel gameplay milestone",
       "lane_initial_head": "f00d04a3249b53bee453a0191d65285b0e7f6538"
     },
     {
@@ -49,7 +51,7 @@
       "thread_id": "01a1ad7f-00d6-7c60-8820-89ddbee3d21c",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:40.745Z",
-      "state": "004 audit/proposal: Tank Survival bucket contract and filled removal custody",
+      "state": "Tank004 lifecycle packet reviewed/queued; allocated finite water-only four-block pump/pipe source, no persistent pipe flow owner",
       "lane_initial_head": "76dfaf78370f41b2a5c68620c55be6ecab96f16f"
     },
     {
@@ -75,7 +77,7 @@
       "thread_id": "01a1ad7f-1bc5-7d53-89d7-89c76219d1c8",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:48.006Z",
-      "state": "002 train owner requirements plus bounded schematic/track reuse proposal",
+      "state": "Quill001 source eb8f0a3 reviewed CLEAR; isolated content/named-hook wiring proposal allocated",
       "lane_initial_head": "76dfaf78370f41b2a5c68620c55be6ecab96f16f"
     },
     {
@@ -88,7 +90,7 @@
       "thread_id": "01a1ad7f-28cf-7452-9a78-12912bc4d097",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:51.489Z",
-      "state": "003 source audit/proposal: existing goggles equipment/recipe/HUD services",
+      "state": "Selected goggles presentation field approved; matching HUD consumer repair in isolated implementation; craft/equip checklist ready",
       "lane_initial_head": "76dfaf78370f41b2a5c68620c55be6ecab96f16f"
     }
   ],
@@ -125,6 +127,9 @@
     "branch": "codex/create-team-integration-004",
     "path": "G:\\Create Rusty\\.local\\integration\\create-teams-001",
     "base": "1bcf4f6f1093c42d0e6c3d25c0c0cb87c20240b1",
-    "state": "preparing privately pinned Mixins repair and cache15; no heavy build/game yet"
+    "state": "Frozen565bfd3 privateMixinsac5d9e7 .12/cache15; stage/Clippy/buildPASS; game6b4c0f7f held; Transport runtime granted",
+    "head": "565bfd35cb37f9cddcb193f68d089a25bd7d785d",
+    "source_map": "source-inputs-r2.json",
+    "source_map_sha256": "61604157828aa246a1e2eccd891e6834cf5373fc4d9a5911c3e9da3ac847cf79"
   }
 }
