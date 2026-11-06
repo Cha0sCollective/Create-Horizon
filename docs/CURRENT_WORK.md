@@ -49,26 +49,30 @@ The approved inert owner foundation's first dedicated probe observed discovery
 and refusal of native move/remove, but peer VIEW receipt was missing. Both
 processes exited0; no cold pass is claimed. Diagnosis found that Mixins startup's
 empty trait-mod list disables whole initial attachment snapshots. Contraptions
-is preparing a bounded existing start-tracking/VIEW mark_sync repair and explicit
-peer gate observations. No host API/pin/schema change, world capture or live
-bearing is authorized by this repair. Original runtime HOLD remains preserved.
+implemented a reviewed existing start-tracking/VIEW mark_sync repair and explicit
+peer gate observations in007. Its new initial/cold packet passed exact peer VIEW,
+private RECORD absence, guards and unchanged cells; four exits0 and742 source
+files/binaries/JAR match. Completion review is pending. No host API/pin/schema
+change, world capture or live bearing is authorized. Original HOLD is preserved.
 
 The owner approved Machinery004's stationary selected wheel pair and saved
 middle-controller32-slot inventory/clock: cobblestone-to-gravel fallback, normal
 after-capture reopen and removal/spill. Reviewed source5ed8101 and shared wiring
 f05d8cc are root-composed with the endpoint-specific water line in candidate007,
-now7fb999e (.15/cache18),37 blocks/18 standalone items/499 entries. Formatting,
-normal generation/distribution and source-composition reviews pass. Compilation,
-13 new pure checks, one real-owner restoration test and each family's finite
-runtime/spill/reopen gates remain open. No general processing/flow framework,
+nowf732bd4 (.15/cache18),37 blocks/18 standalone items/499 entries. Formatting,
+normal generation/distribution and source-composition reviews pass. The combined
+stage84/40, Clippy,14 selected pure checks, real-owner restoration test and
+playable/control build now PASS. Each family's finite runtime/spill/reopen gates
+remain open; see `docs/teams/operations/INTEGRATION_007_BUILD_RESULTS.md`. No general processing/flow framework,
 other wheel recipes/orientations, entity damage or belt/funnel wheel input.
 
 The release-Mixins benchmark on frozen005 inputs passed and closed normally.
 Its immutable baseline contains4710 generated files, all path/byte equal to the
 release output. Reviewed source8180771 is adopted as0077fb999e. No gameplay
-replay is needed for this byte-identical tooling change. Next compose the
-reviewed owner repair if ready, freeze007 at physical001 and use the prepared
-007 checks/build/resource-preparation/restoration sequence. Drill and Tank
+replay is needed for this byte-identical tooling change. The reviewed007 source
+is frozen and its build/resource-preparation/restoration gates have passed.
+The finite both-mode water-line runtime now holds the shared slot; wheel controls
+are being prepared against the same binaries. Drill and Tank
 lifecycle finite runtime packets remain queued. All old source branches, maps,
 binaries, worlds, failures and dirty historical work remain preserved; no cleanup,
 playable-save/Prism/Java edits, public release or permission expansion.
