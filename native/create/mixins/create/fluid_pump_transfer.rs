@@ -540,14 +540,14 @@ mod restoration_tests {
         assert!(tank_codec::set_amount(&mut tank.nbt, 1_000).unwrap());
         game.world
             .block_entities
-            .insert((SOURCE[0], SOURCE[1], SOURCE[2]), BlockEntity::Mod(tank));
+            .insert((SOURCE[0], SOURCE[1], SOURCE[2]), BlockEntity::Mod(Box::new(tank)));
         let mut basin = ModBlockEntity::default();
         basin.id = BASIN.into();
         basin.items = vec![None; 18];
         crate::game::create_port_basin::initialize(&mut basin);
         game.world
             .block_entities
-            .insert((TARGET[0], TARGET[1], TARGET[2]), BlockEntity::Mod(basin));
+            .insert((TARGET[0], TARGET[1], TARGET[2]), BlockEntity::Mod(Box::new(basin)));
         game.world.modified.clear();
         game.world.block_log = Some(Vec::new());
         assert_eq!(snapshot_tank(&game, SOURCE).unwrap().amount, 1_000);
