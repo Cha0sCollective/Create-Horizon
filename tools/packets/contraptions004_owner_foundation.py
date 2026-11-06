@@ -280,32 +280,39 @@ def cleanup_failed_session(session_path: Path, error: BaseException, out: Path |
                 and path == mirror / f"session-{index:02d}.json")
         if target is None:
             target = mirror / f"owner-check-{index:02d}-failure.json"
-        peer = session["processes"]["peer"]
-        ctl = Path(peer["game"]).with_name("horizon-ctl")
-        if ctl.is_file() and sha256(ctl) == session["binary_sha256"]["horizon-ctl"]:
-            try:
-                result = subprocess.run(
-                    [str(ctl), "--socket", peer["socket"], "--timeout", "10", "quit"],
-                    capture_output=True, text=True, timeout=20)
-                receipt["actions"].append({"peer_quit_code": result.returncode,
-                                           "stdout": result.stdout, "stderr": result.stderr})
-            except (OSError, subprocess.TimeoutExpired) as quit_error:
-                receipt["actions"].append({"peer_quit_error": repr(quit_error)})
-        else:
-            receipt["actions"].append({"peer_quit_skipped": "frozen control binary unavailable"})
-        pid = int(peer["pid"])
-        deadline = time.monotonic() + 10
-        while peer_alive(pid) and time.monotonic() < deadline:
-            time.sleep(0.25)
-        if peer_alive(pid):
-            if verified_peer(session):
-                os.kill(pid, signal.SIGTERM)
-                receipt["actions"].append({"peer_sigterm": pid})
+        try:
+            peer = session["processes"]["peer"]
+            ctl = Path(peer["game"]).with_name("horizon-ctl")
+            if ctl.is_file() and sha256(ctl) == session["binary_sha256"]["horizon-ctl"]:
+                try:
+                    result = subprocess.run(
+                        [str(ctl), "--socket", peer["socket"], "--timeout", "10", "quit"],
+                        capture_output=True, text=True, timeout=20)
+                    receipt["actions"].append({"peer_quit_code": result.returncode,
+                                               "stdout": result.stdout, "stderr": result.stderr})
+                except (OSError, subprocess.TimeoutExpired) as quit_error:
+                    receipt["actions"].append({"peer_quit_error": repr(quit_error)})
             else:
-                receipt["actions"].append({"peer_sigterm_skipped": "PID identity mismatch"})
-        stop = mirror / f"stop-{index:02d}.request"
-        stop.write_text("owner foundation packet failed; bounded stop requested\n")
-        receipt["actions"].append({"stop_request": str(stop)})
+                receipt["actions"].append({"peer_quit_skipped": "frozen control binary unavailable"})
+            pid = int(peer["pid"])
+            deadline = time.monotonic() + 10
+            while peer_alive(pid) and time.monotonic() < deadline:
+                time.sleep(0.25)
+            if peer_alive(pid):
+                if verified_peer(session):
+                    try:
+                        os.kill(pid, signal.SIGTERM)
+                        receipt["actions"].append({"peer_sigterm": pid})
+                    except OSError as signal_error:
+                        receipt["actions"].append({"peer_sigterm_error": repr(signal_error)})
+                else:
+                    receipt["actions"].append({"peer_sigterm_skipped": "PID identity mismatch"})
+        except BaseException as peer_cleanup_error:
+            receipt["actions"].append({"peer_cleanup_error": repr(peer_cleanup_error)})
+        finally:
+            stop = mirror / f"stop-{index:02d}.request"
+            stop.write_text("owner foundation packet failed; bounded stop requested\n")
+            receipt["actions"].append({"stop_request": str(stop)})
         exit_path = mirror / f"exit-{index:02d}.json"
         deadline = time.monotonic() + 120
         while not exit_path.exists() and time.monotonic() < deadline:
