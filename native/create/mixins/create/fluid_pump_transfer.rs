@@ -519,6 +519,10 @@ mod restoration_tests {
             None,
         )
         .unwrap();
+        // The headless integrated-server fixture has no live serving handle;
+        // native fluid APIs require the same explicit server-simulation flag
+        // used by the pinned host's ignored Game tests.
+        game.options.dedicated = Some(Vec::new());
         game.world = World::new(game.res.facts().air, 382);
         game.world
             .chunks
