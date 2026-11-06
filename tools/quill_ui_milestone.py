@@ -109,6 +109,11 @@ def selected(role, item):
     return answer
 
 
+def launch_arg(role, name):
+    words = session["processes"][role]["command"]
+    return words[words.index(name) + 1]
+
+
 def shot(role, label, expected, style=None):
     path = out / f"{session['mode']}-{session['index']:02d}-{label}-{role}.png"
     assert not path.exists(), path
@@ -128,6 +133,17 @@ def counts(role="actor"):
     return call(role, "inventory")["counts"]
 
 
+def await_value(label, read, accepted, seconds=20):
+    deadline = time.monotonic() + seconds
+    last = None
+    while time.monotonic() < deadline:
+        last = read()
+        if accepted(last):
+            return last
+        time.sleep(.1)
+    raise TimeoutError(f"{label} did not settle: {last!r}")
+
+
 def assert_unchanged(before_region, before_counts):
     assert region() == before_region, "Quill changed fixture blocks"
     assert counts() == before_counts, "Quill changed actor inventory counts"
@@ -144,16 +160,27 @@ try:
             command(f"setblock {x + offset} {y} {z} minecraft:stone")
         command(f"setblock {x + 4} {y} {z + 2} "
                 "minecraft:lever[face=floor,facing=north,powered=false]")
+        expected_blocks = [[x + offset, y, z, "minecraft:stone"] for offset in points]
+        await_value("four target blocks", region,
+                    lambda data: data["blocks"] == expected_blocks)
+        await_value("unpowered lever", lambda: actor("block", x + 4, y, z + 2),
+                    lambda data: "powered=false" in data["state"])
         command("gamemode creative @s")
-        assert actor("status")["creative"] is True
+        await_value("actor Creative", lambda: actor("status"),
+                    lambda data: data["creative"] is True)
         command(f"give @s {quill} 1")
         command("give @s minecraft:stick 1")
+        await_value("actor Quill and stick", counts,
+                    lambda data: data.get(quill) == 1 and data.get("minecraft:stick") == 1)
         selected("actor", quill)
         if "peer" in session["processes"]:
             call("peer", "wait-ready", 120)
             command("gamemode creative @s", "peer")
-            assert call("peer", "status")["creative"] is True
+            await_value("peer Creative", lambda: call("peer", "status"),
+                        lambda data: data["creative"] is True)
             command(f"give @s {quill} 1", "peer")
+            await_value("peer Quill", lambda: counts("peer"),
+                        lambda data: data.get(quill) == 1)
             selected("peer", quill)
         before_region, before_counts = region(), counts()
         peer_counts = counts("peer") if "peer" in session["processes"] else None
@@ -202,7 +229,7 @@ try:
         shot("actor", "item-return", ["Right-click a block: first corner"])
         actor("mouse", "right", "click")
         actor("open-inventory")
-        assert actor("state")["screen"] == "inventory"
+        assert actor("state")["screen"] == "creative"
         actor("wait", 3)
         actor("close")
         assert actor("state")["screen"] == "playing"
@@ -215,9 +242,9 @@ try:
         lever_before = actor("block", x + 4, y, z + 2)
         assert "powered=false" in lever_before["state"], lever_before
         actor("mouse", "right", "click")
-        actor("wait", 3)
-        lever_after = actor("block", x + 4, y, z + 2)
-        assert "powered=true" in lever_after["state"], lever_after
+        await_value("lever powered by stick click",
+                    lambda: actor("block", x + 4, y, z + 2),
+                    lambda data: "powered=true" in data["state"])
         assert_unchanged(before_region, before_counts)
 
         # Peer-local selection: one client's first corner cannot change the other.
@@ -237,6 +264,35 @@ try:
             aim("actor", 16)
             actor("mouse", "right", "click")
             assert counts("peer") == peer_counts, "Quill changed peer inventory counts"
+        shot("actor", "before-same-process-unload", [f"First: {x + 16}, {y}, {z}"])
+        if session["mode"] == "integrated":
+            actor("key", "esc", "tap")
+            await_value("paused menu", lambda: actor("state"),
+                        lambda data: data["screen"] == "paused")
+            pause_frame = out / f"{session['mode']}-{session['index']:02d}-pause.png"
+            assert not pause_frame.exists(), pause_frame
+            actor("screenshot", pause_frame)
+            actor("click-button", "Save and Quit to Title")
+            await_value("title after world leave", lambda: actor("state"),
+                        lambda data: data["screen"] == "title", seconds=90)
+            actor("open", launch_arg("actor", "--world"))
+        else:
+            actor("disconnect")
+            await_value("title after disconnect", lambda: actor("state"),
+                        lambda data: data["screen"] == "title", seconds=30)
+            actor("connect", f"127.0.0.1:{session['port']}",
+                  launch_arg("actor", "--name"))
+        actor("wait-ready", 120)
+        await_value("same-process Quill return", counts,
+                    lambda data: data.get(quill) == 1)
+        selected("actor", quill)
+        shot("actor", "same-process-world-reset",
+             ["Right-click a block: first corner"])
+        assert_unchanged(before_region, before_counts)
+        if "peer" in session["processes"]:
+            shot("peer", "peer-after-actor-rejoin", [f"First: {x}, {y}, {z}"])
+        aim("actor", 16)
+        actor("mouse", "right", "click")
         shot("actor", "before-world-unload", [f"First: {x + 16}, {y}, {z}"])
         assert_unchanged(before_region, before_counts)
         pre_unload_path.write_text(json.dumps({"mode": session["mode"],
@@ -247,11 +303,15 @@ try:
         prior = json.loads(pre_unload_path.read_text())
         assert prior["mode"] == session["mode"] and prior["run"] == session["run"]
         assert prior["index"] != session["index"] and prior["origin"] == args.origin
+        await_value("reopened actor Quill", counts,
+                    lambda data: data.get(quill) == 1)
         selected("actor", quill)
         shot("actor", "after-world-reopen", ["Right-click a block: first corner"])
         assert region() == prior["region"], "world fixture changed across reopen"
         assert counts() == prior["counts"], "inventory changed across reopen"
         if "peer" in session["processes"]:
+            await_value("reopened peer Quill", lambda: counts("peer"),
+                        lambda data: data.get(quill) == 1)
             selected("peer", quill)
             shot("peer", "peer-after-world-reopen", ["Right-click a block: first corner"])
             assert counts("peer") == prior["peer_counts"], "peer inventory changed across reopen"

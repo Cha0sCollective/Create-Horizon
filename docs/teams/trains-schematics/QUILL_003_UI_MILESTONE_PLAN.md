@@ -37,7 +37,9 @@ selection line. It gives the actor one Quill and one stick; on a dedicated
 session, the peer also gets one Quill. No other world or inventory writes are
 expected after setup except toggling that lever. The root should inspect the
 initial session metadata and ordinary server/client startup before invoking
-the driver.
+the driver. In dedicated mode a `command` reply only confirms transmission;
+the driver polls actual target blocks, lever, Creative state and inventory
+with a 20-second bound before using them as a baseline.
 
 The `full` case performs these checks in one session:
 
@@ -49,17 +51,22 @@ The `full` case performs these checks in one session:
    coordinates and size. Third click shows the explicit no-Save message.
 3. Shift plus real right click clears the selection. Two quick separate
    press/release edges at one target produce a 1 x 1 x 1 complete selection.
-4. A switch to stick and back, and an inventory-screen open/close, each
+4. A switch to stick and back, and a Creative-screen open/close, each
    remove the prior selection. Stick use toggles an ordinary lever through
    the same physical mouse path.
 5. Before and after Quill use, compare the exact selected-line block list
    and actor item counts. On dedicated, capture actor and peer HUD frames
    before and after their independent first corners and an actor cancel.
-6. Leave a first corner selected, capture its HUD, then let root close the
-   world/session normally. Reopen that same disposable run with a new
-   session index and run `reopen` with the same origin; the new HUD must show
-   the initial first-corner prompt, and blocks/items must match the prior
-   receipt.
+6. Leave a first corner selected and unload/rejoin **in the same client
+   process**: integrated uses the paused Save and Quit to Title button and
+   `open` on the session's world; dedicated uses `disconnect` and `connect`
+   to the session's local server. The actor's HUD must return to its initial
+   prompt; on dedicated the peer retains its own corner. The driver then
+   selects a first corner again for a separate cold process check.
+7. Let root close the world/session normally. Reopen that same disposable
+   run with a new session index and run `reopen` with the same origin; the
+   new HUD must show the initial first-corner prompt, and blocks/items must
+   match the prior receipt.
 
 The driver checks world target, input results, lever state, block lists,
 item counts and screenshot existence. **Actual HUD wording, coordinates,
