@@ -73,7 +73,7 @@ Root directly viewed dedicated Tank full/empty and Saw input/product/empty image
 The private audio fixture was stopped normally after the game sessions. See the
 [final runtime handoff](fluids-power/FLUIDS_003_COHORT_RUNTIME_HANDOFF.md) for captures,
 stock endpoints, failed setup attempts and exact limits. Tank filled removal and
-Survival parity remain unqualified; the adopted runtime plan treats filled
+Survival parity remain unqualified; the [allocated runtime plan](fluids-power/FLUIDS_001_RUNTIME_PLAN.md) treats filled
 removal as exploratory. Broader Create/S6 and public releases are not accepted.
 
 The next gated work requires owner decisions for private Mixins support and live
