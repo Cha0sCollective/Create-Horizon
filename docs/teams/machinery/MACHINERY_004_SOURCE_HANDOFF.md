@@ -104,3 +104,12 @@ actor drop/pickup, integrated and dedicated/two-client cold reopen, and actual
 client motion remain for project-lead integration and the Transport-owned
 heavy build/game lease. Preserve failures and distinguish server state from
 client views. No Cargo, WSL, Java, staging or game process ran in this team.
+
+## Recorded resource use
+
+The team lead's coordination phase was 118.760 s and implementation phase
+1,629.973 s, recorded by the phase ledger. The isolated core author reported
+232 s; the adapter author worked about 300 s (04:06–04:11 UTC). The independent
+source review ran 274 s initially and 96 s for the focused repair. Build and
+game-test time here are zero. Verified token counters for these sessions remain
+unknown; no cost estimate is substituted for telemetry.
