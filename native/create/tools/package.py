@@ -10,6 +10,8 @@ from common import ROOT, NATIVE, PINS, check_horizon
 
 def main():
     argparse.ArgumentParser(description=__doc__).parse_args()
+    if "horizon_mixins_overlay_sha256" in PINS:
+        raise SystemExit("Private Mixins builds are source-workspace-only; the standard launcher cannot fetch this private compiler revision. Native archive packaging is unavailable.")
     check_horizon()
     cli = ROOT / "target/debug/cargo-horizon-mod"
     subprocess.run([str(cli), "build"], cwd=ROOT / "content", check=True)
@@ -42,7 +44,7 @@ def main():
     content_target = destination / f"create-content-{manifest['version']}.hmod"
     shutil.copy2(content_archive, content_target)
     subprocess.run([str(cli), "check", str(content_target), "--json"], check=True)
-    print("Native archives include all public content and pin the published Mixins PR #26 commit; no local tool patch.")
+    print("Native archives include all public content and pin Mixins source: " + PINS["horizon_mixins_revision"])
     print("Original assets are never packaged. Place your own JAR in the instance's horizon-mods/create-resources/.")
 
 
