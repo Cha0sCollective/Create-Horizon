@@ -71,6 +71,7 @@ pub(super) enum Observed {
 pub(super) struct Cell {
     pub(super) local: [i32; 3],
     pub(super) state: BlockState,
+    pub(super) target_state: BlockState,
     pub(super) source_removed: bool,
     pub(super) target_placed: bool,
     pub(super) last_source: Observed,
@@ -205,7 +206,7 @@ pub(super) static VIEW: AttachmentType<AssemblyView> = AttachmentType {
 fn bad() -> AttachmentError {
     AttachmentError::Decode
 }
-fn key(c: &Compound, name: &str) -> Result<&Tag, AttachmentError> {
+fn key<'a>(c: &'a Compound, name: &str) -> Result<&'a Tag, AttachmentError> {
     c.get(&name.into()).ok_or_else(bad)
 }
 fn fields(c: &Compound, expected: &[&str]) -> Result<(), AttachmentError> {
@@ -349,6 +350,7 @@ fn cell_tag(cell: &Cell) -> Tag {
         [
             ("local".into(), Tag::IntArray(cell.local.to_vec())),
             ("state".into(), cell.state.to_nbt()),
+            ("target_state".into(), cell.target_state.to_nbt()),
             ("payload".into(), Tag::String("state_only".into())),
             (
                 "source_removed".into(),
@@ -371,6 +373,7 @@ fn cell(tag: &Tag) -> Result<Cell, AttachmentError> {
         &[
             "local",
             "state",
+            "target_state",
             "payload",
             "source_removed",
             "target_placed",
@@ -384,6 +387,7 @@ fn cell(tag: &Tag) -> Result<Cell, AttachmentError> {
     Ok(Cell {
         local: position(key(c, "local")?)?,
         state: state(key(c, "state")?)?,
+        target_state: state(key(c, "target_state")?)?,
         source_removed: bool_tag(key(c, "source_removed")?)?,
         target_placed: bool_tag(key(c, "target_placed")?)?,
         last_source: observed(key(c, "last_source")?)?,
@@ -472,10 +476,17 @@ fn validate_record(r: &AssemblyRecord) -> Result<(), AttachmentError> {
         || facing_axis(&r.facing) != Some(r.axis.as_str())
         || !valid_pose(r.previous, r.current)
         || !valid_cells(r.cells.iter().map(|c| (c.local, &c.state)))
+        || r.cells
+            .iter()
+            .any(|c| c.target_state.name != c.state.name || !valid_state(&c.target_state))
     {
         return Err(bad());
     }
     let step = facing_step(&r.facing).ok_or_else(bad)?;
+    let controller_local = step.map(|component| -component);
+    if r.cells.iter().any(|c| c.local == controller_local) {
+        return Err(bad());
+    }
     if r.controller
         .iter()
         .zip(step)
@@ -491,8 +502,15 @@ fn validate_record(r: &AssemblyRecord) -> Result<(), AttachmentError> {
         return Err(bad());
     }
     if r.cells.iter().any(|c| {
-        c.target_placed && !matches!(&c.last_target, Observed::State(state) if state == &c.state)
+        c.target_placed
+            && !matches!(&c.last_target, Observed::State(state) if state == &c.target_state)
     }) {
+        return Err(bad());
+    }
+    if r.cells.iter().any(|c| c.target_placed && !c.source_removed)
+        || (!matches!(r.phase, Phase::RestorePending | Phase::Settled)
+            && r.cells.iter().any(|c| c.target_placed))
+    {
         return Err(bad());
     }
     if matches!(
@@ -820,9 +838,10 @@ mod tests {
         }
     }
     fn fixture() -> AssemblyRecord {
-        let cell = |local, state| Cell {
+        let cell = |local, state, target_state| Cell {
             local,
             state,
+            target_state,
             source_removed: false,
             target_placed: false,
             last_source: Observed::Unknown,
@@ -838,8 +857,16 @@ mod tests {
             anchor: [8, 64, 8],
             axis: "y".into(),
             cells: vec![
-                cell([0, 0, 0], state("minecraft:slime_block", None)),
-                cell([0, 0, 1], state("minecraft:oak_log", Some("z"))),
+                cell(
+                    [0, 0, 0],
+                    state("minecraft:slime_block", None),
+                    state("minecraft:slime_block", None),
+                ),
+                cell(
+                    [0, 0, 1],
+                    state("minecraft:oak_log", Some("z")),
+                    state("minecraft:oak_log", Some("x")),
+                ),
             ],
             previous: Pose {
                 tick: 8,
@@ -892,11 +919,37 @@ mod tests {
     #[test]
     fn verified_obstruction_can_be_saved_but_placed_state_must_match_exactly() {
         let mut record = fixture();
+        record.phase = Phase::RestorePending;
+        for cell in &mut record.cells {
+            cell.source_removed = true;
+            cell.last_source = Observed::Air;
+        }
         record.cells[1].last_target = Observed::State(state("minecraft:stone", None));
         let encoded = encode_record(&record).unwrap();
         assert_eq!(decode_record(&encoded), Ok(record.clone()));
         record.cells[1].target_placed = true;
         assert_eq!(encode_record(&record), Err(AttachmentError::Encode));
+        let target_state = record.cells[1].target_state.clone();
+        record.cells[1].last_target = Observed::State(target_state);
+        assert_eq!(decode_record(&encode_record(&record).unwrap()), Ok(record));
+    }
+    #[test]
+    fn progress_and_source_geometry_reject_early_placement_and_controller_overlap() {
+        let mut record = fixture();
+        record.cells[1].local = [0, -1, 0];
+        assert_eq!(encode_record(&record), Err(AttachmentError::Encode));
+        for phase in [Phase::Preparing, Phase::Captured, Phase::Moving] {
+            let mut record = fixture();
+            record.phase = phase;
+            for cell in &mut record.cells {
+                cell.source_removed = true;
+                cell.last_source = Observed::Air;
+            }
+            record.cells[1].target_placed = true;
+            let target_state = record.cells[1].target_state.clone();
+            record.cells[1].last_target = Observed::State(target_state);
+            assert_eq!(encode_record(&record), Err(AttachmentError::Encode));
+        }
     }
     #[test]
     fn exact_marker_uuid_and_retirement_control_read_only_guard_decision() {
@@ -926,7 +979,7 @@ mod tests {
             cell.source_removed = true;
             cell.last_source = Observed::Air;
             cell.target_placed = true;
-            cell.last_target = Observed::State(cell.state.clone());
+            cell.last_target = Observed::State(cell.target_state.clone());
         }
         map.set(&RECORD, retired).unwrap();
         assert_eq!(

@@ -72,6 +72,17 @@ bindings = [
  {name="id",ty="u32",value="id"},
 ]
 
+[[injection]]
+id = "assembly-owner-guard-test-discard"
+target = "horizon_client::game::test_entities::Game<'_>::discard_entities_in"
+kind = "HEAD"
+cancellable = true
+helper = "assembly_owner_guard_test_discard.rs"
+bindings = [
+ {name="game",ty="&crate::game::Game<'_>",value="&*self"},
+ {name="bounds",ty="Aabb",value="bounds"},
+]
+
 [[module]]
 id = "basin"
 file = "crates/horizon-client/src/game.rs"
