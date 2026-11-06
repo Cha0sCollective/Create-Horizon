@@ -47,7 +47,16 @@ creative-tab, catalog or bundle-index files.
    `native/create/tools/catalog.py`, and include the authored
    `mechanical_pump/block` and `fluid_pipe/straight` model names in `PARTS`
    if the shared renderer catalog requires them. The generic `BLOCKS` loop
-   then includes both items in the creative tab.
+   then includes both items in the creative tab. **Compose the asset-import
+   rule in the same change:** `assets/src/lib.rs:537-550` imports original
+   blockstates and item models for every `BLOCKS` ID. The pinned 6.0.10
+   `fluid_pipe.json` is multipart over six connection booleans, which cannot
+   match this packet's axis-only native state. Do not import that original
+   Pipe blockstate unchanged. Either explicitly keep the authored bundled
+   axis variants and item model by excluding Pipe from those original-art
+   imports, or add a bounded axis-compatible selected mapping as the existing
+   Track import does. This is a shared composition decision, not a claim that
+   catalog registration alone yields a matching Pipe model.
 2. In `native/create/tools/content.py`, import
    `fluid_pump_content.generate` and call it near the other selected feature
    generators **after** the generic `BLOCKS` loop and before the final
