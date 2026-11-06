@@ -24,8 +24,18 @@ hook_version = 1
 kind = "HEAD"
 helper = "assembly_owner_tick.rs"
 bindings = [
- {name="game",ty="&crate::game::Game<'_>",value="&*self"},
+ {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
  {name="dimension",ty="&str",value="dimension"},
+]
+
+[[injection]]
+id = "assembly-owner-probe-peer-frame"
+hook = "frame"
+hook_version = 1
+kind = "HEAD"
+helper = "assembly_owner_probe_frame.rs"
+bindings = [
+ {name="game",ty="&crate::game::Game<'_>",value="&*self"},
 ]
 
 [[injection]]
