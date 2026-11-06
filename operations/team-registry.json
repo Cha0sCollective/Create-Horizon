@@ -6,11 +6,11 @@
   "operations_enrolled_at": "2026-11-05T20:28:36.178Z",
   "root_rollout": "2026/10/25/rollout-2026-10-25T14-12-55-01a1747a-eb1f-7183-b3f6-63f0ccc37f13.jsonl",
   "heavy_resource": {
-    "owner": "machinery-wheel007-dedicated",
-    "state": "Integrated R3 same saved spill collected, actor02 exit0; root grants fresh dedicated R3 finite setup/pause/cold/resume/removal only",
+    "owner": "operations-tank008-build",
+    "state": "Fresh driver008review CLEAR b918 and runtimehelper c385; root grants6-step Tank tag build with exact1 affected asset test, unchanged007 evidence reused",
     "queue": [
-      "machinery-drill007-convergence-retry",
-      "fluids-tank007-material-guard-retry"
+      "operations-tank008-build",
+      "operations-tank008-normal-wrench-checks"
     ]
   },
   "teams": [
@@ -24,7 +24,7 @@
       "thread_id": "01a1ad7e-e33b-7ef2-8bc2-606e374fb5de",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:31.729Z",
-      "state": "Wheel R2 integrated capture/partial cold resume/gravel/removal spill pass; final pickup HOLD with original cobble saved, source-only continuation review; dedicated and Drill retry queued",
+      "state": "Wheel selected X-axis/cobble/cold/removal accepted PASS,15 contributing exits0 and sameUUID recovery; original HOLDs retained. Selected stationary Drill both-mode accepted,10 exits0, completion review CLEAR.",
       "lane_initial_head": "76dfaf78370f41b2a5c68620c55be6ecab96f16f"
     },
     {
@@ -50,7 +50,7 @@
       "thread_id": "01a1ad7f-00d6-7c60-8820-89ddbee3d21c",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:40.745Z",
-      "state": "Bounded water line accepted PASS after numeric+peer completion review;11 qualifying exits0/742 inputs; original HOLDs and Creative water void preserved; Tank004 retry queued",
+      "state": "Water line accepted; reviewed Tank-only missing pickaxe-tag repair aff11f9 isolated as008,4-file diff, source/maps frozen; build/normal-break+wrench retest pending",
       "lane_initial_head": "76dfaf78370f41b2a5c68620c55be6ecab96f16f"
     },
     {

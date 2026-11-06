@@ -11,6 +11,9 @@ The owner-requested six Create-only teams work in isolated private lanes under
 `orchestration/PROJECT_TEAMS.md`. Operations owns primary integration, pins,
 private pushes, accounting and the single heavy lease. See `operations/STATUS.md`
 and `operations/team-registry.json`. Other mods and public releases stay deferred.
+On November 6 the owner reaffirmed wheel, Drill and Tank checks and requires
+input before another scope expansion. Capture, Chute and Quill Save proposals
+remain outside this active check packet.
 
 Accepted primary source is55339ce (.11/cache14), checkpoint8470fc5 plus reviewed
 bootstrap tooling. Source005/9651dba (.13/cache16),711 frozen inputs/gameb8629821,
@@ -84,17 +87,33 @@ supplement,11 qualifying exits0 and742 files/binary bindings matched. The
 original setup/reporting HOLDs and low-angle ambiguous images remain preserved.
 Creative bucket drain voids water and is not an item-conservation result. See
 `docs/teams/fluids-power/FLUIDS_005_RUNTIME_007_PEER_VISUAL02_HANDOFF.md`.
-Wheel fixture R2 has passed ordinary capture, partial
-stop/cold reopen, gravel conversion/ejection/collection and occupied removal
-spill in integrated play. R3's focused same-world continuation collected that
-exact saved spill UUID with verified actor/server convergence and five empty
-world steps; actor exit0. Original failed pickup and missed-throw HOLDs remain.
-Fresh dedicated R3 setup/pause/cold/resume/removal holds the shared lease.
-Drill setup observed a transient wrong client facing before East
-convergence; Tank setup found unrelated mushroom litter before any Tank action.
-Both runs closed normally with frozen inputs intact. Separate bounded control-only
-corrections have fresh independent CLEAR review; no production rebuild is requested.
-Drill/Tank retries and dedicated wheel qualification remain queued.
+Wheel004 is now accepted in both modes after fresh completion review CLEAR:
+ordinary capture, exact stopped/cold clocks190/170,12 valid ticks to Apply,
+gravel ejection/collection, and occupied-removal spill followed by recovery of
+the same UUID in each mode. All15 contributing exits0; root inspected the
+selected images. Hidden floor/slot custody uses queries and saved census.
+See `docs/teams/machinery/MACHINERY_004_SOURCE_HANDOFF.md`.
+
+Selected stationary Drill is also accepted after fresh behavior review,
+Operations byte closure and18 canonical image inspections:32RPM/128stress,
+stone drop/collection, integrated bedrock refusal, stopped/cold6/3 integrated
+and7/0 dedicated, and final actor cobblestone2. All10 contributing exits0.
+Original fall/early-pickup/missing-image HOLDs remain; a focused fresh first
+supplied prospective replacement evidence. See
+`docs/teams/operations/DRILL_007_OPERATIONS_HANDOFF.md`.
+
+Tank R3 reached ordinary placement,1000mB fill and window retention, but
+Survival diamond-pick break returned no Tank drop; preserve that actual HOLD.
+The missing existing pickaxe-tag membership is source-backed against pinned
+Java7ff2760e; current public port supplies no Tank fix. Independently reviewed
+four-file repair aff11f9 is isolated as candidate008 at
+`.local/integration/create-teams-008`,742 files/mapf90e74ce, unchanged .15/cache18
+and499 bundle entries. Frozen007/source/maps/binaries/worlds remain intact.
+The bounded format/distribution/stage/asset-check/playable-build R2 driver has
+fresh independent CLEAR review, including live native-Git identity and checked
+offline Cargo-cache reuse. Formatting/distribution passed; staging is active.
+Build completion and fresh both-mode normal-break/wrench
+checks remain open. No new host API, owner, schema, tag framework or other block.
 All old source branches, maps,
 binaries, worlds, failures and dirty historical work remain preserved; no cleanup,
 playable-save/Prism/Java edits, public release or permission expansion.

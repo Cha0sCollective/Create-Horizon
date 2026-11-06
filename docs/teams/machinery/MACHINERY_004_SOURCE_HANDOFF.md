@@ -113,3 +113,32 @@ The team lead's coordination phase was 118.760 s and implementation phase
 source review ran 274 s initially and 96 s for the focused repair. Build and
 game-test time here are zero. Verified token counters for these sessions remain
 unknown; no cost estimate is substituted for telemetry.
+
+## Later finite runtime completion — Operations acceptance
+
+On November 6, 2026, Operations/root accepted the **finite both-mode Wheel004
+check** on frozen source `f732bd481cfc3d9c4720bc51e4a31e7385e18020` after
+a fresh independent read-only Sol High `gold_link_review` CLEAR. This later
+result does not change the earlier source-handoff status or erase its original
+HOLD receipts. The accepted scope is the selected stationary X-axis pair,
+ordinary one-cobblestone contact and capture, cold reopen **after** canonical
+capture (integrated timer 190; dedicated timer 170), 12 valid ticks to the
+existing milling-fallback one-gravel Apply, next-tick ejection and ordinary
+collection. A separate occupied-controller removal spilled exactly one
+cobblestone; each mode subsequently recovered that **same UUID** naturally
+from its saved world. Both final actors held gravel 1, cobblestone 1 and iron
+pickaxe 1; the dedicated peer was empty. All 15 contributing process exits
+were code 0. No `create:crushing` recipe or general wheel parity is claimed.
+
+Operations verified the [closed dedicated index-03 custody and identity
+receipt](../../../../.local/teams/machinery/.local/machinery-004/receipts/dedicated-dedicated-061nx4g_/03-post-integrity-census.json)
+SHA-256 `1ca81ed71026ecccc738716de5b0b2661cb7de3e3e5fbd581b11fd7d4e3a509d`:
+742 frozen source files matched, no selected world items remained across 17
+saved entity chunks, and actor inventory contained the exact final materials.
+Operations directly inspected 12 dedicated frames; its visual receipt is
+`G:\Create Rusty\.local\native-wheel-007\operations-dedicated-visual-review.json`
+SHA-256 `e4113988b0254ee519e8a3f256859f00a4003f71845c93fe7bc4fcc8ba4de662`.
+Machine geometry hides some floor and slot views, so absence and custody rely
+on canonical queries and saved-state census. The original intake, camera and
+lower-floor pickup HOLDs and all raw artifacts remain preserved. Root owns
+any broader acceptance or later machinery allocation.
