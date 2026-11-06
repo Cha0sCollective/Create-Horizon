@@ -29,8 +29,9 @@ Transport002's dedicated two-controller belt handoff is now PASS on unchanged `.
 source: stopped receiver refuses under powered source; release transfers exactly
 once; actual peer occupied/empty and saved chestgold1; three exits0, completion
 review CLEAR. See `orchestration/teams/transport-002-results.md`.
-Qualified source55339ce (.11/cache14) is now integrated locally into the primary
-working branch, byte-identical across all676 native input files. Its source,
+Qualified source55339ce (.11/cache14) was integrated at primary checkpoint8470fc5,
+byte-identical across all676 native input files. Primary now also contains the
+reviewed bootstrap preparation; the new .12/cache15 funnel stays a separate candidate. Its source,
 composition, build and finite gameplay reviews are CLEAR. See
 `docs/teams/INTEGRATION_003.md` and
 `docs/teams/fluids-power/FLUIDS_003_COHORT_RUNTIME_HANDOFF.md`.
@@ -57,8 +58,10 @@ Transport004 edits an isolated tool copy; Operations owns reproducible private
 source pinning/bootstrap and candidate004 composition. The official e8cd snapshot
 and accepted .11 remain preserved. New source uses an explicit private tree hash
 and separately records its upstream base; it must not masquerade as e8cd.
-Contraptions003 returns a reviewed reusable lifecycle/custody/transform contract
-and first live-bearing proposal before any new live owner/save implementation.
+Contraptions003 design c5e5053 is reviewed CLEAR and integrated426d86a. The owner
+then explicitly approved its bounded004 foundation: saved entity record/view,
+peer sync, loaded discovery/tick and deletion/relocation guards, with NO world-block
+capture. Live bearing/controller/custody implementation remains a later decision.
 The four other teams audit existing services for bounded drill, Tank lifecycle,
 train/schematic requirements and goggles/HUD follow-ons. No broader architecture,
 host change, public release or acceptance expansion follows from these tasks.

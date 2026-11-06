@@ -6,9 +6,11 @@
   "operations_enrolled_at": "2026-11-05T20:28:36.178Z",
   "root_rollout": "2026/10/25/rollout-2026-10-25T14-12-55-01a1747a-eb1f-7183-b3f6-63f0ccc37f13.jsonl",
   "heavy_resource": {
-    "owner": null,
-    "state": "idle",
-    "queue": []
+    "owner": "transport-004-tool-tests",
+    "state": "reserved: execute focused private Mixins tests only after exact source review CLEAR",
+    "queue": [
+      "operations-funnel004-stage-build-runtime"
+    ]
   },
   "teams": [
     {
@@ -60,7 +62,7 @@
       "thread_id": "01a1ad7f-0de7-7871-aec9-617ed9916499",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:44.555Z",
-      "state": "003 owner-authorized reusable entity-owner DESIGN; live owner implementation gated",
+      "state": "004 bounded entity-owner foundation APPROVED; saved record/view, discovery/tick and deletion/relocation guards; no world-block capture",
       "lane_initial_head": "76dfaf78370f41b2a5c68620c55be6ecab96f16f"
     },
     {
