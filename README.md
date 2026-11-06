@@ -61,7 +61,7 @@ are not established. Other mods will be addressed individually.
 ## Credits and resources
 
 Create is by [the Creators of Create](https://github.com/Creators-of-Create/Create).
-The existing Rust port is maintained by [Delete228](https://github.com/Delete228).
+The paralel Rust port is maintained by [Delete228](https://github.com/Delete228).
 This project preserves upstream MIT notices and source provenance; see the
 [native license](native/create/LICENSE) and
 [third-party notices](native/create/THIRD_PARTY_NOTICES.md).
