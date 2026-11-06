@@ -5,7 +5,7 @@
 // one cobblestone item, milling fallback, and downward world output only.
 use super::{Game, native_block_entity_draw::BlockEntityDraw};
 use crate::{
-    containers::{ModBlockEntity, ModContainer},
+    containers::{BlockEntity, ModBlockEntity, ModContainer},
     items::ItemStack,
 };
 use create_engine::{
@@ -25,6 +25,17 @@ const PENDING_LIMIT: usize = 4096;
 
 thread_local! {
     static CHANGED: RefCell<VecDeque<(&'static str, Pos)>> = const { RefCell::new(VecDeque::new()) };
+    static CONTACT: RefCell<Option<Contact>> = const { RefCell::new(None) };
+}
+
+#[derive(Clone)]
+struct Contact {
+    owner: usize,
+    dimension: String,
+    middle: Pos,
+    item: u32,
+    tick: i64,
+    pickup_delay: u32,
 }
 
 fn at(pos: Pos, dz: i32) -> Pos { [pos[0], pos[1], pos[2] + dz] }
@@ -218,24 +229,99 @@ fn recipe(game: &Game<'_>) -> Option<ItemStack> {
     })
 }
 
+/// API 146 must opt in before the host asks for individual item Pre events.
+pub(super) fn item_tick_listened(listened: &mut bool) { *listened = true; }
+
+/// Keep just the selected world-owned item out of ordinary collision physics
+/// while it crosses the controller. Custody changes only in `catch` below.
+pub(super) fn item_tick_pre(
+    game: &mut Game<'_>, dimension: &str, id: u32, kind: &str, canceled: &mut bool,
+) {
+    if *canceled || kind != "minecraft:item" || dimension != game.dim.id()
+        || !game.native_on("create")
+        || (game.serving.is_none() && game.options.dedicated.is_none())
+    { return; }
+    let owner = game as *const Game<'_> as usize;
+    let now = game.world.game_time;
+    let active = CONTACT.with(|cell| {
+        let mut slot = cell.borrow_mut();
+        if slot.as_ref().is_some_and(|contact| {
+            contact.owner != owner || contact.dimension != dimension
+                || now < contact.tick || now > contact.tick + 1
+                || !game.dropped.iter().any(|item| item.id == contact.item)
+        }) { *slot = None; }
+        slot.clone()
+    });
+    if active.as_ref().is_some_and(|contact| contact.item != id) { return; }
+    let Some(item) = game.dropped.iter().find(|item| item.id == id) else { return; };
+    let middle = active.as_ref().map_or_else(|| [
+        item.position.x.floor() as i32,
+        item.position.y.floor() as i32,
+        item.position.z.floor() as i32,
+    ], |contact| contact.middle);
+    let position = item.position;
+    let selected = item.stack.item.as_ref() == INPUT && item.stack.count == 1
+        && position.x >= f64::from(middle[0]) + 0.25
+        && position.x <= f64::from(middle[0]) + 0.75
+        && position.z >= f64::from(middle[2]) + 0.25
+        && position.z <= f64::from(middle[2]) + 0.75;
+    let top = f64::from(middle[1]) + 0.8125;
+    let just_landed = item.on_ground && (position.y - top).abs() <= 1.0e-7;
+    let pickup_delay = active.as_ref().map_or(item.pickup_delay, |contact| contact.pickup_delay);
+    let empty = matches!(game.world.block_entities.get(&(middle[0], middle[1], middle[2])),
+        Some(BlockEntity::Mod(entity)) if entity.id == CONTROLLER
+            && entity.items.iter().all(Option::is_none)
+            && !matches!(entity.nbt.get(&"Inventory".into()).and_then(|v| v.get("Items")),
+                Some(Tag::List(items)) if !items.is_empty()));
+    let valid = game.native_block(middle) == CONTROLLER
+        && game.native_block_property(middle, "facing").as_deref() == Some("down")
+        && game.native_block_property(middle, "valid").as_deref() == Some("true")
+        && pair(game, middle, None).is_some_and(Pair::valid);
+    if !selected || !empty || !valid || recipe(game).is_none()
+        || (active.is_none() && !just_landed)
+    {
+        if active.is_some() {
+            if let Some(item) = game.dropped.iter_mut().find(|item| item.id == id) {
+                item.position.y = top + 1.0e-4;
+                item.previous = item.position;
+                item.velocity.y = 0.0;
+                item.on_ground = false;
+                item.pickup_delay = pickup_delay;
+            }
+            CONTACT.with(|cell| *cell.borrow_mut() = None);
+        }
+        return;
+    }
+    let Some(item) = game.dropped.iter_mut().find(|item| item.id == id) else { return; };
+    item.previous = item.position;
+    item.position.y = (item.position.y - 0.16).max(f64::from(middle[1]) + 0.20);
+    item.velocity.y = 0.0;
+    item.on_ground = false;
+    item.pickup_delay = u32::MAX;
+    *canceled = true;
+    CONTACT.with(|cell| *cell.borrow_mut() = Some(Contact {
+        owner, dimension: dimension.to_owned(), middle, item: id, tick: now, pickup_delay,
+    }));
+}
+
 fn catch(game: &mut Game<'_>, pos: Pos, entity: &mut ModBlockEntity) -> bool {
     if entity.items.iter().any(Option::is_some) { return false; }
-    const EPSILON: f64 = 1.0e-7;
+    let contact = CONTACT.with(|cell| cell.borrow().clone());
+    let Some(contact) = contact.filter(|contact| {
+        contact.owner == game as *const Game<'_> as usize
+            && contact.dimension == game.dim.id() && contact.middle == pos
+    }) else { return false; };
     let dim = game.dim.id().to_owned();
     let min = pos.map(f64::from);
-    let mut max = min.map(|v| v + 1.0);
-    max[1] += EPSILON;
-    let collision = game.native_block_collision(pos);
+    let max = min.map(|v| v + 1.0);
     for dropped in game.native_item_entities(&dim, min, max) {
-        let touching = game.dropped.iter().find(|item| item.id == dropped.id).is_some_and(|item| {
-            let (lo, hi) = (item.bounds().min_position(), item.bounds().max_position());
-            item.on_ground && item.stack == dropped.stack && collision.iter().any(|shape| {
-                (item.position.y - (min[1] + shape[4])).abs() <= EPSILON
-                    && lo.x < min[0] + shape[3] && hi.x > min[0] + shape[0]
-                    && lo.z < min[2] + shape[5] && hi.z > min[2] + shape[2]
-            })
-        });
-        if dropped.stack.item.as_ref() != INPUT || dropped.stack.count != 1 || !touching
+        let crossing = dropped.id == contact.item
+            && game.dropped.iter().find(|item| item.id == dropped.id).is_some_and(|item| {
+                item.stack == dropped.stack && !item.on_ground
+                    && item.position.y >= min[1] + 0.20
+                    && item.position.y < min[1] + 0.25
+            });
+        if dropped.stack.item.as_ref() != INPUT || dropped.stack.count != 1 || !crossing
             || dropped.position[0] < min[0] + 0.25 || dropped.position[0] > min[0] + 0.75
             || dropped.position[2] < min[2] + 0.25 || dropped.position[2] > min[2] + 0.75
         { continue; }
@@ -243,6 +329,7 @@ fn catch(game: &mut Game<'_>, pos: Pos, entity: &mut ModBlockEntity) -> bool {
         rest.count = 0;
         if game.native_set_item_entity(&dim, dropped.id, rest) {
             entity.items[0] = Some(dropped.stack);
+            CONTACT.with(|cell| *cell.borrow_mut() = None);
             return true;
         }
     }
