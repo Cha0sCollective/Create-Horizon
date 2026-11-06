@@ -93,7 +93,6 @@ impl Step {
             && after.basin_first_input == basin
             && after.total() == Some(total)
     }
-
 }
 
 #[cfg(test)]
@@ -141,7 +140,10 @@ mod tests {
             tank: 1_000,
             basin_first_input: 0,
         };
-        assert_eq!(Step::from_simulation(before, 8, 5, Some(5)).unwrap().amount, 5);
+        assert_eq!(
+            Step::from_simulation(before, 8, 5, Some(5)).unwrap().amount,
+            5
+        );
         assert!(Step::from_simulation(before, 8, 5, Some(4)).is_none());
         assert!(Step::from_simulation(before, 8, 9, Some(9)).is_none());
         assert!(Step::from_simulation(before, 8, 0, None).is_none());

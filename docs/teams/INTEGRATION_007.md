@@ -31,3 +31,9 @@ separate finite water-line and wheel runtime/spill/peer/cold profiles. Do not
 repeat unchanged005 behavior batteries. The reviewed release-CLI helper is still
 separate until measured005 build/apply output equality passes. No cleanup,
 public publishing, playable world or Prism/Java changes are allocated.
+
+Pinned Rust1.99.1 formatting was checked in the isolated007 checkout before
+reserving a build slot. The original format-only failure remains in
+`native-team-integration-007/prepare-format*`; selected formatting and the
+subsequent check pass. Six Rust files changed layout/module ordering only;
+this is not a compile or test execution result. Active005 files were untouched.

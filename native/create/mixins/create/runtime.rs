@@ -149,10 +149,7 @@ pub(super) fn entity(block: &str, entity: &mut Option<(String, Compound)>) {
         *entity = None;
         return;
     }
-    if owns(block)
-        && block != "create:blaze_burner"
-        && entity.is_none()
-    {
+    if owns(block) && block != "create:blaze_burner" && entity.is_none() {
         let id = match block {
             "create:creative_motor" => "create:motor",
             "create:mechanical_drill" => "create:drill",

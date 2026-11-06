@@ -2,7 +2,9 @@
 // SPDX-License-Identifier: MIT
 // Bounded server-side Tank -> facing Pump -> straight Pipe -> Basin transfer.
 // Canonical water remains only in the existing TankContent/InputTanks saves.
-use super::{Game, create_port_fluid_codec as basin_codec, create_port_fluid_tank_codec as tank_codec};
+use super::{
+    Game, create_port_fluid_codec as basin_codec, create_port_fluid_tank_codec as tank_codec,
+};
 use crate::{
     containers::{BlockEntity, ModRevision},
     items::ItemStack,
@@ -208,11 +210,8 @@ fn views_match(game: &Game<'_>, line: Line, tank: &Snapshot, basin: &Snapshot) -
     let Some(source) = game.native_fluid_view(dimension, line.tank, Some(line.facing)) else {
         return false;
     };
-    let Some(target) = game.native_fluid_view(
-        dimension,
-        line.basin,
-        Some(line.facing.opposite()),
-    ) else {
+    let Some(target) = game.native_fluid_view(dimension, line.basin, Some(line.facing.opposite()))
+    else {
         return false;
     };
     source.len() == 1
@@ -225,7 +224,9 @@ fn views_match(game: &Game<'_>, line: Line, tank: &Snapshot, basin: &Snapshot) -
         && target[2].can_fill
         && target[2].capacity == 1_000
         && view_amount(&target[2]) == Some(basin.amount)
-        && [0, 1, 3].into_iter().all(|index| view_amount(&target[index]) == Some(0))
+        && [0, 1, 3]
+            .into_iter()
+            .all(|index| view_amount(&target[index]) == Some(0))
 }
 
 fn same_snapshot(before: &Snapshot, after: &Snapshot) -> bool {
@@ -429,7 +430,10 @@ pub(super) fn tick(game: &mut Game<'_>, pump: Pos, rpm: f32) -> TickResult {
     } else {
         0
     };
-    let after = (snapshot_tank(game, line.tank), snapshot_basin(game, line.basin));
+    let after = (
+        snapshot_tank(game, line.tank),
+        snapshot_basin(game, line.basin),
+    );
     let committed = if let (Some(source), Some(target)) = &after {
         step.committed(
             Volumes {
@@ -503,8 +507,11 @@ mod restoration_tests {
         )
         .unwrap();
         let registry = loaded.pack.assets.registry;
-        let states = [TANK, PUMP, PIPE, BASIN]
-            .map(|id| registry.default_state(id).expect("selected Create block state"));
+        let states = [TANK, PUMP, PIPE, BASIN].map(|id| {
+            registry
+                .default_state(id)
+                .expect("selected Create block state")
+        });
         let mut options = Options::parse(std::iter::empty()).unwrap().unwrap();
         options.resources = root.clone();
         options.execution_role = crate::game::execution_role::ExecutionRole::IntegratedServer;
@@ -542,16 +549,18 @@ mod restoration_tests {
         tank.id = TANK.into();
         tank.nbt = tank_codec::initial();
         assert!(tank_codec::set_amount(&mut tank.nbt, 1_000).unwrap());
-        game.world
-            .block_entities
-            .insert((SOURCE[0], SOURCE[1], SOURCE[2]), BlockEntity::Mod(Box::new(tank)));
+        game.world.block_entities.insert(
+            (SOURCE[0], SOURCE[1], SOURCE[2]),
+            BlockEntity::Mod(Box::new(tank)),
+        );
         let mut basin = ModBlockEntity::default();
         basin.id = BASIN.into();
         basin.items = vec![None; 18];
         crate::game::create_port_basin::initialize(&mut basin);
-        game.world
-            .block_entities
-            .insert((TARGET[0], TARGET[1], TARGET[2]), BlockEntity::Mod(Box::new(basin)));
+        game.world.block_entities.insert(
+            (TARGET[0], TARGET[1], TARGET[2]),
+            BlockEntity::Mod(Box::new(basin)),
+        );
         game.world.modified.clear();
         game.world.block_log = Some(Vec::new());
         assert_eq!(snapshot_tank(&game, SOURCE).unwrap().amount, 1_000);
@@ -612,11 +621,14 @@ mod restoration_tests {
                 "create:mechanical_mixer"
             );
             let key = (TARGET[0], TARGET[1], TARGET[2]);
-            let Some(BlockEntity::Mod(mut detached)) = game.world.block_entities.remove(&key) else {
+            let Some(BlockEntity::Mod(mut detached)) = game.world.block_entities.remove(&key)
+            else {
                 panic!("Basin entity missing before ordinary tick");
             };
             crate::game::create_port_basin::tick(game, TARGET, &mut detached);
-            game.world.block_entities.insert(key, BlockEntity::Mod(detached));
+            game.world
+                .block_entities
+                .insert(key, BlockEntity::Mod(detached));
             let basin_after_tick = snapshot_basin(game, TARGET).unwrap();
             assert_eq!(basin_after_tick.amount, 0);
             assert!(basin_after_tick.items.iter().all(Option::is_none));
