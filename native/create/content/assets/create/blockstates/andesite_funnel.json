@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=down,extracting=false,powered=false": {
+      "model": "create:block/andesite_funnel/block"
+    },
+    "facing=down,extracting=false,powered=true": {
+      "model": "create:block/andesite_funnel/block"
+    },
+    "facing=down,extracting=true,powered=false": {
+      "model": "create:block/andesite_funnel/block"
+    },
+    "facing=down,extracting=true,powered=true": {
+      "model": "create:block/andesite_funnel/block"
+    }
+  }
+}

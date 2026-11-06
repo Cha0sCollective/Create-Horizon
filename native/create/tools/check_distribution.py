@@ -1,0 +1,53 @@
+#!/usr/bin/env python3
+"""Check contracts required for installing this source as one native mod."""
+import json
+import re
+from common import ROOT, NATIVE, PINS
+from catalog import BLOCKS, ITEMS, INTERNAL_BLOCKS, rust_catalog
+
+
+def main():
+    manifest = json.loads((ROOT / "horizon-native.json").read_text())
+    assert manifest["horizon"] == PINS["horizon_revision"], "Horizon pin differs"
+    assert manifest["mixins"] == PINS["horizon_mixins_revision"], "Mixins pin differs"
+    assert manifest["id"] == "create", "Native namespace differs"
+    source = (NATIVE / "horizon-mixin.toml").read_text()
+    assert re.search(r'^horizon_revision = "' + manifest["horizon"] + r'"$', source, re.M)
+    assert re.search(r'^version = "' + re.escape(manifest["version"]) + r'"$', source, re.M)
+    content = ROOT / "content"
+    expected = {p.relative_to(content).as_posix(): p.read_text()
+                for p in sorted(content.rglob("*")) if p.is_file()
+                and "target" not in p.relative_to(content).parts}
+    actual = json.loads((NATIVE / "data/content.json").read_text())
+    assert actual == expected, "Bundled public content is stale: run tools/content.py"
+    reference=json.loads((ROOT / "tools/data/recipes.json").read_text())
+    assert reference["reference"] == PINS["create_revision"]
+    assert (NATIVE / "assets/src/catalog.rs").read_text() == rust_catalog(), "Importer catalog is stale"
+    declared_blocks={p.stem for p in (content / "data/create/horizon/block").glob("*.json")}
+    declared_items={p.stem for p in (content / "data/create/horizon/item").glob("*.json")}
+    assert declared_blocks == set(BLOCKS+INTERNAL_BLOCKS) and declared_items == set(ITEMS)
+    tab=json.loads((content / "data/create/horizon/creative_tab/kinetics.json").read_text())
+    assert tab["items"] == ["create:"+name for name in BLOCKS+ITEMS]
+    # Later selected packets add these source-backed recipes outside the
+    # original 123-recipe export. Keep the check exact as families grow.
+    supplemental = {
+        "create/recipe/crafting/kinetics/belt_connector.json",
+        "create/recipe/crafting/kinetics/mechanical_saw.json",
+        "create/recipe/cutting/andesite_alloy.json",
+        "create/recipe/mixing/andesite_alloy.json",
+        "create/recipe/mixing/brass_ingot.json",
+        "create/recipe/mixing/dough_by_mixing.json",
+    }
+    recipes = {p.relative_to(content / "data").as_posix()
+               for p in (content / "data/create/recipe").rglob("*.json")}
+    assert recipes == set(reference["recipes"]) | supplemental
+    for path in [*NATIVE.rglob("*"), *content.rglob("*")]:
+        assert not path.is_symlink(), "Source bundles must not contain links: " + str(path)
+        assert path.suffix.lower() not in {".jar", ".class", ".png", ".ogg"}, str(path)
+    assert (NATIVE / "LICENSE").read_bytes() == (ROOT / "LICENSE").read_bytes()
+    assert (NATIVE / "NOTICE.md").read_bytes() == (ROOT / "THIRD_PARTY_NOTICES.md").read_bytes()
+    print("Source-install contracts passed: pins, bundled content, notices and no upstream asset files.")
+
+
+if __name__ == "__main__":
+    main()

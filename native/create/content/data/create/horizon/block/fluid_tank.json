@@ -1,0 +1,55 @@
+{
+  "template": "minecraft:glass",
+  "item": true,
+  "properties": {
+    "hardness": 3,
+    "explosion_resistance": 6,
+    "requires_tool": true,
+    "render_shape": "MODEL",
+    "sounds": "minecraft:copper_block"
+  },
+  "state_properties": {
+    "bottom": {
+      "type": "boolean"
+    },
+    "top": {
+      "type": "boolean"
+    },
+    "shape": {
+      "type": "enum",
+      "values": [
+        "window",
+        "plain"
+      ]
+    }
+  },
+  "default_state": {
+    "bottom": "true",
+    "top": "true",
+    "shape": "window"
+  },
+  "shapes": {
+    "default": [
+      [
+        0,
+        0,
+        0,
+        1,
+        1,
+        1
+      ]
+    ]
+  },
+  "collision_shapes": {
+    "default": [
+      [
+        0,
+        0,
+        0,
+        1,
+        1,
+        1
+      ]
+    ]
+  }
+}

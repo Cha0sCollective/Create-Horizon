@@ -1,0 +1,21 @@
+[package]
+name = "create-horizon-core"
+version = "0.5.0"
+edition = "2024"
+license = "MIT"
+publish = false
+description = "Experimental Create foundation: kinetics, pressing and item interactions"
+
+[lib]
+path = "mixins/create/engine/src/lib.rs"
+
+[[example]]
+name = "factory"
+path = "examples/factory.rs"
+
+[workspace]
+members = ["mixins/create/assets"]
+exclude = ["mixins/create/engine", ".local", ".tools"]
+
+[lints.rust]
+unsafe_code = "forbid"

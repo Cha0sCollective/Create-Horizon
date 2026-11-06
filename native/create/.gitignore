@@ -1,0 +1,14 @@
+.tools/
+.cache/
+# Windows Git sees Linux tool/cache symlinks as files.
+/.tools
+/.cache
+.horizon-cache/
+.local/
+target/
+dist/
+__pycache__/
+*.pyc
+*.jar
+create-resources/
+.DS_Store

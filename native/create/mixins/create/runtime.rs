@@ -1,0 +1,1704 @@
+// Copyright (c) 2026 create-horizon contributors
+// SPDX-License-Identifier: MIT
+// Game-side adapter. The engine crate contains the portable algorithms.
+use super::{Game, native_block_entity_draw::BlockEntityDraw};
+use crate::{
+    containers::{BlockEntity, ModBlockEntity, ModContainer},
+    items::ItemStack,
+};
+use create_engine::{
+    kinetics::{Axis, Kind, Network, Node, Pos, Status},
+    placement::{self, Direction},
+    pressing::{Action, PressCycle, head_offset, tick_speed},
+};
+use horizon_world::{
+    nbt::{Compound, Tag},
+    registry::BlockStateId,
+};
+use serde_json::Value;
+
+static ORIGINAL_ASSETS: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+
+pub(super) fn original_assets() -> bool {
+    ORIGINAL_ASSETS.load(std::sync::atomic::Ordering::Relaxed)
+}
+
+/// Feed bundled content through Horizon's ordinary content loader, before it
+/// registers blocks or announces mods. The native mod uses the same enable flag.
+pub(super) fn prepare_content(enabled: &std::collections::BTreeSet<String>) {
+    if enabled.contains("create") {
+        match create_assets::bundled_content(
+            &Game::game_dir(),
+            horizon_client::native_data!("create", "content.json"),
+        ) {
+            Ok(path) => {
+                log::info!("Create: bundled content enabled in {}", path.display());
+            }
+            Err(error) => log::error!("Create: bundled content could not be loaded: {error}"),
+        }
+    }
+}
+
+/// Imports the user's JAR before the initial load, and again on pack reload.
+/// Uses Horizon's own pack loader/cache; the installed content archive is untouched.
+pub(super) fn asset_root(root: std::path::PathBuf) -> std::path::PathBuf {
+    ORIGINAL_ASSETS.store(false, std::sync::atomic::Ordering::Relaxed);
+    // Horizon consumes registry declarations while building the root; their
+    // source data/*/horizon files are deliberately absent from that overlay.
+    if !root
+        .join("data/create/recipe/pressing/iron_ingot.json")
+        .is_file()
+        || !root.join("assets/create/items/shaft.json").is_file()
+    {
+        return root;
+    }
+    let home = Game::game_dir();
+    let result = (|| -> std::io::Result<Option<std::path::PathBuf>> {
+        let Some(imported) = create_assets::prepare(&home, horizon_client::packs::RESOURCE_FORMAT)?
+        else {
+            log::warn!(
+                "Create: using provisional resources. Place the original Create {} JAR in {}",
+                create_assets::CREATE_VERSION,
+                home.join(create_assets::INPUT_DIR).display()
+            );
+            return Ok(None);
+        };
+        let packs = horizon_client::packs::folder(
+            imported.pack.parent().expect("pack parent"),
+            horizon_client::packs::RESOURCE_FORMAT,
+        );
+        if packs.len() != 1 {
+            return Err(std::io::Error::other(
+                "The locally imported Create resource pack could not be read",
+            ));
+        }
+        let overlay = horizon_client::packs::resource_root(
+            &root,
+            &packs,
+            &home.join(".horizon-cache/create-assets/overlay"),
+        )?;
+        log::info!(
+            "Create: {} local resources from Create {} ({}); JAR and installed mod unchanged",
+            imported.files,
+            create_assets::CREATE_VERSION,
+            if imported.cached {
+                "cache verified"
+            } else {
+                "imported"
+            }
+        );
+        Ok(Some(overlay))
+    })();
+    match result {
+        Ok(Some(overlay)) => {
+            ORIGINAL_ASSETS.store(true, std::sync::atomic::Ordering::Relaxed);
+            overlay
+        }
+        Ok(None) => root,
+        Err(error) => {
+            log::warn!(
+                "Create: local resource import failed; using provisional resources: {error}"
+            );
+            root
+        }
+    }
+}
+
+pub(super) fn owns(block: &str) -> bool {
+    matches!(
+        block,
+        "create:creative_motor"
+            | "create:shaft"
+            | "create:cogwheel"
+            | "create:large_cogwheel"
+            | "create:mechanical_press"
+            | "create:depot"
+            | "create:andesite_funnel"
+            | "create:gearbox"
+            | "create:clutch"
+            | "create:gearshift"
+            | "create:hand_crank"
+            | "create:andesite_encased_shaft"
+            | "create:brass_encased_shaft"
+            | "create:speedometer"
+            | "create:stressometer"
+            | "create:water_wheel"
+            | "create:large_water_wheel"
+            | "create:water_wheel_structure"
+            | "create:millstone"
+            | "create:encased_fan"
+            | "create:mechanical_drill"
+            | "create:mechanical_saw"
+            | "create:crushing_wheel"
+            | "create:crushing_wheel_controller"
+            | "create:mechanical_piston"
+            | "create:piston_extension_pole"
+            | "create:portable_storage_interface"
+            | "create:basin"
+            | "create:fluid_tank"
+            | "create:mechanical_pump"
+            | "create:fluid_pipe"
+            | "create:blaze_burner"
+            | "create:mechanical_mixer"
+            | "create:belt"
+    )
+}
+
+pub(super) fn entity(block: &str, entity: &mut Option<(String, Compound)>) {
+    if block == "create:fluid_pipe" {
+        *entity = None;
+        return;
+    }
+    if owns(block) && block != "create:blaze_burner" && entity.is_none() {
+        let id = match block {
+            "create:creative_motor" => "create:motor",
+            "create:mechanical_drill" => "create:drill",
+            "create:shaft" | "create:cogwheel" | "create:large_cogwheel" => "create:simple_kinetic",
+            "create:andesite_encased_shaft" | "create:brass_encased_shaft" => {
+                "create:encased_shaft"
+            }
+            _ => block,
+        };
+        let mut nbt = Compound::new();
+        if block == "create:creative_motor" {
+            nbt.insert("ScrollValue".into(), Tag::Int(16));
+        } else if block == "create:fluid_tank" {
+            nbt = crate::game::create_port_fluid_tank_codec::initial();
+        }
+        *entity = Some((id.to_owned(), nbt));
+    }
+}
+
+pub(super) fn ticks(block: &str, ticks: &mut bool) {
+    if block == "create:fluid_pipe" {
+        *ticks = false;
+    } else if owns(block) {
+        *ticks = true;
+    }
+}
+
+pub(super) fn number(nbt: &Compound, key: &str) -> f32 {
+    match nbt.get(&key.into()) {
+        Some(Tag::Float(n)) => f32::from_bits(*n),
+        Some(Tag::Int(n)) => *n as f32,
+        Some(Tag::Long(n)) => *n as f32,
+        _ => 0.0,
+    }
+}
+
+// Basin-only guards; existing accepted machine serializers are unchanged.
+pub(super) fn inventory_supported(entity: &ModBlockEntity) -> bool {
+    entity.id != "create:basin"
+        || horizon_client::save::create_basin_inventory_codec::supported(entity)
+}
+pub(super) fn inventory_blocked(game: &Game<'_>, pos: [i32; 3]) -> bool {
+    if super::create_port_belt::inventory_blocked(game, pos) {
+        return true;
+    }
+    matches!(game.world.block_entities.get(&(pos[0],pos[1],pos[2])), Some(BlockEntity::Mod(entity)) if !inventory_supported(entity))
+}
+pub(super) fn stack_maximum_override(stack: &ItemStack) -> Option<u32> {
+    let data = stack.data()?;
+    if data.other("!minecraft:max_stack_size").is_some() {
+        return Some(1);
+    }
+    let value = match data.other("minecraft:max_stack_size")? {
+        Tag::Byte(v) => i32::from(*v),
+        Tag::Short(v) => i32::from(*v),
+        Tag::Int(v) => *v,
+        Tag::Long(v) => *v as i32,
+        Tag::Float(v) => f32::from_bits(*v) as i32,
+        Tag::Double(v) => f64::from_bits(*v) as i32,
+        _ => return None,
+    };
+    (1..=99).contains(&value).then_some(value as u32)
+}
+pub(super) fn stack_maximum(game: &Game<'_>, stack: &ItemStack) -> u32 {
+    stack_maximum_override(stack)
+        .unwrap_or_else(|| game.native_max_stack_size(&stack.item).unwrap_or(64))
+}
+
+pub(super) fn integer(nbt: &Compound, key: &str) -> i32 {
+    match nbt.get(&key.into()) {
+        Some(Tag::Int(n)) => *n,
+        Some(Tag::Byte(n)) => i32::from(*n),
+        _ => 0,
+    }
+}
+
+thread_local! {
+    static PLACEMENT_HIT: std::cell::Cell<Option<([i32; 3], [i32; 3])>> = const { std::cell::Cell::new(None) };
+}
+
+pub(super) fn use_on(game: &Game<'_>, stack: &ItemStack, pos: [i32; 3], face: [i32; 3]) {
+    PLACEMENT_HIT.set((game.native_on("create") && owns(&stack.item)).then_some((pos, face)));
+}
+
+// Direction.orderedByNearest, adapted from Horizon's MIT level/place.rs.
+// Uses the engine's vanilla-compatible trigonometric table.
+pub(super) fn nearest(yaw: f32, pitch: f32) -> Direction {
+    use horizon_core::geometry::trig;
+    let pitch = pitch * (std::f32::consts::PI / 180.0);
+    let yaw = -yaw * (std::f32::consts::PI / 180.0);
+    let (ps, pc) = (trig::sin(f64::from(pitch)), trig::cos(f64::from(pitch)));
+    let (ys, yc) = (trig::sin(f64::from(yaw)), trig::cos(f64::from(yaw)));
+    let (x, y, z) = (ys.abs(), ps.abs(), yc.abs());
+    let ax = if ys > 0.0 {
+        Direction::East
+    } else {
+        Direction::West
+    };
+    let ay = if ps < 0.0 {
+        Direction::Up
+    } else {
+        Direction::Down
+    };
+    let az = if yc > 0.0 {
+        Direction::South
+    } else {
+        Direction::North
+    };
+    if x > z {
+        if y > x * pc { ay } else { ax }
+    } else if y > z * pc {
+        ay
+    } else {
+        az
+    }
+}
+
+pub(super) fn placed(game: &mut Game<'_>, stack: &ItemStack, pos: [i32; 3]) {
+    let Some((clicked, face)) = PLACEMENT_HIT.take() else {
+        return;
+    };
+    if !owns(&stack.item) {
+        return;
+    }
+    if matches!(
+        stack.item.as_ref(),
+        "create:basin" | "create:mechanical_mixer"
+    ) {
+        game.native_with_mod_block_entity(pos, |entity| {
+            crate::game::create_port_basin::initialize(entity);
+            crate::game::create_port_mixer::initialize(entity);
+        });
+        game.native_block_entity_sync(pos);
+        return;
+    }
+    let Some(face) = Direction::from_vector(face) else {
+        return;
+    };
+    let ports = Direction::ALL.map(|d| {
+        let offset = d.vector();
+        node(game, std::array::from_fn(|i| pos[i] + offset[i]))
+            .is_some_and(|n| n.shaft_port(offset.map(|v| -v)))
+    });
+    let sneaking = game.keys.contains(&winit::keyboard::KeyCode::ShiftLeft);
+    let look = nearest(game.yaw, game.pitch);
+    let axis = match stack.item.as_ref() {
+        "create:shaft"
+        | "create:andesite_encased_shaft"
+        | "create:brass_encased_shaft"
+        | "create:clutch"
+        | "create:gearshift" => Some(placement::shaft(look, face, sneaking, ports)),
+        "create:cogwheel" | "create:large_cogwheel" => {
+            let against = if game.native_block(clicked) == "create:cogwheel" {
+                node(game, clicked).map(|n| n.axis)
+            } else {
+                None
+            };
+            Some(placement::cog(face, sneaking, ports, against))
+        }
+        _ => None,
+    };
+    if let Some(axis) = axis {
+        game.native_set_block_property(
+            pos,
+            "axis",
+            match axis {
+                Axis::X => "x",
+                Axis::Y => "y",
+                Axis::Z => "z",
+            },
+        );
+    } else {
+        let facing = match stack.item.as_ref() {
+            "create:creative_motor" => Some(placement::motor(look, sneaking, ports)),
+            "create:hand_crank" => Some(placement::crank(face, sneaking, ports)),
+            "create:mechanical_press" => Some(
+                [
+                    Direction::North,
+                    Direction::East,
+                    Direction::South,
+                    Direction::West,
+                ][((f64::from(game.yaw) / 90.0 + 0.5).floor() as i64 & 3) as usize],
+            ),
+            "create:mechanical_piston"
+            | "create:mechanical_saw"
+            | "create:portable_storage_interface" => {
+                Some(if sneaking { look } else { look.opposite() })
+            }
+            "create:piston_extension_pole" => Some(face.opposite()),
+            _ => None,
+        };
+        if let Some(facing) = facing {
+            game.native_set_block_property(pos, "facing", facing.name());
+            if matches!(
+                stack.item.as_ref(),
+                "create:mechanical_piston" | "create:mechanical_saw"
+            ) {
+                // DirectionalAxisKineticBlock: the shaft axis is perpendicular
+                // to the piston face, preferring an existing vertical shaft.
+                let vertical = Direction::ALL
+                    .into_iter()
+                    .zip(ports)
+                    .any(|(d, connected)| connected && d.axis() == Axis::Y);
+                let first = match facing.axis() {
+                    Axis::X => vertical,
+                    Axis::Z => !vertical,
+                    Axis::Y => {
+                        let x = Direction::ALL
+                            .into_iter()
+                            .zip(ports)
+                            .any(|(d, connected)| connected && d.axis() == Axis::X);
+                        let z = Direction::ALL
+                            .into_iter()
+                            .zip(ports)
+                            .any(|(d, connected)| connected && d.axis() == Axis::Z);
+                        match (x, z) {
+                            (true, false) => true,
+                            (false, true) => false,
+                            _ => nearest(game.yaw, 0.0).axis() == Axis::X,
+                        }
+                    }
+                };
+                game.native_set_block_property(
+                    pos,
+                    "axis_along_first",
+                    if first { "true" } else { "false" },
+                );
+                if stack.item.as_ref() == "create:mechanical_saw" {
+                    let flipped = facing.axis() == Axis::Y
+                        && nearest(game.yaw, 0.0).vector().iter().any(|v| *v > 0);
+                    game.native_set_block_property(
+                        pos,
+                        "flipped",
+                        if flipped { "true" } else { "false" },
+                    );
+                }
+            }
+        }
+    }
+}
+
+pub(super) fn depot_reacts(game: &Game<'_>, pos: [i32; 3], face: [i32; 3]) -> bool {
+    if super::create_port_burner::reacts(game, pos) {
+        return true;
+    }
+    if crate::game::create_port_basin::reacts(game, pos) {
+        return true;
+    }
+    if crate::game::create_port_fluid_tank::bucket_reacts(game, pos) {
+        return true;
+    }
+    if crate::game::create_port_millstone::reacts(game, pos) {
+        return true;
+    }
+    if crate::game::create_port_saw::reacts(game, pos) {
+        return true;
+    }
+    if crate::game::create_port_interactions::reacts(game, pos) {
+        return true;
+    }
+    if !game.native_on("create") || game.native_block(pos) != "create:depot" || face != [0, 1, 0] {
+        return false;
+    }
+    if game.keys.contains(&winit::keyboard::KeyCode::ShiftLeft)
+        && (game
+            .inventory
+            .get(game.selected)
+            .is_some_and(Option::is_some)
+            || game.offhand.is_some())
+    {
+        return false;
+    }
+    true
+}
+
+pub(super) fn right_click(game: &mut Game<'_>, pos: [i32; 3], face: [i32; 3], canceled: &mut bool) {
+    if super::create_port_belt::right_click(game, pos, face) {
+        *canceled = true;
+        game.swing_arm();
+        return;
+    }
+    if crate::game::create_port_fluid_tank::wrench(game, pos)
+        || crate::game::create_port_fluid_tank::right_click(game, pos)
+    {
+        *canceled = true;
+        game.swing_arm();
+        return;
+    }
+    if super::create_port_burner::right_click(game, pos) {
+        *canceled = true;
+        game.swing_arm();
+        return;
+    }
+    if crate::game::create_port_basin::right_click(game, pos) {
+        game.swing_arm();
+        *canceled = true;
+        return;
+    }
+    if crate::game::create_port_interactions::right_click(game, pos, face) {
+        game.swing_arm();
+        *canceled = true;
+        return;
+    }
+    if crate::game::create_port_millstone::right_click(game, pos) {
+        *canceled = true;
+        game.swing_arm();
+        return;
+    }
+    if crate::game::create_port_saw::right_click(game, pos) {
+        *canceled = true;
+        game.swing_arm();
+        return;
+    }
+    if !depot_reacts(game, pos, face) {
+        return;
+    }
+    let held = game.held();
+    let put = held.is_some_and(|s| s.count > 0 && s.item.as_ref() != "create:mechanical_arm");
+    let Some(taken) = game.native_with_mod_block_entity(pos, |e| {
+        let taken = e
+            .items
+            .iter_mut()
+            .filter_map(Option::take)
+            .collect::<Vec<_>>();
+        e.nbt.remove(&"HeldItem".into());
+        taken
+    }) else {
+        return;
+    };
+    let uuid = game.native_acting_id();
+    if !taken.is_empty() {
+        crate::game::create_port_sounds::pickup(game, pos);
+    }
+    for stack in taken {
+        if let Some(rest) = game.native_give_stack(uuid, stack)
+            && let Some(player) = game.native_player()
+        {
+            game.spawn_item(
+                rest,
+                [player.x, player.y + 1.0, player.z],
+                [0.0, 0.2, 0.0],
+                10,
+            );
+        }
+    }
+    // Read the hand after returning the old stack: Inventory.add may have
+    // merged equal items into it. Creative players also empty their hand.
+    if put {
+        crate::game::create_port_sounds::depot(game, pos);
+        let incoming = game.held_mut().take();
+        let record = incoming
+            .as_ref()
+            .map(|stack| super::create_port_belt::depot_item(game, stack, 0.25, Direction::Up));
+        game.native_with_mod_block_entity(pos, |e| {
+            e.items[0] = incoming;
+            if let Some(record) = record {
+                e.nbt.insert("HeldItem".into(), record);
+            }
+        });
+    }
+    game.native_with_mod_block_entity(pos, |e| {
+        depot_data(e);
+    });
+    game.native_block_entity_sync(pos);
+    game.swing_arm();
+    *canceled = true;
+}
+
+/// Match DepotBehaviour/TransportedItemStack's public data names. Horizon also
+/// saves its generic Items slots; Create ignores that additional container field.
+pub(super) fn depot_data(entity: &mut ModBlockEntity) -> bool {
+    let old = entity.nbt.clone();
+    if let Some(item) = entity
+        .items
+        .first()
+        .and_then(Option::as_ref)
+        .map(horizon_items::item_nbt::item_to_nbt)
+    {
+        let mut held = match entity.nbt.remove(&"HeldItem".into()) {
+            Some(Tag::Compound(tag)) => tag,
+            _ => Compound::from([
+                ("Pos".into(), Tag::Float(0.25f32.to_bits())),
+                ("PrevPos".into(), Tag::Float(0.25f32.to_bits())),
+                ("Offset".into(), Tag::Float(0.0f32.to_bits())),
+                ("PrevOffset".into(), Tag::Float(0.0f32.to_bits())),
+                ("InSegment".into(), Tag::Int(0)),
+                ("Angle".into(), Tag::Int(0)),
+                ("InDirection".into(), Tag::Int(3)),
+            ]),
+        };
+        held.insert("Item".into(), item);
+        entity.nbt.insert("HeldItem".into(), Tag::Compound(held));
+    } else {
+        entity.nbt.remove(&"HeldItem".into());
+    }
+    let buffer = entity
+        .items
+        .iter()
+        .skip(1)
+        .enumerate()
+        .filter_map(|(slot, item)| {
+            let Tag::Compound(mut tag) = horizon_items::item_nbt::item_to_nbt(item.as_ref()?)
+            else {
+                return None;
+            };
+            tag.insert("Slot".into(), Tag::Int(slot as i32));
+            Some(Tag::Compound(tag))
+        })
+        .collect();
+    entity.nbt.insert(
+        "OutputBuffer".into(),
+        Tag::Compound(Compound::from([
+            ("Size".into(), Tag::Int(8)),
+            ("Items".into(), Tag::List(buffer)),
+        ])),
+    );
+    entity.nbt.remove(&"DisplayItem".into());
+    entity.nbt.remove(&"DisplayCount".into());
+    old != entity.nbt
+}
+
+fn facing(value: &str) -> [i32; 3] {
+    match value {
+        "west" => [-1, 0, 0],
+        "east" => [1, 0, 0],
+        "up" => [0, 1, 0],
+        "down" => [0, -1, 0],
+        "south" => [0, 0, 1],
+        _ => [0, 0, -1],
+    }
+}
+
+pub(super) fn node(game: &Game<'_>, pos: [i32; 3]) -> Option<Node> {
+    let block = game.native_block(pos);
+    let axis_property = game.native_block_property(pos, "axis");
+    let direction = facing(
+        &game
+            .native_block_property(pos, "facing")
+            .unwrap_or_else(|| "north".into()),
+    );
+    if block == "create:mechanical_saw" && direction != [0, 1, 0] {
+        // The horizontal source mode is a block/tree breaker, deferred here.
+        return None;
+    }
+    let mut axis = match axis_property.as_deref() {
+        Some("x") => Axis::X,
+        Some("y") => Axis::Y,
+        Some("z") => Axis::Z,
+        _ if direction[0] != 0 => Axis::X,
+        _ if direction[1] != 0 => Axis::Y,
+        _ => Axis::Z,
+    };
+    if matches!(
+        block.as_str(),
+        "create:speedometer"
+            | "create:stressometer"
+            | "create:mechanical_piston"
+            | "create:mechanical_saw"
+    ) {
+        let first = game
+            .native_block_property(pos, "axis_along_first")
+            .as_deref()
+            == Some("true");
+        axis = match axis {
+            Axis::X => {
+                if first {
+                    Axis::Y
+                } else {
+                    Axis::Z
+                }
+            }
+            Axis::Y => {
+                if first {
+                    Axis::X
+                } else {
+                    Axis::Z
+                }
+            }
+            Axis::Z => {
+                if first {
+                    Axis::X
+                } else {
+                    Axis::Y
+                }
+            }
+        };
+    }
+    if matches!(
+        block.as_str(),
+        "create:millstone" | "create:mechanical_mixer"
+    ) {
+        axis = Axis::Y;
+    }
+    if block == "create:belt" {
+        axis = if game.native_block_property(pos, "slope").as_deref() == Some("sideways") {
+            Axis::Y
+        } else if direction[0] != 0 {
+            Axis::Z
+        } else {
+            Axis::X
+        };
+    }
+    let kind = match block.as_str() {
+        "create:belt" => {
+            let (controller, index) = super::create_port_belt::node_data(game, pos)?;
+            Kind::Belt {
+                controller,
+                index,
+                pulley: game.native_block_property(pos, "part").as_deref() != Some("middle"),
+                diagonal: matches!(
+                    game.native_block_property(pos, "slope").as_deref(),
+                    Some("upward" | "downward")
+                ),
+            }
+        }
+        "create:millstone" => Kind::Millstone,
+        "create:mechanical_mixer" => Kind::Mixer,
+        "create:mechanical_pump" => Kind::Pump,
+        "create:mechanical_piston" => Kind::MechanicalPiston,
+        "create:mechanical_saw" => Kind::Saw,
+        "create:crushing_wheel" => Kind::CrushingWheel,
+        "create:encased_fan" | "create:mechanical_drill" => Kind::Consumer {
+            facing: direction.map(|v| -v),
+            impact: if block == "create:mechanical_drill" {
+                4.0
+            } else {
+                2.0
+            },
+        },
+        "create:speedometer" | "create:stressometer" => Kind::Shaft,
+        "create:water_wheel" | "create:large_water_wheel" => Kind::WaterWheel {
+            rpm: match game.world.block_entities.get(&(pos[0], pos[1], pos[2])) {
+                Some(BlockEntity::Mod(e)) => create_engine::waterwheel::rpm(
+                    integer(&e.nbt, "FlowScore"),
+                    block == "create:large_water_wheel",
+                ),
+                _ => 0.0,
+            },
+            capacity: if block == "create:large_water_wheel" {
+                128.0
+            } else {
+                32.0
+            },
+        },
+        "create:creative_motor" => Kind::Motor {
+            facing: direction,
+            rpm: {
+                let speed = match game.world.block_entities.get(&(pos[0], pos[1], pos[2])) {
+                    Some(BlockEntity::Mod(e)) => e
+                        .nbt
+                        .get(&"ScrollValue".into())
+                        .map(|_| integer(&e.nbt, "ScrollValue") as f32)
+                        .unwrap_or(16.0),
+                    _ => 16.0,
+                };
+                if direction.iter().any(|v| *v < 0) {
+                    -speed
+                } else {
+                    speed
+                }
+            },
+            capacity: 16384.0,
+        },
+        "create:shaft" | "create:andesite_encased_shaft" | "create:brass_encased_shaft" => {
+            Kind::Shaft
+        }
+        "create:gearbox" => Kind::Gearbox,
+        "create:clutch" => Kind::Clutch {
+            powered: game.native_block_property(pos, "powered").as_deref() == Some("true"),
+        },
+        "create:gearshift" => Kind::Gearshift {
+            powered: game.native_block_property(pos, "powered").as_deref() == Some("true"),
+        },
+        "create:hand_crank" => {
+            let (active, back) = match game.world.block_entities.get(&(pos[0], pos[1], pos[2])) {
+                Some(BlockEntity::Mod(e)) => (
+                    integer(&e.nbt, "InUse") > 0,
+                    integer(&e.nbt, "Backwards") != 0,
+                ),
+                _ => (false, false),
+            };
+            let sign = if direction.iter().any(|v| *v < 0) {
+                -1.0
+            } else {
+                1.0
+            };
+            Kind::Motor {
+                facing: direction.map(|v| -v),
+                rpm: if active {
+                    32.0 * sign * if back { -1.0 } else { 1.0 }
+                } else {
+                    0.0
+                },
+                capacity: 8.0,
+            }
+        }
+        "create:cogwheel" => Kind::Cog { large: false },
+        "create:large_cogwheel" => Kind::Cog { large: true },
+        "create:mechanical_press" => Kind::Press,
+        _ => return None,
+    };
+    Some(Node { pos, axis, kind })
+}
+
+pub(super) fn ingredient(json: &Value) -> Option<Value> {
+    if json.is_string() {
+        return Some(json.clone());
+    }
+    if let Some(id) = json.get("item").and_then(Value::as_str) {
+        return Some(id.into());
+    }
+    if let Some(tag) = json.get("tag").and_then(Value::as_str) {
+        return Some(format!("#{tag}").into());
+    }
+    json.as_array()
+        .map(|values| Value::Array(values.iter().filter_map(ingredient).collect()))
+}
+
+fn result(game: &Game<'_>, stack: &ItemStack) -> Option<ItemStack> {
+    for recipe in game.native_recipes_of_type("create:pressing") {
+        let Some(inputs) = recipe.json["ingredients"].as_array() else {
+            continue;
+        };
+        let Some(outputs) = recipe.json["results"].as_array() else {
+            continue;
+        };
+        // The first milestone supports deterministic, single-input/single-output bulk pressing.
+        if inputs.len() != 1
+            || outputs.len() != 1
+            || outputs[0]
+                .get("chance")
+                .and_then(Value::as_f64)
+                .is_some_and(|c| c != 1.0)
+        {
+            continue;
+        }
+        let Some(input) = ingredient(&inputs[0]).and_then(|i| game.native_recipe_ingredient(&i))
+        else {
+            continue;
+        };
+        if !input.test(stack) {
+            continue;
+        }
+        let Some(output) = game.native_recipe_result(&outputs[0]) else {
+            continue;
+        };
+        if output.count <= game.native_max_stack_size(&output.item)? {
+            return Some(output);
+        }
+    }
+    None
+}
+
+fn depot_input(game: &Game<'_>, pos: [i32; 3]) -> Option<ItemStack> {
+    if game.native_block(pos) != "create:depot" {
+        return None;
+    }
+    let BlockEntity::Mod(depot) = game.world.block_entities.get(&(pos[0], pos[1], pos[2]))? else {
+        return None;
+    };
+    depot.items.first()?.clone()
+}
+
+/// A selected goggles provider needs the solver's pre-overstress RPM, even when
+/// effective Speed is zero. This private derived field is not a solver input.
+fn publish_selected_solver_speed(
+    nbt: &mut Compound,
+    block: &str,
+    network: &Network,
+    pos: Pos,
+) -> bool {
+    if !matches!(block, "create:water_wheel" | "create:millstone") {
+        return false;
+    }
+    let speed = network
+        .theoretical
+        .get(&pos)
+        .copied()
+        .filter(|v| v.is_finite());
+    let value = match (network.status, speed) {
+        (Status::Running | Status::Overstressed, Some(speed)) => Tag::Float(speed.to_bits()),
+        (Status::Idle, Some(_)) => Tag::Float(0.0f32.to_bits()),
+        _ => Tag::Byte(0),
+    };
+    let changed = nbt.get(&"create_horizon:solver_theoretical_speed".into()) != Some(&value);
+    nbt.insert("create_horizon:solver_theoretical_speed".into(), value);
+    changed
+}
+
+pub(super) fn tick(game: &mut Game<'_>, pos: [i32; 3], entity: &mut ModBlockEntity) {
+    let block = game.native_block(pos);
+    if !owns(&block) {
+        return;
+    }
+    if block == "create:blaze_burner" {
+        super::create_port_burner::tick(game, pos, entity);
+        return;
+    }
+    if block == "create:belt" && !super::create_port_belt::prepare(game, pos, entity) {
+        return;
+    }
+    if block == "create:basin" {
+        if crate::game::create_port_basin::tick(game, pos, entity) {
+            game.native_block_entity_sync(pos);
+        }
+        return;
+    }
+    if block == "create:depot" {
+        crate::game::create_port_world_items::catch(game, pos, entity);
+        let changed = depot_data(entity);
+        if slide_depot(game, pos, entity) || changed {
+            game.native_block_entity_sync(pos);
+        }
+        return;
+    }
+    if block == "create:andesite_funnel" {
+        crate::game::create_port_funnel::tick(game, pos, entity);
+        return;
+    }
+    if block == "create:crushing_wheel_controller" {
+        if crate::game::create_port_crushing::tick_controller(game, pos, entity) {
+            game.native_block_entity_sync(pos);
+        }
+        return;
+    }
+    if crate::game::create_port_generators::tick(game, pos, entity, &block) {
+        return;
+    }
+    if matches!(block.as_str(), "create:clutch" | "create:gearshift") {
+        let dim = game.dim.id().to_owned();
+        let powered = game.native_neighbor_signal(&dim, pos) > 0;
+        if game.native_set_block_property(pos, "powered", if powered { "true" } else { "false" }) {
+            crate::game::create_port_kinetic_runtime::invalidate();
+        }
+    }
+    if block == "create:hand_crank" {
+        let in_use = integer(&entity.nbt, "InUse");
+        if in_use > 0 {
+            entity.nbt.insert("InUse".into(), Tag::Int(in_use - 1));
+            if in_use == 1 {
+                crate::game::create_port_kinetic_runtime::invalidate();
+            }
+        }
+    }
+    let Some(mut start) = node(game, pos) else {
+        return;
+    };
+    if let Kind::Motor { rpm, .. } = &mut start.kind {
+        let direction = facing(
+            &game
+                .native_block_property(pos, "facing")
+                .unwrap_or_else(|| "north".into()),
+        );
+        let sign = if direction.iter().any(|v| *v < 0) {
+            -1.0
+        } else {
+            1.0
+        };
+        let value = if block == "create:hand_crank" {
+            if integer(&entity.nbt, "InUse") > 0 {
+                if integer(&entity.nbt, "Backwards") != 0 {
+                    -32.0
+                } else {
+                    32.0
+                }
+            } else {
+                0.0
+            }
+        } else {
+            entity
+                .nbt
+                .get(&"ScrollValue".into())
+                .map(|_| integer(&entity.nbt, "ScrollValue") as f32)
+                .unwrap_or(16.0)
+        };
+        *rpm = sign * value;
+    }
+    if let Kind::WaterWheel { rpm, .. } = &mut start.kind {
+        *rpm = create_engine::waterwheel::rpm(
+            integer(&entity.nbt, "FlowScore"),
+            block == "create:large_water_wheel",
+        );
+    }
+    let network = crate::game::create_port_kinetic_runtime::network(game, start, 0);
+    let other_half = matches!(start.kind, Kind::Clutch { powered: true })
+        .then(|| crate::game::create_port_kinetic_runtime::network(game, start, 1));
+    let mut ports = Compound::new();
+    for d in Direction::ALL {
+        let delta = d.vector();
+        let mut speed = network.port_speed(pos, delta);
+        if let Some(other) = &other_half {
+            if other.port_speed(pos, delta).abs() > speed.abs() {
+                speed = other.port_speed(pos, delta);
+            }
+        }
+        ports.insert(d.name().into(), Tag::Float(speed.to_bits()));
+    }
+    entity.nbt.insert(
+        "create_horizon".into(),
+        Tag::Compound(Compound::from([("Ports".into(), Tag::Compound(ports))])),
+    );
+    let mut rpm = network.speed(pos);
+    if let Some(other) = &other_half {
+        if other.speed(pos).abs() > rpm.abs() {
+            rpm = other.speed(pos);
+        }
+    }
+    if block == "create:mechanical_pump" {
+        let _ = crate::game::create_port_fluid_pump_transfer::tick(game, pos, rpm);
+    }
+
+    let old_rpm = number(&entity.nbt, "Speed");
+    let old_capacity = number(&entity.nbt, "Capacity");
+    let old_stress = number(&entity.nbt, "Stress");
+    let old_status = entity.nbt.get(&"NetworkStatus".into()).cloned();
+    let old_source = entity.nbt.get(&"create_horizon:kinetic".into()).cloned();
+    let mut solver_speed_changed = false;
+    if game.serving.is_some() || game.options.dedicated.is_some() {
+        solver_speed_changed =
+            publish_selected_solver_speed(&mut entity.nbt, &block, &network, pos);
+        if let Some(diagnostics) = crate::game::create_port_kinetic_runtime::diagnostics(game, pos)
+        {
+            entity
+                .nbt
+                .insert("create_horizon:kinetic".into(), Tag::Compound(diagnostics));
+        } else {
+            entity.nbt.remove(&"create_horizon:kinetic".into());
+        }
+    }
+    entity.nbt.insert("Speed".into(), Tag::Float(rpm.to_bits()));
+    if block == "create:crushing_wheel" {
+        crate::game::create_port_crushing::wheel_changed(game, pos, rpm);
+    }
+    entity
+        .nbt
+        .insert("Capacity".into(), Tag::Float(network.capacity.to_bits()));
+    entity
+        .nbt
+        .insert("Stress".into(), Tag::Float(network.stress.to_bits()));
+    entity.nbt.insert(
+        "NetworkStatus".into(),
+        Tag::String(format!("{:?}", network.status).as_str().into()),
+    );
+    let belt_changed = super::create_port_belt::tick(game, pos, entity, rpm);
+    let mut sync = belt_changed
+        || solver_speed_changed
+        || old_rpm != rpm
+        || old_capacity != network.capacity
+        || old_stress != network.stress
+        || old_status.as_ref() != entity.nbt.get(&"NetworkStatus".into())
+        || old_source.as_ref() != entity.nbt.get(&"create_horizon:kinetic".into());
+    if block == "create:mechanical_mixer" {
+        crate::game::create_port_mixer::on_speed_changed(entity, old_rpm, rpm);
+        sync |= crate::game::create_port_mixer::tick(game, pos, entity, rpm);
+    }
+    if block == "create:millstone" {
+        sync |= crate::game::create_port_millstone::tick(game, pos, entity, rpm);
+    }
+    if block == "create:encased_fan" {
+        crate::game::create_port_fan::tick(game, pos, entity, rpm);
+    }
+    if block == "create:mechanical_drill" {
+        sync |= crate::game::create_port_drill::tick(game, pos, entity, rpm);
+    }
+    if block == "create:mechanical_saw" {
+        sync |= crate::game::create_port_saw::tick(game, pos, entity, rpm);
+    }
+    if matches!(block.as_str(), "create:speedometer" | "create:stressometer") {
+        let value = if block == "create:speedometer" {
+            create_engine::visual::speed_dial(rpm)
+        } else {
+            create_engine::visual::stress_dial(
+                network.capacity,
+                network.stress,
+                network.status == create_engine::kinetics::Status::Overstressed,
+            )
+        };
+        let before = number(&entity.nbt, "Value");
+        entity
+            .nbt
+            .insert("Value".into(), Tag::Float(value.to_bits()));
+        let mix = |a: i32, b: i32, t: f32| {
+            (0..3)
+                .map(|i| {
+                    let x = (a >> (i * 8)) & 255;
+                    let y = (b >> (i * 8)) & 255;
+                    ((x as f32 + (y - x) as f32 * t) as i32) << (i * 8)
+                })
+                .sum::<i32>()
+        };
+        let color = if block == "create:speedometer" {
+            let base = if rpm == 0.0 {
+                0
+            } else if rpm.abs() < 30.0 {
+                0x22FF22
+            } else if rpm.abs() < 100.0 {
+                0x0084FF
+            } else {
+                0xFF55FF
+            };
+            mix(base, 0xFFFFFF, 0.25)
+        } else if value <= 0.0 {
+            integer(&entity.nbt, "Color")
+        } else if value < 0.5 {
+            mix(0x00FF00, 0xFFFF00, value * 2.0)
+        } else if value < 1.0 {
+            mix(0xFFFF00, 0xFF0000, value * 2.0 - 1.0)
+        } else {
+            0xFF0000
+        };
+        entity.nbt.insert("Color".into(), Tag::Int(color));
+        if before != value {
+            sync = true;
+            crate::game::create_port_instruments::changed(game, pos);
+        }
+    }
+    if block == "create:mechanical_press" {
+        let depot = [pos[0], pos[1] - 2, pos[2]];
+        let mut cycle = PressCycle {
+            running: integer(&entity.nbt, "Running") != 0,
+            ticks: integer(&entity.nbt, "Ticks"),
+            applied: integer(&entity.nbt, "Applied") != 0,
+        };
+        let mode = if cycle.running {
+            integer(&entity.nbt, "Mode")
+        } else {
+            i32::from(game.native_block(depot) == "create:depot")
+        };
+        let plan = if mode == 1 {
+            depot_input(game, depot)
+                .and_then(|input| result(game, &input).map(|output| (input, output)))
+        } else {
+            None
+        };
+        let world_plan = if mode == 0 {
+            crate::game::create_port_world_items::inputs(game, pos)
+                .into_iter()
+                .find_map(|input| result(game, &input.stack).map(|output| (input, output)))
+        } else {
+            None
+        };
+        let action = cycle.tick(rpm, plan.is_some() || world_plan.is_some());
+        if action == Action::Started {
+            entity.nbt.remove(&"ParticleItems".into());
+            entity.nbt.insert("Mode".into(), Tag::Int(mode));
+            entity.nbt.insert("Finished".into(), Tag::Byte(0));
+        }
+        if action == Action::Finished {
+            entity.nbt.insert("Finished".into(), Tag::Byte(1));
+        }
+        if action == Action::Press {
+            let particle = plan
+                .as_ref()
+                .map(|(i, _)| i)
+                .or_else(|| world_plan.as_ref().map(|(i, _)| &i.stack));
+            if let Some(item) = particle {
+                entity.nbt.insert(
+                    "ParticleItems".into(),
+                    Tag::List(vec![horizon_items::item_nbt::item_to_nbt(item)]),
+                );
+            }
+            crate::game::create_port_sounds::press(game, pos, rpm);
+            if let Some((input, output)) = world_plan {
+                crate::game::create_port_world_items::press(game, input, output);
+            }
+            if let Some((input, output)) = plan {
+                let max = game.native_max_stack_size(&output.item).unwrap_or(64);
+                let changed = game
+                    .native_with_mod_block_entity(depot, |target| {
+                        crate::game::create_port_inventory::press(target, input, output, max)
+                    })
+                    .flatten();
+                if let Some(overflow) = changed {
+                    for item in overflow {
+                        game.spawn_item(
+                            item,
+                            [
+                                f64::from(depot[0]) + 0.5,
+                                f64::from(depot[1]) + 1.0,
+                                f64::from(depot[2]) + 0.5,
+                            ],
+                            [0.0; 3],
+                            10,
+                        );
+                    }
+                    game.native_block_entity_sync(depot);
+                }
+            }
+        }
+        entity
+            .nbt
+            .insert("Running".into(), Tag::Byte(i8::from(cycle.running)));
+        entity.nbt.insert("Ticks".into(), Tag::Int(cycle.ticks));
+        entity
+            .nbt
+            .insert("Applied".into(), Tag::Int(i32::from(cycle.applied)));
+        entity
+            .nbt
+            .insert("LastTick".into(), Tag::Long(game.world.game_time));
+        sync |= action != Action::None;
+    }
+    if sync {
+        game.native_block_entity_sync(pos);
+    }
+}
+
+pub(super) fn update_tag(entity: &ModBlockEntity, tag: &mut Option<Compound>) {
+    if (owns(&entity.id)
+        || matches!(
+            entity.id.as_str(),
+            "create:motor"
+                | "create:simple_kinetic"
+                | "create:encased_shaft"
+                | "create:drill"
+                | "create:blaze_heater"
+        ))
+        && tag.is_none()
+    {
+        let mut snapshot = entity.nbt.clone();
+        horizon_client::save::create_basin_inventory_codec::snapshot(entity, &mut snapshot);
+        if entity.id == "create:depot" && entity.items.first().is_none_or(Option::is_none) {
+            // Horizon merges update tags. Absence would leave the old rendered
+            // stack alive; send an explicit empty value on the wire only.
+            snapshot.insert("HeldItem".into(), Tag::Compound(Compound::new()));
+        }
+        *tag = Some(snapshot);
+    }
+}
+
+pub(super) fn container(block: &str, container: &mut Option<ModContainer>) {
+    crate::game::create_port_basin::container(block, container);
+    crate::game::create_port_millstone::container(block, container);
+    crate::game::create_port_saw::container(block, container);
+    crate::game::create_port_crushing::container(block, container);
+    if block == "create:mechanical_piston" && container.is_none() {
+        *container = Some(ModContainer {
+            slots: 1,
+            faces: std::array::from_fn(|_| Vec::new()),
+            inputs: Vec::new(),
+            outputs: Vec::new(),
+            menu: None,
+        });
+    }
+    if block == "create:depot" && container.is_none() {
+        *container = Some(ModContainer {
+            slots: 9,
+            faces: std::array::from_fn(|_| (0..9).collect()),
+            inputs: vec![0],
+            outputs: (0..9).collect(),
+            menu: None,
+        });
+    }
+}
+
+pub(super) fn models(models: &mut Vec<String>) {
+    crate::game::create_port_mixer::models(models);
+    crate::game::create_port_crushing::models(models);
+    super::create_port_belt::models(models);
+    models.push("create:block/port_hint".into());
+    for part in create_assets::WHEEL_PARTS {
+        for wood in create_assets::WOODS {
+            models.push(format!("create:block/{part}_material_{wood}"));
+        }
+    }
+    models.extend(
+        create_assets::PARTS
+            .iter()
+            .map(|name| format!("create:block/{name}")),
+    );
+}
+
+pub(super) fn face_south(draw: &mut BlockEntityDraw, direction: Direction) {
+    match direction {
+        Direction::Up => draw.rotate_about([1.0, 0.0, 0.0], -90.0, [0.5; 3]),
+        Direction::Down => draw.rotate_about([1.0, 0.0, 0.0], 90.0, [0.5; 3]),
+        Direction::North => draw.rotate_about([0.0, 1.0, 0.0], 180.0, [0.5; 3]),
+        Direction::East => draw.rotate_about([0.0, 1.0, 0.0], 90.0, [0.5; 3]),
+        Direction::West => draw.rotate_about([0.0, 1.0, 0.0], -90.0, [0.5; 3]),
+        Direction::South => {}
+    }
+}
+fn port_speed(entity: &ModBlockEntity, direction: Direction) -> f32 {
+    match entity
+        .nbt
+        .get(&"create_horizon".into())
+        .and_then(|t| t.get("Ports"))
+        .and_then(|t| t.get(direction.name()))
+    {
+        Some(Tag::Float(v)) => f32::from_bits(*v),
+        _ => 0.0,
+    }
+}
+fn trace_depot(pos: [i32; 3], stack: Option<&ItemStack>) {
+    static TRACE: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
+    if !*TRACE.get_or_init(|| std::env::var_os("CREATE_HORIZON_TRACE").is_some()) {
+        return;
+    }
+    thread_local! {static LAST: std::cell::RefCell<std::collections::BTreeMap<[i32;3],Option<(String,u32)>>> = const {std::cell::RefCell::new(std::collections::BTreeMap::new())};}
+    let value = stack.map(|s| (s.item.to_string(), s.count));
+    LAST.with(|last| {
+        let mut last=last.borrow_mut();
+        if last.get(&pos) == Some(&value) {return;}
+        last.insert(pos,value);
+        log::info!("Create render depot: {}",serde_json::json!({"pos":pos,"stack":stack.map(|s|serde_json::json!({"item":s.item.as_ref(),"count":s.count}))}));
+    });
+}
+
+fn orient(draw: &mut BlockEntityDraw, axis: Axis) {
+    match axis {
+        Axis::X => draw.rotate_about([0.0, 0.0, 1.0], -90.0, [0.5; 3]),
+        Axis::Z => draw.rotate_about([1.0, 0.0, 0.0], 90.0, [0.5; 3]),
+        Axis::Y => {}
+    }
+}
+
+pub(super) fn draw(
+    game: &Game<'_>,
+    pos: [i32; 3],
+    block: &str,
+    _state: BlockStateId,
+    entity: &ModBlockEntity,
+    draw: &mut BlockEntityDraw,
+) {
+    if !owns(block) {
+        return;
+    }
+    if matches!(block, "create:mechanical_pump" | "create:fluid_pipe") {
+        // Their selected MODEL blockstates are complete authored fallbacks;
+        // the generic kinetic renderer would add an unrelated axial shaft.
+        return;
+    }
+    if crate::game::create_port_crushing::draw(game, pos, entity, draw) {
+        return;
+    }
+    if block == "create:blaze_burner" {
+        super::create_port_burner_presentation::draw(game, pos, _state, entity, draw);
+        return;
+    }
+    if super::create_port_belt::draw(game, pos, entity, draw) {
+        return;
+    }
+    if crate::game::create_port_basin::draw(game, pos, entity, draw)
+        || crate::game::create_port_fluid_tank::draw(game, pos, entity, draw)
+        || crate::game::create_port_mixer::draw(game, pos, entity, draw)
+    {
+        return;
+    }
+    if block == "create:portable_storage_interface" {
+        super::create_s5_piston::draw_stationary_interface(game, pos, draw);
+        return;
+    }
+    let original = ORIGINAL_ASSETS.load(std::sync::atomic::Ordering::Relaxed);
+    if block == "create:depot" {
+        // The depot's exposed top and displayed item are lit from the air above it.
+        let (block_light, sky_light) = game.native_light([pos[0], pos[1] + 1, pos[2]]);
+        draw.light =
+            horizon_client::block_entity_render::vertex_light((sky_light << 4) | block_light);
+        game.native_draw_model(draw, "create:block/depot/block", 0xFFFFFF);
+        let stack = entity
+            .nbt
+            .get(&"HeldItem".into())
+            .and_then(|held| held.get("Item"))
+            .and_then(horizon_items::item_nbt::item_from_nbt);
+        trace_depot(pos, stack.as_ref());
+        crate::game::create_port_presentation::depot(game, pos, entity, draw);
+        return;
+    }
+    if crate::game::create_port_millstone::draw(game, pos, entity, draw) {
+        return;
+    }
+    if crate::game::create_port_drill::draw(game, pos, entity, draw) {
+        return;
+    }
+    if crate::game::create_port_saw::draw(game, pos, entity, draw) {
+        return;
+    }
+    if block == "create:encased_fan" {
+        crate::game::create_port_fan::draw(game, pos, entity, draw);
+        return;
+    }
+    let Some(node) = node(game, pos) else { return };
+    let direction = game.native_block_property(pos, "facing");
+    crate::game::create_port_presentation::hints(game, pos, draw);
+    let time = draw.game_time as f64 + f64::from(draw.partial);
+    if block == "create:hand_crank" {
+        let facing = Direction::from_vector(facing(direction.as_deref().unwrap_or("up"))).unwrap();
+        let axis = create_engine::visual::positive_axis(node.axis);
+        draw.push();
+        draw.rotate_about(
+            axis,
+            create_engine::visual::angle(
+                time,
+                number(&entity.nbt, "Speed"),
+                create_engine::visual::rotation_offset(pos, node.axis, false),
+            ),
+            [0.5; 3],
+        );
+        // The base model's axis is +Y; its short shaft reaches into the support.
+        match facing {
+            Direction::Down => draw.rotate_about([1.0, 0.0, 0.0], 180.0, [0.5; 3]),
+            Direction::North => draw.rotate_about([1.0, 0.0, 0.0], -90.0, [0.5; 3]),
+            Direction::South => draw.rotate_about([1.0, 0.0, 0.0], 90.0, [0.5; 3]),
+            Direction::East => draw.rotate_about([0.0, 0.0, 1.0], -90.0, [0.5; 3]),
+            Direction::West => draw.rotate_about([0.0, 0.0, 1.0], 90.0, [0.5; 3]),
+            Direction::Up => {}
+        }
+        game.native_draw_model(draw, "create:block/hand_crank/block", 0xFFFFFF);
+        draw.pop();
+        draw.push();
+        let handle_angle =
+            crate::game::create_port_presentation::crank_angle(game, pos, draw.partial);
+        draw.rotate_about(axis, handle_angle, [0.5; 3]);
+        face_south(draw, facing.opposite());
+        game.native_draw_model(draw, "create:block/hand_crank/handle", 0xFFFFFF);
+        draw.pop();
+        return;
+    }
+    if matches!(block, "create:speedometer" | "create:stressometer") {
+        crate::game::create_port_instruments::draw(game, pos, entity, draw, node.axis);
+    }
+    if matches!(node.kind, Kind::WaterWheel { .. }) {
+        crate::game::create_port_generators::draw(game, pos, entity, draw, node.axis, block);
+        return;
+    }
+    if matches!(
+        node.kind,
+        Kind::Gearbox | Kind::Clutch { .. } | Kind::Gearshift { .. } | Kind::MechanicalPiston
+    ) {
+        for direction in Direction::ALL {
+            if !node.shaft_port(direction.vector()) {
+                continue;
+            }
+            let angle = create_engine::visual::angle(
+                time,
+                port_speed(entity, direction),
+                create_engine::visual::rotation_offset(pos, direction.axis(), false),
+            );
+            draw.push();
+            // Rotate about the positive WORLD axis before orienting the model.
+            // Rotating about local +Z after facing West/Down/North reverses it.
+            draw.rotate_about(
+                create_engine::visual::positive_axis(direction.axis()),
+                angle,
+                [0.5; 3],
+            );
+            face_south(draw, direction);
+            game.native_draw_model(draw, "create:block/shaft_half", 0xFFFFFF);
+            draw.pop();
+        }
+        return;
+    }
+    if matches!(node.kind, Kind::Motor { .. } | Kind::Press) {
+        draw.push();
+        let model = if node.kind == Kind::Press {
+            let yaw = match direction.as_deref() {
+                Some("east") => -90.0,
+                Some("south") => 180.0,
+                Some("west") => 90.0,
+                _ => 0.0,
+            };
+            draw.rotate_about([0.0, 1.0, 0.0], yaw, [0.5; 3]);
+            "create:block/mechanical_press/block"
+        } else if matches!(direction.as_deref(), Some("up" | "down")) {
+            if direction.as_deref() == Some("down") {
+                draw.rotate_about([1.0, 0.0, 0.0], 180.0, [0.5; 3]);
+            }
+            "create:block/creative_motor/block_vertical"
+        } else {
+            let yaw = match direction.as_deref() {
+                Some("east") => 90.0,
+                Some("north") => 180.0,
+                Some("west") => -90.0,
+                _ => 0.0,
+            };
+            draw.rotate_about([0.0, 1.0, 0.0], yaw, [0.5; 3]);
+            "create:block/creative_motor/block"
+        };
+        game.native_draw_model(draw, model, 0xFFFFFF);
+        if node.kind == Kind::Press {
+            let last = match entity.nbt.get(&"LastTick".into()) {
+                Some(Tag::Long(t)) => *t,
+                _ => draw.game_time,
+            };
+            let elapsed = (draw.game_time - last).max(0) as f32 + draw.partial;
+            let ticks = if integer(&entity.nbt, "Running") == 0 {
+                0.0
+            } else {
+                (integer(&entity.nbt, "Ticks") as f32
+                    + elapsed * tick_speed(number(&entity.nbt, "Speed")) as f32)
+                    .min(240.0)
+            };
+            let travel = if original {
+                // Create's belt/depot head reaches the depot's 13/16 top two blocks below.
+                head_offset(ticks)
+                    * if integer(&entity.nbt, "Mode") == 1 {
+                        19.0 / 16.0
+                    } else {
+                        1.0
+                    }
+            } else if ticks <= 120.0 {
+                ticks / 120.0
+            } else {
+                (240.0 - ticks) / 120.0
+            };
+            draw.translate([0.0, -travel, 0.0]);
+            game.native_draw_model(draw, "create:block/mechanical_press/head", 0xFFFFFF);
+        }
+        draw.pop();
+    }
+    draw.push();
+    let angle = create_engine::visual::angle(
+        time,
+        number(&entity.nbt, "Speed"),
+        create_engine::visual::rotation_offset(
+            pos,
+            node.axis,
+            matches!(node.kind, Kind::Cog { large: true }),
+        ),
+    );
+    if matches!(node.kind, Kind::Motor { .. }) {
+        draw.rotate_about(
+            create_engine::visual::positive_axis(node.axis),
+            angle,
+            [0.5; 3],
+        );
+        // The half shaft's untransformed output points south (+Z).
+        match direction.as_deref() {
+            Some("up") => draw.rotate_about([1.0, 0.0, 0.0], -90.0, [0.5; 3]),
+            Some("down") => draw.rotate_about([1.0, 0.0, 0.0], 90.0, [0.5; 3]),
+            Some("east") => draw.rotate_about([0.0, 1.0, 0.0], 90.0, [0.5; 3]),
+            Some("west") => draw.rotate_about([0.0, 1.0, 0.0], -90.0, [0.5; 3]),
+            Some("north") => draw.rotate_about([0.0, 1.0, 0.0], 180.0, [0.5; 3]),
+            _ => {}
+        }
+        game.native_draw_model(draw, "create:block/shaft_half", 0xFFFFFF);
+        draw.pop();
+        return;
+    }
+    orient(draw, node.axis);
+    draw.rotate_about([0.0, 1.0, 0.0], angle, [0.5; 3]);
+    let model = match node.kind {
+        Kind::Cog { large: false } => "create:block/cogwheel",
+        Kind::Cog { large: true } => "create:block/large_cogwheel",
+        _ => "create:block/shaft",
+    };
+    game.native_draw_model(draw, model, 0xFFFFFF);
+    draw.pop();
+}
+
+fn depot_field(fields: &mut Compound, key: &str, value: Tag) -> bool {
+    if fields.get(&key.into()) == Some(&value) {
+        false
+    } else {
+        fields.insert(key.into(), value);
+        true
+    }
+}
+fn slide_depot(game: &mut Game<'_>, pos: [i32; 3], entity: &mut ModBlockEntity) -> bool {
+    let Some(stack) = entity.items.first().and_then(Option::as_ref) else {
+        return false;
+    };
+    let upright = super::create_port_belt::upright(game, stack);
+    let Some(tag) = entity.nbt.get_mut(&"HeldItem".into()) else {
+        return false;
+    };
+    let Tag::Compound(held) = tag else {
+        return false;
+    };
+    let old = number(held, "Pos");
+    let side = number(held, "Offset");
+    let (next, angle, _ready) = create_engine::depot::slide(old, integer(held, "Angle"), upright);
+    let changed = depot_field(held, "PrevPos", Tag::Float(old.to_bits()))
+        | depot_field(held, "Pos", Tag::Float(next.to_bits()))
+        | depot_field(held, "PrevOffset", Tag::Float(side.to_bits()))
+        | depot_field(held, "Angle", Tag::Int(angle));
+    changed
+}
+
+#[cfg(test)]
+mod solver_speed_publication_tests {
+    use super::*;
+    use create_engine::kinetics;
+
+    const KEY: &str = "create_horizon:solver_theoretical_speed";
+
+    fn wheel(rpm: f32, capacity: f32) -> Node {
+        Node {
+            pos: [0, 0, 0],
+            axis: Axis::Y,
+            kind: Kind::WaterWheel { rpm, capacity },
+        }
+    }
+
+    fn millstone() -> Node {
+        Node {
+            pos: [0, 1, 0],
+            axis: Axis::Y,
+            kind: Kind::Millstone,
+        }
+    }
+
+    fn wheel_and_mill(rpm: f32, capacity: f32) -> Network {
+        let millstone = millstone();
+        kinetics::solve(wheel(rpm, capacity), |pos| {
+            (pos == millstone.pos).then_some(millstone)
+        })
+    }
+
+    fn transmitted(entity: &ModBlockEntity) -> Tag {
+        let mut tag = None;
+        update_tag(entity, &mut tag);
+        tag.expect("selected entity update tag")
+            .get(&KEY.into())
+            .expect("solver speed in update tag")
+            .clone()
+    }
+
+    #[test]
+    fn selected_nodes_publish_solver_speed_before_overstress_gates_effective_speed() {
+        let pos = millstone().pos;
+        let mut nbt = Compound::new();
+        let running = wheel_and_mill(-16.0, 4.0);
+        assert_eq!(running.status, Status::Running);
+        assert_eq!(running.speed(pos), -16.0);
+        assert!(publish_selected_solver_speed(
+            &mut nbt,
+            "create:millstone",
+            &running,
+            pos
+        ));
+        assert_eq!(
+            nbt.get(&KEY.into()),
+            Some(&Tag::Float((-16.0f32).to_bits()))
+        );
+        assert!(!publish_selected_solver_speed(
+            &mut nbt,
+            "create:millstone",
+            &running,
+            pos
+        ));
+
+        let overloaded = wheel_and_mill(-32.0, 3.0);
+        assert_eq!(overloaded.status, Status::Overstressed);
+        assert_eq!(overloaded.speed(pos), 0.0);
+        assert!(publish_selected_solver_speed(
+            &mut nbt,
+            "create:millstone",
+            &overloaded,
+            pos
+        ));
+        assert_eq!(
+            nbt.get(&KEY.into()),
+            Some(&Tag::Float((-32.0f32).to_bits()))
+        );
+
+        let other_overloaded = wheel_and_mill(-16.0, 3.0);
+        assert_eq!(other_overloaded.speed(pos), 0.0);
+        assert!(publish_selected_solver_speed(
+            &mut nbt,
+            "create:millstone",
+            &other_overloaded,
+            pos,
+        ));
+        assert_eq!(
+            nbt.get(&KEY.into()),
+            Some(&Tag::Float((-16.0f32).to_bits()))
+        );
+
+        let idle = wheel_and_mill(0.0, 3.0);
+        assert_eq!(idle.status, Status::Idle);
+        assert!(publish_selected_solver_speed(
+            &mut nbt,
+            "create:millstone",
+            &idle,
+            pos
+        ));
+        assert_eq!(nbt.get(&KEY.into()), Some(&Tag::Float(0.0f32.to_bits())));
+        assert!(!publish_selected_solver_speed(
+            &mut nbt,
+            "create:large_water_wheel",
+            &running,
+            [0, 0, 0],
+        ));
+    }
+
+    #[test]
+    fn wheel_update_tag_replaces_valid_speed_with_tombstone_then_recovers() {
+        let pos = [0, 0, 0];
+        let mut entity = ModBlockEntity::default();
+        entity.id = "create:water_wheel".into();
+        let running = kinetics::solve(wheel(8.0, 32.0), |_| None);
+        assert_eq!(running.status, Status::Running);
+        assert!(publish_selected_solver_speed(
+            &mut entity.nbt,
+            "create:water_wheel",
+            &running,
+            pos,
+        ));
+        let mut client = Compound::new();
+        client.insert(KEY.into(), transmitted(&entity));
+        assert_eq!(client.get(&KEY.into()), Some(&Tag::Float(8.0f32.to_bits())));
+
+        let opposite = Node {
+            pos: [0, 1, 0],
+            axis: Axis::Y,
+            kind: Kind::WaterWheel {
+                rpm: -8.0,
+                capacity: 32.0,
+            },
+        };
+        let conflict = kinetics::solve(wheel(8.0, 32.0), |p| {
+            (p == opposite.pos).then_some(opposite)
+        });
+        assert_eq!(conflict.status, Status::ConflictingSources);
+        assert_eq!(conflict.speed(pos), 0.0);
+        assert!(publish_selected_solver_speed(
+            &mut entity.nbt,
+            "create:water_wheel",
+            &conflict,
+            pos,
+        ));
+        client.insert(KEY.into(), transmitted(&entity));
+        assert_eq!(client.get(&KEY.into()), Some(&Tag::Byte(0)));
+
+        assert!(publish_selected_solver_speed(
+            &mut entity.nbt,
+            "create:water_wheel",
+            &running,
+            pos,
+        ));
+        client.insert(KEY.into(), transmitted(&entity));
+        assert_eq!(client.get(&KEY.into()), Some(&Tag::Float(8.0f32.to_bits())));
+
+        let mut missing = running.clone();
+        missing.theoretical.remove(&pos);
+        assert!(publish_selected_solver_speed(
+            &mut entity.nbt,
+            "create:water_wheel",
+            &missing,
+            pos,
+        ));
+        assert_eq!(transmitted(&entity), Tag::Byte(0));
+        missing.theoretical.insert(pos, f32::NAN);
+        assert!(!publish_selected_solver_speed(
+            &mut entity.nbt,
+            "create:water_wheel",
+            &missing,
+            pos,
+        ));
+        assert_eq!(transmitted(&entity), Tag::Byte(0));
+    }
+}

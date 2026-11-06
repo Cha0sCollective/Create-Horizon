@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "create:track",
+    "create:fluid_tank"
+  ]
+}

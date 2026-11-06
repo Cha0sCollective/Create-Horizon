@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "bottom=true,shape=window,top=true": {
+      "model": "create:block/fluid_tank/block_single_window"
+    },
+    "bottom=true,shape=plain,top=true": {
+      "model": "create:block/fluid_tank/block_single"
+    }
+  }
+}

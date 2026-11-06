@@ -1,0 +1,25 @@
+{
+  "base_revision": "e8cd0aa38cffef49cb2e088ef716baa107148c02",
+  "base_tree_sha256": "0629185369f14b836847600a885f9efa2fb32dc364947da56ebe3b15d507ce5b",
+  "source_revision": "ac5d9e766380d575838c8250f2a7982281c1f44e",
+  "source_tree_sha256": "5904d627f99f9ef676ce23e4434e7edf1d53ee11f660b813c4ccfaebce7eac7e",
+  "private_git_tree": "e2e433b88fa550ab126d4fc19973934b53e52c22",
+  "upstream_repository": "https://github.com/horizon-rust/horizon-mixins.git",
+  "files": [
+    {
+      "path": "crates/horizon-mixins-cli/tests/cases/variables.rs",
+      "replacement": "source/crates/horizon-mixins-cli/tests/cases/variables.rs",
+      "base_sha256": "97a48bf2ed357021e35cfec134be1b4bae717c4e5f9f382e7ca9c8760b7a2ca5"
+    },
+    {
+      "path": "crates/horizon-mixins-core/src/plan.rs",
+      "replacement": "source/crates/horizon-mixins-core/src/plan.rs",
+      "base_sha256": "4e81bcaa3bb65dbdd5c88ad87af1471e1d11cadc24bcb32ee62bcff2f09df26f"
+    },
+    {
+      "path": "crates/horizon-mixins-core/src/standard_macros.rs",
+      "replacement": "source/crates/horizon-mixins-core/src/standard_macros.rs",
+      "base_sha256": "4e9f82472985260afddefabd11e2937f57d6f44d62e429ab7a28384fd1e628aa"
+    }
+  ]
+}
