@@ -305,6 +305,9 @@ pub(super) fn draw(game: &Game<'_>, pos: Pos, entity: &ModBlockEntity, draw: &mu
         let angle = create_engine::visual::angle(time, crate::game::create_port::number(&entity.nbt, "Speed"), create_engine::visual::rotation_offset(pos, Axis::X, false));
         draw.push();
         draw.rotate_about([1.0, 0.0, 0.0], angle, [0.5; 3]);
+        // Both the authored fallback and Create's OBJ have a Y-axis hub.
+        // Orient that hub along the selected X shaft after applying its spin.
+        draw.rotate_about([0.0, 0.0, 1.0], -90.0, [0.5; 3]);
         game.native_draw_model(draw, "create:block/crushing_wheel/block", 0xFFFFFF);
         draw.pop();
         return true;
