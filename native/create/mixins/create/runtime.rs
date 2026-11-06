@@ -7,7 +7,7 @@ use crate::{
     items::ItemStack,
 };
 use create_engine::{
-    kinetics::{Axis, Kind, Node},
+    kinetics::{Axis, Kind, Network, Node, Pos, Status},
     placement::{self, Direction},
     pressing::{Action, PressCycle, head_offset, tick_speed},
 };
@@ -787,6 +787,28 @@ fn depot_input(game: &Game<'_>, pos: [i32; 3]) -> Option<ItemStack> {
     depot.items.first()?.clone()
 }
 
+/// A selected goggles provider needs the solver's pre-overstress RPM, even when
+/// effective Speed is zero. This private derived field is not a solver input.
+fn publish_selected_solver_speed(
+    nbt: &mut Compound,
+    block: &str,
+    network: &Network,
+    pos: Pos,
+) -> bool {
+    if !matches!(block, "create:water_wheel" | "create:millstone") {
+        return false;
+    }
+    let speed = network.theoretical.get(&pos).copied().filter(|v| v.is_finite());
+    let value = match (network.status, speed) {
+        (Status::Running | Status::Overstressed, Some(speed)) => Tag::Float(speed.to_bits()),
+        (Status::Idle, Some(_)) => Tag::Float(0.0f32.to_bits()),
+        _ => Tag::Byte(0),
+    };
+    let changed = nbt.get(&"create_horizon:solver_theoretical_speed".into()) != Some(&value);
+    nbt.insert("create_horizon:solver_theoretical_speed".into(), value);
+    changed
+}
+
 pub(super) fn tick(game: &mut Game<'_>, pos: [i32; 3], entity: &mut ModBlockEntity) {
     let block = game.native_block(pos);
     if !owns(&block) {
@@ -901,7 +923,10 @@ pub(super) fn tick(game: &mut Game<'_>, pos: [i32; 3], entity: &mut ModBlockEnti
     let old_stress = number(&entity.nbt, "Stress");
     let old_status = entity.nbt.get(&"NetworkStatus".into()).cloned();
     let old_source = entity.nbt.get(&"create_horizon:kinetic".into()).cloned();
+    let mut solver_speed_changed = false;
     if game.serving.is_some() || game.options.dedicated.is_some() {
+        solver_speed_changed =
+            publish_selected_solver_speed(&mut entity.nbt, &block, &network, pos);
         if let Some(diagnostics) = crate::game::create_port_kinetic_runtime::diagnostics(game, pos)
         {
             entity
@@ -924,6 +949,7 @@ pub(super) fn tick(game: &mut Game<'_>, pos: [i32; 3], entity: &mut ModBlockEnti
     );
     let belt_changed = super::create_port_belt::tick(game, pos, entity, rpm);
     let mut sync = belt_changed
+        || solver_speed_changed
         || old_rpm != rpm
         || old_capacity != network.capacity
         || old_stress != network.stress
@@ -1443,4 +1469,150 @@ fn slide_depot(game: &mut Game<'_>, pos: [i32; 3], entity: &mut ModBlockEntity) 
         | depot_field(held, "PrevOffset", Tag::Float(side.to_bits()))
         | depot_field(held, "Angle", Tag::Int(angle));
     changed
+}
+
+#[cfg(test)]
+mod solver_speed_publication_tests {
+    use super::*;
+    use create_engine::kinetics;
+
+    const KEY: &str = "create_horizon:solver_theoretical_speed";
+
+    fn wheel(rpm: f32, capacity: f32) -> Node {
+        Node {
+            pos: [0, 0, 0],
+            axis: Axis::Y,
+            kind: Kind::WaterWheel { rpm, capacity },
+        }
+    }
+
+    fn millstone() -> Node {
+        Node {
+            pos: [0, 1, 0],
+            axis: Axis::Y,
+            kind: Kind::Millstone,
+        }
+    }
+
+    fn wheel_and_mill(rpm: f32, capacity: f32) -> Network {
+        let millstone = millstone();
+        kinetics::solve(wheel(rpm, capacity), |pos| {
+            (pos == millstone.pos).then_some(millstone)
+        })
+    }
+
+    fn transmitted(entity: &ModBlockEntity) -> Tag {
+        let mut tag = None;
+        update_tag(entity, &mut tag);
+        tag.expect("selected entity update tag")
+            .get(&KEY.into())
+            .expect("solver speed in update tag")
+            .clone()
+    }
+
+    #[test]
+    fn selected_nodes_publish_solver_speed_before_overstress_gates_effective_speed() {
+        let pos = millstone().pos;
+        let mut nbt = Compound::new();
+        let running = wheel_and_mill(-16.0, 4.0);
+        assert_eq!(running.status, Status::Running);
+        assert_eq!(running.speed(pos), -16.0);
+        assert!(publish_selected_solver_speed(&mut nbt, "create:millstone", &running, pos));
+        assert_eq!(nbt.get(&KEY.into()), Some(&Tag::Float((-16.0f32).to_bits())));
+        assert!(!publish_selected_solver_speed(&mut nbt, "create:millstone", &running, pos));
+
+        let overloaded = wheel_and_mill(-32.0, 3.0);
+        assert_eq!(overloaded.status, Status::Overstressed);
+        assert_eq!(overloaded.speed(pos), 0.0);
+        assert!(publish_selected_solver_speed(&mut nbt, "create:millstone", &overloaded, pos));
+        assert_eq!(nbt.get(&KEY.into()), Some(&Tag::Float((-32.0f32).to_bits())));
+
+        let other_overloaded = wheel_and_mill(-16.0, 3.0);
+        assert_eq!(other_overloaded.speed(pos), 0.0);
+        assert!(publish_selected_solver_speed(
+            &mut nbt,
+            "create:millstone",
+            &other_overloaded,
+            pos,
+        ));
+        assert_eq!(nbt.get(&KEY.into()), Some(&Tag::Float((-16.0f32).to_bits())));
+
+        let idle = wheel_and_mill(0.0, 3.0);
+        assert_eq!(idle.status, Status::Idle);
+        assert!(publish_selected_solver_speed(&mut nbt, "create:millstone", &idle, pos));
+        assert_eq!(nbt.get(&KEY.into()), Some(&Tag::Float(0.0f32.to_bits())));
+        assert!(!publish_selected_solver_speed(
+            &mut nbt,
+            "create:large_water_wheel",
+            &running,
+            [0, 0, 0],
+        ));
+    }
+
+    #[test]
+    fn wheel_update_tag_replaces_valid_speed_with_tombstone_then_recovers() {
+        let pos = [0, 0, 0];
+        let mut entity = ModBlockEntity::default();
+        entity.id = "create:water_wheel".into();
+        let running = kinetics::solve(wheel(8.0, 32.0), |_| None);
+        assert_eq!(running.status, Status::Running);
+        assert!(publish_selected_solver_speed(
+            &mut entity.nbt,
+            "create:water_wheel",
+            &running,
+            pos,
+        ));
+        let mut client = Compound::new();
+        client.insert(KEY.into(), transmitted(&entity));
+        assert_eq!(client.get(&KEY.into()), Some(&Tag::Float(8.0f32.to_bits())));
+
+        let opposite = Node {
+            pos: [0, 1, 0],
+            axis: Axis::Y,
+            kind: Kind::WaterWheel {
+                rpm: -8.0,
+                capacity: 32.0,
+            },
+        };
+        let conflict = kinetics::solve(wheel(8.0, 32.0), |p| {
+            (p == opposite.pos).then_some(opposite)
+        });
+        assert_eq!(conflict.status, Status::ConflictingSources);
+        assert_eq!(conflict.speed(pos), 0.0);
+        assert!(publish_selected_solver_speed(
+            &mut entity.nbt,
+            "create:water_wheel",
+            &conflict,
+            pos,
+        ));
+        client.insert(KEY.into(), transmitted(&entity));
+        assert_eq!(client.get(&KEY.into()), Some(&Tag::Byte(0)));
+
+        assert!(publish_selected_solver_speed(
+            &mut entity.nbt,
+            "create:water_wheel",
+            &running,
+            pos,
+        ));
+        client.insert(KEY.into(), transmitted(&entity));
+        assert_eq!(client.get(&KEY.into()), Some(&Tag::Float(8.0f32.to_bits())));
+
+        let mut missing = running.clone();
+        missing.theoretical.remove(&pos);
+        assert!(publish_selected_solver_speed(
+            &mut entity.nbt,
+            "create:water_wheel",
+            &missing,
+            pos,
+        ));
+        assert_eq!(transmitted(&entity), Tag::Byte(0));
+        missing.theoretical.insert(pos, f32::NAN);
+        assert!(!publish_selected_solver_speed(
+            &mut entity.nbt,
+            "create:water_wheel",
+            &missing,
+            pos,
+        ));
+        assert_eq!(transmitted(&entity), Tag::Byte(0));
+    }
 }
