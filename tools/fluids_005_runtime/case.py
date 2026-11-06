@@ -157,7 +157,7 @@ def shot(label):
         return
     call('wait', 12, role='peer')
     path = out / f'{a.phase}-{label}-peer-{s["index"]:02d}.png'
-    call('screenshot', path, role='peer')
+    call('screenshot', str(path), role='peer')
     assert path.is_file() and path.stat().st_size > 0, path
 
 def same(before, after):
