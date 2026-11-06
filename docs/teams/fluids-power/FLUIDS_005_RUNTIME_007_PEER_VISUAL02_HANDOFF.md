@@ -7,6 +7,10 @@ to the former ambiguous-image HOLD. No game source, control script, frozen pin,
 world fluid seed, or item grant changed. Source was frozen007
 `f732bd481cfc3d9c4720bc51e4a31e7385e18020`; the driver/runtime source in
 the Fluids team stayed at `d53a093fe1a5671a4ccbfa564de0e2e2f9f9b67a`.
+The earlier `FLUIDS_005_RUNTIME_007_COLD_HANDOFF.md` remains the numerical
+rate, branch, reverse, stop, cold, capacity, and custody evidence. Its original
+low-angle peer frames remain visually inconclusive; this supplement supplies
+the focused high-angle peer transition only.
 
 ## Same-world observation
 
@@ -50,8 +54,12 @@ All images are 960×600, in
 
 The two empty PNGs are byte identical; the filled PNG visibly contains blue
 water in the same Basin interior. Prior low-angle images remain preserved and
-ambiguous. Operations directly viewed the first two new images while the run
-was active and owns the final three-image acceptance decision.
+ambiguous. Operations directly viewed all three new images and recorded that
+bounded visual observation in `operations-peer-visual-review-02.json`, SHA-256
+`c21a621307dff3744bd216e1bdefd159ecbf725d8a4908c4187456092cef20f6`.
+That receipt covers the images only; numerical, inventory, and exit claims use
+the separate raw controls below. Operations' independent completion review and
+final acceptance remain pending.
 
 Raw control ledger: `calls-02.jsonl`, 113 calls, SHA-256
 `24f6315a52ac2e48e15c794472b84be099482ee26187ec770354fb5c510217c1`.
