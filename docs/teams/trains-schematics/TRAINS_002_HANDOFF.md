@@ -1,10 +1,10 @@
 # TRAINS-002 design handoff
 
-Status: initial source/design CLEAR, follow-on decision delta review pending;
-no runtime packet executed. Team branch
+Status: source/design CLEAR, no runtime packet executed. Team branch
 `codex/team-trains-schematics`, baseline
-`99d97fb187c3e1b129d5d8ae8908220b5acd2622`, reviewed design commit
-`b405d372a6ca25a43a21f10e428311e33555ba84`. Primary accepted source
+`99d97fb187c3e1b129d5d8ae8908220b5acd2622`, reviewed design commits
+`b405d372a6ca25a43a21f10e428311e33555ba84` and
+`a9b854a7ca0ccffd9f4e25957787395dff73042c`. Primary accepted source
 read at `55339ce3347b2ce667281e8a3e6318ec856144e4` (`.11/cache14`),
 primary documentation checkpoint `8470fc515d460a95a0cacabc644160f9e7aba4b5`.
 
@@ -28,15 +28,16 @@ in `.local/evaluations/horizon-heating-refresh/source`; the documents give
 exact class/file and line references. The staged 6.0.10 Create source/art
 remains distinct. Nested read-only specialists: `/root/train_dependencies`
 and `/root/schematic_reuse`; independent strict read-only Sol High reviewer:
-`/root/track_source_reviewer`. Reviewer CLEAR on `b405d372` with no findings;
-the review took 121.5 seconds and made no writes. A narrow delta review of
-the subsequent Create selection decision will be recorded before final handoff.
+`/root/track_source_reviewer`. Strict read-only Sol High review CLEAR on
+`b405d372` with no findings (121.5 seconds); narrow follow-on delta review
+CLEAR on `a9b854a7ca0ccffd9f4e25957787395dff73042c` with no findings
+(82.6 seconds). Neither review made writes.
 
 Validation performed: source reads, exact commit/status checks and
 `git diff --cached --check`/`git show --check`. No Cargo, staging, linking,
 Java, game, server, UI, template save/load or peer test ran. Any future UI
 milestone needs a project-lead host-wide runtime lease and frozen inputs.
-No Java/world import, train/graph owner, Create quill, Schematicannon, broad
+No Java/world import, train/graph owner, completed Create quill, Schematicannon, broad
 schematic format, public release or other-mod scope follows. Team phase
 records remain under `.local/team-operations/trains-schematics/phases/`;
 per-agent token counters are project-lead-owned and unknown here.
