@@ -9,6 +9,8 @@ pub mod kinetics;
 pub mod placement;
 #[path = "core/pressing.rs"]
 pub mod pressing;
+#[path = "core/pump_transfer.rs"]
+pub mod pump_transfer;
 #[path = "core/propagation.rs"]
 pub mod propagation;
 #[path = "core/quill.rs"]
