@@ -465,6 +465,19 @@ bindings = [
   { name = "held", ty = "Option<&crate::items::ItemStack>", value = "held" },
 ]
 
+# DryLevel cannot apply the native placement-state guard. Keep only this
+# selected FunnelItem's placement/inventory authoritative on the server.
+[[injection]]
+id = "funnel-client-place-prediction"
+target = "horizon_client::game::remote::Game<'_>::remote_can_place"
+kind = "HEAD"
+cancellable = true
+helper = "funnel_prediction.rs"
+bindings = [
+  { name = "game", ty = "&crate::game::Game<'_>", value = "&*self" },
+  { name = "stack", ty = "&crate::items::ItemStack", value = "stack" },
+]
+
 [[module]]
 id = "inventory"
 file = "crates/horizon-client/src/game.rs"
