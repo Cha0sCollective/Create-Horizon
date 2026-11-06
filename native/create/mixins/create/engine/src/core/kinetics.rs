@@ -48,6 +48,8 @@ pub enum Kind {
     Millstone,
     /// Fixed-Y small cog without a shaft port (MechanicalMixerBlock).
     Mixer,
+    /// MechanicalPumpBlock: a small cog around its FACING axis, with no shaft ports.
+    Pump,
     MechanicalPiston,
     /// Stationary item's two-sided DirectionalAxisKineticBlock saw.
     Saw,
@@ -78,7 +80,7 @@ impl Node {
             Kind::Motor { facing, .. } => delta == facing,
             Kind::Consumer { facing, .. } => delta == facing,
             Kind::Millstone => delta == [0, -1, 0],
-            Kind::Mixer => false,
+            Kind::Mixer | Kind::Pump => false,
             Kind::Belt { pulley: false, .. } => false,
             Kind::Gearbox => delta[self.axis.index()] == 0,
             _ => delta[self.axis.index()].abs() == 1,
@@ -109,7 +111,7 @@ impl Node {
     fn impact(self) -> f32 {
         match self.kind {
             Kind::Press => 8.0,
-            Kind::Millstone | Kind::Mixer => 4.0,
+            Kind::Millstone | Kind::Mixer | Kind::Pump => 4.0,
             Kind::MechanicalPiston | Kind::Saw => 4.0,
             Kind::Consumer { impact, .. } => impact,
             _ => 0.0,
@@ -118,7 +120,7 @@ impl Node {
     fn cog(self) -> Option<bool> {
         match self.kind {
             Kind::Cog { large } => Some(large),
-            Kind::Millstone | Kind::Mixer => Some(false),
+            Kind::Millstone | Kind::Mixer | Kind::Pump => Some(false),
             _ => None,
         }
     }
@@ -586,6 +588,60 @@ mod tests {
         };
         assert_eq!(ratio(large, mill), Some(-2.0));
         assert_eq!(ratio(mill, large), Some(-0.5));
+    }
+
+    #[test]
+    fn pump_meshes_at_its_side_and_draws_four_stress_per_absolute_rpm() {
+        // Runtime must derive this X axis from the Pump's east/west FACING.
+        let pump = Node {
+            pos: [1, 0, 0],
+            axis: Axis::X,
+            kind: Kind::Pump,
+        };
+        let cog = Node {
+            pos: [1, 1, 0],
+            axis: Axis::X,
+            kind: Kind::Cog { large: false },
+        };
+        assert_eq!(ratio(cog, pump), Some(-1.0));
+        assert_eq!(ratio(pump, cog), Some(-1.0));
+        for rpm in [-16.0, 16.0] {
+            let source = motor([0, 1, 0], rpm, 16.0);
+            let n = network(&[source, cog, pump]);
+            assert_eq!(n.status, Status::Running);
+            assert_eq!(n.speed(pump.pos), -rpm);
+            assert_eq!(n.stress, 64.0);
+        }
+        let wrong_axis = Node {
+            axis: Axis::Z,
+            ..cog
+        };
+        assert_eq!(ratio(wrong_axis, pump), None);
+    }
+
+    #[test]
+    fn pump_fluid_faces_are_not_kinetic_shaft_ports() {
+        let pump = Node {
+            pos: [1, 0, 0],
+            axis: Axis::X,
+            kind: Kind::Pump,
+        };
+        for delta in [
+            [-1, 0, 0],
+            [1, 0, 0],
+            [0, -1, 0],
+            [0, 1, 0],
+            [0, 0, -1],
+            [0, 0, 1],
+        ] {
+            assert!(!pump.shaft_port(delta));
+        }
+        let axial_motor = motor([0, 0, 0], 16.0, 16.0);
+        let n = network(&[axial_motor, pump]);
+        assert_eq!(n.status, Status::Running);
+        assert_eq!(n.speed(pump.pos), 0.0);
+        assert_eq!(n.stress, 0.0);
+        assert_eq!(ratio(pump, node([2, 0, 0], Kind::Shaft)), None);
     }
     #[test]
     fn a_one_sided_consumer_draws_stress_only_from_its_connected_back_face() {
