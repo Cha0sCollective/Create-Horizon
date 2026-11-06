@@ -1,6 +1,6 @@
 # Contraptions 005 — stationary bearing capture decision
 
-Status: **proposal only**, 6 November 2026. No world capture, bearing content, renderer, host change or schema change is implemented by this packet. The owner must approve this exact capture scope before implementation. Its first gate is a reviewed and project-lead-accepted PASS for the Contraptions-004 foundation's actual saved-owner, independent-peer VIEW and normal cold-reopen packet on frozen root 007 `f732bd481cfc3d9c4720bc51e4a31e7385e18020`. The 007 runtime packet has passed, with completion review and project-lead acceptance pending. The earlier 005 run with no peer receipt remains HOLD and cannot satisfy that gate.
+Status: **proposal only**, 6 November 2026. The corrected decision received fresh independent read-only Sol High review PASS on team commit `1b61be64c3c45aac59dea34a3b1a4ec471b88620`. No world capture, bearing content, renderer, host change or schema change is implemented by this packet. The owner must approve this exact capture scope before implementation. Its first gate is a reviewed and project-lead-accepted PASS for the Contraptions-004 foundation's actual saved-owner, independent-peer VIEW and normal cold-reopen packet on frozen root 007 `f732bd481cfc3d9c4720bc51e4a31e7385e18020`. The 007 runtime and independent completion review passed; project-lead acceptance is pending. The earlier 005 run with no peer receipt remains HOLD and cannot satisfy that gate.
 
 ## Reuse and the actual gap
 
