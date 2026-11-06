@@ -812,7 +812,11 @@ fn publish_selected_solver_speed(
     if !matches!(block, "create:water_wheel" | "create:millstone") {
         return false;
     }
-    let speed = network.theoretical.get(&pos).copied().filter(|v| v.is_finite());
+    let speed = network
+        .theoretical
+        .get(&pos)
+        .copied()
+        .filter(|v| v.is_finite());
     let value = match (network.status, speed) {
         (Status::Running | Status::Overstressed, Some(speed)) => Tag::Float(speed.to_bits()),
         (Status::Idle, Some(_)) => Tag::Float(0.0f32.to_bits()),
@@ -1536,15 +1540,36 @@ mod solver_speed_publication_tests {
         let running = wheel_and_mill(-16.0, 4.0);
         assert_eq!(running.status, Status::Running);
         assert_eq!(running.speed(pos), -16.0);
-        assert!(publish_selected_solver_speed(&mut nbt, "create:millstone", &running, pos));
-        assert_eq!(nbt.get(&KEY.into()), Some(&Tag::Float((-16.0f32).to_bits())));
-        assert!(!publish_selected_solver_speed(&mut nbt, "create:millstone", &running, pos));
+        assert!(publish_selected_solver_speed(
+            &mut nbt,
+            "create:millstone",
+            &running,
+            pos
+        ));
+        assert_eq!(
+            nbt.get(&KEY.into()),
+            Some(&Tag::Float((-16.0f32).to_bits()))
+        );
+        assert!(!publish_selected_solver_speed(
+            &mut nbt,
+            "create:millstone",
+            &running,
+            pos
+        ));
 
         let overloaded = wheel_and_mill(-32.0, 3.0);
         assert_eq!(overloaded.status, Status::Overstressed);
         assert_eq!(overloaded.speed(pos), 0.0);
-        assert!(publish_selected_solver_speed(&mut nbt, "create:millstone", &overloaded, pos));
-        assert_eq!(nbt.get(&KEY.into()), Some(&Tag::Float((-32.0f32).to_bits())));
+        assert!(publish_selected_solver_speed(
+            &mut nbt,
+            "create:millstone",
+            &overloaded,
+            pos
+        ));
+        assert_eq!(
+            nbt.get(&KEY.into()),
+            Some(&Tag::Float((-32.0f32).to_bits()))
+        );
 
         let other_overloaded = wheel_and_mill(-16.0, 3.0);
         assert_eq!(other_overloaded.speed(pos), 0.0);
@@ -1554,11 +1579,19 @@ mod solver_speed_publication_tests {
             &other_overloaded,
             pos,
         ));
-        assert_eq!(nbt.get(&KEY.into()), Some(&Tag::Float((-16.0f32).to_bits())));
+        assert_eq!(
+            nbt.get(&KEY.into()),
+            Some(&Tag::Float((-16.0f32).to_bits()))
+        );
 
         let idle = wheel_and_mill(0.0, 3.0);
         assert_eq!(idle.status, Status::Idle);
-        assert!(publish_selected_solver_speed(&mut nbt, "create:millstone", &idle, pos));
+        assert!(publish_selected_solver_speed(
+            &mut nbt,
+            "create:millstone",
+            &idle,
+            pos
+        ));
         assert_eq!(nbt.get(&KEY.into()), Some(&Tag::Float(0.0f32.to_bits())));
         assert!(!publish_selected_solver_speed(
             &mut nbt,
