@@ -35,7 +35,7 @@ struct Contact {
     middle: Pos,
     item: u32,
     tick: i64,
-    pickup_delay: u32,
+    pickup_delay: i64,
 }
 
 fn at(pos: Pos, dz: i32) -> Pos { [pos[0], pos[1], pos[2] + dz] }
@@ -297,7 +297,7 @@ pub(super) fn item_tick_pre(
     item.position.y = (item.position.y - 0.16).max(f64::from(middle[1]) + 0.20);
     item.velocity.y = 0.0;
     item.on_ground = false;
-    item.pickup_delay = u32::MAX;
+    item.pickup_delay = i64::MAX;
     *canceled = true;
     CONTACT.with(|cell| *cell.borrow_mut() = Some(Contact {
         owner, dimension: dimension.to_owned(), middle, item: id, tick: now, pickup_delay,
