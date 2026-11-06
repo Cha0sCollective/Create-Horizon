@@ -39,7 +39,9 @@ expected after setup except toggling that lever. The root should inspect the
 initial session metadata and ordinary server/client startup before invoking
 the driver. In dedicated mode a `command` reply only confirms transmission;
 the driver polls actual target blocks, lever, Creative state and inventory
-with a 20-second bound before using them as a baseline.
+with a 20-second bound before using them as a baseline. Setup removes the
+disposable fixture's terrain item drops and clears incidental inventory
+before giving test items, so those pickups cannot falsify item accounting.
 
 The `full` case performs these checks in one session:
 

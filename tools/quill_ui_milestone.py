@@ -165,6 +165,16 @@ try:
                     lambda data: data["blocks"] == expected_blocks)
         await_value("unpowered lever", lambda: actor("block", x + 4, y, z + 2),
                     lambda data: "powered=false" in data["state"])
+        # Clearing the original terrain makes leaf litter item drops. Remove
+        # them before the inventory baseline so later teleporting cannot pick
+        # up fixture debris and masquerade as a Quill item-accounting failure.
+        teleport("actor", x + 8.5, y, z - 2.5)
+        command("kill @e[type=minecraft:item]")
+        command("clear @s")
+        await_value("empty actor inventory", counts, lambda data: not data)
+        await_value("no fixture item drops",
+                    lambda: actor("entities", 32, "minecraft:item"),
+                    lambda data: not data["entities"])
         command("gamemode creative @s")
         await_value("actor Creative", lambda: actor("status"),
                     lambda data: data["creative"] is True)
@@ -178,6 +188,9 @@ try:
             command("gamemode creative @s", "peer")
             await_value("peer Creative", lambda: call("peer", "status"),
                         lambda data: data["creative"] is True)
+            command("clear @s", "peer")
+            await_value("empty peer inventory", lambda: counts("peer"),
+                        lambda data: not data)
             command(f"give @s {quill} 1", "peer")
             await_value("peer Quill", lambda: counts("peer"),
                         lambda data: data.get(quill) == 1)
