@@ -11,9 +11,11 @@ Their raw driver receipts are under the matching
 `.local/native-team-runtime-005/<run>/quill/` folder. The full receipts
 contain 14 integrated and 19 dedicated HUD frames; cold reopen contains one
 and two frames respectively. Every driver command/state assertion returned
-`AUTOMATED_CHECKS_PASS_HUD_INSPECTION_PENDING`. The two integrated client
-exits, two dedicated client exits and two dedicated server exits were all
-code 0. Exact-name process check found no Horizon client afterward.
+`AUTOMATED_CHECKS_PASS_HUD_INSPECTION_PENDING`. The two integrated actor
+exits plus two dedicated sessions with server, actor and peer each make
+**eight** process exits; every code was 0. The earlier final message's count
+of six was incorrect. Exact-name process check found no Horizon client
+afterward.
 
 Source `9651dba12d163896d45a8cc4ba1b0b3b0da1feff` and all 711 files,
 both frozen binary hashes and the Create 6.0.10 JAR hash matched before and
