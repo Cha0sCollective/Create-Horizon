@@ -6,6 +6,25 @@
 pub const MAX_AXIS: u64 = 16;
 pub type Pos = [i32; 3];
 
+/// One queued selection action per mouse-down edge. The host may invoke the
+/// use interaction repeatedly while the button stays down.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub struct Presses(u32);
+
+impl Presses {
+    pub fn press(&mut self) {
+        self.0 = self.0.saturating_add(1);
+    }
+
+    pub fn take(&mut self) -> bool {
+        if self.0 == 0 {
+            return false;
+        }
+        self.0 -= 1;
+        true
+    }
+}
+
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub struct Bounds {
     pub min: Pos,
@@ -173,5 +192,32 @@ mod tests {
         );
         assert_eq!(selected_cell([2, 64, 3], [0, 1, 0], true), Some([2, 64, 3]));
         assert_eq!(selected_cell([2, i32::MAX, 3], [0, 1, 0], false), None);
+    }
+
+    #[test]
+    fn held_use_needs_another_press_for_the_second_corner() {
+        let mut presses = Presses::default();
+        let mut selection = Selection::default();
+        presses.press();
+        assert!(presses.take());
+        selection.click(Some([0, 64, 0]), false);
+        for _ in 0..8 {
+            assert!(
+                !presses.take(),
+                "held-use callback must not advance selection"
+            );
+        }
+        assert_eq!(selection.second(), None);
+        presses.press();
+        assert!(presses.take());
+        assert!(matches!(
+            selection.click(Some([1, 64, 0]), false),
+            Feedback::Second(_)
+        ));
+        presses.press();
+        presses.press();
+        assert!(presses.take());
+        assert!(presses.take(), "quick separate presses stay queued");
+        assert!(!presses.take());
     }
 }

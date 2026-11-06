@@ -26,8 +26,11 @@ The new pure `engine/src/core/quill.rs` computes normalized inclusive bounds,
 refuses a 17th block on any axis while preserving the first corner, handles
 missing target/cancel/third click without world effects, and selects the cell
 above/below a vertical nonreplaceable hit. `quill_client.rs` keeps transient
-state in the client process, claims a main-hand Quill right-click before
-ordinary item use, and draws a readable coordinate/size HUD. `quill_frame.rs`
+state in the client process. `quill_key.rs` queues one action for each right
+mouse press edge, including quick separate clicks between frames; repeated
+held-use callbacks remain claimed without advancing a corner. The interaction
+helper claims a main-hand Quill right-click before ordinary item use and draws
+a readable coordinate/size HUD. `quill_frame.rs`
 and `quill_unload.rs` provide explicit reset seams. No world-space outline,
 prompt or export is implemented. A third click leaves the complete pair in
 place and says saving is unavailable.
@@ -36,9 +39,10 @@ place and says saving is unavailable.
 
 - Export the new pure module as `create_engine::quill` from
   `native/create/mixins/create/engine/src/lib.rs`. Add `quill_client.rs` as a
-  distinct `create_port_quill` Game module. Bind the four new thin helpers
-  `quill_click.rs`, `quill_hud.rs`, `quill_frame.rs`, `quill_unload.rs` to the
-  existing `interaction_key`, `hud`, `frame`, `client_level_unload` hooks. Keep
+  distinct `create_port_quill` Game module. Bind the five new thin helpers
+  `quill_key.rs`, `quill_click.rs`, `quill_hud.rs`, `quill_frame.rs`,
+  `quill_unload.rs` to the existing `key`, `interaction_key`, `hud`, `frame`,
+  `client_level_unload` hooks. Keep
   this call seam separate from Experience's `presentation.rs`. The pinned host
   invokes cancellable `interaction_key` before ordinary item use
   (`horizon-client/src/game/remote.rs:7329-7345`), so the client-only handler
@@ -65,10 +69,12 @@ No original image, JAR or generated private cache enters Git.
 ## Focused checks and limits
 
 Pure tests cover reversed coordinates, inclusive 16/17 boundary, no-target,
-cancel, third-click retention and vertical-hit selection. On root's later
+cancel, third-click retention, vertical-hit selection and held-use repetition.
+On root's later
 host-wide lease, compile the composed module and run its focused tests, then
-one disposable integrated/dedicated two-client UI milestone: two ordinary
-clicks, size/coordinates, over-cap refusal, item/screen/world reset and
+one disposable integrated/dedicated two-client UI milestone: hold the first
+click through several use intervals, release, then click the second corner;
+check size/coordinates, over-cap refusal, item/screen/world reset and
 noninterference with another held item. Check that no world cells or item
 counts change and that the peer's own view does not acquire the actor's
 selection. No existing track game battery is repeated.

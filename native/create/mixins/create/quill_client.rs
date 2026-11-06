@@ -4,7 +4,7 @@
 // Client-only Quill corner selection. No structure save or world mutation.
 
 use super::Game;
-use create_engine::quill::{Feedback, Pos, Selection};
+use create_engine::quill::{Feedback, Pos, Presses, Selection};
 use horizon_client::{first_person::Hand, hud::HudBatch};
 use std::cell::RefCell;
 
@@ -14,6 +14,7 @@ const ITEM: &str = "create:schematic_and_quill";
 struct Ui {
     selection: Selection,
     feedback: Option<Feedback>,
+    presses: Presses,
 }
 
 thread_local! {
@@ -34,6 +35,14 @@ fn selected(game: &Game<'_>) -> Option<Pos> {
     create_engine::quill::selected_cell(hit.pos, hit.face, replaceable)
 }
 
+/// The native key hook reports mouse press edges, including quick clicks
+/// between frames and synthetic control clicks. Repeats are omitted there.
+pub(super) fn key(game: &Game<'_>, name: &str, pressed: bool) {
+    if name == "key.mouse.right" && pressed && active(game) {
+        UI.with(|ui| ui.borrow_mut().presses.press());
+    }
+}
+
 pub(super) fn interaction(
     game: &mut Game<'_>,
     button: i32,
@@ -42,6 +51,12 @@ pub(super) fn interaction(
     canceled: &mut bool,
 ) {
     if *canceled || button != 1 || hand != Hand::Main || !active(game) {
+        return;
+    }
+    let pressed = UI.with(|ui| ui.borrow_mut().presses.take());
+    *canceled = true;
+    if !pressed {
+        *swing = false;
         return;
     }
     let sneaking = game.keys.contains(&winit::keyboard::KeyCode::ShiftLeft);
@@ -53,7 +68,6 @@ pub(super) fn interaction(
         feedback
     });
     *swing = matches!(feedback, Feedback::First(_) | Feedback::Second(_));
-    *canceled = true;
 }
 
 /// The frame hook also runs while a menu is open. Forget the two corners when
