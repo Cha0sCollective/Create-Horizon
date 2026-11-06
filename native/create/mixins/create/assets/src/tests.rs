@@ -183,6 +183,25 @@ fn track_import_keeps_only_straight_models_and_refuses_missing_source_state() {
 }
 
 #[test]
+fn pump_and_straight_pipe_keep_authored_native_models() {
+    let files = collect(fixture(|original| {
+        original.insert(
+            "assets/create/blockstates/fluid_pipe.json".into(),
+            serde_json::to_vec(&json!({"multipart": [{
+                "when": {"north": "true"}, "apply": {"model": "create:block/shared"}
+            }]}))
+            .unwrap(),
+        );
+    }))
+    .unwrap();
+    for block in ["mechanical_pump", "fluid_pipe"] {
+        assert!(!files.contains_key(&format!("assets/create/blockstates/{block}.json")));
+        assert!(!files.contains_key(&format!("assets/create/models/item/{block}.json")));
+    }
+    assert!(files.contains_key("assets/create/blockstates/shaft.json"));
+}
+
+#[test]
 fn processor_parts_and_ingredients_are_required_without_accepting_java_loaders() {
     let home = Stage::new(&std::env::temp_dir()).unwrap();
     let required = [

@@ -87,6 +87,24 @@ pub(super) fn state(
         *answer = Some(Some(state));
         return;
     }
+    if block == "create:mechanical_pump" {
+        // The selected line uses the directional Pump's ordinary look-facing
+        // fallback; connection-driven reorientation is outside this packet.
+        let look = super::create_port::nearest(ctx.yaw, ctx.pitch);
+        let facing = if ctx.sneaking { look } else { look.opposite() };
+        *answer = Some(game.native_state_with_property(state, "facing", facing.name()));
+        return;
+    }
+    if block == "create:fluid_pipe" {
+        // One straight segment only. The clicked face chooses its tube axis.
+        let axis = match direction(ctx.face).axis() {
+            Axis::X => "x",
+            Axis::Y => "y",
+            Axis::Z => "z",
+        };
+        *answer = Some(game.native_state_with_property(state, "axis", axis));
+        return;
+    }
     if !matches!(
         block,
         "create:speedometer"

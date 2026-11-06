@@ -31,6 +31,8 @@ pub const BLOCKS: &[&str] = &[
     "basin",
     "mechanical_mixer",
     "fluid_tank",
+    "mechanical_pump",
+    "fluid_pipe",
     "track",
     "blaze_burner",
     "andesite_funnel",

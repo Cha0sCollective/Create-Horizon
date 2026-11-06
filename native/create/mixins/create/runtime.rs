@@ -134,6 +134,8 @@ pub(super) fn owns(block: &str) -> bool {
             | "create:portable_storage_interface"
             | "create:basin"
             | "create:fluid_tank"
+            | "create:mechanical_pump"
+            | "create:fluid_pipe"
             | "create:blaze_burner"
             | "create:mechanical_mixer"
             | "create:belt"
@@ -141,7 +143,14 @@ pub(super) fn owns(block: &str) -> bool {
 }
 
 pub(super) fn entity(block: &str, entity: &mut Option<(String, Compound)>) {
-    if owns(block) && block != "create:blaze_burner" && entity.is_none() {
+    if block == "create:fluid_pipe" {
+        *entity = None;
+        return;
+    }
+    if owns(block)
+        && block != "create:blaze_burner"
+        && entity.is_none()
+    {
         let id = match block {
             "create:creative_motor" => "create:motor",
             "create:mechanical_drill" => "create:drill",
@@ -162,7 +171,9 @@ pub(super) fn entity(block: &str, entity: &mut Option<(String, Compound)>) {
 }
 
 pub(super) fn ticks(block: &str, ticks: &mut bool) {
-    if owns(block) {
+    if block == "create:fluid_pipe" {
+        *ticks = false;
+    } else if owns(block) {
         *ticks = true;
     }
 }
@@ -657,6 +668,7 @@ pub(super) fn node(game: &Game<'_>, pos: [i32; 3]) -> Option<Node> {
         }
         "create:millstone" => Kind::Millstone,
         "create:mechanical_mixer" => Kind::Mixer,
+        "create:mechanical_pump" => Kind::Pump,
         "create:mechanical_piston" => Kind::MechanicalPiston,
         "create:mechanical_saw" => Kind::Saw,
         "create:encased_fan" | "create:mechanical_drill" => Kind::Consumer {
@@ -938,6 +950,9 @@ pub(super) fn tick(game: &mut Game<'_>, pos: [i32; 3], entity: &mut ModBlockEnti
         if other.speed(pos).abs() > rpm.abs() {
             rpm = other.speed(pos);
         }
+    }
+    if block == "create:mechanical_pump" {
+        let _ = crate::game::create_port_fluid_pump_transfer::tick(game, pos, rpm);
     }
 
     let old_rpm = number(&entity.nbt, "Speed");

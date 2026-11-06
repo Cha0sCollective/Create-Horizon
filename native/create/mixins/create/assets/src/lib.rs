@@ -535,6 +535,12 @@ fn collect(bytes: Vec<u8>) -> io::Result<BTreeMap<String, Vec<u8>>> {
         total: 0,
     };
     for block in BLOCKS {
+        // These selected native states use authored FACING/AXIS models. The
+        // original fluid_pipe state is a six-connection multipart state and
+        // cannot be applied to the straight-only AXIS declaration.
+        if matches!(*block, "mechanical_pump" | "fluid_pipe") {
+            continue;
+        }
         let path = format!("assets/create/blockstates/{block}.json");
         let mut state = reader.json(&path)?;
         if *block == "track" {
@@ -547,6 +553,9 @@ fn collect(bytes: Vec<u8>) -> io::Result<BTreeMap<String, Vec<u8>>> {
     let head = reader.json("assets/create/blockstates/mechanical_piston_head.json")?;
     reader.blockstate_models(&head)?;
     for item in BLOCKS.iter().chain(ITEMS) {
+        if matches!(*item, "mechanical_pump" | "fluid_pipe") {
+            continue;
+        }
         reader.model(&format!("create:item/{item}"))?;
     }
     for part in PARTS {

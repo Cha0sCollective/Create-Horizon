@@ -31,6 +31,8 @@
   "block.create.piston_extension_pole": "Piston Extension Pole",
   "block.create.mechanical_piston_head": "Mechanical Piston Head",
   "block.create.track": "Train Track",
+  "block.create.mechanical_pump": "Механический насос",
+  "block.create.fluid_pipe": "Жидкостная труба",
   "item.create.andesite_alloy": "Andesite Alloy",
   "item.create.brass_ingot": "Brass Ingot",
   "item.create.brass_nugget": "Brass Nugget",

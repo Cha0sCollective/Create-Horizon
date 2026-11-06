@@ -321,7 +321,9 @@ fn drained_amount(stack: Option<NativeFluidStack>) -> Option<u32> {
 /// this function deliberately reads only its block state and the two endpoint
 /// BEs still in the world map. No pipe or pump BE stores bulk fluid.
 pub(super) fn tick(game: &mut Game<'_>, pump: Pos, rpm: f32) -> TickResult {
-    if game.native_window() {
+    // Stopped, nonfinite and out-of-range speed is ordinary refusal: no
+    // endpoint callback runs and the restoration/fail-stop path is unreachable.
+    if game.native_window() || create_engine::pump_transfer::rate(rpm) == 0 {
         return TickResult::Refused;
     }
     let Some(line) = checked_line(game, pump) else {

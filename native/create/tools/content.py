@@ -6,6 +6,7 @@ The full horizon-port-pack carry-over remains in .local for subsequent milestone
 """
 import json
 from common import ROOT, NATIVE
+from fluid_pump_content import generate as fluid_pump_content
 
 CONTENT = ROOT / "content"
 BLOCKS = ["creative_motor", "shaft", "cogwheel", "large_cogwheel", "mechanical_press", "depot"]
@@ -339,6 +340,7 @@ def foundation():
     write("data/create/horizon/creative_tab/kinetics.json", {"title": "itemGroup.create.base", "icon": "create:cogwheel", "items": ["create:" + name for name in all_blocks + ITEMS]})
     # These fallback labels are ours; the JAR replaces them with all upstream locales.
     extra_blocks = {"gearbox":"Gearbox","clutch":"Clutch","gearshift":"Gearshift","hand_crank":"Hand Crank","andesite_encased_shaft":"Andesite Encased Shaft","brass_encased_shaft":"Brass Encased Shaft","andesite_casing":"Andesite Casing","brass_casing":"Brass Casing","andesite_alloy_block":"Block of Andesite Alloy","brass_block":"Block of Brass","zinc_block":"Block of Zinc","speedometer":"Speedometer","stressometer":"Stressometer","water_wheel":"Water Wheel","large_water_wheel":"Large Water Wheel","millstone":"Millstone","encased_fan":"Encased Fan","mechanical_drill":"Mechanical Drill","mechanical_piston":"Mechanical Piston","piston_extension_pole":"Piston Extension Pole","mechanical_piston_head":"Mechanical Piston Head","track":"Train Track"}
+    extra_blocks.update({"mechanical_pump": "Mechanical Pump", "fluid_pipe": "Fluid Pipe"})
     extra_items = {"andesite_alloy":"Andesite Alloy","brass_ingot":"Brass Ingot","brass_nugget":"Brass Nugget","zinc_ingot":"Zinc Ingot","zinc_nugget":"Zinc Nugget","wrench":"Wrench","brass_sheet":"Brass Sheet","vertical_gearbox":"Vertical Gearbox","goggles":"Engineer’s Goggles","propeller":"Propeller","wheat_flour":"Wheat Flour","dough":"Dough","schematic_and_quill":"Schematic and Quill"}
     for locale in ["en_us","ru_ru"]:
         path=CONTENT / ("assets/create/lang/"+locale+".json")
@@ -347,6 +349,7 @@ def foundation():
         lang.update({"item.create."+k:v for k,v in extra_items.items()})
         if locale == "ru_ru":
             lang.update({"block.create.millstone": "Мельничный жернов", "block.create.encased_fan": "Вентилятор в корпусе", "block.create.mechanical_drill": "Механический бур",
+                         "block.create.mechanical_pump": "Механический насос", "block.create.fluid_pipe": "Жидкостная труба",
                          "item.create.propeller": "Пропеллер", "item.create.wheat_flour": "Пшеничная мука", "item.create.dough": "Тесто"})
         lang["create.kinetics.creative_motor.rotation_speed"]="Generated Speed in RPM"
         path.write_text(json.dumps(lang,ensure_ascii=False,indent=2)+"\n")
@@ -632,6 +635,7 @@ capabilities = ["registries"]
     coal_heating_content()
     belt_content()
     fluid_tank_content()
+    fluid_pump_content(CONTENT)
     straight_track_content()
     saw_content()
 

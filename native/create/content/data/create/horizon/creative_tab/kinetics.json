@@ -33,6 +33,8 @@
     "create:basin",
     "create:mechanical_mixer",
     "create:fluid_tank",
+    "create:mechanical_pump",
+    "create:fluid_pipe",
     "create:track",
     "create:blaze_burner",
     "create:andesite_funnel",

@@ -130,6 +130,12 @@ name = "create_port_fluid_tank"
 source = "fluid_tank.rs"
 
 [[module]]
+id = "fluid-pump-transfer"
+file = "crates/horizon-client/src/game.rs"
+name = "create_port_fluid_pump_transfer"
+source = "fluid_pump_transfer.rs"
+
+[[module]]
 id = "basin-inventory-codec"
 file = "crates/horizon-client/src/save.rs"
 name = "create_basin_inventory_codec"

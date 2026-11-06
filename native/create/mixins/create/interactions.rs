@@ -191,6 +191,16 @@ pub(super) fn right_click(game: &mut Game<'_>, pos: [i32; 3], face: [i32; 3]) ->
                 }
             }
             crate::game::create_port_sounds::wrench(game, pos, true);
+        } else if block == "create:mechanical_pump" {
+            // PumpBlock.getRotatedBlockState flips its fluid direction without
+            // changing the kinetic axis, regardless of the wrench hit face.
+            if let Some(direction) = game.native_block_property(pos, "facing").and_then(|name| {
+                Direction::ALL.into_iter().find(|direction| direction.name() == name)
+            }) && game.native_set_block_property(pos, "facing", direction.opposite().name())
+            {
+                crate::game::create_port_kinetic_runtime::invalidate();
+                crate::game::create_port_sounds::wrench(game, pos, false);
+            }
         } else if block == "create:large_water_wheel" {
             return false;
         } else if let Some(face) = Direction::from_vector(face) {
