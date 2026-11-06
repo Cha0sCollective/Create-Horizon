@@ -89,11 +89,14 @@ different validation path. Neither provides this proposed permission policy.
    world session and dimension in a bounded server queue. In the matching
    `level_tick_post` hook, `Game.world` is the named level after `enter_level`
    (`game/levels.rs:442-479`). Recheck that the player is still placed,
-   living, Creative/op >=2, in that dimension and holding the Quill; the
-   pinned internal `LanHost.hub.guests` selected slot is needed here because
-   `net_from_client` has no acting-player swap and the public player snapshot
-   has no selected-slot item (`game/native_hooks.rs:6749-6754`,
-   `game/native_server.rs:202-225`, `horizon-client/src/lan/guest.rs:247-252`).
+   living, Creative/op >=2 and in that dimension using a fresh
+   `native_server_players` snapshot. Resolve that UUID's `entity_id` through
+   `native_entity`, then `native_living` and
+   `native_living_hand_item(living, Hand::Main)` to recheck the current
+   selected Quill. The entity/living handle path reads the guest's live
+   selected slot and fails closed for a missing or stale handle
+   (`game/native_server.rs:202-225`, `game/native_entity_refs.rs:13-43`,
+   `game/native_living_refs.rs:65-114`).
    A change of item, dimension or world session drops the request. Limit to
    one pending request per player and clear it on world close.
 4. Normalize in i64 with checked arithmetic; reject a zero side, any axis
@@ -125,10 +128,11 @@ separately reviewed before Save is implemented. The writer also caches the
 new template after a failed disk write, so failure must never be shown as a
 saved file; an exact rollback/verified-file policy belongs in that narrow
 repair. Recommend requiring that narrow private writer repair before the
-first Save; the owner should decide this at the authority gate. No current
-native public API exposes a held item by UUID or a dimension-explicit
-template save; the proposed private injected
-bridge uses pinned internal Game/guest access and the matching level hook.
+first Save; the owner should decide this at the authority gate. The public
+native player snapshot and entity/living handles compose a live held-item
+check by UUID. There is no dimension-explicit native template save; the
+proposed private injected bridge calls the pinned internal Game writer in
+the matching level hook.
 
 Qualification after authorization should cover permission/Survival refusal,
 wrong or changed held item, malformed and traversal names, duplicate name,
