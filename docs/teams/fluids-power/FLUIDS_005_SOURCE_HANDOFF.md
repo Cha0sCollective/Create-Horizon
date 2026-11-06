@@ -10,6 +10,30 @@ separate at `60d8478` before this handoff; its reviewed FLUIDS-004 source
 and pending runtime packet are unchanged. The host remains pinned at
 `9c7f9b2215dfed497aba5522c44f38926628648d`.
 
+## Follow-on isolated wiring delta — November 5
+
+Operations' subsequent source-only wiring request is complete on
+`codex/fluids-005-wiring` at
+`7d5568cb0649fa10de684d35293aebf2def75dcc`, based on the reviewed
+source candidate `3f4e6cd`. Its
+`docs/teams/fluids-power/FLUIDS_005_WIRING_DELTA.md` lists every shared
+file and the fail-stop path. Fresh independent read-only Sol High review is
+**CLEAR for this uncompiled wiring proposal** at that exact HEAD (02:59:20–
+03:03:03 UTC, 223 seconds). The original 6.0.10 Pipe multipart state is
+explicitly excluded from the local art overlay; the selected axis-only Pipe
+and facing Pump use authored bundled models. The generic shaft renderer also
+skips both IDs. The 481-entry bundle index matches the content tree.
+
+The remaining Operations-owned gates are private version/cache reconciliation,
+normal Python generator verification, focused tests/build under the shared
+lease, and an actual disposable endpoint-failure/restoration check before
+gameplay qualification. Normal zero/invalid RPM, empty/full endpoint and
+topology refusals return before the hard-fault path. Only unexpected
+simulation mutation or execute verification failure followed by failed
+restoration/readback can panic and stop the process. No new owner decision is
+needed for this bounded source proposal; stop if actual composition demands
+a host API, general network, extra save owner/schema or crash guarantee.
+
 ## Source delivered
 
 Two isolated worker branches, each based on `55339ce`, were composed locally:
