@@ -230,7 +230,11 @@ fn recipe(game: &Game<'_>) -> Option<ItemStack> {
 }
 
 /// API 146 must opt in before the host asks for individual item Pre events.
-pub(super) fn item_tick_listened(listened: &mut bool) { *listened = true; }
+pub(super) fn item_tick_listened(game: &Game<'_>, listened: &mut bool) {
+    if game.native_on("create") && (game.serving.is_some() || game.options.dedicated.is_some()) {
+        *listened = true;
+    }
+}
 
 /// Keep just the selected world-owned item out of ordinary collision physics
 /// while it crosses the controller. Custody changes only in `catch` below.
