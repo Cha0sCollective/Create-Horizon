@@ -51,21 +51,29 @@ post-run hashes match. Root stopped the private Pulse fixture normally. No game,
 compiler, capture or test fixture remains running. The earlier first-cohort Tank
 HOLD, no-output build and all missed fixture attempts remain preserved.
 
-Work now waits for two owner choices: the reviewed narrow private Mixins repair
-for ordinary funnel chest-click placement, and reusable entity-owner design versus
-the bounded chunk-backed live bearing. See
-`orchestration/teams/transport-003-mixins-decision.md` and the Contraptions002
-proposal/addendum. The funnel's reviewed code remains HELD on separate branch
-`codex/create-team-integration-002` at1bcf4f6: pinned Mixins rejects a local use
-item in Game::use_hand. A temporary-Shift/recursive input workaround is not
-adopted. No framework, host pin, new live owner or acceptance expansion is approved.
+The owner now authorizes the reviewed narrow private Mixins repair for ordinary
+funnel chest-click placement and a reusable contraption entity-owner DESIGN.
+Transport004 edits an isolated tool copy; Operations owns reproducible private
+source pinning/bootstrap and candidate004 composition. The official e8cd snapshot
+and accepted .11 remain preserved. New source uses an explicit private tree hash
+and separately records its upstream base; it must not masquerade as e8cd.
+Contraptions003 returns a reviewed reusable lifecycle/custody/transform contract
+and first live-bearing proposal before any new live owner/save implementation.
+The four other teams audit existing services for bounded drill, Tank lifecycle,
+train/schematic requirements and goggles/HUD follow-ons. No broader architecture,
+host change, public release or acceptance expansion follows from these tasks.
+
+The funnel's reviewed code remains HELD at1bcf4f6 until the tool repair and exact
+hook stage/build/ordinary-click gameplay checks pass. A temporary-Shift/recursive
+input workaround is not adopted. Candidate004 now uses the stable physical build
+path; candidate003/55339ce is preserved by branch and immutable binaries/maps.
 The next funnel composition must refresh its catalog cache key: cache14 has now
-been prepared by the accepted source without that held content. Do not replay
-old frozen drivers against the changed build path.
+been prepared by accepted source without that held content. Do not replay old
+frozen drivers against the changed build path.
 
 The first frozen cohort sourceabf48a5 remains detached at
-`.local/integration/create-teams-002`; the accepted source branch003 remains at
-physical `.local/integration/create-teams-001`. Immutable binaries, all input maps,
+`.local/integration/create-teams-002`; candidate004 uses
+physical `.local/integration/create-teams-001`; accepted branch003 stays preserved. Immutable binaries, all input maps,
 raw runs, source references and dirty legacy work remain preserved. Other mods,
 Open to LAN, custom crash/replay framework and public releases remain deferred.
 
