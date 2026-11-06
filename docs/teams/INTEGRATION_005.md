@@ -86,3 +86,22 @@ archive for the separate release-tool comparison. Raw benchmark packet
 `native-mixins-release-001/baseline005/freeze-receipt.json` records archive SHA256
 559be6be3230e84485e375fe6cfea0ffca271aeb384bee579bfdac83336c610c.
 The release build/plan/apply benchmark itself has not run.
+
+Selected goggles runtime assertions now pass in dedicated and integrated play:
+supplied-sheet craft in dedicated only; separate integrated/peer fixture equip;
+selected Running/Idle/Overstressed server field and fresh client HUD; suppression
+and retained gauge; normal cold reopen. All eight processes exited0 and711
+source files, both binaries and local JAR match. Root directly inspected the
+canonical HUD/head/negative/cold frames and recorded precise occlusion limits in
+`experience003-prep/root-visual-*.json`. Superseded camera failures remain raw;
+the clear actual-peer head supplement supplies worn/removed/reworn proof. Fresh
+independent completion review CLEAR now supports this bounded family PASS; see
+[the result](experience/EXPERIENCE_003_RESULTS.md). No full progression claim.
+
+Fresh dedicated custody001 also remains HOLD, separately from the original
+missing-gold chain. The source belt formed but remained empty. A retained
+post-HOLD query observed gold1 at `[5.5,64.0,5.9082962563]`, below/north of belt
+Y65/Z7..8. Belt capture starts at Y65.5; the grounded entity is outside it.
+All three processes exited0 and711 source/binary hashes match. A new prebuilt
+empty-belt fixture order is in preparation, with no gameplay-source change or
+manual item relocation. Quill now owns the sole heavy lease; inert owner follows.

@@ -6,13 +6,13 @@
   "operations_enrolled_at": "2026-11-05T20:28:36.178Z",
   "root_rollout": "2026/10/25/rollout-2026-10-25T14-12-55-01a1747a-eb1f-7183-b3f6-63f0ccc37f13.jsonl",
   "heavy_resource": {
-    "owner": "experience-goggles005-runtime",
-    "state": "Root-granted frozen9651dba .13/cache16 gameb8629821; selected both-mode craft/equip/HUD/normal-reopen milestone; Transport16 exits0 and711 files/binaries verified",
+    "owner": "trains-quill005-runtime",
+    "state": "Root-granted real mouse Quill UI both modes/same-process unload/cold reopen, frozen9651dba gameb8629821; custody001 closed3 exits0 and711/bin match, HOLD retained",
     "queue": [
-      "trains-quill-runtime",
+      "transport-prebuilt-belt-custody-runtime",
       "contraptions-owner-foundation-runtime",
-      "transport-short-custody-runtime",
       "mixins-release-build-apply-benchmark",
+      "combined-water-wheel-source-build",
       "machinery-drill-runtime",
       "fluids-tank-lifecycle-runtime"
     ]
@@ -28,7 +28,7 @@
       "thread_id": "01a1ad7e-e33b-7ef2-8bc2-606e374fb5de",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:31.729Z",
-      "state": "Owner approved reviewed8a9067b bounded stationary wheel/controller32slot inventory+clock; isolated source implementation allocated on005; Drill runtime queued",
+      "state": "Approved wheel source5ed8101/shared compositionf05d8cc reviewed; root007f71992c .15/cache18; source-only runtime packet prep using existing host tick control",
       "lane_initial_head": "76dfaf78370f41b2a5c68620c55be6ecab96f16f"
     },
     {
@@ -41,7 +41,7 @@
       "thread_id": "01a1ad7e-f1a5-7052-b948-19607d6dd8e4",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:37.443Z",
-      "state": "Both-mode ordinary interaction commands complete;16 exits0/711 hashes+binaries match; dedicated gold route HOLD; read-only completion review continues without lease",
+      "state": "Fresh custody001 HOLD source belt empty; original gold below/north of new belt;3 exits0/711+bins match; read-only fixture diagnosis/prebuilt-belt proposal",
       "lane_initial_head": "f00d04a3249b53bee453a0191d65285b0e7f6538"
     },
     {
@@ -80,7 +80,7 @@
       "thread_id": "01a1ad7f-1bc5-7d53-89d7-89c76219d1c8",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:48.006Z",
-      "state": "Client-only Quill source/wiring compiled005; five focused tests PASS; actual input driver preparation; no Save bridge",
+      "state": "Root granted actual Quill input/UI/reopen runtime lease on frozen005; no Save bridge",
       "lane_initial_head": "76dfaf78370f41b2a5c68620c55be6ecab96f16f"
     },
     {
@@ -93,7 +93,7 @@
       "thread_id": "01a1ad7f-28cf-7452-9a78-12912bc4d097",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:51.489Z",
-      "state": "Root heavy lease granted for reviewed selected goggles milestone on frozen005; no new production source",
+      "state": "Selected Goggles milestone PASS/source9651dba, both modes/cold,8 exits0/711+bins+JAR match; fresh completion review CLEAR; read-only existing golden-sheet reuse assessment",
       "lane_initial_head": "76dfaf78370f41b2a5c68620c55be6ecab96f16f"
     }
   ],
@@ -146,9 +146,17 @@
   "water_line_candidate": {
     "branch": "codex/create-team-integration-006",
     "path": "G:\\Create Rusty\\.local\\integration\\create-teams-006",
-    "head": "e4ae9a1",
+    "head": "22087014723ac08c53e0c1f44d72866a91a90248",
     "version": "0.5.0-ch4os.14",
     "cache_schema": 17,
-    "state": "Source-composition CLEAR; generator/distribution PASS; uncompiled; actual callback/restoration and runtime gates open"
+    "state": "Source-composition and cfg(test) restoration delta reviewed; generator/distribution PASS; uncompiled; native/game gates open"
+  },
+  "combined_water_wheel_candidate": {
+    "branch": "codex/create-team-integration-007",
+    "path": "G:\\Create Rusty\\.local\\integration\\create-teams-007",
+    "head": "f71992cb9fce067f96dfa736a318147929846538",
+    "version": "0.5.0-ch4os.15",
+    "cache_schema": 18,
+    "state": "Exact source compositionf05d8cc reviewed; root generator/distribution PASS; uncompiled, no gameplay acceptance"
   }
 }

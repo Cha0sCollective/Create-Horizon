@@ -10,19 +10,19 @@ Normal hooks/fresh private-remote verification are required for the checkpoint.
 
 | Team | Completed finite outcome | Next boundary |
 | --- | --- | --- |
-| Machinery | Fan washing and upward Saw finite playability accepted. Approved goggles producer compiled; two new tests pass. | Owner approved reviewed Crushing Wheels controller packet8a9067b; isolated implementation allocated. Drill runtime queued. |
+| Machinery | Fan washing, upward Saw and selected goggles producer/HUD finite playability accepted. | Approved wheel source/shared compositionf05d8cc reviewed and root-composed007/f71992c; runtime packet preparation. Drill runtime queued. |
 | Transport | Bare belt/Depot and two-controller handoff accepted. Private Mixins repair compiled. | Both-mode005 ordinary command checks complete;16 exits0/711 hashes match; continuous gold route HOLD. Lease released; scoped completion review pending. |
-| Fluids and power | One-block Creative water Tank exchange/window/cap/refusal and ordinary cold water accepted. | Tank lifecycle queued; bounded four-block water-line source/wiring reviewed, not yet composed or game-qualified. |
+| Fluids and power | One-block Creative water Tank exchange/window/cap/refusal and ordinary cold water accepted. | Water-line and real-owner restoration test source composed in007; uncompiled. Tank lifecycle queued. |
 | Contraptions | Reusable owner design approved; inert foundation/probe compiled; six new focused tests pass. | Actual saved record/peer view/discovery/guards probe queued. No world capture or live bearing. |
-| Trains and schematics | Stationary X/Z track accepted. Client-only Quill compiled; five new focused tests pass. | Actual input packet preparation; no live train, export or Save bridge. |
-| Experience and parity | Selected millstone audio accepted. Matching goggles consumer compiled; three new tests pass. | Owns selected craft/equip/HUD/reopen game lease on frozen005. No complete progression or tooltip parity claim. |
+| Trains and schematics | Stationary X/Z track accepted. Client-only Quill compiled; five new focused tests pass. | Owns actual input/UI/reopen game lease; no live train, export or Save bridge. |
+| Experience and parity | Selected audio and bounded Goggles milestone PASS, both modes/cold,8 exits0; completion review CLEAR. | Only supplied-sheet craft demonstrated. No complete progression or broader tooltip/model parity claim. |
 
 Shared stage/audio-enabled Clippy/build/client-test compile and10 new focused
 checks PASS. Six identical engine checks are reused, not new runs. Source and
 composition reviews CLEAR; final runtime review CLEAR at handoff5a87f94. Both
 new worlds cold-reopened; all eight game processes exited0 and all676 post-run
 source hashes match. Root viewed actual peer Tank/Saw transitions and stopped
-the private audio fixture normally. That cohort is closed. Experience now owns
+the private audio fixture normally. That cohort is closed. Trains now owns
 the sole heavy lease; no owned audio fixture is active.
 
 [Current integration record](../docs/teams/INTEGRATION_003.md) and

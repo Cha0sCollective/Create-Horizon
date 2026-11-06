@@ -108,6 +108,20 @@ runtime checks follow serially. Funnel's scoped completion review is pending;
 no full Funnel acceptance follows from the ordinary placement observations.
 No temporary-Shift/recursive workaround, block capture or schematic Save follows.
 
+Goggles' selected both-mode milestone and normal cold reopen are accepted PASS;
+fresh independent completion review CLEAR, eight exits0 and all711 files/
+binaries/JAR match. See `docs/teams/experience/EXPERIENCE_003_RESULTS.md` for
+the crafted/fixture distinction and visual limits. Trains holds the actual Quill
+input/reopen lease.
+Fresh Funnel custody001 ended HOLD with gold1 still world-owned below/north of
+the newly formed belt. A separately reviewed prebuilt-empty-belt fixture order
+is being prepared; no source catch-range or item-movement workaround is adopted.
+
+The exact reviewed water+wheel shared compositionf05d8cc is now a separate
+root candidate007/f71992c (.15/cache18),37 blocks/18 standalone items and499
+content entries. Normal generation/source-install checks pass; compilation,
+real fluid-restoration and family runtime/spill/reopen gates remain open.
+
 The first frozen cohort sourceabf48a5 remains detached at
 `.local/integration/create-teams-002`; candidate005 uses
 physical `.local/integration/create-teams-001`; accepted branch003 stays preserved. Immutable binaries, all input maps,
