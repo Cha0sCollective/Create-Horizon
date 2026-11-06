@@ -535,12 +535,15 @@ fn bundled_content_rejects_paths_outside_its_namespace_before_writing() {
 }
 
 #[test]
-fn bundled_track_pickaxe_rule_has_one_exact_namespace_exception() {
+fn bundled_track_and_tank_pickaxe_rule_has_one_exact_namespace_exception() {
     let bundle: BTreeMap<String, String> =
         serde_json::from_str(include_str!("../../data/content.json")).unwrap();
     let path = "data/minecraft/tags/block/mineable/pickaxe.json";
     let tag: Value = serde_json::from_str(&bundle[path]).unwrap();
-    assert_eq!(tag, json!({"replace":false,"values":["create:track"]}));
+    assert_eq!(
+        tag,
+        json!({"replace":false,"values":["create:track","create:fluid_tank"]})
+    );
 
     let home = Stage::new(&std::env::temp_dir()).unwrap();
     let content = serde_json::to_vec(&BTreeMap::from([

@@ -167,7 +167,7 @@ def straight_track_content():
         "type": "minecraft:block", "pools": [{"rolls": 1, "entries": [
             {"type": "minecraft:item", "name": "create:track"}]}]})
     write("data/minecraft/tags/block/mineable/pickaxe.json", {
-        "replace": False, "values": ["create:track"]})
+        "replace": False, "values": ["create:track", "create:fluid_tank"]})
 
 
 def dry_mixing_content():
