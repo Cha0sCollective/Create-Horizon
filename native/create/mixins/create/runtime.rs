@@ -1265,6 +1265,11 @@ pub(super) fn draw(
     if !owns(block) {
         return;
     }
+    if matches!(block, "create:mechanical_pump" | "create:fluid_pipe") {
+        // Their selected MODEL blockstates are complete authored fallbacks;
+        // the generic kinetic renderer would add an unrelated axial shaft.
+        return;
+    }
     if block == "create:blaze_burner" {
         super::create_port_burner_presentation::draw(game, pos, _state, entity, draw);
         return;

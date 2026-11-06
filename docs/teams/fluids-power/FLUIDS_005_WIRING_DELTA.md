@@ -15,6 +15,8 @@ Operations owns serial composition and the heavy build/runtime lease.
   Pump an ordinary kinetic block entity and tick, maps its `facing` axis to
   `Kind::Pump`, and calls the bounded adapter after signed network RPM is
   calculated. Pipe has no block entity, kinetic node, tick or fluid owner.
+  Both IDs skip the generic block-entity renderer; their authored MODEL
+  blockstates supply the whole provisional shape without an axial shaft.
 - `native/create/mixins/create/placement_runtime.rs` places Pump with the
   directional look-facing fallback and selects the straight Pipe axis from
   the clicked face. `interactions.rs` flips Pump facing on ordinary wrench;
