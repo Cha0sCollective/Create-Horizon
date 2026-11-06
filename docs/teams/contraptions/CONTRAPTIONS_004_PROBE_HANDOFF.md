@@ -1,6 +1,6 @@
 # Contraptions 004 — finite owner foundation probe
 
-Status: source-only development probe, based on reviewed `d0cbd4c113b0b64749782e8a67f443d2270f1ca5`. The unchanged pins are Horizon `9c7f9b2215dfed497aba5522c44f38926628648d` and Mixins `e8cd0aa38cffef49cb2e088ef716baa107148c02`. It is inert by default. It does not provision an entity, register a bearing, capture or write a world block, or establish playable material custody. Root owns integration, Mixins transformation, compilation and runtime proof after the shared build lease.
+Status: source-only development probe, based on reviewed `d0cbd4c113b0b64749782e8a67f443d2270f1ca5`. Fresh independent read-only Sol High review CLEAR at `622efa23dfb721fcfadcf8096b18526efea24de3`. The unchanged pins are Horizon `9c7f9b2215dfed497aba5522c44f38926628648d` and Mixins `e8cd0aa38cffef49cb2e088ef716baa107148c02`. It is inert by default. It does not provision an entity, register a bearing, capture or write a world block, or establish playable material custody. Root owns integration, Mixins transformation, compilation and runtime proof after the shared build lease.
 
 ## Exact gate and hooks
 
@@ -24,4 +24,4 @@ The existing game-test route is `chat /test create create_horizon:owner_probe 5 
 
 ## Gate and limits
 
-The saved raw envelope is the fixture producer. Typed `RECORD`/`VIEW` production remains unbound; declaring `VIEW.sync=true` alone creates no value. The server's real level hook and peer's actual attachment receipt are observable only with this one-shot probe. The probe does not prove a renderer, controller link, world-block capture, obstruction handling, live motion, or material conservation. No Cargo, Mixins stage, game or peer run was done by the team. Root should inspect the staged injections, run focused codec/probe tests and the two-child disposable save/peer trial under its shared lease, then retain the raw logs and process exits. Source and mutation gates require fresh independent read-only Sol High review before composition.
+The saved raw envelope is the fixture producer. Typed `RECORD`/`VIEW` production remains unbound; declaring `VIEW.sync=true` alone creates no value. The server's real level hook and peer's actual attachment receipt are observable only with this one-shot probe. The probe does not prove a renderer, controller link, world-block capture, obstruction handling, live motion, or material conservation. No Cargo, Mixins stage, game or peer run was done by the team. Root should inspect the staged injections, run focused codec/probe tests and the two-child disposable save/peer trial under its shared lease, then retain the raw logs and process exits. The source and mutation review is CLEAR; transformation and runtime gates remain open.
