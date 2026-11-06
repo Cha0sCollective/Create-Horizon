@@ -5,7 +5,7 @@
 // one cobblestone item, milling fallback, and downward world output only.
 use super::{Game, native_block_entity_draw::BlockEntityDraw};
 use crate::{
-    containers::{BlockEntity, ModBlockEntity, ModContainer},
+    containers::{ModBlockEntity, ModContainer},
     items::ItemStack,
 };
 use create_engine::{
@@ -87,11 +87,8 @@ fn pair(game: &Game<'_>, middle: Pos, current: Option<(Pos, f32)>) -> Option<Pai
     }) { return None; }
     let speed = |pos| {
         current.filter(|(p, _)| *p == pos).map(|(_, rpm)| rpm).unwrap_or_else(|| {
-            match game.world.block_entities.get(&(pos[0], pos[1], pos[2])) {
-                Some(BlockEntity::Mod(entity)) if entity.id == WHEEL =>
-                    crate::game::create_port::number(&entity.nbt, "Speed"),
-                _ => 0.0,
-            }
+            let Some(start) = super::create_port::node(game, pos) else { return 0.0; };
+            super::create_port_kinetic_runtime::network(game, start, 0).speed(pos)
         })
     };
     Some(Pair { first_rpm: speed(first), second_rpm: speed(second) })
