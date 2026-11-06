@@ -109,6 +109,19 @@ def selected(role, item):
     return answer
 
 
+def cancel(role):
+    call(role, "key", "shift", "down")
+    try:
+        assert call(role, "state")["player"]["sneaking"] is True
+        call(role, "mouse", "right", "click")
+        # Mouse queues use for the next game tick. Keep Shift down until the
+        # interaction callback consumes that click, then release it.
+        call(role, "wait", 3)
+    finally:
+        call(role, "key", "shift", "up")
+    assert call(role, "state")["player"]["sneaking"] is False
+
+
 def launch_arg(role, name):
     words = session["processes"][role]["command"]
     return words[words.index(name) + 1]
@@ -220,9 +233,7 @@ try:
         shot("actor", "third-click", ["Selection ready; saving is not available yet"])
         assert_unchanged(before_region, before_counts)
 
-        actor("key", "shift", "down")
-        actor("mouse", "right", "click")
-        actor("key", "shift", "up")
+        cancel("actor")
         shot("actor", "cancel", ["Selection canceled",
                                   "Right-click a block: first corner"])
         aim("actor", 16)
@@ -230,9 +241,7 @@ try:
         actor("mouse", "right", "click")
         shot("actor", "quick-edges", [f"First: {x + 16}, {y}, {z}",
                                        f"Second: {x + 16}, {y}, {z}", "Size: 1 x 1 x 1"])
-        actor("key", "shift", "down")
-        actor("mouse", "right", "click")
-        actor("key", "shift", "up")
+        cancel("actor")
 
         aim("actor", 16)
         actor("mouse", "right", "click")
@@ -270,9 +279,7 @@ try:
             call("peer", "mouse", "right", "click")
             shot("peer", "peer-first", [f"First: {x}, {y}, {z}"])
             shot("actor", "actor-still-first", [f"First: {x + 16}, {y}, {z}"])
-            actor("key", "shift", "down")
-            actor("mouse", "right", "click")
-            actor("key", "shift", "up")
+            cancel("actor")
             shot("peer", "peer-after-actor-cancel", [f"First: {x}, {y}, {z}"])
             aim("actor", 16)
             actor("mouse", "right", "click")

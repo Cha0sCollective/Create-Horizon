@@ -53,6 +53,9 @@ The `full` case performs these checks in one session:
    coordinates and size. Third click shows the explicit no-Save message.
 3. Shift plus real right click clears the selection. Two quick separate
    press/release edges at one target produce a 1 x 1 x 1 complete selection.
+   Keep Shift held through at least three game ticks after its click: native
+   mouse input queues use for a later tick, so releasing Shift immediately
+   can turn a cancel into an ordinary third click.
 4. A switch to stick and back, and a Creative-screen open/close, each
    remove the prior selection. Stick use toggles an ordinary lever through
    the same physical mouse path.
