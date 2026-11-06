@@ -9,8 +9,10 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
 import shutil
+import signal
 import subprocess
 import time
 import uuid
@@ -125,7 +127,7 @@ class Packet:
             time.sleep(0.5)
         raise AssertionError("peer did not reach loaded fixture chunk")
 
-    def chat_reply(self, command: str, needle: str) -> str:
+    def chat_reply(self, command: str, needle: str | tuple[str, ...]) -> str:
         marker = "OWNER004_" + uuid.uuid4().hex[:12]
         self.call("command", "say " + marker)
         self.call("command", command)
@@ -135,7 +137,8 @@ class Packet:
             if markers:
                 fresh = [line for line in lines[:markers[0]] if marker not in line]
                 joined = " ".join(fresh)
-                if needle in joined:
+                expected = (needle,) if isinstance(needle, str) else needle
+                if any(item in joined for item in expected):
                     return joined
             time.sleep(0.5)
         raise AssertionError(f"no fresh {needle!r} reply to {command!r}")
@@ -200,10 +203,13 @@ class Packet:
         return found
 
     def command_guards(self) -> None:
-        self.call("command", f"kill {SELECTOR}")
+        kill = self.chat_reply(f"kill {SELECTOR}",
+                               ("Killed ", "commands.kill.success.single"))
         self.check("command kill retained carrier", self.position() == POSITION)
-        self.call("command", f"tp {SELECTOR} 9 64 8")
+        teleport = self.chat_reply(f"tp {SELECTOR} 9 64 8",
+                                   ("Teleported ", "commands.teleport.success.location.single"))
         self.check("command teleport retained position", self.position() == POSITION)
+        save_json(self.out / "command-guard-feedback.json", {"kill": kill, "teleport": teleport})
         self.inspect_saved_entity()
 
     def finish(self) -> None:
@@ -239,16 +245,93 @@ class Packet:
         self.finish()
 
 
+def peer_alive(pid: int) -> bool:
+    try:
+        os.kill(pid, 0)
+        return True
+    except OSError:
+        return False
+
+
+def verified_peer(session: dict) -> bool:
+    """Only the exact disposable child recorded by session.py may be signalled."""
+    peer = session["processes"]["peer"]
+    pid = int(peer["pid"])
+    try:
+        words = [item.decode() for item in Path(f"/proc/{pid}/cmdline").read_bytes().split(b"\0") if item]
+        cwd = Path(f"/proc/{pid}/cwd").resolve()
+        return (bool(words) and Path(words[0]).resolve() == Path(peer["game"]).resolve()
+                and peer["socket"] in words
+                and cwd.name == "contraptions-004-probe-client")
+    except (OSError, ValueError):
+        return False
+
+
+def cleanup_failed_session(session_path: Path, error: BaseException, out: Path | None) -> None:
+    """Preserve the original failure and release a verified disposable session."""
+    receipt: dict = {"original_error": repr(error), "actions": []}
+    target = out / "failure.json" if out and out.is_dir() else None
+    try:
+        path = session_path.resolve()
+        session = json.loads(path.read_text())
+        mirror = Path(session["mirror"]).resolve()
+        index = int(session["index"])
+        assert (session["mode"] == "dedicated" and mirror.parent == PACKET.resolve()
+                and path == mirror / f"session-{index:02d}.json")
+        if target is None:
+            target = mirror / f"owner-check-{index:02d}-failure.json"
+        peer = session["processes"]["peer"]
+        ctl = Path(peer["game"]).with_name("horizon-ctl")
+        if ctl.is_file() and sha256(ctl) == session["binary_sha256"]["horizon-ctl"]:
+            try:
+                result = subprocess.run(
+                    [str(ctl), "--socket", peer["socket"], "--timeout", "10", "quit"],
+                    capture_output=True, text=True, timeout=20)
+                receipt["actions"].append({"peer_quit_code": result.returncode,
+                                           "stdout": result.stdout, "stderr": result.stderr})
+            except (OSError, subprocess.TimeoutExpired) as quit_error:
+                receipt["actions"].append({"peer_quit_error": repr(quit_error)})
+        else:
+            receipt["actions"].append({"peer_quit_skipped": "frozen control binary unavailable"})
+        pid = int(peer["pid"])
+        deadline = time.monotonic() + 10
+        while peer_alive(pid) and time.monotonic() < deadline:
+            time.sleep(0.25)
+        if peer_alive(pid):
+            if verified_peer(session):
+                os.kill(pid, signal.SIGTERM)
+                receipt["actions"].append({"peer_sigterm": pid})
+            else:
+                receipt["actions"].append({"peer_sigterm_skipped": "PID identity mismatch"})
+        stop = mirror / f"stop-{index:02d}.request"
+        stop.write_text("owner foundation packet failed; bounded stop requested\n")
+        receipt["actions"].append({"stop_request": str(stop)})
+        exit_path = mirror / f"exit-{index:02d}.json"
+        deadline = time.monotonic() + 120
+        while not exit_path.exists() and time.monotonic() < deadline:
+            time.sleep(0.5)
+        receipt["exit"] = json.loads(exit_path.read_text()) if exit_path.exists() else "missing after 120s"
+        save_json(target, receipt)
+    except BaseException as cleanup_error:
+        receipt["cleanup_error"] = repr(cleanup_error)
+        if target is not None:
+            try:
+                save_json(target, receipt)
+            except OSError:
+                pass
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("session", type=Path, help="mirror session-00/01.json from session.py")
     parser.add_argument("--phase", choices=("initial", "cold"), required=True)
     args = parser.parse_args()
-    packet = Packet(args.session, args.phase)
+    packet = None
     try:
+        packet = Packet(args.session, args.phase)
         packet.run()
     except BaseException as error:
-        save_json(packet.out / "failure.json", {"error": repr(error), "checks": packet.checks})
+        cleanup_failed_session(args.session, error, packet.out if packet else None)
         raise
 
 
