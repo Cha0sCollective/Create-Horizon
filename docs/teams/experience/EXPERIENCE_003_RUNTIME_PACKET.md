@@ -48,7 +48,10 @@ Do not directly write network NBT or the new solver-speed field.
    unequip/reequip and constant total item count. It captures actor and peer
    images for each equipment state, cycling all three actor camera modes. A peer screenshot file alone is pending
    visual review; root must inspect the rendered head model and its removal.
-2. With the selected line running, run `--step hud --target millstone
+2. In the integrated world, run `--step equip-fixture` first to supply one
+   labeled Goggles fixture and equip it ordinarily; no integrated crafting
+   result follows from this grant. With the selected line running, run
+   `--step hud --target millstone
    --status Running`, then the wheel equivalent, in integrated and dedicated
    play. The driver queries authoritative block NBT with marked chat commands,
    computes `4 × abs(theoretical RPM)` for the millstone and the Java
@@ -80,7 +83,9 @@ Do not directly write network NBT or the new solver-speed field.
 5. After restoring a selected running state, root normally shuts down and
    cold reopens the integrated world and dedicated server/two clients. Use a
    fresh output subdirectory. Run `--step reopen` to check worn Goggles,
-   consumed ingredients, server equipment and actor/peer head images; rerun
+   server equipment and actor/peer head images; the dedicated crafted actor's
+   ingredient counts must remain consumed, while the integrated actor retains
+   an explicitly supplied Goggles fixture. Rerun
    both Running HUD targets and compare freshly recomputed server field/status
    with client traces and actual overlay frames. Preserve normal exit codes
    and world identity. A warm reconnect or server query does not substitute
