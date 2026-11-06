@@ -5,128 +5,73 @@ route. S6 is OPEN. The owner authorizes progress through S6 until the next
 requested break, genuine blocker, required input or scope boundary. Read
 `docs/design/STAGE_PROGRESSION_PLAN.md` and `NATIVE_PLAYABILITY_PLAN.md`.
 
-## Operations and team activation — November 5
+## Operations and team activation — November 5/6
 
-Primary branch `codex/create-team-operations` composes the accepted water baseline
-with bounded bare-belt/Depot repair; the other team worktrees remain isolated.
-Owner-requested six team chats and isolated lanes are launched under reviewed
-`orchestration/PROJECT_TEAMS.md`; actual IDs/branches/bases are in
-`operations/team-registry.json`, current assignments in `operations/STATUS.md`.
-Operations owns integration, remote pushes, host pins and one heavy build/runtime
-reservation. Per-team actual token counters and phase intervals are collected
-locally; unknown counters remain unknown. No raw transcripts enter Git.
+The owner-requested six Create-only teams work in isolated private lanes under
+`orchestration/PROJECT_TEAMS.md`. Operations owns primary integration, pins,
+private pushes, accounting and the single heavy lease. See `operations/STATUS.md`
+and `operations/team-registry.json`. Other mods and public releases stay deferred.
 
-Transport's historical held checkpoint2adc50a9/native43cef7dd (`.9`) is preserved.
-Repair0df826c/handoff214c1d4 closes the stale Depot peer component. Fresh independent
-Sol High integration review CLEAR supports bounded bare-belt acceptance by composed
-evidence; see `docs/reference/NATIVE_S6_BELT_TRANSPORT_RESULTS.md`. No fullS6 claim.
-Machinery's selected one-item fan/water-catalyst/Depot packet is now PASS on
-unchanged `.8` inputs, including normal cold reopen and actual peer flour/dough/
-empty views; seven process exits0, completion review CLEAR. Its initial empty
-image interpretation was corrected by direct comparison, without source repair
-or new game runs. See `docs/teams/machinery/MACHINERY_001_RESULTS.md`.
-Transport002's dedicated two-controller belt handoff is now PASS on unchanged `.9`
-source: stopped receiver refuses under powered source; release transfers exactly
-once; actual peer occupied/empty and saved chestgold1; three exits0, completion
-review CLEAR. See `orchestration/teams/transport-002-results.md`.
-Qualified source55339ce (.11/cache14) was integrated at primary checkpoint8470fc5,
-byte-identical across all676 native input files. Primary also contains reviewed
-private-bootstrap preparation. New .13/cache16 source9651dba remains a separate
-candidate with source/build checks passed and gameplay still in progress. The
-accepted .11 source/composition/build/finite gameplay reviews are CLEAR. See
-`docs/teams/INTEGRATION_003.md` and
-`docs/teams/fluids-power/FLUIDS_003_COHORT_RUNTIME_HANDOFF.md`.
-The combined profile qualifies one upward Saw alloy-to-six-shafts path, unsupported
-return and normal cold pause/resume; one stationary Creative water Tank with
-bucket/window/cap/refusal and visible peer full-to-empty plus ordinary cold water;
-and single-millstone Ambient audio captured on owned private test-output streams.
-Straight stationary X/Z track was qualified in first cohortabf48a5 and retained
-unchanged. Track is not a train system. Filled Tank removal and Survival fluid
-parity remain unqualified, as the runtime plan treats removal as exploratory.
-Audio capture is not a physical-speaker or full soundscape claim.
+Accepted primary source is55339ce (.11/cache14), checkpoint8470fc5 plus reviewed
+bootstrap tooling. Source005/9651dba (.13/cache16),711 frozen inputs/gameb8629821,
+remains a separate candidate. Its stage81/38, Clippy, build and16 focused checks
+pass; unchanged historical batteries were not replayed. Host9c7f9b22 and explicit
+private Mixinsac5d9e7 are unchanged. The private compiler profile is source-workspace-
+only; generic official archives cannot supply it. Prior planner/prediction HOLDs
+and accepted .11 are preserved. See `docs/teams/INTEGRATION_005.md`.
 
-Shared stage/audio-enabled lint/build and10 new focused tests PASS; six identical
-Saw/kinetic checks are reused. Source preparation/compiler/link commands total
-about8.5minutes; native test-group execution totals0.055s. Both integrated and
-dedicated/two-client cold trials pass; all eight game processes exited0 and all676
-post-run hashes match. Root stopped the private Pulse fixture normally. At that cohort closure no game,
-compiler, capture or test fixture remained running; the new lease is described below. The earlier first-cohort Tank
-HOLD, no-output build and all missed fixture attempts remain preserved.
+Selected goggles are accepted PASS in both modes/cold reopen, eight exits0,
+711 files/binaries/JAR matched and fresh completion review CLEAR. The craft used
+a supplied sheet; no complete progression claim. See
+`docs/teams/experience/EXPERIENCE_003_RESULTS.md`.
 
-The owner now authorizes the reviewed narrow private Mixins repair for ordinary
-funnel chest-click placement and a reusable contraption entity-owner DESIGN.
-Transport004 edits an isolated tool copy; Operations owns reproducible private
-source pinning/bootstrap and candidate004 composition. The official e8cd snapshot
-and accepted .11 remain preserved. New source uses an explicit private tree hash
-and separately records its upstream base; it must not masquerade as e8cd.
-Contraptions003 design c5e5053 is reviewed CLEAR and integrated426d86a. The owner
-then explicitly approved its bounded004 foundation: saved entity record/view,
-peer sync, loaded discovery/tick and deletion/relocation guards, with NO world-block
-capture. Live bearing/controller/custody implementation remains a later decision.
-Machinery and Experience implemented the owner-approved selected goggles field
-contract at `docs/design/GOGGLES_SOLVER_SPEED_FIELD_PACKET.md` (review CLEAR).
-The one derived persisted field has an explicit Byte unavailable marker; it does
-not expand the five-type destructive-propagation profile. Machinery owns the
-producer, Experience the matching consumer. Both are reviewed and compiled in005.
-Trains' client-only two-corner Quill source and shared wiring are also compiled;
-actual input/HUD trials remain queued. No export/Save bridge is implemented.
-Fluids' reviewed four-block water line is allocated as endpoint-specific transfer
-on existing Tank/Basin owners, with no persisted pipe flow metadata, generic
-transaction framework or host change. Drill and Tank lifecycle runtime plans
-are reviewed/queued; they have no new gameplay result yet.
+Funnel005 ordinary both-mode placement/refusal checks are command-complete,
+16 exits0. Fresh dedicated prebuilt-belt trial dedicated-5h3x4ef0 has all ten
+command phases complete and three exits0: one new gold ingot is sampled in chest,
+source belt, receiver belt, Depot, then sink with other checked owners zero.
+Operations directly inspected all five peer frames; completion review CLEAR for
+this bounded command-checked route. Accept this finite result, without an atomic
+every-tick trace or full Funnel parity/reopen claim. Earlier missing-item and
+below-belt custody HOLDs remain unchanged. Brief world-item evidence comes from
+the separately attributed prior observation. See
+`orchestration/teams/transport-005-funnel-custody-retry-002-results.md`.
 
-The owner approved Machinery004's reviewed stationary Crushing Wheels decision
-at8a9067b: one wheel pair and canonical middle-controller32-slot inventory/clock,
-selected cobblestone-to-gravel milling fallback, normal after-capture reopen and
-removal/spill. Machinery implements in isolated lanes on005; shared integration
-remains Operations-owned. No general processing framework, new host API, other
-recipes/orientations, entity damage, moving wheels or belt/funnel input follows.
+Quill003 full/cold automated receipts in both modes passed with eight exits0,
+but the original integrated cancel/quick images remain HOLD. A reviewed driver
+repair holds Shift through the queued input frame. Focused saved integrated idx02
+now has the expected three HUD frames, actor exit0 and matching frozen inputs.
+Operations inspected38 canonical images, including dedicated independent peer
+selection and both-mode reset/cold behavior. Fresh independent completion review CLEAR; selected HUD milestone accepted PASS.
+No schematic Save/export or train motion is implemented. The separate world-local
+Save bridge remains a proposal requiring owner approval.
 
-Separately composed water-line candidate006/1c2e7f5 (.14/cache17) has independent
-source-composition review CLEAR and normal content/source-install checks PASS.
-Its compile/focused native callback-restoration/runtime gates remain open. It
-does not alter the frozen005 game trial. Release-CLI source8180771 is reviewed
-but still needs its separate benchmark/generated-byte equality before adoption.
+The approved inert owner foundation's first dedicated probe observed discovery
+and refusal of native move/remove, but peer VIEW receipt was missing. Both
+processes exited0; no cold pass is claimed. Diagnosis found that Mixins startup's
+empty trait-mod list disables whole initial attachment snapshots. Contraptions
+is preparing a bounded existing start-tracking/VIEW mark_sync repair and explicit
+peer gate observations. No host API/pin/schema change, world capture or live
+bearing is authorized by this repair. Original runtime HOLD remains preserved.
 
-The funnel's original HELD1bcf4f6 is preserved. The private tool repair is pinned
-at ac5d9e7 (format-only child of testedf7a9815); its genuine Git ancestry, full
-source fingerprint and bootstrap/pin reviews are CLEAR. Eight tool fixtures
-passed on its semantic parent. Candidate004/565bfd3 (.12/cache15) built but its
-actual unsupported side click exposed client prediction divergence: client2,
-authoritative stock3, restored on reconnect. This was not authoritative item loss.
-All seven processes exited0 and692 final hashes matched; its source archive,
-map, binaries and HOLD receipts remain preserved in the004 packet.
+The owner approved Machinery004's stationary selected wheel pair and saved
+middle-controller32-slot inventory/clock: cobblestone-to-gravel fallback, normal
+after-capture reopen and removal/spill. Reviewed source5ed8101 and shared wiring
+f05d8cc are root-composed with the endpoint-specific water line in candidate007,
+now7fb999e (.15/cache18),37 blocks/18 standalone items/499 entries. Formatting,
+normal generation/distribution and source-composition reviews pass. Compilation,
+13 new pure checks, one real-owner restoration test and each family's finite
+runtime/spill/reopen gates remain open. No general processing/flow framework,
+other wheel recipes/orientations, entity damage or belt/funnel wheel input.
 
-Candidate005/9651dba (.13/cache16) composes the reviewed Funnel prediction repair,
-goggles producer/consumer, Quill and approved inert owner foundation/probe.
-Stage81/38, Clippy, client tests and playable/control build pass;16 focused tests
-pass. All711 source hashes match. Both-mode ordinary Funnel command checks
-completed and all16 processes exited0; full continuous gold custody remains HOLD.
-Frozen gameb8629821 is now leased to Experience for the selected goggles trial.
-See `docs/teams/INTEGRATION_005.md`. Quill and the separately gated inert owner
-runtime checks follow serially. Funnel's scoped completion review is pending;
-no full Funnel acceptance follows from the ordinary placement observations.
-No temporary-Shift/recursive workaround, block capture or schematic Save follows.
-
-Goggles' selected both-mode milestone and normal cold reopen are accepted PASS;
-fresh independent completion review CLEAR, eight exits0 and all711 files/
-binaries/JAR match. See `docs/teams/experience/EXPERIENCE_003_RESULTS.md` for
-the crafted/fixture distinction and visual limits. Trains holds the actual Quill
-input/reopen lease.
-Fresh Funnel custody001 ended HOLD with gold1 still world-owned below/north of
-the newly formed belt. A separately reviewed prebuilt-empty-belt fixture order
-is being prepared; no source catch-range or item-movement workaround is adopted.
-
-The exact reviewed water+wheel shared compositionf05d8cc is now a separate
-root candidate007/f71992c (.15/cache18),37 blocks/18 standalone items and499
-content entries. Normal generation/source-install checks pass; compilation,
-real fluid-restoration and family runtime/spill/reopen gates remain open.
-
-The first frozen cohort sourceabf48a5 remains detached at
-`.local/integration/create-teams-002`; candidate005 uses
-physical `.local/integration/create-teams-001`; accepted branch003 stays preserved. Immutable binaries, all input maps,
-raw runs, source references and dirty legacy work remain preserved. Other mods,
-Open to LAN, custom crash/replay framework and public releases remain deferred.
+The release-Mixins benchmark on frozen005 inputs passed and closed normally.
+Its immutable baseline contains4710 generated files, all path/byte equal to the
+release output. Reviewed source8180771 is adopted as0077fb999e. No gameplay
+replay is needed for this byte-identical tooling change. Next compose the
+reviewed owner repair if ready, freeze007 at physical001 and use the prepared
+007 checks/build/resource-preparation/restoration sequence. Drill and Tank
+lifecycle finite runtime packets remain queued. All old source branches, maps,
+binaries, worlds, failures and dirty historical work remain preserved; no cleanup,
+playable-save/Prism/Java edits, public release or permission expansion.
 
 ## Accepted plain-water Basin
 
