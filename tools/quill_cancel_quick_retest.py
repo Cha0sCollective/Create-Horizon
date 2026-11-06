@@ -61,6 +61,15 @@ assert prior["index"] < session["index"]
 receipt_path = out / f"integrated-{session['index']:02d}-cancel-quick.json"
 assert not receipt_path.exists(), receipt_path
 x, y, z = args.origin
+assert prior["region"] == {
+    "blocks": [[x + offset, y, z, "minecraft:stone"]
+               for offset in (0, 1, 15, 16)],
+    "counts": {"minecraft:stone": 4},
+    "from": [x, y, z],
+    "to": [x + 16, y, z],
+}, "saved fixture receipt is not the fixed four-stone line"
+assert prior["counts"] == {"create:schematic_and_quill": 1,
+                           "minecraft:stick": 1}, "saved actor counts differ"
 steps = []
 frames = []
 receipt = {"session": str(session_path), "run": session["run"],
