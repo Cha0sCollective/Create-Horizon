@@ -49,12 +49,12 @@ def data(x):
     prefix = f'{x}, 65, 20 has the following block data:'
     return fresh_chat(f'data get block {x} 65 20', lambda line: line.startswith(prefix))
 
-def game_time():
-    # The pinned host emits a translated command reply. Require one fresh line
-    # with its terminal numeric result, independent of the prepared language.
-    marker = 'FLUIDS005_TIME_' + uuid.uuid4().hex[:12]
+def single_reply(query):
+    # The pinned host executes commands in order. Read one fresh server reply
+    # after our marker; a control dispatch ACK is never the queried value.
+    marker = 'FLUIDS005_REPLY_' + uuid.uuid4().hex[:12]
     command('say ' + marker)
-    command('time query gametime')
+    command(query)
     for _ in range(20):
         lines = call('chat-log', 60).get('chat', [])
         markers = [i for i, line in enumerate(lines) if marker in line]
@@ -62,11 +62,28 @@ def game_time():
             fresh = lines[:markers[0]]
             if fresh:
                 assert len(fresh) == 1, (marker, fresh)
-                match = re.search(r'(\d+)\s*$', fresh[0])
-                assert match, (marker, fresh)
-                return int(match.group(1))
+                return fresh[0]
         call('wait', 1)
-    raise AssertionError(f'No fresh game-time reply after {marker}')
+    raise AssertionError(f'No fresh reply to {query!r} after {marker}')
+
+def game_time():
+    # Prepared 26.3 en_us: commands.time.query.gametime =
+    # "The game time is %s tick(s)". The held HOLD captured that exact shape.
+    line = single_reply('time query gametime')
+    match = re.fullmatch(r'The game time is (\d+) tick\(s\)', line)
+    assert match, line
+    return int(match.group(1))
+
+def verify_spawn_mobs_false():
+    # Prepared 26.3 en_us: "Game rule %s is currently set to %s".
+    line = single_reply('gamerule spawn_mobs')
+    assert line == 'Game rule spawn_mobs is currently set to false', line
+
+def disable_mob_spawning():
+    # Current 26.3 name; doMobSpawning is only a data-fixer legacy alias.
+    line = single_reply('gamerule spawn_mobs false')
+    assert line == 'Game rule spawn_mobs is now set to false', line
+    verify_spawn_mobs_false()
 
 def number(x, key):
     line = data(x)
@@ -161,7 +178,7 @@ def before_cold():
     assert s['index'] == 0
     call('wait-ready', 120)
     command('difficulty peaceful')
-    command('gamerule doMobSpawning false')
+    disable_mob_spawning()
     command('gamemode creative @a')
     command('clear @a')
     empty_inventory()
@@ -240,6 +257,7 @@ def after_cold():
     exits = json.loads((out / 'exit-00.json').read_text())['codes']
     assert exits and all(code == 0 for code in exits.values()), exits
     call('wait-ready', 120)
+    verify_spawn_mobs_false()
     look_peer()
     prior = json.loads((out / 'pre-cold-amounts.json').read_text())
     empty_inventory()

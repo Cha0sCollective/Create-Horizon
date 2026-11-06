@@ -110,10 +110,12 @@ PNG files are real rendered client observations and need visual inspection.
 
 Before cold close, the script uses `tick freeze`/`tick step` and fresh server
 `time query gametime` replies to confirm each requested step finished. The
-reply parser requires one marker-bounded line ending in the numeric result;
-it does not assume a specific language string. The client control wait alone
-is not treated as server tick completion. The endpoint NBT parser accepts the
-selected pinned Tank/Basin display shape, not arbitrary SNBT. It measures:
+reply parser requires the pinned 26.3 English reply shape
+`The game time is N tick(s)` from exactly one marker-bounded server line. The client control
+dispatch ACK or wait alone is not server tick completion. Setup sets the
+current `spawn_mobs` rule and checks a fresh `false` query reply; cold reopen
+checks it again. The endpoint NBT parser accepts the selected pinned
+Tank/Basin display shape, not arbitrary SNBT. It measures:
 
 1. With zero pump RPM, 16 steps leave Tank 1,000 / Basin 0.
 2. With actual pump speed magnitude 16 RPM, ten active steps move exactly
