@@ -107,6 +107,14 @@ def equip(actor):
     return inv
 
 
+def server_head(actor, marker):
+    value = actor.query("data get entity @s equipment.head", marker)
+    item = re.search(r"(?<![A-Za-z0-9_])id:\s*['\"]?create:goggles['\"]?", value)
+    require(item is not None and field_number(value, "count") == 1,
+            f"server head slot is not one Goggles: {value}")
+    return value
+
+
 def unequip(actor):
     actor.call("open-inventory")
     actor.call("click-slot", 500, "shift")
@@ -182,8 +190,7 @@ def craft(actor, peer, scene, output, marker):
             f"crafting grid retained stock: {empty}")
     actor.call("close")
     worn = equip(actor)
-    server_equipment = actor.query("data get entity @s", marker + "-equip")
-    require("create:goggles" in server_equipment, "server equipment query lacks Goggles")
+    server_equipment = server_head(actor, marker + "-equip")
     images = views(actor, peer, scene, output, "equipped")
     removed = unequip(actor)
     images += views(actor, peer, scene, output, "unequipped")
@@ -208,8 +215,7 @@ def equip_fixture(actor, marker):
     supplied = actor.call("inventory")
     require(item_count(supplied, "create:goggles") == 1, supplied)
     worn = equip(actor)
-    server_equipment = actor.query("data get entity @s", marker + "-fixture-equip")
-    require("create:goggles" in server_equipment, "server fixture equipment query lacks Goggles")
+    server_equipment = server_head(actor, marker + "-fixture-equip")
     return {"fixture_only": True, "supplied": supplied, "equipped": worn,
             "server_equipment": server_equipment}
 
@@ -288,6 +294,7 @@ def hud(actor, scene, output, marker, target, expected_status, log):
         require(fields["theoretical"] == 0, f"Idle speed not zero: {fields}")
     if expected_status == "Overstressed":
         require(fields["speed"] == 0, f"effective RPM not zero: {fields}")
+        require(fields["theoretical"] != 0, f"overstress lost theoretical RPM: {fields}")
     if target == "millstone":
         role, expected = "stress_impact", 4 * abs(fields["theoretical"])
     else:
@@ -329,11 +336,20 @@ def negatives(actor, scene, output, marker, log):
     actor.call("look-at", "block", *millstone)
     actor.call("key", "f1", "tap")
     try:
+        require(head(actor.call("inventory")).get("item") == "create:goggles",
+                "F1 check lost worn Goggles")
         images.append(absent(actor, log, output, "f1", millstone))
     finally:
         actor.call("key", "f1", "tap")
     actor.call("command", "gamemode spectator")
     try:
+        require(actor.call("state")["gamemode"] == "spectator",
+                "spectator command did not change mode")
+        spectator_inventory = actor.call("inventory")
+        require(head(spectator_inventory).get("item") == "create:goggles" and
+                item_count(spectator_inventory, "create:goggles") == 1,
+                "spectator lost worn Goggles")
+        server_head(actor, marker + "-spectator")
         actor.call("look-at", "block", *millstone)
         images.append(absent(actor, log, output, "spectator", millstone))
     finally:
@@ -368,8 +384,7 @@ def reopen(actor, peer, scene, output, marker):
     inv = actor.call("inventory")
     assert_stock(inv, {item: 0 for item in ITEMS}, 1)
     require(head(inv).get("item") == "create:goggles", f"head not retained: {inv}")
-    server_equipment = actor.query("data get entity @s", marker + "-reopen")
-    require("create:goggles" in server_equipment, "server reopen lacks Goggles")
+    server_equipment = server_head(actor, marker + "-reopen")
     images = views(actor, peer, scene, output, "reopened")
     return {"inventory": inv, "server_equipment": server_equipment,
             "images": images, "visual_review_pending": images}

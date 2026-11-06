@@ -43,7 +43,8 @@ Do not directly write network NBT or the new solver-speed field.
    two plain glass blocks and one string, then uses the normal table slots
    101/103/104/105 and result 200. It asserts baseline and final inventory,
    exact 1→0/2→0/1→0 ingredient changes, one crafted Goggles, empty grid,
-   ordinary right-click head equip, server player query, ordinary slot-500
+   ordinary right-click head equip, authoritative `equipment.head` item/count
+   query, ordinary slot-500
    unequip/reequip and constant total item count. It captures actor and peer
    images for each equipment state, cycling all three actor camera modes. A peer screenshot file alone is pending
    visual review; root must inspect the rendered head model and its removal.
@@ -71,7 +72,8 @@ Do not directly write network NBT or the new solver-speed field.
    targets with `--status Idle`. Root creates a genuine `Overstressed` state
    using ordinary connected load, without editing NBT; run both targets with
    `--status Overstressed`. The driver requires effective `Speed=0` for the
-   latter and compares client value against the nonzero theoretical field.
+   latter and requires a nonzero theoretical field before comparing the client
+   value.
    Record any unsupported/Byte tombstone seen in a server query as unavailable,
    not a successful selected HUD case. No injected runtime corruption loop is
    needed; focused producer and merge tests cover invalidation.
