@@ -12,9 +12,11 @@ remain accepted on their own frozen inputs and are not replayed here.
 
 The Machinery lane was clean at `c33aad5815b7f053c31f32a686b571cb6ee8cfe9`
 before this proposal; its merge base with the primary's accepted native source
-is `67e7bba1bc646e03606bce1493f04756b9674e6b`. Audit and proposed
-validation target the clean primary physical checkout at
-`55339ce3347b2ce667281e8a3e6318ec856144e4`, package `.11`/cache14.
+is `67e7bba1bc646e03606bce1493f04756b9674e6b`. The audit targets the
+immutable accepted native source commit
+`55339ce3347b2ce667281e8a3e6318ec856144e4`, package `.11`/cache14;
+the physical integration checkout has since advanced. Any allocated runtime
+must freeze and report its actual source, resource and binary inputs.
 Primary docs checkpoint `8470fc515d460a95a0cacabc644160f9e7aba4b5`
 records both-mode Saw acceptance and the shared queue. The pinned Java Create
 6.0.11 reference is clean at `7ff2760e4924d35d4bc2e22c4b19923f0178cd16`.
@@ -59,9 +61,10 @@ tool, so the break does not use the actor's mining permission or held tool.
 The pinned 1.21.1 stone loot table has a no-Silk-Touch cobblestone branch
 without a tool predicate, yielding one cobblestone when drops are enabled.
 Source references in the clean pinned reference:
-`DrillBlockEntity.java:35–53`, `DrillBlock.java:81–86`,
-`BlockBreakingKineticBlockEntity.java:85–145`, `BlockHelper.java:208–245`
-and `AllBlocks.java:1345`. Inspected stone resource JAR SHA-256:
+`DrillBlockEntity.java:35–53`, `DrillBlock.java:81–86` (neighbor wake) and
+`:93–95` (rear shaft), `BlockBreakingKineticBlockEntity.java:60–75` (save)
+and `:85–145` (break), `BlockHelper.java:208–245`, and
+`AllBlocks.java:1350` (stress). Inspected stone resource JAR SHA-256:
 `40fd171da75b9e4ab0011c8dacc047ab09704f2d4c5377b69271772bb11ba536`.
 
 ## Proposed finite milestone
@@ -79,7 +82,8 @@ With the stone directly east, record server-authoritative target block,
 stone/cobblestone duplication in the selected plot. The Survival actor then
 ordinarily collects that drop: one cobblestone in inventory, stone input zero,
 target air and no selected cobblestone entity remaining. The pure cycle's
-stone/32-RPM fixture breaks after ten hits and 45 delay ticks; live tick
+stone/32-RPM fixture records nine Hit actions and Break at zero-based tick 45,
+counting its first hit at tick 0; live tick
 alignment and item pickup must be observed rather than assumed from that unit
 test. Capture actual rendered head/crack/target/drop views, including a
 dedicated peer view distinct from server NBT.
