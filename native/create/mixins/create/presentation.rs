@@ -11,7 +11,7 @@ use crate::{
     particles::{ParticleOptions, ParticleType},
 };
 use create_engine::{
-    kinetics::{Axis, Pos},
+    kinetics::{Axis, Kind, Pos},
     placement::Direction,
     visual::{self, CrankMotion},
 };
@@ -354,8 +354,57 @@ fn number_from_game(game: &Game<'_>, pos: Pos, name: &str) -> f32 {
         _ => 0.0,
     }
 }
+#[derive(Clone, Copy, Debug, PartialEq)]
+enum GoggleProvider {
+    StressImpact(f32),
+    CapacityProvided(f32),
+}
+
+// KineticBlockEntity and GeneratingKineticBlockEntity report the selected
+// block's contribution, not the network totals mirrored onto every entity.
+fn goggle_provider(kind: Kind, theoretical: f32) -> Option<GoggleProvider> {
+    match kind {
+        Kind::Millstone => Some(GoggleProvider::StressImpact(4.0 * theoretical.abs())),
+        Kind::WaterWheel {
+            rpm: generated,
+            capacity: mut per_rpm,
+        } => {
+            // Java adjusts a generator driven at a different theoretical speed.
+            // At zero theoretical speed it leaves the base capacity unchanged.
+            if theoretical != generated && theoretical != 0.0 {
+                per_rpm *= generated / theoretical;
+            }
+            Some(GoggleProvider::CapacityProvided(
+                (per_rpm * theoretical).abs(),
+            ))
+        }
+        _ => None,
+    }
+}
+
+fn client_theoretical_speed(nbt: &Compound) -> Option<f32> {
+    let Some(Tag::Compound(kinetic)) = nbt.get(&"create_horizon:kinetic".into()) else {
+        return None;
+    };
+    match kinetic.get(&"TheoreticalSpeed".into()) {
+        Some(Tag::Float(bits)) => Some(f32::from_bits(*bits)),
+        _ => None,
+    }
+}
+
+fn legacy_panel_allowed(block: &str, kind: Kind) -> bool {
+    !matches!(kind, Kind::Shaft) || matches!(block, "create:speedometer" | "create:stressometer")
+}
+
+fn selected_provider(block: &str, kind: Kind) -> bool {
+    matches!(
+        (block, kind),
+        ("create:millstone", Kind::Millstone) | ("create:water_wheel", Kind::WaterWheel { .. })
+    )
+}
+
 pub(super) fn hud(game: &Game<'_>, batch: &mut HudBatch) {
-    if game.native_mod_screen().is_some() || !game.native_on("create") {
+    if game.native_mod_screen().is_some() || !game.native_on("create") || game.spectator() {
         return;
     }
     if !game.armor[0]
@@ -372,29 +421,76 @@ pub(super) fn hud(game: &Game<'_>, batch: &mut HudBatch) {
     else {
         return;
     };
-    if crate::game::create_port::node(game, pos).is_none() {
+    let Some(node) = crate::game::create_port::node(game, pos) else {
+        return;
+    };
+    let block = game.native_block(pos);
+    if !legacy_panel_allowed(&block, node.kind) {
         return;
     }
     let rpm = number(&entity.nbt, "Speed");
     let capacity = number(&entity.nbt, "Capacity");
     let stress = number(&entity.nbt, "Stress");
+    // The server's kinetic diagnostics reach this client through the existing
+    // block-entity update tag. Wait for them for selected providers after
+    // placement/reopen; actual Speed can be zero while overstressed.
+    let theoretical = client_theoretical_speed(&entity.nbt);
     let tr = |key: &str, fallback: &str| horizon_client::lang::get_or(key, fallback);
-    let mut lines = vec![
-        tr("create.gui.goggles.kinetic_stats", "Kinetic Stats:"),
-        format!(
-            "{}: {:.0} {}",
-            tr("create.gui.speedometer.title", "Rotation Speed"),
-            rpm.abs(),
-            tr("create.generic.unit.rpm", "RPM")
-        ),
-        format!(
-            "{}: {:.0} / {:.0} {}",
-            tr("create.gui.stressometer.title", "Network Stress"),
-            stress,
-            capacity,
-            tr("create.generic.unit.stress", "su")
-        ),
-    ];
+    let (mut lines, role, value) = if selected_provider(&block, node.kind) {
+        let Some(provider) = theoretical.and_then(|speed| goggle_provider(node.kind, speed)) else {
+            return;
+        };
+        let (heading, label, role, value) = match provider {
+            GoggleProvider::StressImpact(value) => (
+                tr("create.gui.goggles.kinetic_stats", "Kinetic Stats:"),
+                tr("create.tooltip.stressImpact", "Stress Impact"),
+                "stress_impact",
+                value,
+            ),
+            GoggleProvider::CapacityProvided(value) => (
+                tr("create.gui.goggles.generator_stats", "Generator Stats:"),
+                tr("create.tooltip.capacityProvided", "Capacity Provided"),
+                "capacity_provided",
+                value,
+            ),
+        };
+        (
+            vec![
+                heading,
+                format!("{label}:"),
+                format!(
+                    "{value:.0} {} {}",
+                    tr("create.generic.unit.stress", "su"),
+                    tr("create.gui.goggles.at_current_speed", "at current speed")
+                ),
+            ],
+            role,
+            Some(value),
+        )
+    } else {
+        // Keep the existing network-total panel for other packaged nodes and
+        // gauges. A plain shaft has no Java information provider.
+        (
+            vec![
+                tr("create.gui.goggles.kinetic_stats", "Kinetic Stats:"),
+                format!(
+                    "{}: {:.0} {}",
+                    tr("create.gui.speedometer.title", "Rotation Speed"),
+                    rpm.abs(),
+                    tr("create.generic.unit.rpm", "RPM")
+                ),
+                format!(
+                    "{}: {:.0} / {:.0} {}",
+                    tr("create.gui.stressometer.title", "Network Stress"),
+                    stress,
+                    capacity,
+                    tr("create.generic.unit.stress", "su")
+                ),
+            ],
+            "legacy_network",
+            None,
+        )
+    };
     if text(&entity.nbt, "NetworkStatus") == "Overstressed" {
         lines.push(tr("create.gui.stressometer.overstressed", "Overstressed"));
     }
@@ -418,6 +514,86 @@ pub(super) fn hud(game: &Game<'_>, batch: &mut HudBatch) {
     trace(
         "goggles_hud",
         pos,
-        serde_json::json!({"rpm":rpm,"capacity":capacity,"stress":stress}),
+        serde_json::json!({
+            "rpm": rpm,
+            "capacity": capacity,
+            "stress": stress,
+            "theoretical_rpm": theoretical,
+            "provider": role,
+            "value_su": value,
+        }),
     );
+}
+
+#[cfg(test)]
+mod goggles_tests {
+    use super::{
+        GoggleProvider, client_theoretical_speed, goggle_provider, legacy_panel_allowed,
+        selected_provider,
+    };
+    use create_engine::kinetics::Kind;
+    use horizon_world::nbt::{Compound, Tag};
+
+    #[test]
+    fn selected_providers_report_block_contributions() {
+        assert_eq!(
+            goggle_provider(Kind::Millstone, -16.0),
+            Some(GoggleProvider::StressImpact(64.0))
+        );
+        assert_eq!(
+            goggle_provider(
+                Kind::WaterWheel {
+                    rpm: 8.0,
+                    capacity: 32.0,
+                },
+                16.0,
+            ),
+            Some(GoggleProvider::CapacityProvided(256.0))
+        );
+        assert_eq!(
+            goggle_provider(
+                Kind::WaterWheel {
+                    rpm: 0.0,
+                    capacity: 32.0,
+                },
+                16.0,
+            ),
+            Some(GoggleProvider::CapacityProvided(0.0))
+        );
+        assert_eq!(
+            goggle_provider(
+                Kind::WaterWheel {
+                    rpm: 8.0,
+                    capacity: 32.0,
+                },
+                0.0,
+            ),
+            Some(GoggleProvider::CapacityProvided(0.0))
+        );
+        assert_eq!(goggle_provider(Kind::Shaft, 16.0), None);
+        assert!(!legacy_panel_allowed("create:shaft", Kind::Shaft));
+        assert!(legacy_panel_allowed("create:speedometer", Kind::Shaft));
+        assert!(selected_provider("create:millstone", Kind::Millstone));
+        assert!(!selected_provider(
+            "create:large_water_wheel",
+            Kind::WaterWheel {
+                rpm: 4.0,
+                capacity: 128.0,
+            }
+        ));
+    }
+
+    #[test]
+    fn selected_providers_require_server_theoretical_speed() {
+        let mut nbt = Compound::from([("Speed".into(), Tag::Float(0.0f32.to_bits()))]);
+        assert_eq!(client_theoretical_speed(&nbt), None);
+        nbt.insert(
+            "create_horizon:kinetic".into(),
+            Tag::Compound(Compound::from([(
+                "TheoreticalSpeed".into(),
+                Tag::Float((-16.0f32).to_bits()),
+            )])),
+        );
+        assert_eq!(client_theoretical_speed(&nbt), Some(-16.0));
+    }
 }
