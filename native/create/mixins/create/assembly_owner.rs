@@ -852,7 +852,10 @@ pub(super) fn player_start_tracking(game: &mut Game<'_>, entity: u32, uuid: u128
     }
     let event_uuid = horizon_client::lan::playerdata::uuid_ints(uuid);
     if game.persist.uuids.get(&entity).copied() != Some(event_uuid)
-        || !game.others.iter().any(|other| other.id == entity && other.kind == kind)
+        || !game
+            .others
+            .iter()
+            .any(|other| other.id == entity && other.kind == kind)
     {
         return;
     }
