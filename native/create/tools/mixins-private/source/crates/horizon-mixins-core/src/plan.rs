@@ -1169,9 +1169,7 @@ impl<'ast> Visit<'ast> for Safety {
     }
     fn visit_item(&mut self, item: &'ast Item) {
         if self.boundary
-            || (self.transparent_local_use
-                && self.macro_depth == 0
-                && matches!(item, Item::Use(_)))
+            || (self.transparent_local_use && self.macro_depth == 0 && matches!(item, Item::Use(_)))
         {
             visit::visit_item(self, item);
             return;

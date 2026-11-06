@@ -153,9 +153,8 @@ helper="before.rs"
 
 #[test]
 fn ordinary_local_uses_preserve_variable_site_coordinates() {
-    let original = fixture(
-        "let amount = sink(1); mark(\"body\"); let result = Some(sink(amount)); result",
-    );
+    let original =
+        fixture("let amount = sink(1); mark(\"body\"); let result = Some(sink(amount)); result");
     let imported = fixture(
         r#"
         #[allow(unused_imports)] use crate::sink as local_sink;
@@ -242,7 +241,10 @@ fn variable_hooks_reject_decorated_uses_and_other_nested_items() {
         ("mod local {}", "E_UNSUPPORTED_CONTROL_FLOW"),
         ("type Local = i32;", "E_UNSUPPORTED_CONTROL_FLOW"),
         ("struct Local;", "E_UNSUPPORTED_CONTROL_FLOW"),
-        ("macro_rules! local { () => {} }", "E_UNSUPPORTED_CONTROL_FLOW"),
+        (
+            "macro_rules! local { () => {} }",
+            "E_UNSUPPORTED_CONTROL_FLOW",
+        ),
     ] {
         let body = format!("let amount = sink(1); {item} Some(sink(amount))");
         let f = fixture(&body);
@@ -291,7 +293,11 @@ fn imports_inside_preserved_macro_inputs_stay_unsupported() {
 #[test]
 fn plain_local_uses_remain_rejected_for_return_and_before_call() {
     for (kind, fields, helper) in [
-        ("RETURN", "", "fn hook(value:Option<i32>)->Option<i32>{value}"),
+        (
+            "RETURN",
+            "",
+            "fn hook(value:Option<i32>)->Option<i32>{value}",
+        ),
         (
             "BEFORE_CALL",
             "selector=\"sink\"\nrequire=2\nordinal=0",

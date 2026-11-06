@@ -1,6 +1,6 @@
 {
   "horizon_revision": "9c7f9b2215dfed497aba5522c44f38926628648d",
-  "horizon_mixins_revision": "f7a9815256d82e77f8cac3b8642a651f7c9c19fe",
+  "horizon_mixins_revision": "ac5d9e766380d575838c8250f2a7982281c1f44e",
   "create_revision": "ac0c444d9828da3453ae8cc65338e8de063286fb",
   "milling_reference_revision": "7ff2760e4924d35d4bc2e22c4b19923f0178cd16",
   "milling_reference_neoforge": "21.1.219",
@@ -14,5 +14,5 @@
   "rust_date": "2026-10-15",
   "horizon_mixins_pull_request": "https://github.com/horizon-rust/horizon-mixins/pull/26",
   "horizon_mixins_upstream_revision": "e8cd0aa38cffef49cb2e088ef716baa107148c02",
-  "horizon_mixins_overlay_sha256": "7396b6a29234ec042cea7ef18f708e57fdfb12660e69c6ee049a2de69b2a7f6d"
+  "horizon_mixins_overlay_sha256": "72356db3d88a05f50d39cfc22c4db89228a542eaf4b6e0fa337f6906d54a6fd0"
 }

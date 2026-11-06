@@ -1,8 +1,8 @@
 # Private Mixins source overlay
 
 This MIT tool repair is private source-workspace tooling, based on upstream
-`e8cd0aa38cffef49cb2e088ef716baa107148c02`. Its genuine private child commit is
-`f7a9815256d82e77f8cac3b8642a651f7c9c19fe`, retained in the isolated local tool
+`e8cd0aa38cffef49cb2e088ef716baa107148c02`. Its genuine private source commit is
+`ac5d9e766380d575838c8250f2a7982281c1f44e`, retained in the isolated local tool
 repository `.local/private-tools/horizon-mixins-004`. No upstream contribution or
 public remote contains this commit. It permits ordinary local imports only for
 MODIFY_VARIABLE, preserves imports/coordinates, validates import attributes and
@@ -25,4 +25,6 @@ refuses this source profile. Local pinned source staging/build and private game
 qualification are supported by the workspace builder. No distribution or release
 support is claimed. Tool source/tests were independently reviewed; the focused
 variables group passed8 tests (compile17.534s, tests14.695s), with unchanged source.
-Exact Create hook staging/build and gameplay remain separate qualification gates.
+The tests used its semantic parent `f7a9815256d82e77f8cac3b8642a651f7c9c19fe`;
+the current child differs only by pinned-rustfmt layout in two files. Exact Create
+hook staging/build and gameplay remain separate qualification gates.
