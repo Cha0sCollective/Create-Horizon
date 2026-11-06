@@ -316,6 +316,40 @@ fn drained_amount(stack: Option<NativeFluidStack>) -> Option<u32> {
     u32::try_from(stack.amount).ok()
 }
 
+#[cfg(test)]
+thread_local! {
+    // A one-shot receipt fault after the real Basin Execute callback. No
+    // production setting, command, environment knob or replacement provider.
+    static ZERO_BASIN_EXECUTE_RECEIPT: std::cell::Cell<bool> = const { std::cell::Cell::new(false) };
+    static OBSERVED_REAL_EXECUTE: std::cell::Cell<Option<(i32, Volumes)>> = const { std::cell::Cell::new(None) };
+}
+
+fn execute_basin_fill(game: &mut Game<'_>, line: Line, dimension: &str, amount: u32) -> i32 {
+    let receipt = game.native_fluid_fill_stack(
+        dimension,
+        line.basin,
+        Some(line.facing.opposite()),
+        &water(amount),
+        NativeFluidAction::Execute,
+    );
+    #[cfg(test)]
+    if ZERO_BASIN_EXECUTE_RECEIPT.with(|fault| fault.replace(false)) {
+        let source = snapshot_tank(game, line.tank).expect("real source after Basin Execute");
+        let target = snapshot_basin(game, line.basin).expect("real target after Basin Execute");
+        OBSERVED_REAL_EXECUTE.with(|observed| {
+            observed.set(Some((
+                receipt,
+                Volumes {
+                    tank: source.amount,
+                    basin_first_input: target.amount,
+                },
+            )));
+        });
+        return 0;
+    }
+    receipt
+}
+
 /// Called from the pump's ordinary server tick after the accepted kinetic
 /// network has supplied its signed speed. The ticking pump BE is detached;
 /// this function deliberately reads only its block state and the two endpoint
@@ -391,13 +425,7 @@ pub(super) fn tick(game: &mut Game<'_>, pump: Pos, rpm: f32) -> TickResult {
         NativeFluidAction::Execute,
     ));
     let filled = if drained == Some(step.amount) {
-        game.native_fluid_fill_stack(
-            &dimension,
-            line.basin,
-            target_face,
-            &water(step.amount),
-            NativeFluidAction::Execute,
-        )
+        execute_basin_fill(game, line, &dimension, step.amount)
     } else {
         0
     };
@@ -422,5 +450,173 @@ pub(super) fn tick(game: &mut Game<'_>, pump: Pos, rpm: f32) -> TickResult {
         log::warn!("Create pump transfer: endpoint receipt/census mismatch; restoring");
         restore_or_fault(game, line, &tank, &basin);
         TickResult::Restored
+    }
+}
+
+#[cfg(test)]
+mod restoration_tests {
+    use super::*;
+    use crate::game::{Audio, Options, Progress, Settings, load_resources};
+    use horizon_client::{chunk::Chunk, containers::ModBlockEntity, world::World};
+    use std::sync::Arc;
+
+    const SOURCE: Pos = [1, 64, 1];
+    const MACHINE: Pos = [2, 64, 1];
+    const STRAIGHT: Pos = [3, 64, 1];
+    const TARGET: Pos = [4, 64, 1];
+
+    struct ClearReceiptFault;
+    impl Drop for ClearReceiptFault {
+        fn drop(&mut self) {
+            ZERO_BASIN_EXECUTE_RECEIPT.with(|fault| fault.set(false));
+            OBSERVED_REAL_EXECUTE.with(|observed| observed.set(None));
+        }
+    }
+
+    // Same prepared-resource Game bootstrap used by Horizon's ignored
+    // state_block_entity_tests. HORIZON_TEST_RESOURCES must be the composed
+    // private Create-enabled resource root, not vanilla-only prepared assets.
+    // The IDs/states and native Tank/Basin callbacks are the actual installed
+    // Create content and hooks, not synthetic fixture registrations.
+    fn with_game(run: impl FnOnce(&mut Game<'_>)) {
+        let root = std::path::PathBuf::from(
+            std::env::var_os("HORIZON_TEST_RESOURCES")
+                .expect("prepared Create-enabled 26.3 test resources required"),
+        );
+        assert!(
+            std::env::var("HORIZON_API_DISCOVERY")
+                .unwrap_or_default()
+                .starts_with("http://127.0.0.1:"),
+            "headless fixture needs local-only discovery"
+        );
+        let settings = Settings::default();
+        let loaded = load_resources(
+            root.clone(),
+            None,
+            &root,
+            &settings,
+            std::time::Instant::now(),
+            false,
+            true,
+            &Progress::new(),
+            &mut |_, _| unreachable!("headless fixture has no menu"),
+        )
+        .unwrap();
+        let registry = loaded.pack.assets.registry;
+        let states = [TANK, PUMP, PIPE, BASIN]
+            .map(|id| registry.default_state(id).expect("selected Create block state"));
+        let mut options = Options::parse(std::iter::empty()).unwrap().unwrap();
+        options.resources = root.clone();
+        options.execution_role = crate::game::execution_role::ExecutionRole::IntegratedServer;
+        options.split_guest = true;
+        let mut game = Game::new(
+            &loaded.resources,
+            loaded.pack,
+            loaded.gui.unwrap(),
+            options,
+            settings,
+            Audio::silent(&root),
+            None,
+        )
+        .unwrap();
+        game.world = World::new(game.res.facts().air, 382);
+        game.world
+            .chunks
+            .insert((0, 0), Arc::new(Chunk::empty(0, 0)));
+        game.dim = crate::game::Dim::Overworld;
+        for (pos, state) in [SOURCE, MACHINE, STRAIGHT, TARGET]
+            .into_iter()
+            .zip(states.iter().copied())
+        {
+            game.world.set(pos[0], pos[1], pos[2], state).unwrap();
+        }
+        let custom_fluids = game.native_custom_fluid_states();
+        assert!(custom_fluids[states[0].0 as usize]);
+        assert!(custom_fluids[states[3].0 as usize]);
+        game.world.block_entities.set_custom_fluids(custom_fluids);
+        let mut tank = ModBlockEntity::default();
+        tank.id = TANK.into();
+        tank.nbt = tank_codec::initial();
+        assert!(tank_codec::set_amount(&mut tank.nbt, 1_000).unwrap());
+        game.world
+            .block_entities
+            .insert((SOURCE[0], SOURCE[1], SOURCE[2]), BlockEntity::Mod(tank));
+        let mut basin = ModBlockEntity::default();
+        basin.id = BASIN.into();
+        basin.items = vec![None; 18];
+        crate::game::create_port_basin::initialize(&mut basin);
+        game.world
+            .block_entities
+            .insert((TARGET[0], TARGET[1], TARGET[2]), BlockEntity::Mod(basin));
+        game.world.modified.clear();
+        game.world.block_log = Some(Vec::new());
+        assert_eq!(snapshot_tank(&game, SOURCE).unwrap().amount, 1_000);
+        assert_eq!(snapshot_basin(&game, TARGET).unwrap().amount, 0);
+        assert!(views_match(
+            &game,
+            checked_line(&game, MACHINE).unwrap(),
+            &snapshot_tank(&game, SOURCE).unwrap(),
+            &snapshot_basin(&game, TARGET).unwrap()
+        ));
+        run(&mut game);
+    }
+
+    #[test]
+    #[ignore = "prepared resources; run alone because Game/bootstrap uses process-wide content"]
+    fn pump_execute_basin_zero_receipt_restores_real_owners() {
+        let _clear_receipt_fault = ClearReceiptFault;
+        with_game(|game| {
+            crate::game::create_port_basin::reset(false);
+            let tank_before = snapshot_tank(game, SOURCE).unwrap();
+            let basin_before = snapshot_basin(game, TARGET).unwrap();
+            assert_eq!(
+                Step::maximum(
+                    16.0,
+                    Volumes {
+                        tank: 1_000,
+                        basin_first_input: 0,
+                    }
+                ),
+                Some(8)
+            );
+            ZERO_BASIN_EXECUTE_RECEIPT.with(|fault| fault.set(true));
+            OBSERVED_REAL_EXECUTE.with(|observed| observed.set(None));
+            assert_eq!(tick(game, MACHINE, 16.0), TickResult::Restored);
+            assert_eq!(
+                OBSERVED_REAL_EXECUTE.with(|observed| observed.replace(None)),
+                Some((
+                    8,
+                    Volumes {
+                        tank: 992,
+                        basin_first_input: 8,
+                    }
+                ))
+            );
+            assert!(!ZERO_BASIN_EXECUTE_RECEIPT.with(|fault| fault.get()));
+            let tank_after = snapshot_tank(game, SOURCE).unwrap();
+            let basin_after = snapshot_basin(game, TARGET).unwrap();
+            assert_eq!(tank_after.nbt, tank_before.nbt);
+            assert_eq!(tank_after.items, tank_before.items);
+            assert_eq!(basin_after.nbt, basin_before.nbt);
+            assert_eq!(basin_after.items, basin_before.items);
+            assert_eq!((tank_after.amount, basin_after.amount), (1_000, 0));
+
+            // The real Basin Execute raised contents_changed before restoration.
+            // Its next ordinary tick consumes that flag; no Mixer exists at +2Y.
+            assert_ne!(
+                game.native_block([TARGET[0], TARGET[1] + 2, TARGET[2]]),
+                "create:mechanical_mixer"
+            );
+            let key = (TARGET[0], TARGET[1], TARGET[2]);
+            let Some(BlockEntity::Mod(mut detached)) = game.world.block_entities.remove(&key) else {
+                panic!("Basin entity missing before ordinary tick");
+            };
+            crate::game::create_port_basin::tick(game, TARGET, &mut detached);
+            game.world.block_entities.insert(key, BlockEntity::Mod(detached));
+            let basin_after_tick = snapshot_basin(game, TARGET).unwrap();
+            assert_eq!(basin_after_tick.amount, 0);
+            assert!(basin_after_tick.items.iter().all(Option::is_none));
+            assert_eq!(snapshot_tank(game, SOURCE).unwrap().amount, 1_000);
+        });
     }
 }
