@@ -29,37 +29,45 @@ Transport002's dedicated two-controller belt handoff is now PASS on unchanged `.
 source: stopped receiver refuses under powered source; release transfers exactly
 once; actual peer occupied/empty and saved chestgold1; three exits0, completion
 review CLEAR. See `orchestration/teams/transport-002-results.md`.
-The first consolidated tank/track/audio runtime is closed: eight normal process
-exits0 and all661 frozen native hashes intact. Operations reserves the next heavy
-lease; no next build has started. Track completion review is pending.
-Root candidateabf48a5 (`codex/create-team-integration-001`) composes four reviewed
-source packets at development `.10`/resource-cache13: audio, tank, straight track,
-and core/read-only preflight. Static checks and fresh composition review CLEAR;
-shared stage, Clippy, game/control build and23 selected tests PASS. All661 native
-inputs are frozen by source-inputs-r4. First gameplay observes straight-track
-placement/refusal/Survival break-collect and both-mode cold reopen. Tank ordinary
-bucket/wrench and water rendering fail because the codec refuses the host's empty
-components envelope; seeded storage alone cannot qualify filling. Audio client
-event cadence is observed, but the first no-defaults build omitted audio output.
-Accepted primary stays separate. Current candidate003 at55339ce (.11/cache14)
-uses the stable physical create-teams-001 build path; the first cohort's detached
-source archive is now create-teams-002. All676 native inputs are frozen in
-native-team-integration-003. Its distribution/format/asset checks, shared stage
-and audio-enabled Clippy PASS; game/control binary build and client tests are
-running. See docs/teams/INTEGRATION_003.md. Six unchanged engine checks are reused.
-Funnel candidate002/1bcf4f6 is preserved separately: the pinned planner rejects
-its chest-use injection on a nested use item. Recursive temporary input mutation
-is not adopted; current upstream/owner options are being assessed read-only.
-Broader framework/host/owner/acceptance changes remain gated. No earlier failed
-observation is converted into a post-repair pass.
-Other teams have
-bounded isolated allocations: active millstone audio, straight stationary track,
-staged portable contraption core plus read-only native preflight, and one stationary
-water tank through existing generic ModBlockEntity NBT/fluid services. A new tank's
-block-local Java codec fits that existing extension service; no global/host schema,
-existing codec, migration or shared-owner format change is authorized. Stop if that
-premise fails. Contraption custody/live motion and broader schema/framework/import
-decisions remain gated. No old frozen driver is resumed against changed paths.
+Qualified source55339ce (.11/cache14) is now integrated locally into the primary
+working branch, byte-identical across all676 native input files. Its source,
+composition, build and finite gameplay reviews are CLEAR. See
+`docs/teams/INTEGRATION_003.md` and
+`docs/teams/fluids-power/FLUIDS_003_COHORT_RUNTIME_HANDOFF.md`.
+The combined profile qualifies one upward Saw alloy-to-six-shafts path, unsupported
+return and normal cold pause/resume; one stationary Creative water Tank with
+bucket/window/cap/refusal and visible peer full-to-empty plus ordinary cold water;
+and single-millstone Ambient audio captured on owned private test-output streams.
+Straight stationary X/Z track was qualified in first cohortabf48a5 and retained
+unchanged. Track is not a train system. Filled Tank removal and Survival fluid
+parity remain unqualified, as the runtime plan treats removal as exploratory.
+Audio capture is not a physical-speaker or full soundscape claim.
+
+Shared stage/audio-enabled lint/build and10 new focused tests PASS; six identical
+Saw/kinetic checks are reused. Source preparation/compiler/link commands total
+about8.5minutes; native test-group execution totals0.055s. Both integrated and
+dedicated/two-client cold trials pass; all eight game processes exited0 and all676
+post-run hashes match. Root stopped the private Pulse fixture normally. No game,
+compiler, capture or test fixture remains running. The earlier first-cohort Tank
+HOLD, no-output build and all missed fixture attempts remain preserved.
+
+Work now waits for two owner choices: the reviewed narrow private Mixins repair
+for ordinary funnel chest-click placement, and reusable entity-owner design versus
+the bounded chunk-backed live bearing. See
+`orchestration/teams/transport-003-mixins-decision.md` and the Contraptions002
+proposal/addendum. The funnel's reviewed code remains HELD on separate branch
+`codex/create-team-integration-002` at1bcf4f6: pinned Mixins rejects a local use
+item in Game::use_hand. A temporary-Shift/recursive input workaround is not
+adopted. No framework, host pin, new live owner or acceptance expansion is approved.
+The next funnel composition must refresh its catalog cache key: cache14 has now
+been prepared by the accepted source without that held content. Do not replay
+old frozen drivers against the changed build path.
+
+The first frozen cohort sourceabf48a5 remains detached at
+`.local/integration/create-teams-002`; the accepted source branch003 remains at
+physical `.local/integration/create-teams-001`. Immutable binaries, all input maps,
+raw runs, source references and dirty legacy work remain preserved. Other mods,
+Open to LAN, custom crash/replay framework and public releases remain deferred.
 
 ## Accepted plain-water Basin
 

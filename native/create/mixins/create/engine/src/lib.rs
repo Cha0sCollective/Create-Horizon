@@ -1,6 +1,8 @@
 //! Game-independent parts, also compiled as the native bundle's engine crate.
 #[path = "core/basin.rs"]
 pub mod basin;
+#[path = "core/contraption/mod.rs"]
+pub mod contraption;
 #[path = "core/kinetics.rs"]
 pub mod kinetics;
 #[path = "core/placement.rs"]
@@ -11,6 +13,8 @@ pub mod pressing;
 pub mod propagation;
 #[path = "core/session_cache.rs"]
 pub mod session_cache;
+#[path = "core/track.rs"]
+pub mod track;
 
 #[path = "core/linear_carrier.rs"]
 pub mod linear_carrier;
@@ -38,6 +42,9 @@ pub mod fan;
 
 #[path = "core/drilling.rs"]
 pub mod drilling;
+
+#[path = "core/saw.rs"]
+pub mod saw;
 
 #[path = "core/burner.rs"]
 pub mod burner;

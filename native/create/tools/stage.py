@@ -95,7 +95,10 @@ def main():
                         else: path.unlink()
         marker.write_text(key)
     if args.action != "stage":
-        command = [args.action, "--locked", "--manifest-path", stage / "Cargo.toml", "-p", "horizon-client", "--bin", "horizon-client", "--no-default-features", "--jobs", "4"]
+        # Build the playable client with its existing sound-output feature.
+        # Keep optional controllers disabled; a no-defaults server build cannot
+        # establish playback even when the mod's client sound requests run.
+        command = [args.action, "--locked", "--manifest-path", stage / "Cargo.toml", "-p", "horizon-client", "--bin", "horizon-client", "--no-default-features", "--features", "horizon-client/audio", "--jobs", "4"]
         if args.action == "build":
             command += ["-p", "horizon-client-lib", "--bin", "horizon-ctl", "--profile", "fast", "--config", "profile.fast.package.horizon-client.opt-level=0"]
         cargo(*command)

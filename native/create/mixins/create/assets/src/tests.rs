@@ -9,6 +9,28 @@ fn fixture(change: impl FnOnce(&mut BTreeMap<String, Vec<u8>>)) -> Vec<u8> {
         files.insert(name, serde_json::to_vec(&value).unwrap());
     };
     for block in BLOCKS.iter().copied().chain(["mechanical_piston_head"]) {
+        if block == "track" {
+            let mut variants = serde_json::Map::new();
+            for shape in ["xo", "zo"] {
+                for turn in ["false", "true"] {
+                    for water in ["false", "true"] {
+                        variants.insert(
+                            format!("shape={shape},turn={turn},waterlogged={water}"),
+                            json!({"model":format!("create:block/track/{}_ortho", &shape[..1])}),
+                        );
+                    }
+                }
+            }
+            variants.insert(
+                "shape=ae,turn=false,waterlogged=false".into(),
+                json!({"model":"create:block/track/ascending"}),
+            );
+            json_file(
+                "assets/create/blockstates/track.json".into(),
+                json!({"variants":variants}),
+            );
+            continue;
+        }
         json_file(
             format!("assets/create/blockstates/{block}.json"),
             json!({"variants": {"": {"model": "create:block/shared"}}}),
@@ -33,6 +55,12 @@ fn fixture(change: impl FnOnce(&mut BTreeMap<String, Vec<u8>>)) -> Vec<u8> {
             "elements": [{"from": [0, 0, 0], "to": [16, 16, 16], "faces": {"north": {"texture": "#all"}}}]
         }),
     );
+    for axis in ["x", "z"] {
+        json_file(
+            format!("assets/create/models/block/track/{axis}_ortho.json"),
+            json!({"parent":"create:block/shared"}),
+        );
+    }
     json_file(
         "assets/create/lang/en_us.json".into(),
         json!({"block.create.shaft":"Fixture Shaft"}),
@@ -127,6 +155,34 @@ fn imports_every_locale_byte_for_byte() {
 }
 
 #[test]
+fn track_import_keeps_only_straight_models_and_refuses_missing_source_state() {
+    let files = collect(fixture(|_| {})).unwrap();
+    let track: Value =
+        serde_json::from_slice(&files["assets/create/blockstates/track.json"]).unwrap();
+    let variants = track["variants"].as_object().unwrap();
+    assert_eq!(variants.len(), 8);
+    assert!(
+        variants
+            .keys()
+            .all(|name| name.starts_with("shape=xo,") || name.starts_with("shape=zo,"))
+    );
+    assert!(files.contains_key("assets/create/models/block/track/x_ortho.json"));
+    assert!(files.contains_key("assets/create/models/block/track/z_ortho.json"));
+    assert!(!files.contains_key("assets/create/models/block/track/ascending.json"));
+
+    let missing = fixture(|files| {
+        let path = "assets/create/blockstates/track.json";
+        let mut state: Value = serde_json::from_slice(&files[path]).unwrap();
+        state["variants"]
+            .as_object_mut()
+            .unwrap()
+            .remove("shape=zo,turn=false,waterlogged=false");
+        files.insert(path.into(), serde_json::to_vec(&state).unwrap());
+    });
+    assert!(collect(missing).is_err());
+}
+
+#[test]
 fn processor_parts_and_ingredients_are_required_without_accepting_java_loaders() {
     let home = Stage::new(&std::env::temp_dir()).unwrap();
     let required = [
@@ -140,6 +196,10 @@ fn processor_parts_and_ingredients_are_required_without_accepting_java_loaders()
         "assets/create/blockstates/mechanical_drill.json",
         "assets/create/models/block/mechanical_drill/head.json",
         "assets/create/models/item/mechanical_drill.json",
+        "assets/create/blockstates/mechanical_saw.json",
+        "assets/create/models/block/mechanical_saw/blade_vertical_active.json",
+        "assets/create/models/block/mechanical_saw/blade_vertical_inactive.json",
+        "assets/create/models/block/mechanical_saw/blade_vertical_reversed.json",
     ];
     for path in required {
         let missing = fixture(|files| {
@@ -153,6 +213,7 @@ fn processor_parts_and_ingredients_are_required_without_accepting_java_loaders()
         "assets/create/models/block/millstone/inner.json",
         "assets/create/models/block/encased_fan/propeller.json",
         "assets/create/models/block/mechanical_drill/head.json",
+        "assets/create/models/block/mechanical_saw/blade_vertical_active.json",
     ] {
         let java = fixture(|files| {
             files.insert(path.into(), br#"{"loader":"create:java_loader"}"#.to_vec());
@@ -260,7 +321,33 @@ fn bundled_processors_have_source_states_collision_and_real_processing_recipes()
         read("data/create/recipe/crafting/kinetics/mechanical_drill.json")["result"]["id"],
         "create:mechanical_drill"
     );
-    for id in ["millstone", "encased_fan", "mechanical_drill"] {
+    let saw = read("data/create/horizon/block/mechanical_saw.json");
+    assert_eq!(saw["default_state"]["facing"], "up");
+    assert_eq!(
+        saw["collision_shapes"]["values"]["up"],
+        json!([[0, 0, 0, 1, 0.75, 1]])
+    );
+    assert_eq!(
+        read("assets/create/blockstates/mechanical_saw.json")["variants"]
+            .as_object()
+            .unwrap()
+            .len(),
+        24
+    );
+    let cutting = read("data/create/recipe/cutting/andesite_alloy.json");
+    assert_eq!(cutting["type"], "create:cutting");
+    assert_eq!(
+        cutting["ingredients"],
+        json!([{"item":"create:andesite_alloy"}])
+    );
+    assert_eq!(cutting["processing_time"], 200);
+    assert_eq!(cutting["results"], json!([{"count":6,"id":"create:shaft"}]));
+    for id in [
+        "millstone",
+        "encased_fan",
+        "mechanical_drill",
+        "mechanical_saw",
+    ] {
         let loot = read(&format!("data/create/loot_table/blocks/{id}.json"));
         assert_eq!(
             loot["pools"][0]["entries"][0]["name"],
@@ -426,6 +513,33 @@ fn bundled_content_rejects_paths_outside_its_namespace_before_writing() {
         assert!(bundled_content(&home, &bytes).is_err());
     }
     assert!(!home.exists());
+}
+
+#[test]
+fn bundled_track_pickaxe_rule_has_one_exact_namespace_exception() {
+    let bundle: BTreeMap<String, String> =
+        serde_json::from_str(include_str!("../../data/content.json")).unwrap();
+    let path = "data/minecraft/tags/block/mineable/pickaxe.json";
+    let tag: Value = serde_json::from_str(&bundle[path]).unwrap();
+    assert_eq!(tag, json!({"replace":false,"values":["create:track"]}));
+
+    let home = Stage::new(&std::env::temp_dir()).unwrap();
+    let content = serde_json::to_vec(&BTreeMap::from([
+        ("horizon-mod.toml", "id = \"create\"\n"),
+        (path, bundle[path].as_str()),
+    ]))
+    .unwrap();
+    let installed = bundled_content(&home.0, &content).unwrap();
+    assert_eq!(
+        fs::read_to_string(installed.join(path)).unwrap(),
+        bundle[path]
+    );
+    let refused = serde_json::to_vec(&BTreeMap::from([
+        ("horizon-mod.toml", "id = \"create\"\n"),
+        ("data/minecraft/tags/block/mineable/axe.json", "{}"),
+    ]))
+    .unwrap();
+    assert!(bundled_content(&home.0, &refused).is_err());
 }
 
 #[test]

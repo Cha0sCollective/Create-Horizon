@@ -61,3 +61,24 @@ separate from these build/test passes.
 
 Use one existing stage/target cache. Do not replay older drivers against this
 changed build path. Root owns the exclusive build lease and final qualification.
+
+
+## Local acceptance
+
+Independent read-only completion review CLEAR for final team handoff5a87f94.
+The finite integrated/dedicated profiles above are now accepted locally; both
+worlds cold-reopened and all eight game processes exited0. All676 native input
+hashes match after gameplay and the primary integrated source is byte-identical.
+Root directly viewed dedicated Tank full/empty and Saw input/product/empty images.
+The private audio fixture was stopped normally after the game sessions. See the
+[final runtime handoff](fluids-power/FLUIDS_003_COHORT_RUNTIME_HANDOFF.md) for captures,
+stock endpoints, failed setup attempts and exact limits. Tank filled removal and
+Survival parity remain unqualified; the adopted runtime plan treats filled
+removal as exploratory. Broader Create/S6 and public releases are not accepted.
+
+The next gated work requires owner decisions for private Mixins support and live
+contraption ownership. The held funnel must bump its catalog cache key if later
+composed: this accepted source has now used cache14 without the funnel catalog.
+
+Final G runtime evidence index: 136 artifacts, completion-evidence.json
+SHA-256 `56a3f78eb1d425b761a38815919329859acb51a7355a9acc7d14463589966a6c`. Linux raw worlds/resources remain separately retained.

@@ -16,7 +16,7 @@ pub const CREATE_VERSION: &str = "6.0.10+mc1.21.1 (NeoForge)";
 pub const JAR_SHA256: &str = "ef87fe5709f1ba1f5b8bb20a2925b5afb4669e178fd6d8bf10c167759eefe37a";
 // Bump whenever the import catalog changes: the cache key pins the JAR, not
 // BLOCKS/ITEMS/PARTS, so an older valid cache lacks newly required resources.
-const SCHEMA: u32 = 12;
+const SCHEMA: u32 = 14;
 const MAX_JAR: u64 = 128 << 20;
 const MAX_FILE: u64 = 16 << 20;
 const MAX_TOTAL: usize = 64 << 20;
@@ -51,7 +51,8 @@ pub fn bundled_content(game_dir: &Path, bytes: &[u8]) -> io::Result<PathBuf> {
                 || !(name == "horizon-mod.toml"
                     || name.starts_with("assets/create/")
                     || name.starts_with("data/create/")
-                    || name.starts_with("data/c/tags/item/"))
+                    || name.starts_with("data/c/tags/item/")
+                    || name == "data/minecraft/tags/block/mineable/pickaxe.json")
                 || value.len() > MAX_FILE as usize
         })
     {
@@ -479,6 +480,42 @@ impl Reader {
     }
 }
 
+fn selected_track_blockstate(mut state: Value) -> io::Result<Value> {
+    let variants = state
+        .get_mut("variants")
+        .and_then(Value::as_object_mut)
+        .ok_or_else(|| invalid("Create track has no blockstate variants"))?;
+    variants.retain(|name, _| {
+        matches!(
+            name.as_str(),
+            "shape=xo,turn=false,waterlogged=false"
+                | "shape=xo,turn=false,waterlogged=true"
+                | "shape=xo,turn=true,waterlogged=false"
+                | "shape=xo,turn=true,waterlogged=true"
+                | "shape=zo,turn=false,waterlogged=false"
+                | "shape=zo,turn=false,waterlogged=true"
+                | "shape=zo,turn=true,waterlogged=false"
+                | "shape=zo,turn=true,waterlogged=true"
+        )
+    });
+    if variants.len() != 8 {
+        return Err(invalid(
+            "Create track is missing a selected straight variant",
+        ));
+    }
+    for (name, variant) in variants {
+        let model = if name.starts_with("shape=xo,") {
+            "create:block/track/x_ortho"
+        } else {
+            "create:block/track/z_ortho"
+        };
+        if variant.get("model").and_then(Value::as_str) != Some(model) {
+            return Err(invalid(format!("Unexpected Create track model for {name}")));
+        }
+    }
+    Ok(state)
+}
+
 fn collect(bytes: Vec<u8>) -> io::Result<BTreeMap<String, Vec<u8>>> {
     let zip = ZipArchive::new(Cursor::new(bytes)).map_err(|e| invalid(e.to_string()))?;
     if zip.len() > MAX_ENTRIES {
@@ -498,7 +535,12 @@ fn collect(bytes: Vec<u8>) -> io::Result<BTreeMap<String, Vec<u8>>> {
         total: 0,
     };
     for block in BLOCKS {
-        let state = reader.json(&format!("assets/create/blockstates/{block}.json"))?;
+        let path = format!("assets/create/blockstates/{block}.json");
+        let mut state = reader.json(&path)?;
+        if *block == "track" {
+            state = selected_track_blockstate(state)?;
+            reader.files.insert(path, serde_json::to_vec(&state)?);
+        }
         reader.blockstate_models(&state)?;
     }
     // The moving mechanical-piston head has a blockstate/model but no item.

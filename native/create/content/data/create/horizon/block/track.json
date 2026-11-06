@@ -1,0 +1,55 @@
+{
+  "template": "minecraft:glass",
+  "item": true,
+  "properties": {
+    "hardness": 0.8,
+    "explosion_resistance": 0.8,
+    "requires_tool": true,
+    "render_shape": "MODEL",
+    "sounds": "minecraft:iron_block"
+  },
+  "state_properties": {
+    "shape": {
+      "type": "enum",
+      "values": [
+        "xo",
+        "zo"
+      ]
+    },
+    "turn": {
+      "type": "boolean"
+    },
+    "waterlogged": {
+      "type": "boolean"
+    }
+  },
+  "default_state": {
+    "shape": "zo",
+    "turn": "false",
+    "waterlogged": "false"
+  },
+  "shapes": {
+    "default": [
+      [
+        0,
+        0,
+        0,
+        1,
+        0.125,
+        1
+      ]
+    ]
+  },
+  "collision_shapes": {
+    "default": [
+      [
+        0,
+        0,
+        0,
+        1,
+        0.125,
+        1
+      ]
+    ]
+  }
+}

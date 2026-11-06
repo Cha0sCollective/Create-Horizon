@@ -4,16 +4,19 @@ TRANSMISSIONS = ['gearbox', 'clutch', 'gearshift', 'hand_crank', 'andesite_encas
 STATIC_BLOCKS = ['andesite_casing', 'brass_casing', 'andesite_alloy_block', 'brass_block', 'zinc_block']
 INSTRUMENTS = ['speedometer', 'stressometer']
 GENERATORS = ['water_wheel', 'large_water_wheel']
-PROCESSORS = ['millstone', 'encased_fan', 'mechanical_drill']
+PROCESSORS = ['millstone', 'encased_fan', 'mechanical_drill', 'mechanical_saw']
 DRY_MIXING = ['basin', 'mechanical_mixer']
+FLUIDS = ['fluid_tank']
 ACTUATORS = ['mechanical_piston', 'piston_extension_pole']
 PORTABLES = ['portable_storage_interface']
+TRACKS = ['track']
 INTERNAL_BLOCKS = ['water_wheel_structure', 'mechanical_piston_head']
-BLOCKS = BASE_BLOCKS + TRANSMISSIONS + STATIC_BLOCKS + INSTRUMENTS + GENERATORS + PROCESSORS + ACTUATORS + PORTABLES + DRY_MIXING
+BLOCKS = BASE_BLOCKS + TRANSMISSIONS + STATIC_BLOCKS + INSTRUMENTS + GENERATORS + PROCESSORS + ACTUATORS + PORTABLES + DRY_MIXING + FLUIDS + TRACKS
 ITEMS = ['iron_sheet', 'golden_sheet', 'copper_sheet', 'andesite_alloy', 'brass_ingot', 'brass_nugget', 'zinc_ingot', 'zinc_nugget', 'wrench', 'brass_sheet', 'vertical_gearbox', 'goggles', 'propeller', 'wheat_flour', 'dough']
 PARTS = ['shaft', 'shaft_half', 'cogwheel', 'large_cogwheel', 'creative_motor/block', 'creative_motor/block_vertical', 'mechanical_press/block', 'mechanical_press/head', 'depot/block', 'hand_crank/handle', 'hand_crank/block', 'gauge/dial', 'gauge/speedometer/head', 'gauge/stressometer/head', 'goggles', 'water_wheel/wheel', 'large_water_wheel/block', 'large_water_wheel/block_extension', 'millstone/block', 'millstone/inner', 'encased_fan/block', 'encased_fan/propeller', 'mechanical_drill/block', 'mechanical_drill/head']
 PARTS += ['portable_storage_interface/block_middle', 'portable_storage_interface/block_middle_powered', 'portable_storage_interface/block_top']
 PARTS += ['cogwheel_shaftless', 'mechanical_mixer/pole', 'mechanical_mixer/head']
+PARTS += ['mechanical_saw/blade_vertical_active', 'mechanical_saw/blade_vertical_inactive', 'mechanical_saw/blade_vertical_reversed']
 
 
 def rust_catalog():

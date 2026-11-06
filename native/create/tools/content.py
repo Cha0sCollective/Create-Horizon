@@ -125,6 +125,49 @@ def portable_interface_content():
         path.write_text(json.dumps(lang, ensure_ascii=False, indent=2) + "\n")
 
 
+def straight_track_content():
+    # Selected stationary Create TrackBlock state. Graphs, curves, turns and
+    # water placement are not implemented. Original art is JAR-only.
+    write("data/create/horizon/block/track.json", {
+        "template": "minecraft:glass", "item": True,
+        "properties": {"hardness": 0.8, "explosion_resistance": 0.8,
+                       "requires_tool": True, "render_shape": "MODEL",
+                       "sounds": "minecraft:iron_block"},
+        "state_properties": {
+            "shape": {"type": "enum", "values": ["xo", "zo"]},
+            "turn": {"type": "boolean"},
+            "waterlogged": {"type": "boolean"},
+        },
+        "default_state": {"shape": "zo", "turn": "false", "waterlogged": "false"},
+        # Source collision is a flat 16x2x16 plate. The provisional outline
+        # remains inside one cell; source selection extends into neighbors.
+        "shapes": {"default": [[0, 0, 0, 1, 0.125, 1]]},
+        "collision_shapes": {"default": [[0, 0, 0, 1, 0.125, 1]]},
+    })
+    model("track/x_ortho", [([0, 0, 2], [16, 2, 4]),
+                            ([0, 0, 12], [16, 2, 14])], "minecraft:block/iron_block")
+    model("track/z_ortho", [([2, 0, 0], [4, 2, 16]),
+                            ([12, 0, 0], [14, 2, 16])], "minecraft:block/iron_block")
+    write("assets/create/blockstates/track.json", {"variants": {
+        f"shape={shape},turn={turn},waterlogged={water}": {
+            "model": f"create:block/track/{'x' if shape == 'xo' else 'z'}_ortho"
+        }
+        for shape in ("xo", "zo") for turn in ("false", "true")
+        for water in ("false", "true")
+    }})
+    write("assets/create/models/item/track.json", {
+        "parent": "minecraft:item/generated",
+        "textures": {"layer0": "minecraft:item/iron_nugget"},
+    })
+    write("assets/create/items/track.json", {"model": {
+        "type": "minecraft:model", "model": "create:item/track"}})
+    write("data/create/loot_table/blocks/track.json", {
+        "type": "minecraft:block", "pools": [{"rolls": 1, "entries": [
+            {"type": "minecraft:item", "name": "create:track"}]}]})
+    write("data/minecraft/tags/block/mineable/pickaxe.json", {
+        "replace": False, "values": ["create:track"]})
+
+
 def dry_mixing_content():
     # MIT declarations adapted from upstream236c87a8. Contextual shapes/contact
     # are intentionally absent on the pinned host; this profile is hopper-fed.
@@ -293,7 +336,7 @@ def foundation():
     for path, value in reference["tags"].items(): write("data/" + path, value)
     write("data/create/horizon/creative_tab/kinetics.json", {"title": "itemGroup.create.base", "icon": "create:cogwheel", "items": ["create:" + name for name in all_blocks + ITEMS]})
     # These fallback labels are ours; the JAR replaces them with all upstream locales.
-    extra_blocks = {"gearbox":"Gearbox","clutch":"Clutch","gearshift":"Gearshift","hand_crank":"Hand Crank","andesite_encased_shaft":"Andesite Encased Shaft","brass_encased_shaft":"Brass Encased Shaft","andesite_casing":"Andesite Casing","brass_casing":"Brass Casing","andesite_alloy_block":"Block of Andesite Alloy","brass_block":"Block of Brass","zinc_block":"Block of Zinc","speedometer":"Speedometer","stressometer":"Stressometer","water_wheel":"Water Wheel","large_water_wheel":"Large Water Wheel","millstone":"Millstone","encased_fan":"Encased Fan","mechanical_drill":"Mechanical Drill","mechanical_piston":"Mechanical Piston","piston_extension_pole":"Piston Extension Pole","mechanical_piston_head":"Mechanical Piston Head"}
+    extra_blocks = {"gearbox":"Gearbox","clutch":"Clutch","gearshift":"Gearshift","hand_crank":"Hand Crank","andesite_encased_shaft":"Andesite Encased Shaft","brass_encased_shaft":"Brass Encased Shaft","andesite_casing":"Andesite Casing","brass_casing":"Brass Casing","andesite_alloy_block":"Block of Andesite Alloy","brass_block":"Block of Brass","zinc_block":"Block of Zinc","speedometer":"Speedometer","stressometer":"Stressometer","water_wheel":"Water Wheel","large_water_wheel":"Large Water Wheel","millstone":"Millstone","encased_fan":"Encased Fan","mechanical_drill":"Mechanical Drill","mechanical_piston":"Mechanical Piston","piston_extension_pole":"Piston Extension Pole","mechanical_piston_head":"Mechanical Piston Head","track":"Train Track"}
     extra_items = {"andesite_alloy":"Andesite Alloy","brass_ingot":"Brass Ingot","brass_nugget":"Brass Nugget","zinc_ingot":"Zinc Ingot","zinc_nugget":"Zinc Nugget","wrench":"Wrench","brass_sheet":"Brass Sheet","vertical_gearbox":"Vertical Gearbox","goggles":"Engineer’s Goggles","propeller":"Propeller","wheat_flour":"Wheat Flour","dough":"Dough"}
     for locale in ["en_us","ru_ru"]:
         path=CONTENT / ("assets/create/lang/"+locale+".json")
@@ -349,12 +392,118 @@ def belt_content():
     for path, value in values.items(): write(path, value)
 
 
+def fluid_tank_content():
+    # One isolated controller. Source-style bottom/top/shape keys permit the
+    # locally imported 6.0.10 blockstate to select its single-window model.
+    name = "fluid_tank"
+    write("data/create/horizon/block/" + name + ".json", {
+        "template": "minecraft:glass", "item": True,
+        "properties": {"hardness": 3, "explosion_resistance": 6,
+                       "requires_tool": True, "render_shape": "MODEL",
+                       "sounds": "minecraft:copper_block"},
+        "state_properties": {
+            "bottom": {"type": "boolean"},
+            "top": {"type": "boolean"},
+            "shape": {"type": "enum", "values": ["window", "plain"]},
+        },
+        "default_state": {"bottom": "true", "top": "true", "shape": "window"},
+        "shapes": {"default": [[0, 0, 0, 1, 1, 1]]},
+        "collision_shapes": {"default": [[0, 0, 0, 1, 1, 1]]},
+    })
+    write("assets/create/blockstates/" + name + ".json", {"variants": {
+        "bottom=true,shape=window,top=true": {"model": "create:block/fluid_tank/block_single_window"},
+        "bottom=true,shape=plain,top=true": {"model": "create:block/fluid_tank/block_single"},
+    }})
+    model("fluid_tank/block_single_window", [
+        ([0, 0, 0], [16, 2, 16]), ([0, 14, 0], [16, 16, 16]),
+        ([0, 2, 0], [2, 14, 2]), ([14, 2, 0], [16, 14, 2]),
+        ([0, 2, 14], [2, 14, 16]), ([14, 2, 14], [16, 14, 16]),
+    ], "minecraft:block/copper_block")
+    model("fluid_tank/block_single", [([0, 0, 0], [16, 16, 16])], "minecraft:block/copper_block")
+    write("assets/create/models/item/" + name + ".json", {"parent": "create:block/fluid_tank/block_single_window"})
+    write("assets/create/items/" + name + ".json", {"model": {
+        "type": "minecraft:model", "model": "create:item/fluid_tank"}})
+    write("data/create/loot_table/blocks/" + name + ".json", {
+        "type": "minecraft:block", "pools": [{"rolls": 1, "entries": [
+            {"type": "minecraft:item", "name": "create:fluid_tank"}]}]})
+    for locale in ["en_us", "ru_ru"]:
+        path = "assets/create/lang/" + locale + ".json"
+        lang = json.loads((CONTENT / path).read_text())
+        lang["block.create.fluid_tank"] = "Fluid Tank"
+        write(path, lang)
+
+
+def saw_content():
+    # Selected MIT SawBlock state/shape and one generated Java 6.0.11 recipe.
+    # Fallback geometry is authored here with vanilla textures; original ARR
+    # saw art is imported only from the player's pinned 6.0.10 JAR.
+    directions = ["down", "up", "north", "south", "west", "east"]
+    shapes = {"up": [[0, 0, 0, 1, .75, 1]], "down": [[0, .25, 0, 1, 1, 1]],
+              "north": [[0, 0, .25, 1, 1, 1]], "south": [[0, 0, 0, 1, 1, .75]],
+              "west": [[.25, 0, 0, 1, 1, 1]], "east": [[0, 0, 0, .75, 1, 1]]}
+    write("data/create/horizon/block/mechanical_saw.json", {
+        "template": "minecraft:glass", "item": True,
+        "properties": {"hardness": 1.5, "explosion_resistance": 6,
+                       "requires_tool": True, "map_color": 34,
+                       "render_shape": "MODEL", "sounds": "minecraft:andesite"},
+        "state_properties": {
+            "facing": {"type": "enum", "values": directions},
+            "axis_along_first": {"type": "boolean"},
+            "flipped": {"type": "boolean"}},
+        "default_state": {"facing": "up", "axis_along_first": "false", "flipped": "false"},
+        "shapes": {"property": "facing", "values": shapes},
+        "collision_shapes": {"property": "facing", "values": shapes},
+    })
+    model("mechanical_saw/vertical", [([0, 0, 0], [16, 12, 16])], "minecraft:block/andesite")
+    model("mechanical_saw/horizontal", [([0, 0, 0], [16, 12, 16])], "minecraft:block/andesite")
+    model("mechanical_saw/item", [([0, 0, 0], [16, 12, 16]), ([7, 12, 2], [9, 16, 14])],
+          "minecraft:block/andesite")
+    for part in ["active", "inactive", "reversed"]:
+        model("mechanical_saw/blade_vertical_" + part,
+              [([7, 10, 2], [9, 16, 14])], "minecraft:block/iron_block")
+    rotations = {"up": {}, "down": {"x": 180}, "north": {"x": 90},
+                 "south": {"x": 90, "y": 180}, "west": {"x": 90, "y": 270},
+                 "east": {"x": 90, "y": 90}}
+    variants = {}
+    for facing, rotation in rotations.items():
+        for first in [False, True]:
+            for flipped in [False, True]:
+                key = ("axis_along_first=" + str(first).lower() + ",facing=" + facing
+                       + ",flipped=" + str(flipped).lower())
+                turn = 90 if first and facing in ["up", "down"] else 0
+                variants[key] = {"model": "create:block/mechanical_saw/" +
+                                 ("vertical" if facing in ["up", "down"] else "horizontal"),
+                                 **rotation}
+                if turn: variants[key]["y"] = (variants[key].get("y", 0) + turn) % 360
+    write("assets/create/blockstates/mechanical_saw.json", {"variants": variants})
+    write("assets/create/models/item/mechanical_saw.json",
+          {"parent": "create:block/mechanical_saw/item"})
+    write("assets/create/items/mechanical_saw.json", {"model": {
+        "type": "minecraft:model", "model": "create:item/mechanical_saw"}})
+    write("data/create/loot_table/blocks/mechanical_saw.json", {"type": "minecraft:block",
+        "pools": [{"rolls": 1, "entries": [{"type": "minecraft:item",
+                                              "name": "create:mechanical_saw"}]}]})
+    write("data/create/recipe/cutting/andesite_alloy.json", {
+        "type": "create:cutting", "ingredients": [{"item": "create:andesite_alloy"}],
+        "processing_time": 200, "results": [{"count": 6, "id": "create:shaft"}]})
+    write("data/create/recipe/crafting/kinetics/mechanical_saw.json", {
+        "type": "minecraft:crafting_shaped", "category": "misc",
+        "key": {"A": "#c:plates/iron", "C": "create:andesite_casing", "I": "#c:ingots/iron"},
+        "pattern": [" A ", "AIA", " C "],
+        "result": {"count": 1, "id": "create:mechanical_saw"}})
+    for locale, label in [("en_us", "Mechanical Saw"), ("ru_ru", "Механическая пила")]:
+        path = CONTENT / ("assets/create/lang/" + locale + ".json")
+        lang = json.loads(path.read_text())
+        lang["block.create.mechanical_saw"] = label
+        path.write_text(json.dumps(lang, ensure_ascii=False, indent=2) + "\n")
+
+
 def main():
     CONTENT.mkdir(exist_ok=True)
     (CONTENT / "horizon-mod.toml").write_text('''id = "create"
 name = "Create for Horizon — prototype"
-version = "0.5.0-ch4os.9"
-description = "Experimental kinetic foundation with milling, bulk fan processing, stationary drilling, pressing, depots, crafting and a bounded one-pole mechanical piston."
+version = "0.5.0-ch4os.11"
+description = "Experimental kinetic foundation with selected milling, fan, drilling, pressing and stationary saw processing, depots, crafting and a bounded one-pole mechanical piston."
 authors = ["create-horizon contributors"]
 api = "0.2"
 side = "both"
@@ -436,6 +585,9 @@ capabilities = ["registries"]
     dry_mixing_content()
     coal_heating_content()
     belt_content()
+    fluid_tank_content()
+    straight_track_content()
+    saw_content()
     write("data/create/recipe/mixing/dough_by_mixing.json", {'type': 'create:mixing', 'ingredients': ['#c:flours/wheat', {'type': 'neoforge:single', 'amount': 1000, 'fluid': 'minecraft:water'}], 'results': [{'id': 'create:dough'}]})
     # Source installs carry only the native bundle. Its documented data folder
     # therefore contains the complete public content, with no player-side Python.
