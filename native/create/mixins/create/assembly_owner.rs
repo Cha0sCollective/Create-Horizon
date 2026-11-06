@@ -4,15 +4,18 @@
 
 use super::Game;
 use horizon_world::{
-    attachments::{ATTACHMENTS_KEY, AttachmentCodec, AttachmentError, AttachmentType, Attachments},
+    attachments::{
+        ATTACHMENTS_KEY, AttachmentCodec, AttachmentError, AttachmentType, Attachments, Holder,
+    },
     chunk::BlockState,
     nbt::{Compound, Tag},
 };
 use std::collections::{BTreeSet, HashMap, HashSet};
 use std::sync::{
     OnceLock,
-    atomic::{AtomicBool, Ordering},
+    atomic::{AtomicBool, AtomicU64, Ordering},
 };
+use std::time::Instant;
 
 const MARKER: &str = "create_horizon:assembly_owner_v1";
 const MARKER_VALUE: &str = "create_horizon:assembly_owner:1";
@@ -833,6 +836,64 @@ pub(super) fn level_tick_post(game: &mut Game<'_>, dimension: &str) {
     probe_server_tick(game, dimension, &scan);
 }
 
+fn saved_view_matches(record: &AssemblyRecord, map: &Attachments) -> bool {
+    let Ok(expected) = AssemblyView::from_record(record) else {
+        return false;
+    };
+    matches!(map.clone().get_existing(&VIEW), Ok(Some(saved)) if saved == expected)
+}
+
+/// A saved VIEW is raw on load, so it has no pending sync change. The
+/// Mixins-only host does not queue whole attachment snapshots for new trackers.
+/// Queue just the validated projection when a real peer starts tracking it.
+pub(super) fn player_start_tracking(game: &mut Game<'_>, entity: u32, uuid: u128, kind: &str) {
+    if !game.native_authoritative() || kind != DISPLAY {
+        return;
+    }
+    let event_uuid = horizon_client::lan::playerdata::uuid_ints(uuid);
+    if game.persist.uuids.get(&entity).copied() != Some(event_uuid)
+        || !game.others.iter().any(|other| other.id == entity && other.kind == kind)
+    {
+        return;
+    }
+    let Some(map) = game.entity_attachments.get(&event_uuid) else {
+        return;
+    };
+    let Owner::Active(record) = inspect_owner(
+        kind,
+        game.persist.raw.get(&entity),
+        Some(event_uuid),
+        Some(map),
+    ) else {
+        return;
+    };
+    if !saved_view_matches(&record, map)
+        || !scan_loaded_owners(game, game.dim.id())
+            .active
+            .contains(&(record.id, entity))
+    {
+        return;
+    }
+    let Ok(map) = game.attachment_map(Holder::Entity(entity)) else {
+        return;
+    };
+    if map.mark_sync(&VIEW).is_ok()
+        && probe_enabled()
+        && probe_profile(PROBE_SERVER_PROFILE)
+        && event_uuid == PROBE_UUID
+    {
+        log::info!(
+            "Create owner probe: {}",
+            serde_json::json!({
+                "event": "server_view_sync_queued",
+                "carrier_id": entity,
+                "uuid": event_uuid,
+                "assembly_id": record.id.0,
+            })
+        );
+    }
+}
+
 fn probe_enabled() -> bool {
     static ENABLED: OnceLock<bool> = OnceLock::new();
     *ENABLED
@@ -993,10 +1054,13 @@ fn probe_server_tick(game: &mut Game<'_>, dimension: &str, scan: &Scan) {
 /// hook. It reads the real peer's received attachment map once.
 pub(super) fn probe_client_frame(game: &Game<'_>) {
     static OBSERVED: AtomicBool = AtomicBool::new(false);
-    if !probe_enabled() || !probe_profile(PROBE_CLIENT_PROFILE) || OBSERVED.load(Ordering::Relaxed)
-    {
+    if !probe_enabled() || !probe_profile(PROBE_CLIENT_PROFILE) {
         return;
     }
+    if OBSERVED.load(Ordering::Relaxed) {
+        return;
+    }
+    probe_peer_gate(game);
     let Some(remote) = game.remote.as_ref() else {
         return;
     };
@@ -1053,6 +1117,48 @@ pub(super) fn probe_client_frame(game: &Game<'_>) {
                  "axis": view.cells[1].state.properties.get("axis")},
             ],
             "canonical_record_present": canonical_present,
+        })
+    );
+}
+
+/// A bounded status sample even when the success probe's first unmet gate is
+/// silent. It observes the actual remote entity and attachment maps.
+fn probe_peer_gate(game: &Game<'_>) {
+    static START: OnceLock<Instant> = OnceLock::new();
+    static LAST_BUCKET: AtomicU64 = AtomicU64::new(u64::MAX);
+    let bucket = START.get_or_init(Instant::now).elapsed().as_secs() / 5;
+    if LAST_BUCKET.swap(bucket, Ordering::Relaxed) == bucket {
+        return;
+    }
+    let remote = game.remote.as_ref();
+    let ids: Vec<_> = game
+        .persist
+        .uuids
+        .iter()
+        .filter_map(|(id, uuid)| (*uuid == PROBE_UUID).then_some(*id))
+        .collect();
+    let id = (ids.len() == 1).then(|| ids[0]);
+    let map = id.and_then(|id| remote?.attachments.get(&Holder::Entity(id)));
+    let view = map.map(|map| map.clone().get_existing(&VIEW));
+    let view_state = match view {
+        None => "map_absent",
+        Some(Ok(None)) => "view_absent",
+        Some(Err(_)) => "view_decode_error",
+        Some(Ok(Some(ref view))) if exact_probe_view(view) => "exact",
+        Some(Ok(Some(_))) => "view_mismatch",
+    };
+    log::info!(
+        "Create owner probe: {}",
+        serde_json::json!({
+            "event": "peer_view_gate",
+            "remote": remote.is_some(),
+            "overworld": remote.is_some_and(|remote| remote.level == "minecraft:overworld"),
+            "uuid_count": ids.len(),
+            "carrier_id": id,
+            "display_present": id.is_some_and(|id| game.text_displays.contains_key(&(id as i32))),
+            "attachment_map_present": map.is_some(),
+            "view_state": view_state,
+            "canonical_record_present": map.is_some_and(|map| map.has(&RECORD)),
         })
     );
 }
@@ -1150,6 +1256,19 @@ mod tests {
         assert_eq!(changes.len(), 1);
         assert_eq!(changes[0].name, "assembly_view_v1".into());
         let mut loaded = Attachments::from_nbt(map.to_nbt());
+        assert!(loaded.take_sync_changes().is_empty());
+        loaded.mark_sync(&VIEW).unwrap();
+        let resync = loaded.take_sync_changes();
+        assert_eq!(resync.len(), 1);
+        assert_eq!(resync[0].name, "assembly_view_v1".into());
+        assert!(resync[0].value.is_some());
+        assert!(saved_view_matches(&record, &loaded));
+        assert!(!saved_view_matches(&record, &Attachments::default()));
+        let mut wrong = loaded.clone();
+        let mut wrong_view = view.clone();
+        wrong_view.anchor = [9, 64, 8];
+        wrong.set(&VIEW, wrong_view).unwrap();
+        assert!(!saved_view_matches(&record, &wrong));
         assert_eq!(loaded.get_existing(&RECORD), Ok(Some(record)));
         assert_eq!(loaded.get_existing(&VIEW), Ok(Some(view)));
     }

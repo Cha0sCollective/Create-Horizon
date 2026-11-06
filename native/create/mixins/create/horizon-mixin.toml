@@ -39,6 +39,18 @@ bindings = [
 ]
 
 [[injection]]
+id = "assembly-owner-view-start-tracking"
+target = "horizon_client::game::native_hooks::Game<'_>::native_player_start_tracking"
+kind = "HEAD"
+helper = "assembly_owner_tracking.rs"
+bindings = [
+ {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
+ {name="entity",ty="u32",value="entity"},
+ {name="uuid",ty="u128",value="uuid"},
+ {name="kind",ty="&str",value="kind"},
+]
+
+[[injection]]
 id = "assembly-owner-guard-kill"
 target = "horizon_client::game::commands::Game<'_>::kill_target_in_level"
 kind = "HEAD"
