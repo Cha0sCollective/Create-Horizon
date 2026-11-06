@@ -30,9 +30,10 @@ source: stopped receiver refuses under powered source; release transfers exactly
 once; actual peer occupied/empty and saved chestgold1; three exits0, completion
 review CLEAR. See `orchestration/teams/transport-002-results.md`.
 Qualified source55339ce (.11/cache14) was integrated at primary checkpoint8470fc5,
-byte-identical across all676 native input files. Primary now also contains the
-reviewed bootstrap preparation; the new .12/cache15 funnel stays a separate candidate. Its source,
-composition, build and finite gameplay reviews are CLEAR. See
+byte-identical across all676 native input files. Primary also contains reviewed
+private-bootstrap preparation. New .13/cache16 source9651dba remains a separate
+candidate with source/build checks passed and gameplay still in progress. The
+accepted .11 source/composition/build/finite gameplay reviews are CLEAR. See
 `docs/teams/INTEGRATION_003.md` and
 `docs/teams/fluids-power/FLUIDS_003_COHORT_RUNTIME_HANDOFF.md`.
 The combined profile qualifies one upward Saw alloy-to-six-shafts path, unsupported
@@ -62,33 +63,38 @@ Contraptions003 design c5e5053 is reviewed CLEAR and integrated426d86a. The owne
 then explicitly approved its bounded004 foundation: saved entity record/view,
 peer sync, loaded discovery/tick and deletion/relocation guards, with NO world-block
 capture. Live bearing/controller/custody implementation remains a later decision.
-Machinery and Experience implement the owner-approved selected goggles field
+Machinery and Experience implemented the owner-approved selected goggles field
 contract at `docs/design/GOGGLES_SOLVER_SPEED_FIELD_PACKET.md` (review CLEAR).
 The one derived persisted field has an explicit Byte unavailable marker; it does
 not expand the five-type destructive-propagation profile. Machinery owns the
-producer, Experience the matching consumer. Trains' client-only two-corner Quill
-source is reviewed; shared content/hook wiring remains a separate proposal.
+producer, Experience the matching consumer. Both are reviewed and compiled in005.
+Trains' client-only two-corner Quill source and shared wiring are also compiled;
+actual input/HUD trials remain queued. No export/Save bridge is implemented.
 Fluids' reviewed four-block water line is allocated as endpoint-specific transfer
 on existing Tank/Basin owners, with no persisted pipe flow metadata, generic
 transaction framework or host change. Drill and Tank lifecycle runtime plans
 are reviewed/queued; they have no new gameplay result yet.
 
-The funnel's original HELD1bcf4f6 is preserved. The actual private tool repair
-is now pinned at ac5d9e7 (format-only child of testedf7a9815); its genuine Git
-ancestry, full source fingerprint and bootstrap/pin reviews are CLEAR. Eight
-tool fixtures passed on its semantic parent. Frozen candidate565bfd3 (.12/cache15)
-passed formatting, five bootstrap checks, exact hook stage/import preservation,
-Clippy and playable build. Game6b4c0f7f and all692 source hashes are frozen;
-Transport holds the dedicated/integrated runtime lease. Funnel gameplay remains
-unqualified until those actual observations and completion review pass. A temporary-Shift/recursive
-input workaround is not adopted. Candidate004 now uses the stable physical build
-path; candidate003/55339ce is preserved by branch and immutable binaries/maps.
-The next funnel composition must refresh its catalog cache key: cache14 has now
-been prepared by accepted source without that held content. Do not replay old
-frozen drivers against the changed build path.
+The funnel's original HELD1bcf4f6 is preserved. The private tool repair is pinned
+at ac5d9e7 (format-only child of testedf7a9815); its genuine Git ancestry, full
+source fingerprint and bootstrap/pin reviews are CLEAR. Eight tool fixtures
+passed on its semantic parent. Candidate004/565bfd3 (.12/cache15) built but its
+actual unsupported side click exposed client prediction divergence: client2,
+authoritative stock3, restored on reconnect. This was not authoritative item loss.
+All seven processes exited0 and692 final hashes matched; its source archive,
+map, binaries and HOLD receipts remain preserved in the004 packet.
+
+Candidate005/9651dba (.13/cache16) composes the reviewed Funnel prediction repair,
+goggles producer/consumer, Quill and approved inert owner foundation/probe.
+Stage81/38, Clippy, client tests and playable/control build pass;16 focused tests
+pass. All711 source hashes match. Frozen gameb8629821 is now leased to Transport
+for the ordinary integrated/dedicated Funnel trial. See `docs/teams/INTEGRATION_005.md`.
+Goggles, Quill and the separately gated inert owner runtime checks follow serially.
+Funnel gameplay remains unqualified until actual observations/completion review.
+No temporary-Shift/recursive workaround, block capture or schematic Save follows.
 
 The first frozen cohort sourceabf48a5 remains detached at
-`.local/integration/create-teams-002`; candidate004 uses
+`.local/integration/create-teams-002`; candidate005 uses
 physical `.local/integration/create-teams-001`; accepted branch003 stays preserved. Immutable binaries, all input maps,
 raw runs, source references and dirty legacy work remain preserved. Other mods,
 Open to LAN, custom crash/replay framework and public releases remain deferred.

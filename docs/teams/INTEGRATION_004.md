@@ -1,6 +1,6 @@
 # Integration 004 — private Mixins repair and Funnel
 
-Status: source/tool/build gates PASS; ordinary gameplay IN PROGRESS. No Funnel
+Status: source/tool/build gates PASS; gameplay HOLD. No Funnel
 acceptance or full S6 claim. Accepted .11 source55339ce and its immutable binaries
 remain preserved. No host revision, public release or player installation changes.
 
@@ -11,9 +11,10 @@ Candidate `codex/create-team-integration-004` at
 692 native inputs, native tree803247026b04bd4abda8d497ab34dd001367bad0.
 Raw map `.local/native-team-integration-004/source-inputs-r2.json` SHA256
 61604157828aa246a1e2eccd891e6834cf5373fc4d9a5911c3e9da3ac847cf79.
-All hashes matched after build and again before gameplay. Physical source path
-is the existing `.local/integration/create-teams-001`; other teams use isolated
-source worktrees. Do not run older frozen drivers against this changed path.
+All hashes matched after build and again after gameplay. The physical source path
+`.local/integration/create-teams-001` now serves candidate005. All692 source files
+are preserved in `.local/native-team-integration-004/frozen-native-source.tar`,
+verified against the final map. Do not run this frozen driver against newer source.
 
 Private Mixins sourceac5d9e766380d575838c8250f2a7982281c1f44e is a formatter-only
 child of semantic sourcef7a9815256d82e77f8cac3b8642a651f7c9c19fe, whose genuine
@@ -45,14 +46,22 @@ Immutable Linux binaries are in team-integration-004-bin-6b4c0f7ff4bc:
 game6b4c0f7ff4bca2be7b4c2550831b27b744c84d96be54aab0fb02bc09a4341edc;
 control170e866057d97e73b9231c8084547d4a4a02346238db35901ef64bf3d0d6d449.
 
-## Remaining gameplay gate
+## Preserved gameplay HOLD
 
-Transport owns the leased dedicated server/actor/rendered peer trial, plus a
-smaller integrated ordinary chest-interaction check. Dedicated run
-`dedicated-ywmd81pm` is active in `.local/native-team-runtime-004`. Original
-preflight Git-path and camera-occlusion HOLD receipts remain retained; neither
-was a production behavior observation. Only disposable role/world/home paths
-are used. Audio is disabled per test child; no audio-output claim follows.
+Dedicated ordinary downward placement succeeded and stock changed3 to2 on both
+server and client. An unsupported side click predicted a client count of2 while
+authoritative actor inventory remained3; the actual peer's server query also
+returned3 before any restock. Reconnect restored the client display. This is a
+prediction mismatch, not demonstrated authoritative item loss. The integrated
+attempt stopped at fixture cleanup, before its ordinary chest interaction.
+All seven processes exited0 and all692 final hashes match. Raw runs remain in
+`.local/transport-004`; lead handoffe90aa22 records the HOLD. Earlier Git-path,
+camera and cleanup failures remain preserved. Audio was disabled per child.
+
+The isolated repairbce9ed1 suppresses the Funnel's local vanilla placement
+prediction while preserving the already-sent server interaction. Its fresh
+source/composition reviews are CLEAR and it is compiled in candidate005. Actual
+repaired gameplay and completion review remain separate gates.
 
 Require actual ordinary chest-click placement, unrelated-item chest behavior,
 physical Shift/offhand refusal, adjacent fan port, power pause/obstruction,
