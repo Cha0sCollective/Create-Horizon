@@ -6,13 +6,12 @@
   "operations_enrolled_at": "2026-11-05T20:28:36.178Z",
   "root_rollout": "2026/10/25/rollout-2026-10-25T14-12-55-01a1747a-eb1f-7183-b3f6-63f0ccc37f13.jsonl",
   "heavy_resource": {
-    "owner": "fluids-water-line007-runtime",
-    "state": "Root-granted finite both-mode water line initial/cold packet; owner007 closed4 exits0/742 match, completion review pending",
+    "owner": "fluids-tank-lifecycle007-runtime",
+    "state": "Drill setup orientation HOLD closed actor0; root grants already-scoped Tank004 normal/sneak lifecycle on reviewed007 copy",
     "queue": [
-      "machinery-crushing-wheels007-runtime",
-      "machinery-drill-runtime",
-      "fluids-tank-lifecycle-runtime",
-      "experience-gold-sheet-link"
+      "machinery-wheel007-fixture-retry",
+      "fluids-water007-peer-camera-supplement",
+      "machinery-drill007-pose-retry"
     ]
   },
   "teams": [
@@ -26,7 +25,7 @@
       "thread_id": "01a1ad7e-e33b-7ef2-8bc2-606e374fb5de",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:31.729Z",
-      "state": "Approved wheel source5ed8101/shared compositionf05d8cc reviewed and root007; runtime plan ddec73c ready; Drill queued",
+      "state": "Integrated setup PASS; ordinary throw not captured in40 world steps, HOLD preserved; actor0, read-only trajectory/callback diagnosis; no wheel retry",
       "lane_initial_head": "76dfaf78370f41b2a5c68620c55be6ecab96f16f"
     },
     {
@@ -39,7 +38,7 @@
       "thread_id": "01a1ad7e-f1a5-7052-b948-19607d6dd8e4",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:37.443Z",
-      "state": "Bounded005 ordinary placement and fresh dedicated prebuilt-belt route accepted; custody00210 phases/3 exits0/711 match; review CLEAR; prior HOLDs preserved",
+      "state": "Transport006232d164 proposal reviewed; root requests reference-faithful timing/cap reuse refinement before user decision, no new chute owner code",
       "lane_initial_head": "f00d04a3249b53bee453a0191d65285b0e7f6538"
     },
     {
@@ -52,7 +51,7 @@
       "thread_id": "01a1ad7f-00d6-7c60-8820-89ddbee3d21c",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:40.745Z",
-      "state": "Reviewed finite water-line packet bdb2e1d root-granted both-mode initial/cold runtime on007",
+      "state": "Water integrated/cold +dedicated/cold command checks pass;8 normal exits across qualifying sessions; actualpeerwater transition visually ambiguous, supplement/source diagnosis only",
       "lane_initial_head": "76dfaf78370f41b2a5c68620c55be6ecab96f16f"
     },
     {
@@ -65,7 +64,7 @@
       "thread_id": "01a1ad7f-0de7-7871-aec9-617ed9916499",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:44.555Z",
-      "state": "Owner007 initial/cold command packet passed exact peer VIEW/private RECORD absence, guards/cells;4 exits0/742 match; lease released, completion review pending; capture proposal HOLD/design only",
+      "state": "Owner007 initial/cold accepted PASS/completion review,4 exits0/742 match; Capture00592fed84 reviewed, owner approval pending; no capture code",
       "lane_initial_head": "76dfaf78370f41b2a5c68620c55be6ecab96f16f"
     },
     {
@@ -91,7 +90,7 @@
       "thread_id": "01a1ad7f-28cf-7452-9a78-12912bc4d097",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:51.489Z",
-      "state": "Selected Goggles milestone PASS/source9651dba, both modes/cold,8 exits0/711+bins+JAR match; fresh completion review CLEAR; read-only existing golden-sheet reuse assessment",
+      "state": "Gold link accepted PASS/completion review onf50a7dc, one integrated Survival chain, actor0/742 match; incidentalleaf23 disclosed",
       "lane_initial_head": "76dfaf78370f41b2a5c68620c55be6ecab96f16f"
     }
   ],

@@ -9,12 +9,12 @@ test PASS; family gameplay remains open. No full Create parity claim.
 
 | Team | Accepted finite outcome | Current work or boundary |
 | --- | --- | --- |
-| Machinery | Fan washing, upward Saw and selected goggles producer. | Approved wheel/controller source built and pure checks passed; executable runtime controls being prepared. Runtime/spill/reopen open. Drill queued. |
+| Machinery | Fan washing, upward Saw and selected goggles producer. | Wheel setup passed; throw missed contact window, intake HOLD preserved. Fixture-only correction under review; no source rebuild. Drill queued. |
 | Transport | Bare belt/Depot, two-controller handoff; selected005 placement and fresh dedicated chest-to-sink gold route. | Route completion review CLEAR,3 exits0/711 hashes; prior custody HOLDs preserved. No full Funnel/reopen/atomic trace claim. |
-| Fluids and power | Selected Creative water Tank and plain-water Basin. | New line built and real-owner restoration test passed; finite both-mode initial/cold game packet owns current slot. Tank lifecycle queued. |
-| Contraptions | Reusable owner design approved; inert foundation compiled. | Repaired007 initial/cold probe passed exact peer VIEW/guards/cells,4 exits0; completion review pending. Original005 HOLD retained. Capture design only. |
+| Fluids and power | Selected Creative water Tank and plain-water Basin. | Line integrated full/cold passed; dedicated initial actions reused after reporter fix; same-world cold-only continuation owns current slot. Tank lifecycle queued. |
+| Contraptions | Inert owner foundation accepted after actual initial/cold peer VIEW/guards/cells,4 exits0 and completion review. | Original005 HOLD retained. Reviewed two-cell stationary capture decision awaits owner approval; no capture code. |
 | Trains and schematics | Stationary X/Z track and selected Quill HUD milestone. | Quill completion review CLEAR,9 exits0,38 canonical images; old integrated HOLD exclusions retained. Save/export/train motion deferred. |
-| Experience and parity | Selected audio and both-mode/cold Goggles milestone. | Craft used a supplied sheet; gold-sheet pressing reuse assessed, progression unqualified. |
+| Experience and parity | Selected audio, Goggles presentation and integrated gold-ingot→sheet→Goggles link accepted. | One supplied ingot and vanilla ingredients, incidental leaf litter disclosed; no mining or full progression claim. |
 
 The release-Mixins benchmark passed complete generated path/byte equality across
 4710 files. One-time release CLI build57.399s, plan5.645s, apply97.167s versus

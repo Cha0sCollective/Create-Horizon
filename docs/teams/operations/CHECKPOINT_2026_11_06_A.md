@@ -29,8 +29,8 @@ Phase-agent intervals can overlap and are not elapsed project time or CPU time.
 Implementation includes test-packet authoring; shared compilation is primarily
 Operations-owned. Separate command receipts distinguish compilation/staging from
 actual test execution. Review, coordination and waiting are recorded separately
-in the full local ledger and are omitted from this comparison table. Elapsed
-project time at this snapshot is33020.073s (9h10m20s); later work is not included.
+in the full local ledger and are omitted from this comparison table. Elapsed since six-team
+orchestration enrollment at this snapshot is33020.073s (9h10m20s); later work is not included.
 
 Raw usage streams, session index, CSVs and phase events remain outside Git under
 `.local/team-operations`. This source-only summary contains no transcripts.

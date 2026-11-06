@@ -25,6 +25,13 @@ Selected goggles are accepted PASS in both modes/cold reopen, eight exits0,
 a supplied sheet; no complete progression claim. See
 `docs/teams/experience/EXPERIENCE_003_RESULTS.md`.
 
+The missing gold link is now accepted on007: one supplied gold ingot through
+ordinary Press/Depot insertion, conversion, collection and the Goggles table
+craft in integrated Survival. Actor exit0,742 source/binaries/JAR match and fresh
+completion review CLEAR. Incidental leaf litter17→23 remains disclosed. No
+replacement sheet/Goggles, mining or full progression claim; see
+`docs/teams/experience/EXPERIENCE_004_GOLD_SHEET_LINK_RESULTS.md`.
+
 Funnel005 ordinary both-mode placement/refusal checks are command-complete,
 16 exits0. Fresh dedicated prebuilt-belt trial dedicated-5h3x4ef0 has all ten
 command phases complete and three exits0: one new gold ingot is sampled in chest,
@@ -52,7 +59,7 @@ empty trait-mod list disables whole initial attachment snapshots. Contraptions
 implemented a reviewed existing start-tracking/VIEW mark_sync repair and explicit
 peer gate observations in007. Its new initial/cold packet passed exact peer VIEW,
 private RECORD absence, guards and unchanged cells; four exits0 and742 source
-files/binaries/JAR match. Completion review is pending. No host API/pin/schema
+files/binaries/JAR match. Fresh completion review and Operations acceptance PASS. No host API/pin/schema
 change, world capture or live bearing is authorized. Original HOLD is preserved.
 
 The owner approved Machinery004's stationary selected wheel pair and saved
@@ -72,7 +79,8 @@ release output. Reviewed source8180771 is adopted as0077fb999e. No gameplay
 replay is needed for this byte-identical tooling change. The reviewed007 source
 is frozen and its build/resource-preparation/restoration gates have passed.
 The finite both-mode water-line runtime now holds the shared slot; wheel controls
-are being prepared against the same binaries. Drill and Tank
+are bound to the same binaries; the first wheel intake attempt is HOLD for a
+throw outside the capture window, with fixture-only correction under review. Drill and Tank
 lifecycle finite runtime packets remain queued. All old source branches, maps,
 binaries, worlds, failures and dirty historical work remain preserved; no cleanup,
 playable-save/Prism/Java edits, public release or permission expansion.
