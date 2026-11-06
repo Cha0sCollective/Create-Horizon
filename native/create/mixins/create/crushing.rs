@@ -297,7 +297,7 @@ pub(super) fn item_tick_pre(
     item.position.y = (item.position.y - 0.16).max(f64::from(middle[1]) + 0.20);
     item.velocity.y = 0.0;
     item.on_ground = false;
-    item.pickup_delay = i64::MAX;
+    item.pickup_delay = item.pickup_delay.max(20);
     *canceled = true;
     CONTACT.with(|cell| *cell.borrow_mut() = Some(Contact {
         owner, dimension: dimension.to_owned(), middle, item: id, tick: now, pickup_delay,
