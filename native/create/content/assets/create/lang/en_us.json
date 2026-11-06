@@ -43,6 +43,7 @@
   "item.create.propeller": "Propeller",
   "item.create.wheat_flour": "Wheat Flour",
   "item.create.dough": "Dough",
+  "item.create.schematic_and_quill": "Schematic and Quill",
   "create.kinetics.creative_motor.rotation_speed": "Generated Speed in RPM",
   "block.create.portable_storage_interface": "Portable Storage Interface",
   "block.create.basin": "Basin",

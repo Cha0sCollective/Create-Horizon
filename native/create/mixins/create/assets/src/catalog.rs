@@ -53,6 +53,7 @@ pub const ITEMS: &[&str] = &[
     "dough",
     "empty_blaze_burner",
     "belt_connector",
+    "schematic_and_quill",
 ];
 pub const PARTS: &[&str] = &[
     "shaft",

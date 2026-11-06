@@ -495,6 +495,69 @@ file = "crates/horizon-client/src/game.rs"
 name = "create_port_motor_control"
 source = "motor_control.rs"
 
+[[module]]
+id = "quill-client"
+file = "crates/horizon-client/src/game.rs"
+name = "create_port_quill"
+source = "quill_client.rs"
+
+[[injection]]
+id = "quill-key"
+hook = "key"
+hook_version = 1
+kind = "HEAD"
+helper = "quill_key.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "key", ty = "&str", value = "key" },
+  { name = "pressed", ty = "bool", value = "pressed" },
+]
+
+[[injection]]
+id = "quill-click"
+hook = "interaction_key"
+hook_version = 1
+kind = "HEAD"
+helper = "quill_click.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "button", ty = "i32", value = "button" },
+  { name = "hand", ty = "horizon_client::first_person::Hand", value = "hand" },
+  { name = "swing", ty = "&mut bool", value = "&mut *swing_hand" },
+  { name = "canceled", ty = "&mut bool", value = "&mut *canceled" },
+]
+
+[[injection]]
+id = "quill-frame"
+hook = "frame"
+hook_version = 1
+kind = "HEAD"
+helper = "quill_frame.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+]
+
+[[injection]]
+id = "quill-hud"
+hook = "hud"
+hook_version = 1
+kind = "HEAD"
+helper = "quill_hud.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "batch", ty = "&mut horizon_client::hud::HudBatch", value = "&mut *batch" },
+]
+
+[[injection]]
+id = "quill-unload"
+hook = "client_level_unload"
+hook_version = 1
+kind = "HEAD"
+helper = "quill_unload.rs"
+bindings = [
+  { name = "game", ty = "&crate::game::Game<'_>", value = "self" },
+]
+
 [[injection]]
 id = "motor-open"
 hook = "interaction_key"

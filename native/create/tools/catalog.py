@@ -33,6 +33,9 @@ PARTS += ['blaze_burner/block', 'blaze_burner/blaze/inert', 'blaze_burner/blaze/
 # Selected S6 bare belt; no casing/dyes/passenger resources.
 INTERNAL_BLOCKS += ["belt"]
 ITEMS += ["belt_connector"]
+
+# Selected client-only two-corner Quill; no schematic export or placement.
+ITEMS += ["schematic_and_quill"]
 PARTS += ["belt_pulley", "belt/particle"] + ["belt/" + part for part in ["start","middle","end","start_bottom","middle_bottom","end_bottom","diagonal_start","diagonal_middle","diagonal_end"]]
 
 # Selected S6 standing downward Andesite Funnel. Belt Funnel is separate.

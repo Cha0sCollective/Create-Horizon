@@ -52,6 +52,7 @@
     "create:wheat_flour",
     "create:dough",
     "create:empty_blaze_burner",
-    "create:belt_connector"
+    "create:belt_connector",
+    "create:schematic_and_quill"
   ]
 }
