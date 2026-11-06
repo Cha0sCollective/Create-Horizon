@@ -7,6 +7,11 @@ integrated full/cold-reopen and dedicated full/cold-reopen receipts remain raw
 evidence; their automated green labels do not override the visual HOLD in
 `QUILL_003_RUNTIME_R2_STATUS.md`.
 
+Preparation checks: Python AST parse and `git diff --check` passed. Fresh
+strict independent read-only Sol High review of adapter candidate `8ead75f`
+returned CLEAR after 120.7 seconds, including the exact saved-fixture gate.
+No new game session was started for this preparation.
+
 Use `tools/quill_cancel_quick_retest.py` only against a newly launched session
 index 02 or later in that exact saved run. The script is packet-local and
 launches no process. It admits only integrated actor metadata with the pinned
