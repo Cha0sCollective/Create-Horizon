@@ -11,7 +11,11 @@
   "state_properties": {
     "axis": {
       "type": "enum",
-      "values": ["x", "y", "z"]
+      "values": [
+        "x",
+        "y",
+        "z"
+      ]
     }
   },
   "default_state": {

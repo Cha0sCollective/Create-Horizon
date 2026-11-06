@@ -54,5 +54,6 @@
   "item.create.empty_blaze_burner": "Empty Blaze Burner",
   "block.create.fluid_tank": "Fluid Tank",
   "block.create.mechanical_saw": "Механическая пила",
-  "block.create.andesite_funnel": "Андезитовая воронка"
+  "block.create.andesite_funnel": "Андезитовая воронка",
+  "block.create.crushing_wheel": "Дробящее колесо"
 }

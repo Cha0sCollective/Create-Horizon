@@ -129,6 +129,8 @@ pub(super) fn owns(block: &str) -> bool {
             | "create:encased_fan"
             | "create:mechanical_drill"
             | "create:mechanical_saw"
+            | "create:crushing_wheel"
+            | "create:crushing_wheel_controller"
             | "create:mechanical_piston"
             | "create:piston_extension_pole"
             | "create:portable_storage_interface"
@@ -671,6 +673,7 @@ pub(super) fn node(game: &Game<'_>, pos: [i32; 3]) -> Option<Node> {
         "create:mechanical_pump" => Kind::Pump,
         "create:mechanical_piston" => Kind::MechanicalPiston,
         "create:mechanical_saw" => Kind::Saw,
+        "create:crushing_wheel" => Kind::CrushingWheel,
         "create:encased_fan" | "create:mechanical_drill" => Kind::Consumer {
             facing: direction.map(|v| -v),
             impact: if block == "create:mechanical_drill" {
@@ -869,6 +872,12 @@ pub(super) fn tick(game: &mut Game<'_>, pos: [i32; 3], entity: &mut ModBlockEnti
         crate::game::create_port_funnel::tick(game, pos, entity);
         return;
     }
+    if block == "create:crushing_wheel_controller" {
+        if crate::game::create_port_crushing::tick_controller(game, pos, entity) {
+            game.native_block_entity_sync(pos);
+        }
+        return;
+    }
     if crate::game::create_port_generators::tick(game, pos, entity, &block) {
         return;
     }
@@ -974,6 +983,9 @@ pub(super) fn tick(game: &mut Game<'_>, pos: [i32; 3], entity: &mut ModBlockEnti
         }
     }
     entity.nbt.insert("Speed".into(), Tag::Float(rpm.to_bits()));
+    if block == "create:crushing_wheel" {
+        crate::game::create_port_crushing::wheel_changed(game, pos, rpm);
+    }
     entity
         .nbt
         .insert("Capacity".into(), Tag::Float(network.capacity.to_bits()));
@@ -1174,6 +1186,7 @@ pub(super) fn container(block: &str, container: &mut Option<ModContainer>) {
     crate::game::create_port_basin::container(block, container);
     crate::game::create_port_millstone::container(block, container);
     crate::game::create_port_saw::container(block, container);
+    crate::game::create_port_crushing::container(block, container);
     if block == "create:mechanical_piston" && container.is_none() {
         *container = Some(ModContainer {
             slots: 1,
@@ -1196,6 +1209,7 @@ pub(super) fn container(block: &str, container: &mut Option<ModContainer>) {
 
 pub(super) fn models(models: &mut Vec<String>) {
     crate::game::create_port_mixer::models(models);
+    crate::game::create_port_crushing::models(models);
     super::create_port_belt::models(models);
     models.push("create:block/port_hint".into());
     for part in create_assets::WHEEL_PARTS {
@@ -1268,6 +1282,9 @@ pub(super) fn draw(
     if matches!(block, "create:mechanical_pump" | "create:fluid_pipe") {
         // Their selected MODEL blockstates are complete authored fallbacks;
         // the generic kinetic renderer would add an unrelated axial shaft.
+        return;
+    }
+    if crate::game::create_port_crushing::draw(game, pos, entity, draw) {
         return;
     }
     if block == "create:blaze_burner" {

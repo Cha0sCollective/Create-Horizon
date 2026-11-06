@@ -5,6 +5,8 @@ pub mod basin;
 pub mod contraption;
 #[path = "core/kinetics.rs"]
 pub mod kinetics;
+#[path = "core/crushing.rs"]
+pub mod crushing;
 #[path = "core/placement.rs"]
 pub mod placement;
 #[path = "core/pressing.rs"]

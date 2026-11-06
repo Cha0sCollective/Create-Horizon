@@ -734,6 +734,35 @@ file = "crates/horizon-client/src/game.rs"
 name = "create_port_saw"
 source = "saw.rs"
 
+[[module]]
+id = "crushing"
+file = "crates/horizon-client/src/game.rs"
+name = "create_port_crushing"
+source = "crushing.rs"
+
+[[injection]]
+id = "crushing-item-tick-listened"
+target = "horizon_client::game::native_hooks::Game<'_>::native_entity_tick_listened"
+kind = "HEAD"
+helper = "crushing_item_tick_listened.rs"
+bindings = [
+ {name="game",ty="&crate::game::Game<'_>",value="&*self"},
+ {name="listened",ty="&mut bool",value="&mut *listened"},
+]
+
+[[injection]]
+id = "crushing-item-tick-pre"
+target = "horizon_client::game::native_hooks::Game<'_>::native_entity_tick_pre"
+kind = "HEAD"
+helper = "crushing_item_tick_pre.rs"
+bindings = [
+ {name="game",ty="&mut crate::game::Game<'_>",value="&mut *self"},
+ {name="dimension",ty="&str",value="dimension"},
+ {name="entity",ty="u32",value="entity"},
+ {name="kind",ty="&str",value="kind"},
+ {name="canceled",ty="&mut bool",value="&mut *canceled"},
+]
+
 [[injection]]
 id = "server-data"
 hook = "server_data_loaded"

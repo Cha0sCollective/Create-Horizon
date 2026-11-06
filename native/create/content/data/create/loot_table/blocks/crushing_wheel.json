@@ -4,7 +4,10 @@
     {
       "rolls": 1,
       "entries": [
-        {"type": "minecraft:item", "name": "create:crushing_wheel"}
+        {
+          "type": "minecraft:item",
+          "name": "create:crushing_wheel"
+        }
       ]
     }
   ]

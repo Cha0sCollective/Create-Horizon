@@ -54,5 +54,6 @@
   "item.create.empty_blaze_burner": "Empty Blaze Burner",
   "block.create.fluid_tank": "Fluid Tank",
   "block.create.mechanical_saw": "Mechanical Saw",
-  "block.create.andesite_funnel": "Andesite Funnel"
+  "block.create.andesite_funnel": "Andesite Funnel",
+  "block.create.crushing_wheel": "Crushing Wheel"
 }

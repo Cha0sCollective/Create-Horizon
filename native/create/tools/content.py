@@ -7,6 +7,7 @@ The full horizon-port-pack carry-over remains in .local for subsequent milestone
 import json
 from common import ROOT, NATIVE
 from fluid_pump_content import generate as fluid_pump_content
+from crushing_content import generate as crushing_content
 
 CONTENT = ROOT / "content"
 BLOCKS = ["creative_motor", "shaft", "cogwheel", "large_cogwheel", "mechanical_press", "depot"]
@@ -641,6 +642,7 @@ capabilities = ["registries"]
 
 
     funnel_content()
+    crushing_content(CONTENT)
     write("data/create/recipe/mixing/dough_by_mixing.json", {'type': 'create:mixing', 'ingredients': ['#c:flours/wheat', {'type': 'neoforge:single', 'amount': 1000, 'fluid': 'minecraft:water'}], 'results': [{'id': 'create:dough'}]})
     # Source installs carry only the native bundle. Its documented data folder
     # therefore contains the complete public content, with no player-side Python.

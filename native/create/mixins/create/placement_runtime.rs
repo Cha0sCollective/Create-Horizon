@@ -389,6 +389,7 @@ fn level_ports(game: &GameLevel<'_>, pos: [i32; 3]) -> [bool; 6] {
                     | "create:fluid_tank"
                     | "create:fluid_pipe"
                     | "create:mechanical_pump"
+                    | "create:crushing_wheel_controller"
                     | "create:mechanical_mixer"
             )
         {
