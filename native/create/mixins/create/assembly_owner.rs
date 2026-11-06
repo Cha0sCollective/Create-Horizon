@@ -9,6 +9,10 @@ use horizon_world::{
     nbt::{Compound, Tag},
 };
 use std::collections::{BTreeSet, HashMap, HashSet};
+use std::sync::{
+    OnceLock,
+    atomic::{AtomicBool, Ordering},
+};
 
 const MARKER: &str = "create_horizon:assembly_owner_v1";
 const MARKER_VALUE: &str = "create_horizon:assembly_owner:1";
@@ -17,6 +21,11 @@ const RECORD_NAME: &str = "assembly_record_v1";
 const VERSION: i32 = 1;
 const CELL_LIMIT: usize = 2;
 const DISPLAY: &str = "minecraft:block_display";
+const PROBE_UUID: [i32; 4] = [5, 6, 7, 8];
+const PROBE_ASSEMBLY: AssemblyId = AssemblyId([1, 2, 3, 4]);
+const PROBE_WORLD: &str = "contraptions-004-probe-world";
+const PROBE_SERVER_PROFILE: &str = "contraptions-004-probe-server";
+const PROBE_CLIENT_PROFILE: &str = "contraptions-004-probe-client";
 
 /// Independent of both the carrier's persistent UUID and its loaded numeric ID.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
@@ -816,10 +825,236 @@ pub(super) fn scan_loaded_owners(game: &Game<'_>, dimension: &str) -> Scan {
     result
 }
 
-/// Hook body for `level_tick_post`: `create_assembly_owner::level_tick_post(game, dimension)`.
-/// It deliberately performs no world, entity, attachment or sync mutation.
-pub(super) fn level_tick_post(game: &Game<'_>, dimension: &str) {
-    let _ = scan_loaded_owners(game, dimension);
+/// Hook body for `level_tick_post`. Ordinary discovery is read-only; the
+/// development-only probe attempts two guarded entity API calls on its one
+/// exact disposable fixture and never touches a world block.
+pub(super) fn level_tick_post(game: &mut Game<'_>, dimension: &str) {
+    let scan = scan_loaded_owners(game, dimension);
+    probe_server_tick(game, dimension, &scan);
+}
+
+fn probe_enabled() -> bool {
+    static ENABLED: OnceLock<bool> = OnceLock::new();
+    *ENABLED
+        .get_or_init(|| std::env::var("CREATE_HORIZON_OWNER_PROBE").ok().as_deref() == Some("1"))
+}
+
+fn probe_profile(expected: &str) -> bool {
+    std::env::current_dir()
+        .ok()
+        .and_then(|path| {
+            path.file_name()
+                .map(|name| name == std::ffi::OsStr::new(expected))
+        })
+        .unwrap_or(false)
+}
+
+fn exact_probe_record(record: &AssemblyRecord) -> bool {
+    let source = |cell: &Cell, local, name, axis: Option<&str>, target_axis: Option<&str>| {
+        cell.local == local
+            && cell.state.name == name
+            && cell.target_state.name == name
+            && cell.state.properties.len() == usize::from(axis.is_some())
+            && cell.target_state.properties.len() == usize::from(target_axis.is_some())
+            && cell.state.properties.get("axis").map(String::as_str) == axis
+            && cell.target_state.properties.get("axis").map(String::as_str) == target_axis
+            && !cell.source_removed
+            && !cell.target_placed
+            && cell.last_source == Observed::Unknown
+            && cell.last_target == Observed::Unknown
+    };
+    record.id == PROBE_ASSEMBLY
+        && record.carrier_uuid == PROBE_UUID
+        && record.dimension == "minecraft:overworld"
+        && record.controller == [8, 63, 8]
+        && record.controller_kind == "create:mechanical_bearing"
+        && record.facing == "up"
+        && record.anchor == [8, 64, 8]
+        && record.axis == "y"
+        && record.phase == Phase::Preparing
+        && !record.removal_requested
+        && record.previous
+            == (Pose {
+                tick: 0,
+                angle_degrees: 0.0,
+            })
+        && record.current
+            == (Pose {
+                tick: 0,
+                angle_degrees: 0.0,
+            })
+        && matches!(&record.cells[..], [slime, log]
+            if source(slime, [0, 0, 0], "minecraft:slime_block", None, None)
+            && source(log, [0, 0, 1], "minecraft:oak_log", Some("z"), Some("x")))
+}
+
+fn exact_probe_view(view: &AssemblyView) -> bool {
+    view.id == PROBE_ASSEMBLY
+        && view.anchor == [8, 64, 8]
+        && view.axis == "y"
+        && view.phase == Phase::Preparing
+        && view.previous
+            == (Pose {
+                tick: 0,
+                angle_degrees: 0.0,
+            })
+        && view.current
+            == (Pose {
+                tick: 0,
+                angle_degrees: 0.0,
+            })
+        && matches!(&view.cells[..], [slime, log]
+            if slime.local == [0, 0, 0]
+            && slime.state.name == "minecraft:slime_block"
+            && slime.state.properties.is_empty()
+            && log.local == [0, 0, 1]
+            && log.state.name == "minecraft:oak_log"
+            && log.state.properties.len() == 1
+            && log.state.properties.get("axis").map(String::as_str) == Some("z"))
+}
+
+fn probe_server_tick(game: &mut Game<'_>, dimension: &str, scan: &Scan) {
+    static ATTEMPTED: AtomicBool = AtomicBool::new(false);
+    if !probe_enabled()
+        || !probe_profile(PROBE_SERVER_PROFILE)
+        || game.world_root.file_name() != Some(std::ffi::OsStr::new(PROBE_WORLD))
+        || !game.native_authoritative()
+        || dimension != "minecraft:overworld"
+        || game
+            .persist
+            .uuids
+            .values()
+            .filter(|uuid| **uuid == PROBE_UUID)
+            .count()
+            != 1
+        || ATTEMPTED.load(Ordering::Relaxed)
+    {
+        return;
+    }
+    let Some(entity) = game.others.iter().find(|entity| {
+        entity.kind == DISPLAY && game.persist.uuids.get(&entity.id) == Some(&PROBE_UUID)
+    }) else {
+        return;
+    };
+    let id = entity.id;
+    let before = [entity.position.x, entity.position.y, entity.position.z];
+    let owner = inspect_owner(
+        &entity.kind,
+        game.persist.raw.get(&id),
+        Some(PROBE_UUID),
+        game.entity_attachments.get(&PROBE_UUID),
+    );
+    let Owner::Active(record) = owner else {
+        return;
+    };
+    if !exact_probe_record(&record) || before != [8.5, 64.0, 8.5] {
+        return;
+    }
+    if ATTEMPTED.swap(true, Ordering::Relaxed) {
+        return;
+    }
+    let discovered = scan.active == vec![(PROBE_ASSEMBLY, id)]
+        && scan.retired.is_empty()
+        && scan.refused.is_empty();
+    let (moved, removed) = if discovered {
+        (
+            Some(game.native_move_entity(dimension, id, [9.5, 64.0, 8.5], 0.0, 0.0)),
+            Some(game.native_remove_entity(dimension, id)),
+        )
+    } else {
+        (None, None)
+    };
+    let after = game
+        .others
+        .iter()
+        .find(|entity| entity.id == id)
+        .map(|entity| [entity.position.x, entity.position.y, entity.position.z]);
+    log::info!(
+        "Create owner probe: {}",
+        serde_json::json!({
+            "event": "server_scan_and_guards",
+            "carrier_id": id,
+            "uuid": PROBE_UUID,
+            "assembly_id": PROBE_ASSEMBLY.0,
+            "scan_active": scan.active.iter().map(|(assembly, id)| (assembly.0, id)).collect::<Vec<_>>(),
+            "scan_retired": &scan.retired,
+            "scan_refused": &scan.refused,
+            "discovered": discovered,
+            "move_return": moved,
+            "remove_return": removed,
+            "before": before,
+            "after": after,
+            "retained": after.is_some(),
+        })
+    );
+}
+
+/// Runs after ordinary remote packet processing, from the existing `frame`
+/// hook. It reads the real peer's received attachment map once.
+pub(super) fn probe_client_frame(game: &Game<'_>) {
+    static OBSERVED: AtomicBool = AtomicBool::new(false);
+    if !probe_enabled() || !probe_profile(PROBE_CLIENT_PROFILE) || OBSERVED.load(Ordering::Relaxed)
+    {
+        return;
+    }
+    let Some(remote) = game.remote.as_ref() else {
+        return;
+    };
+    if remote.level != "minecraft:overworld" {
+        return;
+    }
+    if game
+        .persist
+        .uuids
+        .values()
+        .filter(|uuid| **uuid == PROBE_UUID)
+        .count()
+        != 1
+    {
+        return;
+    }
+    let Some((&id, _)) = game
+        .persist
+        .uuids
+        .iter()
+        .find(|(_, uuid)| **uuid == PROBE_UUID)
+    else {
+        return;
+    };
+    if !game.text_displays.contains_key(&(id as i32)) {
+        return;
+    }
+    let Some(map) = remote
+        .attachments
+        .get(&horizon_world::attachments::Holder::Entity(id))
+    else {
+        return;
+    };
+    let canonical_present = map.has(&RECORD);
+    let Ok(Some(view)) = map.clone().get_existing(&VIEW) else {
+        return;
+    };
+    if !exact_probe_view(&view) || OBSERVED.swap(true, Ordering::Relaxed) {
+        return;
+    }
+    log::info!(
+        "Create owner probe: {}",
+        serde_json::json!({
+            "event": "peer_view_received",
+            "carrier_id": id,
+            "uuid": PROBE_UUID,
+            "assembly_id": view.id.0,
+            "phase": view.phase.name(),
+            "anchor": view.anchor,
+            "axis": &view.axis,
+            "cells": [
+                {"local": view.cells[0].local, "state": &view.cells[0].state.name},
+                {"local": view.cells[1].local, "state": &view.cells[1].state.name,
+                 "axis": view.cells[1].state.properties.get("axis")},
+            ],
+            "canonical_record_present": canonical_present,
+        })
+    );
 }
 
 #[cfg(test)]
@@ -879,6 +1114,27 @@ mod tests {
             phase: Phase::Preparing,
             removal_requested: false,
         }
+    }
+    #[test]
+    fn development_probe_refuses_changed_identity_progress_and_view() {
+        let mut record = fixture();
+        record.previous = Pose {
+            tick: 0,
+            angle_degrees: 0.0,
+        };
+        record.current = record.previous;
+        assert!(exact_probe_record(&record));
+        let view = AssemblyView::from_record(&record).unwrap();
+        assert!(exact_probe_view(&view));
+        record.carrier_uuid = [5, 6, 7, 9];
+        assert!(!exact_probe_record(&record));
+        record.carrier_uuid = PROBE_UUID;
+        record.cells[0].source_removed = true;
+        record.cells[0].last_source = Observed::Air;
+        assert!(!exact_probe_record(&record));
+        let mut wrong_view = view;
+        wrong_view.cells[1].local = [0, 0, -1];
+        assert!(!exact_probe_view(&wrong_view));
     }
     fn raw_marker() -> Tag {
         Tag::Compound([(MARKER.into(), Tag::String(MARKER_VALUE.into()))].into())
