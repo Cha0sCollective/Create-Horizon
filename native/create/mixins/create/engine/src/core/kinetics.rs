@@ -53,6 +53,8 @@ pub enum Kind {
     MechanicalPiston,
     /// Stationary item's two-sided DirectionalAxisKineticBlock saw.
     Saw,
+    /// CrushingWheelBlock accepts shafts only along its rotation axis.
+    CrushingWheel,
     Consumer {
         facing: Pos,
         impact: f32,
@@ -110,7 +112,7 @@ impl Node {
     }
     fn impact(self) -> f32 {
         match self.kind {
-            Kind::Press => 8.0,
+            Kind::Press | Kind::CrushingWheel => 8.0,
             Kind::Millstone | Kind::Mixer | Kind::Pump => 4.0,
             Kind::MechanicalPiston | Kind::Saw => 4.0,
             Kind::Consumer { impact, .. } => impact,
@@ -899,5 +901,45 @@ mod belt_tests {
             };
             assert_eq!(ratio(first, stranger), None);
         }
+    }
+}
+
+#[cfg(test)]
+mod crushing_wheel_tests {
+    use super::*;
+
+    #[test]
+    fn wheel_has_two_axial_shaft_ports_and_eight_stress_per_rpm() {
+        let wheel = Node {
+            pos: [0, 0, 0],
+            axis: Axis::X,
+            kind: Kind::CrushingWheel,
+        };
+        for delta in [[-1, 0, 0], [1, 0, 0]] {
+            assert!(wheel.shaft_port(delta));
+            let shaft = Node {
+                pos: delta,
+                axis: Axis::X,
+                kind: Kind::Shaft,
+            };
+            assert_eq!(ratio(wheel, shaft), Some(1.0));
+            assert_eq!(ratio(shaft, wheel), Some(1.0));
+        }
+        for delta in [[0, -1, 0], [0, 1, 0], [0, 0, -1], [0, 0, 1]] {
+            assert!(!wheel.shaft_port(delta));
+        }
+        let motor = Node {
+            pos: [-1, 0, 0],
+            axis: Axis::X,
+            kind: Kind::Motor {
+                facing: [1, 0, 0],
+                rpm: 16.0,
+                capacity: 16.0,
+            },
+        };
+        let network = solve(wheel, |pos| (pos == motor.pos).then_some(motor));
+        assert_eq!(network.status, Status::Running);
+        assert_eq!(network.speed(wheel.pos), 16.0);
+        assert_eq!((network.capacity, network.stress), (256.0, 128.0));
     }
 }
