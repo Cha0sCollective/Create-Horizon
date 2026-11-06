@@ -154,25 +154,36 @@ class Packet:
         self.check("entity Pos has three values", len(numbers) == 3)
         return [float(number) for number in numbers]
 
+    def capture_peer_gates(self) -> list[dict]:
+        gates = []
+        if self.peer_log.is_file():
+            for line in self.peer_log.read_text(errors="replace").splitlines():
+                if "Create owner probe: " not in line:
+                    continue
+                try:
+                    payload = json.loads(line.split("Create owner probe: ", 1)[1])
+                except json.JSONDecodeError:
+                    continue
+                if payload.get("event") == "peer_view_gate":
+                    gates.append(payload)
+        save_json(self.out / "peer-gates.json", gates)
+        return gates
+
     def trace(self, role: str, event: str) -> dict:
         path = self.server_log if role == "server" else self.peer_log
         deadline = time.monotonic() + 90
-        gates: dict[str, dict] = {}
         while time.monotonic() < deadline:
             for line in path.read_text(errors="replace").splitlines():
                 if "Create owner probe: " in line:
                     payload = json.loads(line.split("Create owner probe: ", 1)[1])
-                    if role == "peer" and payload.get("event") == "peer_view_gate":
-                        gates[line] = payload
                     if payload.get("event") == event:
                         if role == "peer":
-                            save_json(self.out / "peer-gates.json", list(gates.values()))
+                            self.capture_peer_gates()
                         save_json(self.out / f"{role}-{event}.json", payload)
                         return payload
             time.sleep(0.5)
-        if role == "peer":
-            save_json(self.out / "peer-gates.json", list(gates.values()))
-        last_gate = list(gates.values())[-1] if gates else None
+        gates = self.capture_peer_gates()
+        last_gate = gates[-1] if gates else None
         raise AssertionError(f"missing {role} {event} probe line: {path}; last gate={last_gate}")
 
     def inspect_probes(self) -> None:
@@ -358,6 +369,11 @@ def main() -> None:
         packet = Packet(args.session, args.phase, args.source_head, args.packet_root)
         packet.run()
     except BaseException as error:
+        if packet is not None:
+            try:
+                packet.capture_peer_gates()
+            except BaseException:
+                pass
         cleanup_failed_session(args.session, error, packet.out if packet else None,
                                args.packet_root)
         raise
