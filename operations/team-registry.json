@@ -6,11 +6,10 @@
   "operations_enrolled_at": "2026-11-05T20:28:36.178Z",
   "root_rollout": "2026/10/25/rollout-2026-10-25T14-12-55-01a1747a-eb1f-7183-b3f6-63f0ccc37f13.jsonl",
   "heavy_resource": {
-    "owner": "operations-tank008-build",
-    "state": "Fresh driver008review CLEAR b918 and runtimehelper c385; root grants6-step Tank tag build with exact1 affected asset test, unchanged007 evidence reused",
+    "owner": null,
+    "state": "OWNER REQUESTED WRAP-UP:008 build and installed Track+Tank tag startup check PASS, actor0 normally; no lifecycle case started; all heavy work stopped, pending four Tank checks for resume",
     "queue": [
-      "operations-tank008-build",
-      "operations-tank008-normal-wrench-checks"
+      "paused: Tank008 normal and Shift-wrench cases in integrated and dedicated modes"
     ]
   },
   "teams": [
@@ -50,7 +49,7 @@
       "thread_id": "01a1ad7f-00d6-7c60-8820-89ddbee3d21c",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:40.745Z",
-      "state": "Water line accepted; reviewed Tank-only missing pickaxe-tag repair aff11f9 isolated as008,4-file diff, source/maps frozen; build/normal-break+wrench retest pending",
+      "state": "PAUSED at owner wrap-up: Tank-only aff11 repair built, exact asset1 PASS, installed tag verified and startup actor0; four lifecycle cases still unrun; control rebind preparation checkpointing",
       "lane_initial_head": "76dfaf78370f41b2a5c68620c55be6ecab96f16f"
     },
     {

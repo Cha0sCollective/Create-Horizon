@@ -1,5 +1,10 @@
 # Create team status
 
+**Paused at the owner's wrap-up request.** All owned game/build processes are
+closed. Wheel and selected Drill accepted; Tank008 build and installed-resource
+startup check passed. Independent control-binding review and four Tank lifecycle
+cases remain. See the pause checkpoint; no new scope is authorized here.
+
 S1–S5 remain complete under the adopted native plan; S6 is OPEN. Qualified
 primary source55339ce (.11/cache14) is preserved. Candidate005/9651dba is a
 separate compiled .13/cache16 source with711 frozen inputs. Candidate007/f732bd4
@@ -11,7 +16,7 @@ test PASS; family gameplay remains open. No full Create parity claim.
 | --- | --- | --- |
 | Machinery | Fan washing, upward Saw, selected goggles producer, finite Wheel004 and stationary Drill. | Wheel both modes/cold/removal accepted,15 exits0. Drill both modes/stop/cold/refusal accepted,10 exits0 and18 canonical images. Original HOLDs retained. |
 | Transport | Bare belt/Depot, two-controller handoff; selected005 placement and fresh dedicated chest-to-sink gold route. | Route completion review CLEAR,3 exits0/711 hashes; prior custody HOLDs preserved. No full Funnel/reopen/atomic trace claim. |
-| Fluids and power | Selected Creative water Tank/Basin and bounded Pump/Pipe water line accepted. | Water line11 exits0/peer empty-blue-empty. Tank normal-break no-drop HOLD diagnosed as missing pickaxe tag; reviewed four-file repair aff11f9 isolated008, build and four lifecycle retests open. |
+| Fluids and power | Selected Creative water Tank/Basin and bounded Pump/Pipe water line accepted. | Tank tag repair aff11f9/008 built, asset1 and installed-tag startup passed; actor0. Control rebind prepared/unreviewed; four lifecycle cases remain unrun. Original no-drop HOLD retained. |
 | Contraptions | Inert owner foundation accepted after actual initial/cold peer VIEW/guards/cells,4 exits0 and completion review. | Original005 HOLD retained. Reviewed two-cell stationary capture decision awaits owner approval; no capture code. |
 | Trains and schematics | Stationary X/Z track and selected Quill HUD milestone. | Quill completion review CLEAR,9 exits0,38 canonical images; old integrated HOLD exclusions retained. Save/export/train motion deferred. |
 | Experience and parity | Selected audio, Goggles presentation and integrated gold-ingot→sheet→Goggles link accepted. | One supplied ingot and vanilla ingredients, incidental leaf litter disclosed; no mining or full progression claim. |

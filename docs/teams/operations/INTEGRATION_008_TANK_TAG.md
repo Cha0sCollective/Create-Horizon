@@ -37,7 +37,18 @@ R2 adds read-only native Git identity/status before and after every command;
 fresh independent Sol High review CLEAR on driver
 `b918ad0b452cfe48ee105e431dad21d6def72c077b02780e1a5be54fa7076ae7`.
 Runtime helper `c38572fbb624d61f4a743aff8838867dfa4339a0844e6319af281aa5bfe0e1a8`
-was separately included in that review. Formatting/distribution passed and the
-root-granted pipeline is staging. Build completion and fresh both-mode
-normal-break/Shift-wrench return and empty-replacement
-checks remain open. This document is source/preparation status, not gameplay PASS.
+was separately included in that review. All six pipeline commands passed:
+format, distribution, stage75.640s, source-layout asset compile16.646s,
+one exact asset test0.010s, and playable/control build239.608s. No old battery
+was replayed. Source/Git/layout/cache guards passed before/after each command.
+Held game is `f92b396de8aefe5e435417688c8a445faf17621f41298b4afcd36c81dba0bd23`,
+ctl `529804b15e0ff7912a83867dd335048cc91dc51b3e54af0cad8ed563bd0aa955`;
+binary receipt SHA256 `ab9f3374aafdf4bdd26ed1f829516380d5d71dc421c5ba483fe7189fdd6fa8d6`.
+
+At the owner's wrap-up request the new integrated startup check verified the
+installed Track+Tank tag, SHA256 `9bbbdc99f3ca3bacada8a9cf12516519bdf3b5adb35433893c7b284b10d60b7d`.
+Actor exited0, held binaries matched and the owned-game process check was empty.
+This is startup/file evidence, not a Tank lifecycle result. The prepared008
+control rebind has AST/source comparison but independent review is not started.
+Its four normal-break/Shift-wrench cases remain unrun. Work is paused; original
+R3 no-drop HOLD stays unchanged.

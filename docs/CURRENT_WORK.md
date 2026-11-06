@@ -1,5 +1,12 @@
 # Current work
 
+**PAUSED at the owner's November 6 wrap-up request.** All owned game/build
+processes are closed. Wheel and selected Drill checks are accepted. Tank008
+build/static checks and the installed-tag startup check passed; no Tank008
+lifecycle case ran. Resume with independent review of the prepared control
+rebind, then the four planned normal-break/Shift-wrench cases across both modes.
+See `docs/teams/operations/CHECKPOINT_2026_11_06_PAUSE_B.md`. No new scope starts.
+
 Native S1 through S5 are COMPLETE under the owner-adopted November4 native
 route. S6 is OPEN. The owner authorizes progress through S6 until the next
 requested break, genuine blocker, required input or scope boundary. Read
@@ -111,8 +118,10 @@ four-file repair aff11f9 is isolated as candidate008 at
 and499 bundle entries. Frozen007/source/maps/binaries/worlds remain intact.
 The bounded format/distribution/stage/asset-check/playable-build R2 driver has
 fresh independent CLEAR review, including live native-Git identity and checked
-offline Cargo-cache reuse. Formatting/distribution passed; staging is active.
-Build completion and fresh both-mode normal-break/wrench
+offline Cargo-cache reuse. All six build steps and exact asset1 passed; held
+gamef92b396d/ctl529804b1 match receiptab9f3374. The current startup session
+verified installed Track+Tank tag9bbbdc99 and closed actor0. No lifecycle case ran.
+Fresh both-mode normal-break/wrench
 checks remain open. No new host API, owner, schema, tag framework or other block.
 All old source branches, maps,
 binaries, worlds, failures and dirty historical work remain preserved; no cleanup,
