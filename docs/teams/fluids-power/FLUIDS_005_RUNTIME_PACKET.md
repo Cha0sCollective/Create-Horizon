@@ -110,7 +110,10 @@ PNG files are real rendered client observations and need visual inspection.
 
 Before cold close, the script uses `tick freeze`/`tick step` and fresh server
 `time query gametime` replies to confirm each requested step finished. The
-client control wait alone is not treated as server tick completion. It measures:
+reply parser requires one marker-bounded line ending in the numeric result;
+it does not assume a specific language string. The client control wait alone
+is not treated as server tick completion. The endpoint NBT parser accepts the
+selected pinned Tank/Basin display shape, not arbitrary SNBT. It measures:
 
 1. With zero pump RPM, 16 steps leave Tank 1,000 / Basin 0.
 2. With actual pump speed magnitude 16 RPM, ten active steps move exactly

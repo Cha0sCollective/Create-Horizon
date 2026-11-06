@@ -50,11 +50,23 @@ def data(x):
     return fresh_chat(f'data get block {x} 65 20', lambda line: line.startswith(prefix))
 
 def game_time():
-    line = fresh_chat('time query gametime',
-                      lambda value: value.startswith('The time is '))
-    match = re.fullmatch(r'The time is (\d+)', line)
-    assert match, line
-    return int(match.group(1))
+    # The pinned host emits a translated command reply. Require one fresh line
+    # with its terminal numeric result, independent of the prepared language.
+    marker = 'FLUIDS005_TIME_' + uuid.uuid4().hex[:12]
+    command('say ' + marker)
+    command('time query gametime')
+    for _ in range(20):
+        lines = call('chat-log', 60).get('chat', [])
+        markers = [i for i, line in enumerate(lines) if marker in line]
+        if markers:
+            fresh = lines[:markers[0]]
+            if fresh:
+                assert len(fresh) == 1, (marker, fresh)
+                match = re.search(r'(\d+)\s*$', fresh[0])
+                assert match, (marker, fresh)
+                return int(match.group(1))
+        call('wait', 1)
+    raise AssertionError(f'No fresh game-time reply after {marker}')
 
 def number(x, key):
     line = data(x)
@@ -126,6 +138,7 @@ def empty_inventory(role='actor'):
 def shot(label):
     if s['mode'] != 'dedicated':
         return
+    call('wait', 12, role='peer')
     path = out / f'{a.phase}-{label}-peer-{s["index"]:02d}.png'
     call('screenshot', path, role='peer')
     assert path.is_file() and path.stat().st_size > 0, path
