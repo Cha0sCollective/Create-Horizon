@@ -78,10 +78,24 @@ Its immutable baseline contains4710 generated files, all path/byte equal to the
 release output. Reviewed source8180771 is adopted as0077fb999e. No gameplay
 replay is needed for this byte-identical tooling change. The reviewed007 source
 is frozen and its build/resource-preparation/restoration gates have passed.
-The finite both-mode water-line runtime now holds the shared slot; wheel controls
-are bound to the same binaries; the first wheel intake attempt is HOLD for a
-throw outside the capture window, with fixture-only correction under review. Drill and Tank
-lifecycle finite runtime packets remain queued. All old source branches, maps,
+The water line is accepted PASS after fresh independent completion review:
+both-mode numeric/cold checks and the same-world high-angle peer empty/blue/empty
+supplement,11 qualifying exits0 and742 files/binary bindings matched. The
+original setup/reporting HOLDs and low-angle ambiguous images remain preserved.
+Creative bucket drain voids water and is not an item-conservation result. See
+`docs/teams/fluids-power/FLUIDS_005_RUNTIME_007_PEER_VISUAL02_HANDOFF.md`.
+Wheel fixture R2 has passed ordinary capture, partial
+stop/cold reopen, gravel conversion/ejection/collection and occupied removal
+spill in integrated play. R3's focused same-world continuation collected that
+exact saved spill UUID with verified actor/server convergence and five empty
+world steps; actor exit0. Original failed pickup and missed-throw HOLDs remain.
+Fresh dedicated R3 setup/pause/cold/resume/removal holds the shared lease.
+Drill setup observed a transient wrong client facing before East
+convergence; Tank setup found unrelated mushroom litter before any Tank action.
+Both runs closed normally with frozen inputs intact. Separate bounded control-only
+corrections have fresh independent CLEAR review; no production rebuild is requested.
+Drill/Tank retries and dedicated wheel qualification remain queued.
+All old source branches, maps,
 binaries, worlds, failures and dirty historical work remain preserved; no cleanup,
 playable-save/Prism/Java edits, public release or permission expansion.
 

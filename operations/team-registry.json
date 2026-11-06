@@ -6,12 +6,11 @@
   "operations_enrolled_at": "2026-11-05T20:28:36.178Z",
   "root_rollout": "2026/10/25/rollout-2026-10-25T14-12-55-01a1747a-eb1f-7183-b3f6-63f0ccc37f13.jsonl",
   "heavy_resource": {
-    "owner": "fluids-tank-lifecycle007-runtime",
-    "state": "Drill setup orientation HOLD closed actor0; root grants already-scoped Tank004 normal/sneak lifecycle on reviewed007 copy",
+    "owner": "machinery-wheel007-dedicated",
+    "state": "Integrated R3 same saved spill collected, actor02 exit0; root grants fresh dedicated R3 finite setup/pause/cold/resume/removal only",
     "queue": [
-      "machinery-wheel007-fixture-retry",
-      "fluids-water007-peer-camera-supplement",
-      "machinery-drill007-pose-retry"
+      "machinery-drill007-convergence-retry",
+      "fluids-tank007-material-guard-retry"
     ]
   },
   "teams": [
@@ -25,7 +24,7 @@
       "thread_id": "01a1ad7e-e33b-7ef2-8bc2-606e374fb5de",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:31.729Z",
-      "state": "Integrated setup PASS; ordinary throw not captured in40 world steps, HOLD preserved; actor0, read-only trajectory/callback diagnosis; no wheel retry",
+      "state": "Wheel R2 integrated capture/partial cold resume/gravel/removal spill pass; final pickup HOLD with original cobble saved, source-only continuation review; dedicated and Drill retry queued",
       "lane_initial_head": "76dfaf78370f41b2a5c68620c55be6ecab96f16f"
     },
     {
@@ -38,7 +37,7 @@
       "thread_id": "01a1ad7e-f1a5-7052-b948-19607d6dd8e4",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:37.443Z",
-      "state": "Transport006232d164 proposal reviewed; root requests reference-faithful timing/cap reuse refinement before user decision, no new chute owner code",
+      "state": "Funnel bounded route accepted; Chute parity supplementfd587a5 preserves Java probe0.5/commit0 with plain chest and up-to16 one-slot input; new owner/field approval still required",
       "lane_initial_head": "f00d04a3249b53bee453a0191d65285b0e7f6538"
     },
     {
@@ -51,7 +50,7 @@
       "thread_id": "01a1ad7f-00d6-7c60-8820-89ddbee3d21c",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:40.745Z",
-      "state": "Water integrated/cold +dedicated/cold command checks pass;8 normal exits across qualifying sessions; actualpeerwater transition visually ambiguous, supplement/source diagnosis only",
+      "state": "Bounded water line accepted PASS after numeric+peer completion review;11 qualifying exits0/742 inputs; original HOLDs and Creative water void preserved; Tank004 retry queued",
       "lane_initial_head": "76dfaf78370f41b2a5c68620c55be6ecab96f16f"
     },
     {
@@ -77,7 +76,7 @@
       "thread_id": "01a1ad7f-1bc5-7d53-89d7-89c76219d1c8",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:48.006Z",
-      "state": "Selected Quill HUD milestone PASS on005; both-mode full/cold plus focused cancel replacement,9 exits0; 38 canonical images reviewed; completion review CLEAR59777e9; Save deferred",
+      "state": "Quill HUD accepted; live upstream0d21d552 writer unchanged from pin, no ready Quill Save bridge found; owner decision required for proposed Save authority/safe writer repair",
       "lane_initial_head": "76dfaf78370f41b2a5c68620c55be6ecab96f16f"
     },
     {

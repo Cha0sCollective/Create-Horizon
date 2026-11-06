@@ -9,9 +9,9 @@ test PASS; family gameplay remains open. No full Create parity claim.
 
 | Team | Accepted finite outcome | Current work or boundary |
 | --- | --- | --- |
-| Machinery | Fan washing, upward Saw and selected goggles producer. | Wheel setup passed; throw missed contact window, intake HOLD preserved. Fixture-only correction under review; no source rebuild. Drill queued. |
+| Machinery | Fan washing, upward Saw and selected goggles producer. | Wheel integrated capture/partial cold resume/gravel/removal spill plus same-UUID pickup continuation complete; original HOLDs retained. Dedicated wheel holds lease; reviewed Drill retry queued, no source rebuild. |
 | Transport | Bare belt/Depot, two-controller handoff; selected005 placement and fresh dedicated chest-to-sink gold route. | Route completion review CLEAR,3 exits0/711 hashes; prior custody HOLDs preserved. No full Funnel/reopen/atomic trace claim. |
-| Fluids and power | Selected Creative water Tank and plain-water Basin. | Line integrated full/cold passed; dedicated initial actions reused after reporter fix; same-world cold-only continuation owns current slot. Tank lifecycle queued. |
+| Fluids and power | Selected Creative water Tank/Basin and bounded Pump/Pipe water line accepted. | Completion review CLEAR,11 qualifying exits0/742 bindings and peer empty/blue/empty. Old HOLDs retained; Creative drain voids1000. Reviewed Tank lifecycle retry queued. |
 | Contraptions | Inert owner foundation accepted after actual initial/cold peer VIEW/guards/cells,4 exits0 and completion review. | Original005 HOLD retained. Reviewed two-cell stationary capture decision awaits owner approval; no capture code. |
 | Trains and schematics | Stationary X/Z track and selected Quill HUD milestone. | Quill completion review CLEAR,9 exits0,38 canonical images; old integrated HOLD exclusions retained. Save/export/train motion deferred. |
 | Experience and parity | Selected audio, Goggles presentation and integrated gold-ingot→sheet→Goggles link accepted. | One supplied ingot and vanilla ingredients, incidental leaf litter disclosed; no mining or full progression claim. |
