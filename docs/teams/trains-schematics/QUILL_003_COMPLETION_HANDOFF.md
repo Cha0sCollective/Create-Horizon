@@ -1,8 +1,9 @@
 # QUILL-003 selected HUD milestone — completion handoff
 
-Status: **runtime and project-lead visual evidence complete; final independent
-read-only completion review pending**. This is a bounded Quill selection UI
-milestone on frozen005. It is not a completed schematic Save workflow.
+Status: **bounded Quill selection HUD milestone COMPLETE** after project-lead
+visual inspection and fresh independent read-only Sol High completion review
+CLEAR. This is a selected UI milestone on frozen005. It is not a completed
+schematic Save workflow.
 
 ## Frozen inputs and change scope
 
@@ -61,9 +62,12 @@ cancel/quick and the index02 integrated replacements carry that behavior.
 
 The pre-run adapter candidate `8ead75f` received strict independent read-only
 Sol High source review CLEAR (120.7 seconds). Python AST and diff checks
-passed. The one-character JAR constant correction and this composed runtime
-evidence need a fresh independent read-only completion review before final
-team closure. No more game run is requested; root transferred the heavy slot
+passed. The one-character JAR constant correction and composed runtime
+evidence received fresh independent read-only Sol High completion review
+CLEAR on `d99b0ad` (112.7 seconds). The reviewer directly checked the three
+new frames, all 38 canonical image hashes and index entries, 711 source-file
+hashes, source-map and local JAR hashes, nine exit codes and preserved excluded
+HOLD frames. No more game run is requested; root transferred the heavy slot
 after normal shutdown.
 
 This milestone supports Quill selection preview, 16-block limit/refusal,
