@@ -1,6 +1,6 @@
 # FLUIDS-005 dedicated peer visual supplement 02
 
-Status: **observed visual delta; final acceptance belongs to Operations**. This
+Status: **bounded FLUIDS-005 accepted by Operations on frozen007**. This
 is the one same-world high-angle supplement to
 `FLUIDS_005_PEER_VISUAL_SUPPLEMENT_PLAN.md`, not a new Pump battery or a change
 to the former ambiguous-image HOLD. No game source, control script, frozen pin,
@@ -58,8 +58,8 @@ ambiguous. Operations directly viewed all three new images and recorded that
 bounded visual observation in `operations-peer-visual-review-02.json`, SHA-256
 `c21a621307dff3744bd216e1bdefd159ecbf725d8a4908c4187456092cef20f6`.
 That receipt covers the images only; numerical, inventory, and exit claims use
-the separate raw controls below. Operations' independent completion review and
-final acceptance remain pending.
+the separate raw controls below. Operations' subsequent completion review and
+bounded acceptance are recorded below.
 
 Raw control ledger: `calls-02.jsonl`, 113 calls, SHA-256
 `24f6315a52ac2e48e15c794472b84be099482ee26187ec770354fb5c510217c1`.
@@ -78,3 +78,26 @@ frozen map `0c97fc70`; binary receipt `2ec57265`, game `fb8ec9b3`, ctl
 base manifests, and all three composed tables matched their frozen digests.
 The source sync path alone was not counted as runtime proof; the direct
 same-pose empty/blue/empty peer images provide the visual observation.
+
+## Operations completion review and acceptance
+
+On November 6, Operations reported a fresh independent read-only Sol High
+`gold_link_review` **CLEAR** and accepted the **bounded FLUIDS-005** result on
+frozen `f732bd4`. The review linked the 742-file source map, build receipt and
+reviewed driver to the four original numerical streams and their **eight**
+normal process exits, then checked this supplement's 113-call ledger, three
+peer PNGs and **three** further normal exits. That is **11 qualifying process
+exits, all code 0**. Operations also directly viewed and rehashed the new
+empty/blue/empty peer images. Its independent review used native-readable
+source and receipts; Linux binary and resource byte identity remain supported
+by the separate frozen launcher and team post-run hash receipts, not by a
+claim that the reviewer independently rehashed Linux files.
+
+This acceptance does not rehabilitate the original low-angle frames or the
+earlier held attempts. The first distant bucket click in session 02 remains a
+no-op; only the closer second click drained the Basin. The 1000 mB lost in
+that Creative drain is a void endpoint with the same empty bucket retained,
+not a water-item conservation result. The accepted scope is the water-only
+Pump/line behavior and observed peer Basin presentation in the reviewed
+finite fixture; it does not qualify broader fluid networks, Survival bucket
+pass-through, or a new source/API/schema/host contract.
