@@ -383,11 +383,17 @@ fn goggle_provider(kind: Kind, theoretical: f32) -> Option<GoggleProvider> {
 }
 
 fn client_theoretical_speed(nbt: &Compound) -> Option<f32> {
-    let Some(Tag::Compound(kinetic)) = nbt.get(&"create_horizon:kinetic".into()) else {
+    if !matches!(
+        text(nbt, "NetworkStatus").as_str(),
+        "Running" | "Overstressed" | "Idle"
+    ) {
         return None;
-    };
-    match kinetic.get(&"TheoreticalSpeed".into()) {
-        Some(Tag::Float(bits)) => Some(f32::from_bits(*bits)),
+    }
+    match nbt.get(&"create_horizon:solver_theoretical_speed".into()) {
+        Some(Tag::Float(bits)) => {
+            let speed = f32::from_bits(*bits);
+            speed.is_finite().then_some(speed)
+        }
         _ => None,
     }
 }
@@ -431,9 +437,9 @@ pub(super) fn hud(game: &Game<'_>, batch: &mut HudBatch) {
     let rpm = number(&entity.nbt, "Speed");
     let capacity = number(&entity.nbt, "Capacity");
     let stress = number(&entity.nbt, "Stress");
-    // The server's kinetic diagnostics reach this client through the existing
-    // block-entity update tag. Wait for them for selected providers after
-    // placement/reopen; actual Speed can be zero while overstressed.
+    // The server's selected solver speed reaches this client through the
+    // existing update tag. Wait for it after placement/reopen; actual Speed
+    // can be zero while overstressed. A Byte(0) tombstone suppresses stale data.
     let theoretical = client_theoretical_speed(&entity.nbt);
     let tr = |key: &str, fallback: &str| horizon_client::lang::get_or(key, fallback);
     let (mut lines, role, value) = if selected_provider(&block, node.kind) {
@@ -443,13 +449,13 @@ pub(super) fn hud(game: &Game<'_>, batch: &mut HudBatch) {
         let (heading, label, role, value) = match provider {
             GoggleProvider::StressImpact(value) => (
                 tr("create.gui.goggles.kinetic_stats", "Kinetic Stats:"),
-                tr("create.tooltip.stressImpact", "Stress Impact"),
+                tr("create.tooltip.stressImpact", "Stress Impact:"),
                 "stress_impact",
                 value,
             ),
             GoggleProvider::CapacityProvided(value) => (
                 tr("create.gui.goggles.generator_stats", "Generator Stats:"),
-                tr("create.tooltip.capacityProvided", "Capacity Provided"),
+                tr("create.tooltip.capacityProvided", "Capacity Provided:"),
                 "capacity_provided",
                 value,
             ),
@@ -457,7 +463,7 @@ pub(super) fn hud(game: &Game<'_>, batch: &mut HudBatch) {
         (
             vec![
                 heading,
-                format!("{label}:"),
+                label,
                 format!(
                     "{value:.0} {} {}",
                     tr("create.generic.unit.stress", "su"),
@@ -528,8 +534,8 @@ pub(super) fn hud(game: &Game<'_>, batch: &mut HudBatch) {
 #[cfg(test)]
 mod goggles_tests {
     use super::{
-        GoggleProvider, client_theoretical_speed, goggle_provider, legacy_panel_allowed,
-        selected_provider,
+        GoggleProvider, ModBlockEntity, client_theoretical_speed, goggle_provider,
+        legacy_panel_allowed, selected_provider,
     };
     use create_engine::kinetics::Kind;
     use horizon_world::nbt::{Compound, Tag};
@@ -584,8 +590,11 @@ mod goggles_tests {
     }
 
     #[test]
-    fn selected_providers_require_server_theoretical_speed() {
-        let mut nbt = Compound::from([("Speed".into(), Tag::Float(0.0f32.to_bits()))]);
+    fn selected_providers_require_finite_solver_speed_and_known_status() {
+        let mut nbt = Compound::from([
+            ("Speed".into(), Tag::Float(0.0f32.to_bits())),
+            ("NetworkStatus".into(), Tag::String("Overstressed".into())),
+        ]);
         assert_eq!(client_theoretical_speed(&nbt), None);
         nbt.insert(
             "create_horizon:kinetic".into(),
@@ -594,6 +603,40 @@ mod goggles_tests {
                 Tag::Float((-16.0f32).to_bits()),
             )])),
         );
+        assert_eq!(client_theoretical_speed(&nbt), None);
+        let field = "create_horizon:solver_theoretical_speed";
+        nbt.insert(field.into(), Tag::Float((-16.0f32).to_bits()));
         assert_eq!(client_theoretical_speed(&nbt), Some(-16.0));
+        nbt.insert(field.into(), Tag::Float(f32::NAN.to_bits()));
+        assert_eq!(client_theoretical_speed(&nbt), None);
+        nbt.insert(field.into(), Tag::Float(f32::INFINITY.to_bits()));
+        assert_eq!(client_theoretical_speed(&nbt), None);
+        nbt.insert(field.into(), Tag::Int(16));
+        assert_eq!(client_theoretical_speed(&nbt), None);
+        nbt.insert(field.into(), Tag::String("16".into()));
+        assert_eq!(client_theoretical_speed(&nbt), None);
+        nbt.insert(field.into(), Tag::Float(0.0f32.to_bits()));
+        nbt.insert("NetworkStatus".into(), Tag::String("Idle".into()));
+        assert_eq!(client_theoretical_speed(&nbt), Some(0.0));
+        nbt.insert("NetworkStatus".into(), Tag::String("TooFast".into()));
+        assert_eq!(client_theoretical_speed(&nbt), None);
+    }
+
+    #[test]
+    fn client_update_merge_invalidates_and_recovers_solver_speed() {
+        let mut client = ModBlockEntity::default();
+        let field = "create_horizon:solver_theoretical_speed";
+        client.merge_update_tag(&Compound::from([
+            ("NetworkStatus".into(), Tag::String("Running".into())),
+            (field.into(), Tag::Float(8.0f32.to_bits())),
+        ]));
+        assert_eq!(client_theoretical_speed(&client.nbt), Some(8.0));
+        client.merge_update_tag(&Compound::from([(field.into(), Tag::Byte(0))]));
+        assert_eq!(client_theoretical_speed(&client.nbt), None);
+        client.merge_update_tag(&Compound::from([
+            ("NetworkStatus".into(), Tag::String("Overstressed".into())),
+            (field.into(), Tag::Float((-16.0f32).to_bits())),
+        ]));
+        assert_eq!(client_theoretical_speed(&client.nbt), Some(-16.0));
     }
 }
