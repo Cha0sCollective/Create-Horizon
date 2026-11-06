@@ -1,11 +1,10 @@
-# TRAINS-002 — bounded native structure selection and save/load proposal
+# TRAINS-002 — structure-service reuse and Create selection decision
 
-Status: read-only packet proposal, 5 November 2026. No source, schema, host pin
+Status: read-only design decision, 5 November 2026. No source, schema, host pin
 or gameplay outcome changes here. Accepted straight X/Z track evidence on the
-first cohort remains accepted and is not repeated. The next proposed result
-qualifies one existing **vanilla structure-block** service with accepted static
-Create blocks; it is not a Create schematic, quill, Schematicannon, Java/world
-import or train system.
+first cohort remains accepted and is not repeated. Horizon's existing **vanilla
+structure-block** Save/Load is a reusable host workflow, not a newly implemented
+Create schematic, quill, Schematicannon, Java/world import or train system.
 
 ## Existing service and exact limit
 
@@ -18,49 +17,46 @@ provides in-game structure-block name, offset, size, Save, Detect and Load UI.
 `:186-245` captures blocks, their block-entity NBT if any, and optionally
 entities; `:289-347` saves the selected area; `:363-390` loads through the
 native template placement path. The standard UI Save call passes
-`ignore_air=false` (`:299-307`), so air inside the selected box is part of this
-fixture; `ignore_entities=true` excludes entities. The UI size and offset limit
+`ignore_air=false` (`:299-307`), so air inside a selected box is captured;
+`ignore_entities=true` excludes entities. The UI size and offset limit
 is 48 blocks per axis (`crates/horizon-client-render/src/structure_block.rs:10-14`).
 On a dedicated LAN guest, structure editing requires Creative and permission
 at least 2 (`structure_blocks.rs:568-582`). The peer can remain an observer.
 The template writer is private and the area save method is `pub(super)`; this
 does not already expose a Create-specific schematic/quill workflow.
 
-## One finite qualification packet
+## Smallest Create-specific follow-on decision
 
-1. Use the project lead's frozen accepted native source and host-wide runtime
-   reservation. Set up new disposable integrated and dedicated/two-client
-   worlds, with isolated launcher/config/resource paths. Do not use a playable
-   save. Establish a single loaded one-layer selection containing one dry
-   `create:track[shape=zo,turn=false,waterlogged=false]` and one
-   `create:track[shape=xo,turn=false,waterlogged=false]`, separated by air.
-   Explicit fixture state is sufficient: ordinary track placement was already
-   qualified. Keep the structure block itself, all other block entities and
-   incidental entities outside the selection.
-2. Through the in-game Save-mode structure-block editor, set a private test
-   name, exact offset and size, `ignore_entities=true`, and save to the world.
-   Record UI success, selected world cells and the resulting world-local file.
-   Decode its GZIP NBT read-only: exact size and positions; palette/blocks
-   contain only those two track states and selected air; no per-block NBT or
-   entity entries. Record the format's `DataVersion`, without asserting Java
-   interchange.
-3. Through the in-game Load-mode editor, place that same saved template in a
-   separate clear area of the **same world**, at no rotation or mirror and
-   full integrity. Query the authoritative destination states and obtain
-   actual actor and dedicated peer images of the two restored track models.
-   A server query alone does not establish client presentation.
-4. Close normally and reopen each disposable world. Verify the saved template
-   remains in the world-local generated path and both placed track states
-   remain exact. Keep process exits, NBT decode, world queries and peer images
-   together. Qualify only this static selection/save/load path; do not add a
-   new source feature or run a historical track battery.
+Select a `create:schematic_and_quill` **two-corner selection UX only** as the
+first implementable Create-facing packet. Pinned Java 6.0.11
+`content/schematics/client/SchematicAndQuillHandler.java:93-136,180-205`
+defines first/second click, status, selection box and cancel behavior;
+`SchematicPromptScreen.java:45-74,108-110` names a later saved schematic.
+The native lane already has client interaction and HUD injection seams in
+`native/create/mixins/create/horizon-mixin.toml:392-405,489-498`, with a working
+client pattern in `motor_control.rs:39-86,306-323`; item registration/content
+generation is in `native/create/tools/catalog.py` and `content.py`. A bounded
+implementation would add the item and selected art, client-only first/second
+corner state and coordinate/size HUD, with a selected maximum of 16 blocks
+per axis, plus cancel/reset on sneaking, item change and world/screen exit.
+It would make **no world write**. Java's
+world-space selection outline needs a separately verified native draw seam;
+this first packet would not claim it.
 
-The packet refuses a source area containing moving assemblies, block entities,
-inventories, entities, water, curves or unsupported track states. No rotation,
-mirror, cross-world file copy, external `.nbt` ingestion, Create-specific
-material accounting, survival workflow or large selection is claimed. A later
-Create schematic UI/export adapter needs its own source/ownership design and
-permission boundary; the existing host writer cannot be treated as that
-adapter without work. If the project lead prefers a code packet first, this
-qualification still serves as a measured host-service preflight rather than a
-train or graph implementation.
+The selected exit checks would cover normal and reversed corner order,
+inclusive dimensions within the 16-block-per-axis bound, HUD visibility,
+cancel/reset and noninterference when another item is held. Focused pure
+selection tests and one project-lead-scheduled integrated/dedicated peer UI
+milestone would be appropriate if that packet is allocated. No driver, build
+or vanilla structure-block replay is started by this design handoff.
+
+Java `content/schematics/SchematicExport.java:38-63` writes a separate
+compressed client file and `SchematicAndQuillHandler.java:207-230` may upload
+it. Export, upload, server validation, placement, transforms, material
+checklist, cannon, inventories, actors, entities, curves, moving assemblies,
+cross-world transfer and external `.nbt` ingestion remain separate decisions.
+A later server bridge could use Horizon's internal
+`structure_blocks.rs:309-347` for world-local static Save after an explicit
+authority/permission design; that method is not a public mod API and ordinary
+structure-block editing is Creative/operator-gated. Do not equate the
+two-corner UX with a saved schematic or complete workflow.
