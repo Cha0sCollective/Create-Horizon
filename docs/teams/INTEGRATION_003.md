@@ -41,10 +41,23 @@ Six executed Saw/core kinetic checks from held candidate1bcf4f6 are reused:
 all engine source files are byte-identical. They are not new executions.
 The two processor asset checks run again because the final catalog/bundle
 excludes the held funnel. Distribution and format checks PASS. Shared stage
-and audio-enabled Clippy PASS; Clippy emits52 warnings. Binary build and one
-client-test-target compile are in progress, followed by four codec tests,
-three transfer tests and one Basin regression. New immutable binary hashes
-and finite integrated/dedicated gameplay remain pending.
+and audio-enabled Clippy PASS; Clippy emits52 warnings. Game/control build and the one client test-target compile now PASS. All10 new
+selected tests PASS: two asset, four tank-codec, three transfer and one Basin
+regression. Six core checks above remain attributed reused executions.
+
+Measured build command time: stage158.143s, Clippy86.942s, binaries133.249s,
+client test-target compile131.916s (510.250s combined, about8.5minutes).
+Three selected native test-group processes (eight tests) total0.055s; the two asset test commands
+include warm compilation and total11.425s. These are command receipts, distinct
+from overlapping agent phase intervals. All676 post-run source hashes match.
+
+Immutable Linux binaries: team-integration-003-bin-edba263e154f under
+/home/arbiter/.cache/create-horizon. Game SHA-256
+edba263e154f198b4a62033d3c468ffa6567c371c5201eb5ccb8577cc0ba807b;
+control170e866057d97e73b9231c8084547d4a4a02346238db35901ef64bf3d0d6d449.
+Raw binaries.json identifies and rehashes both held copies. Fluids owns the
+combined integrated/dedicated runtime lease; gameplay is pending and remains
+separate from these build/test passes.
 
 Use one existing stage/target cache. Do not replay older drivers against this
 changed build path. Root owns the exclusive build lease and final qualification.

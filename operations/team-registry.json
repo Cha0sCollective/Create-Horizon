@@ -6,8 +6,8 @@
   "operations_enrolled_at": "2026-11-05T20:28:36.178Z",
   "root_rollout": "2026/10/25/rollout-2026-10-25T14-12-55-01a1747a-eb1f-7183-b3f6-63f0ccc37f13.jsonl",
   "heavy_resource": {
-    "owner": "operations-cohort-003",
-    "state": "reserved",
+    "owner": null,
+    "state": "idle",
     "queue": []
   },
   "teams": [
@@ -102,7 +102,7 @@
     "branch": "codex/create-team-integration-003",
     "path": "G:\\Create Rusty\\.local\\integration\\create-teams-001",
     "head": "55339ce3347b2ce667281e8a3e6318ec856144e4",
-    "state": "reviewed pre-funnel saw/tank repair/audio helper source; build running, core6 reused, asset2 rerun",
+    "state": "eight normal game process exits; all676 input hashes match; final completion review/qualification pending",
     "source_map_sha256": "b6b913501fdfc3fe4326dcafb53fc8c47a8eb7dccc697615ba0a5d984e18aa4b"
   },
   "held_integration_candidate": {
