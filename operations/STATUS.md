@@ -10,19 +10,19 @@ Normal hooks/fresh private-remote verification are required for the checkpoint.
 
 | Team | Completed finite outcome | Next boundary |
 | --- | --- | --- |
-| Machinery | Fan washing and upward Saw finite playability accepted. Approved goggles producer compiled; two new tests pass. | Goggles HUD runtime queued with Experience; stationary Drill packet prepared. Crushing controller remains a new-owner decision. |
-| Transport | Bare belt/Depot and two-controller handoff accepted. Private Mixins repair compiled. | Candidate004 prediction HOLD preserved; repaired005 ordinary both-mode and dedicated custody trial owns the heavy lease. |
+| Machinery | Fan washing and upward Saw finite playability accepted. Approved goggles producer compiled; two new tests pass. | Owner approved reviewed Crushing Wheels controller packet8a9067b; isolated implementation allocated. Drill runtime queued. |
+| Transport | Bare belt/Depot and two-controller handoff accepted. Private Mixins repair compiled. | Both-mode005 ordinary command checks complete;16 exits0/711 hashes match; continuous gold route HOLD. Lease released; scoped completion review pending. |
 | Fluids and power | One-block Creative water Tank exchange/window/cap/refusal and ordinary cold water accepted. | Tank lifecycle queued; bounded four-block water-line source/wiring reviewed, not yet composed or game-qualified. |
 | Contraptions | Reusable owner design approved; inert foundation/probe compiled; six new focused tests pass. | Actual saved record/peer view/discovery/guards probe queued. No world capture or live bearing. |
 | Trains and schematics | Stationary X/Z track accepted. Client-only Quill compiled; five new focused tests pass. | Actual input packet preparation; no live train, export or Save bridge. |
-| Experience and parity | Selected millstone audio accepted. Matching goggles consumer compiled; three new tests pass. | Reviewed craft/equip/HUD/reopen packet queued. No complete progression or tooltip parity claim. |
+| Experience and parity | Selected millstone audio accepted. Matching goggles consumer compiled; three new tests pass. | Owns selected craft/equip/HUD/reopen game lease on frozen005. No complete progression or tooltip parity claim. |
 
 Shared stage/audio-enabled Clippy/build/client-test compile and10 new focused
 checks PASS. Six identical engine checks are reused, not new runs. Source and
 composition reviews CLEAR; final runtime review CLEAR at handoff5a87f94. Both
 new worlds cold-reopened; all eight game processes exited0 and all676 post-run
 source hashes match. Root viewed actual peer Tank/Saw transitions and stopped
-the private audio fixture normally. That cohort is closed. Transport005 now owns
+the private audio fixture normally. That cohort is closed. Experience now owns
 the sole heavy lease; no owned audio fixture is active.
 
 [Current integration record](../docs/teams/INTEGRATION_003.md) and

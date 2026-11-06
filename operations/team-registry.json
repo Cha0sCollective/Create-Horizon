@@ -6,12 +6,13 @@
   "operations_enrolled_at": "2026-11-05T20:28:36.178Z",
   "root_rollout": "2026/10/25/rollout-2026-10-25T14-12-55-01a1747a-eb1f-7183-b3f6-63f0ccc37f13.jsonl",
   "heavy_resource": {
-    "owner": "transport-funnel005-runtime",
-    "state": "Leased frozen9651dba .13/cache16,711 files, gameb8629821; repaired Funnel both-mode and dedicated custody trial",
+    "owner": "experience-goggles005-runtime",
+    "state": "Root-granted frozen9651dba .13/cache16 gameb8629821; selected both-mode craft/equip/HUD/normal-reopen milestone; Transport16 exits0 and711 files/binaries verified",
     "queue": [
-      "experience-goggles-runtime",
       "trains-quill-runtime",
       "contraptions-owner-foundation-runtime",
+      "transport-short-custody-runtime",
+      "mixins-release-build-apply-benchmark",
       "machinery-drill-runtime",
       "fluids-tank-lifecycle-runtime"
     ]
@@ -27,7 +28,7 @@
       "thread_id": "01a1ad7e-e33b-7ef2-8bc2-606e374fb5de",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:31.729Z",
-      "state": "Drill003 queued; goggles producer compiled/tested005; HUD runtime pending",
+      "state": "Owner approved reviewed8a9067b bounded stationary wheel/controller32slot inventory+clock; isolated source implementation allocated on005; Drill runtime queued",
       "lane_initial_head": "76dfaf78370f41b2a5c68620c55be6ecab96f16f"
     },
     {
@@ -40,7 +41,7 @@
       "thread_id": "01a1ad7e-f1a5-7052-b948-19607d6dd8e4",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:37.443Z",
-      "state": "004 prediction HOLD retained; reviewed repair compiled005; current ordinary both-mode/custody trial owns lease",
+      "state": "Both-mode ordinary interaction commands complete;16 exits0/711 hashes+binaries match; dedicated gold route HOLD; read-only completion review continues without lease",
       "lane_initial_head": "f00d04a3249b53bee453a0191d65285b0e7f6538"
     },
     {
@@ -53,7 +54,7 @@
       "thread_id": "01a1ad7f-00d6-7c60-8820-89ddbee3d21c",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:40.745Z",
-      "state": "Tank lifecycle004 queued; bounded005 four-block water line source/wiring reviewed CLEAR, not yet composed or game-qualified",
+      "state": "Water-line006e4ae9a1 source-composition CLEAR; real Tank/Basin cfg(test)-only failed-receipt restoration check allocated; no heavy lease",
       "lane_initial_head": "76dfaf78370f41b2a5c68620c55be6ecab96f16f"
     },
     {
@@ -92,7 +93,7 @@
       "thread_id": "01a1ad7f-28cf-7452-9a78-12912bc4d097",
       "host_id": "local",
       "enrolled_at": "2026-11-05T20:55:51.489Z",
-      "state": "Approved goggles field consumer and producer compiled005; five focused tests PASS; reviewed HUD/craft/equip/reopen packet queued",
+      "state": "Root heavy lease granted for reviewed selected goggles milestone on frozen005; no new production source",
       "lane_initial_head": "76dfaf78370f41b2a5c68620c55be6ecab96f16f"
     }
   ],
@@ -141,5 +142,13 @@
     "head": "9651dba12d163896d45a8cc4ba1b0b3b0da1feff",
     "source_map": "source-inputs-r3.json",
     "source_map_sha256": "c912836f0ec11311340a4dc0e7f8748abf25ee1a46fba17df4c2c5a33c790647"
+  },
+  "water_line_candidate": {
+    "branch": "codex/create-team-integration-006",
+    "path": "G:\\Create Rusty\\.local\\integration\\create-teams-006",
+    "head": "e4ae9a1",
+    "version": "0.5.0-ch4os.14",
+    "cache_schema": 17,
+    "state": "Source-composition CLEAR; generator/distribution PASS; uncompiled; actual callback/restoration and runtime gates open"
   }
 }

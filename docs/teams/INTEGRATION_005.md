@@ -47,10 +47,10 @@ compilation. Unchanged historical Saw/Tank/Basin/audio batteries were not replay
 
 ## Remaining gates and queue
 
-Transport owns the sole heavy lease for repaired Funnel ordinary interaction in
-integrated/dedicated worlds plus dedicated item custody and actual peer images.
-Harness failures are retained separately; no runtime PASS is claimed here.
-Next: selected goggles craft/equip/HUD and normal reopen; actual Quill input;
+Transport's first lease covered repaired Funnel ordinary interaction in
+integrated/dedicated worlds plus dedicated custody; its current partial outcome
+is recorded below. Harness failures remain retained; no full packet PASS.
+Current queue: selected goggles craft/equip/HUD and normal reopen; actual Quill input;
 inert owner storage/peer/guard probe in its exact separately gated world.
 Drill and Tank lifecycle qualifications remain queued. Source, binaries and
 worlds stay frozen during trials. Final process exits, post-run hashes, direct
@@ -61,3 +61,28 @@ It needs a later exclusive build/apply benchmark and complete generated-source
 byte equality against this unoptimized build; it does not justify a game rerun
 if all generated source bytes match. No public publishing, cleanup, playable-save,
 Prism/Java changes or new owner/schema beyond the explicit approvals.
+
+## Runtime progress, before completion review
+
+Funnel005 ordinary chest, side/Shift/offhand refusal and valid underside checks
+completed in integrated and dedicated play with client/server stock3 on refusals
+and2 after placement, before reconnect. Dedicated fan/pause/obstruction and one
+extracted world gold observation completed. Root directly viewed both actor
+placement frames (close/clipped model, not full visual parity) and the actual
+peer gold world-item frame. Separate root visual verdicts are in the raw packet.
+
+The dedicated route remains HOLD: camera/preflight failures interrupted source
+belt setup; the original gold was subsequently absent from the fixture/global
+gold query and both player inventories. It was not replaced or declared a passed
+continuous chain. Do not infer its cause without evidence. All16 processes
+exited0; `transport-005/receipts/post-run-verification.json` matches all711 native
+files and both binaries. Transport released the heavy lease; its scoped final
+read-only review continues. Full Funnel custody is still unqualified.
+
+Experience now owns the next sole game lease for selected goggles observations.
+No broad historical battery follows. Before any later staging, root preserved
+all4710 generated files/100561190 bytes in the read-back-verified immutable005
+archive for the separate release-tool comparison. Raw benchmark packet
+`native-mixins-release-001/baseline005/freeze-receipt.json` records archive SHA256
+559be6be3230e84485e375fe6cfea0ffca271aeb384bee579bfdac83336c610c.
+The release build/plan/apply benchmark itself has not run.

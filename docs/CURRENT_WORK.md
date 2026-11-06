@@ -75,6 +75,19 @@ on existing Tank/Basin owners, with no persisted pipe flow metadata, generic
 transaction framework or host change. Drill and Tank lifecycle runtime plans
 are reviewed/queued; they have no new gameplay result yet.
 
+The owner approved Machinery004's reviewed stationary Crushing Wheels decision
+at8a9067b: one wheel pair and canonical middle-controller32-slot inventory/clock,
+selected cobblestone-to-gravel milling fallback, normal after-capture reopen and
+removal/spill. Machinery implements in isolated lanes on005; shared integration
+remains Operations-owned. No general processing framework, new host API, other
+recipes/orientations, entity damage, moving wheels or belt/funnel input follows.
+
+Separately composed water-line candidate006/1c2e7f5 (.14/cache17) has independent
+source-composition review CLEAR and normal content/source-install checks PASS.
+Its compile/focused native callback-restoration/runtime gates remain open. It
+does not alter the frozen005 game trial. Release-CLI source8180771 is reviewed
+but still needs its separate benchmark/generated-byte equality before adoption.
+
 The funnel's original HELD1bcf4f6 is preserved. The private tool repair is pinned
 at ac5d9e7 (format-only child of testedf7a9815); its genuine Git ancestry, full
 source fingerprint and bootstrap/pin reviews are CLEAR. Eight tool fixtures
@@ -87,10 +100,12 @@ map, binaries and HOLD receipts remain preserved in the004 packet.
 Candidate005/9651dba (.13/cache16) composes the reviewed Funnel prediction repair,
 goggles producer/consumer, Quill and approved inert owner foundation/probe.
 Stage81/38, Clippy, client tests and playable/control build pass;16 focused tests
-pass. All711 source hashes match. Frozen gameb8629821 is now leased to Transport
-for the ordinary integrated/dedicated Funnel trial. See `docs/teams/INTEGRATION_005.md`.
-Goggles, Quill and the separately gated inert owner runtime checks follow serially.
-Funnel gameplay remains unqualified until actual observations/completion review.
+pass. All711 source hashes match. Both-mode ordinary Funnel command checks
+completed and all16 processes exited0; full continuous gold custody remains HOLD.
+Frozen gameb8629821 is now leased to Experience for the selected goggles trial.
+See `docs/teams/INTEGRATION_005.md`. Quill and the separately gated inert owner
+runtime checks follow serially. Funnel's scoped completion review is pending;
+no full Funnel acceptance follows from the ordinary placement observations.
 No temporary-Shift/recursive workaround, block capture or schematic Save follows.
 
 The first frozen cohort sourceabf48a5 remains detached at
