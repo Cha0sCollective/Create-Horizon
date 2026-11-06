@@ -12,6 +12,67 @@ name = "create_contraption_preflight"
 source = "contraption_preflight.rs"
 
 [[module]]
+id = "assembly-owner"
+file = "crates/horizon-client/src/game.rs"
+name = "create_assembly_owner"
+source = "assembly_owner.rs"
+
+[[injection]]
+id = "assembly-owner-discovery"
+hook = "level_tick_post"
+hook_version = 1
+kind = "HEAD"
+helper = "assembly_owner_tick.rs"
+bindings = [
+ {name="game",ty="&crate::game::Game<'_>",value="&*self"},
+ {name="dimension",ty="&str",value="dimension"},
+]
+
+[[injection]]
+id = "assembly-owner-guard-kill"
+target = "horizon_client::game::commands::Game<'_>::kill_target_in_level"
+kind = "HEAD"
+cancellable = true
+helper = "assembly_owner_guard_kill.rs"
+bindings = [
+ {name="game",ty="&crate::game::Game<'_>",value="&*self"},
+ {name="target",ty="Target",value="t"},
+]
+
+[[injection]]
+id = "assembly-owner-guard-teleport"
+target = "horizon_client::game::commands::Game<'_>::teleport_to_in_level"
+kind = "HEAD"
+cancellable = true
+helper = "assembly_owner_guard_teleport.rs"
+bindings = [
+ {name="game",ty="&crate::game::Game<'_>",value="&*self"},
+ {name="target",ty="Target",value="t"},
+]
+
+[[injection]]
+id = "assembly-owner-guard-remove"
+target = "horizon_client::game::native_entities::Game<'_>::native_remove_entity"
+kind = "HEAD"
+cancellable = true
+helper = "assembly_owner_guard_remove.rs"
+bindings = [
+ {name="game",ty="&crate::game::Game<'_>",value="&*self"},
+ {name="id",ty="u32",value="id"},
+]
+
+[[injection]]
+id = "assembly-owner-guard-move"
+target = "horizon_client::game::native_entities::Game<'_>::native_move_entity"
+kind = "HEAD"
+cancellable = true
+helper = "assembly_owner_guard_move.rs"
+bindings = [
+ {name="game",ty="&crate::game::Game<'_>",value="&*self"},
+ {name="id",ty="u32",value="id"},
+]
+
+[[module]]
 id = "basin"
 file = "crates/horizon-client/src/game.rs"
 name = "create_port_basin"
