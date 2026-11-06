@@ -79,6 +79,31 @@ def capture(client, path):
     return str(path)
 
 
+def teleport(client, stand):
+    stand = position(stand)
+    client.call("command", "tp @s " + " ".join(map(str, stand)))
+    deadline = time.monotonic() + 10
+    while time.monotonic() < deadline:
+        current = client.call("state")["player"]["position"]
+        if (abs(current[0] - stand[0]) < .2 and
+                stand[1] - 3.1 <= current[1] <= stand[1] + .5 and
+                abs(current[2] - stand[2]) < .2):
+            return
+        time.sleep(.1)
+    raise TimeoutError(f"{client.name} teleport not observed at {stand}")
+
+
+def change_gamemode(client, mode):
+    client.call("command", "gamemode " + mode)
+    client.call("wait", 2)
+    deadline = time.monotonic() + 10
+    while time.monotonic() < deadline:
+        if client.call("state")["gamemode"] == mode:
+            return
+        time.sleep(.1)
+    raise TimeoutError(f"{client.name} gamemode {mode} not observed")
+
+
 def ensure_hotbar(actor, item):
     inv = actor.call("inventory")
     if any(s.get("item") == item for s in inv["hotbar"]):
@@ -115,6 +140,28 @@ def server_head(actor, marker):
     return value
 
 
+def verify_world(client, meta, role, marker):
+    state = client.call("state")
+    if meta["mode"] == "integrated":
+        require(state["world"] == meta["world_id"], f"{role} in wrong integrated world")
+        return
+    # Remote clients expose an empty local level name. Bind the observation
+    # to the frozen server endpoint/role instead of treating that blank as a
+    # world-name match; the server --world identity is in the launcher receipt.
+    require(not state.get("world") or state["world"] == meta["world_id"],
+            f"{role} reports a different world: {state.get('world')}")
+    ready = client.call("wait-ready", 120)
+    server = ready["server"]
+    require(server["address"] == meta["server_address"] and
+            server["name"] == meta[role + "_name"] and
+            server["joined"] and server["loaded"] and
+            server["dimension"] == "minecraft:overworld",
+            f"{role} in wrong dedicated session: {server}")
+    response = client.query("time query gametime", marker + "-" + role + "-identity")
+    require(re.fullmatch(r"The game time is \d+ tick\(s\)", response.strip()) is not None,
+            f"{role} has no fresh server response: {response}")
+
+
 def unequip(actor):
     actor.call("open-inventory")
     actor.call("click-slot", 500, "shift")
@@ -127,15 +174,18 @@ def unequip(actor):
 
 def views(actor, peer, scene, output, prefix):
     images = []
-    actor.call("command", "tp @s " + " ".join(map(str, position(scene["actor_view_stand"]))))
+    teleport(actor, scene["actor_view_stand"])
+    actor.call("wait", 20)
+    actor.call("look-at", *position(scene["peer_head_target"]))
     for camera in (1, 2, 3):
         actor.call("key", "f5", "tap")
         actor.call("wait", 2)
         images.append(capture(actor, output / f"{prefix}-actor-camera{camera}.png"))
     if peer:
-        peer.call("command", "tp @s " + " ".join(map(str, position(scene["peer_stand"]))))
+        teleport(peer, scene["peer_stand"])
+        peer.call("wait", 40)
         peer.call("look-at", *position(scene["actor_head_target"]))
-        peer.call("wait", 4)
+        peer.call("wait", 20)
         images.append(capture(peer, output / f"{prefix}-peer.png"))
     return images
 
@@ -157,7 +207,7 @@ def craft(actor, peer, scene, output, marker):
     table = position(scene["table"])
     require(actor.call("block", *table)["block"] == "minecraft:crafting_table",
             f"crafting table missing at {table}")
-    actor.call("command", "tp @s " + " ".join(map(str, position(scene["craft_stand"]))))
+    teleport(actor, scene["craft_stand"])
     actor.call("look-at", "block", *table, "up")
     actor.call("interact", *table, "up")
     screen = actor.call("screen")
@@ -282,7 +332,7 @@ def hud(actor, scene, output, marker, target, expected_status, log):
     pos = position(scene[target])
     block = "create:millstone" if target == "millstone" else "create:water_wheel"
     require(actor.call("block", *pos)["block"] == block, f"wrong HUD target at {pos}")
-    actor.call("command", "tp @s " + " ".join(map(str, position(scene[target + "_stand"]))))
+    teleport(actor, scene[target + "_stand"])
     actor.call("look-at", "block", *pos)
     actor.call("wait", 5)
     server = actor.query("data get block " + " ".join(map(str, pos)), marker + "-" + target)
@@ -322,7 +372,7 @@ def negatives(actor, scene, output, marker, log):
     require(actor.call("state")["gamemode"] == "survival", "actor is not in Survival")
     require(head(actor.call("inventory")).get("item") == "create:goggles", "Goggles not worn")
     millstone = position(scene["millstone"])
-    actor.call("command", "tp @s " + " ".join(map(str, position(scene["millstone_stand"]))))
+    teleport(actor, scene["millstone_stand"])
     actor.call("look-at", "block", *millstone)
     baseline_offset = log.stat().st_size
     actor.call("wait", 5)
@@ -341,10 +391,8 @@ def negatives(actor, scene, output, marker, log):
         images.append(absent(actor, log, output, "f1", millstone))
     finally:
         actor.call("key", "f1", "tap")
-    actor.call("command", "gamemode spectator")
     try:
-        require(actor.call("state")["gamemode"] == "spectator",
-                "spectator command did not change mode")
+        change_gamemode(actor, "spectator")
         spectator_inventory = actor.call("inventory")
         require(head(spectator_inventory).get("item") == "create:goggles" and
                 item_count(spectator_inventory, "create:goggles") == 1,
@@ -353,15 +401,15 @@ def negatives(actor, scene, output, marker, log):
         actor.call("look-at", "block", *millstone)
         images.append(absent(actor, log, output, "spectator", millstone))
     finally:
-        actor.call("command", "gamemode survival")
+        change_gamemode(actor, "survival")
     shaft = position(scene["shaft"])
     require(actor.call("block", *shaft)["block"] == "create:shaft", "plain shaft missing")
-    actor.call("command", "tp @s " + " ".join(map(str, position(scene["shaft_stand"]))))
+    teleport(actor, scene["shaft_stand"])
     actor.call("look-at", "block", *shaft)
     images.append(absent(actor, log, output, "plain-shaft", shaft))
     gauge = position(scene["speedometer"])
     require(actor.call("block", *gauge)["block"] == "create:speedometer", "speedometer missing")
-    actor.call("command", "tp @s " + " ".join(map(str, position(scene["speedometer_stand"]))))
+    teleport(actor, scene["speedometer_stand"])
     actor.call("look-at", "block", *gauge)
     actor.call("wait", 3)
     offset = log.stat().st_size
@@ -422,9 +470,9 @@ def main():
     marker = f"experience003-{name}-{int(time.time())}"
     report = {"step": name, "metadata": meta, "passed_assertions": False}
     try:
-        require(actor.call("state")["world"] == meta["world_id"], "actor in wrong world")
+        verify_world(actor, meta, "actor", marker)
         if peer:
-            require(peer.call("state")["world"] == meta["world_id"], "peer in wrong world")
+            verify_world(peer, meta, "peer", marker)
         if args.step == "craft":
             report["result"] = craft(actor, peer, meta["scene"], output, marker)
         elif args.step == "equip-fixture":
